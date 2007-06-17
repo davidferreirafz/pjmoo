@@ -1,0 +1,33 @@
+# Project: HSV_RGB
+# Makefile created by Dev-C++ 4.9.9.2
+
+CPP  = g++.exe
+CC   = gcc.exe
+WINDRES = windres.exe
+RES  = 
+OBJ  = HSV_RGB.o SystemColor.o $(RES)
+LINKOBJ  = HSV_RGB.o SystemColor.o $(RES)
+LIBS =  -L"C:/SDK/Cpp/MinGW/lib" -lGBF -lmingw32 -lSDL_Mixer -lSDL_Image -lSDLmain -lSDL  -mwindows -s 
+INCS =  -I"C:/SDK/Cpp/MinGW/include" 
+CXXINCS =  -I"C:/SDK/Cpp/MinGW/include/c++/3.2.3"  -I"C:/SDK/Cpp/MinGW/include/c++/3.2.3/mingw32"  -I"C:/SDK/Cpp/MinGW/include/c++/3.2.3/mingw32"  -I"C:/SDK/Cpp/MinGW/include" 
+BIN  = HSV_RGB.exe
+CXXFLAGS = $(CXXINCS)   -mwindows
+CFLAGS = $(INCS)   -mwindows
+RM = rm -f
+
+.PHONY: all all-before all-after clean clean-custom
+
+all: all-before HSV_RGB.exe all-after
+
+
+clean: clean-custom
+	${RM} $(OBJ) $(BIN)
+
+$(BIN): $(OBJ)
+	$(CPP) $(LINKOBJ) -o "HSV_RGB.exe" $(LIBS)
+
+HSV_RGB.o: HSV_RGB.cpp
+	$(CPP) -c HSV_RGB.cpp -o HSV_RGB.o $(CXXFLAGS)
+
+SystemColor.o: SystemColor.cpp
+	$(CPP) -c SystemColor.cpp -o SystemColor.o $(CXXFLAGS)

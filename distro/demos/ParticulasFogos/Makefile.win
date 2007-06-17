@@ -1,0 +1,33 @@
+# Project: ParticulasFogos
+# Makefile created by Dev-C++ 4.9.9.2
+
+CPP  = g++.exe
+CC   = gcc.exe
+WINDRES = windres.exe
+RES  = 
+OBJ  = ParticulasFogos.o SystemColor.o $(RES)
+LINKOBJ  = ParticulasFogos.o SystemColor.o $(RES)
+LIBS =  -lGBF -lmingw32 -lSDL_Mixer -lSDL_Image -lSDLmain -lSDL  -mwindows -s 
+INCS = 
+CXXINCS =  -I"C:/SDK/Cpp/MinGW/include/c++/3.3.1" 
+BIN  = ParticulasFogos.exe
+CXXFLAGS = $(CXXINCS)   -mwindows
+CFLAGS = $(INCS)   -mwindows
+RM = rm -f
+
+.PHONY: all all-before all-after clean clean-custom
+
+all: all-before ParticulasFogos.exe all-after
+
+
+clean: clean-custom
+	${RM} $(OBJ) $(BIN)
+
+$(BIN): $(OBJ)
+	$(CPP) $(LINKOBJ) -o "ParticulasFogos.exe" $(LIBS)
+
+ParticulasFogos.o: ParticulasFogos.cpp
+	$(CPP) -c ParticulasFogos.cpp -o ParticulasFogos.o $(CXXFLAGS)
+
+SystemColor.o: SystemColor.cpp
+	$(CPP) -c SystemColor.cpp -o SystemColor.o $(CXXFLAGS)

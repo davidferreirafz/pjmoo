@@ -1,0 +1,12 @@
+#arquivo em portugues
+#exemplo de comentário
+#autor: David Ferreira
+
+texto001=Primeira frase
+texto002=Só testando...
+
+texto003=Em breve o SpaceShooter estará em inglês
+
+
+texto004=Fim da Transmissão ! :P
+texto005=GBF - Gamework's Brazilian Framework

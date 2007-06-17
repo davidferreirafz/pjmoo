@@ -1,0 +1,4 @@
+Atenção
+¨¨¨¨¨¨¨
+ Não remover este diretório.
+ Usado para os guardar imagem do jogo especifico.

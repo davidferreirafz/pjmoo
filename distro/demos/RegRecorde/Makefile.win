@@ -1,0 +1,45 @@
+# Project: RegRecorde
+# Makefile created by Dev-C++ 4.9.9.2
+
+CPP  = g++.exe -D__DEBUG__
+CC   = gcc.exe -D__DEBUG__
+WINDRES = windres.exe
+RES  = 
+OBJ  = RegRecorde.o ParserRecorde.o TopRecorde.o AppSDL.o RecordeManager.o TopManager.o $(RES)
+LINKOBJ  = RegRecorde.o ParserRecorde.o TopRecorde.o AppSDL.o RecordeManager.o TopManager.o $(RES)
+LIBS =  -lmingw32 -lSDLmain  -lSDL -lSDL_net  -g3 -s -m3dnow 
+INCS = 
+CXXINCS =  -I"C:/SDK/Cpp/MinGW/include/c++/3.3.1" 
+BIN  = RegRecorde.exe
+CXXFLAGS = $(CXXINCS)   -O3 -g3 -m3dnow
+CFLAGS = $(INCS)   -O3 -g3 -m3dnow
+RM = rm -f
+
+.PHONY: all all-before all-after clean clean-custom
+
+all: all-before RegRecorde.exe all-after
+
+
+clean: clean-custom
+	${RM} $(OBJ) $(BIN)
+
+$(BIN): $(OBJ)
+	$(CPP) $(LINKOBJ) -o "RegRecorde.exe" $(LIBS)
+
+RegRecorde.o: RegRecorde.cpp
+	$(CPP) -c RegRecorde.cpp -o RegRecorde.o $(CXXFLAGS)
+
+ParserRecorde.o: ParserRecorde.cpp
+	$(CPP) -c ParserRecorde.cpp -o ParserRecorde.o $(CXXFLAGS)
+
+TopRecorde.o: TopRecorde.cpp
+	$(CPP) -c TopRecorde.cpp -o TopRecorde.o $(CXXFLAGS)
+
+AppSDL.o: AppSDL.cpp
+	$(CPP) -c AppSDL.cpp -o AppSDL.o $(CXXFLAGS)
+
+RecordeManager.o: RecordeManager.cpp
+	$(CPP) -c RecordeManager.cpp -o RecordeManager.o $(CXXFLAGS)
+
+TopManager.o: TopManager.cpp
+	$(CPP) -c TopManager.cpp -o TopManager.o $(CXXFLAGS)

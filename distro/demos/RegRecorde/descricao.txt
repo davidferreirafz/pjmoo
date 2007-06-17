@@ -1,0 +1,35 @@
+Descrição [rascunho]
+
+*Layout
+
+id|nome|pontos|dataPublicacao|tipo|fase|tempo
+
+
+=---------------------------------
+
+id              -> identificador do registro [no Banco]
+nome            -> nome
+pontos          -> pontuação
+fase            -> Fase
+tempo           -> Tempo que levou para fazer esta pontuação
+dataPublicacao  -> data de publicação [Apenas Banco de Dados]
+tipo            -> localização do registro [Local ou Global]
+            local  -> registro adicionais de forma local
+            global -> registro baixado do servidor de recordes
+
+
+------------------------
+
+Como deve funcionar:
+
+
+Aplicação lê recordes locais
+Procura pelos recorde ainda não gravados no servidor
+Envia recordes para gravação
+Baixa do servidor os 3 top recordes, ou seja, (1º, 2º e 3º lugares)
+Mescla com os recordes locais
+
+
+
+
+

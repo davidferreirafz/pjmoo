@@ -1,0 +1,5 @@
+Atenção
+¨¨¨¨¨¨¨
+ Não remover este diretório.
+ Estrutura padrão do kernel da GBF. 
+ 

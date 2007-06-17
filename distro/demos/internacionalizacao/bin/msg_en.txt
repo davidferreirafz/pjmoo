@@ -1,0 +1,11 @@
+#Archive in English
+#commentary example
+#author: David Ferreira
+
+texto001=First phrase 
+
+texto002=Only testing ...
+texto003=Soon the SpaceShooter will be in English 
+
+texto004=End of the Transmission! :P
+texto005=GBF - Gamework's Brazilian Framework

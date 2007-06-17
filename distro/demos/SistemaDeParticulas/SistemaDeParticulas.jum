@@ -1,0 +1,702 @@
+Jumli
+{
+  *** Applikation ***;
+  Version=1.45;
+  Elements=70;
+  {
+    *** OpenedFile ***;
+    File=main.cpp,-1,-1;
+  };
+  {
+    *** OpenedFile ***;
+    File=SystemColor.cpp,-1,-1;
+  };
+  {
+    *** OpenedFile ***;
+    File=Particula.cpp,-1,-1;
+  };
+  {
+    *** OpenedFile ***;
+    File=Efeito.cpp,-1,-1;
+  };
+  {
+    *** OpenedFile ***;
+    File=Explosao.cpp,-1,-1;
+  };
+  {
+    *** OpenedFile ***;
+    File=FogosDeArtificio.cpp,-1,-1;
+  };
+  {
+    *** OpenedDiagram ***;
+    Diagram=6;
+  };
+  {
+    *** Model ***;
+    Typ=2;
+    MainFile=main.cpp,-1,-1;
+    ActiveDiagramm=6;
+    {
+      *** GenSettings ***;
+      GetPrefix="Get";
+      SetPrefix="Set";
+      DBBaseClass="DbBasisObject";
+      DBRecordSet="DbSet";
+      GenerateWrite=true;
+      GenerateRead=true;
+    };
+    {
+      *** CompileDebugSettings ***;
+      AufrufCompiler="g++";
+      AufrufDebugger="gdb";
+      DebugOptionen="-nw";
+    };
+    {
+      *** Package ***;
+      Name="UseCases";
+      ID=3;
+      Zugriff=2;
+      Type=2;
+      {
+        *** Diagramm ***;
+        Name="UseCases";
+        ID=4;
+        DiagrammTyp=2;
+      };
+    };
+    {
+      *** Package ***;
+      Name="SistemaDeParticulas";
+      ID=5;
+      Zugriff=2;
+      {
+        *** Diagramm ***;
+        Name="SistemaDeParticulas";
+        ID=6;
+        {
+          *** CJumliTracker ***;
+          Rechteck=312,395,417,484;
+          Order=-1;
+          UMLElementID=23;
+          IsWithAttributs=true;
+          IsWithMethods=true;
+        };
+        {
+          *** CJumliTracker ***;
+          Rechteck=432,395,551,484;
+          Order=-1;
+          UMLElementID=31;
+          IsWithAttributs=true;
+          IsWithMethods=true;
+        };
+        {
+          *** CJumliTracker ***;
+          Rechteck=300,31,405,120;
+          Order=-1;
+          UMLElementID=47;
+          IsWithAttributs=true;
+          IsWithMethods=true;
+        };
+        {
+          *** CJumliTracker ***;
+          Rechteck=545,128,650,217;
+          Order=-1;
+          UMLElementID=43;
+          IsWithAttributs=true;
+          IsWithMethods=true;
+        };
+        {
+          *** CJumliTracker ***;
+          Rechteck=30,206,173,309;
+          Order=-1;
+          UMLElementID=37;
+          IsWithAttributs=true;
+          IsWithMethods=true;
+        };
+        {
+          *** CJumliTracker ***;
+          Rechteck=332,185,510,344;
+          Order=-1;
+          UMLElementID=11;
+          IsWithAttributs=true;
+          IsWithMethods=true;
+        };
+        {
+          *** VererbungZeichner ***;
+          ShowConstraints=true;
+          ShowTaggedValues=true;
+          Order=-1;
+          UMLElementID=30;
+          TextOffset=0,5;
+        };
+        {
+          *** VererbungZeichner ***;
+          ShowConstraints=true;
+          ShowTaggedValues=true;
+          Order=-1;
+          UMLElementID=32;
+          TextOffset=0,5;
+        };
+        {
+          *** DependencyZeichner ***;
+          Rechteck=205,250,212,257;
+          Order=-1;
+          UMLElementID=175;
+          TextOffset=0,5;
+        };
+        {
+          *** CJumliTracker ***;
+          Rechteck=544,21,649,110;
+          Order=-1;
+          UMLElementID=7;
+          IsWithAttributs=true;
+          IsWithMethods=true;
+        };
+        {
+          *** CJumliTracker ***;
+          Rechteck=41,26,146,115;
+          Order=-1;
+          UMLElementID=33;
+          IsWithAttributs=true;
+          IsWithMethods=true;
+        };
+        {
+          *** AssoziationZeichner ***;
+          ShowConstraints=true;
+          Order=-1;
+          UMLElementID=176;
+          TextOffset=0,5;
+          OffsetRollenName=-20,-10;
+          OffsetA=5,5;
+          OffsetB=5,5;
+        };
+        {
+          *** DependencyZeichner ***;
+          Order=-1;
+          UMLElementID=179;
+          TextOffset=0,5;
+        };
+        {
+          *** DependencyZeichner ***;
+          Order=-1;
+          UMLElementID=180;
+          TextOffset=0,5;
+        };
+        {
+          *** DependencyZeichner ***;
+          Rechteck=244,70,251,77;
+          Order=-1;
+          UMLElementID=181;
+          TextOffset=0,5;
+        };
+        {
+          *** NotizZeichner ***;
+          Rechteck=21,393,251,470;
+          Order=-1;
+          UMLElementID=182;
+        };
+      };
+      {
+        *** Klasse ***;
+        Name="Efeito";
+        Stereotype="Abstract";
+        ID=11;
+        Datentyp="class";
+        NameSpace="SistemaDeParticulas";
+        KomponentenId=-1;
+        File=Efeito.cpp,-1,-1;
+        HeaderFile=Efeito.h,-1,-1;
+        Parent=-1;
+        {
+          *** Attribut ***;
+          Name="graphicSystem";
+          ID=115;
+          Datentyp="GraphicSystem*";
+          IsStatic=true;
+          Zugriff=1;
+        };
+        {
+          *** Attribut ***;
+          Doku="\tParticula particula[500];";
+          Name="lista";
+          ID=146;
+          Datentyp="std::deque<Particula>";
+          Zugriff=1;
+        };
+        {
+          *** Methode ***;
+          Name="Efeito";
+          ID=137;
+        };
+        {
+          *** Methode ***;
+          Name="atualizar";
+          ID=138;
+          IsAbstract=true;
+          IsVirtual=true;
+          RueckgabeWert="void";
+        };
+        {
+          *** Methode ***;
+          Name="criar";
+          ID=139;
+          IsAbstract=true;
+          IsVirtual=true;
+          RueckgabeWert="void";
+          {
+            *** Parameter ***;
+            Name="x";
+            ID=140;
+            Typ="int";
+          };
+          {
+            *** Parameter ***;
+            Name="y";
+            ID=141;
+            Typ="int";
+          };
+        };
+        {
+          *** Methode ***;
+          Name="desenhar";
+          ID=142;
+          IsVirtual=true;
+          RueckgabeWert="void";
+        };
+        {
+          *** Methode ***;
+          Name="isTerminou";
+          ID=143;
+          IsVirtual=true;
+          RueckgabeWert="bool";
+        };
+        {
+          *** Methode ***;
+          Name="setQuantidade";
+          ID=144;
+          RueckgabeWert="void";
+          {
+            *** Parameter ***;
+            Name="quantidade";
+            ID=145;
+            Typ="int";
+          };
+        };
+      };
+      {
+        *** Klasse ***;
+        Name="Explosao";
+        ID=23;
+        Datentyp="class";
+        NameSpace="SistemaDeParticulas";
+        KomponentenId=-1;
+        File=Explosao.cpp,-1,-1;
+        HeaderFile=Explosao.h,-1,-1;
+        Parent=-1;
+        {
+          *** Attribut ***;
+          Name="origem";
+          ID=159;
+          Datentyp="Ponto";
+          Zugriff=1;
+        };
+        {
+          *** Attribut ***;
+          Name="raio";
+          ID=160;
+          Datentyp="int";
+          IsStatic=true;
+          IsConst=true;
+          Zugriff=1;
+          AttributWert="50";
+        };
+        {
+          *** Methode ***;
+          Name="atualizar";
+          ID=155;
+          RueckgabeWert="void";
+        };
+        {
+          *** Methode ***;
+          Name="criar";
+          ID=156;
+          RueckgabeWert="void";
+          {
+            *** Parameter ***;
+            Name="x";
+            ID=157;
+            Typ="int";
+          };
+          {
+            *** Parameter ***;
+            Name="y";
+            ID=158;
+            Typ="int";
+          };
+        };
+        {
+          *** Vererbung ***;
+          ID=30;
+          A=23;
+          B=11;
+        };
+      };
+      {
+        *** Klasse ***;
+        Name="FogosDeArtificio";
+        ID=31;
+        Datentyp="class";
+        NameSpace="SistemaDeParticulas";
+        KomponentenId=-1;
+        File=FogosDeArtificio.cpp,-1,-1;
+        HeaderFile=FogosDeArtificio.h,-1,-1;
+        Parent=-1;
+        {
+          *** Attribut ***;
+          Name="origem";
+          ID=173;
+          Datentyp="Ponto";
+          Zugriff=1;
+        };
+        {
+          *** Attribut ***;
+          Name="raio";
+          ID=174;
+          Datentyp="int";
+          IsStatic=true;
+          IsConst=true;
+          Zugriff=1;
+          AttributWert="100";
+        };
+        {
+          *** Methode ***;
+          Name="atualizar";
+          ID=169;
+          RueckgabeWert="void";
+        };
+        {
+          *** Methode ***;
+          Name="criar";
+          ID=170;
+          RueckgabeWert="void";
+          {
+            *** Parameter ***;
+            Name="x";
+            ID=171;
+            Typ="int";
+          };
+          {
+            *** Parameter ***;
+            Name="y";
+            ID=172;
+            Typ="int";
+          };
+        };
+        {
+          *** Vererbung ***;
+          ID=32;
+          A=31;
+          B=11;
+        };
+      };
+      {
+        *** Klasse ***;
+        Name="HSV";
+        Stereotype="struct";
+        ID=33;
+        Datentyp="class";
+        NameSpace="SistemaDeParticulas";
+        KomponentenId=-1;
+        File=HSV.cpp,-1,-1;
+        HeaderFile=HSV.h,-1,-1;
+        IsGenerate=true;
+        Parent=-1;
+        {
+          *** Attribut ***;
+          Name="h";
+          ID=34;
+          Datentyp="int";
+          AttributWert="0";
+        };
+        {
+          *** Attribut ***;
+          Name="s";
+          ID=35;
+          Datentyp="float";
+          AttributWert="0";
+        };
+        {
+          *** Attribut ***;
+          Name="v";
+          ID=36;
+          Datentyp="float";
+          AttributWert="0";
+        };
+      };
+      {
+        *** Klasse ***;
+        Name="Particula";
+        Stereotype="struct";
+        ID=37;
+        Datentyp="class";
+        NameSpace="SistemaDeParticulas";
+        KomponentenId=-1;
+        File=Particula.cpp,-1,-1;
+        HeaderFile=Particula.h,-1,-1;
+        IsGenerate=true;
+        Parent=-1;
+        {
+          *** Attribut ***;
+          Name="ativa";
+          ID=38;
+          Datentyp="bool";
+          AttributWert="false";
+        };
+        {
+          *** Attribut ***;
+          Name="energia";
+          ID=40;
+          Datentyp="int";
+        };
+        {
+          *** Attribut ***;
+          Name="posicao";
+          ID=41;
+          Datentyp="PontoVirtual";
+        };
+        {
+          *** Attribut ***;
+          Name="velocidade";
+          ID=42;
+          Datentyp="PontoVirtual";
+        };
+        {
+          *** Assoziation ***;
+          ID=176;
+          Zugriff=2;
+          A=37;
+          B=33;
+          RollenName="cor";
+          Type=5;
+        };
+      };
+      {
+        *** Klasse ***;
+        Name="RGB";
+        Stereotype="struct";
+        ID=43;
+        Datentyp="class";
+        NameSpace="SistemaDeParticulas";
+        KomponentenId=-1;
+        File=RGB.cpp,-1,-1;
+        HeaderFile=RGB.h,-1,-1;
+        IsGenerate=true;
+        Parent=-1;
+        {
+          *** Attribut ***;
+          Name="b";
+          ID=44;
+          Datentyp="int";
+          AttributWert="0";
+        };
+        {
+          *** Attribut ***;
+          Name="g";
+          ID=45;
+          Datentyp="int";
+          AttributWert="0";
+        };
+        {
+          *** Attribut ***;
+          Name="r";
+          ID=46;
+          Datentyp="int";
+          AttributWert="0";
+        };
+      };
+      {
+        *** Klasse ***;
+        Name="RGBf";
+        Stereotype="struct";
+        ID=7;
+        Datentyp="class";
+        NameSpace="SistemaDeParticulas";
+        KomponentenId=-1;
+        File=RGBf.cpp,-1,-1;
+        HeaderFile=RGBf.h,-1,-1;
+        IsGenerate=true;
+        Parent=-1;
+        {
+          *** Attribut ***;
+          Name="b";
+          ID=8;
+          Datentyp="float";
+          AttributWert="0";
+        };
+        {
+          *** Attribut ***;
+          Name="g";
+          ID=9;
+          Datentyp="float";
+          AttributWert="0";
+        };
+        {
+          *** Attribut ***;
+          Name="r";
+          ID=10;
+          Datentyp="float";
+          AttributWert="0";
+        };
+      };
+      {
+        *** Klasse ***;
+        Name="SystemColor";
+        ID=47;
+        Datentyp="class";
+        NameSpace="SistemaDeParticulas";
+        KomponentenId=-1;
+        File=SystemColor.cpp,-1,-1;
+        HeaderFile=SystemColor.h,-1,-1;
+        IsGenerate=true;
+        Parent=-1;
+        {
+          *** Methode ***;
+          Name="forHSV";
+          ID=48;
+          IsStatic=true;
+          RueckgabeWert="HSV";
+          {
+            *** Parameter ***;
+            Name="cor";
+            ID=49;
+            Typ="RGB";
+          };
+        };
+        {
+          *** Methode ***;
+          Name="forRGB";
+          ID=50;
+          IsStatic=true;
+          RueckgabeWert="RGB";
+          {
+            *** Parameter ***;
+            Name="cor";
+            ID=51;
+            Typ="HSV";
+          };
+        };
+        {
+          *** Methode ***;
+          Name="maior";
+          ID=52;
+          IsStatic=true;
+          Zugriff=1;
+          RueckgabeWert="int";
+          {
+            *** Parameter ***;
+            Name="valor1";
+            ID=53;
+            Typ="int";
+          };
+          {
+            *** Parameter ***;
+            Name="valor2";
+            ID=54;
+            Typ="int";
+          };
+        };
+        {
+          *** Methode ***;
+          Name="menor";
+          ID=55;
+          IsStatic=true;
+          Zugriff=1;
+          RueckgabeWert="int";
+          {
+            *** Parameter ***;
+            Name="valor1";
+            ID=56;
+            Typ="int";
+          };
+          {
+            *** Parameter ***;
+            Name="valor2";
+            ID=57;
+            Typ="int";
+          };
+        };
+      };
+      {
+        *** Notiz ***;
+        Doku="Autor: David Ferreira\nEmail: davidferreira@uol.com.br\n\nTeste para \
+        criação de um sistema de Particulas\n";
+        ID=182;
+      };
+      {
+        *** Dependency ***;
+        Stereotype="use";
+        ID=175;
+        Zugriff=2;
+        A=11;
+        B=37;
+      };
+      {
+        *** Dependency ***;
+        ID=179;
+        Zugriff=2;
+        A=47;
+        B=7;
+      };
+      {
+        *** Dependency ***;
+        ID=180;
+        Zugriff=2;
+        A=47;
+        B=43;
+      };
+      {
+        *** Dependency ***;
+        ID=181;
+        Zugriff=2;
+        A=47;
+        B=33;
+      };
+    };
+    {
+      *** Source ***;
+      File=main.cpp,-1,-1;
+    };
+    {
+      *** Source ***;
+      File=Efeito.cpp,-1,-1;
+    };
+    {
+      *** Source ***;
+      File=Efeito.h,-1,-1;
+    };
+    {
+      *** Source ***;
+      File=Explosao.cpp,732,732;
+    };
+    {
+      *** Source ***;
+      File=Explosao.h,-1,-1;
+    };
+    {
+      *** Source ***;
+      File=SystemColor.cpp,-1,-1;
+    };
+    {
+      *** Source ***;
+      File=SystemColor.h,-1,-1;
+    };
+    {
+      *** Source ***;
+      File=FogosDeArtificio.h,-1,-1;
+    };
+    {
+      *** Source ***;
+      File=FogosDeArtificio.cpp,-1,-1;
+    };
+  };
+};

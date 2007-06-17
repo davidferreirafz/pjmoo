@@ -1,0 +1,107 @@
+<?xml version="1.0"?>
+<!DOCTYPE CodeBlocks_project_file>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="1"/>
+	<Project>
+		<Option title="Scrolling"/>
+		<Option makefile="Makefile"/>
+		<Option makefile_is_custom="0"/>
+		<Option active_target="0"/>
+		<Option compiler="0"/>
+		<Build>
+			<Target title="win32 - release">
+				<Option output="bin\Scrolling.exe"/>
+				<Option working_dir="bin\"/>
+				<Option object_output=".objs"/>
+				<Option deps_output=".deps"/>
+				<Option type="0"/>
+				<Option compiler="0"/>
+				<Option projectLinkerOptionsRelation="2"/>
+				<Option projectResourceIncludeDirsRelation="0"/>
+				<Compiler>
+					<Add option="-fexpensive-optimizations"/>
+					<Add option="-Os"/>
+					<Add option="-W"/>
+					<Add option="-Wall"/>
+				</Compiler>
+				<Linker>
+					<Add option="-s"/>
+					<Add library="mingw32"/>
+				</Linker>
+			</Target>
+			<Target title="win32 - debug">
+				<Option output="bin\Scrolling_DEBUG.exe"/>
+				<Option working_dir="bin\"/>
+				<Option object_output=".objs"/>
+				<Option deps_output=".deps"/>
+				<Option type="0"/>
+				<Option compiler="0"/>
+				<Option projectLinkerOptionsRelation="2"/>
+				<Option projectResourceIncludeDirsRelation="0"/>
+				<Compiler>
+					<Add option="-W"/>
+					<Add option="-Wall"/>
+					<Add option="-pg"/>
+					<Add option="-g"/>
+					<Add option="-DDEBUG"/>
+				</Compiler>
+				<Linker>
+					<Add option="-pg -lgmon"/>
+					<Add option="-pg"/>
+					<Add library="mingw32"/>
+				</Linker>
+			</Target>
+			<Target title="linux - release">
+				<Option output="bin\Scrolling"/>
+				<Option working_dir="bin\"/>
+				<Option object_output=".objs"/>
+				<Option deps_output=".deps"/>
+				<Option type="0"/>
+				<Option compiler="0"/>
+				<Option projectResourceIncludeDirsRelation="0"/>
+				<Compiler>
+					<Add option="-fexpensive-optimizations"/>
+					<Add option="-Os"/>
+					<Add option="-W"/>
+					<Add option="-Wall"/>
+				</Compiler>
+				<Linker>
+					<Add option="-s"/>
+				</Linker>
+			</Target>
+			<Target title="linux - debug">
+				<Option output="bin\Scrolling_DEBUG"/>
+				<Option working_dir="bin\"/>
+				<Option object_output=".objs"/>
+				<Option deps_output=".deps"/>
+				<Option type="0"/>
+				<Option compiler="0"/>
+				<Option projectResourceIncludeDirsRelation="0"/>
+				<Compiler>
+					<Add option="-W"/>
+					<Add option="-Wall"/>
+					<Add option="-pg"/>
+					<Add option="-g"/>
+				</Compiler>
+				<Linker>
+					<Add option="-pg"/>
+				</Linker>
+			</Target>
+		</Build>
+		<Linker>
+			<Add option="-mwindows"/>
+			<Add library="GBF"/>
+			<Add library="SDL_mixer"/>
+			<Add library="SDL_image"/>
+			<Add library="SDLmain"/>
+			<Add library="SDL"/>
+		</Linker>
+		<Unit filename="src\scrolling.cpp">
+			<Option compilerVar="CPP"/>
+			<Option target="win32 - release"/>
+			<Option target="win32 - debug"/>
+			<Option target="linux - release"/>
+			<Option target="linux - debug"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>

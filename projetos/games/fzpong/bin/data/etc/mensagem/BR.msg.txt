@@ -1,0 +1,62 @@
+#Arquivo de Textos
+#Português Brasil
+#LANG=pt_BR
+
+#Menu::Menu
+menu_1=SOBRE
+menu_2=JOGAR
+menu_3=CREDITO
+menu_4=AJUDA
+menu_5=SAIR
+
+#Telas
+fase_carregar=Iniciando Partida
+
+#Titulos
+titulo_sobre=Sobre
+titulo_credito=Credito
+titulo_ajuda=Ajuda
+titulo_gameover=GameOver
+titulo_zerado=Finalizado
+
+#Botoes
+botao_enter=Pressione [ENTER]
+
+#Jogo::menuSobre()
+tela_credito_01=#Desenvolvedor:
+tela_credito_02= David de Almeida Ferreira (FZ)
+tela_credito_03=#E-Mail:
+tela_credito_04= davidferreira.fz@gmail.com
+tela_credito_05=#Site:
+tela_credito_06= http://davidferreira-fz.blogspot.com
+
+#Jogo::menuAjuda()
+tela_ajuda_01=#Movimentacao
+tela_ajuda_02= -Setas cima e baixo para mover o 
+tela_ajuda_03=  bastao.
+tela_ajuda_04=#Regras
+tela_ajuda_05= -Ganha o jogo quem tiver a vantagem
+tela_ajuda_06=  de duas partidas.
+tela_ajuda_07= -Para vencer uma partida, ganha
+tela_ajuda_08=  aquele que tiver uma vantagem de
+tela_ajuda_09=  cinco pontos.
+
+#Jogo::jogoGameOver()
+tela_gameover_01=Voce Perdeu!!!
+tela_gameover_02= Continue Tentando :P
+
+#Jogo::jogoZerado()
+tela_zerado_01=Voce Ganhou!!!
+tela_zerado_02= Parabens voce venceu o CPU.
+
+#Jogo::menuSobre()
+tela_sobre_01=FZPong [Game - Pong Clone]
+tela_sobre_02=Copyright (C) 2007 by David Ferreira
+tela_sobre_03= 
+tela_sobre_04=Este programa e software livre;
+tela_sobre_05=voce pode redistribui-lo ou modifica-lo
+tela_sobre_06=sob os termos da Licenca Publica Geral
+tela_sobre_07=GNU, conforme publicada pela Free 
+tela_sobre_08=Software Foundation; tanto a versao 2
+tela_sobre_09=da Licenca como qualquer versao mais
+tela_sobre_10=nova.

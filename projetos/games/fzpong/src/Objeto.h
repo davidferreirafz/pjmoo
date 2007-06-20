@@ -22,6 +22,7 @@
 #define OBJETO_H
 
 #include <GBF/PersonagemAutomatico.h>
+#include <GBF/SoundSystem.h>
 
 class Objeto : public PersonagemAutomatico
 {
@@ -31,6 +32,7 @@ class Objeto : public PersonagemAutomatico
         static void setArea(Area area);
     protected:
         Area getAreaTela();
+        static SoundSystem* soundSystem;
     private:
         static Area areaTela;
         int alturaPedra;

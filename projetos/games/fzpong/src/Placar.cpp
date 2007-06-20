@@ -20,10 +20,14 @@
  ***************************************************************************/
 #include "Placar.h"
 
+SoundSystem* Placar::soundSystem=NULL;
 
 Placar::Placar()
 {
     iniciar();
+	if (!soundSystem){
+		soundSystem = SoundSystem::getInstance();
+	}
 }
 
 Placar::~Placar()
@@ -52,11 +56,13 @@ void Placar::novaPartida()
 
 void Placar::pontuarJogador()
 {
+    soundSystem->fxManager->playPanEffect("ponto",640);
     jogador++;
 }
 
 void Placar::pontuarCPU()
 {
+    soundSystem->fxManager->playPanEffect("ponto",0);
     cpu++;
 }
 

@@ -22,10 +22,14 @@
 
 
 Area Objeto::areaTela;
+SoundSystem* Objeto::soundSystem=NULL;
 
 Objeto::Objeto()
 {
     alturaPedra=4;
+	if (!soundSystem){
+		soundSystem = SoundSystem::getInstance();
+	}
 }
 
 Objeto::~Objeto()

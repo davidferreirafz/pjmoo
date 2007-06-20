@@ -59,8 +59,8 @@ void Jogo::inicializarRecursos()
 {
 //configurando modo de vídeo
     frameworkGBF->setTitulo("FZPong","David de Almeida Ferreira");
-    frameworkGBF->iniciar(640,480,16,false);
-
+    frameworkGBF->iniciar(640,480,16,isFullScreen());
+    frameworkGBF->inputSystem->setControleExclusivo(SDL_GRAB_ON);
     //carregando imagens
     GraphicSystemImageBufferManager *GSIBManager = GraphicSystemImageBufferManager::getInstance();
     GSIBManager->carregar("personagem","data//imagem//sprites.png");
@@ -69,6 +69,26 @@ void Jogo::inicializarRecursos()
     //carregando fontes
     frameworkGBF->writeSystem->carregar("menu",frameworkGBF->getPath()+"data//fonte//kiloton.png");
     frameworkGBF->writeSystem->carregar("texto",frameworkGBF->getPath()+"data//fonte//kiloton_18.png");
+
+
+//carregando audio - efeitos
+    frameworkGBF->soundSystem->fxManager->carregar("ponto","data//som//ponto.wav");
+    frameworkGBF->soundSystem->fxManager->carregar("ping","data//som//ping.wav");
+    frameworkGBF->soundSystem->fxManager->carregar("iniciando","data//som//iniciando.wav");
+    frameworkGBF->soundSystem->fxManager->carregar("gameover","data//som//gameover.wav");
+    frameworkGBF->soundSystem->fxManager->carregar("raquete","data//som//raquete.wav");
+//    frameworkGBF->soundSystem->musicManager->carregar("fundo_menu","data//som//01-wheremyheart.ogg");
+
+//Configura volume dos efeitos
+    frameworkGBF->soundSystem->fxManager->setVolume("ping",100);
+    frameworkGBF->soundSystem->fxManager->setVolume("raquete",100);
+    frameworkGBF->soundSystem->fxManager->setVolume("ponto",128);
+    frameworkGBF->soundSystem->fxManager->setVolume("iniciando",60);
+    frameworkGBF->soundSystem->fxManager->setVolume("gameover",50);
+
+    frameworkGBF->soundSystem->fxManager->setLimite(0,640);
+//toca musica de fundo
+//    frameworkGBF->soundSystem->musicManager->playInfinity("fundo_menu");
 
     //Idioma
     frameworkGBF->writeSystem->uiTexto->setArquivo("msg.txt");
@@ -231,6 +251,7 @@ void Jogo::jogoNovo()
 void Jogo::jogoExecutando()
 {
     if (controle->isGameOver()){
+        frameworkGBF->soundSystem->fxManager->play("gameover");
         setJogoGameOver();
     } else if (controle->isSetFinalizado()){
         setJogoFaseFinalizada();
@@ -250,6 +271,7 @@ bool Jogo::gatilhoJogoFaseCarregar()
         setJogoZerado();
         continua = false;
     } else {
+        frameworkGBF->soundSystem->fxManager->play("iniciando");
         controle->prepararSet();
     }
     return continua;

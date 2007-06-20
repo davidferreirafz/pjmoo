@@ -21,6 +21,7 @@
 #ifndef PLACAR_H
 #define PLACAR_H
 
+#include <GBF/SoundSystem.h>
 
 class Placar
 {
@@ -37,8 +38,8 @@ class Placar
         void vitoriaCPU();
         int getVitoriaJogador();
         int getVitoriaCPU();
-
     protected:
+        static SoundSystem* soundSystem;
 
     private:
         int jogador;

@@ -41,15 +41,18 @@ void Bola::acao(InputSystem * input)
     if (posicao.y+getDimensao().h>=getAreaTela().bottom){
         velocidade.y = - velocidade.y;
         posicao.y=getAreaTela().bottom-getDimensao().h;
+        soundSystem->fxManager->playPanEffect("ping",posicao.x);
     } else if (posicao.y<=getAreaTela().top){
         velocidade.y = - velocidade.y;
         posicao.y=getAreaTela().top;
+        soundSystem->fxManager->playPanEffect("ping",posicao.x);
     }
 }
 bool Bola::isColisao(PersonagemAbstract * personagem)
 {
     bool colisao=personagem->isColisao(this);
     if (colisao){
+        soundSystem->fxManager->playPanEffect("raquete",posicao.x);
         //bateu em baixo
         if (posicao.y>=personagem->getPosicao().y+personagem->getDimensao().h-getDimensao().h){
 

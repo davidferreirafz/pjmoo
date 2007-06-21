@@ -1,6 +1,6 @@
 #!/bin/sh
 
-export VERSAO=1.0
+export VERSAO=0.9
 export DISTRO=/home/desenvolvimento/pjmoo/distro/games
 export TMP_DIR=/tmp/pjmoo/opt/fzpong
 export PROJETO_DIR=/home/desenvolvimento/pjmoo/projetos/games/fzpong
@@ -23,11 +23,11 @@ chmod 2775 fzpong/data/screen
 chmod  775 fzpong/FZPong
 
 echo "    Criando pacote... (Zip - All)"
-zip -rq4 $DISTRO/FZPong.$VERSAO.bin.all.zip * -x *svn* *cvsignore*
+zip -rq4 $DISTRO/FZPong.$VERSAO.bin.all.zip * -x *svn* *cvsignore* *xcf*
 
 echo "    Criando pacote... (GNU/Linux)"
 rm  -f fzpong/*.exe
-tar -czf $DISTRO/FZPong.$VERSAO.bin.linux.tar.gz * --exclude=*svn*
+tar -czf $DISTRO/FZPong.$VERSAO.bin.linux.tar.gz * --exclude=*svn* --exclude=*xcf*
 
 echo "    Copiando Source"
 mkdir -p /tmp/pjmoo/src/fzpong
@@ -37,6 +37,6 @@ cd /tmp/pjmoo/src/fzpong/
 
 echo "    Criando pacote source ... (Linux/Win32)"
 rm -f $DISTRO/FZPong.$VERSAO.src.zip
-zip -rq4 $DISTRO/FZPong.$VERSAO.src.zip * -x *svn* *cvsignore* *doc* *objs* *bin* *log*
+zip -rq4 $DISTRO/FZPong.$VERSAO.src.zip * -x *svn* *cvsignore* *doc* *objs* *bin* *log* *xcf*
 rm -fR $TMP_DIR
 echo "    Pacote Finalizado"

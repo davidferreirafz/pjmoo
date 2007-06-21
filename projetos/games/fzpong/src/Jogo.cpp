@@ -77,7 +77,9 @@ void Jogo::inicializarRecursos()
     frameworkGBF->soundSystem->fxManager->carregar("iniciando","data//som//iniciando.wav");
     frameworkGBF->soundSystem->fxManager->carregar("gameover","data//som//gameover.wav");
     frameworkGBF->soundSystem->fxManager->carregar("raquete","data//som//raquete.wav");
-    frameworkGBF->soundSystem->musicManager->carregar("musica","data//som//fantastic_plastic.ogg");
+    frameworkGBF->soundSystem->fxManager->carregar("vitoria","data//som//applause.ogg");
+    frameworkGBF->soundSystem->musicManager->carregar("musica","data//som//404_nemo.ogg");
+    frameworkGBF->soundSystem->musicManager->carregar("menu","data//som//apes_r-jonny_ho.ogg");
 
 //Configura volume dos efeitos
     frameworkGBF->soundSystem->fxManager->setVolume("ping",100);
@@ -85,11 +87,12 @@ void Jogo::inicializarRecursos()
     frameworkGBF->soundSystem->fxManager->setVolume("ponto",128);
     frameworkGBF->soundSystem->fxManager->setVolume("iniciando",60);
     frameworkGBF->soundSystem->fxManager->setVolume("gameover",80);
+    frameworkGBF->soundSystem->fxManager->setVolume("vitoria",80);
     frameworkGBF->soundSystem->musicManager->setVolume("musica",20);
-
+    frameworkGBF->soundSystem->musicManager->setVolume("menu",30);
+//configura limites para som estereo
     frameworkGBF->soundSystem->fxManager->setLimite(0,640);
-//toca musica de fundo
-    frameworkGBF->soundSystem->musicManager->playInfinity("musica");
+
 
     //Idioma
     frameworkGBF->writeSystem->uiTexto->setArquivo("msg.txt");
@@ -122,6 +125,15 @@ void Jogo::inicializarRecursos()
 
     controle = new Controle();
 }
+/** @brief (one liner)
+  *
+  * (documentation goes here)
+  */
+void Jogo::gatilhoMenuPrincipal()
+{
+    frameworkGBF->soundSystem->musicManager->playInfinity("menu");
+}
+
 void Jogo::menuPrincipal()
 {
     FrameLayerManager::getInstance()->getFrameLayer("background")->desenhar();
@@ -246,6 +258,7 @@ void Jogo::jogoZerado()
 }
 void Jogo::jogoNovo()
 {
+    frameworkGBF->soundSystem->musicManager->playInfinity("musica");
     controle->iniciar();
     setJogoFaseCarregar();
 }
@@ -269,6 +282,7 @@ bool Jogo::gatilhoJogoFaseCarregar()
     bool continua = true;
 
     if (controle->isFinalizado()){
+        frameworkGBF->soundSystem->fxManager->play("vitoria");
         setJogoZerado();
         continua = false;
     } else {

@@ -31,7 +31,7 @@ Controle::Controle()
 
 Controle::~Controle()
 {
-    //dtor
+
 }
 
 void Controle::iniciar()
@@ -68,7 +68,7 @@ int Controle::getNumeroSet()
 void Controle::display()
 {
     cenario->desenhar();
-    wsManager->escrever("texto",250,10,"%02d X %02d",placar.getCPU(),placar.getJogador());
+    wsManager->escrever("texto",260,10,"%02d X %02d",placar.getCPU(),placar.getJogador());
 
     wsManager->escrever("texto" ,20,10,"%02d",placar.getVitoriaCPU());
     wsManager->escrever("texto",590,10,"%02d",placar.getVitoriaJogador());

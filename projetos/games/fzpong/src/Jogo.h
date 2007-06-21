@@ -70,6 +70,7 @@ class Jogo : public GAT
     void jogoZerado();
 
     bool gatilhoJogoFaseCarregar();
+    void gatilhoMenuPrincipal();
 
   private:
 

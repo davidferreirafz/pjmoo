@@ -110,7 +110,7 @@ void Jogo::inicializarRecursos()
     delete(spriteFactory);
 
     spriteFactory = new SpriteFactory(GSIBManager->getImageBuffer("personagem"));
-    david=spriteFactory->criarSpriteItem(30,21,64,48,1,1);
+    david=spriteFactory->criarSpriteItem(30,21,90,68,1,1);
     delete(spriteFactory);
 
     //Menu
@@ -186,11 +186,11 @@ void Jogo::menuCredito()
 
     for (int i=0; i<6;i++){
         sprintf(textoFormatado,"tela_credito_%02d",(1)+i);
-        frameworkGBF->writeSystem->escreverLocalizado("texto",20,120+(30*i),textoFormatado);
+        frameworkGBF->writeSystem->escreverLocalizado("texto",20,140+(30*i),textoFormatado);
     }
-    frameworkGBF->writeSystem->escreverLocalizado("menu", 252, 20,"titulo_credito");
+    frameworkGBF->writeSystem->escreverLocalizado("menu", 240, 20,"titulo_credito");
 
-    david->desenhar(300,60);
+    david->desenhar(280,60);
 
     if (desenharBotaoEnter()){
         if ((frameworkGBF->inputSystem->teclado->isKey(SDLK_RETURN))

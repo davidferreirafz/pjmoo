@@ -25,7 +25,9 @@ Bola::Bola()
 {
     GraphicSystemImageBufferManager *gsImageBufferManager=GraphicSystemImageBufferManager::getInstance();
     SpriteFactory *spriteFactory = new SpriteFactory(gsImageBufferManager->getImageBuffer("personagem"));
-    adicionarSpritePrincipal(spriteFactory->criarSpritePersonagem(0,0,20,20,4,2));
+    adicionarSpritePrincipal(spriteFactory->criarSpritePersonagem(0,0,20,20,1,1));
+    getSpritePrincipal()->setAutomatico(false);
+    getSpritePrincipal()->setQtdDirecoes(2);
 }
 
 Bola::~Bola()
@@ -46,6 +48,12 @@ void Bola::acao(InputSystem * input)
         velocidade.y = - velocidade.y;
         posicao.y=getAreaTela().top;
         soundSystem->fxManager->playPanEffect("ping",posicao.x);
+    }
+
+    if (posicao.x>=getAreaTela().right/2){
+        getSpritePrincipal()->setDirecao(DR_DIREITA);
+    } else {
+        getSpritePrincipal()->setDirecao(DR_ESQUERDA);
     }
 }
 bool Bola::isColisao(PersonagemAbstract * personagem)

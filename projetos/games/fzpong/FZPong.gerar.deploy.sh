@@ -23,11 +23,11 @@ chmod 2775 fzpong/data/screen
 chmod  775 fzpong/FZPong
 
 echo "    Criando pacote... (Zip - All)"
-zip -rq4 $DISTRO/FZPong.$VERSAO.bin.all.zip * -x *svn* *cvsignore* *xcf*
+zip -rq4 $DISTRO/FZPong.$VERSAO.bin.all.zip * -x *svn* *cvsignore* *xcf* *log*
 
 echo "    Criando pacote... (GNU/Linux)"
 rm  -f fzpong/*.exe
-tar -czf $DISTRO/FZPong.$VERSAO.bin.linux.tar.gz * --exclude=*svn* --exclude=*xcf*
+tar -czf $DISTRO/FZPong.$VERSAO.bin.linux.tar.gz * --exclude=*svn* --exclude=*xcf* --exclude=*log*
 
 echo "    Copiando Source"
 mkdir -p /tmp/pjmoo/src/fzpong

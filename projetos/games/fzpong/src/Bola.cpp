@@ -1,28 +1,26 @@
-/***************************************************************************
- *   FZPong <Game - Pong Clone>                                            *
- *   Copyright (C) 2007 by David Ferreira - FZ                             *
- *   davidferreira.fz@gmail.com - http://pjmoo.sourceforge.net             *
- ***************************************************************************
- *   Este programa é software livre; você pode redistribuí-lo e/ou         *
- *   modificá-lo sob os termos da Licença Pública Geral GNU, conforme      *
- *   publicada pela Free Software Foundation; tanto a versão 2 da          *
- *   Licença como (a seu critério) qualquer versão mais nova.              *
- ***************************************************************************
- *   This program is free software; you can redistribute it and/or modify  *
- *   it under the terms of the GNU General Public License as published by  *
- *   the Free Software Foundation; either version 2 of the License, or     *
- *   (at your option) any later version.                                   *
- *                                                                         *
- *   You should have received a copy of the GNU General Public License     *
- *   along with this program; if not, write to the                         *
- *   Free Software Foundation, Inc.,                                       *
- *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
- ***************************************************************************/
+///***************************************************************************
+// *   FZPong <Game - Pong Clone>                                            *
+// *   Copyright (C) 2007 by David Ferreira - FZ                             *
+// *   davidferreira.fz@gmail.com - http://pjmoo.sourceforge.net             *
+// ***************************************************************************
+// *   Este programa é software livre; você pode redistribuí-lo e/ou         *
+// *   modificá-lo sob os termos da Licença Pública Geral GNU, conforme      *
+// *   publicada pela Free Software Foundation; tanto a versão 2 da          *
+// *   Licença como (a seu critério) qualquer versão mais nova.              *
+// ***************************************************************************
+// *   This program is free software; you can redistribute it and/or modify  *
+// *   it under the terms of the GNU General Public License as published by  *
+// *   the Free Software Foundation; either version 2 of the License, or     *
+// *   (at your option) any later version.                                   *
+// *                                                                         *
+// *   You should have received a copy of the GNU General Public License     *
+// *   along with this program; if not, write to the                         *
+// *   Free Software Foundation, Inc.,                                       *
+// *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
+// ***************************************************************************/
 #include "Bola.h"
 
-
-Bola::Bola()
-{
+Bola::Bola(){
     GraphicSystemImageBufferManager *gsImageBufferManager=GraphicSystemImageBufferManager::getInstance();
     SpriteFactory *spriteFactory = new SpriteFactory(gsImageBufferManager->getImageBuffer("personagem"));
     adicionarSpritePrincipal(spriteFactory->criarSpritePersonagem(0,0,20,20,1,1));
@@ -30,12 +28,37 @@ Bola::Bola()
     getSpritePrincipal()->setQtdDirecoes(2);
 }
 
-Bola::~Bola()
-{
+Bola::~Bola(){
+
     //dtor
 }
 
-void Bola::acao(InputSystem * input)
+void Bola::iniciar() 
+{
+    velocidadeGradativa.x=8;
+    velocidadeGradativa.y=4;
+    continuar();
+}
+void Bola::iniciar(Ponto saque) 
+{
+    elevarGrauDificuldade();
+    setPosicao(saque.x,saque.y+getDimensao().h/2);
+}
+void Bola::continuar() 
+{
+    elevarGrauDificuldade();
+
+    if (rand()%10 % 2==0){
+        velocidade.x = - velocidade.x;
+    }
+
+    if (rand()%10 % 2!=0){
+        velocidade.y = - velocidade.y;
+    }
+
+    setPosicao((getAreaTela().right/2)-(getDimensao().w/2),getAreaTela().bottom/2-(getDimensao().h/2));
+}
+void Bola::acao(InputSystem * input) 
 {
     posicao.x+=int(velocidade.x);
     posicao.y+=int(velocidade.y);
@@ -56,7 +79,7 @@ void Bola::acao(InputSystem * input)
         getSpritePrincipal()->setDirecao(DR_ESQUERDA);
     }
 }
-bool Bola::isColisao(PersonagemAbstract * personagem)
+bool Bola::isColisao(PersonagemAbstract * personagem) 
 {
     bool colisao=personagem->isColisao(this);
     if (colisao){
@@ -104,13 +127,11 @@ bool Bola::isColisao(PersonagemAbstract * personagem)
 
     return colisao;
 }
-
-int Bola::getVelocidade()
+int Bola::getVelocidade() 
 {
     return velocidade.x;
 }
-
-void Bola::elevarGrauDificuldade()
+void Bola::elevarGrauDificuldade() 
 {
     velocidadeGradativa.y+=1;//0.20;
     velocidadeGradativa.x+=1;//0.50;
@@ -125,36 +146,3 @@ void Bola::elevarGrauDificuldade()
     velocidade.y=velocidadeGradativa.y;
     velocidade.x=velocidadeGradativa.x;
 }
-
-void Bola::iniciar()
-{
-    velocidadeGradativa.x=8;
-    velocidadeGradativa.y=4;
-    continuar();
-}
-
-void Bola::continuar()
-{
-    elevarGrauDificuldade();
-
-    if (rand()%10 % 2==0){
-        velocidade.x = - velocidade.x;
-    }
-
-    if (rand()%10 % 2!=0){
-        velocidade.y = - velocidade.y;
-    }
-
-    setPosicao((getAreaTela().right/2)-(getDimensao().w/2),getAreaTela().bottom/2-(getDimensao().h/2));
-}
-
-void Bola::iniciar(Ponto saque)
-{
-    elevarGrauDificuldade();
-    setPosicao(saque.x,saque.y+getDimensao().h/2);
-}
-
-
-
-
-

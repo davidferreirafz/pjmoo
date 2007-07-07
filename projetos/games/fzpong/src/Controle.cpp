@@ -1,40 +1,37 @@
-/***************************************************************************
- *   FZPong <Game - Pong Clone>                                            *
- *   Copyright (C) 2007 by David Ferreira - FZ                             *
- *   davidferreira.fz@gmail.com - http://pjmoo.sourceforge.net             *
- ***************************************************************************
- *   Este programa é software livre; você pode redistribuí-lo e/ou         *
- *   modificá-lo sob os termos da Licença Pública Geral GNU, conforme      *
- *   publicada pela Free Software Foundation; tanto a versão 2 da          *
- *   Licença como (a seu critério) qualquer versão mais nova.              *
- ***************************************************************************
- *   This program is free software; you can redistribute it and/or modify  *
- *   it under the terms of the GNU General Public License as published by  *
- *   the Free Software Foundation; either version 2 of the License, or     *
- *   (at your option) any later version.                                   *
- *                                                                         *
- *   You should have received a copy of the GNU General Public License     *
- *   along with this program; if not, write to the                         *
- *   Free Software Foundation, Inc.,                                       *
- *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
- ***************************************************************************/
+///***************************************************************************
+// *   FZPong <Game - Pong Clone>                                            *
+// *   Copyright (C) 2007 by David Ferreira - FZ                             *
+// *   davidferreira.fz@gmail.com - http://pjmoo.sourceforge.net             *
+// ***************************************************************************
+// *   Este programa é software livre; você pode redistribuí-lo e/ou         *
+// *   modificá-lo sob os termos da Licença Pública Geral GNU, conforme      *
+// *   publicada pela Free Software Foundation; tanto a versão 2 da          *
+// *   Licença como (a seu critério) qualquer versão mais nova.              *
+// ***************************************************************************
+// *   This program is free software; you can redistribute it and/or modify  *
+// *   it under the terms of the GNU General Public License as published by  *
+// *   the Free Software Foundation; either version 2 of the License, or     *
+// *   (at your option) any later version.                                   *
+// *                                                                         *
+// *   You should have received a copy of the GNU General Public License     *
+// *   along with this program; if not, write to the                         *
+// *   Free Software Foundation, Inc.,                                       *
+// *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
+// ***************************************************************************/
 #include "Controle.h"
 
- int Controle::DIFERENCA_PARTIDA_TERMINAR=5;
- int Controle::DIFERENCA_VITORIA_TERMINAR=2;
+Controle::Controle(){
 
-Controle::Controle()
-{
     cenario    = FrameLayerManager::getInstance()->getFrameLayer("background");
     wsManager  = WriteSystemManager::getInstance();
 }
 
-Controle::~Controle()
-{
+Controle::~Controle(){
+
 
 }
 
-void Controle::iniciar()
+void Controle::iniciar() 
 {
     Objeto::setArea(cenario->getArea());
 
@@ -47,55 +44,17 @@ void Controle::iniciar()
 
     placar.iniciar();
 }
-
-void Controle::prepararSet()
+void Controle::iniciarSet() 
+{
+    placar.novaPartida();
+}
+void Controle::prepararSet() 
 {
     bola.continuar();
     raqueteJogador.iniciar();
     raqueteCPU.iniciar();
 }
-
-void Controle::iniciarSet()
-{
-    placar.novaPartida();
-}
-
-int Controle::getNumeroSet()
-{
-    return placar.getVitoriaCPU()+placar.getVitoriaJogador();
-}
-
-void Controle::display()
-{
-    cenario->desenhar();
-    wsManager->escrever("texto",260,10,"%02d X %02d",placar.getCPU(),placar.getJogador());
-
-    wsManager->escrever("texto" ,20,10,"%02d",placar.getVitoriaCPU());
-    wsManager->escrever("texto",590,10,"%02d",placar.getVitoriaJogador());
-
-    bola.desenhar();
-    raqueteJogador.desenhar();
-    raqueteCPU.desenhar();
-}
-
-void Controle::juiz()
-{
-    if (bola.getPosicao().x>=cenario->getArea().right){
-        placar.pontuarCPU();
-        raqueteCPU.iniciar();
-        raqueteJogador.iniciar();
-
-        bola.iniciar(raqueteCPU.saque());
-    } else  if (bola.getPosicao().x+bola.getDimensao().w<=cenario->getArea().left){
-        placar.pontuarJogador();
-        raqueteJogador.iniciar();
-        raqueteCPU.iniciar();
-
-        bola.iniciar(raqueteJogador.saque());
-    }
-}
-
-void Controle::executar(InputSystem* input)
+void Controle::executar(InputSystem * input) 
 {
     bola.acao(NULL);
     raqueteJogador.acao(input);
@@ -108,8 +67,27 @@ void Controle::executar(InputSystem* input)
 
     display();
 }
+bool Controle::isGameOver() 
+{
+    bool terminou = false;
 
-bool Controle::isSetFinalizado()
+    if (placar.getVitoriaCPU()>=placar.getVitoriaJogador()+DIFERENCA_VITORIA_TERMINAR){
+        terminou = true;
+    }
+
+    return terminou;
+}
+bool Controle::isFinalizado() 
+{
+    bool terminou = false;
+
+    if (placar.getVitoriaJogador()>=placar.getVitoriaCPU()+DIFERENCA_VITORIA_TERMINAR){
+        terminou = true;
+    }
+
+    return terminou;
+}
+bool Controle::isSetFinalizado() 
 {
     bool finalizado = false;
 
@@ -125,27 +103,42 @@ bool Controle::isSetFinalizado()
 
     return finalizado;
 }
-
-bool Controle::isGameOver()
+int Controle::getNumeroSet() 
 {
-    bool terminou = false;
-
-    if (placar.getVitoriaCPU()>=placar.getVitoriaJogador()+DIFERENCA_VITORIA_TERMINAR){
-        terminou = true;
-    }
-
-    return terminou;
+    return placar.getVitoriaCPU()+placar.getVitoriaJogador();
 }
-
-bool Controle::isFinalizado()
+void Controle::display() 
 {
-    bool terminou = false;
+    cenario->desenhar();
+    wsManager->escrever("texto",260,10,"%02d X %02d",placar.getCPU(),placar.getJogador());
 
-    if (placar.getVitoriaJogador()>=placar.getVitoriaCPU()+DIFERENCA_VITORIA_TERMINAR){
-        terminou = true;
-    }
+    wsManager->escrever("texto" ,20,10,"%02d",placar.getVitoriaCPU());
+    wsManager->escrever("texto",590,10,"%02d",placar.getVitoriaJogador());
 
-    return terminou;
+    bola.desenhar();
+    raqueteJogador.desenhar();
+    raqueteCPU.desenhar();
 }
+void Controle::juiz() 
+{
+    if (bola.getPosicao().x>=cenario->getArea().right){
+        placar.pontuarCPU();
+        raqueteCPU.iniciar();
+        raqueteJogador.iniciar();
 
+        bola.iniciar(raqueteCPU.saque());
+    } else  if (bola.getPosicao().x+bola.getDimensao().w<=cenario->getArea().left){
+        placar.pontuarJogador();
+        raqueteJogador.iniciar();
+        raqueteCPU.iniciar();
+
+        bola.iniciar(raqueteJogador.saque());
+    }
+}
+void Controle::setFinalizado() 
+{
+}
+int Controle::DIFERENCA_PARTIDA_TERMINAR =5;
+
+int Controle::DIFERENCA_VITORIA_TERMINAR =2;
 

@@ -1,61 +1,46 @@
-/***************************************************************************
- *   FZPong <Game - Pong Clone>                                            *
- *   Copyright (C) 2007 by David Ferreira - FZ                             *
- *   davidferreira.fz@gmail.com - http://pjmoo.sourceforge.net             *
- ***************************************************************************
- *   Este programa é software livre; você pode redistribuí-lo e/ou         *
- *   modificá-lo sob os termos da Licença Pública Geral GNU, conforme      *
- *   publicada pela Free Software Foundation; tanto a versão 2 da          *
- *   Licença como (a seu critério) qualquer versão mais nova.              *
- ***************************************************************************
- *   This program is free software; you can redistribute it and/or modify  *
- *   it under the terms of the GNU General Public License as published by  *
- *   the Free Software Foundation; either version 2 of the License, or     *
- *   (at your option) any later version.                                   *
- *                                                                         *
- *   You should have received a copy of the GNU General Public License     *
- *   along with this program; if not, write to the                         *
- *   Free Software Foundation, Inc.,                                       *
- *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
- ***************************************************************************/
- #include "Jogo.h"
+///***************************************************************************
+// *   FZPong <Game - Pong Clone>                                            *
+// *   Copyright (C) 2007 by David Ferreira - FZ                             *
+// *   davidferreira.fz@gmail.com - http://pjmoo.sourceforge.net             *
+// ***************************************************************************
+// *   Este programa é software livre; você pode redistribuí-lo e/ou         *
+// *   modificá-lo sob os termos da Licença Pública Geral GNU, conforme      *
+// *   publicada pela Free Software Foundation; tanto a versão 2 da          *
+// *   Licença como (a seu critério) qualquer versão mais nova.              *
+// ***************************************************************************
+// *   This program is free software; you can redistribute it and/or modify  *
+// *   it under the terms of the GNU General Public License as published by  *
+// *   the Free Software Foundation; either version 2 of the License, or     *
+// *   (at your option) any later version.                                   *
+// *                                                                         *
+// *   You should have received a copy of the GNU General Public License     *
+// *   along with this program; if not, write to the                         *
+// *   Free Software Foundation, Inc.,                                       *
+// *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
+// ***************************************************************************/
+#include "Jogo.h"
 
+//Construtor
 
-//Função Principal - Entry Point - Main
- int main(int argc, char * argv[])
-{
-    GAT* jogo = NULL;
-    jogo = new Jogo(argc,argv);
-
-    try {
-        jogo->executar();
-    } catch (std::exception& e) {
-        UtilLog::sistema("!!!!!!!!!!");
-        UtilLog::sistema("Exceção: %s",e.what());
-        UtilLog::sistema("!!!!!!!!!!");
-    } catch (...) {
-        UtilLog::sistema("!!!!!!!!!!");
-        UtilLog::sistema("Exceção Desconhecida");
-        UtilLog::sistema("!!!!!!!!!!");
-    }
-
-    delete(jogo);
-
-    return 0;
-}
 //Construtor
 Jogo::Jogo(int argc, char * argv[]):GAT(argc,argv)
 {
 }
+
 //Destrutor
-Jogo::~Jogo()
-{
+
+//Destrutor
+Jogo::~Jogo(){
     delete(david);
     delete(controle);
 }
+
 //Inicializa os recursos utilizados no jogo.
 //Ex.: Imagens, sons, fontes, configuração do modo gráfico e etc..
-void Jogo::inicializarRecursos()
+
+//Inicializa os recursos utilizados no jogo.
+//Ex.: Imagens, sons, fontes, configuração do modo gráfico e etc..
+void Jogo::inicializarRecursos() 
 {
 //configurando modo de vídeo
     frameworkGBF->setTitulo("FZPong","David de Almeida Ferreira");
@@ -125,16 +110,7 @@ void Jogo::inicializarRecursos()
 
     controle = new Controle();
 }
-/** @brief (one liner)
-  *
-  * (documentation goes here)
-  */
-void Jogo::gatilhoMenuPrincipal()
-{
-    frameworkGBF->soundSystem->musicManager->playInfinity("menu");
-}
-
-void Jogo::menuPrincipal()
+void Jogo::menuPrincipal() 
 {
     FrameLayerManager::getInstance()->getFrameLayer("background")->desenhar();
 
@@ -160,7 +136,7 @@ void Jogo::menuPrincipal()
             break;
     }
 }
-void Jogo::menuAjuda()
+void Jogo::menuAjuda() 
 {
     char textoFormatado[30];
     FrameLayerManager::getInstance()->getFrameLayer("background")->desenhar();
@@ -179,7 +155,7 @@ void Jogo::menuAjuda()
         }
     }
 }
-void Jogo::menuCredito()
+void Jogo::menuCredito() 
 {
     char textoFormatado[30];
     FrameLayerManager::getInstance()->getFrameLayer("background")->desenhar();
@@ -199,7 +175,7 @@ void Jogo::menuCredito()
         }
     }
 }
-void Jogo::menuSobre()
+void Jogo::menuSobre() 
 {
     char textoFormatado[30];
     FrameLayerManager::getInstance()->getFrameLayer("background")->desenhar();
@@ -218,7 +194,46 @@ void Jogo::menuSobre()
         }
     }
 }
-void Jogo::jogoGameOver()
+void Jogo::jogoNovo() 
+{
+    frameworkGBF->soundSystem->musicManager->playInfinity("musica");
+    controle->iniciar();
+    setJogoFaseCarregar();
+}
+void Jogo::jogoExecutando() 
+{
+    if (controle->isGameOver()){
+        frameworkGBF->soundSystem->fxManager->play("gameover");
+        setJogoGameOver();
+    } else if (controle->isSetFinalizado()){
+        setJogoFaseFinalizada();
+    } else {
+        controle->executar(frameworkGBF->inputSystem);
+    }
+}
+void Jogo::jogoPause() 
+{
+    setMenu();
+}
+void Jogo::jogoFaseCarregar() 
+{
+//    FrameLayerManager::getInstance()->getFrameLayer("background")->desenhar();
+
+    controle->display();
+    frameworkGBF->writeSystem->escreverLocalizado("menu" ,100,80,"fase_carregar");
+
+    //frameworkGBF->writeSystem->escrever("texto" ,60,80,"%02d",controle->getNumeroSet());
+
+    if (isTempoEspera()){
+        setJogoExecutando();
+        controle->iniciarSet();
+    }
+}
+void Jogo::jogoFaseFinalizada() 
+{
+    setJogoFaseCarregar();
+}
+void Jogo::jogoGameOver() 
 {
     char textoFormatado[30];
     controle->display();
@@ -237,7 +252,7 @@ void Jogo::jogoGameOver()
         }
     }
 }
-void Jogo::jogoZerado()
+void Jogo::jogoZerado() 
 {
     char textoFormatado[30];
     controle->display();
@@ -256,28 +271,7 @@ void Jogo::jogoZerado()
         }
     }
 }
-void Jogo::jogoNovo()
-{
-    frameworkGBF->soundSystem->musicManager->playInfinity("musica");
-    controle->iniciar();
-    setJogoFaseCarregar();
-}
-void Jogo::jogoExecutando()
-{
-    if (controle->isGameOver()){
-        frameworkGBF->soundSystem->fxManager->play("gameover");
-        setJogoGameOver();
-    } else if (controle->isSetFinalizado()){
-        setJogoFaseFinalizada();
-    } else {
-        controle->executar(frameworkGBF->inputSystem);
-    }
-}
-void Jogo::jogoPause()
-{
-    setMenu();
-}
-bool Jogo::gatilhoJogoFaseCarregar()
+bool Jogo::gatilhoJogoFaseCarregar() 
 {
     bool continua = true;
 
@@ -291,25 +285,16 @@ bool Jogo::gatilhoJogoFaseCarregar()
     }
     return continua;
 }
-void Jogo::jogoFaseCarregar()
+//* @brief (one liner)
+//  *
+//  * (documentation goes here)
+//  
+
+void Jogo::gatilhoMenuPrincipal() 
 {
-//    FrameLayerManager::getInstance()->getFrameLayer("background")->desenhar();
-
-    controle->display();
-    frameworkGBF->writeSystem->escreverLocalizado("menu" ,100,80,"fase_carregar");
-
-    //frameworkGBF->writeSystem->escrever("texto" ,60,80,"%02d",controle->getNumeroSet());
-
-    if (isTempoEspera()){
-        setJogoExecutando();
-        controle->iniciarSet();
-    }
+    frameworkGBF->soundSystem->musicManager->playInfinity("menu");
 }
-void Jogo::jogoFaseFinalizada()
-{
-    setJogoFaseCarregar();
-}
-bool Jogo::desenharBotaoEnter()
+bool Jogo::desenharBotaoEnter() 
 {
     bool desenhe = isTempoEspera();
 
@@ -317,4 +302,25 @@ bool Jogo::desenharBotaoEnter()
         frameworkGBF->writeSystem->escreverLocalizado("menu",20,420,"botao_enter");
     }
     return desenhe;
+}
+int main(int argc, char * argv[]) 
+{
+    GAT* jogo = NULL;
+    jogo = new Jogo(argc,argv);
+
+    try {
+        jogo->executar();
+    } catch (std::exception& e) {
+        UtilLog::sistema("!!!!!!!!!!");
+        UtilLog::sistema("Exceção: %s",e.what());
+        UtilLog::sistema("!!!!!!!!!!");
+    } catch (...) {
+        UtilLog::sistema("!!!!!!!!!!");
+        UtilLog::sistema("Exceção Desconhecida");
+        UtilLog::sistema("!!!!!!!!!!");
+    }
+
+    delete(jogo);
+
+    return 0;
 }

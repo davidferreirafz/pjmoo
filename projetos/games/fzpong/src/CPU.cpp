@@ -1,57 +1,39 @@
-/***************************************************************************
- *   FZPong <Game - Pong Clone>                                            *
- *   Copyright (C) 2007 by David Ferreira - FZ                             *
- *   davidferreira.fz@gmail.com - http://pjmoo.sourceforge.net             *
- ***************************************************************************
- *   Este programa é software livre; você pode redistribuí-lo e/ou         *
- *   modificá-lo sob os termos da Licença Pública Geral GNU, conforme      *
- *   publicada pela Free Software Foundation; tanto a versão 2 da          *
- *   Licença como (a seu critério) qualquer versão mais nova.              *
- ***************************************************************************
- *   This program is free software; you can redistribute it and/or modify  *
- *   it under the terms of the GNU General Public License as published by  *
- *   the Free Software Foundation; either version 2 of the License, or     *
- *   (at your option) any later version.                                   *
- *                                                                         *
- *   You should have received a copy of the GNU General Public License     *
- *   along with this program; if not, write to the                         *
- *   Free Software Foundation, Inc.,                                       *
- *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
- ***************************************************************************/
+///***************************************************************************
+// *   FZPong <Game - Pong Clone>                                            *
+// *   Copyright (C) 2007 by David Ferreira - FZ                             *
+// *   davidferreira.fz@gmail.com - http://pjmoo.sourceforge.net             *
+// ***************************************************************************
+// *   Este programa é software livre; você pode redistribuí-lo e/ou         *
+// *   modificá-lo sob os termos da Licença Pública Geral GNU, conforme      *
+// *   publicada pela Free Software Foundation; tanto a versão 2 da          *
+// *   Licença como (a seu critério) qualquer versão mais nova.              *
+// ***************************************************************************
+// *   This program is free software; you can redistribute it and/or modify  *
+// *   it under the terms of the GNU General Public License as published by  *
+// *   the Free Software Foundation; either version 2 of the License, or     *
+// *   (at your option) any later version.                                   *
+// *                                                                         *
+// *   You should have received a copy of the GNU General Public License     *
+// *   along with this program; if not, write to the                         *
+// *   Free Software Foundation, Inc.,                                       *
+// *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
+// ***************************************************************************/
 #include "CPU.h"
 
+CPU::CPU(){
 
-CPU::CPU()
-{
     GraphicSystemImageBufferManager *gsImageBufferManager=GraphicSystemImageBufferManager::getInstance();
     SpriteFactory *spriteFactory = new SpriteFactory(gsImageBufferManager->getImageBuffer("personagem"));
     adicionarSpritePrincipal(spriteFactory->criarSpritePersonagem(15,21,14,80,1,1));
     delete(spriteFactory);
 }
 
-CPU::~CPU()
-{
+CPU::~CPU(){
+
     //dtor
 }
-void CPU::iniciarVisao()
-{
-    raioVisao=380;
-}
-void CPU::aumentarVisao()
-{
-    raioVisao+=20;
 
-    if (raioVisao>=getAreaTela().bottom){
-        raioVisao=getAreaTela().bottom;
-    }
-}
-void CPU::iniciar()
-{
-    adaptarVelocidade();
-    setPosicao(0,(getAreaTela().bottom/2)-(getDimensao().h/2));
-}
-
-void CPU::acao(InputSystem * input)
+void CPU::acao(InputSystem * input) 
 {
     Area areaVisaoBola = IA::converter(getVisaoBola().getDimensao(),getVisaoBola().getPosicao());
 	Area visao         = IA::converter(getDimensao(),getPosicao());
@@ -64,8 +46,12 @@ void CPU::acao(InputSystem * input)
         descer();
     }
 }
-
-bool CPU::isColisao(PersonagemAbstract * personagem)
+void CPU::iniciar() 
+{
+    adaptarVelocidade();
+    setPosicao(0,(getAreaTela().bottom/2)-(getDimensao().h/2));
+}
+bool CPU::isColisao(PersonagemAbstract * personagem) 
 {
     if ((personagem->getPosicao().x <= posicao.x+getDimensao().w)&&
         (posicao.y + getDimensao().h >= personagem->getPosicao().y)&&
@@ -76,8 +62,7 @@ bool CPU::isColisao(PersonagemAbstract * personagem)
         return false;
     }
 }
-
-Ponto CPU::saque()
+Ponto CPU::saque() 
 {
     Ponto saque;
 
@@ -86,4 +71,15 @@ Ponto CPU::saque()
 
     return saque;
 }
+void CPU::iniciarVisao() 
+{
+    raioVisao=380;
+}
+void CPU::aumentarVisao() 
+{
+    raioVisao+=20;
 
+    if (raioVisao>=getAreaTela().bottom){
+        raioVisao=getAreaTela().bottom;
+    }
+}

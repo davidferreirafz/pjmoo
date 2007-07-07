@@ -1,0 +1,169 @@
+class GBFAplicacao
+!!!138960.cpp!!!	~GBFAplicacao()
+
+    if (uiRecordeNovo){
+        delete (uiRecordeNovo);
+    }
+    if (frameworkGBF){
+        delete(frameworkGBF);
+    }       
+    if (tsGaleria){
+        delete(tsGaleria);
+    }
+!!!139088.cpp!!!	GBFAplicacao(in argc : int, inout argv : char)
+    fullscreen = true;
+    looping    = true;
+    
+    for (int i=1; i<argc; i++){
+        if (strcmp(argv[i], "--window") == 0 ){
+            fullscreen=false;
+        }
+    }
+    
+    frameworkGBF   = new GBF();   
+    tsGaleria      = new TopSystemGaleria();
+
+	tempoInativo.setTempoOriginal(0);
+	tempoInativo.setUnidade(TEMPO_SEGUNDO);
+    tempoInativo.setIniciar();
+    
+    frameworkGBF->setPath(argv[0]);
+!!!194384.cpp!!!	isFullScreen() : bool
+	return fullscreen;
+!!!139216.cpp!!!	executar() : void
+    //Inicialização de classes extras 
+    TopSystemGaleria::setPathBase(frameworkGBF->getPath());
+    
+    while(looping) {
+        escutar();
+        interpretadorGlobal();
+    }
+!!!137552.cpp!!!	interpretadorGlobal() : void
+
+    if (frameworkGBF->inputSystem->teclado->isKey(SDLK_ESCAPE)){
+        msgMenu();
+    }
+//TODO: Criar mecanismo para aumetar/diminuir ciclo do FPS  
+!!!137680.cpp!!!	escutar() : void
+
+    switch(processarMensagem()){
+//
+// ACOES - PARTE 1 - CRITICAS 
+////////////////
+        case GBF_MENSAGEM__ACAO__JOGO_EXECUTANDO:
+                acaoJogoExecutando(); 
+            break;
+//
+// TELAS 
+////////////////
+        case GBF_MENSAGEM__TELA__INTRODUCAO: 
+                telaIntroducao();
+            break;
+        case GBF_MENSAGEM__TELA__MENU: 
+                telaMenu();
+                tempoInativo.processar();
+                if (tempoInativo.getTempo()>10){
+                    tempoInativo.setResetar();
+                    tempoInativo.setIniciar();
+                    msgIntroducao();
+                }
+            break;   
+        case GBF_MENSAGEM__TELA__SOBRE: 
+                telaSobre();
+            break;
+        case GBF_MENSAGEM__TELA__AJUDA: 
+                telaAjuda();
+            break;
+        case GBF_MENSAGEM__TELA__CONFIGURAR: 
+                telaConfigurar();
+            break;
+        case GBF_MENSAGEM__TELA__CREDITO: 
+                telaCredito();
+            break;
+        case GBF_MENSAGEM__TELA__TOP_RECORDE: 
+                telaTopRecorde();
+            break;
+        case GBF_MENSAGEM__TELA__TOP_RECORDE_NOVO:
+                telaTopRecordeNovo();
+            break;           
+        case GBF_MENSAGEM__TELA__SAIR:
+                telaSair();
+            break;            
+
+//
+// ACOES - PARTE 2 - USADAS APENAS QUANDO INVOCADAS
+////////////////
+        case GBF_MENSAGEM__ACAO__INTRODUCAO:
+                acaoIntroducao();
+            break;
+        case GBF_MENSAGEM__ACAO__MENU:
+                acaoMenu();
+            break;
+        case GBF_MENSAGEM__ACAO__SOBRE:
+                acaoSobre();
+            break;
+        case GBF_MENSAGEM__ACAO__AJUDA:
+                acaoAjuda();
+            break;
+        case GBF_MENSAGEM__ACAO__CREDITO:
+                acaoCredito();
+            break;
+        case GBF_MENSAGEM__ACAO__TOP_RECORDE:
+                acaoTopRecorde();
+            break;
+        case GBF_MENSAGEM__ACAO__TOP_RECORDE_NOVO:
+                acaoTopRecordeNovo();
+            break;
+        case GBF_MENSAGEM__ACAO__TOP_RECORDE_SALVAR:
+                acaoTopRecordeNovoSalvar();
+            break;            
+        case GBF_MENSAGEM__ACAO__SAIR: 
+                acaoSair();
+            break;                
+        case GBF_MENSAGEM__ACAO__JOGO_NOVO: 
+                acaoJogoNovo();
+            break;   
+        case GBF_MENSAGEM__ACAO__INICIAL:
+                // carrega arquivos de recursos
+                acaoInicial(); 
+                // muda estado para exibir tela de introducao
+                msgIntroducao();
+            break;
+        default:
+                printf("Erro sem msg");
+            break;            
+    }
+    frameworkGBF->atualizar();
+!!!137808.cpp!!!	acaoIntroducao() : void
+
+    msgTelaIndroducao();
+!!!137936.cpp!!!	acaoMenu() : void
+
+    msgTelaMenu();
+!!!138064.cpp!!!	acaoSobre() : void
+
+    msgTelaSobre();
+!!!138192.cpp!!!	acaoAjuda() : void
+
+    msgTelaAjuda();
+!!!138320.cpp!!!	acaoCredito() : void
+
+    msgTelaCredito();
+!!!138448.cpp!!!	acaoTopRecorde() : void
+
+    tsGaleria->carregar();
+    msgTelaTopRecorde();
+!!!138576.cpp!!!	acaoTopRecordeNovo() : void
+
+    msgTelaTopRecordeNovo();
+!!!138704.cpp!!!	acaoTopRecordeNovoSalvar() : void
+
+    if ((tsGaleria)&&(uiRecordeNovo)){
+         if (tsGaleria->adicionar(uiRecordeNovo->getRecorde())){
+            tsGaleria->salvar();
+         }
+    }
+    msgTopRecorde();
+!!!138832.cpp!!!	acaoSair() : void
+    msgTelaSair();
+	looping=false;

@@ -1,0 +1,71 @@
+class SoundSystemMusicManager
+!!!171216.cpp!!!	~SoundSystemMusicManager()
+    UtilLog::subSistema("Removendo SoundSystemMusicManager");
+    std::map<std::string,SoundSystemMusic*>::iterator it;
+
+    Mix_HaltMusic();
+    for (it=objetomap.begin();it!=objetomap.end(); it++){
+        try {
+            UtilLog::tracer("SoundMusic=%s",((*it).first).c_str());
+        } catch(...){
+            UtilLog::tracer("SoundMusic=Desconhecido(a)");
+        }
+        delete ((*it).second);
+        (*it).second=NULL;
+        UtilLog::comentario("[Ok]");
+    }
+    objetomap.clear();
+!!!171344.cpp!!!	play(in nome : std::string) : void
+    if ((objetomap.find(nome)!=objetomap.end())&&(!status->isMute())){
+        objetomap[nome]->play();
+    }
+!!!171472.cpp!!!	carregar(in nome : std::string, in arquivo : std::string) : void
+    SoundSystemMusic *som = new SoundSystemMusic();
+
+    std::string fullpath=pathBase+arquivo;
+
+    //UtilLog::getInstance()->inicializando("SoundMusicManager::Carregar()");
+    UtilLog::tracer("SoundMusic=%s Arquivo=%s",nome.c_str(),fullpath.c_str());
+
+    if ((status->isAtivo())&&(som->carregarArquivo(fullpath))){
+        objetomap[nome]=som;
+        UtilLog::comentario("[Ok]");
+    } else {
+        UtilLog::comentario("[Falhou]");
+    }
+!!!171600.cpp!!!	apagar(in nome : std::string) : void
+    if (objetomap[nome]){
+        delete(objetomap[nome]);
+        objetomap[nome]=NULL;
+        objetomap.erase(nome);
+    }
+!!!171728.cpp!!!	pause() : void
+
+    if (status->isAtivo()){
+    	Mix_PauseMusic();
+    }
+!!!171856.cpp!!!	resume() : void
+    if (status->isAtivo()){
+        Mix_ResumeMusic();
+    }
+!!!171984.cpp!!!	playLoop(in nome : std::string, in vezes : int = 0) : void
+    if ((objetomap.find(nome)!=objetomap.end())&&(!status->isMute())){
+        if (musicaTocando!=nome){
+            objetomap[nome]->playLoop(vezes);
+            musicaTocando=nome;
+        }
+    }
+!!!172112.cpp!!!	playInfinity(in nome : std::string) : void
+    if ((objetomap.find(nome)!=objetomap.end())&&(!status->isMute())){
+        if (musicaTocando!=nome){
+            objetomap[nome]->playInfinity();
+            musicaTocando=nome;
+        }
+    }
+!!!172240.cpp!!!	stop(in nome : std::string) : void
+    if ((objetomap.find(nome)!=objetomap.end())&&(!status->isMute())){
+        objetomap[nome]->stop();
+        musicaTocando="";
+    }
+!!!172368.cpp!!!	SoundSystemMusicManager(inout status : SoundSystemStatus)
+    UtilLog::subSistema("Instanciando SoundSystemMusicManager");

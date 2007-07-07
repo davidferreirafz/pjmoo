@@ -1,0 +1,1698 @@
+format 29
+"UserInterface" // GBF::UserInterface
+  revision 13
+  modified_by 69 "david"
+  // class settings
+  //class diagram settings
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default shadow default
+  //use case diagram settings
+  package_name_in_tab default show_context default auto_label_position default shadow default
+  //sequence diagram settings
+  show_full_operations_definition default write_horizontally default drawing_language default shadow default
+  //collaboration diagram settings
+  show_full_operations_definition default show_hierarchical_rank default write_horizontally default drawing_language default package_name_in_tab default show_context default shadow default
+  //object diagram settings
+   write_horizontally default package_name_in_tab default show_context default auto_label_position default shadow default
+  //component diagram settings
+  package_name_in_tab default show_context default auto_label_position default shadow default
+  draw_component_as_icon default show_component_req_prov default show_component_rea default
+  //deployment diagram settings
+  package_name_in_tab default show_context default write_horizontally default auto_label_position default shadow default
+  draw_component_as_icon default show_component_req_prov default show_component_rea default
+  //state diagram settings
+  package_name_in_tab default show_context default auto_label_position default write_trans_label_horizontally default show_trans_definition default shadow default
+  show_activities default region_horizontally default drawing_language default
+  //activity diagram settings
+  package_name_in_tab default show_context default show_opaque_action_definition default auto_label_position default write_flow_label_horizontally default shadow default
+  show_infonote default drawing_language default
+  
+  cpp_h_dir "/home/desenvolvimento/pjmoo/source/gbf/src/"
+  cpp_src_dir "/home/desenvolvimento/pjmoo/source/gbf/src/"
+  classview 129616 "Classes"
+    //class diagram settings
+    draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default shadow default
+    //collaboration diagram settings
+    show_full_operations_definition default show_hierarchical_rank default write_horizontally default drawing_language default package_name_in_tab default show_context default shadow default
+    //object diagram settings
+     write_horizontally default package_name_in_tab default show_context default auto_label_position default shadow default
+    //sequence diagram settings
+    show_full_operations_definition default write_horizontally default drawing_language default shadow default
+    //state diagram settings
+    package_name_in_tab default show_context default auto_label_position default write_trans_label_horizontally default show_trans_definition default shadow default
+    show_activities default region_horizontally default drawing_language default
+    //class settings
+    //activity diagram settings
+    package_name_in_tab default show_context default show_opaque_action_definition default auto_label_position default write_flow_label_horizontally default shadow default
+    show_infonote default drawing_language default
+    
+    class 140496 "EnumAlinhamento"
+       stereotype "enum"
+      cpp_decl ""
+      java_decl "${comment}${public}${final}${abstract}enum ${name}${implements} {
+${items};
+${members}}
+"
+      idl_decl "${comment}enum ${name} {
+${items}};
+"
+      explicit_switch_type ""
+      
+      comment "Alinhamento dos itens do menu e dos itens"
+      attribute 158160 "CENTRO"
+	public explicit_type ""
+	init_value "=0"
+	cpp_decl "  ${comment}${name}${value},"
+	java_decl ""
+	idl_decl ""
+      end
+
+      attribute 158288 "HORIZONTAL"
+	public explicit_type ""
+	init_value "=1"
+	cpp_decl "  ${comment}${name}${value},"
+	java_decl ""
+	idl_decl ""
+      end
+
+      attribute 158416 "VERTICAL"
+	public explicit_type ""
+	init_value "=2"
+	cpp_decl "  ${comment}${name}${value},"
+	java_decl ""
+	idl_decl ""
+      end
+    end
+
+    class 140368 "UserInterfaceMenuItemTexto"cpp_external cpp_decl "${name}
+#include <GBF/${name}.h>
+"
+      java_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      comment "Descrição: 
+    Implementação da Classe MenuItemAbstract
+Motivação:
+    Fornecer um classe básica para criação de itens de menus em texto"
+      attribute 157520 "texto"
+	protected explicit_type "std::string"
+	cpp_decl "    ${comment}${static}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	java_decl ""
+	idl_decl ""
+      end
+
+      attribute 157648 "fonteTexto"
+	protected explicit_type "std::string"
+	cpp_decl "    ${comment}${static}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	java_decl ""
+	idl_decl ""
+      end
+
+      classrelation 155088 // tempo (<directional aggregation by value>)
+	relation 155088 *-->
+	  a role_name "tempo" multiplicity "" protected
+	    cpp default "    ${comment}${static}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	    classrelation_ref 155088 // tempo (<directional aggregation by value>)
+	  b parent class_ref 130512 // TimerSystemCronometroCrescente
+      end
+
+      classrelation 154960 // wsManager (<unidirectional association>)
+	relation 154960 --->
+	  a role_name "wsManager" multiplicity "1" init_value "=NULL" class_relation protected
+	    cpp default "    ${comment}${static}${mutable}${volatile}${const}${type} * ${name}${value};
+"
+	    classrelation_ref 154960 // wsManager (<unidirectional association>)
+	  b parent class_ref 129616 // WriteSystemManager
+      end
+
+      operation 208592 "UserInterfaceMenuItemTexto"
+	public explicit_return_type ""
+	nparams 2
+	  param in name "texto" explicit_type "std::string"
+	  param in name "fonteTexto" explicit_type "std::string"
+	cpp_decl "    ${comment}${inline}${name}${(}const ${t0} & ${p0}, const ${t1} & ${p1}${)}${volatile}${throw};
+"
+	cpp_def "${comment}${inline}${class}::${name}${(}const ${t0} & ${p0}, const ${t1} & ${p1}${)}${volatile}${throw} 
+{
+${body}}"
+	
+	
+      end
+
+      operation 208720 "~UserInterfaceMenuItemTexto"
+	cpp_virtual public explicit_return_type ""
+	nparams 0
+	cpp_decl "    ${comment}${inline}${virtual}${name}${(}${)}${volatile}${throw};
+"
+	cpp_def "${comment}${inline}${class}::${name}${(}${)}${volatile}${throw} 
+{
+${body}}"
+	
+	
+      end
+
+      operation 209232 "desenhar"
+	cpp_virtual public explicit_return_type "void"
+	nparams 2
+	  param in name "x" explicit_type "int"
+	  param in name "y" explicit_type "int"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${t0} ${p0}, ${t1} ${p1}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${t0} ${p0}, ${t1} ${p1}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+      end
+
+      operation 211024 "getQuantidadeLetras"
+	cpp_virtual public explicit_return_type "int"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+      end
+
+      operation 211280 "getDimensaoLetra"
+	cpp_virtual public return_type class_ref 129104 // Dimensao
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+      end
+
+      classrelation 154832 // <generalisation>
+	relation 154832 ---|>
+	  a public
+	    cpp default "${type}"
+	    classrelation_ref 154832 // <generalisation>
+	  b parent class_ref 140112 // UserInterfaceMenuItemAbstract
+      end
+    end
+
+    class 139984 "UserInterfaceMenuAbstract"
+      abstract 
+      cpp_external cpp_decl "${name}
+#include <GBF/${name}.h>
+"
+      java_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      comment "Descrição: 
+    Classe para criação de menus
+Motivação:
+    Fornecer uma interface padrão para criação de menus"
+      attribute 157136 "posicao"
+	protected type class_ref 128976 // Ponto
+	cpp_decl "    ${comment}${static}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	java_decl ""
+	idl_decl ""
+      end
+
+      attribute 157776 "itemSelecionado"
+	protected explicit_type "int"
+	cpp_decl "    ${comment}${static}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	java_decl ""
+	idl_decl ""
+      end
+
+      attribute 157904 "espacoVertical"
+	protected explicit_type "int"
+	cpp_decl "    ${comment}${static}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	java_decl ""
+	idl_decl ""
+      end
+
+      classrelation 154576 // item (<unidirectional association>)
+	relation 154576 --->
+	  stereotype "std::deque"
+	  a role_name "item" multiplicity "1..*" protected
+	    cpp default "    ${comment}${static}${mutable}${volatile}${const}${stereotype}<${type} *> ${name}${value};
+"
+	    classrelation_ref 154576 // item (<unidirectional association>)
+	  b parent class_ref 140112 // UserInterfaceMenuItemAbstract
+      end
+
+      classrelation 155216 // delayNavegacao (<directional aggregation by value>)
+	relation 155216 *-->
+	  a role_name "delayNavegacao" multiplicity "" protected
+	    cpp default "    ${comment}${static}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	    classrelation_ref 155216 // delayNavegacao (<directional aggregation by value>)
+	  b parent class_ref 130896 // TimerSystemCronometroDecrescente
+      end
+
+      classrelation 155472 // input (<unidirectional association>)
+	relation 155472 --->
+	  a role_name "input" multiplicity "1" protected
+	    cpp default "    ${comment}${static}${mutable}${volatile}${const}${type} * ${name}${value};
+"
+	    classrelation_ref 155472 // input (<unidirectional association>)
+	  b parent class_ref 129488 // InputSystem
+      end
+
+      operation 207696 "UserInterfaceMenuAbstract"
+	public explicit_return_type ""
+	nparams 1
+	  param in name "input" type class_ref 129488 // InputSystem
+	cpp_decl "    ${comment}${inline}${name}${(}${t0} * ${p0}${)}${volatile}${throw};
+"
+	cpp_def "${comment}${inline}${class}::${name}${(}${t0} * ${p0}${)}${volatile}${throw} 
+{
+${body}}"
+	
+	
+	comment "Construtor"
+      end
+
+      operation 207824 "~UserInterfaceMenuAbstract"
+	cpp_virtual public explicit_return_type ""
+	nparams 0
+	cpp_decl "    ${comment}${inline}${virtual}${name}${(}${)}${volatile}${throw};
+"
+	cpp_def "${comment}${inline}${class}::${name}${(}${)}${volatile}${throw} 
+{
+${body}}"
+	
+	
+	comment "Destrutor"
+      end
+
+      operation 210768 "setEspacoVertical"
+	public explicit_return_type "void"
+	nparams 1
+	  param in name "espaco" explicit_type "int"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${t0} ${p0}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${t0} ${p0}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+      end
+
+      operation 211664 "setCorBorda"
+	public explicit_return_type "void"
+	nparams 3
+	  param in name "r" type class_ref 131664 // CorPaleta
+	  param in name "g" type class_ref 131664 // CorPaleta
+	  param in name "b" type class_ref 131664 // CorPaleta
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}const ${t0} & ${p0}, const ${t1} & ${p1}, const ${t2} & ${p2}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}const ${t0} & ${p0}, const ${t1} & ${p1}, const ${t2} & ${p2}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+      end
+
+      operation 211792 "setCorFundo"
+	public explicit_return_type "void"
+	nparams 3
+	  param in name "r" type class_ref 131664 // CorPaleta
+	  param in name "g" type class_ref 131664 // CorPaleta
+	  param in name "b" type class_ref 131664 // CorPaleta
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}const ${t0} & ${p0}, const ${t1} & ${p1}, const ${t2} & ${p2}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}const ${t0} & ${p0}, const ${t1} & ${p1}, const ${t2} & ${p2}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+      end
+
+      operation 208464 "setPosicao"
+	public explicit_return_type "void"
+	nparams 2
+	  param in name "x" explicit_type "int"
+	  param in name "y" explicit_type "int"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${t0} ${p0}, ${t1} ${p1}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${t0} ${p0}, ${t1} ${p1}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+	comment "Define a posição x,y do menu"
+      end
+
+      operation 211408 "centralizarTela"
+	public explicit_return_type "void"
+	nparams 3
+	  param in name "x" explicit_type "int"
+	  param in name "y" explicit_type "int"
+	  param in name "alinhamento" type class_ref 140496 // EnumAlinhamento
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${t0} ${p0}, ${t1} ${p1}, ${t2} ${p2}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${t0} ${p0}, ${t1} ${p1}, ${t2} ${p2}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+	comment "Centraliza o menu na tela de acordo com as coordenadas passadas
+Obs.: Caso o parâmetro de alinhamento seja HORIZONTAL ou VERTICAL ele usará o parâmetro
+referente a outra posição para posicionar o menu na tela"
+      end
+
+      operation 208208 "executar"
+	public explicit_return_type "bool"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+      end
+
+      operation 208336 "adicionar"
+	public explicit_return_type "void"
+	nparams 1
+	  param in name "item" type class_ref 140112 // UserInterfaceMenuItemAbstract
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${t0} * ${p0}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${t0} * ${p0}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+	comment "Adiciona um item ao menu"
+      end
+
+      operation 210640 "confirmarSelecao"
+	cpp_virtual public explicit_return_type "int"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+	comment "Retorna o índice da opção selecionada"
+      end
+
+      operation 211536 "calcularAlinhamento"
+	protected explicit_return_type "Ponto"
+	nparams 2
+	  param in name "caixaLargura" explicit_type "int"
+	  param in name "caixaAltura" explicit_type "int"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${t0} ${p0}, ${t1} ${p1}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${t0} ${p0}, ${t1} ${p1}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+      end
+
+      operation 209360 "desenhar"
+	abstract cpp_virtual protected explicit_return_type "void"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	
+	
+	comment "desenha o menu na tela"
+      end
+
+      operation 209616 "limparLista"
+	protected explicit_return_type "void"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+	comment "remove todos os itens do menu"
+      end
+
+      operation 210000 "selecao"
+	cpp_virtual protected explicit_return_type "void"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+      end
+
+      operation 210384 "navegar"
+	abstract cpp_virtual protected explicit_return_type "bool"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	
+	
+      end
+
+      attribute 158032 "maiorPalavra"
+	protected explicit_type "int"
+	cpp_decl "    ${comment}${static}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	java_decl ""
+	idl_decl ""
+      end
+
+      classrelation 155984 // eAlinhamento (<directional aggregation by value>)
+	relation 155984 *-->
+	  a role_name "eAlinhamento" multiplicity "1" protected
+	    cpp default "    ${comment}${static}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	    classrelation_ref 155984 // eAlinhamento (<directional aggregation by value>)
+	  b parent class_ref 140496 // EnumAlinhamento
+      end
+
+      attribute 158544 "corBorda"
+	protected type class_ref 137296 // RGB
+	cpp_decl "    ${comment}${static}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	java_decl ""
+	idl_decl ""
+      end
+
+      attribute 158672 "corFundo"
+	protected type class_ref 137296 // RGB
+	cpp_decl "    ${comment}${static}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	java_decl ""
+	idl_decl ""
+      end
+    end
+
+    class 140240 "UserInterfaceMenuTexto"cpp_external cpp_decl "${name}
+#include <GBF/${name}.h>
+"
+      java_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      comment "Descrição: 
+    Implementação da Classe MenuAbstract
+Motivação:
+    Fornecer um classe básica para criação de menus em texto"
+      classrelation 154704 // <generalisation>
+	relation 154704 ---|>
+	  a public
+	    cpp default "${type}"
+	    classrelation_ref 154704 // <generalisation>
+	  b parent class_ref 139984 // UserInterfaceMenuAbstract
+      end
+
+      operation 209744 "UserInterfaceMenuTexto"
+	public explicit_return_type ""
+	nparams 1
+	  param inout name "input" type class_ref 129488 // InputSystem
+	cpp_decl "    ${comment}${inline}${name}${(}${t0} * ${p0}${)}${volatile}${throw};
+"
+	cpp_def "${comment}${inline}${class}::${name}${(}${t0} * ${p0}${)}:UserInterfaceMenuAbstract(${p0})${volatile}${throw} 
+{
+${body}}"
+	
+	
+      end
+
+      operation 209872 "~UserInterfaceMenuTexto"
+	cpp_virtual public explicit_return_type ""
+	nparams 0
+	cpp_decl "    ${comment}${inline}${virtual}${name}${(}${)}${volatile}${throw};
+"
+	cpp_def "${comment}${inline}${class}::${name}${(}${)}${volatile}${throw} 
+{
+${body}}"
+	
+	
+      end
+
+      operation 209488 "desenhar"
+	protected explicit_return_type "void"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+      end
+
+      operation 210512 "navegar"
+	cpp_virtual protected explicit_return_type "bool"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+      end
+
+      operation 210128 "itemAvancar"
+	cpp_virtual protected explicit_return_type "void"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+      end
+
+      operation 210256 "itemAnterior"
+	cpp_virtual protected explicit_return_type "void"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+      end
+
+      classrelation 155600 // gsGFX (<unidirectional association>)
+	relation 155600 --->
+	  a role_name "gsGFX" multiplicity "1" protected
+	    cpp default "    ${comment}${static}${mutable}${volatile}${const}${type} * ${name}${value};
+"
+	    classrelation_ref 155600 // gsGFX (<unidirectional association>)
+	  b parent class_ref 131152 // GraphicSystemGFX
+      end
+    end
+
+    class 128105 "UserInterfaceMenuTextoTransparente"cpp_external cpp_decl "${name}
+#include <GBF/${name}.h>
+"
+      java_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      classrelation 128105 // <generalisation>
+	relation 128105 ---|>
+	  a public
+	    cpp default "${type}"
+	    classrelation_ref 128105 // <generalisation>
+	  b parent class_ref 140240 // UserInterfaceMenuTexto
+      end
+
+      operation 128361 "UserInterfaceMenuTextoTransparente"
+	public explicit_return_type ""
+	nparams 1
+	  param inout name "input" type class_ref 129488 // InputSystem
+	cpp_decl "    ${comment}${inline}${name}${(}${t0} * ${p0}${)}${volatile}${throw};
+"
+	cpp_def "${comment}${inline}${class}::${name}${(}${t0} * ${p0}${)}:UserInterfaceMenuTexto(${p0})${volatile}${throw} 
+{
+${body}}"
+	
+	
+      end
+
+      operation 128233 "~UserInterfaceMenuTextoTransparente"
+	cpp_virtual public explicit_return_type ""
+	nparams 0
+	cpp_decl "    ${comment}${inline}${virtual}${name}${(}${)}${volatile}${throw};
+"
+	cpp_def "${comment}${inline}${class}::${name}${(}${)}${volatile}${throw} 
+{
+${body}}"
+	
+	
+      end
+
+      operation 128105 "desenhar"
+	protected explicit_return_type "void"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+      end
+    end
+
+    class 140112 "UserInterfaceMenuItemAbstract"
+      abstract 
+      cpp_decl ""
+      java_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      comment "Descrição: 
+    Classe para criação de itens de menus
+Motivação:
+    Fornecer uma interface padrão para criação de itens de menus"
+      attribute 157264 "ativo"
+	private explicit_type "bool"
+	cpp_decl "    ${comment}${static}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	java_decl ""
+	idl_decl ""
+      end
+
+      operation 207952 "UserInterfaceMenuItemAbstract"
+	public explicit_return_type ""
+	nparams 0
+	cpp_decl "    ${comment}${inline}${name}${(}${)}${volatile}${throw};
+"
+	cpp_def "${comment}${inline}${class}::${name}${(}${)}${volatile}${throw} 
+{
+${body}}"
+	
+	
+      end
+
+      operation 208080 "~UserInterfaceMenuItemAbstract"
+	cpp_virtual public explicit_return_type ""
+	nparams 0
+	cpp_decl "    ${comment}${inline}${virtual}${name}${(}${)}${volatile}${throw};
+"
+	cpp_def "${comment}${inline}${class}::${name}${(}${)}${volatile}${throw} 
+{
+${body}}"
+	
+	
+      end
+
+      operation 209104 "desenhar"
+	abstract cpp_virtual public explicit_return_type "void"
+	nparams 2
+	  param in name "x" explicit_type "int"
+	  param in name "y" explicit_type "int"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${t0} ${p0}, ${t1} ${p1}${)}${const}${volatile}${throw}${abstract};
+"
+	
+	
+      end
+
+      operation 208848 "setAtivo"
+	public explicit_return_type "void"
+	nparams 1
+	  param in name "ativo" explicit_type "bool"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${t0} ${p0}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${t0} ${p0}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+      end
+
+      operation 210896 "getQuantidadeLetras"
+	abstract cpp_virtual public explicit_return_type "int"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	
+	
+      end
+
+      operation 211152 "getDimensaoLetra"
+	abstract cpp_virtual public return_type class_ref 129104 // Dimensao
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	
+	
+      end
+
+      operation 208976 "isAtivo"
+	protected explicit_return_type "bool"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+      end
+    end
+
+    class 138576 "UserInterfaceTexto"cpp_decl ""
+      java_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      comment "Descrição: 
+    Classe para carregar textos
+Motivação:
+    Possibilitar que os textos usados no jogo possam ser carregados de arquivos externos"
+      attribute 151248 "mapaTexto"
+	protected explicit_type "std::map<std::string,std::string>"
+	cpp_decl "    ${comment}${static}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	java_decl ""
+	idl_decl ""
+	comment "Lista com os códigos e textos correspondentes
+"
+      end
+
+      attribute 151632 "idiomaSuportado"
+	protected explicit_type "std::map<std::string,std::string>"
+	cpp_decl "    ${comment}${static}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	java_decl ""
+	idl_decl ""
+	comment "Lista com os idiomas suportados"
+      end
+
+      attribute 151504 "idiomaPrefixo"
+	protected explicit_type "std::string"
+	cpp_decl "    ${comment}${static}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	java_decl ""
+	idl_decl ""
+	comment "Prefixo do idioma selecionado
+"
+      end
+
+      classrelation 151504 // instance (<unidirectional association>)
+	relation 151504 --->
+	  a role_name "instance" multiplicity "" init_value "=NULL" class_relation protected
+	    cpp default "    ${comment}${static}${mutable}${volatile}${const}${type} * ${name}${value};
+"
+	    classrelation_ref 151504 // instance (<unidirectional association>)
+	  b parent class_ref 138576 // UserInterfaceTexto
+      end
+
+      attribute 151760 "arquivo"
+	private explicit_type "std::string"
+	cpp_decl "    ${comment}${static}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	java_decl ""
+	idl_decl ""
+	comment "arquivo de localização a ser carregado
+"
+      end
+
+      attribute 151376 "pathBase"
+	class_attribute private explicit_type "std::string"
+	cpp_decl "    ${comment}${static}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	java_decl ""
+	idl_decl ""
+	comment "Caminho padrão de localização dos arquivos"
+      end
+
+      operation 192464 "setIdioma"
+	public explicit_return_type "bool"
+	nparams 1
+	  param in name "codigo" explicit_type "std::string"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}const ${t0} & ${p0}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}const ${t0} & ${p0}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+	comment "Configura um idioma
+Obs.: O idioma é configurado de acordo com a lista de idiomas suportado"
+      end
+
+      operation 192592 "getIdioma"
+	public explicit_return_type "std::string"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}
+{
+  ${body}}
+"
+	
+	
+      end
+
+      operation 192720 "detectarIdioma"
+	public explicit_return_type "void"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+	comment "Seleciona o idioma automaticamente de acordo com o ambiente"
+      end
+
+      operation 191312 "~UserInterfaceTexto"
+	public explicit_return_type ""
+	nparams 0
+	cpp_decl "    ${comment}${inline}${virtual}${name}${(}${)}${volatile}${throw};
+"
+	cpp_def "${comment}${inline}${class}::${name}${(}${)}${volatile}${throw} 
+{
+  ${body}}
+"
+	
+	
+      end
+
+      operation 191440 "atualizar"
+	public explicit_return_type "bool"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}
+{
+  ${body}}
+"
+	
+	
+      end
+
+      operation 193232 "setArquivo"
+	public explicit_return_type "void"
+	nparams 1
+	  param in name "arquivo" explicit_type "std::string"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}const ${t0} & ${p0}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}const ${t0} & ${p0}${)}${const}${volatile}${throw}${staticnl}
+{
+  ${body}}
+"
+	
+	
+      end
+
+      operation 191824 "size"
+	public explicit_return_type "int"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}
+{
+  ${body}}
+"
+	
+	
+      end
+
+      operation 192080 "getInstance"
+	class_operation public return_type class_ref 138576 // UserInterfaceTexto
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} * ${name}${(}${)}${const}${volatile}${throw}${abstract};"
+	cpp_def "${comment}${inline}${type} * ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+${body}}"
+	
+	
+      end
+
+      operation 191568 "getTexto"
+	public explicit_return_type "std::string"
+	nparams 1
+	  param in name "chave" explicit_type "std::string"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}const ${t0} & ${p0}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}const ${t0} & ${p0}${)}${const}${volatile}${throw}${staticnl}
+{
+  ${body}}
+"
+	
+	
+      end
+
+      operation 192208 "setPathBase"
+	class_operation public explicit_return_type "void"
+	nparams 1
+	  param inout name "path" explicit_type "std::string"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${t0} & ${p0}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${t0} & ${p0}${)}${const}${volatile}${throw}${staticnl}{
+  ${body}}
+"
+	
+	
+	comment "Configura o caminho do arquivo de  mensagens"
+      end
+
+      operation 191696 "parser"
+	protected explicit_return_type "void"
+	nparams 1
+	  param inout name "info" explicit_type "char"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${t0} * ${p0}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${t0} * ${p0}${)}${const}${volatile}${throw}${staticnl}
+{
+  ${body}}
+"
+	
+	
+      end
+
+      operation 193360 "carregarIdioma"
+	protected explicit_return_type "void"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}
+{
+  ${body}}
+"
+	
+	
+      end
+
+      operation 193488 "parserIdioma"
+	protected explicit_return_type "void"
+	nparams 1
+	  param inout name "info" explicit_type "char"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${t0} * ${p0}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${t0} * ${p0}${)}${const}${volatile}${throw}${staticnl}
+{
+  ${body}}
+"
+	
+	
+      end
+
+      operation 191952 "limpar"
+	protected explicit_return_type "void"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}
+{
+  ${body}}
+"
+	
+	
+      end
+
+      operation 191184 "UserInterfaceTexto"
+	private explicit_return_type ""
+	nparams 0
+	cpp_decl "    ${comment}${inline}${name}${(}${)}${volatile}${throw};
+"
+	cpp_def "${comment}${inline}${class}::${name}${(}${)}${volatile}${throw} 
+{
+  ${body}}
+"
+	
+	
+      end
+
+      classrelation 151632 // <dependency>
+	relation 151632 -_->
+	  a default
+	    cpp default "#include in header"
+	    classrelation_ref 151632 // <dependency>
+	  b parent class_ref 137936 // UtilLog
+      end
+    end
+
+    class 131024 "UserInterfaceRecorde"cpp_decl ""
+      java_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      comment "Descrição: 
+    Classe para entrada de novo recorde.
+Motivação:
+    Possibilitar que o jogador informe seu nome e entre na galeria de recordes"
+      classrelation 141520 // recorde (<directional aggregation by value>)
+	relation 141520 *-->
+	  a role_name "recorde" multiplicity "" private
+	    cpp default "    ${comment}${static}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	    classrelation_ref 141520 // recorde (<directional aggregation by value>)
+	  b parent class_ref 137040 // TopSystemRecorde
+      end
+
+      classrelation 141648 // input (<unidirectional association>)
+	relation 141648 --->
+	  a role_name "input" multiplicity "" private
+	    cpp default "    ${comment}${static}${mutable}${volatile}${const}${type} * ${name}${value};
+"
+	    classrelation_ref 141648 // input (<unidirectional association>)
+	  b parent class_ref 129488 // InputSystem
+      end
+
+      classrelation 141776 // wsManager (<unidirectional association>)
+	relation 141776 --->
+	  a role_name "wsManager" multiplicity "" private
+	    cpp default "    ${comment}${static}${mutable}${volatile}${const}${type} * ${name}${value};
+"
+	    classrelation_ref 141776 // wsManager (<unidirectional association>)
+	  b parent class_ref 129616 // WriteSystemManager
+      end
+
+      classrelation 141904 // gsGFX (<unidirectional association>)
+	relation 141904 --->
+	  a role_name "gsGFX" multiplicity "" private
+	    cpp default "    ${comment}${static}${mutable}${volatile}${const}${type} * ${name}${value};
+"
+	    classrelation_ref 141904 // gsGFX (<unidirectional association>)
+	  b parent class_ref 131152 // GraphicSystemGFX
+      end
+
+      classrelation 142032 // tempoNavegacao (<directional aggregation by value>)
+	relation 142032 *-->
+	  a role_name "tempoNavegacao" multiplicity "" private
+	    cpp default "    ${comment}${static}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	    classrelation_ref 142032 // tempoNavegacao (<directional aggregation by value>)
+	  b parent class_ref 130896 // TimerSystemCronometroDecrescente
+      end
+
+      classrelation 142160 // tempoBlink (<directional aggregation by value>)
+	relation 142160 *-->
+	  a role_name "tempoBlink" multiplicity "" private
+	    cpp default "    ${comment}${static}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	    classrelation_ref 142160 // tempoBlink (<directional aggregation by value>)
+	  b parent class_ref 130512 // TimerSystemCronometroCrescente
+      end
+
+      classrelation 142288 // posicao (<directional aggregation by value>)
+	relation 142288 *-->
+	  a role_name "posicao" multiplicity "" private
+	    cpp default "    ${comment}${static}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	    classrelation_ref 142288 // posicao (<directional aggregation by value>)
+	  b parent class_ref 128976 // Ponto
+      end
+
+      classrelation 142416 // dimensaoFonteLabel (<directional aggregation by value>)
+	relation 142416 *-->
+	  a role_name "dimensaoFonteLabel" multiplicity "" private
+	    cpp default "    ${comment}${static}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	    classrelation_ref 142416 // dimensaoFonteLabel (<directional aggregation by value>)
+	  b parent class_ref 129104 // Dimensao
+      end
+
+      classrelation 142544 // dimensaoFonteTeclado (<directional aggregation by value>)
+	relation 142544 *-->
+	  a role_name "dimensaoFonteTeclado" multiplicity "" private
+	    cpp default "    ${comment}${static}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	    classrelation_ref 142544 // dimensaoFonteTeclado (<directional aggregation by value>)
+	  b parent class_ref 129104 // Dimensao
+      end
+
+      classrelation 142672 // caixaTeclado (<directional aggregation by value>)
+	relation 142672 *-->
+	  a role_name "caixaTeclado" multiplicity "" private
+	    cpp default "    ${comment}${static}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	    classrelation_ref 142672 // caixaTeclado (<directional aggregation by value>)
+	  b parent class_ref 129104 // Dimensao
+      end
+
+      attribute 147280 "totalTeclasTeclado"
+	private explicit_type "int"
+	cpp_decl "    ${comment}${static}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	java_decl ""
+	idl_decl ""
+      end
+
+      attribute 147408 "totalTeclasControle"
+	private explicit_type "uint"
+	cpp_decl "    ${comment}${static}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	java_decl ""
+	idl_decl ""
+      end
+
+      attribute 147536 "totalTeclas"
+	private explicit_type "int"
+	cpp_decl "    ${comment}${static}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	java_decl ""
+	idl_decl ""
+      end
+
+      attribute 147664 "tamanhoMaiorTeclaControle"
+	private explicit_type "uint"
+	cpp_decl "    ${comment}${static}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	java_decl ""
+	idl_decl ""
+      end
+
+      attribute 147792 "tecladoSelecao"
+	private explicit_type "int"
+	cpp_decl "    ${comment}${static}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	java_decl ""
+	idl_decl ""
+      end
+
+      attribute 148048 "tecladoControle"
+	private explicit_type "std::string"
+	cpp_decl "    ${comment}${static}${mutable}${volatile}${const}${type} ${name}[3]${value};
+"
+	java_decl ""
+	idl_decl ""
+      end
+
+      attribute 147152 "miniTeclado"
+	private explicit_type "char"
+	cpp_decl "    ${comment}${static}${mutable}${volatile}${const}${type} ${name}[50]${value};
+"
+	java_decl ""
+	idl_decl ""
+	comment "Armazena a letras do teclado"
+      end
+
+      attribute 147920 "nomePosicao"
+	private explicit_type "int"
+	cpp_decl "    ${comment}${static}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	java_decl ""
+	idl_decl ""
+      end
+
+      attribute 148176 "fonteLabel"
+	private explicit_type "std::string"
+	cpp_decl "    ${comment}${static}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	java_decl ""
+	idl_decl ""
+      end
+
+      attribute 148304 "fonteTeclado"
+	private explicit_type "std::string"
+	cpp_decl "    ${comment}${static}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	java_decl ""
+	idl_decl ""
+      end
+
+      operation 184784 "UserInterfaceRecorde"
+	public explicit_return_type ""
+	nparams 0
+	cpp_decl "    ${comment}${inline}${name}${(}${)}${volatile}${throw};
+"
+	cpp_def "${comment}${inline}${class}::${name}${(}${)}${volatile}${throw} 
+{
+${body}}"
+	
+	
+	comment "Construtor"
+      end
+
+      operation 184912 "~UserInterfaceRecorde"
+	public explicit_return_type ""
+	nparams 0
+	cpp_decl "    ${comment}${inline}${virtual}${name}${(}${)}${volatile}${throw};
+"
+	cpp_def "${comment}${inline}${class}::${name}${(}${)}${volatile}${throw} 
+{
+${body}}"
+	
+	
+	comment "Destrutor"
+      end
+
+      operation 185552 "setFonteTeclado"
+	public explicit_return_type "void"
+	nparams 1
+	  param in name "fonte" explicit_type "std::string"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${t0} ${p0}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${t0} ${p0}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+	comment "Define a fonte a ser usada pelo teclado virtual"
+      end
+
+      operation 185680 "setPosicao"
+	public explicit_return_type "void"
+	nparams 2
+	  param in name "x" explicit_type "int"
+	  param in name "y" explicit_type "int"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${t0} ${p0}, ${t1} ${p1}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${t0} ${p0}, ${t1} ${p1}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+	comment "Define a posição da Interface de recordes"
+      end
+
+      operation 185424 "setFonteLabel"
+	public explicit_return_type "void"
+	nparams 1
+	  param in name "fonte" explicit_type "std::string"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${t0} ${p0}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${t0} ${p0}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+	comment "Define a fonte a ser usada pelo label"
+      end
+
+      operation 185296 "setInput"
+	public explicit_return_type "void"
+	nparams 1
+	  param inout name "input" type class_ref 129488 // InputSystem
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${t0} * ${p0}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${t0} * ${p0}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+	comment "Adiciona referência para o Sistema de Entrada / InputSystem"
+      end
+
+      operation 212304 "setGFX"
+	public explicit_return_type "void"
+	nparams 1
+	  param inout name "gfx" type class_ref 131152 // GraphicSystemGFX
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${t0} * ${p0}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${t0} * ${p0}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+	comment "Adiciona referência para o Sistema Gráfico GFX"
+      end
+
+      operation 212432 "setWriteManager"
+	public explicit_return_type "void"
+	nparams 1
+	  param inout name "write" type class_ref 129616 // WriteSystemManager
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${t0} * ${p0}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${t0} * ${p0}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+	comment "Adiciona referência para o Sistema de Escrita"
+      end
+
+      operation 185168 "getRecorde"
+	public return_type class_ref 137040 // TopSystemRecorde
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+	comment "Retorna o TopSystemRecorde"
+      end
+
+      operation 185040 "setRecorde"
+	public explicit_return_type "void"
+	nparams 1
+	  param in name "recorde" type class_ref 137040 // TopSystemRecorde
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${t0} ${p0}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${t0} ${p0}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+	comment "Atribui um TopSystemRecorde para complementar os dados"
+      end
+
+      operation 185936 "controle"
+	public explicit_return_type "bool"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+	comment "Gerencia o controle do cursor (navegação) e as opções selecionadas"
+      end
+
+      operation 185808 "desenhar"
+	public explicit_return_type "void"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+	comment "Desenha a interface contendo: pontuação, dados do jogador e teclado virtual"
+      end
+
+      operation 186192 "confirmar"
+	protected explicit_return_type "bool"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+	comment "Efetua as ações de acordo com a posição do cursor"
+      end
+
+      operation 186320 "desenharCaixa"
+	protected explicit_return_type "void"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+	comment "Desenha as caixas de fundo para posicionamento dos dados do jogador e do teclado virtual"
+      end
+
+      operation 186448 "desenharMiniTeclado"
+	protected explicit_return_type "void"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+	comment "Desenha o teclado virtual"
+      end
+
+      operation 186576 "desenharDados"
+	protected explicit_return_type "void"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+	comment "Desenha o nome do jogador e sua pontuação"
+      end
+
+      operation 186064 "navegar"
+	protected explicit_return_type "void"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+	comment "Efetua o controle sobre a navegação do cursor"
+      end
+    end
+  end
+
+  deploymentview 128208 "Deploy"
+    //deployment diagram settings
+    package_name_in_tab default show_context default write_horizontally default auto_label_position default shadow default
+    draw_component_as_icon default show_component_req_prov default show_component_rea default
+    artifact 136912 "UserInterfaceRecorde"
+      stereotype "source"
+      cpp_h "${comment}
+#ifndef _${NAME}_H
+#define _${NAME}_H
+
+${all_includes}
+${declarations}
+${namespace_start}
+${definition}
+${namespace_end}
+#endif
+"
+      cpp_src "${comment}
+${includes}
+${namespace_start}
+${members}
+${namespace_end}"
+      associated_classes
+	class_ref 131024 // UserInterfaceRecorde
+      end
+      comment "//    GBF - Gamework's Brazilian Framework
+//    Copyright (C) 2004-2007 David de Almeida Ferreira
+//
+//    This library is free software; you can redistribute it and/or
+//    modify it under the terms of the GNU Library General Public
+//    License as published by the Free Software Foundation; either
+//    version 2 of the License, or (at your option) any later version.
+//
+//    David de Almeida Ferreira (F-Z)
+//        davidferreira@uol.com.br or davidferreira.fz@gmail.com
+//        http://pjmoo.codigolivre.org.br
+//////////////////////////////////////////////////////////////////////
+"
+    end
+
+    artifact 138320 "UserInterfaceTexto"
+      stereotype "source"
+      cpp_h "${comment}
+#ifndef _${NAME}_H
+#define _${NAME}_H
+
+#ifndef GNU_LINUX
+#include <windows.h>
+#endif
+
+#include <fstream>
+
+${all_includes}
+${declarations}
+${namespace_start}
+${definition}
+${namespace_end}
+#endif
+"
+      cpp_src "${comment}
+${includes}
+${namespace_start}
+${members}
+${namespace_end}"
+      associated_classes
+	class_ref 138576 // UserInterfaceTexto
+      end
+      comment "//    GBF - Gamework's Brazilian Framework
+//    Copyright (C) 2004-2007 David de Almeida Ferreira
+//
+//    This library is free software; you can redistribute it and/or
+//    modify it under the terms of the GNU Library General Public
+//    License as published by the Free Software Foundation; either
+//    version 2 of the License, or (at your option) any later version.
+//
+//    David de Almeida Ferreira (F-Z)
+//        davidferreira@uol.com.br or davidferreira.fz@gmail.com
+//        http://pjmoo.codigolivre.org.br
+//////////////////////////////////////////////////////////////////////
+"
+    end
+
+    artifact 139216 "UserInterfaceMenuItemTexto"
+      stereotype "source"
+      cpp_h "${comment}
+#ifndef _${NAME}_H
+#define _${NAME}_H
+
+${all_includes}
+${declarations}
+${namespace_start}
+${definition}
+${namespace_end}
+#endif
+"
+      cpp_src "${comment}
+${includes}
+${namespace_start}
+${members}
+${namespace_end}"
+      associated_classes
+	class_ref 140368 // UserInterfaceMenuItemTexto
+      end
+      comment "//    GBF - Gamework's Brazilian Framework
+//    Copyright (C) 2004-2007 David de Almeida Ferreira
+//
+//    This library is free software; you can redistribute it and/or
+//    modify it under the terms of the GNU Library General Public
+//    License as published by the Free Software Foundation; either
+//    version 2 of the License, or (at your option) any later version.
+//
+//    David de Almeida Ferreira (F-Z)
+//        davidferreira@uol.com.br or davidferreira.fz@gmail.com
+//        http://pjmoo.codigolivre.org.br
+//////////////////////////////////////////////////////////////////////
+"
+    end
+
+    artifact 139344 "UserInterfaceMenuTexto"
+      stereotype "source"
+      cpp_h "${comment}
+#ifndef _${NAME}_H
+#define _${NAME}_H
+
+${all_includes}
+${declarations}
+${namespace_start}
+${definition}
+${namespace_end}
+#endif
+"
+      cpp_src "${comment}
+${includes}
+${namespace_start}
+${members}
+${namespace_end}"
+      associated_classes
+	class_ref 140240 // UserInterfaceMenuTexto
+      end
+      comment "//    GBF - Gamework's Brazilian Framework
+//    Copyright (C) 2004-2007 David de Almeida Ferreira
+//
+//    This library is free software; you can redistribute it and/or
+//    modify it under the terms of the GNU Library General Public
+//    License as published by the Free Software Foundation; either
+//    version 2 of the License, or (at your option) any later version.
+//
+//    David de Almeida Ferreira (F-Z)
+//        davidferreira@uol.com.br or davidferreira.fz@gmail.com
+//        http://pjmoo.codigolivre.org.br
+//////////////////////////////////////////////////////////////////////
+"
+    end
+
+    artifact 139472 "UserInterfaceMenuItemAbstract"
+      stereotype "source"
+      cpp_h "${comment}
+#ifndef _${NAME}_H
+#define _${NAME}_H
+
+${all_includes}
+${declarations}
+${namespace_start}
+${definition}
+${namespace_end}
+#endif
+"
+      cpp_src "${comment}
+${includes}
+${namespace_start}
+${members}
+${namespace_end}"
+      associated_classes
+	class_ref 140112 // UserInterfaceMenuItemAbstract
+      end
+      comment "//    GBF - Gamework's Brazilian Framework
+//    Copyright (C) 2004-2007 David de Almeida Ferreira
+//
+//    This library is free software; you can redistribute it and/or
+//    modify it under the terms of the GNU Library General Public
+//    License as published by the Free Software Foundation; either
+//    version 2 of the License, or (at your option) any later version.
+//
+//    David de Almeida Ferreira (F-Z)
+//        davidferreira@uol.com.br or davidferreira.fz@gmail.com
+//        http://pjmoo.codigolivre.org.br
+//////////////////////////////////////////////////////////////////////
+"
+    end
+
+    artifact 139600 "UserInterfaceMenuAbstract"
+      stereotype "source"
+      cpp_h "${comment}
+#ifndef _${NAME}_H
+#define _${NAME}_H
+
+${all_includes}
+${declarations}
+${namespace_start}
+${definition}
+${namespace_end}
+#endif
+"
+      cpp_src "${comment}
+${includes}
+${namespace_start}
+${members}
+${namespace_end}"
+      associated_classes
+	class_ref 139984 // UserInterfaceMenuAbstract
+      end
+      comment "//    GBF - Gamework's Brazilian Framework
+//    Copyright (C) 2004-2007 David de Almeida Ferreira
+//
+//    This library is free software; you can redistribute it and/or
+//    modify it under the terms of the GNU Library General Public
+//    License as published by the Free Software Foundation; either
+//    version 2 of the License, or (at your option) any later version.
+//
+//    David de Almeida Ferreira (F-Z)
+//        davidferreira@uol.com.br or davidferreira.fz@gmail.com
+//        http://pjmoo.codigolivre.org.br
+//////////////////////////////////////////////////////////////////////
+"
+    end
+
+    artifact 139728 "UserInterface"
+      stereotype "source"
+      cpp_h "${comment}
+#ifndef _${NAME}_H
+#define _${NAME}_H
+
+${all_includes}
+${declarations}
+${namespace_start}
+${definition}
+${namespace_end}
+#endif
+"
+      associated_classes
+	class_ref 140496 // EnumAlinhamento
+      end
+      comment "//    GBF - Gamework's Brazilian Framework
+//    Copyright (C) 2004-2007 David de Almeida Ferreira
+//
+//    This library is free software; you can redistribute it and/or
+//    modify it under the terms of the GNU Library General Public
+//    License as published by the Free Software Foundation; either
+//    version 2 of the License, or (at your option) any later version.
+//
+//    David de Almeida Ferreira (F-Z)
+//        davidferreira@uol.com.br or davidferreira.fz@gmail.com
+//        http://pjmoo.codigolivre.org.br
+//////////////////////////////////////////////////////////////////////
+"
+    end
+  end
+end

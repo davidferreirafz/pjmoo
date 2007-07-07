@@ -1,0 +1,80 @@
+class TimerSystemCronometroAbstract
+!!!178000.cpp!!!	resetar() : void
+    tempoCorrente=tempoOriginal;
+    setIniciar();
+!!!177872.cpp!!!	iniciar() : void
+    //resetar();
+    setExecutar();
+    execTempoInicial();
+!!!177744.cpp!!!	continuar() : void
+    setExecutar();
+    execTempoInicial();
+!!!178128.cpp!!!	execTempoInicial() : void
+    tempoInicial = SDL_GetTicks();
+!!!178256.cpp!!!	setExecutar() : void
+    if ((eCronometro==CRONOMETRO_INICIAR)||(eCronometro==CRONOMETRO_CONTINUAR)){
+        eCronometro=CRONOMETRO_EXECUTAR;
+    }
+!!!178384.cpp!!!	setTerminar() : void
+    if (eCronometro==CRONOMETRO_EXECUTAR){
+        eCronometro=CRONOMETRO_TERMINAR;
+    }
+!!!178640.cpp!!!	TimerSystemCronometroAbstract()
+    tempoInicial  = 0;
+    tempoAtual    = 0;
+    tempoCorrente = 0;
+    tempoOriginal = 0;
+    setUnidade(TEMPO_SEGUNDO);
+    eCronometro=CRONOMETRO_RESETAR;
+!!!178512.cpp!!!	~TimerSystemCronometroAbstract()
+
+!!!178768.cpp!!!	setUnidade(in eTempo : EnumTempo) : void
+    tempoUnidade = int(eTempo);
+!!!179280.cpp!!!	setResetar() : void
+    if ((eCronometro==CRONOMETRO_EXECUTAR)||(eCronometro==CRONOMETRO_TERMINAR)){
+        eCronometro=CRONOMETRO_RESETAR;
+    }
+!!!179024.cpp!!!	setIniciar() : void
+    if (eCronometro==CRONOMETRO_RESETAR){
+        eCronometro=CRONOMETRO_INICIAR;
+    }
+!!!179152.cpp!!!	setPausar() : void
+    if (eCronometro==CRONOMETRO_EXECUTAR){
+        eCronometro=CRONOMETRO_PAUSAR;
+    }
+!!!178896.cpp!!!	setContinuar() : void
+    if (eCronometro==CRONOMETRO_PAUSAR){
+        eCronometro=CRONOMETRO_CONTINUAR;
+    }
+!!!179408.cpp!!!	processar() : void
+    switch(eCronometro){
+        case CRONOMETRO_EXECUTAR:
+                executar();
+            break;
+        case CRONOMETRO_CONTINUAR:
+                continuar();
+            break;
+        case CRONOMETRO_INICIAR:
+                iniciar();
+            break;
+        case CRONOMETRO_PAUSAR:
+                //sem implementacao
+            break;
+        case CRONOMETRO_TERMINAR:
+                //sem implementacao
+            break;
+        case CRONOMETRO_RESETAR:
+        default:
+                resetar();
+            break;
+    }
+!!!179536.cpp!!!	getTempo() : int
+    return tempoCorrente;
+!!!179664.cpp!!!	setTempoOriginal(in tempo : int) : void
+    tempoOriginal=tempo;
+!!!179792.cpp!!!	isTerminou() : bool
+    if (eCronometro==CRONOMETRO_TERMINAR){
+        return true;
+    } else {
+        return false;
+    }

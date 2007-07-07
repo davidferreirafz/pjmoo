@@ -1,0 +1,177 @@
+class UserInterfaceRecorde
+!!!184784.cpp!!!	UserInterfaceRecorde()
+    //Para não esquecer:
+    //As Soluções mais simples, são as que melhor funcionam :P
+    strcpy(miniTeclado,"ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789 _+-$%*,.:[]!=");
+
+
+    tecladoControle[0]="VOLTAR";
+    tecladoControle[1]="AVANCAR";
+    tecladoControle[2]="SALVAR";
+
+
+    totalTeclasTeclado  = strlen(miniTeclado);
+    totalTeclasControle = 3;
+
+    tamanhoMaiorTeclaControle  = 0;
+    for (unsigned int i=0; i<totalTeclasControle;i++){
+        if (tecladoControle[i].length()>tamanhoMaiorTeclaControle){
+            tamanhoMaiorTeclaControle=tecladoControle[i].length();
+        }
+    }
+
+    totalTeclas    = totalTeclasTeclado+totalTeclasControle;
+    nomePosicao    = 0;
+    tecladoSelecao = 0;
+    posicao.x      = 0;
+    posicao.y      = 0;
+
+    fonteTeclado  = "";
+    fonteLabel    = "";
+
+    tempoNavegacao.setTempoOriginal(1);
+    tempoNavegacao.setUnidade(TEMPO_CENTESIMO);
+    tempoNavegacao.setResetar();
+
+    tempoBlink.setTempoOriginal(0);
+    tempoBlink.setUnidade(TEMPO_CENTESIMO);
+    tempoBlink.setResetar();
+!!!184912.cpp!!!	~UserInterfaceRecorde()
+//não implementado
+!!!185552.cpp!!!	setFonteTeclado(in fonte : std::string) : void
+    fonteTeclado=fonte;
+    dimensaoFonteTeclado=wsManager->getFonte(fonteTeclado)->getDimensao();
+
+    caixaTeclado.w=474;
+    caixaTeclado.h=(dimensaoFonteTeclado.h + int(dimensaoFonteTeclado.h/4))*int(totalTeclasTeclado/10);
+!!!185680.cpp!!!	setPosicao(in x : int, in y : int) : void
+    posicao.x=x;
+    posicao.y=y;
+!!!185424.cpp!!!	setFonteLabel(in fonte : std::string) : void
+    fonteLabel=fonte;
+    dimensaoFonteLabel=wsManager->getFonte(fonteLabel)->getDimensao();
+!!!185296.cpp!!!	setInput(inout input : InputSystem) : void
+    this->input=input;
+!!!212304.cpp!!!	setGFX(inout gfx : GraphicSystemGFX) : void
+    gsGFX=gfx;
+!!!212432.cpp!!!	setWriteManager(inout write : WriteSystemManager) : void
+    this->wsManager=write;
+!!!185168.cpp!!!	getRecorde() : TopSystemRecorde
+    return recorde;
+!!!185040.cpp!!!	setRecorde(in recorde : TopSystemRecorde) : void
+    this->recorde  = recorde;
+    nomePosicao    = 0;
+    tecladoSelecao = 0;
+    tempoBlink.setResetar();
+    tempoNavegacao.setResetar();
+!!!185936.cpp!!!	controle() : bool
+    bool salva = false;
+    tempoNavegacao.processar();
+    tempoBlink.processar();
+    if (tempoNavegacao.isTerminou()){
+        navegar();
+        salva = confirmar();
+    }
+    return salva;
+!!!185808.cpp!!!	desenhar() : void
+    desenharCaixa();
+    desenharDados();
+    desenharMiniTeclado();
+!!!186192.cpp!!!	confirmar() : bool
+    bool salva = false;
+    if ((input->teclado->isKey(SDLK_RETURN))|| (input->joystick->isButtonA())){
+        if ((tecladoSelecao>=0)&&(tecladoSelecao<totalTeclasTeclado)){
+            recorde.nome[nomePosicao]=miniTeclado[tecladoSelecao];
+            nomePosicao++;
+        } else if (tecladoSelecao==totalTeclasTeclado){//controle voltar
+            nomePosicao--;
+        } else if (tecladoSelecao==totalTeclasTeclado+1){//controle avancar
+            nomePosicao++;
+        } else if (tecladoSelecao==totalTeclasTeclado+2){//controle salvar
+            if (recorde.nome[0]!=' '){
+                salva=true;
+            }
+        }
+        tempoNavegacao.setResetar();
+    }
+    if (nomePosicao<0){
+        nomePosicao=0;
+    } else if (nomePosicao>9){
+        nomePosicao=9;
+    }
+
+    return salva;
+!!!186320.cpp!!!	desenharCaixa() : void
+    if (tempoBlink.getTempo()%2!=0){
+        gsGFX->setColor(250,250,250);
+        gsGFX->retanguloPreenchido(posicao.x+20+(24*nomePosicao),posicao.y-28,dimensaoFonteTeclado.w,2);
+    }
+
+    gsGFX->setColor(0,0,0);
+    gsGFX->retanguloPreenchido(posicao.x,posicao.y,caixaTeclado.w,caixaTeclado.h);
+    gsGFX->setColor(206,101,99);
+    gsGFX->retangulo(posicao.x,posicao.y,caixaTeclado.w,caixaTeclado.h);
+!!!186448.cpp!!!	desenharMiniTeclado() : void
+    gsGFX->setColor(255,255,0);
+    int letra=0;
+    int espacoHorizontal = dimensaoFonteTeclado.w + int(dimensaoFonteTeclado.w / 4);
+    int espacoVertical   = dimensaoFonteTeclado.h + int(dimensaoFonteTeclado.h / 4);
+
+    //Painel do teclado
+    for (int l=0;l<5;l++){
+        for (int c=0;c<10;c++){
+            wsManager->escrever(fonteTeclado, posicao.x+(10)+(espacoHorizontal*c),posicao.y+(espacoVertical*l),"%c",miniTeclado[letra]);
+            //Desenhando cursor da selecao de tecla
+            if ((tecladoSelecao==letra)&&(tempoBlink.getTempo()%2==0)){                 gsGFX->retangulo(posicao.x+8+(espacoHorizontal*c),posicao.y+3+(espacoVertical*l),dimensaoFonteTeclado.w,dimensaoFonteTeclado.h);
+            }
+            letra++;
+        }
+    }
+    //variaveis temporarias, usadas para calcular a posicao dos itens de controle
+    int ajuste      = 10;
+    int aux = (posicao.y+caixaTeclado.h)-(totalTeclasControle * dimensaoFonteLabel.w) - ajuste;
+    int compensando = 0;
+    //Painel das teclas de controles
+    for (int ic=totalTeclasControle-1;ic>=0;ic--){
+        compensando = int(((tamanhoMaiorTeclaControle-tecladoControle[ic].length())*dimensaoFonteLabel.h)/2);
+    	wsManager->escrever(fonteLabel, posicao.x+340+compensando,(aux)+(dimensaoFonteLabel.w*ic),tecladoControle[ic].c_str());
+    }
+    //Desenhando cursor das teclas de controle
+    if (tempoBlink.getTempo()%2==0){
+        if (tecladoSelecao>=totalTeclasTeclado){
+            int t=tecladoSelecao-totalTeclasTeclado;
+            compensando=int(dimensaoFonteLabel.w/2);
+            gsGFX->retangulo(posicao.x+338-compensando,(aux+6)+(dimensaoFonteLabel.w*t),(tamanhoMaiorTeclaControle+1)*dimensaoFonteLabel.w,dimensaoFonteLabel.h);
+        }
+    }
+!!!186576.cpp!!!	desenharDados() : void
+    wsManager->escrever(fonteTeclado, posicao.x+20 , posicao.y-50,"%s"  ,recorde.nome);
+    wsManager->escrever(fonteTeclado, posicao.x+270, posicao.y-50,"%08d",recorde.pontos);
+!!!186064.cpp!!!	navegar() : void
+    if ((input->teclado->isKey(SDLK_LEFT))||(input->joystick->isAxeLeft())){
+            tecladoSelecao--;
+            tempoNavegacao.setResetar();
+    } else if ((input->teclado->isKey(SDLK_RIGHT))||(input->joystick->isAxeRight())){
+            tecladoSelecao++;
+            tempoNavegacao.setResetar();
+    } else if ((input->teclado->isKey(SDLK_DOWN))||(input->joystick->isAxeDown())){
+            if (tecladoSelecao<40){
+                tecladoSelecao+=10;
+            } else {//if (tecladoSelecao>=totalTeclasTeclado){
+                tecladoSelecao++;
+            }
+            tempoNavegacao.setResetar();
+    } else if ((input->teclado->isKey(SDLK_UP))||(input->joystick->isAxeUp())){
+            if ((tecladoSelecao>=10)&&(tecladoSelecao<totalTeclasTeclado)){
+                tecladoSelecao-=10;
+            } else {
+                tecladoSelecao--;
+            }
+            tempoNavegacao.setResetar();
+    }
+
+    if (tecladoSelecao<0){
+        tecladoSelecao=0;
+    } else if (tecladoSelecao>totalTeclas-1){
+        tecladoSelecao=totalTeclas-1;
+    }

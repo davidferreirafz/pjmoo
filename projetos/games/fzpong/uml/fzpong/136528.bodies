@@ -1,0 +1,11 @@
+class SpriteItem
+!!!176208.cpp!!!	~SpriteItem()
+
+!!!176336.cpp!!!	setPosicao(in ponto : Ponto) : void
+    SpriteAbstract::setPosicao(ponto.x,ponto.y);
+!!!176464.cpp!!!	desenhar(in x : int, in y : int) : void
+    quadro.x= (0)* (tamanho.w * frameTotal);
+
+    SpriteAbstract::desenhar(x,y);
+!!!176592.cpp!!!	SpriteItem()
+    automatico=false;

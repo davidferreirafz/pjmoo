@@ -1,0 +1,54 @@
+class SpritePersonagem
+!!!176720.cpp!!!	~SpritePersonagem()
+
+!!!176848.cpp!!!	setDirecao(in DIR : DIRECAO) : void
+    switch (qtdDirecao){
+        case 8:
+        case 4:
+                direcao=DIR;
+            break;
+        case 3:
+                switch (DIR){
+                    case DR_ESQUERDA:
+                            direcao=DR_BAIXO;
+                        break;
+                    case DR_BAIXO:
+                        break;
+                    default:
+                            direcao=DIR;
+                        break;
+                }
+            break;
+        case 2:
+                switch (DIR){
+                    case DR_ESQUERDA:
+                    case DR_CIMA:
+                            direcao=DR_CIMA;
+                        break;
+                    case DR_BAIXO:
+                    case DR_DIREITA:
+                            direcao=DR_DIREITA;
+                        break;
+                    default:
+                            //Sem modificação da direção. Opção 'default' apenas
+                            //para respeitar a recomendação do compilador
+                        break;
+            }
+            break;
+    }
+
+    animarManual();
+!!!176976.cpp!!!	setQtdDirecoes(in QTD : int) : void
+    qtdDirecao=QTD;
+!!!177104.cpp!!!	desenhar(in x : int, in y : int) : void
+    quadro.x= (direcao) * (tamanho.w * frameTotal);
+
+    SpriteAbstract::desenhar(x,y);
+!!!177232.cpp!!!	getQtdDirecoes() : int
+    return qtdDirecao;
+!!!177360.cpp!!!	getDirecao() : DIRECAO
+    return direcao;
+!!!177488.cpp!!!	SpritePersonagem()
+    direcao=DR_CIMA;
+    automatico=false;
+    qtdDirecao=4;

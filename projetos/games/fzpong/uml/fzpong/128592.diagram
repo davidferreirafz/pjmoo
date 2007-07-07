@@ -1,0 +1,255 @@
+format 29
+
+classcanvas 128208 class_ref 135888 // SoundSystemInterfaceManager
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default shadow default
+  hidden_attributes
+    attribute_ref 139728 // pathBase
+  hidden_operations
+    operation_ref 169168 // SoundSystemInterfaceManager
+    operation_ref 169296 // ~SoundSystemInterfaceManager
+    operation_ref 169424 // play
+    operation_ref 169552 // carregar
+    operation_ref 169680 // apagar
+    operation_ref 169808 // pause
+    operation_ref 169936 // resume
+    operation_ref 170064 // setPathBase
+  xyz 215 69 2005
+classcanvas 128336 class_ref 135248 // SoundSystemCanal
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default shadow default
+  hidden_attributes
+    attribute_ref 138960 // CANAL_MONO
+    attribute_ref 139088 // CANAL_STEREO
+  xyz 22 422 2000
+classcanvas 128464 class_ref 135376 // SoundSystemMusicManager
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default shadow default
+  hidden_attributes
+    attribute_ref 139984 // objetomap
+    attribute_ref 157008 // musicaTocando
+  hidden_operations
+    operation_ref 171216 // ~SoundSystemMusicManager
+    operation_ref 171344 // play
+    operation_ref 171472 // carregar
+    operation_ref 171600 // apagar
+    operation_ref 171728 // pause
+    operation_ref 171856 // resume
+    operation_ref 171984 // playLoop
+    operation_ref 172112 // playInfinity
+    operation_ref 172240 // stop
+    operation_ref 172368 // SoundSystemMusicManager
+  xyz 19 219 2005
+classcanvas 128720 class_ref 135504 // SoundSystemFxManager
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default shadow default
+  hidden_attributes
+    attribute_ref 139344 // objetomap
+    attribute_ref 139472 // area_left
+    attribute_ref 139600 // area_right
+  hidden_operations
+    operation_ref 167760 // ~SoundSystemFxManager
+    operation_ref 167888 // play
+    operation_ref 168016 // carregar
+    operation_ref 168144 // apagar
+    operation_ref 168272 // pause
+    operation_ref 168400 // resume
+    operation_ref 168528 // playPanEffect
+    operation_ref 168656 // playPanEffect
+    operation_ref 168784 // setVolume
+    operation_ref 168912 // setLimite
+    operation_ref 169040 // SoundSystemFxManager
+  xyz 471 218 2000
+classcanvas 128976 class_ref 135632 // SoundSystemStatus
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default shadow default
+  hidden_attributes
+    attribute_ref 140112 // ativo
+    attribute_ref 140240 // mute
+  hidden_operations
+    operation_ref 172496 // ~SoundSystemStatus
+    operation_ref 172624 // getInstance
+    operation_ref 172752 // isAtivo
+    operation_ref 172880 // isMute
+    operation_ref 173008 // setMute
+    operation_ref 173136 // setAtivo
+    operation_ref 173264 // SoundSystemStatus
+  xyz 245 227 3005
+classcanvas 129616 class_ref 135760 // SoundSystemFx
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default shadow default
+  hidden_attributes
+    attribute_ref 139216 // efeito
+  hidden_operations
+    operation_ref 167120 // ~SoundSystemFx
+    operation_ref 167248 // play
+    operation_ref 167376 // carregarArquivo
+    operation_ref 167504 // setVolume
+    operation_ref 167632 // SoundSystemFx
+  xyz 344 130 3005
+classcanvas 129872 class_ref 136016 // SoundSystemMusic
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default shadow default
+  hidden_attributes
+    attribute_ref 139856 // musica
+  hidden_operations
+    operation_ref 170192 // ~SoundSystemMusic
+    operation_ref 170320 // play
+    operation_ref 170448 // playLoop
+    operation_ref 170576 // playInfinity
+    operation_ref 170704 // carregarArquivo
+    operation_ref 170832 // setVolume
+    operation_ref 170960 // stop
+    operation_ref 171088 // SoundSystemMusic
+  xyz 167 128 3005
+classcanvas 130128 class_ref 129744 // SoundSystem
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default shadow default
+  hidden_operations
+    operation_ref 166480 // ~SoundSystem
+    operation_ref 166608 // getInstance
+    operation_ref 166736 // iniciar
+    operation_ref 166864 // setMute
+    operation_ref 166992 // SoundSystem
+  xyz 258 387 3005
+classcanvas 132304 class_ref 137936 // UtilLog
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default shadow default
+  color gray
+  hidden_attributes
+    attribute_ref 149584 // arquivo
+    attribute_ref 149712 // autor
+    attribute_ref 149840 // projeto
+    attribute_ref 149968 // handleArquivo
+  hidden_operations
+    operation_ref 187600 // setArquivo
+    operation_ref 187728 // setAutor
+    operation_ref 187856 // setProjeto
+    operation_ref 187984 // iniciar
+    operation_ref 188112 // finalizar
+    operation_ref 188240 // cabecalho
+    operation_ref 188368 // sistema
+    operation_ref 188496 // subSistema
+    operation_ref 188624 // comentario
+    operation_ref 188752 // comentarioComQuebra
+    operation_ref 188880 // tracer
+    operation_ref 189008 // escrever
+  xyz 356 491 2005
+classcanvas 132688 class_ref 137936 // UtilLog
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default shadow default
+  color gray
+  hidden_attributes
+    attribute_ref 149584 // arquivo
+    attribute_ref 149712 // autor
+    attribute_ref 149840 // projeto
+    attribute_ref 149968 // handleArquivo
+  hidden_operations
+    operation_ref 187600 // setArquivo
+    operation_ref 187728 // setAutor
+    operation_ref 187856 // setProjeto
+    operation_ref 187984 // iniciar
+    operation_ref 188112 // finalizar
+    operation_ref 188240 // cabecalho
+    operation_ref 188368 // sistema
+    operation_ref 188496 // subSistema
+    operation_ref 188624 // comentario
+    operation_ref 188752 // comentarioComQuebra
+    operation_ref 188880 // tracer
+    operation_ref 189008 // escrever
+  xyz 275 2 2005
+fragment 132944 "SoundSystem - Sistema de Som"
+  xyzwh 7 54 1994 621 426
+end
+classcanvas 135504 class_ref 138448 // SDL
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default shadow default
+  color blue
+  xyz 199 484 2000
+relationcanvas 128592 relation_ref 139344 // <generalisation>
+  geometry VH
+  from ref 128464 z 1999 to point 91 85
+  line 137808 z 1999 to ref 128208
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+relationcanvas 128848 relation_ref 138832 // <generalisation>
+  geometry HVr
+  from ref 128720 z 1999 to point 535 85
+  line 138064 z 1999 to ref 128208
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+relationcanvas 129104 relation_ref 139600 // <unidirectional association>
+  from ref 128976 z 1999 to point 337 230
+  line 138192 z 1999 to point 411 230
+  line 133200 z 1999 to point 411 243
+  line 133328 z 1999 to ref 128976
+  role_a_pos 363 233 3000 no_role_b
+  no_multiplicity_a no_multiplicity_b
+relationcanvas 129488 relation_ref 139088 // <unidirectional association>
+  geometry HV
+  from ref 128208 z 1999 to point 297 85
+  line 137296 z 1999 to ref 128976
+  role_a_pos 309 210 3000 no_role_b
+  no_multiplicity_a no_multiplicity_b
+relationcanvas 129744 relation_ref 138704 // <dependency>
+  geometry VHV
+  from ref 129616 z 1999 to point 387 190
+  line 137040 z 1999 stereotype "<<friend>>" xyz 425 170 3000 to point 535 190
+  line 137168 z 1999 to ref 128720
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+relationcanvas 130000 relation_ref 139216 // <dependency>
+  geometry HVr
+  from ref 129872 z 1999 to point 218 235
+  line 128324 z 1999 stereotype "<<friend>>" xyz 129 189 3000 to ref 128464
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+relationcanvas 130256 relation_ref 138192 // <unidirectional association>
+  geometry VHr
+  from ref 130128 z 1999 to point 91 403
+  line 136400 z 1999 to ref 128464
+  role_a_pos 103 261 3000 no_role_b
+  no_multiplicity_a no_multiplicity_b
+relationcanvas 130384 relation_ref 138320 // <unidirectional association>
+  geometry HV
+  from ref 130128 z 1999 to point 535 403
+  line 138576 z 1999 to ref 128720
+  role_a_pos 547 260 3000 no_role_b
+  no_multiplicity_a no_multiplicity_b
+relationcanvas 130512 relation_ref 138448 // <unidirectional association>
+  geometry VHr
+  from ref 130128 z 1999 to point 298 403
+  line 138448 z 1999 to ref 128976
+  role_a_pos 310 269 3000 no_role_b
+  no_multiplicity_a no_multiplicity_b
+relationcanvas 130640 relation_ref 138576 // <unidirectional association>
+  from ref 130128 z 1999 to point 330 378
+  line 128452 z 1999 to point 382 378
+  line 128068 z 1999 to point 382 395
+  line 130896 z 1999 to ref 130128
+  role_a_pos 346 385 3000 no_role_b
+  no_multiplicity_a no_multiplicity_b
+relationcanvas 131024 relation_ref 139472 // <dependency>
+  from ref 128464 z 1999 stereotype "<<friend>>" xyz 144 276 3000 to point 189 315
+  line 134224 z 1999 to ref 130128
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+relationcanvas 131152 relation_ref 138960 // <dependency>
+  from ref 128720 z 1999 to point 470 318
+  line 134352 z 1999 stereotype "<<friend>>" xyz 414 305 3000 to point 358 318
+  line 133968 z 1999 to ref 130128
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+relationcanvas 131792 relation_ref 147664 // <dependency>
+  from ref 130128 z 1999 to point 228 445
+  line 134480 z 1999 to ref 128336
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+relationcanvas 132432 relation_ref 147920 // <dependency>
+  geometry VH
+  from ref 130128 z 1999 to point 295 507
+  line 136144 z 1999 to ref 132304
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+relationcanvas 132816 relation_ref 148048 // <dependency>
+  geometry HV
+  from ref 128208 z 1999 to point 296 85
+  line 137552 z 1999 to ref 132688
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+relationcanvas 135632 relation_ref 150480 // <dependency>
+  geometry HVr
+  from ref 130128 z 1999 to point 295 508
+  line 136016 z 1999 to ref 135504
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+end

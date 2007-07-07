@@ -1,0 +1,7 @@
+class UserInterfaceMenuItemAbstract
+!!!207952.cpp!!!	UserInterfaceMenuItemAbstract()
+    ativo=false;
+!!!208848.cpp!!!	setAtivo(in ativo : bool) : void
+    this->ativo=ativo;
+!!!208976.cpp!!!	isAtivo() : bool
+    return ativo;

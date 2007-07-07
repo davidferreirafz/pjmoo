@@ -1,0 +1,1275 @@
+format 38
+"InputSystem" // GBF::InputSystem
+  revision 9
+  modified_by 54 "david"
+  // class settings
+  //class diagram settings
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_infonote default shadow default
+  //use case diagram settings
+  package_name_in_tab default show_context default auto_label_position default draw_all_relations default shadow default
+  //sequence diagram settings
+  show_full_operations_definition default write_horizontally default drawing_language default draw_all_relations default shadow default
+  //collaboration diagram settings
+  show_full_operations_definition default show_hierarchical_rank default write_horizontally default drawing_language default package_name_in_tab default show_context default draw_all_relations default shadow default
+  //object diagram settings
+   write_horizontally default package_name_in_tab default show_context default auto_label_position default draw_all_relations default shadow default
+  //component diagram settings
+  package_name_in_tab default show_context default auto_label_position default draw_all_relations default shadow default
+  draw_component_as_icon default show_component_req_prov default show_component_rea default
+  //deployment diagram settings
+  package_name_in_tab default show_context default write_horizontally default auto_label_position default draw_all_relations default shadow default
+  draw_component_as_icon default show_component_req_prov default show_component_rea default
+  //state diagram settings
+  package_name_in_tab default show_context default auto_label_position default write_trans_label_horizontally default show_trans_definition default draw_all_relations default shadow default
+  show_activities default region_horizontally default drawing_language default
+  //activity diagram settings
+  package_name_in_tab default show_context default show_opaque_action_definition default auto_label_position default write_flow_label_horizontally default draw_all_relations default shadow default
+  show_infonote default drawing_language default
+  
+  cpp_h_dir "/home/desenvolvimento/pjmoo/source/gbf/src/"
+  cpp_src_dir "/home/desenvolvimento/pjmoo/source/gbf/src/"
+  classview 128592 "Classes"
+    //class diagram settings
+    draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_infonote default shadow default
+    //collaboration diagram settings
+    show_full_operations_definition default show_hierarchical_rank default write_horizontally default drawing_language default package_name_in_tab default show_context default draw_all_relations default shadow default
+    //object diagram settings
+     write_horizontally default package_name_in_tab default show_context default auto_label_position default draw_all_relations default shadow default
+    //sequence diagram settings
+    show_full_operations_definition default write_horizontally default drawing_language default draw_all_relations default shadow default
+    //state diagram settings
+    package_name_in_tab default show_context default auto_label_position default write_trans_label_horizontally default show_trans_definition default draw_all_relations default shadow default
+    show_activities default region_horizontally default drawing_language default
+    //class settings
+    //activity diagram settings
+    package_name_in_tab default show_context default show_opaque_action_definition default auto_label_position default write_flow_label_horizontally default draw_all_relations default shadow default
+    show_infonote default drawing_language default
+    
+    class 132688 "InputSystemJoystick"
+      visibility package 
+      cpp_external cpp_decl "${name}
+#include <GBF/${name}.h>
+"
+      java_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      comment "Descrição: 
+    Classe para controle do joystick
+Motivação:
+    Prover o controle de eventos por meio do Joystick"
+      operation 153424 "~InputSystemJoystick"
+	cpp_virtual public explicit_return_type ""
+	nparams 0
+	cpp_decl "    ${comment}${inline}${virtual}${name}${(}${)}${volatile}${throw};
+"
+	cpp_def "${comment}${inline}${class}::${name}${(}${)}${volatile}${throw} 
+{
+  ${body}}
+"
+	
+	
+	comment "Destrutor"
+      end
+
+      operation 153552 "isAxeLeft"
+	public explicit_return_type "bool"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}
+{
+  ${body}}
+"
+	
+	
+	comment "Retorna se o direcional foi movido para o lado esquerdo"
+      end
+
+      operation 153680 "isAxeRight"
+	public explicit_return_type "bool"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}
+{
+  ${body}}
+"
+	
+	
+	comment "Retorna se o direcional foi movido para o lado direito"
+      end
+
+      operation 153808 "isAxeUp"
+	public explicit_return_type "bool"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+${body}}
+"
+	
+	
+	comment "* Retorna se o direcional foi movido para cima "
+      end
+
+      operation 153936 "isAxeDown"
+	public explicit_return_type "bool"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}
+{
+  ${body}}
+"
+	
+	
+	comment "Retorna se o direcional foi movido para baixo"
+      end
+
+      operation 154064 "isButtonA"
+	public explicit_return_type "bool"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}
+{
+  ${body}}
+"
+	
+	
+	comment "Retorna se o botão A foi pressionado"
+      end
+
+      operation 154192 "isButtonB"
+	public explicit_return_type "bool"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}
+{
+  ${body}}
+"
+	
+	
+	comment "Retorna se o botão B foi pressionado"
+      end
+
+      operation 154320 "isButtonC"
+	public explicit_return_type "bool"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}
+{
+  ${body}}
+"
+	
+	
+	comment "Retorna se o botão C foi pressionado (caso exista)"
+      end
+
+      operation 154448 "isButtonD"
+	public explicit_return_type "bool"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}
+{
+  ${body}}
+"
+	
+	
+	comment "Retorna se o botão D foi pressionado (caso exista)"
+      end
+
+      operation 154576 "InputSystemJoystick"
+	private explicit_return_type ""
+	nparams 0
+	cpp_decl "    ${comment}${inline}${name}${(}${)}${volatile}${throw};
+"
+	cpp_def "${comment}${inline}${class}::${name}${(}${)}${volatile}${throw} 
+{
+  ${body}}
+"
+	
+	
+	comment "Construtor"
+      end
+
+      operation 154704 "processar"
+	private explicit_return_type "void"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}
+{
+  ${body}}
+"
+	
+	
+	comment "Processa os eventos do joystick"
+      end
+
+      operation 154832 "limparEstado"
+	private explicit_return_type "void"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}
+{
+  ${body}}
+"
+	
+	
+	comment "Limpa o estado das teclas
+Obs.: Não funciona (não use)"
+      end
+
+      attribute 136400 "joystick"
+	private explicit_type "SDL_Joystick"
+	cpp_decl "    ${comment}${static}${mutable}${volatile}${const}${type} * ${name}${value};
+"
+	java_decl ""
+	idl_decl ""
+      end
+
+      classrelation 134096 // axe_horizontal (<directional aggregation by value>)
+	relation 134096 *-->
+	  a role_name "axe_horizontal" multiplicity "" private
+	    cpp default "    ${comment}${static}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	    classrelation_ref 134096 // axe_horizontal (<directional aggregation by value>)
+	  b multiplicity "" parent class_ref 132816 // JOYSTICK_AXE
+      end
+
+      classrelation 134224 // axe_vertical (<directional aggregation by value>)
+	relation 134224 *-->
+	  a role_name "axe_vertical" multiplicity "" private
+	    cpp default "    ${comment}${static}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	    classrelation_ref 134224 // axe_vertical (<directional aggregation by value>)
+	  b multiplicity "" parent class_ref 132816 // JOYSTICK_AXE
+      end
+
+      classrelation 134352 // <dependency>
+	relation 134352 -_->
+	  stereotype "friend"
+	  a protected
+	    cpp default "${type}"
+	    classrelation_ref 134352 // <dependency>
+	  b multiplicity "" parent class_ref 129488 // InputSystem
+      end
+
+      classrelation 146128 // <dependency>
+	relation 146128 -_->
+	  a protected
+	    classrelation_ref 146128 // <dependency>
+	  b multiplicity "" parent class_ref 132944 // JOYSTICK_BOTAO
+      end
+
+      classrelation 146896 // <dependency>
+	relation 146896 -_->
+	  a protected
+	    cpp default "    ${comment}${static}${mutable}${volatile}${const}${type} * ${name}${value};
+"
+	    classrelation_ref 146896 // <dependency>
+	  b multiplicity "" parent class_ref 137936 // UtilLog
+      end
+
+      classrelation 150096 // <dependency>
+	relation 150096 -_->
+	  a protected
+	    cpp default "    ${comment}${static}${mutable}${volatile}${const}${type} * ${name}${value};
+"
+	    classrelation_ref 150096 // <dependency>
+	  b multiplicity "" parent class_ref 138448 // SDL
+      end
+    end
+
+    class 133200 "InputSystemMouseCursor"
+      visibility package 
+      cpp_external cpp_decl "${name}
+#include <GBF/${name}.h>
+"
+      java_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      comment "Descrição: 
+    Classe para representação do ponteiro do mouse
+Motivação:
+    Prover o gerenciamento do ponteiro do mouse
+"
+      classrelation 134992 // <generalisation>
+	relation 134992 ---|>
+	  a public
+	    cpp default "${type}"
+	    classrelation_ref 134992 // <generalisation>
+	  b multiplicity "" parent class_ref 131920 // GraphicSystemImage
+      end
+
+      operation 157392 "~InputSystemMouseCursor"
+	cpp_virtual public explicit_return_type ""
+	nparams 0
+	cpp_decl "    ${comment}${inline}${virtual}${name}${(}${)}${volatile}${throw};
+"
+	cpp_def "${comment}${inline}${class}::${name}${(}${)}${volatile}${throw} 
+{
+  ${body}}
+"
+	
+	
+	comment "Destrutor"
+      end
+
+      operation 157520 "carregarArquivo"
+	cpp_virtual public explicit_return_type "bool"
+	nparams 1
+	  param in name "arquivo" explicit_type "std::string"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${t0} ${p0}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${t0} ${p0}${)}${const}${volatile}${throw}${staticnl}
+{
+  ${body}}
+"
+	
+	
+	comment "Carregar arquivo contendo a imagem do ponteiro"
+      end
+
+      operation 157648 "desenhar"
+	protected explicit_return_type "void"
+	nparams 2
+	  param in name "x" explicit_type "int"
+	  param in name "y" explicit_type "int"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${t0} ${p0}, ${t1} ${p1}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${t0} ${p0}, ${t1} ${p1}${)}${const}${volatile}${throw}${staticnl}
+{
+  ${body}}
+"
+	
+	
+	comment "Desenha o ponteiro na tela"
+      end
+
+      operation 157776 "InputSystemMouseCursor"
+	private explicit_return_type ""
+	nparams 0
+	cpp_decl "    ${comment}${inline}${name}${(}${)}${volatile}${throw};
+"
+	cpp_def "${comment}${inline}${class}::${name}${(}${)}${volatile}${throw} 
+{
+  ${body}}
+"
+	
+	
+	comment "Construtor"
+      end
+
+      classrelation 135120 // ponto (<directional aggregation by value>)
+	relation 135120 *-->
+	  a role_name "ponto" multiplicity "" private
+	    cpp default "    ${comment}${static}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	    classrelation_ref 135120 // ponto (<directional aggregation by value>)
+	  b multiplicity "" parent class_ref 128976 // Ponto
+      end
+
+      classrelation 135248 // <dependency>
+	relation 135248 -_->
+	  stereotype "friend"
+	  a protected
+	    cpp default "${type}"
+	    classrelation_ref 135248 // <dependency>
+	  b multiplicity "" parent class_ref 132560 // InputSystemMouse
+      end
+    end
+
+    class 132560 "InputSystemMouse"
+      visibility package 
+      cpp_external cpp_decl "${name}
+#include <GBF/${name}.h>
+"
+      java_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      comment "Descrição: 
+    Classe para controle do mouse
+Motivação:
+    Prover o controle de eventos por meio do Mouse"
+      operation 155600 "~InputSystemMouse"
+	cpp_virtual public explicit_return_type ""
+	nparams 0
+	cpp_decl "    ${comment}${inline}${virtual}${name}${(}${)}${volatile}${throw};
+"
+	cpp_def "${comment}${inline}${class}::${name}${(}${)}${volatile}${throw} 
+{
+${body}}"
+	
+	
+	comment "Destrutor"
+      end
+
+      operation 155728 "getX"
+	public explicit_return_type "int"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+	comment "Retorna a posição do mouse no eixo X"
+      end
+
+      operation 155856 "getY"
+	public explicit_return_type "int"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+	comment "Retorna a posição do mouse no eixo Y"
+      end
+
+      operation 155984 "getPosicao"
+	public return_type class_ref 128976 // Ponto
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+	comment "Retorna a posição do mouse"
+      end
+
+      operation 156112 "carregarArquivo"
+	public explicit_return_type "void"
+	nparams 1
+	  param in name "arquivo" explicit_type "std::string"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${t0} ${p0}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${t0} ${p0}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+	comment "Carrega o curso do mouse do arquivo"
+      end
+
+      operation 156240 "getMouseCursor"
+	public return_type class_ref 133200 // InputSystemMouseCursor
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} * ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} * ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+	comment "Retorna o InputSystemMouseCursor para manipulação"
+      end
+
+      operation 156368 "setMouse"
+	public explicit_return_type "void"
+	nparams 1
+	  param in name "show" explicit_type "bool"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${t0} ${p0}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${t0} ${p0}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+	comment "Configura se exibe ou não o cursor do mouse"
+      end
+
+      operation 156496 "isMouse"
+	public explicit_return_type "bool"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+	comment "Retorna se o ponteiro está ativo na tela"
+      end
+
+      operation 156624 "isButtonLeft"
+	public explicit_return_type "bool"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+	comment "Verifica se o botão esquerdo foi pressionado"
+      end
+
+      operation 156752 "isButtonMiddle"
+	public explicit_return_type "bool"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+	comment "Verifica se o botão do meio foi pressionado"
+      end
+
+      operation 156880 "isButtonRight"
+	public explicit_return_type "bool"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+	comment "Verifica se o botão direito foi pressionado"
+      end
+
+      operation 157008 "isButton"
+	public explicit_return_type "bool"
+	nparams 3
+	  param in name "left" explicit_type "bool"
+	  param in name "middle" explicit_type "bool"
+	  param in name "right" explicit_type "bool"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${t0} ${p0}, ${t1} ${p1}, ${t2} ${p2}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${t0} ${p0}, ${t1} ${p1}, ${t2} ${p2}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+	comment "Verifica se a combinação de botões foi pressionada"
+      end
+
+      classrelation 134608 // cursor (<unidirectional association>)
+	relation 134608 --->
+	  a role_name "cursor" multiplicity "" protected
+	    cpp default "    ${comment}${static}${mutable}${volatile}${const}${type} * ${name}${value};
+"
+	    classrelation_ref 134608 // cursor (<unidirectional association>)
+	  b multiplicity "" parent class_ref 133200 // InputSystemMouseCursor
+      end
+
+      operation 157136 "InputSystemMouse"
+	private explicit_return_type ""
+	nparams 0
+	cpp_decl "    ${comment}${inline}${name}${(}${)}${volatile}${throw};
+"
+	cpp_def "${comment}${inline}${class}::${name}${(}${)}${volatile}${throw} 
+{
+${body}}"
+	
+	
+	comment "Construtor"
+      end
+
+      operation 157264 "processar"
+	private explicit_return_type "void"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+	comment "Processa os eventos do mouse"
+      end
+
+      classrelation 134736 // ponto (<directional aggregation by value>)
+	relation 134736 *-->
+	  a role_name "ponto" multiplicity "" private
+	    cpp default "    ${comment}${static}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	    classrelation_ref 134736 // ponto (<directional aggregation by value>)
+	  b multiplicity "" parent class_ref 128976 // Ponto
+      end
+
+      attribute 137168 "botao"
+	private explicit_type "Uint8"
+	cpp_decl "    ${comment}${static}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	java_decl ""
+	idl_decl ""
+      end
+
+      attribute 137296 "mouse"
+	private explicit_type "bool"
+	cpp_decl "    ${comment}${static}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	java_decl ""
+	idl_decl ""
+      end
+
+      classrelation 134864 // <dependency>
+	relation 134864 -_->
+	  stereotype "friend"
+	  a protected
+	    cpp default "${type}"
+	    classrelation_ref 134864 // <dependency>
+	  b multiplicity "" parent class_ref 129488 // InputSystem
+      end
+
+      classrelation 146256 // <dependency>
+	relation 146256 -_->
+	  a protected
+	    classrelation_ref 146256 // <dependency>
+	  b multiplicity "" parent class_ref 133072 // MOUSE_BOTAO
+      end
+    end
+
+    class 132432 "InputSystemKeyboard"
+      visibility package 
+      cpp_external cpp_decl "${name}
+#include <GBF/${name}.h>
+"
+      java_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      comment "Descrição: 
+    Classe para controle do teclado
+Motivação:
+    Prover o controle de eventos por meio do Teclado
+"
+      operation 154960 "~InputSystemKeyboard"
+	cpp_virtual public explicit_return_type ""
+	nparams 0
+	cpp_decl "    ${comment}${inline}${virtual}${name}${(}${)}${volatile}${throw};
+"
+	cpp_def "${comment}${inline}${class}::${name}${(}${)}${volatile}${throw} 
+{
+${body}}"
+	
+	
+	comment "Destrutor"
+      end
+
+      operation 155088 "isKey"
+	public explicit_return_type "bool"
+	nparams 1
+	  param in name "tecla" explicit_type "SDLKey"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${t0} ${p0}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${t0} ${p0}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+	comment "Verifica se a tecla foi pressionada"
+      end
+
+      operation 155216 "InputSystemKeyboard"
+	private explicit_return_type ""
+	nparams 0
+	cpp_decl "    ${comment}${inline}${name}${(}${)}${volatile}${throw};
+"
+	cpp_def "${comment}${inline}${class}::${name}${(}${)}${volatile}${throw} 
+{
+${body}}"
+	
+	
+	comment "Construtor"
+      end
+
+      operation 155344 "processar"
+	private explicit_return_type "void"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+	comment "Processa os eventos do teclado"
+      end
+
+      operation 155472 "limparEstado"
+	private explicit_return_type "void"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+	comment "Limpa o estado das teclas"
+      end
+
+      attribute 136528 "ptecla"
+	class_attribute private explicit_type "Uint8"
+	cpp_decl "    ${comment}${static}${mutable}${volatile}${const}${type} * ${name}${value};
+"
+	java_decl ""
+	idl_decl ""
+      end
+
+      classrelation 134480 // <dependency>
+	relation 134480 -_->
+	  stereotype "friend"
+	  a protected
+	    cpp default "${type}"
+	    classrelation_ref 134480 // <dependency>
+	  b multiplicity "" parent class_ref 129488 // InputSystem
+      end
+
+      classrelation 145360 // <dependency>
+	relation 145360 -_->
+	  a protected
+	    cpp default "    ${comment}${static}${mutable}${volatile}${const}${type} * ${name}${value};
+"
+	    classrelation_ref 145360 // <dependency>
+	  b multiplicity "" parent class_ref 137936 // UtilLog
+      end
+
+      classrelation 150224 // <dependency>
+	relation 150224 -_->
+	  a protected
+	    cpp default "    ${comment}${static}${mutable}${volatile}${const}${type} * ${name}${value};
+"
+	    classrelation_ref 150224 // <dependency>
+	  b multiplicity "" parent class_ref 138448 // SDL
+      end
+    end
+
+    class 133072 "MOUSE_BOTAO"
+      visibility package stereotype "enum"
+      cpp_decl "${comment}enum ${name} {
+${items}
+};
+"
+      java_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      comment "Descrição: 
+    Valores para indicação dos botões
+Motivação:
+    Fornecer um conjunto de valores para verificação dos botões do mouse"
+      attribute 136656 "MS_NULL"
+	public explicit_type ""
+	cpp_decl "  ${comment}${name}${value},"
+	java_decl ""
+	idl_decl ""
+      end
+
+      attribute 136784 "MS_LEFT"
+	public explicit_type ""
+	cpp_decl "  ${comment}${name}${value},"
+	java_decl ""
+	idl_decl ""
+      end
+
+      attribute 136912 "MS_MIDDLE"
+	public explicit_type ""
+	cpp_decl "  ${comment}${name}${value},"
+	java_decl ""
+	idl_decl ""
+      end
+
+      attribute 137040 "MS_RIGHT"
+	public explicit_type ""
+	cpp_decl "  ${comment}${name}${value},"
+	java_decl ""
+	idl_decl ""
+      end
+    end
+
+    class 132944 "JOYSTICK_BOTAO"
+      visibility package stereotype "enum"
+      cpp_decl "${comment}enum ${name} {
+${items}
+};
+"
+      java_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      comment "Descrição: 
+    Valores para indicação dos botões
+Motivação:
+    Fornecer um conjunto de valores para verificação dos botões do joystick"
+      attribute 135888 "JB_A"
+	public explicit_type ""
+	cpp_decl "  ${comment}${name}${value},"
+	java_decl ""
+	idl_decl ""
+      end
+
+      attribute 136016 "JB_B"
+	public explicit_type ""
+	cpp_decl "  ${comment}${name}${value},"
+	java_decl ""
+	idl_decl ""
+      end
+
+      attribute 136144 "JB_C"
+	public explicit_type ""
+	cpp_decl "  ${comment}${name}${value},"
+	java_decl ""
+	idl_decl ""
+      end
+
+      attribute 136272 "JB_D"
+	public explicit_type ""
+	cpp_decl "  ${comment}${name}${value},"
+	java_decl ""
+	idl_decl ""
+      end
+    end
+
+    class 132816 "JOYSTICK_AXE"
+      visibility package stereotype "enum"
+      cpp_decl "${comment}enum ${name} {
+${items}
+};
+"
+      java_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      comment "Descrição: 
+    Valores para indicação dos eixos
+Motivação:
+    Fornecer um conjunto de valores para verificação dos eixos do joystick"
+      attribute 135248 "AXE_STOP"
+	public explicit_type ""
+	cpp_decl "  ${comment}${name}${value},"
+	java_decl ""
+	idl_decl ""
+      end
+
+      attribute 135376 "AXE_LEFT"
+	public explicit_type ""
+	cpp_decl "  ${comment}${name}${value},"
+	java_decl ""
+	idl_decl ""
+      end
+
+      attribute 135504 "AXE_RIGHT"
+	public explicit_type ""
+	cpp_decl "  ${comment}${name}${value},"
+	java_decl ""
+	idl_decl ""
+      end
+
+      attribute 135632 "AXE_UP"
+	public explicit_type ""
+	cpp_decl "  ${comment}${name}${value},"
+	java_decl ""
+	idl_decl ""
+      end
+
+      attribute 135760 "AXE_DOWN"
+	public explicit_type ""
+	cpp_decl "  ${comment}${name}${value},"
+	java_decl ""
+	idl_decl ""
+      end
+    end
+
+    class 129488 "InputSystem"
+      visibility package 
+      cpp_external cpp_decl "${name}
+#include <GBF/${name}.h>
+"
+      java_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      comment "Descrição: 
+    Classe para inicialização e gerenciamento do sistema de controle de interação do usuário
+Motivação:
+    Gerenciar o uso dos eventos do usuário
+"
+      operation 152272 "~InputSystem"
+	cpp_virtual public explicit_return_type ""
+	nparams 0
+	cpp_decl "    ${comment}${inline}${virtual}${name}${(}${)}${volatile}${throw};
+"
+	cpp_def "${comment}${inline}${class}::${name}${(}${)}${volatile}${throw} 
+{
+${body}}"
+	
+	
+	comment "Destrutor"
+      end
+
+      operation 152400 "getInstance"
+	class_operation public return_type class_ref 129488 // InputSystem
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} * ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} * ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+${body}}"
+	
+	
+	comment "Retorna uma instancia de InputSystem"
+      end
+
+      operation 152528 "processar"
+	public explicit_return_type "void"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+	comment "Processa os eventos referentes aos mouse, teclado e joystick"
+      end
+
+      operation 152656 "getEvento"
+	public explicit_return_type "SDL_Event"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} * ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} * ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+	comment "Retorna o evento lançado para o SubSistema de Input"
+      end
+
+      operation 152784 "alternarControleExclusivo"
+	public explicit_return_type "void"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+	comment "Alterna entre input exclusivo e compartilhado"
+      end
+
+      operation 152912 "setControleExclusivo"
+	public explicit_return_type "void"
+	nparams 1
+	  param in name "valor" explicit_type "SDL_GrabMode"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${t0} ${p0}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${t0} ${p0}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+	comment "Configura o controle do teclado, mouse e joystick como exclusivo da aplicação"
+      end
+
+      operation 153040 "limparEstado"
+	public explicit_return_type "void"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+	comment "Limpa o estado dos eventos do teclado, joystick"
+      end
+
+      operation 153168 "getControleExclusivo"
+	public explicit_return_type "SDL_GrabMode"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+	comment "Retorna como está configurado o modo de input"
+      end
+
+      classrelation 133584 // teclado (<unidirectional association>)
+	relation 133584 --->
+	  a role_name "teclado" multiplicity "" public
+	    cpp default "    ${comment}${static}${mutable}${volatile}${const}${type} * ${name}${value};
+"
+	    classrelation_ref 133584 // teclado (<unidirectional association>)
+	  b multiplicity "" parent class_ref 132432 // InputSystemKeyboard
+      end
+
+      classrelation 133712 // mouse (<unidirectional association>)
+	relation 133712 --->
+	  a role_name "mouse" multiplicity "" public
+	    cpp default "    ${comment}${static}${mutable}${volatile}${const}${type} * ${name}${value};
+"
+	    classrelation_ref 133712 // mouse (<unidirectional association>)
+	  b multiplicity "" parent class_ref 132560 // InputSystemMouse
+      end
+
+      classrelation 133840 // joystick (<unidirectional association>)
+	relation 133840 --->
+	  a role_name "joystick" multiplicity "" public
+	    cpp default "    ${comment}${static}${mutable}${volatile}${const}${type} * ${name}${value};
+"
+	    classrelation_ref 133840 // joystick (<unidirectional association>)
+	  b multiplicity "" parent class_ref 132688 // InputSystemJoystick
+      end
+
+      classrelation 133968 // instance (<unidirectional association>)
+	relation 133968 --->
+	  a role_name "instance" multiplicity "" class_relation protected
+	    cpp default "    ${comment}${static}${mutable}${volatile}${const}${type} * ${name}${value};
+"
+	    classrelation_ref 133968 // instance (<unidirectional association>)
+	  b multiplicity "" parent class_ref 129488 // InputSystem
+      end
+
+      attribute 134992 "evento"
+	protected explicit_type "SDL_Event"
+	cpp_decl "    ${comment}${static}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	java_decl ""
+	idl_decl ""
+      end
+
+      operation 153296 "InputSystem"
+	private explicit_return_type ""
+	nparams 0
+	cpp_decl "    ${comment}${inline}${name}${(}${)}${volatile}${throw};
+"
+	cpp_def "${comment}${inline}${class}::${name}${(}${)}${volatile}${throw} 
+{
+${body}}"
+	
+	
+	comment "Construtor
+Obs.: Inicializa os Sistemas de Input (Teclado, Mouse, Joystick)"
+      end
+
+      attribute 135120 "controleExclusivo"
+	private explicit_type "SDL_GrabMode"
+	cpp_decl "    ${comment}${static}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	java_decl ""
+	idl_decl ""
+      end
+
+      classrelation 150352 // <dependency>
+	relation 150352 -_->
+	  a protected
+	    cpp default "    ${comment}${static}${mutable}${volatile}${const}${type} * ${name}${value};
+"
+	    classrelation_ref 150352 // <dependency>
+	  b multiplicity "" parent class_ref 138448 // SDL
+      end
+    end
+  end
+
+  deploymentview 128976 "Deploy"
+    //deployment diagram settings
+    package_name_in_tab default show_context default write_horizontally default auto_label_position default draw_all_relations default shadow default
+    draw_component_as_icon default show_component_req_prov default show_component_rea default
+    artifact 131152 "InputSystem"
+      stereotype "source"
+      cpp_h "${comment}
+#ifndef _${NAME}_H
+#define _${NAME}_H
+
+${all_includes}
+${declarations}
+${namespace_start}
+${definition}
+${namespace_end}
+#endif
+"
+      cpp_src "${comment}
+${includes}
+${namespace_start}
+${members}
+${namespace_end}"
+      associated_classes
+	class_ref 129488 // InputSystem
+      end
+      comment "//    GBF - Gamework's Brazilian Framework
+//    Copyright (C) 2004-2007 David de Almeida Ferreira
+//
+//    This library is free software; you can redistribute it and/or
+//    modify it under the terms of the GNU Library General Public
+//    License as published by the Free Software Foundation; either
+//    version 2 of the License, or (at your option) any later version.
+//
+//    David de Almeida Ferreira (F-Z)
+//        davidferreira@uol.com.br or davidferreira.fz@gmail.com
+//        http://pjmoo.codigolivre.org.br
+//////////////////////////////////////////////////////////////////////
+"
+    end
+
+    artifact 131664 "InputSystemKeyboard"
+      stereotype "source"
+      cpp_h "${comment}
+#ifndef _${NAME}_H
+#define _${NAME}_H
+
+${all_includes}
+${declarations}
+${namespace_start}
+${definition}
+${namespace_end}
+#endif
+"
+      cpp_src "${comment}
+${includes}
+${namespace_start}
+${members}
+${namespace_end}"
+      associated_classes
+	class_ref 132432 // InputSystemKeyboard
+      end
+      comment "//    GBF - Gamework's Brazilian Framework
+//    Copyright (C) 2004-2007 David de Almeida Ferreira
+//
+//    This library is free software; you can redistribute it and/or
+//    modify it under the terms of the GNU Library General Public
+//    License as published by the Free Software Foundation; either
+//    version 2 of the License, or (at your option) any later version.
+//
+//    David de Almeida Ferreira (F-Z)
+//        davidferreira@uol.com.br or davidferreira.fz@gmail.com
+//        http://pjmoo.codigolivre.org.br
+//////////////////////////////////////////////////////////////////////
+"
+    end
+
+    artifact 131536 "InputSystemJoystick"
+      stereotype "source"
+      cpp_h "${comment}
+#ifndef _${NAME}_H
+#define _${NAME}_H
+
+${all_includes}
+${declarations}
+${namespace_start}
+${definition}
+${namespace_end}
+#endif
+"
+      cpp_src "${comment}
+${includes}
+${namespace_start}
+${members}
+${namespace_end}"
+      associated_classes
+	class_ref 132816 // JOYSTICK_AXE
+	class_ref 132944 // JOYSTICK_BOTAO
+	class_ref 132688 // InputSystemJoystick
+      end
+      comment "//    GBF - Gamework's Brazilian Framework
+//    Copyright (C) 2004-2007 David de Almeida Ferreira
+//
+//    This library is free software; you can redistribute it and/or
+//    modify it under the terms of the GNU Library General Public
+//    License as published by the Free Software Foundation; either
+//    version 2 of the License, or (at your option) any later version.
+//
+//    David de Almeida Ferreira (F-Z)
+//        davidferreira@uol.com.br or davidferreira.fz@gmail.com
+//        http://pjmoo.codigolivre.org.br
+//////////////////////////////////////////////////////////////////////
+"
+    end
+
+    artifact 131920 "InputSystemMouse"
+      stereotype "source"
+      cpp_h "${comment}
+#ifndef _${NAME}_H
+#define _${NAME}_H
+
+${all_includes}
+${declarations}
+${namespace_start}
+${definition}
+${namespace_end}
+#endif
+"
+      cpp_src "${comment}
+${includes}
+${namespace_start}
+${members}
+${namespace_end}"
+      associated_classes
+	class_ref 133072 // MOUSE_BOTAO
+	class_ref 132560 // InputSystemMouse
+      end
+      comment "//    GBF - Gamework's Brazilian Framework
+//    Copyright (C) 2004-2007 David de Almeida Ferreira
+//
+//    This library is free software; you can redistribute it and/or
+//    modify it under the terms of the GNU Library General Public
+//    License as published by the Free Software Foundation; either
+//    version 2 of the License, or (at your option) any later version.
+//
+//    David de Almeida Ferreira (F-Z)
+//        davidferreira@uol.com.br or davidferreira.fz@gmail.com
+//        http://pjmoo.codigolivre.org.br
+//////////////////////////////////////////////////////////////////////
+"
+    end
+
+    artifact 132048 "InputSystemMouseCursor"
+      stereotype "source"
+      cpp_h "${comment}
+#ifndef _${NAME}_H
+#define _${NAME}_H
+
+${all_includes}
+${declarations}
+${namespace_start}
+${definition}
+${namespace_end}
+#endif
+"
+      cpp_src "${comment}
+${includes}
+${namespace_start}
+${members}
+${namespace_end}"
+      associated_classes
+	class_ref 133200 // InputSystemMouseCursor
+      end
+      comment "//    GBF - Gamework's Brazilian Framework
+//    Copyright (C) 2004-2007 David de Almeida Ferreira
+//
+//    This library is free software; you can redistribute it and/or
+//    modify it under the terms of the GNU Library General Public
+//    License as published by the Free Software Foundation; either
+//    version 2 of the License, or (at your option) any later version.
+//
+//    David de Almeida Ferreira (F-Z)
+//        davidferreira@uol.com.br or davidferreira.fz@gmail.com
+//        http://pjmoo.codigolivre.org.br
+//////////////////////////////////////////////////////////////////////
+"
+    end
+  end
+end

@@ -1,0 +1,14 @@
+class PathRight
+!!!171358.cpp!!!	PathRight()
+
+!!!171486.cpp!!!	~PathRight()
+
+!!!171614.cpp!!!	mover(in velocidade : int, inout posicao : Ponto, in dimensao : Dimensao) : bool
+
+	posicao->x+=velocidade;
+
+    if (posicao->x>area.right+dimensao.w){
+		return true;
+	} else {
+		return false;
+	}

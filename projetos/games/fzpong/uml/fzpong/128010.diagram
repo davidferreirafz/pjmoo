@@ -1,0 +1,90 @@
+format 29
+
+classcanvas 128010 class_ref 131934 // ListItem
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default shadow default
+  xyz 76 41 2004
+classcanvas 128522 class_ref 131550 // ItemVelocidade
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default shadow default
+  xyz 487 321 2000
+classcanvas 128650 class_ref 131422 // ItemEscudo
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default shadow default
+  xyz 256 314 2005
+classcanvas 128778 class_ref 131294 // ItemFactory
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default shadow default
+  xyz 255 419 2004
+classcanvas 129162 class_ref 131166 // ItemArma
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default shadow default
+  xyz 17 327 3005
+classcanvas 129418 class_ref 130782 // ItemAbstract
+  draw_all_relations yes hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default shadow default
+  xyz 252 235 2004
+classcanvas 130058 class_ref 130654 // EnumItem
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default shadow default
+  xyz 497 28 2000
+classcanvas 130186 class_ref 130910 // SpaceObject
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default shadow default
+  xyz 278 141 2009
+classcanvas 132618 class_ref 131038 // PathStrategy
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default shadow default
+  xyz 498 162 3005
+classcanvas 132874 class_ref 129488 // InputSystem
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default shadow default
+  color gray
+  xyz 18 112 2014
+relationcanvas 128138 relation_ref 131806 // <unidirectional association>
+  from ref 128010 z 1999 to point 294 41
+  line 128266 z 1999 to point 294 71
+  line 128394 z 1999 to ref 128010
+  role_a_pos 274 50 3000 no_role_b
+  no_multiplicity_a no_multiplicity_b
+relationcanvas 128906 relation_ref 130910 // <dependency>
+  from ref 128650 z 1999 stereotype "<<friend>>" xyz 328 385 3000 to ref 128778
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+relationcanvas 129034 relation_ref 131166 // <dependency>
+  from ref 128522 z 1999 stereotype "<<friend>>" xyz 444 388 3000 to ref 128778
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+relationcanvas 129290 relation_ref 130654 // <dependency>
+  from ref 129162 z 1999 stereotype "<<friend>>" xyz 207 391 3000 to ref 128778
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+relationcanvas 129546 relation_ref 130782 // <generalisation>
+  geometry HV
+  from ref 128650 z 1999 to point 359 331
+  line 132362 z 1999 to ref 129418
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+relationcanvas 129674 relation_ref 130526 // <generalisation>
+  geometry VH
+  from ref 129162 z 1999 to point 115 252
+  line 131978 z 1999 to ref 129418
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+relationcanvas 129802 relation_ref 131038 // <generalisation>
+  geometry HVr
+  from ref 128522 z 1999 to point 600 252
+  line 132234 z 1999 to ref 129418
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+relationcanvas 130314 relation_ref 130270 // <generalisation>
+  geometry HV
+  from ref 129418 z 1999 to point 365 252
+  line 132490 z 1999 to ref 130186
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+relationcanvas 132746 relation_ref 130398 // <unidirectional association>
+  from ref 129418 z 1999 to ref 132618
+  role_a_pos 497 177 3000 no_role_b
+  no_multiplicity_a no_multiplicity_b
+relationcanvas 133002 relation_ref 133968 // <unidirectional association>
+  from ref 132874 z 1999 to point 256 112
+  line 133130 z 1999 to point 256 142
+  line 133258 z 1999 to ref 132874
+  role_a_pos 236 121 3000 no_role_b
+  no_multiplicity_a no_multiplicity_b
+relationcanvas 133386 relation_ref 128010 // <dependency>
+  from ref 129418 z 2003 to ref 132874
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+end

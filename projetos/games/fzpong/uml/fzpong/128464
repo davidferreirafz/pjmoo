@@ -1,0 +1,866 @@
+format 38
+"TimerSystem" // GBF::TimerSystem
+  revision 6
+  modified_by 100 "david"
+  // class settings
+  //class diagram settings
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_infonote default shadow default
+  //use case diagram settings
+  package_name_in_tab default show_context default auto_label_position default draw_all_relations default shadow default
+  //sequence diagram settings
+  show_full_operations_definition default write_horizontally default drawing_language default draw_all_relations default shadow default
+  //collaboration diagram settings
+  show_full_operations_definition default show_hierarchical_rank default write_horizontally default drawing_language default package_name_in_tab default show_context default draw_all_relations default shadow default
+  //object diagram settings
+   write_horizontally default package_name_in_tab default show_context default auto_label_position default draw_all_relations default shadow default
+  //component diagram settings
+  package_name_in_tab default show_context default auto_label_position default draw_all_relations default shadow default
+  draw_component_as_icon default show_component_req_prov default show_component_rea default
+  //deployment diagram settings
+  package_name_in_tab default show_context default write_horizontally default auto_label_position default draw_all_relations default shadow default
+  draw_component_as_icon default show_component_req_prov default show_component_rea default
+  //state diagram settings
+  package_name_in_tab default show_context default auto_label_position default write_trans_label_horizontally default show_trans_definition default draw_all_relations default shadow default
+  show_activities default region_horizontally default drawing_language default
+  //activity diagram settings
+  package_name_in_tab default show_context default show_opaque_action_definition default auto_label_position default write_flow_label_horizontally default draw_all_relations default shadow default
+  show_infonote default drawing_language default
+  
+  cpp_h_dir "/home/desenvolvimento/pjmoo/source/gbf/src/"
+  cpp_src_dir "/home/desenvolvimento/pjmoo/source/gbf/src/"
+  classview 128464 "Classes"
+    //class diagram settings
+    draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_infonote default shadow default
+    //collaboration diagram settings
+    show_full_operations_definition default show_hierarchical_rank default write_horizontally default drawing_language default package_name_in_tab default show_context default draw_all_relations default shadow default
+    //object diagram settings
+     write_horizontally default package_name_in_tab default show_context default auto_label_position default draw_all_relations default shadow default
+    //sequence diagram settings
+    show_full_operations_definition default write_horizontally default drawing_language default draw_all_relations default shadow default
+    //state diagram settings
+    package_name_in_tab default show_context default auto_label_position default write_trans_label_horizontally default show_trans_definition default draw_all_relations default shadow default
+    show_activities default region_horizontally default drawing_language default
+    //class settings
+    //activity diagram settings
+    package_name_in_tab default show_context default show_opaque_action_definition default auto_label_position default write_flow_label_horizontally default draw_all_relations default shadow default
+    show_infonote default drawing_language default
+    
+    class 130896 "TimerSystemCronometroDecrescente"
+      visibility package 
+      cpp_decl "${comment}${template}class ${name}${inherit} {
+${members}};
+${inlines}
+"
+      java_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      comment "Descrição: 
+    Classe para marcação de tempo decrecente
+Motivação:
+    Fornecer uma marcação de tempo decrescente"
+      classrelation 141136 // <generalisation>
+	relation 141136 ---|>
+	  a public
+	    cpp default "${type}"
+	    classrelation_ref 141136 // <generalisation>
+	  b multiplicity "" parent class_ref 136912 // TimerSystemCronometroAbstract
+      end
+
+      operation 180688 "executar"
+	protected explicit_return_type "void"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+	comment "Executa este método quando o estado é CRONOMETRO_EXECUTAR"
+      end
+
+      operation 181328 "TimerSystemCronometroDecrescente"
+	public explicit_return_type ""
+	nparams 0
+	cpp_decl "    ${comment}${inline}${name}${(}${)}${volatile}${throw};
+"
+	cpp_def "${comment}${inline}${class}::${name}${(}${)}${volatile}${throw} 
+{
+${body}}"
+	
+	
+	comment "Construtor"
+      end
+
+      operation 181200 "~TimerSystemCronometroDecrescente"
+	cpp_virtual public explicit_return_type ""
+	nparams 0
+	cpp_decl "    ${comment}${inline}${virtual}${name}${(}${)}${volatile}${throw};
+"
+	cpp_def "${comment}${inline}${class}::${name}${(}${)}${volatile}${throw} 
+{
+${body}}"
+	
+	
+	comment "Destrutor"
+      end
+    end
+
+    class 130512 "TimerSystemCronometroCrescente"
+      visibility package 
+      cpp_decl "${comment}${template}class ${name}${inherit} {
+${members}};
+${inlines}
+"
+      java_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      comment "Descrição: 
+    Classe para marcação de tempo crescente
+Motivação:
+    Fornecer uma marcação de tempo crescente"
+      classrelation 141008 // <generalisation>
+	relation 141008 ---|>
+	  a public
+	    cpp default "${type}"
+	    classrelation_ref 141008 // <generalisation>
+	  b multiplicity "" parent class_ref 136912 // TimerSystemCronometroAbstract
+      end
+
+      operation 179920 "executar"
+	protected explicit_return_type "void"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+	comment "Executa este método quando o estado é CRONOMETRO_EXECUTAR"
+      end
+
+      operation 180560 "TimerSystemCronometroCrescente"
+	public explicit_return_type ""
+	nparams 0
+	cpp_decl "    ${comment}${inline}${name}${(}${)}${volatile}${throw};
+"
+	cpp_def "${comment}${inline}${class}::${name}${(}${)}${volatile}${throw} 
+{
+${body}}"
+	
+	
+	comment "Construtor"
+      end
+
+      operation 180432 "~TimerSystemCronometroCrescente"
+	cpp_virtual public explicit_return_type ""
+	nparams 0
+	cpp_decl "    ${comment}${inline}${virtual}${name}${(}${)}${volatile}${throw};
+"
+	cpp_def "${comment}${inline}${class}::${name}${(}${)}${volatile}${throw} 
+{
+${body}}"
+	
+	
+	comment "Destrutor"
+      end
+    end
+
+    class 129872 "TimerSystemFPS"
+      visibility package 
+      cpp_decl "${comment}${template}class ${name}${inherit} {
+${members}};
+${inlines}
+"
+      java_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      comment "Descrição: 
+    Classe para controle da quantidade de quadros por segundo
+Motivação:
+    Fornecer um mecanismo para controlar a  velocidade de processamento da aplicação"
+      operation 181456 "TimerSystemFPS"
+	public explicit_return_type ""
+	nparams 0
+	cpp_decl "    ${comment}${inline}${name}${(}${)}${volatile}${throw};
+"
+	cpp_def "${comment}${inline}${class}::${name}${(}${)}${volatile}${throw} 
+{
+${body}}"
+	
+	
+	comment "Construtor"
+      end
+
+      operation 181584 "~TimerSystemFPS"
+	cpp_virtual public explicit_return_type ""
+	nparams 0
+	cpp_decl "    ${comment}${inline}${virtual}${name}${(}${)}${volatile}${throw};
+"
+	cpp_def "${comment}${inline}${class}::${name}${(}${)}${volatile}${throw} 
+{
+${body}}"
+	
+	
+	comment "Destrutor"
+      end
+
+      operation 181712 "processar"
+	public explicit_return_type "void"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+      end
+
+      operation 181840 "start"
+	public explicit_return_type "void"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+	comment "Deve ser chamado antes do loop principal do jogo"
+      end
+
+      operation 181968 "aumentar"
+	public explicit_return_type "void"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+	comment "Aumenta a frequencia do FPS"
+      end
+
+      operation 182096 "diminuir"
+	public explicit_return_type "void"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+	comment "Diminui a frequencia do FPS"
+      end
+
+      attribute 145360 "framestart"
+	private explicit_type "double"
+	cpp_decl "    ${comment}${static}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	java_decl ""
+	idl_decl ""
+      end
+
+      attribute 145488 "fpsMax"
+	private explicit_type "int"
+	cpp_decl "    ${comment}${static}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	java_decl ""
+	idl_decl ""
+      end
+
+      classrelation 147408 // <dependency>
+	relation 147408 -_->
+	  a protected
+	    cpp default "    ${comment}${static}${mutable}${volatile}${const}${type} * ${name}${value};
+"
+	    classrelation_ref 147408 // <dependency>
+	  b multiplicity "" parent class_ref 137936 // UtilLog
+      end
+
+      classrelation 149840 // <dependency>
+	relation 149840 -_->
+	  a protected
+	    cpp default "    ${comment}${static}${mutable}${volatile}${const}${type} * ${name}${value};
+"
+	    classrelation_ref 149840 // <dependency>
+	  b multiplicity "" parent class_ref 138448 // SDL
+      end
+    end
+
+    class 136784 "EnumCronometro"
+      visibility package stereotype "enum"
+      cpp_decl "${comment}enum ${name} {
+${items}};
+"
+      java_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      comment "Descrição: 
+    Valores para  indicação de estado
+Motivação:
+    Fornecer um conjunto de valores para definição da máquina de estados dos cronometros"
+      attribute 143952 "CRONOMETRO_RESETAR"
+	public explicit_type ""
+	cpp_decl "  ${comment}${name}${value},"
+	java_decl ""
+	idl_decl ""
+	comment "Restaura tempo original e passa para o estado de iniciar"
+      end
+
+      attribute 144080 "CRONOMETRO_INICIAR"
+	public explicit_type ""
+	cpp_decl "  ${comment}${name}${value},"
+	java_decl ""
+	idl_decl ""
+	comment "Inicio do cronometro"
+      end
+
+      attribute 144208 "CRONOMETRO_PAUSAR"
+	public explicit_type ""
+	cpp_decl "  ${comment}${name}${value},"
+	java_decl ""
+	idl_decl ""
+	comment "Pausa cronometro"
+      end
+
+      attribute 144336 "CRONOMETRO_CONTINUAR"
+	public explicit_type ""
+	cpp_decl "  ${comment}${name}${value},"
+	java_decl ""
+	idl_decl ""
+	comment "continua contagem do cronometro"
+      end
+
+      attribute 144464 "CRONOMETRO_EXECUTAR"
+	public explicit_type ""
+	cpp_decl "  ${comment}${name}${value},"
+	java_decl ""
+	idl_decl ""
+	comment "Cronometro em execução"
+      end
+
+      attribute 144592 "CRONOMETRO_TERMINAR"
+	public explicit_type ""
+	cpp_decl "  ${comment}${name}${value},"
+	java_decl ""
+	idl_decl ""
+	comment "Cronometro finalizado
+"
+      end
+    end
+
+    class 136656 "EnumTempo"
+      visibility package stereotype "enum"
+      cpp_decl "${comment}enum ${name} {
+${items}
+};
+"
+      java_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      comment "Descrição: 
+    Valores para marcação da passagem do tempo
+Motivação:
+    Fornecer um conjunto de valores para medição da passagem de tempo
+
+"
+      attribute 143568 "TEMPO_CENTESIMO"
+	public explicit_type ""
+	init_value "=100"
+	cpp_decl "  ${comment}${name}${value},"
+	java_decl ""
+	idl_decl ""
+      end
+
+      attribute 143696 "TEMPO_MEIO"
+	public explicit_type ""
+	init_value "=500"
+	cpp_decl "  ${comment}${name}${value},"
+	java_decl ""
+	idl_decl ""
+      end
+
+      attribute 143824 "TEMPO_SEGUNDO"
+	public explicit_type ""
+	init_value "=1000"
+	cpp_decl "  ${comment}${name}${value},"
+	java_decl ""
+	idl_decl ""
+      end
+    end
+
+    class 136912 "TimerSystemCronometroAbstract"
+      abstract visibility package 
+      cpp_decl "${comment}${template}class ${name}${inherit} {
+${members}};
+${inlines}
+"
+      java_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      comment "Descrição: 
+    Classe abstrata para criação de cronometros
+Motivação:
+    Fornecer um conjunto de métodos padrões para controle de tempo"
+      attribute 144720 "tempoUnidade"
+	protected explicit_type "Uint32"
+	cpp_decl "    ${comment}${static}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	java_decl ""
+	idl_decl ""
+      end
+
+      attribute 144848 "tempoInicial"
+	protected explicit_type "Uint32"
+	cpp_decl "    ${comment}${static}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	java_decl ""
+	idl_decl ""
+      end
+
+      attribute 144976 "tempoAtual"
+	protected explicit_type "Uint32"
+	cpp_decl "    ${comment}${static}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	java_decl ""
+	idl_decl ""
+      end
+
+      attribute 145104 "tempoCorrente"
+	protected explicit_type "int"
+	cpp_decl "    ${comment}${static}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	java_decl ""
+	idl_decl ""
+      end
+
+      attribute 145232 "tempoOriginal"
+	protected explicit_type "int"
+	cpp_decl "    ${comment}${static}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	java_decl ""
+	idl_decl ""
+      end
+
+      classrelation 140880 // eCronometro (<directional aggregation by value>)
+	relation 140880 *-->
+	  a role_name "eCronometro" multiplicity "" protected
+	    cpp default "    ${comment}${static}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	    classrelation_ref 140880 // eCronometro (<directional aggregation by value>)
+	  b multiplicity "" parent class_ref 136784 // EnumCronometro
+      end
+
+      operation 177616 "executar"
+	abstract cpp_virtual protected explicit_return_type "void"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	
+	
+	comment "Executa este método quando o estado é CRONOMETRO_EXECUTAR"
+      end
+
+      operation 178000 "resetar"
+	cpp_virtual protected explicit_return_type "void"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+	comment "Executa este método quando o estado é CRONOMETRO_RESETAR"
+      end
+
+      operation 177872 "iniciar"
+	cpp_virtual protected explicit_return_type "void"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+	comment "Executa este método quando o estado é CRONOMETRO_INICIAR"
+      end
+
+      operation 177744 "continuar"
+	cpp_virtual protected explicit_return_type "void"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+	comment "Executa este método quando o estado é CRONOMETRO_CONTINUAR"
+      end
+
+      operation 178128 "execTempoInicial"
+	protected explicit_return_type "void"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+	comment "Inicia o contado de tempo"
+      end
+
+      operation 178256 "setExecutar"
+	protected explicit_return_type "void"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+	comment "Muda o estado para CRONOMETRO_EXECUTAR"
+      end
+
+      operation 178384 "setTerminar"
+	protected explicit_return_type "void"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+	comment "Muda o estado para CRONOMETRO_TERMINAR"
+      end
+
+      operation 178640 "TimerSystemCronometroAbstract"
+	public explicit_return_type ""
+	nparams 0
+	cpp_decl "    ${comment}${inline}${name}${(}${)}${volatile}${throw};
+"
+	cpp_def "${comment}${inline}${class}::${name}${(}${)}${volatile}${throw} 
+{
+${body}}"
+	
+	
+	comment "Construtor "
+      end
+
+      operation 178512 "~TimerSystemCronometroAbstract"
+	cpp_virtual public explicit_return_type ""
+	nparams 0
+	cpp_decl "    ${comment}${inline}${virtual}${name}${(}${)}${volatile}${throw};
+"
+	cpp_def "${comment}${inline}${class}::${name}${(}${)}${volatile}${throw} 
+{
+${body}}"
+	
+	
+	comment "Destrutor "
+      end
+
+      operation 178768 "setUnidade"
+	public explicit_return_type "void"
+	nparams 1
+	  param in name "eTempo" type class_ref 136656 // EnumTempo
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${t0} ${p0}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${t0} ${p0}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+	comment "Configura a unidade de tempo a ser usada"
+      end
+
+      operation 179280 "setResetar"
+	public explicit_return_type "void"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+	comment "Muda o estado para CRONOMETRO_RESETAR"
+      end
+
+      operation 179024 "setIniciar"
+	protected explicit_return_type "void"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+	comment "Muda o estado para CRONOMETRO_INICIAR"
+      end
+
+      operation 179152 "setPausar"
+	public explicit_return_type "void"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+	comment "Muda o estado para CRONOMETRO_PAUSAR"
+      end
+
+      operation 178896 "setContinuar"
+	public explicit_return_type "void"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+	comment "Muda o estado para CRONOMETRO_CONTINUAR"
+      end
+
+      operation 179408 "processar"
+	public explicit_return_type "void"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+	comment "Centro de processamento de estados"
+      end
+
+      operation 179536 "getTempo"
+	public explicit_return_type "int"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+	comment "Retorna a contagem de tempo corrente"
+      end
+
+      operation 179664 "setTempoOriginal"
+	public explicit_return_type "void"
+	nparams 1
+	  param in name "tempo" explicit_type "int"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${t0} ${p0}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${t0} ${p0}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+	comment "Adiciona o marcador de tempo inicial"
+      end
+
+      operation 179792 "isTerminou"
+	public explicit_return_type "bool"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+	comment "Informa se o tempo já terminou"
+      end
+
+      classrelation 147024 // <dependency>
+	relation 147024 -_->
+	  a protected
+	    classrelation_ref 147024 // <dependency>
+	  b multiplicity "" parent class_ref 136656 // EnumTempo
+      end
+
+      classrelation 149968 // <dependency>
+	relation 149968 -_->
+	  a protected
+	    cpp default "    ${comment}${static}${mutable}${volatile}${const}${type} * ${name}${value};
+"
+	    classrelation_ref 149968 // <dependency>
+	  b multiplicity "" parent class_ref 138448 // SDL
+      end
+    end
+  end
+
+  deploymentview 128848 "Deploy"
+    //deployment diagram settings
+    package_name_in_tab default show_context default write_horizontally default auto_label_position default draw_all_relations default shadow default
+    draw_component_as_icon default show_component_req_prov default show_component_rea default
+    artifact 136016 "TimerSystemCronometroAbstract"
+      stereotype "source"
+      cpp_h "${comment}
+#ifndef _${NAME}_H
+#define _${NAME}_H
+
+${all_includes}
+${declarations}
+${namespace_start}
+${definition}
+${namespace_end}
+#endif
+"
+      cpp_src "${comment}
+${includes}
+${namespace_start}
+${members}
+${namespace_end}"
+      associated_classes
+	class_ref 136656 // EnumTempo
+	class_ref 136784 // EnumCronometro
+	class_ref 136912 // TimerSystemCronometroAbstract
+      end
+      comment "//    GBF - Gamework's Brazilian Framework
+//    Copyright (C) 2004-2007 David de Almeida Ferreira
+//
+//    This library is free software; you can redistribute it and/or
+//    modify it under the terms of the GNU Library General Public
+//    License as published by the Free Software Foundation; either
+//    version 2 of the License, or (at your option) any later version.
+//
+//    David de Almeida Ferreira (F-Z)
+//        davidferreira@uol.com.br or davidferreira.fz@gmail.com
+//        http://pjmoo.codigolivre.org.br
+//////////////////////////////////////////////////////////////////////
+"
+    end
+
+    artifact 136144 "TimerSystemCronometroCrescente"
+      stereotype "source"
+      cpp_h "${comment}
+#ifndef _${NAME}_H
+#define _${NAME}_H
+
+${all_includes}
+${declarations}
+${namespace_start}
+${definition}
+${namespace_end}
+#endif
+"
+      cpp_src "${comment}
+${includes}
+${namespace_start}
+${members}
+${namespace_end}"
+      associated_classes
+	class_ref 130512 // TimerSystemCronometroCrescente
+      end
+      comment "//    GBF - Gamework's Brazilian Framework
+//    Copyright (C) 2004-2007 David de Almeida Ferreira
+//
+//    This library is free software; you can redistribute it and/or
+//    modify it under the terms of the GNU Library General Public
+//    License as published by the Free Software Foundation; either
+//    version 2 of the License, or (at your option) any later version.
+//
+//    David de Almeida Ferreira (F-Z)
+//        davidferreira@uol.com.br or davidferreira.fz@gmail.com
+//        http://pjmoo.codigolivre.org.br
+//////////////////////////////////////////////////////////////////////
+"
+    end
+
+    artifact 136400 "TimerSystemFPS"
+      stereotype "source"
+      cpp_h "${comment}
+#ifndef _${NAME}_H
+#define _${NAME}_H
+
+${all_includes}
+${declarations}
+${namespace_start}
+${definition}
+${namespace_end}
+#endif
+"
+      cpp_src "${comment}
+${includes}
+${namespace_start}
+${members}
+${namespace_end}"
+      associated_classes
+	class_ref 129872 // TimerSystemFPS
+      end
+      comment "//    GBF - Gamework's Brazilian Framework
+//    Copyright (C) 2004-2007 David de Almeida Ferreira
+//
+//    This library is free software; you can redistribute it and/or
+//    modify it under the terms of the GNU Library General Public
+//    License as published by the Free Software Foundation; either
+//    version 2 of the License, or (at your option) any later version.
+//
+//    David de Almeida Ferreira (F-Z)
+//        davidferreira@uol.com.br or davidferreira.fz@gmail.com
+//        http://pjmoo.codigolivre.org.br
+//////////////////////////////////////////////////////////////////////
+"
+    end
+
+    artifact 136272 "TimerSystemCronometroDecrescente"
+      stereotype "source"
+      cpp_h "${comment}
+#ifndef _${NAME}_H
+#define _${NAME}_H
+
+${all_includes}
+${declarations}
+${namespace_start}
+${definition}
+${namespace_end}
+#endif
+"
+      cpp_src "${comment}
+${includes}
+${namespace_start}
+${members}
+${namespace_end}"
+      associated_classes
+	class_ref 130896 // TimerSystemCronometroDecrescente
+      end
+      comment "//    GBF - Gamework's Brazilian Framework
+//    Copyright (C) 2004-2007 David de Almeida Ferreira
+//
+//    This library is free software; you can redistribute it and/or
+//    modify it under the terms of the GNU Library General Public
+//    License as published by the Free Software Foundation; either
+//    version 2 of the License, or (at your option) any later version.
+//
+//    David de Almeida Ferreira (F-Z)
+//        davidferreira@uol.com.br or davidferreira.fz@gmail.com
+//        http://pjmoo.codigolivre.org.br
+//////////////////////////////////////////////////////////////////////
+"
+    end
+  end
+end

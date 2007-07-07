@@ -1,0 +1,110 @@
+class UserInterfaceMenuAbstract
+!!!207696.cpp!!!	UserInterfaceMenuAbstract(in input : InputSystem)
+    this->input=input;
+    
+    itemSelecionado=0;
+    maiorPalavra=0;
+    
+    delayNavegacao.setTempoOriginal(2);
+    delayNavegacao.setUnidade(TEMPO_CENTESIMO);
+    delayNavegacao.setResetar();
+!!!210768.cpp!!!	setEspacoVertical(in espaco : int) : void
+    espacoVertical=espaco;
+!!!211664.cpp!!!	setCorBorda(in r : CorPaleta, in g : CorPaleta, in b : CorPaleta) : void
+    corBorda.r=r;
+    corBorda.g=g;
+    corBorda.b=b;
+!!!211792.cpp!!!	setCorFundo(in r : CorPaleta, in g : CorPaleta, in b : CorPaleta) : void
+    corFundo.r=r;
+    corFundo.g=g;
+    corFundo.b=b;
+!!!208464.cpp!!!	setPosicao(in x : int, in y : int) : void
+    posicao.x=x;
+    posicao.y=y;
+!!!211408.cpp!!!	centralizarTela(in x : int, in y : int, in alinhamento : EnumAlinhamento) : void
+    switch(alinhamento){
+        case CENTRO:
+                setPosicao(x/2,y/2);
+            break;
+        case HORIZONTAL:
+                setPosicao(x/2,y);        
+            break;
+        case VERTICAL:
+                setPosicao(x,y/2);
+            break;
+    }
+
+    eAlinhamento=alinhamento;
+!!!208208.cpp!!!	executar() : bool
+    bool navegou = false;
+    delayNavegacao.processar();
+
+    if (delayNavegacao.isTerminou()){
+        navegou=navegar();
+        selecao();
+    }
+    desenhar();
+
+    return navegou;
+!!!208336.cpp!!!	adicionar(in item : UserInterfaceMenuItemAbstract) : void
+    if (item!=NULL) {
+        this->item.push_back(item);
+        int quantidadeLetra = item->getQuantidadeLetras();
+        
+        if (quantidadeLetra>maiorPalavra){
+            maiorPalavra=quantidadeLetra;
+        }
+    }
+!!!210640.cpp!!!	confirmarSelecao() : int
+    int selecionado = -1;
+    
+    if (((input->teclado->isKey(SDLK_RETURN))||(input->joystick->isButtonA()))&&
+        (delayNavegacao.isTerminou())){
+        delayNavegacao.setResetar();
+        selecionado=itemSelecionado;
+    }
+    
+    return selecionado;
+!!!211536.cpp!!!	calcularAlinhamento(in caixaLargura : int, in caixaAltura : int) : Ponto
+    Ponto ponto;
+    
+    switch (eAlinhamento)
+    {
+        case CENTRO:
+                ponto.x=posicao.x-(caixaLargura/2);
+                ponto.y=posicao.y-(caixaAltura/2);
+            break;
+            
+        case HORIZONTAL:
+                ponto.x=posicao.x-(caixaLargura/2);
+                ponto.y=posicao.y;
+            break;
+            
+        case VERTICAL:
+                ponto.x=posicao.x;
+                ponto.y=posicao.y-(caixaAltura/2);
+            break;
+    }
+    
+    return ponto;
+!!!209616.cpp!!!	limparLista() : void
+    for (unsigned int i=0; i<item.size(); i++){
+        try {
+            if (item[i]!=NULL){
+                delete item[i];
+                item[i]=NULL;
+            }
+        } catch (...){
+        }
+    }
+
+    item.clear();
+!!!210000.cpp!!!	selecao() : void
+    if (!item.empty()){
+        for (unsigned int i=0; i<item.size(); i++){
+            if (item[i]!=NULL){
+                item[i]->setAtivo(false);
+            }
+        }
+        item[itemSelecionado]->setAtivo(true);
+    }

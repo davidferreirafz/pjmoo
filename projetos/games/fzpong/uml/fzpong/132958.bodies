@@ -1,0 +1,12 @@
+class ListTiroAbstract
+!!!153694.cpp!!!	~ListTiroAbstract()
+
+
+!!!153822.cpp!!!	adicionar(inout tiro : TiroAbstract) : void
+
+    if (tiro!=NULL){
+        lista.push_back(tiro);
+   	}
+!!!153950.cpp!!!	ListTiroAbstract()
+
+    

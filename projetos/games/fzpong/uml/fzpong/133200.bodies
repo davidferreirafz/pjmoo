@@ -1,0 +1,29 @@
+class InputSystemMouseCursor
+!!!157392.cpp!!!	~InputSystemMouseCursor()
+
+    UtilLog::subSistema("Removendo InputSystemMouseCursor");
+!!!157520.cpp!!!	carregarArquivo(in arquivo : std::string) : bool
+
+	if (imagem){
+		SDL_FreeSurface(imagem);
+	}
+	imagem = IMG_Load(arquivo.c_str());
+	
+	if (imagem){
+		converterSurface();
+		setColorKey(255, 0, 255);  
+		ponto.y=0;
+		ponto.x=0;
+		return true;
+	} else {
+		return false;
+	}
+!!!157648.cpp!!!	desenhar(in x : int, in y : int) : void
+
+	posicao.x=x - ponto.x;	posicao.y=y - ponto.y;
+	if (imagem){
+		gsScreen->blitSurface(imagem,NULL,&posicao);
+	}
+!!!157776.cpp!!!	InputSystemMouseCursor()
+
+    UtilLog::subSistema("Instanciando InputSystemMouseCursor");

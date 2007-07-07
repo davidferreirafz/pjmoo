@@ -1,0 +1,9 @@
+class TopSystemRecorde
+!!!128110.cpp!!!	inicializar() : void
+    id=0;
+    fase=0;
+    tempo=0;
+    pontos=0;
+    strcpy(nome,"");
+    strcpy(dataPublicacao,"");
+    strcpy(tipo,"Local");

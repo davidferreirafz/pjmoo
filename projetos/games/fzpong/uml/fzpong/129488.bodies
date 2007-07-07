@@ -1,0 +1,36 @@
+class InputSystem
+!!!152272.cpp!!!	~InputSystem()
+    UtilLog::sistema("Removendo InputSystem");
+
+    delete(teclado);
+    delete(joystick);
+    delete(mouse);
+!!!152400.cpp!!!	getInstance() : InputSystem
+    if (instance == NULL){
+        instance = new InputSystem();
+    }
+    return instance;
+!!!152528.cpp!!!	processar() : void
+    joystick->processar();
+    teclado->processar();
+    mouse->processar();
+
+    SDL_PollEvent(&evento);
+!!!152656.cpp!!!	getEvento() : SDL_Event
+    return &evento;
+!!!152784.cpp!!!	alternarControleExclusivo() : void
+    SDL_GrabMode inputmode = getControleExclusivo();
+    setControleExclusivo(inputmode ? SDL_GRAB_OFF : SDL_GRAB_ON);
+!!!152912.cpp!!!	setControleExclusivo(in valor : SDL_GrabMode) : void
+    controleExclusivo=valor;
+    SDL_WM_GrabInput(controleExclusivo);
+!!!153040.cpp!!!	limparEstado() : void
+    teclado->limparEstado();
+    joystick->limparEstado();
+!!!153168.cpp!!!	getControleExclusivo() : SDL_GrabMode
+    return controleExclusivo;
+!!!153296.cpp!!!	InputSystem()
+    UtilLog::sistema("Instanciando InputSystem");
+    teclado  = new InputSystemKeyboard();
+    mouse    = new InputSystemMouse();
+    joystick = new InputSystemJoystick();

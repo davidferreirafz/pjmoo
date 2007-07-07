@@ -1,0 +1,75 @@
+class WriteSystemBitmap
+!!!189136.cpp!!!	~WriteSystemBitmap()
+    //UtilLog::getInstance()->status("[Fonte Removido(a)]");
+!!!189264.cpp!!!	carregarArquivo(in ARQUIVO : std::string) : bool
+    FILE *ARQ_FONTE;
+    std::string txt="";
+    imagem = IMG_Load(ARQUIVO.data());
+
+    if (imagem!=NULL){
+        //converterSurface();
+        //setColorKey(0,0,0);
+
+        txt=ARQUIVO.substr(0,ARQUIVO.length()-4);
+        txt+=".dat";
+
+        ARQ_FONTE = fopen(txt.data(),"rb");
+
+        if (ARQ_FONTE!=NULL){
+            fread(&largura, 256, 1, ARQ_FONTE);
+            fclose(ARQ_FONTE);
+        } else {
+            for (int l=0;l<256;l++){
+                largura[l] = imagem->w/16;
+            }
+        }
+
+        dimensaoQuadro.w=imagem->w/16;
+        dimensaoQuadro.h=imagem->h/16;
+
+        checkar();
+        return true;
+    } else {
+        return false;
+    }
+!!!189392.cpp!!!	setDimensao(in largura : int, in altura : int) : void
+    for (int i=0;i<256;i++){
+        this->largura[i] = largura;
+    }
+
+    dimensaoPadrao.w=largura;
+    dimensaoPadrao.h=altura;
+!!!189648.cpp!!!	getAltura() : int
+    return dimensaoPadrao.h;
+!!!189776.cpp!!!	getDimensao() : Dimensao
+    return dimensaoPadrao;
+!!!189904.cpp!!!	escrever(in PALAVRA : char, in X : int, in Y : int) : void
+    int i,t=strlen(PALAVRA);
+    unsigned char l;
+    posicao.x=X;
+    posicao.y=Y;
+
+    for (i=0; i<t; i++){
+        l=PALAVRA[i];
+
+        //tamanho.x=(l%16)*32;   tamanho.w=largura[l];//32;
+        //tamanho.y=(l/16)*32;   tamanho.h=32;
+        tamanho.x=(l%16)*dimensaoQuadro.w; tamanho.w=largura[l];
+        tamanho.y=(l/16)*dimensaoQuadro.h; tamanho.h=dimensaoQuadro.h;
+
+        gsScreen->blitSurface(imagem,&tamanho,&posicao);
+        posicao.y=Y;
+        posicao.x=posicao.x+largura[l];
+    }
+!!!190032.cpp!!!	WriteSystemBitmap()
+
+!!!190160.cpp!!!	checkar() : void
+    int maior=0;
+    for (int i=0; i<256; i++){
+        if (largura[i]>maior){
+            maior=largura[i];
+        }
+    }
+
+    dimensaoPadrao.w=maior;
+    dimensaoPadrao.h=dimensaoQuadro.h;

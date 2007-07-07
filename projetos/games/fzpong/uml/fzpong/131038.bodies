@@ -1,0 +1,6 @@
+class PathStrategy
+!!!171742.cpp!!!	PathStrategy()
+
+	area=FrameLayerManager::getInstance()->getFrameLayer("tiles")->getArea();
+!!!171870.cpp!!!	~PathStrategy()
+

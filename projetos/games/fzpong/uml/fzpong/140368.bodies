@@ -1,0 +1,26 @@
+class UserInterfaceMenuItemTexto
+!!!208592.cpp!!!	UserInterfaceMenuItemTexto(in texto : std::string, in fonteTexto : std::string)
+    this->texto=texto;
+    this->fonteTexto=fonteTexto;
+    
+    tempo.setTempoOriginal(0);
+    tempo.setUnidade(TEMPO_CENTESIMO);
+    tempo.setResetar();
+    
+    if (wsManager==NULL){
+        wsManager = WriteSystemManager::getInstance();
+    }
+!!!209232.cpp!!!	desenhar(in x : int, in y : int) : void
+    if (isAtivo()){
+        tempo.processar();
+        if (tempo.getTempo()%2==0){
+            wsManager->escreverLocalizado(fonteTexto,x,y,texto.c_str());
+        }
+    } else {
+        wsManager->escreverLocalizado(fonteTexto,x,y,texto.c_str());
+    }
+!!!211024.cpp!!!	getQuantidadeLetras() : int
+//    return strlen(wsManager->uiTexto->getTexto(fonteTexto).c_str());
+    return wsManager->uiTexto->getTexto(texto).length();
+!!!211280.cpp!!!	getDimensaoLetra() : Dimensao
+    return wsManager->getFonte(fonteTexto)->getDimensao();

@@ -1,0 +1,644 @@
+format 29
+"TopSystem" // Framework GBF::TopSystem
+  revision 4
+  modified_by 94 "david"
+  // class settings
+  //class diagram settings
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default shadow default
+  //use case diagram settings
+  package_name_in_tab default show_context default auto_label_position default shadow default
+  //sequence diagram settings
+  show_full_operations_definition default write_horizontally default drawing_language default shadow default
+  //collaboration diagram settings
+  show_full_operations_definition default show_hierarchical_rank default write_horizontally default drawing_language default package_name_in_tab default show_context default shadow default
+  //object diagram settings
+   write_horizontally default package_name_in_tab default show_context default auto_label_position default shadow default
+  //component diagram settings
+  package_name_in_tab default show_context default auto_label_position default shadow default
+  draw_component_as_icon default show_component_req_prov default show_component_rea default
+  //deployment diagram settings
+  package_name_in_tab default show_context default write_horizontally default auto_label_position default shadow default
+  draw_component_as_icon default show_component_req_prov default show_component_rea default
+  //state diagram settings
+  package_name_in_tab default show_context default auto_label_position default write_trans_label_horizontally default show_trans_definition default shadow default
+  show_activities default region_horizontally default drawing_language default
+  //activity diagram settings
+  package_name_in_tab default show_context default show_opaque_action_definition default auto_label_position default write_flow_label_horizontally default shadow default
+  show_infonote default drawing_language default
+  
+  cpp_h_dir "/home/desenvolvimento/pjmoo/source/gbf/src/"
+  cpp_src_dir "/home/desenvolvimento/pjmoo/source/gbf/src/"
+  classview 129488 "Classes"
+    //class diagram settings
+    draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default shadow default
+    //collaboration diagram settings
+    show_full_operations_definition default show_hierarchical_rank default write_horizontally default drawing_language default package_name_in_tab default show_context default shadow default
+    //object diagram settings
+     write_horizontally default package_name_in_tab default show_context default auto_label_position default shadow default
+    //sequence diagram settings
+    show_full_operations_definition default write_horizontally default drawing_language default shadow default
+    //state diagram settings
+    package_name_in_tab default show_context default auto_label_position default write_trans_label_horizontally default show_trans_definition default shadow default
+    show_activities default region_horizontally default drawing_language default
+    //class settings
+    //activity diagram settings
+    package_name_in_tab default show_context default show_opaque_action_definition default auto_label_position default write_flow_label_horizontally default shadow default
+    show_infonote default drawing_language default
+    
+    class 130640 "TopSystemGaleria"cpp_decl "${comment}${template}class ${name}${inherit} {
+${members}};
+${inlines}
+"
+      java_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      comment "Descrição: 
+    Classe para gerenciamento da listagem de recordes
+Motivação:
+    Permitir carregar e salvar em disco a listagem de recordes"
+      attribute 145616 "arquivo"
+	protected explicit_type "std::string"
+	cpp_decl "    ${comment}${static}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	java_decl ""
+	idl_decl ""
+      end
+
+      classrelation 141264 // lista (<directional aggregation by value>)
+	relation 141264 *-->
+	  a role_name "lista" multiplicity "1" protected
+	    cpp default "    ${comment}${static}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	    classrelation_ref 141264 // lista (<directional aggregation by value>)
+	  b parent class_ref 137168 // TopSystemRecordeLista
+      end
+
+      attribute 145744 "assCheckSize"
+	class_attribute const_attribute private explicit_type "int"
+	init_value "=  3"
+	cpp_decl "    ${comment}${static}${mutable}${volatile}${const}${type} ${name}${h_value};
+"
+	java_decl ""
+	idl_decl ""
+      end
+
+      attribute 145872 "assCheck"
+	class_attribute private explicit_type "int"
+	init_value "={'N'+'a'+'o'+'E'+'V'+'a'+'l'+'i'+'d'+'o','N'+'E'+'V','0'+'.'+'0'}"
+	cpp_decl "    ${comment}${static}${mutable}${volatile}${const}${type} ${name}[assCheckSize]${value};
+"
+	java_decl ""
+	idl_decl ""
+      end
+
+      attribute 146000 "pathBase"
+	class_attribute private explicit_type "std::string"
+	cpp_decl "    ${comment}${static}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	java_decl ""
+	idl_decl ""
+      end
+
+      operation 182352 "TopSystemGaleria"
+	public explicit_return_type ""
+	nparams 0
+	cpp_decl "    ${comment}${inline}${name}${(}${)}${volatile}${throw};
+"
+	cpp_def "${comment}${inline}${class}::${name}${(}${)}${volatile}${throw} 
+{
+${body}}"
+	
+	
+	comment "Construtor"
+      end
+
+      operation 182480 "~TopSystemGaleria"
+	public explicit_return_type ""
+	nparams 0
+	cpp_decl "    ${comment}${inline}${virtual}${name}${(}${)}${volatile}${throw};
+"
+	cpp_def "${comment}${inline}${class}::${name}${(}${)}${volatile}${throw} 
+{
+${body}}"
+	
+	
+	comment "Destrutor"
+      end
+
+      operation 182608 "adicionar"
+	public explicit_return_type "bool"
+	nparams 1
+	  param in name "recorde" type class_ref 137040 // TopSystemRecorde
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${t0} ${p0}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${t0} ${p0}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+	comment "Adiciona um recorde"
+      end
+
+      operation 182736 "getRecorde"
+	public return_type class_ref 137040 // TopSystemRecorde
+	nparams 1
+	  param in name "indice" explicit_type "int"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${t0} ${p0}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${t0} ${p0}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+	comment "Retorna um recorde com base no indice"
+      end
+
+      operation 182864 "salvar"
+	public explicit_return_type "bool"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+	comment "Salva recordes em arquivo"
+      end
+
+      operation 182992 "carregar"
+	public explicit_return_type "bool"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+	comment "Carrega recordes de um arquivo"
+      end
+
+      operation 183120 "setRecordeLista"
+	public explicit_return_type "void"
+	nparams 1
+	  param in name "lista" type class_ref 137168 // TopSystemRecordeLista
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${t0} ${p0}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${t0} ${p0}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+	comment "Adiciona uma lista de recordes"
+      end
+
+      operation 183248 "setArquivo"
+	public explicit_return_type "void"
+	nparams 1
+	  param in name "arquivo" explicit_type "std::string"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${t0} ${p0}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${t0} ${p0}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+	comment "Informa o arquivo para carregar e salvar os recordes"
+      end
+
+      operation 183376 "setPathBase"
+	class_operation public explicit_return_type "void"
+	nparams 1
+	  param in name "path" explicit_type "std::string"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${t0} ${p0}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${t0} ${p0}${)}${const}${volatile}${throw}${staticnl}
+{
+  ${body}}
+"
+	
+	
+	comment "Configura o caminho do arquivo de recordes"
+      end
+
+      operation 183504 "setAssinatura"
+	public explicit_return_type "void"
+	nparams 3
+	  param in name "jogoNome" explicit_type "int"
+	  param in name "jogoSigla" explicit_type "int"
+	  param in name "jogoVersao" explicit_type "int"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${t0} ${p0}, ${t1} ${p1}, ${t2} ${p2}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${t0} ${p0}, ${t1} ${p1}, ${t2} ${p2}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+	comment "Configura a assinatura do arquivo de recordes"
+      end
+
+      operation 183632 "pesquisar"
+	public explicit_return_type "bool"
+	nparams 1
+	  param in name "pesquisa" type class_ref 137040 // TopSystemRecorde
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${t0} ${p0}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${t0} ${p0}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+	comment "Verificar se um recorde já existe"
+      end
+
+      classrelation 128324 // <dependency>
+	relation 128324 -_->
+	  a default
+	    cpp default "#include in header"
+	    classrelation_ref 128324 // <dependency>
+	  b parent class_ref 137936 // UtilLog
+      end
+    end
+
+    class 137040 "TopSystemRecorde"
+       stereotype "struct"
+      cpp_decl "${comment}${template}struct ${name}${inherit}
+{
+${members}};
+${inlines}
+"
+      java_decl ""
+      idl_decl "${comment}struct ${name} {
+${members}};
+"
+      explicit_switch_type ""
+      
+      comment "Descrição: 
+    Classe para representar um registro
+Motivação:
+    Armazenar informações sobre o pontuação do jogo"
+      attribute 146128 "id"
+	public explicit_type "uint"
+	cpp_decl "    ${comment}${static}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	java_decl ""
+	idl_decl ""
+      end
+
+      attribute 146256 "nome"
+	public explicit_type "char"
+	cpp_decl "    ${comment}${static}${mutable}${volatile}${const}${type} ${name}[11]${value};
+"
+	java_decl ""
+	idl_decl ""
+      end
+
+      attribute 146384 "pontos"
+	public explicit_type "uint"
+	cpp_decl "    ${comment}${static}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	java_decl ""
+	idl_decl ""
+      end
+
+      attribute 146512 "dataPublicacao"
+	public explicit_type "char"
+	cpp_decl "    ${comment}${static}${mutable}${volatile}${const}${type} ${name}[11]${value};
+"
+	java_decl ""
+	idl_decl ""
+      end
+
+      attribute 146640 "tipo"
+	public explicit_type "char"
+	cpp_decl "    ${comment}${static}${mutable}${volatile}${const}${type} ${name}[6]${value};
+"
+	java_decl ""
+	idl_decl ""
+      end
+
+      attribute 146768 "fase"
+	public explicit_type "uint"
+	cpp_decl "    ${comment}${static}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	java_decl ""
+	idl_decl ""
+      end
+
+      attribute 146896 "tempo"
+	public explicit_type "uint"
+	cpp_decl "    ${comment}${static}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	java_decl ""
+	idl_decl ""
+      end
+
+      operation 128110 "inicializar"
+	public explicit_return_type "void"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+      end
+    end
+
+    class 137168 "TopSystemRecordeLista"cpp_decl "${comment}${template}class ${name}${inherit} {
+${members}};
+${inlines}
+"
+      java_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      comment "Descrição: 
+    Classe para gerenciamento de lista de recordes
+Motivação:
+    Gerenciar uma listagem de recordes"
+      attribute 147024 "tamanho"
+	class_attribute const_attribute public explicit_type "int"
+	init_value "=  10"
+	cpp_decl "    ${comment}${static}${mutable}${volatile}${const}${type} ${name}${h_value};
+"
+	java_decl ""
+	idl_decl ""
+      end
+
+      classrelation 141392 // recorde (<directional aggregation by value>)
+	relation 141392 *-->
+	  a role_name "recorde" multiplicity "10" protected
+	    cpp default "    ${comment}${static}${mutable}${volatile}${const}${type} ${name}${multiplicity}${value};
+"
+	    classrelation_ref 141392 // recorde (<directional aggregation by value>)
+	  b parent class_ref 137040 // TopSystemRecorde
+      end
+
+      operation 212048 "TopSystemRecordeLista"
+	public explicit_return_type ""
+	nparams 0
+	cpp_decl "    ${comment}${inline}${name}${(}${)}${volatile}${throw};
+"
+	cpp_def "${comment}${inline}${class}::${name}${(}${)}${volatile}${throw} 
+{
+${body}}"
+	
+	
+	comment "Construtor"
+      end
+
+      operation 212176 "~TopSystemRecordeLista"
+	cpp_virtual public explicit_return_type ""
+	nparams 0
+	cpp_decl "    ${comment}${inline}${virtual}${name}${(}${)}${volatile}${throw};
+"
+	cpp_def "${comment}${inline}${class}::${name}${(}${)}${volatile}${throw} 
+{
+${body}}"
+	
+	
+	comment "Destrutor"
+      end
+
+      operation 184144 "getPrimeiro"
+	public return_type class_ref 137040 // TopSystemRecorde
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+	comment "Retorna o Primeiro recorde"
+      end
+
+      operation 184272 "getUltimo"
+	public return_type class_ref 137040 // TopSystemRecorde
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+	comment "Retorna o Último recorde"
+      end
+
+      operation 184400 "getRecorde"
+	public return_type class_ref 137040 // TopSystemRecorde
+	nparams 1
+	  param in name "indice" explicit_type "int"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${t0} ${p0}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${t0} ${p0}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+	comment "Retorna um recorde"
+      end
+
+      operation 184016 "pesquisar"
+	public explicit_return_type "bool"
+	nparams 1
+	  param in name "pesquisa" type class_ref 137040 // TopSystemRecorde
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${t0} ${p0}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${t0} ${p0}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+	comment "Pesquisa se o recorde ja existe"
+      end
+
+      operation 183888 "adicionar"
+	public explicit_return_type "bool"
+	nparams 1
+	  param in name "novo" type class_ref 137040 // TopSystemRecorde
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${t0} ${p0}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${t0} ${p0}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+	comment "Adiciona um novo recorde"
+      end
+
+      operation 184528 "ordenar"
+	protected explicit_return_type "void"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+	comment "Ordena os recorde, em ordem descrecente"
+      end
+
+      operation 184656 "adicionarFinal"
+	private explicit_return_type "bool"
+	nparams 1
+	  param in name "novo" type class_ref 137040 // TopSystemRecorde
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${t0} ${p0}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${t0} ${p0}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+	comment "Adiciona um recorde no final da listagem"
+      end
+
+      operation 128238 "getLista"
+	public explicit_return_type "TopSystemRecorde*"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+	comment "Retorna a lista de recordes (Utilizado para salvar a lista em arquivo)"
+      end
+
+      operation 128366 "setLista"
+	public explicit_return_type "void"
+	nparams 1
+	  param in name "lista[]" type class_ref 137040 // TopSystemRecorde
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}const ${t0} ${p0}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}const ${t0} ${p0}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+	comment "Seta uma lista de recordes (Utilizado para carregar a lista de um arquivo)"
+      end
+    end
+  end
+
+  deploymentview 128720 "Deploy"
+    //deployment diagram settings
+    package_name_in_tab default show_context default write_horizontally default auto_label_position default shadow default
+    draw_component_as_icon default show_component_req_prov default show_component_rea default
+    artifact 136528 "TopSystemGaleria"
+      stereotype "source"
+      cpp_h "${comment}
+#ifndef _${NAME}_H
+#define _${NAME}_H
+
+${all_includes}
+${declarations}
+${namespace_start}
+${definition}
+${namespace_end}
+#endif
+"
+      cpp_src "${comment}
+${includes}
+${namespace_start}
+${members}
+${namespace_end}"
+      associated_classes
+	class_ref 130640 // TopSystemGaleria
+      end
+      comment "//    GBF - Gamework's Brazilian Framework
+//    Copyright (C) 2004-2007 David de Almeida Ferreira
+//
+//    This library is free software; you can redistribute it and/or
+//    modify it under the terms of the GNU Library General Public
+//    License as published by the Free Software Foundation; either
+//    version 2 of the License, or (at your option) any later version.
+//
+//    David de Almeida Ferreira (F-Z)
+//        davidferreira@uol.com.br or davidferreira.fz@gmail.com
+//        http://pjmoo.codigolivre.org.br
+//////////////////////////////////////////////////////////////////////
+"
+    end
+
+    artifact 136656 "TopSystemRecorde"
+      stereotype "source"
+      cpp_h "${comment}
+#ifndef _${NAME}_H
+#define _${NAME}_H
+
+#include <string>
+${all_includes}
+${declarations}
+${namespace_start}
+${definition}
+${namespace_end}
+#endif
+"
+      cpp_src "${comment}
+${includes}
+${namespace_start}
+${members}
+${namespace_end}"
+      associated_classes
+	class_ref 137040 // TopSystemRecorde
+      end
+      comment "//    GBF - Gamework's Brazilian Framework
+//    Copyright (C) 2004-2007 David de Almeida Ferreira
+//
+//    This library is free software; you can redistribute it and/or
+//    modify it under the terms of the GNU Library General Public
+//    License as published by the Free Software Foundation; either
+//    version 2 of the License, or (at your option) any later version.
+//
+//    David de Almeida Ferreira (F-Z)
+//        davidferreira@uol.com.br or davidferreira.fz@gmail.com
+//        http://pjmoo.codigolivre.org.br
+//////////////////////////////////////////////////////////////////////
+"
+    end
+
+    artifact 136784 "TopSystemRecordeLista"
+      stereotype "source"
+      cpp_h "${comment}
+#ifndef _${NAME}_H
+#define _${NAME}_H
+
+${all_includes}
+${declarations}
+${namespace_start}
+${definition}
+${namespace_end}
+#endif
+"
+      cpp_src "${comment}
+${includes}
+${namespace_start}
+${members}
+${namespace_end}"
+      associated_classes
+	class_ref 137168 // TopSystemRecordeLista
+      end
+      comment "//    GBF - Gamework's Brazilian Framework
+//    Copyright (C) 2004-2007 David de Almeida Ferreira
+//
+//    This library is free software; you can redistribute it and/or
+//    modify it under the terms of the GNU Library General Public
+//    License as published by the Free Software Foundation; either
+//    version 2 of the License, or (at your option) any later version.
+//
+//    David de Almeida Ferreira (F-Z)
+//        davidferreira@uol.com.br or davidferreira.fz@gmail.com
+//        http://pjmoo.codigolivre.org.br
+//////////////////////////////////////////////////////////////////////
+"
+    end
+  end
+end

@@ -1,0 +1,12 @@
+class TimerSystemCronometroCrescente
+!!!179920.cpp!!!	executar() : void
+    tempoAtual = SDL_GetTicks();
+
+    if (tempoAtual-tempoInicial>=tempoUnidade){
+        tempoCorrente++;
+        execTempoInicial();
+    }
+!!!180560.cpp!!!	TimerSystemCronometroCrescente()
+
+!!!180432.cpp!!!	~TimerSystemCronometroCrescente()
+

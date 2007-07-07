@@ -1,0 +1,11 @@
+class GATMaquinaEstado
+!!!206928.cpp!!!	GATMaquinaEstado()
+    tempoEspera.setTempoOriginal(1);
+    tempoEspera.setUnidade(TEMPO_MEIO);
+    tempoEspera.setResetar();
+!!!201936.cpp!!!	isTempoEspera() : bool
+	return tempoEspera.isTerminou();
+!!!207184.cpp!!!	reiniciarTempo() : void
+    tempoEspera.setResetar();
+!!!207312.cpp!!!	executarTempo() : void
+    tempoEspera.processar();

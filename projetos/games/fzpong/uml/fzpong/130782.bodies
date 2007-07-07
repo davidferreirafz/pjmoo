@@ -1,0 +1,32 @@
+class ItemAbstract
+!!!143838.cpp!!!	~ItemAbstract()
+
+	//sprite=NULL;
+    if (path){
+        delete (path);
+        path = NULL;
+    }
+!!!143966.cpp!!!	ItemAbstract()
+
+    bonus = 1;
+!!!144350.cpp!!!	getBonus() : int
+
+    return bonus;
+!!!144478.cpp!!!	acao(inout INPUT : InputSystem = NULL) : void
+
+    if (isAtivo()){
+        if (isVivo()){
+            if (path->mover(velocidade,&posicao,getDimensao())){
+                setAtivo(false);
+            }
+        } else {
+            setAtivo(false);
+        }
+    }
+!!!144606.cpp!!!	selecionarPosicao() : void
+
+    Dimensao dimensao = getDimensao();
+    setPosicao(area.left+(rand()%((area.right-dimensao.w)-area.left)),area.top-dimensao.h);
+!!!144734.cpp!!!	choque(in forca : int) : void
+
+    forca=0;

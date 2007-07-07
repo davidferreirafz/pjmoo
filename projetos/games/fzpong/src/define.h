@@ -18,37 +18,23 @@
  *   Free Software Foundation, Inc.,                                       *
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
-#ifndef RAQUETE_H
-#define RAQUETE_H
+#ifndef DEFINE_H
+#define DEFINE_H
 
-#include "Objeto.h"
-#include "Bola.h"
-#include "IA.h"
 
-class Raquete : public Objeto
+enum Efeito
 {
-    public:
-        Raquete();
-        virtual ~Raquete();
-        virtual void iniciar()=0;
-        virtual Ponto saque()=0;
-        static void setBola(Bola *bola);
+    EFEITO_SEM   = 0,
+    EFEITO_CIMA  = 1,
+    EFEITO_BAIXO = 2
+};
 
-    protected:
-        int getVelocidade();
-        void setVelocidade(int valor);
-        void subir();
-        void descer();
-        bool isBateuParede();
-        Bola getVisaoBola();
-        void adaptarVelocidade();
-
-    private:
-        int velocidade;
-        static Bola *visaoBola;
-
+enum Decisao
+{
+    DECISAO_NADA   = 0,
+    DECISAO_SUBIR  = 1,
+    DECISAO_DESCER = 2
 };
 
 
-
-#endif // RAQUETE_H
+#endif // DEFINE_H

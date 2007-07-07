@@ -36,14 +36,26 @@ Jogador::~Jogador()
 
 void Jogador::iniciar()
 {
+    adaptarVelocidade();
     setPosicao(getAreaTela().right-getDimensao().w,(getAreaTela().bottom/2)-(getDimensao().h/2));
 }
 
 void Jogador::acao(InputSystem * input)
 {
-	if ((input->teclado->isKey(SDLK_UP))||(input->joystick->isAxeUp())){
+	/*if ((input->teclado->isKey(SDLK_UP))||(input->joystick->isAxeUp())){
         subir();
     } else if ((input->teclado->isKey(SDLK_DOWN))||(input->joystick->isAxeDown())){
+        descer();
+    }*/
+
+    Area areaVisaoBola = IA::converter(getVisaoBola().getDimensao(),getVisaoBola().getPosicao());
+	Area visao         = IA::converter(getDimensao(),getPosicao());
+
+    Decisao decisao = IA::pensar(visao,areaVisaoBola,raioVisao,efeito);
+
+    if (decisao==DECISAO_SUBIR){
+        subir();
+    } else if (decisao==DECISAO_DESCER){
         descer();
     }
 }

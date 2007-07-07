@@ -105,10 +105,15 @@ bool Bola::isColisao(PersonagemAbstract * personagem)
     return colisao;
 }
 
+int Bola::getVelocidade()
+{
+    return velocidade.x;
+}
+
 void Bola::elevarGrauDificuldade()
 {
-    velocidadeGradativa.y+=0.20;
-    velocidadeGradativa.x+=0.50;
+    velocidadeGradativa.y+=1;//0.20;
+    velocidadeGradativa.x+=1;//0.50;
 
     if (velocidadeGradativa.y>=getDimensao().w*0.8){
         velocidadeGradativa.y=int(getDimensao().w*0.8);

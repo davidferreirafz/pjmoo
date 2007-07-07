@@ -43,6 +43,7 @@ class Bola : public Objeto
         void continuar();
         void acao(InputSystem * input);
         bool isColisao(PersonagemAbstract * personagem);
+        int getVelocidade();
 
     protected:
 

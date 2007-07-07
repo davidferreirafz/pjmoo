@@ -1,0 +1,237 @@
+format 24
+
+pseudostatecanvas 130853 pseudostate_ref 128037 // initial
+  xyz 156 15 2000
+statecanvas 130981 state_ref 128165 // GBF_MENSAGEM__ACAO__INICIAL
+  show_activities default region_horizontally default drawing_language default
+  xyzwh 19 79 2000 205 33
+statecanvas 132005 state_ref 128421 // GBF_MENSAGEM__ACAO__INTRODUCAO
+  show_activities default region_horizontally default drawing_language default
+  xyzwh 175 143 2000 235 33
+statecanvas 132261 state_ref 128293 // GBF_MENSAGEM__TELA__INTRODUCAO
+  show_activities default region_horizontally default drawing_language default
+  xyzwh 405 78 2005 231 33
+statecanvas 132517 state_ref 128549 // GBF_MENSAGEM__TELA__MENU
+  show_activities default region_horizontally default drawing_language default
+  xyzwh 349 808 2000 191 33
+statecanvas 132645 state_ref 128677 // GBF_MENSAGEM__ACAO__MENU
+  show_activities default region_horizontally default drawing_language default
+  xyzwh 348 633 2000 195 33
+statecanvas 133029 state_ref 128933 // GBF_MENSAGEM__ACAO__SOBRE
+  show_activities default region_horizontally default drawing_language default
+  xyzwh 777 772 2000 201 33
+statecanvas 133157 state_ref 128805 // GBF_MENSAGEM__TELA__SOBRE
+  show_activities default region_horizontally default drawing_language default
+  xyzwh 544 381 2000 197 33
+statecanvas 134565 state_ref 129189 // GBF_MENSAGEM__ACAO__AJUDA
+  show_activities default region_horizontally default drawing_language default
+  xyzwh 132 683 2005 201 33
+statecanvas 134821 state_ref 129061 // GBF_MENSAGEM__TELA__AJUDA
+  show_activities default region_horizontally default drawing_language default
+  xyzwh 207 335 2005 197 33
+statecanvas 135205 state_ref 129445 // GBF_MENSAGEM__ACAO__CREDITO
+  show_activities default region_horizontally default drawing_language default
+  xyzwh 7 738 2014 211 33
+statecanvas 135461 state_ref 129317 // GBF_MENSAGEM__TELA__CREDITO
+  show_activities default region_horizontally default drawing_language default
+  xyzwh 16 271 2005 207 33
+statecanvas 137893 state_ref 130597 // GBF_MENSAGEM__ACAO__SAIR
+  show_activities default region_horizontally default drawing_language default
+  xyzwh 342 1055 2000 191 33
+statecanvas 138021 state_ref 130469 // GBF_MENSAGEM__TELA__SAIR
+  show_activities default region_horizontally default drawing_language default
+  xyzwh 341 923 2000 187 33
+pseudostatecanvas 138405 pseudostate_ref 128165 // final
+  xyz 77 1110 2000
+statecanvas 138789 state_ref 129573 // GBF_MENSAGEM__TELA__TOP_RECORDE
+  show_activities default region_horizontally default drawing_language default
+  xyzwh 618 713 2000 239 33
+statecanvas 138917 state_ref 129701 // GBF_MENSAGEM__ACAO__TOP_RECORDE
+  show_activities default region_horizontally default drawing_language default
+  xyzwh 663 473 2005 243 33
+statecanvas 140453 state_ref 130853 // GBF_MENSAGEM__ACAO__JOGO_NOVO
+  show_activities default region_horizontally default drawing_language default
+  xyzwh 769 891 2000 233 33
+statecanvas 140709 state_ref 130725 // GBF_MENSAGEM__ACAO__JOGO_EXECUTANDO
+  show_activities default region_horizontally default drawing_language default
+  xyzwh 955 726 2005 273 33
+statecanvas 140965 state_ref 130341 // GBF_MENSAGEM__ACAO__CONFIGURAR
+  show_activities default region_horizontally default drawing_language default
+  xyzwh 24 832 2010 235 33
+statecanvas 141093 state_ref 130213 // GBF_MENSAGEM__TELA__CONFIGURAR
+  show_activities default region_horizontally default drawing_language default
+  xyzwh 25 913 2010 231 33
+statecanvas 141733 state_ref 129957 // GBF_MENSAGEM__ACAO__TOP_RECORDE_NOVO
+  show_activities default region_horizontally default drawing_language default
+  xyzwh 935 456 2000 279 33
+statecanvas 141861 state_ref 129829 // GBF_MENSAGEM__TELA__TOP_RECORDE_NOVO
+  show_activities default region_horizontally default drawing_language default
+  xyzwh 894 301 2010 275 33
+statecanvas 142117 state_ref 130085 // GBF_MENSAGEM__ACAO__TOP_RECORDE_SALVAR
+  show_activities default region_horizontally default drawing_language default
+  xyzwh 458 216 2010 293 33
+pseudostatecanvas 143013 pseudostate_ref 128293 // choice
+  xyz 986 645 2000
+transitioncanvas 131109 transition_ref 128037 // <transition>
+  geometry VHV
+  
+  from ref 130853 z 1999 to point 163 54
+  line 131749 z 1999 to point 119 54
+  line 131877 z 1999 to ref 130981write_horizontally default drawing_language default
+transitioncanvas 132133 transition_ref 128165 // <transition>
+  geometry VH
+  
+  from ref 130981 z 1999 to point 119 157
+  line 134437 z 1999 to ref 132005write_horizontally default drawing_language default
+transitioncanvas 132389 transition_ref 128293 // <transition>
+  geometry VH
+  
+  from ref 132005 z 1999 to point 290 91
+  line 139813 z 1999 to ref 132261write_horizontally default drawing_language default
+transitioncanvas 132773 transition_ref 128421 // <transition>
+  geometry VHV unfixed
+  
+  from ref 132261 z 1999 to point 518 97
+  line 133925 z 1999 to point 443 96
+  line 134053 z 1999 to ref 132645write_horizontally default drawing_language default
+transitioncanvas 132901 transition_ref 128549 // <transition>
+  
+  from ref 132645 z 1999 to ref 132517write_horizontally default drawing_language default
+transitioncanvas 133285 transition_ref 128677 // <transition>
+  geometry VHV
+  
+  from ref 133029 z 1999 to point 874 590
+  line 137637 z 1999 to point 640 590
+  line 137765 z 1999 to ref 133157write_horizontally default drawing_language default
+transitioncanvas 133413 transition_ref 128805 // <transition>
+  geometry HVH
+  
+  from ref 132517 z 1999 to point 654 821
+  line 144805 z 1999 to point 654 786
+  line 144933 z 1999 to ref 133029write_horizontally default drawing_language default
+transitioncanvas 133541 transition_ref 128933 // <transition>
+  geometry HVr
+  
+  from ref 133157 z 1999 to point 640 647
+  line 136485 z 1999 to ref 132645write_horizontally default drawing_language default
+transitioncanvas 134693 transition_ref 129061 // <transition>
+  
+  from ref 132517 z 1999 to ref 134565write_horizontally default drawing_language default
+transitioncanvas 134949 transition_ref 129189 // <transition>
+  geometry VHV
+  
+  from ref 134565 z 2004 to point 230 523
+  line 137381 z 2004 to point 303 523
+  line 137509 z 2004 to ref 134821write_horizontally default drawing_language default
+transitioncanvas 135077 transition_ref 129317 // <transition>
+  geometry VH
+  
+  from ref 134821 z 1999 to point 303 647
+  line 136101 z 1999 to ref 132645write_horizontally default drawing_language default
+transitioncanvas 135333 transition_ref 129445 // <transition>
+  geometry HVH
+  
+  from ref 132517 z 1999 to point 281 821
+  line 139941 z 1999 to point 281 751
+  line 140069 z 1999 to ref 135205write_horizontally default drawing_language default
+transitioncanvas 135589 transition_ref 129573 // <transition>
+  geometry VHV
+  
+  from ref 135205 z 1999 to point 110 517
+  line 137125 z 1999 to point 117 517
+  line 137253 z 1999 to ref 135461write_horizontally default drawing_language default
+transitioncanvas 135717 transition_ref 129701 // <transition>
+  geometry HV
+  
+  from ref 135461 z 1999 to point 443 284
+  line 136357 z 1999 to ref 132645write_horizontally default drawing_language default
+transitioncanvas 138149 transition_ref 129829 // <transition>
+  geometry VHV
+  
+  from ref 132517 z 1999 to point 441 880
+  line 144293 z 1999 to point 431 880
+  line 144421 z 1999 to ref 138021write_horizontally default drawing_language default
+transitioncanvas 138277 transition_ref 129957 // <transition>
+  geometry VHV
+  
+  from ref 138021 z 1999 to point 431 1003
+  line 144037 z 1999 to point 434 1003
+  line 144165 z 1999 to ref 137893write_horizontally default drawing_language default
+transitioncanvas 138533 transition_ref 130085 // <transition>
+  geometry HVH
+  
+  from ref 137893 z 1999 to point 221 1069
+  line 142501 z 1999 to point 221 1120
+  line 142629 z 1999 to ref 138405write_horizontally default drawing_language default
+transitioncanvas 139045 transition_ref 130213 // <transition>
+  geometry VHV
+  
+  from ref 138789 z 1999 to point 734 607
+  line 139557 z 1999 to point 781 607
+  line 139685 z 1999 to ref 138917write_horizontally default drawing_language default
+transitioncanvas 139173 transition_ref 130341 // <transition>
+  geometry VHr
+  
+  from ref 138917 z 1999 to point 443 487
+  line 139429 z 1999 to ref 132645write_horizontally default drawing_language default
+transitioncanvas 139301 transition_ref 130469 // <transition>
+  geometry HVH unfixed
+  
+  from ref 132517 z 1999 to point 574 821
+  line 140197 z 1999 to point 574 727
+  line 140325 z 1999 to ref 138789write_horizontally default drawing_language default
+transitioncanvas 140581 transition_ref 130597 // <transition>
+  geometry HVH
+  
+  from ref 132517 z 1999 to point 654 821
+  line 144549 z 1999 to point 654 904
+  line 144677 z 1999 to ref 140453write_horizontally default drawing_language default
+transitioncanvas 141221 transition_ref 130725 // <transition>
+  
+  from ref 141093 z 2009 to ref 140965write_horizontally default drawing_language default
+transitioncanvas 141349 transition_ref 130853 // <transition>
+  
+  from ref 140965 z 1999 to ref 132645write_horizontally default drawing_language default
+transitioncanvas 141477 transition_ref 130981 // <transition>
+  
+  from ref 132517 z 1999 to ref 141093write_horizontally default drawing_language default
+transitioncanvas 141605 transition_ref 131109 // <transition>
+  geometry VHV
+  
+  from ref 140453 z 1999 to point 883 821
+  line 142757 z 1999 to point 1089 821
+  line 142885 z 1999 to ref 140709write_horizontally default drawing_language default
+transitioncanvas 141989 transition_ref 131237 // <transition>
+  geometry VHV
+  
+  from ref 141733 z 1999 to point 1071 391
+  line 145061 z 1999 to point 1029 391
+  line 145189 z 1999 to ref 141861write_horizontally default drawing_language default
+transitioncanvas 142245 transition_ref 131365 // <transition>
+  geometry HVH
+  
+  from ref 141861 z 2009 to point 818 314
+  line 145317 z 2009 to point 818 228
+  line 145445 z 2009 to ref 142117write_horizontally default drawing_language default
+transitioncanvas 142373 transition_ref 131493 // <transition>
+  
+  from ref 142117 z 1999 to ref 132645write_horizontally default drawing_language default
+transitioncanvas 143141 transition_ref 131621 // <transition>
+  geometry VHV
+  
+  from ref 140709 z 1999 to point 1089 701
+  line 143525 z 1999 to point 996 701
+  line 143653 z 1999 to ref 143013write_horizontally default drawing_language default
+transitioncanvas 143269 transition_ref 131749 // <transition>
+  geometry VHV
+  
+  from ref 143013 z 1999 label "[pontuacao > menor_recorde]" xyz 929 601 3000 to point 996 564
+  line 143781 z 1999 to point 1072 564
+  line 143909 z 1999 to ref 141733write_horizontally default drawing_language default
+transitioncanvas 143397 transition_ref 131877 // <transition>
+  geometry HVH
+  
+  from ref 143013 z 1999 to point 762 661
+  line 145573 z 1999 to point 762 647
+  line 145701 z 1999 to ref 132645write_horizontally default drawing_language default
+end

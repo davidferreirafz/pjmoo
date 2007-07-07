@@ -1,0 +1,51 @@
+class UserInterfaceMenuTexto
+!!!209744.cpp!!!	UserInterfaceMenuTexto(inout input : InputSystem)
+    gsGFX = GraphicSystemGFX::getInstance();
+!!!209488.cpp!!!	desenhar() : void
+    if (!item.empty()){
+        Dimensao dimensao = item[0]->getDimensaoLetra();
+        int offsetY=(dimensao.w/4);
+        int totalVertical   = (int(item.size()) * espacoVertical)+offsetY;
+        int totalHorizontal = (maiorPalavra+2) * dimensao.w;
+        int meioHorizontal  = totalHorizontal/2;
+
+        Ponto t=calcularAlinhamento(totalHorizontal,totalVertical);
+
+        gsGFX->setColor(corFundo.r,corFundo.g,corFundo.b);
+        gsGFX->retanguloPreenchido(t.x,t.y,totalHorizontal,totalVertical);
+        gsGFX->setColor(corBorda.r,corBorda.g,corBorda.b);
+        gsGFX->retangulo(t.x,t.y,totalHorizontal,totalVertical);        
+
+        int pontoY=t.y+offsetY;
+        for (unsigned int i=0; i<item.size(); i++){
+            if (item[i]!=NULL){
+                int dtmp=item[i]->getQuantidadeLetras();
+                item[i]->desenhar(t.x+(meioHorizontal-((dtmp*dimensao.w)/2)),pontoY);
+            }
+            pontoY+=espacoVertical;
+        }
+    }
+!!!210512.cpp!!!	navegar() : bool
+    bool navegou = false;
+    
+    if ((input->teclado->isKey(SDLK_UP))||(input->joystick->isAxeUp())){
+        itemAnterior();
+        delayNavegacao.setResetar();
+        navegou=true;
+    } else if ((input->teclado->isKey(SDLK_DOWN))||(input->joystick->isAxeDown())){
+        itemAvancar();
+        delayNavegacao.setResetar();
+        navegou=true;
+    }
+    
+    return navegou;
+!!!210128.cpp!!!	itemAvancar() : void
+    itemSelecionado++;
+    if (itemSelecionado>=int(item.size())){
+        itemSelecionado=item.size()-1;
+    }
+!!!210256.cpp!!!	itemAnterior() : void
+    itemSelecionado--;
+    if (itemSelecionado<0){
+        itemSelecionado=0;
+    }

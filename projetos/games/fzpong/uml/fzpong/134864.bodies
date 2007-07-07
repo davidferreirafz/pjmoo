@@ -1,0 +1,5 @@
+class PersonagemAutomatico
+!!!165200.cpp!!!	PersonagemAutomatico()
+
+!!!165328.cpp!!!	~PersonagemAutomatico()
+//UtilLog::getInstance()->comentario("PersonagemAutomatico [Removido]");

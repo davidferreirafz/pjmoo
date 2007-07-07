@@ -1,0 +1,78 @@
+class FrameLayerCamera
+!!!130000.cpp!!!	~FrameLayerCamera()
+
+!!!130128.cpp!!!	FrameLayerCamera()
+    setTop();
+!!!130256.cpp!!!	setMundo(in mundo : FrameLayerMundo) : void
+    this->mundo=mundo;
+!!!130384.cpp!!!	show() : void
+/*
+    GraphicSystemGFX *gfx = GraphicSystemGFX::getInstance();
+    gfx->setColor(0,255,0);
+    gfx->circulo(ponto.x,ponto.y,10);
+*/
+!!!130512.cpp!!!	setPosicao(in X : int, in Y : int) : void
+    ponto.x=X;
+    ponto.y=Y;
+!!!130640.cpp!!!	setTop() : void
+    ponto.x=0;
+    ponto.y=0;
+!!!130768.cpp!!!	setBottom() : void
+    ponto.x=0;
+    ponto.y=(mundo.getTilesVertical() - mundo.getTilesHorizontal()) * (mundo.getPixelTileVertical());
+!!!130896.cpp!!!	getPosicao() : Ponto
+    return ponto;
+!!!131024.cpp!!!	isTop() : bool
+    if (ponto.y<=0){
+        return true;
+    } else {
+        return false;
+    }
+!!!131152.cpp!!!	isBottom() : bool
+    if (ponto.y>=(mundo.getTilesVertical() * mundo.getPixelTileVertical() - mundo.getPixelVisivelVertical())){
+        return true;
+    } else {
+        return false;
+    }
+!!!131280.cpp!!!	isRight() : bool
+    if (ponto.x>=(mundo.getTilesHorizontal() * mundo.getPixelTileHorizontal() - mundo.getPixelVisivelVertical())){
+        return true;
+    } else {
+        return false;
+    }
+!!!131408.cpp!!!	isLeft() : bool
+    if (ponto.x<=0){
+        return true;
+    } else {
+        return false;
+    }
+!!!131536.cpp!!!	runUp(in deslocamento : int = 1) : void
+    ponto.y-=deslocamento;
+    limiteUp();
+!!!131664.cpp!!!	runDown(in deslocamento : int = 1) : void
+    ponto.y+=deslocamento;
+    limiteDown();
+!!!131792.cpp!!!	runLeft(in deslocamento : int = 1) : void
+    ponto.x-=deslocamento;
+    limiteLeft();
+!!!131920.cpp!!!	runRight(in deslocamento : int = 1) : void
+    ponto.x+=deslocamento;
+    limiteRight();
+!!!132048.cpp!!!	limiteUp() : void
+    if (ponto.y<=0){
+        ponto.y=0;
+    }
+!!!132176.cpp!!!	limiteDown() : void
+    int limite = (mundo.getTilesVertical() * mundo.getPixelTileVertical()) - mundo.getPixelVisivelVertical();
+    if (ponto.y>=limite){
+        ponto.y =limite;
+    }
+!!!132304.cpp!!!	limiteLeft() : void
+    if (ponto.x<=0){
+        ponto.x=0;
+    }
+!!!132432.cpp!!!	limiteRight() : void
+    int limite = (mundo.getTilesHorizontal() * mundo.getPixelTileHorizontal()) - mundo.getPixelVisivelHorizontal();
+    if (ponto.x>=limite){
+        ponto.x =limite;
+    }

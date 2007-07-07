@@ -1,0 +1,138 @@
+format 29
+
+classcanvas 130256 class_ref 133968 // Particula
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default shadow default
+  hidden_attributes
+    attribute_ref 137424 // energia
+    attribute_ref 137552 // ativa
+  xyz 122 121 2000
+classcanvas 130384 class_ref 134096 // HSV
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default shadow default
+  color gray
+  hidden_attributes
+    attribute_ref 149200 // h
+    attribute_ref 149328 // s
+    attribute_ref 149456 // v
+  xyz 8 80 2000
+classcanvas 130640 class_ref 134224 // ParticleSystemEfeito
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default shadow default
+  hidden_operations
+    operation_ref 160976 // ParticleSystemEfeito
+    operation_ref 161104 // ~ParticleSystemEfeito
+    operation_ref 161232 // setQuantidade
+    operation_ref 161360 // isTerminou
+    operation_ref 161488 // desenhar
+    operation_ref 161616 // criar
+    operation_ref 161744 // executar
+  xyz 276 190 2000
+classcanvas 130896 class_ref 134352 // ParticleSystemEfeitoEsferico
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default shadow default
+  hidden_attributes
+    attribute_ref 137680 // raio
+  hidden_operations
+    operation_ref 161872 // ParticleSystemEfeitoEsferico
+    operation_ref 162000 // ~ParticleSystemEfeitoEsferico
+    operation_ref 162128 // setRaio
+  xyz 262 257 2005
+classcanvas 131152 class_ref 134480 // ParticleSystemManager
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default shadow default
+  hidden_operations
+    operation_ref 162256 // ParticleSystemManager
+    operation_ref 162384 // ~ParticleSystemManager
+    operation_ref 162512 // adicionar
+    operation_ref 162640 // desenhar
+    operation_ref 162768 // executar
+    operation_ref 162896 // size
+    operation_ref 163024 // limpar
+    operation_ref 163152 // getInstance
+    operation_ref 163280 // removerMorto
+  xyz 420 119 3005
+classcanvas 132432 class_ref 137552 // UtilColor
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default shadow default
+  color gray
+  hidden_operations
+    operation_ref 186704 // forHSV
+    operation_ref 186832 // forRGB
+    operation_ref 186960 // menor
+    operation_ref 187088 // maior
+  xyz 472 347 2000
+classcanvas 132688 class_ref 129360 // GraphicSystem
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default shadow default
+  color gray
+  hidden_operations
+    operation_ref 143952 // ~GraphicSystem
+    operation_ref 144080 // getInstance
+    operation_ref 144208 // sincronizar
+    operation_ref 144336 // clear
+    operation_ref 144464 // flip
+    operation_ref 144592 // salvarScreenShot
+    operation_ref 144720 // GraphicSystem
+  xyz 289 22 2000
+classcanvas 134224 class_ref 128976 // Ponto
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default shadow default
+  color gray
+  hidden_attributes
+    attribute_ref 128848 // x
+    attribute_ref 128976 // y
+  xyz 10 287 2000
+fragment 134736 "ParticleSystem - Sistema de Efeitos Especiais"
+  xyzwh 103 75 1994 561 249
+end
+relationcanvas 130512 relation_ref 136144 // <directional aggregation by value>
+  geometry HVr
+  from ref 130256 z 1999 to point 152 104
+  line 135760 z 1999 to ref 130384
+  role_a_pos 82 90 3000 no_role_b
+  no_multiplicity_a no_multiplicity_b
+relationcanvas 130768 relation_ref 136272 // <directional aggregation by value>
+  geometry VHr
+  from ref 130640 z 1999 stereotype "<<std::deque>>" xyz 174 206 3000 to point 152 207
+  line 135632 z 1999 to ref 130256
+  role_a_pos 164 184 3000 no_role_b
+  no_multiplicity_a no_multiplicity_b
+relationcanvas 131024 relation_ref 136528 // <generalisation>
+  geometry HV
+  from ref 130896 z 1999 to point 331 273
+  line 128088 z 1999 to ref 130640
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+relationcanvas 131280 relation_ref 136784 // <unidirectional association>
+  from ref 131152 z 1999 to point 488 103
+  line 131408 z 1999 to point 590 103
+  line 131536 z 1999 to point 590 133
+  line 132304 z 1999 to ref 131152
+  role_a_pos 568 117 3000 no_role_b
+  no_multiplicity_a no_multiplicity_b
+relationcanvas 131664 relation_ref 136912 // <directional aggregation by value>
+  geometry HVr
+  from ref 131152 z 1999 to point 481 206
+  line 135504 z 1999 stereotype "<<std::deque>>" xyz 369 171 3000 to ref 130640
+  role_a_pos 400 192 3000 no_role_b
+  no_multiplicity_a no_multiplicity_b
+relationcanvas 132560 relation_ref 149328 // <dependency>
+  from ref 130640 z 1999 to point 494 266
+  line 135248 z 1999 to ref 132432
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+relationcanvas 132816 relation_ref 131792 // <unidirectional association>
+  from ref 132688 z 1999 to point 332 8
+  line 132944 z 1999 to point 407 8
+  line 133072 z 1999 to point 407 39
+  line 133328 z 1999 to ref 132688
+  role_a_pos 395 23 3000 no_role_b
+  no_multiplicity_a no_multiplicity_b
+relationcanvas 133200 relation_ref 136400 // <unidirectional association>
+  from ref 130640 z 1999 to ref 132688
+  role_a_pos 342 64 3000 no_role_b
+  no_multiplicity_a no_multiplicity_b
+relationcanvas 134352 relation_ref 136656 // <directional aggregation by value>
+  geometry HVr
+  from ref 130896 z 1999 to point 333 311
+  line 135888 z 1999 to ref 134224
+  role_a_pos 84 297 3000 no_role_b
+  no_multiplicity_a no_multiplicity_b
+relationcanvas 134480 relation_ref 149456 // <dependency>
+  from ref 130640 z 1999 to ref 134224
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+end

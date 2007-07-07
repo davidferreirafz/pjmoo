@@ -1,0 +1,74 @@
+format 29
+
+classcanvas 128080 class_ref 133584 // PersonagemAbstract
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default shadow default
+  xyz 256 322 2000
+classcanvas 128208 class_ref 134864 // PersonagemAutomatico
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default shadow default
+  xyz 54 665 2000
+classcanvas 128464 class_ref 135120 // PersonagemEstatico
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default shadow default
+  xyz 254 744 2000
+classcanvas 128720 class_ref 134992 // PersonagemControlado
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default shadow default
+  xyz 464 647 2000
+classcanvas 128976 class_ref 128208 // SpriteInterface
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default shadow default
+  xyz 485 20 2005
+classcanvas 129104 class_ref 136400 // SpriteAbstract
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default shadow default
+  xyz 264 39 2005
+classcanvas 129360 class_ref 134736 // SpritePersonagem
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default shadow default
+  xyz 42 230 2005
+classcanvas 129872 class_ref 136528 // SpriteItem
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default shadow default
+  xyz 73 33 3005
+classcanvas 131152 class_ref 128976 // Ponto
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default shadow default
+  xyz 550 455 3005
+classcanvas 131536 class_ref 129104 // Dimensao
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default shadow default
+  xyz 526 317 3010
+relationcanvas 128336 relation_ref 137808 // <generalisation>
+  from ref 128208 z 1999 to ref 128080
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+relationcanvas 128592 relation_ref 138064 // <generalisation>
+  from ref 128464 z 1999 to ref 128080
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+relationcanvas 128848 relation_ref 137936 // <generalisation>
+  from ref 128720 z 1999 to ref 128080
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+relationcanvas 129232 relation_ref 139728 // <generalisation>
+  geometry HVH
+  from ref 129104 z 1999 to point 425 150
+  line 130896 z 1999 to point 425 107
+  line 131024 z 1999 to ref 128976
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+relationcanvas 129488 relation_ref 140496 // <generalisation>
+  geometry VH
+  from ref 129360 z 1999 to point 98 150
+  line 130768 z 1999 to ref 129104
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+relationcanvas 130000 relation_ref 140240 // <generalisation>
+  from ref 129872 z 1999 to ref 129104
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+relationcanvas 131280 relation_ref 137552 // <directional aggregation by value>
+  from ref 128080 z 1999 to ref 131152
+  role_a_pos 506 473 3000 no_role_b
+  no_multiplicity_a no_multiplicity_b
+relationcanvas 131664 relation_ref 137296 // <directional aggregation by value>
+  from ref 128080 z 1999 to ref 131536
+  role_a_pos 472 349 3000 no_role_b
+  no_multiplicity_a no_multiplicity_b
+relationcanvas 131792 relation_ref 152144 // <unidirectional association>
+  from ref 128080 z 1999 stereotype "<<std::map>>" xyz 173 402 3000 to ref 129360
+  role_a_pos 168 339 3000 no_role_b
+  multiplicity_a_pos 168 361 3000 no_multiplicity_b
+end

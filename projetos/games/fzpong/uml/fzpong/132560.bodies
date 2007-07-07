@@ -1,0 +1,92 @@
+class InputSystemMouse
+!!!155600.cpp!!!	~InputSystemMouse()
+    UtilLog::subSistema("Removendo InputSystemMouse");
+    try {
+        if (cursor){
+        //delete (cursor);
+        //Comentado por causar falha em ambiente Linux
+        //motivo ainda desconhecido
+        }
+    } catch (...){
+        //UtilLog::getInstance()->status("[Falhou]");
+    }
+    SDL_ShowCursor(SDL_ENABLE);
+!!!155728.cpp!!!	getX() : int
+
+	return ponto.x;
+!!!155856.cpp!!!	getY() : int
+    return ponto.y;
+!!!155984.cpp!!!	getPosicao() : Ponto
+    return ponto;
+!!!156112.cpp!!!	carregarArquivo(in arquivo : std::string) : void
+    //UtilLog::getInstance()->inicializando("\tCarregando Cursor");
+    if (cursor->carregarArquivo(arquivo)){
+        //UtilLog::getInstance()->status("[Ok]");
+        setMouse(true);
+    } else {
+        //UtilLog::getInstance()->status("[Falhou]");
+        setMouse(false);
+    }
+!!!156240.cpp!!!	getMouseCursor() : InputSystemMouseCursor
+    return cursor;
+!!!156368.cpp!!!	setMouse(in show : bool) : void
+    mouse=show;
+!!!156496.cpp!!!	isMouse() : bool
+    return mouse;
+!!!156624.cpp!!!	isButtonLeft() : bool
+    if (SDL_GetMouseState(NULL, NULL)&SDL_BUTTON(MS_LEFT)){
+        return true;
+    } else {
+        return false;
+    }
+!!!156752.cpp!!!	isButtonMiddle() : bool
+    if (SDL_GetMouseState(NULL, NULL)&SDL_BUTTON(MS_MIDDLE)){
+        return true;
+    } else {
+        return false;
+    }
+!!!156880.cpp!!!	isButtonRight() : bool
+    if (SDL_GetMouseState(NULL, NULL)&SDL_BUTTON(MS_RIGHT)){
+        return true;
+    } else {
+        return false;
+    }
+!!!157008.cpp!!!	isButton(in left : bool, in middle : bool, in right : bool) : bool
+    bool e,m,d;
+
+    e=isButtonLeft();
+
+    if (left==e){
+        e=true;
+    } else {
+        e=false;
+    }
+
+    m=isButtonMiddle();
+
+    if (middle==m){
+        m=true;
+    } else {
+        m=false;
+    }
+
+    d=isButtonRight();
+
+    if (right==d){
+        d=true;
+    } else {
+        d=false;
+    }
+
+    return (e&&m&&d);
+!!!157136.cpp!!!	InputSystemMouse()
+    UtilLog::subSistema("Instanciando InputSystemMouse");
+    SDL_ShowCursor(SDL_DISABLE);
+    setMouse(false);
+    cursor = new InputSystemMouseCursor();
+!!!157264.cpp!!!	processar() : void
+    SDL_GetMouseState(&ponto.x, &ponto.y);
+
+    if ((isMouse())&&(cursor!=NULL)){
+        cursor->desenhar(ponto.x,ponto.y);
+    }

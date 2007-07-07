@@ -1,0 +1,42 @@
+class Raquete
+!!!137236.cpp!!!	Raquete()
+
+    velocidade = 10;
+!!!137364.cpp!!!	~Raquete()
+
+    //dtor
+!!!137748.cpp!!!	setBola(inout bola : Bola) : void
+    visaoBola=bola;
+!!!137876.cpp!!!	getVelocidade() : int
+    return velocidade;
+!!!138004.cpp!!!	setVelocidade(in valor : int) : void
+    velocidade=valor;
+!!!138132.cpp!!!	subir() : void
+    posicao.y-=getVelocidade();
+
+    if (posicao.y<=getAreaTela().top){
+        posicao.y=getAreaTela().top;
+    }
+!!!138260.cpp!!!	descer() : void
+    posicao.y+=getVelocidade();
+    if (posicao.y+getDimensao().h>=getAreaTela().bottom){
+        posicao.y=getAreaTela().bottom-getDimensao().h;
+    }
+!!!138388.cpp!!!	isBateuParede() : bool
+    bool bateu = false;
+
+    if ((posicao.y+getDimensao().h>=getAreaTela().bottom)||(posicao.y<=getAreaTela().top)){
+        bateu=true;
+    }
+
+    return bateu;
+!!!138516.cpp!!!	getVisaoBola() : Bola
+    return *visaoBola;
+!!!138644.cpp!!!	adaptarVelocidade() : void
+    int vb = visaoBola->getVelocidade();
+
+    if (vb<0){
+        vb= - vb;
+    }
+
+    velocidade= (vb) * 1.5;

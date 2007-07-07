@@ -1,0 +1,18 @@
+class SpriteFactory
+!!!175312.cpp!!!	criarSpriteItem(in left : int, in top : int, in largura : int, in altura : int, in frameTotal : int, in frameRate : int) : SpriteItem
+    SpriteItem *sprite = new SpriteItem();
+    sprite->criar(left,top,largura,altura,frameTotal,frameRate,gsiBuffer);
+
+    return sprite;
+!!!175440.cpp!!!	criarSpritePersonagem(in left : int, in top : int, in largura : int, in altura : int, in frameTotal : int, in frameRate : int) : SpritePersonagem
+    SpritePersonagem *sprite = new SpritePersonagem();
+    sprite->criar(left,top,largura,altura,frameTotal,frameRate,gsiBuffer);
+
+    return sprite;
+!!!175568.cpp!!!	criarFrameLayer(in left : int, in top : int, in largura : int, in altura : int) : FrameLayer
+    FrameLayer *sprite =new FrameLayer();
+    sprite->criar(left,top,largura,altura,gsiBuffer);
+
+    return sprite;
+!!!175696.cpp!!!	SpriteFactory(inout gsiBuffer : GraphicSystemImageBuffer)
+    SpriteFactory::gsiBuffer=gsiBuffer;

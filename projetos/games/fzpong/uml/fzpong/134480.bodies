@@ -1,0 +1,54 @@
+class ParticleSystemManager
+!!!162256.cpp!!!	ParticleSystemManager()
+
+!!!162384.cpp!!!	~ParticleSystemManager()
+    limpar();
+!!!162512.cpp!!!	adicionar(inout efeito : ParticleSystemEfeito) : void
+    lista.push_back(efeito);
+!!!162640.cpp!!!	desenhar() : void
+    if (!lista.empty()){
+        for (unsigned int t=0; t<lista.size(); t++){
+            if (lista[t]){
+                lista[t]->desenhar();
+            }
+        }
+    }
+!!!162768.cpp!!!	executar() : void
+    if (!lista.empty()){
+        for (unsigned int t=0; t<lista.size(); t++){
+            if (lista[t]){
+                lista[t]->executar();
+            }
+        }
+        removerMorto();
+    }
+!!!162896.cpp!!!	size() : int
+    return lista.size();
+!!!163024.cpp!!!	limpar() : void
+    for (unsigned int i=0; i<lista.size(); i++){
+        try {
+            if (lista[i]){
+                delete lista[i];
+                lista[i]=NULL;
+            }
+        } catch (...){
+        }
+    }
+    lista.clear();
+!!!163152.cpp!!!	getInstance() : ParticleSystemManager
+    if (instance == NULL){
+        instance = new ParticleSystemManager();
+    }
+    return instance;
+!!!163280.cpp!!!	removerMorto() : void
+    int total=size()-1;
+
+    for (int i=total; i>=0; i--){
+        if (lista[i]!=NULL){
+            if (lista[i]->isTerminou()){
+                delete lista[i];
+                lista[i]=NULL;
+                lista.erase(lista.begin()+i);
+            }
+        }
+    }

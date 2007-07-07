@@ -1,0 +1,122 @@
+class UtilLog
+!!!187600.cpp!!!	setArquivo(in arquivo : std::string) : void
+    UtilLog::arquivo=arquivo+"_GBF_Debug.log";
+!!!187728.cpp!!!	setAutor(in autor : std::string) : void
+
+	UtilLog::autor=autor;
+!!!187856.cpp!!!	setProjeto(in projeto : std::string) : void
+    UtilLog::projeto=projeto;
+!!!187984.cpp!!!	iniciar() : void
+    if ((arquivo=="")||(projeto=="")||(autor=="")){
+        printf("Atencao:\n\r As informacoes abaixo sao obrigatorias.");
+        printf("\n\t arquivo: %s",arquivo.c_str());
+        printf("\n\t projeto: %s",projeto.c_str());
+        printf("\n\t autor:   %s",autor.c_str());
+        exit(1);
+    } else {
+        //verificar se isso deleta
+        handleArquivo = fopen(arquivo.c_str(), "w+t");
+        fclose(handleArquivo);
+        //abrindo novo
+        //handleArquivo = fopen(arquivo.c_str(), "w+t");
+        handleArquivo = fopen(arquivo.c_str(), "a+t");
+
+        //cabecalho
+        escrever("Inicio do Log. %s",UtilDate::getInfo());
+        escrever("=========================================================================");
+        escrever(" Gamework's Brazilian Framework (GBF) - http://pjmoo.codigolivre.org.br  ");
+        escrever("=========================================================================");
+        escrever(" Projeto: %s",projeto.c_str());
+        escrever(" Autor:");
+        escrever(" ...%s",autor.c_str());
+        escrever("=========================================================================");
+    }
+!!!188112.cpp!!!	finalizar() : void
+    if (handleArquivo){
+        escrever("");
+        escrever("Fim do Log. %s",UtilDate::getInfo());
+        fclose(handleArquivo);
+        handleArquivo = NULL;
+    }
+!!!188240.cpp!!!	cabecalho(in texto : char) : void
+    escrever("");
+    escrever("=========================================================================");
+    escrever(" GBF :: %s",texto);
+    escrever("=========================================================================");
+    escrever("");
+!!!188368.cpp!!!	sistema(in texto : char) : void
+
+    // Cria a mensagem final
+    char szBuffer[512];
+    va_list arglist;
+
+    va_start(arglist, texto);
+    vsprintf(szBuffer, texto, arglist);
+    va_end(arglist);
+
+    // Escreve no arquivo de log
+    fprintf(handleArquivo, "\n #:%s", szBuffer);
+!!!188496.cpp!!!	subSistema(in texto : char) : void
+
+    // Cria a mensagem final
+    char szBuffer[512];
+    va_list arglist;
+
+    va_start(arglist, texto);
+    vsprintf(szBuffer, texto, arglist);
+    va_end(arglist);
+
+    // Escreve no arquivo de log
+    fprintf(handleArquivo, "\n\t >%s", szBuffer);
+!!!188624.cpp!!!	comentario(in texto : char) : void
+
+    // Cria a mensagem final
+    char szBuffer[512];
+    va_list arglist;
+
+    va_start(arglist, texto);
+    vsprintf(szBuffer, texto, arglist);
+    va_end(arglist);
+
+    // Escreve no arquivo de log
+    fprintf(handleArquivo, " : %s", szBuffer);
+    fflush(handleArquivo);
+!!!188752.cpp!!!	comentarioComQuebra(in texto : char) : void
+
+    // Cria a mensagem final
+    char szBuffer[512];
+    va_list arglist;
+
+    va_start(arglist, texto);
+    vsprintf(szBuffer, texto, arglist);
+    va_end(arglist);
+
+    // Escreve no arquivo de log
+    fprintf(handleArquivo, "\n    %s", szBuffer);
+    fflush(handleArquivo);
+!!!188880.cpp!!!	tracer(in texto : char) : void
+
+    // Cria a mensagem final
+    char szBuffer[512];
+    va_list arglist;
+
+    va_start(arglist, texto);
+    vsprintf(szBuffer, texto, arglist);
+    va_end(arglist);
+
+    // Escreve no arquivo de log
+    fprintf(handleArquivo, "\n   *%s", szBuffer);
+    fflush(handleArquivo);
+!!!189008.cpp!!!	escrever(in texto : char) : void
+
+    // Cria a mensagem final
+    char szBuffer[512];
+    va_list arglist;
+
+    va_start(arglist, texto);
+    vsprintf(szBuffer, texto, arglist);
+    va_end(arglist);
+
+    // Escreve no arquivo de log
+    fprintf(handleArquivo, "\n %s", szBuffer);
+    fflush(handleArquivo);

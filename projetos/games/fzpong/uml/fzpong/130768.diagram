@@ -1,0 +1,5 @@
+format 24
+
+pseudostatecanvas 128080 pseudostate_ref 129616 // initial
+  xyz 80 37 2000
+end

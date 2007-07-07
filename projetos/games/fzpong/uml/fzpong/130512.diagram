@@ -1,0 +1,76 @@
+format 24
+
+pseudostatecanvas 128080 pseudostate_ref 128848 // initial
+  xyz 104 24 2000
+statecanvas 128208 state_ref 130128 // GAT_EG_INICIAL
+  show_activities default region_horizontally default drawing_language default
+  xyzwh 235 20 2000 109 33
+statecanvas 128464 state_ref 130384 // GAT_EG_APRESENTACAO
+  show_activities default region_horizontally default drawing_language default
+  xyzwh 464 341 2000 157 33
+statecanvas 128592 state_ref 130512 // GAT_EG_JOGO
+  show_activities default region_horizontally default drawing_language default
+  xyzwh 24 334 2000 113 47
+statecanvas 128720 state_ref 130640 // GAT_EG_SAIR
+  show_activities default region_horizontally default drawing_language default
+  xyzwh 425 97 2005 95 33
+pseudostatecanvas 132688 pseudostate_ref 128976 // final
+  xyz 550 100 2000
+statecanvas 133072 state_ref 128976 // GAT_EG_MENU
+  show_activities default region_horizontally default drawing_language default
+  xyzwh 249 143 2005 113 47
+statecanvas 135376 state_ref 131792 // GAT_EG_TOPGALERIA
+  show_activities default region_horizontally default drawing_language default
+  xyzwh 13 92 2010 139 47
+transitioncanvas 128848 transition_ref 131152 // setInicial()
+  geometry VH
+  
+  from ref 128080 z 1999 label "setInicial()" xyz 135 39 1999 to point 111 34
+  line 137296 z 1999 to ref 128208write_horizontally default drawing_language default
+transitioncanvas 132816 transition_ref 132048 // <transition>
+  geometry HVr
+  
+  from ref 128720 z 1999 to point 470 110
+  line 137040 z 1999 to ref 132688write_horizontally default drawing_language default
+transitioncanvas 133200 transition_ref 132176 // setMenu()
+  
+  from ref 128592 z 1999 label "setMenu()" xyz 165 253 1999 to ref 133072write_horizontally default drawing_language default
+transitioncanvas 133456 transition_ref 132304 // setMenu()
+  
+  from ref 128464 z 1999 label "setMenu()" xyz 404 256 1999 to ref 133072write_horizontally default drawing_language default
+transitioncanvas 133712 transition_ref 132432 // setMenu()
+  geometry HV
+  
+  from ref 128208 z 1999 label "setMenu()" xyz 252 58 1999 to point 303 34
+  line 135248 z 1999 to ref 133072write_horizontally default drawing_language default
+transitioncanvas 134096 transition_ref 132816 // setSair()
+  geometry HV
+  
+  from ref 133072 z 1999 label "setSair()" xyz 477 138 1999 to point 470 164
+  line 135120 z 1999 to ref 128720write_horizontally default drawing_language default
+transitioncanvas 134224 transition_ref 132944 // setApresentacao()
+  geometry VH
+  
+  from ref 133072 z 1999 label "setApresentacao()" xyz 362 335 1999 to point 303 355
+  line 136016 z 1999 to ref 128464write_horizontally default drawing_language default
+transitioncanvas 134352 transition_ref 133072 // setJogo()
+  geometry HVr
+  
+  from ref 133072 z 1999 label "setJogo()" xyz 154 337 1999 to point 303 355
+  line 136528 z 1999 to ref 128592write_horizontally default drawing_language default
+transitioncanvas 135504 transition_ref 135376 // setTopGaleria()
+  geometry VHr
+  
+  from ref 133072 z 2004 label "setTopGaleria()" xyz 128 151 2004 to point 80 164
+  line 137552 z 2004 to ref 135376write_horizontally default drawing_language default
+transitioncanvas 135632 transition_ref 135504 // setMenu()
+  geometry HV
+  
+  from ref 135376 z 2004 label "setMenu()" xyz 198 98 2004 to point 303 113
+  line 137424 z 2004 to ref 133072write_horizontally default drawing_language default
+transitioncanvas 135888 transition_ref 135632 // setTopGaleria()
+  geometry VHr
+  
+  from ref 128592 z 1999 label "setTopGaleria()" xyz 85 202 1999 to point 80 355
+  line 136784 z 1999 to ref 135376write_horizontally default drawing_language default
+end

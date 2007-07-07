@@ -1,0 +1,21 @@
+class ObstaculoFuracao
+!!!169054.cpp!!!	ObstaculoFuracao()
+
+    GraphicSystemImageBufferManager *gsImageBufferManager=GraphicSystemImageBufferManager::getInstance();
+
+    SpriteFactory * spriteFactory   = new SpriteFactory(gsImageBufferManager->getImageBuffer("personagem"));
+    adicionarSpritePrincipal(spriteFactory->criarSpritePersonagem(0,115,32,34,4,8));
+    delete (spriteFactory);
+
+    velocidade  = OBSTACULO_FURACAO_MIN + (rand()%OBSTACULO_FURACAO_MAX);
+    resistencia = 10;
+    danos       = 2;
+
+    selecionarPosicao();
+    path = PathFactory::criar(PATH_UP);
+!!!169182.cpp!!!	~ObstaculoFuracao()
+
+    //UtilLog::getInstance()->status("[ObstaculoFuracao]");
+!!!169310.cpp!!!	selecionarPosicao() : void
+
+    setPosicao(area.left+(rand()%(area.right-area.left)),area.bottom);

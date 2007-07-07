@@ -1,0 +1,583 @@
+format 29
+"ParticleSystem" // GBF::ParticleSystem
+  revision 4
+  modified_by 10 "david"
+  // class settings
+  //class diagram settings
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default shadow default
+  //use case diagram settings
+  package_name_in_tab default show_context default auto_label_position default shadow default
+  //sequence diagram settings
+  show_full_operations_definition default write_horizontally default drawing_language default shadow default
+  //collaboration diagram settings
+  show_full_operations_definition default show_hierarchical_rank default write_horizontally default drawing_language default package_name_in_tab default show_context default shadow default
+  //object diagram settings
+   write_horizontally default package_name_in_tab default show_context default auto_label_position default shadow default
+  //component diagram settings
+  package_name_in_tab default show_context default auto_label_position default shadow default
+  draw_component_as_icon default show_component_req_prov default show_component_rea default
+  //deployment diagram settings
+  package_name_in_tab default show_context default write_horizontally default auto_label_position default shadow default
+  draw_component_as_icon default show_component_req_prov default show_component_rea default
+  //state diagram settings
+  package_name_in_tab default show_context default auto_label_position default write_trans_label_horizontally default show_trans_definition default shadow default
+  show_activities default region_horizontally default drawing_language default
+  //activity diagram settings
+  package_name_in_tab default show_context default show_opaque_action_definition default auto_label_position default write_flow_label_horizontally default shadow default
+  show_infonote default drawing_language default
+  
+  cpp_h_dir "/home/desenvolvimento/pjmoo/source/gbf/src/"
+  cpp_src_dir "/home/desenvolvimento/pjmoo/source/gbf/src/"
+  classview 129104 "Classes"
+    //class diagram settings
+    draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default shadow default
+    //collaboration diagram settings
+    show_full_operations_definition default show_hierarchical_rank default write_horizontally default drawing_language default package_name_in_tab default show_context default shadow default
+    //object diagram settings
+     write_horizontally default package_name_in_tab default show_context default auto_label_position default shadow default
+    //sequence diagram settings
+    show_full_operations_definition default write_horizontally default drawing_language default shadow default
+    //state diagram settings
+    package_name_in_tab default show_context default auto_label_position default write_trans_label_horizontally default show_trans_definition default shadow default
+    show_activities default region_horizontally default drawing_language default
+    //class settings
+    //activity diagram settings
+    package_name_in_tab default show_context default show_opaque_action_definition default auto_label_position default write_flow_label_horizontally default shadow default
+    show_infonote default drawing_language default
+    
+    class 133968 "Particula"
+       stereotype "struct"
+      cpp_decl "${comment}${template}struct ${name}${inherit}
+{
+${members}};
+${inlines}
+"
+      java_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      comment "Descrição:
+    Estrutura para representação de uma particula
+Motivação:
+    Permitir representar uma unidade com caracteristicas e ciclo de vida próprios"
+      classrelation 135888 // velocidade (<directional aggregation by value>)
+	relation 135888 *-->
+	  a role_name "velocidade" multiplicity "" public
+	    cpp default "    ${comment}${static}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	    classrelation_ref 135888 // velocidade (<directional aggregation by value>)
+	  b parent class_ref 131792 // PontoVirtual
+      end
+
+      classrelation 136016 // posicao (<directional aggregation by value>)
+	relation 136016 *-->
+	  a role_name "posicao" multiplicity "" public
+	    cpp default "    ${comment}${static}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	    classrelation_ref 136016 // posicao (<directional aggregation by value>)
+	  b parent class_ref 131792 // PontoVirtual
+      end
+
+      attribute 137424 "energia"
+	public explicit_type "int"
+	cpp_decl "    ${comment}${static}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	java_decl ""
+	idl_decl ""
+      end
+
+      classrelation 136144 // cor (<directional aggregation by value>)
+	relation 136144 *-->
+	  a role_name "cor" multiplicity "" public
+	    cpp default "    ${comment}${static}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	    classrelation_ref 136144 // cor (<directional aggregation by value>)
+	  b parent class_ref 134096 // HSV
+      end
+
+      attribute 137552 "ativa"
+	public explicit_type "bool"
+	cpp_decl "    ${comment}${static}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	java_decl ""
+	idl_decl ""
+      end
+    end
+
+    class 134224 "ParticleSystemEfeito"
+      abstract 
+      cpp_decl "${comment}${template}class ${name}${inherit} {
+${members}};
+${inlines}
+"
+      java_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      comment "Descrição: 
+    Classe abstrata que permite agrupamente de particulas
+Motivação:
+    Permitir gerenciar um grupo de unidades com ciclo de vida semelhantes"
+      operation 160976 "ParticleSystemEfeito"
+	public explicit_return_type ""
+	nparams 0
+	cpp_decl "    ${comment}${inline}${name}${(}${)}${volatile}${throw};
+"
+	cpp_def "${comment}${inline}${class}::${name}${(}${)}${volatile}${throw} 
+{
+${body}}"
+	
+	
+	comment "Construtor"
+      end
+
+      operation 161104 "~ParticleSystemEfeito"
+	cpp_virtual public explicit_return_type ""
+	nparams 0
+	cpp_decl "    ${comment}${inline}${virtual}${name}${(}${)}${volatile}${throw};
+"
+	cpp_def "${comment}${inline}${class}::${name}${(}${)}${volatile}${throw} 
+{
+${body}}"
+	
+	
+	comment "Destrutor"
+      end
+
+      operation 161232 "setQuantidade"
+	public explicit_return_type "void"
+	nparams 1
+	  param in name "quantidade" explicit_type "int"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${t0} ${p0}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${t0} ${p0}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+	comment "Configura a quantidade de unidades que serão criadas"
+      end
+
+      operation 161360 "isTerminou"
+	cpp_virtual public explicit_return_type "bool"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+	comment "Indica se todas as unidades já terminaram o ciclo de vida"
+      end
+
+      operation 161488 "desenhar"
+	cpp_virtual public explicit_return_type "void"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+	comment "Desenha todas as unidades"
+      end
+
+      operation 161616 "criar"
+	abstract cpp_virtual public explicit_return_type "void"
+	nparams 2
+	  param in name "x" explicit_type "int"
+	  param in name "y" explicit_type "int"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${t0} ${p0}, ${t1} ${p1}${)}${const}${volatile}${throw}${abstract};
+"
+	
+	
+	comment "Inicializa o sistema de particulas"
+      end
+
+      operation 161744 "executar"
+	abstract cpp_virtual public explicit_return_type "void"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	
+	
+	comment "Executa as unidades do sistema"
+      end
+
+      classrelation 136272 // lista (<directional aggregation by value>)
+	relation 136272 *-->
+	  stereotype "std::deque"
+	  a role_name "lista" multiplicity "" protected
+	    cpp default "    ${comment}${static}${mutable}${volatile}${const}${stereotype}<${type}> ${name}${value};"
+	    classrelation_ref 136272 // lista (<directional aggregation by value>)
+	  b parent class_ref 133968 // Particula
+      end
+
+      classrelation 136400 // graphicSystem (<unidirectional association>)
+	relation 136400 --->
+	  a role_name "graphicSystem" multiplicity "" init_value "= NULL" class_relation protected
+	    cpp default "    ${comment}${static}${mutable}${volatile}${const}${type} * ${name}${value};
+"
+	    classrelation_ref 136400 // graphicSystem (<unidirectional association>)
+	  b parent class_ref 129360 // GraphicSystem
+      end
+
+      classrelation 149328 // <dependency>
+	relation 149328 -_->
+	  a protected
+	    cpp default "    ${comment}${static}${mutable}${volatile}${const}${type} * ${name}${value};
+"
+	    classrelation_ref 149328 // <dependency>
+	  b parent class_ref 137552 // UtilColor
+      end
+
+      classrelation 149456 // <dependency>
+	relation 149456 -_->
+	  a protected
+	    classrelation_ref 149456 // <dependency>
+	  b parent class_ref 128976 // Ponto
+      end
+    end
+
+    class 134352 "ParticleSystemEfeitoEsferico"cpp_external cpp_decl "${name}
+#include <GBF/${name}.h>
+"
+      java_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      comment "Descrição: 
+    Classe abstrata que permite agrupamente de particulas esfericas
+Motivação:
+    Permitir gerenciar um grupo de unidades com movimento esferico"
+      classrelation 136528 // <generalisation>
+	relation 136528 ---|>
+	  a public
+	    cpp default "${type}"
+	    classrelation_ref 136528 // <generalisation>
+	  b parent class_ref 134224 // ParticleSystemEfeito
+      end
+
+      operation 161872 "ParticleSystemEfeitoEsferico"
+	public explicit_return_type ""
+	nparams 0
+	cpp_decl "    ${comment}${inline}${name}${(}${)}${volatile}${throw};
+"
+	cpp_def "${comment}${inline}${class}::${name}${(}${)}${volatile}${throw} 
+{
+${body}}"
+	
+	
+	comment "Construtor"
+      end
+
+      operation 162000 "~ParticleSystemEfeitoEsferico"
+	cpp_virtual public explicit_return_type ""
+	nparams 0
+	cpp_decl "    ${comment}${inline}${virtual}${name}${(}${)}${volatile}${throw};
+"
+	cpp_def "${comment}${inline}${class}::${name}${(}${)}${volatile}${throw} 
+{
+${body}}"
+	
+	
+	comment "Destrutor"
+      end
+
+      operation 162128 "setRaio"
+	public explicit_return_type "void"
+	nparams 1
+	  param in name "raio" explicit_type "int"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${t0} ${p0}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${t0} ${p0}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+	comment "Configura o tamanho do raio de ação das particulas"
+      end
+
+      attribute 137680 "raio"
+	protected explicit_type "int"
+	cpp_decl "    ${comment}${static}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	java_decl ""
+	idl_decl ""
+      end
+
+      classrelation 136656 // origem (<directional aggregation by value>)
+	relation 136656 *-->
+	  a role_name "origem" multiplicity "" protected
+	    cpp default "    ${comment}${static}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	    classrelation_ref 136656 // origem (<directional aggregation by value>)
+	  b parent class_ref 128976 // Ponto
+      end
+    end
+
+    class 134480 "ParticleSystemManager"cpp_decl "${comment}${template}class ${name}${inherit} {
+${members}};
+${inlines}
+"
+      java_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      comment "Descrição: 
+    Classe para gerenciamento do sistema de  particulas.
+Motivação:
+    Gerenciar o uso de vários sistemas de particulas"
+      operation 162256 "ParticleSystemManager"
+	private explicit_return_type ""
+	nparams 0
+	cpp_decl "    ${comment}${inline}${name}${(}${)}${volatile}${throw};
+"
+	cpp_def "${comment}${inline}${class}::${name}${(}${)}${volatile}${throw} 
+{
+${body}}"
+	
+	
+	comment "Construtor "
+      end
+
+      operation 162384 "~ParticleSystemManager"
+	public explicit_return_type ""
+	nparams 0
+	cpp_decl "    ${comment}${inline}${virtual}${name}${(}${)}${volatile}${throw};
+"
+	cpp_def "${comment}${inline}${class}::${name}${(}${)}${volatile}${throw} 
+{
+${body}}"
+	
+	
+	comment "Destrutor "
+      end
+
+      operation 162512 "adicionar"
+	public explicit_return_type "void"
+	nparams 1
+	  param inout name "efeito" type class_ref 134224 // ParticleSystemEfeito
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${t0} * ${p0}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${t0} * ${p0}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+	comment "Adiciona um Sistema de Particulas"
+      end
+
+      operation 162640 "desenhar"
+	public explicit_return_type "void"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+	comment "Desenha objetos que estao no container"
+      end
+
+      operation 162768 "executar"
+	public explicit_return_type "void"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+	comment "Atualiza o Sistema"
+      end
+
+      operation 162896 "size"
+	public explicit_return_type "int"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+	comment "Retorna a quantidade de elementos "
+      end
+
+      operation 163024 "limpar"
+	public explicit_return_type "void"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+	comment "Limpa o gerenciador, removendo todos os elementos"
+      end
+
+      operation 163152 "getInstance"
+	class_operation public return_type class_ref 134480 // ParticleSystemManager
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} * ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} * ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+${body}}"
+	
+	
+	comment "Pega uma Instância de ParticleSystemManager"
+      end
+
+      classrelation 136784 // instance (<unidirectional association>)
+	relation 136784 --->
+	  a role_name "instance" multiplicity "" init_value "=NULL" class_relation protected
+	    cpp default "    ${comment}${static}${mutable}${volatile}${const}${type} * ${name}${value};
+"
+	    classrelation_ref 136784 // instance (<unidirectional association>)
+	  b parent class_ref 134480 // ParticleSystemManager
+      end
+
+      classrelation 136912 // lista (<directional aggregation by value>)
+	relation 136912 *-->
+	  stereotype "std::deque"
+	  a role_name "lista" multiplicity "" protected
+	    cpp default "    ${comment}${static}${mutable}${volatile}${const}${stereotype}<${type}*> ${name}${value};"
+	    classrelation_ref 136912 // lista (<directional aggregation by value>)
+	  b parent class_ref 134224 // ParticleSystemEfeito
+      end
+
+      operation 163280 "removerMorto"
+	protected explicit_return_type "void"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+	comment "Remove os sistemas de particulas já finalizados"
+      end
+    end
+  end
+
+  deploymentview 129744 "Deploy"
+    //deployment diagram settings
+    package_name_in_tab default show_context default write_horizontally default auto_label_position default shadow default
+    draw_component_as_icon default show_component_req_prov default show_component_rea default
+    artifact 132816 "ParticleSystemEfeito"
+      stereotype "source"
+      cpp_h "${comment}
+#ifndef _${NAME}_H
+#define _${NAME}_H
+
+${all_includes}
+${declarations}
+${namespace_start}
+${definition}
+${namespace_end}
+#endif
+"
+      cpp_src "${comment}
+${includes}
+${namespace_start}
+${members}
+${namespace_end}"
+      associated_classes
+	class_ref 133968 // Particula
+	class_ref 134224 // ParticleSystemEfeito
+      end
+      comment "//    GBF - Gamework's Brazilian Framework
+//    Copyright (C) 2004-2007 David de Almeida Ferreira
+//
+//    This library is free software; you can redistribute it and/or
+//    modify it under the terms of the GNU Library General Public
+//    License as published by the Free Software Foundation; either
+//    version 2 of the License, or (at your option) any later version.
+//
+//    David de Almeida Ferreira (F-Z)
+//        davidferreira@uol.com.br or davidferreira.fz@gmail.com
+//        http://pjmoo.codigolivre.org.br
+//////////////////////////////////////////////////////////////////////
+"
+    end
+
+    artifact 132944 "ParticleSystemEfeitoEsferico"
+      stereotype "source"
+      cpp_h "${comment}
+#ifndef _${NAME}_H
+#define _${NAME}_H
+
+${all_includes}
+${declarations}
+${namespace_start}
+${definition}
+${namespace_end}
+#endif
+"
+      cpp_src "${comment}
+${includes}
+${namespace_start}
+${members}
+${namespace_end}"
+      associated_classes
+	class_ref 134352 // ParticleSystemEfeitoEsferico
+      end
+      comment "//    GBF - Gamework's Brazilian Framework
+//    Copyright (C) 2004-2007 David de Almeida Ferreira
+//
+//    This library is free software; you can redistribute it and/or
+//    modify it under the terms of the GNU Library General Public
+//    License as published by the Free Software Foundation; either
+//    version 2 of the License, or (at your option) any later version.
+//
+//    David de Almeida Ferreira (F-Z)
+//        davidferreira@uol.com.br or davidferreira.fz@gmail.com
+//        http://pjmoo.codigolivre.org.br
+//////////////////////////////////////////////////////////////////////
+"
+    end
+
+    artifact 133072 "ParticleSystemManager"
+      stereotype "source"
+      cpp_h "${comment}
+#ifndef _${NAME}_H
+#define _${NAME}_H
+
+${all_includes}
+${declarations}
+${namespace_start}
+${definition}
+${namespace_end}
+#endif
+"
+      cpp_src "${comment}
+${includes}
+${namespace_start}
+${members}
+${namespace_end}"
+      associated_classes
+	class_ref 134480 // ParticleSystemManager
+      end
+      comment "//    GBF - Gamework's Brazilian Framework
+//    Copyright (C) 2004-2007 David de Almeida Ferreira
+//
+//    This library is free software; you can redistribute it and/or
+//    modify it under the terms of the GNU Library General Public
+//    License as published by the Free Software Foundation; either
+//    version 2 of the License, or (at your option) any later version.
+//
+//    David de Almeida Ferreira (F-Z)
+//        davidferreira@uol.com.br or davidferreira.fz@gmail.com
+//        http://pjmoo.codigolivre.org.br
+//////////////////////////////////////////////////////////////////////
+"
+    end
+  end
+end

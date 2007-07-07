@@ -1,0 +1,14 @@
+class PathUp
+!!!172126.cpp!!!	PathUp()
+
+!!!172254.cpp!!!	~PathUp()
+
+!!!172382.cpp!!!	mover(in velocidade : int, inout posicao : Ponto, in dimensao : Dimensao) : bool
+
+	posicao->y-=velocidade;
+	
+    if (posicao->y<area.top-dimensao.h){
+		return true;
+	} else {
+		return false;
+	}

@@ -1,0 +1,95 @@
+format 29
+
+classcanvas 128080 class_ref 137936 // UtilLog
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default shadow default
+  hidden_attributes
+    attribute_ref 149584 // arquivo
+    attribute_ref 149712 // autor
+    attribute_ref 149840 // projeto
+    attribute_ref 149968 // handleArquivo
+  hidden_operations
+    operation_ref 187600 // setArquivo
+    operation_ref 187728 // setAutor
+    operation_ref 187856 // setProjeto
+    operation_ref 187984 // iniciar
+    operation_ref 188112 // finalizar
+    operation_ref 188240 // cabecalho
+    operation_ref 188368 // sistema
+    operation_ref 188496 // subSistema
+    operation_ref 188624 // comentario
+    operation_ref 188752 // comentarioComQuebra
+    operation_ref 188880 // tracer
+    operation_ref 189008 // escrever
+  xyz 375 94 2005
+classcanvas 128208 class_ref 137680 // UtilDate
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default shadow default
+  hidden_operations
+    operation_ref 187216 // getInfo
+  xyz 300 146 2005
+classcanvas 128336 class_ref 137552 // UtilColor
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default shadow default
+  hidden_operations
+    operation_ref 186704 // forHSV
+    operation_ref 186832 // forRGB
+    operation_ref 186960 // menor
+    operation_ref 187088 // maior
+  xyz 128 115 2005
+classcanvas 128464 class_ref 137808 // UtilExtract
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default shadow default
+  hidden_operations
+    operation_ref 187344 // extractPath
+    operation_ref 187472 // extractApplication
+  xyz 367 23 2005
+classcanvas 128976 class_ref 137424 // RGBf
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default shadow default
+  hidden_attributes
+    attribute_ref 148816 // r
+    attribute_ref 148944 // g
+    attribute_ref 149072 // b
+  xyz 123 19 2000
+classcanvas 129104 class_ref 137296 // RGB
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default shadow default
+  hidden_attributes
+    attribute_ref 148432 // r
+    attribute_ref 148560 // g
+    attribute_ref 148688 // b
+  xyz 233 21 2000
+classcanvas 129232 class_ref 134096 // HSV
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default shadow default
+  hidden_attributes
+    attribute_ref 149200 // h
+    attribute_ref 149328 // s
+    attribute_ref 149456 // v
+  xyz 10 21 2005
+relationcanvas 128592 relation_ref 145488 // <dependency>
+  geometry VHr
+  from ref 128080 z 1999 to point 323 110
+  line 131024 z 1999 to ref 128208
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+relationcanvas 129488 relation_ref 150992 // <dependency>
+  geometry HV
+  from ref 128336 z 1999 to point 263 131
+  line 130384 z 1999 to ref 129104
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+relationcanvas 129616 relation_ref 151120 // <dependency>
+  geometry VHr
+  from ref 128336 z 1999 to point 40 131
+  line 130256 z 1999 to ref 129232
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+relationcanvas 129744 relation_ref 151248 // <dependency>
+  geometry VHr
+  from ref 128336 z 1999 to point 153 131
+  line 131280 z 1999 to ref 128976
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+relationcanvas 130512 relation_ref 151376 // <dependency>
+  geometry HV
+  from ref 128080 z 1999 to point 397 110
+  line 131152 z 1999 to ref 128464
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+preferred_whz 719 608 1
+end

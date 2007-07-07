@@ -1,0 +1,1860 @@
+format 38
+"GAT" // GBF::GAT
+  revision 8
+  modified_by 54 "david"
+  // class settings
+  //class diagram settings
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_infonote default shadow default
+  //use case diagram settings
+  package_name_in_tab default show_context default auto_label_position default draw_all_relations default shadow default
+  //sequence diagram settings
+  show_full_operations_definition default write_horizontally default drawing_language default draw_all_relations default shadow default
+  //collaboration diagram settings
+  show_full_operations_definition default show_hierarchical_rank default write_horizontally default drawing_language default package_name_in_tab default show_context default draw_all_relations default shadow default
+  //object diagram settings
+   write_horizontally default package_name_in_tab default show_context default auto_label_position default draw_all_relations default shadow default
+  //component diagram settings
+  package_name_in_tab default show_context default auto_label_position default draw_all_relations default shadow default
+  draw_component_as_icon default show_component_req_prov default show_component_rea default
+  //deployment diagram settings
+  package_name_in_tab default show_context default write_horizontally default auto_label_position default draw_all_relations default shadow default
+  draw_component_as_icon default show_component_req_prov default show_component_rea default
+  //state diagram settings
+  package_name_in_tab default show_context default auto_label_position default write_trans_label_horizontally default show_trans_definition default draw_all_relations default shadow default
+  show_activities default region_horizontally default drawing_language default
+  //activity diagram settings
+  package_name_in_tab default show_context default show_opaque_action_definition default auto_label_position default write_flow_label_horizontally default draw_all_relations default shadow default
+  show_infonote default drawing_language default
+  
+  cpp_h_dir "/home/desenvolvimento/pjmoo/source/gbf/src/"
+  cpp_src_dir "/home/desenvolvimento/pjmoo/source/gbf/src/"
+  comment "GBF Application Template"
+  classview 129744 "Classes"
+    //class diagram settings
+    draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_infonote default shadow default
+    //collaboration diagram settings
+    show_full_operations_definition default show_hierarchical_rank default write_horizontally default drawing_language default package_name_in_tab default show_context default draw_all_relations default shadow default
+    //object diagram settings
+     write_horizontally default package_name_in_tab default show_context default auto_label_position default draw_all_relations default shadow default
+    //sequence diagram settings
+    show_full_operations_definition default write_horizontally default drawing_language default draw_all_relations default shadow default
+    //state diagram settings
+    package_name_in_tab default show_context default auto_label_position default write_trans_label_horizontally default show_trans_definition default draw_all_relations default shadow default
+    show_activities default region_horizontally default drawing_language default
+    //class settings
+    //activity diagram settings
+    package_name_in_tab default show_context default show_opaque_action_definition default auto_label_position default write_flow_label_horizontally default draw_all_relations default shadow default
+    show_infonote default drawing_language default
+    
+    class 139728 "GAT"
+      visibility package 
+      cpp_external cpp_decl "${name}
+#include <GBF/${name}.h>
+"
+      java_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      classrelation 153040 // <generalisation>
+	relation 153040 ---|>
+	  a public
+	    cpp default "${type}"
+	    classrelation_ref 153040 // <generalisation>
+	  b multiplicity "" parent class_ref 139216 // GATMaquinaEstadoGeral
+      end
+
+      classrelation 153168 // <generalisation>
+	relation 153168 ---|>
+	  a public
+	    cpp default "${type}"
+	    classrelation_ref 153168 // <generalisation>
+	  b multiplicity "" parent class_ref 139600 // GATMaquinaEstadoTopGaleria
+      end
+
+      classrelation 153296 // <generalisation>
+	relation 153296 ---|>
+	  a public
+	    cpp default "${type}"
+	    classrelation_ref 153296 // <generalisation>
+	  b multiplicity "" parent class_ref 138704 // GATMaquinaEstadoMenu
+      end
+
+      classrelation 153424 // <generalisation>
+	relation 153424 ---|>
+	  a public
+	    cpp default "${type}"
+	    classrelation_ref 153424 // <generalisation>
+	  b multiplicity "" parent class_ref 139088 // GATMaquinaEstadoJogo
+      end
+
+      classrelation 153552 // uiRecordeNovo (<unidirectional association>)
+	relation 153552 --->
+	  a role_name "uiRecordeNovo" multiplicity "1" protected
+	    cpp default "    ${comment}${static}${mutable}${volatile}${const}${type} * ${name}${value};
+"
+	    classrelation_ref 153552 // uiRecordeNovo (<unidirectional association>)
+	  b multiplicity "" parent class_ref 131024 // UserInterfaceRecorde
+      end
+
+      classrelation 153680 // frameworkGBF (<unidirectional association>)
+	relation 153680 --->
+	  a role_name "frameworkGBF" multiplicity "1" protected
+	    cpp default "    ${comment}${static}${mutable}${volatile}${const}${type} * ${name}${value};
+"
+	    classrelation_ref 153680 // frameworkGBF (<unidirectional association>)
+	  b multiplicity "" parent class_ref 129232 // GBF
+      end
+
+      classrelation 153808 // tsGaleria (<unidirectional association>)
+	relation 153808 --->
+	  a role_name "tsGaleria" multiplicity "1" protected
+	    cpp default "    ${comment}${static}${mutable}${volatile}${const}${type} * ${name}${value};
+"
+	    classrelation_ref 153808 // tsGaleria (<unidirectional association>)
+	  b multiplicity "" parent class_ref 130640 // TopSystemGaleria
+      end
+
+      classrelation 155728 // uiMenuPrincipal (<unidirectional association>)
+	relation 155728 --->
+	  a role_name "uiMenuPrincipal" multiplicity "1" protected
+	    cpp default "    ${comment}${static}${mutable}${volatile}${const}${type} * ${name}${value};
+"
+	    classrelation_ref 155728 // uiMenuPrincipal (<unidirectional association>)
+	  b multiplicity "" parent class_ref 139984 // UserInterfaceMenuAbstract
+      end
+
+      classrelation 153936 // tempoInativo (<directional aggregation by value>)
+	relation 153936 *-->
+	  a role_name "tempoInativo" multiplicity "1" protected
+	    cpp default "    ${comment}${static}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	    classrelation_ref 153936 // tempoInativo (<directional aggregation by value>)
+	  b multiplicity "" parent class_ref 130512 // TimerSystemCronometroCrescente
+      end
+
+      attribute 156752 "looping"
+	private explicit_type "bool"
+	init_value "true"
+	cpp_decl "    ${comment}${static}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	java_decl ""
+	idl_decl ""
+      end
+
+      attribute 156880 "fullscreen"
+	private explicit_type "bool"
+	init_value "true"
+	cpp_decl "    ${comment}${static}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	java_decl ""
+	idl_decl ""
+      end
+
+      operation 206288 "GAT"
+	public explicit_return_type ""
+	nparams 2
+	  param in name "argc" explicit_type "int"
+	  param in name "argv" explicit_type "char"
+	cpp_decl "    ${comment}${inline}${name}${(}${t0} ${p0}, ${t1} * ${p1}[]${)}${volatile}${throw};
+"
+	cpp_def "${comment}${inline}${class}::${name}${(}${t0} ${p0}, ${t1} * ${p1}[]${)}${volatile}${throw} 
+{
+${body}}"
+	
+	
+	comment "Construtor"
+      end
+
+      operation 206416 "~GAT"
+	cpp_virtual public explicit_return_type ""
+	nparams 0
+	cpp_decl "    ${comment}${inline}${virtual}${name}${(}${)}${volatile}${throw};
+"
+	cpp_def "${comment}${inline}${class}::${name}${(}${)}${volatile}${throw} 
+{
+${body}}"
+	
+	
+	comment "Destrutor"
+      end
+
+      operation 205264 "isFullScreen"
+	public explicit_return_type "bool"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+      end
+
+      operation 205392 "executar"
+	public explicit_return_type "void"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+      end
+
+      operation 205520 "interpretadorGlobal"
+	cpp_virtual public explicit_return_type "void"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+      end
+
+      operation 205648 "escutar"
+	private explicit_return_type "void"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+      end
+
+      operation 206544 "setMenu"
+	protected explicit_return_type "bool"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+      end
+
+      operation 206672 "setJogo"
+	protected explicit_return_type "bool"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+      end
+
+      operation 206800 "setTopGaleria"
+	protected explicit_return_type "bool"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+      end
+
+      operation 128494 "apresentacao"
+	cpp_virtual protected explicit_return_type "void"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+	comment "Apresentação do jogo"
+      end
+
+      operation 128622 "topGaleriaNovo"
+	cpp_virtual protected explicit_return_type "void"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	
+	
+      end
+
+      operation 128750 "topGaleriaSalvar"
+	cpp_virtual protected explicit_return_type "void"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	
+	
+      end
+
+      operation 128878 "topGaleriaExibir"
+	cpp_virtual protected explicit_return_type "void"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	
+	
+      end
+
+      operation 205776 "menu"
+	private explicit_return_type "void"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+      end
+
+      operation 205904 "jogo"
+	private explicit_return_type "void"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+      end
+
+      operation 206032 "topGaleria"
+	private explicit_return_type "void"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+      end
+
+      operation 206160 "sair"
+	private explicit_return_type "void"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+      end
+    end
+
+    class 139344 "GATEstadoGeral"
+      visibility package stereotype "enum"
+      cpp_decl "${comment}enum ${name} {
+${items}};
+"
+      java_decl "${comment}${public}${final}${abstract}enum ${name}${implements} {
+${items};
+${members}}
+"
+      idl_decl "${comment}enum ${name} {
+${items}};
+"
+      explicit_switch_type ""
+      
+      attribute 154832 "GAT_EG_INICIO"
+	public explicit_type ""
+	init_value "=0"
+	cpp_decl "  ${comment}${name}${value},"
+	java_decl ""
+	idl_decl ""
+      end
+
+      attribute 154960 "GAT_EG_MENU"
+	public explicit_type ""
+	init_value "=10"
+	cpp_decl "  ${comment}${name}${value},"
+	java_decl ""
+	idl_decl ""
+      end
+
+      attribute 155088 "GAT_EG_APRESENTACAO"
+	public explicit_type ""
+	init_value "=20"
+	cpp_decl "  ${comment}${name}${value},"
+	java_decl ""
+	idl_decl ""
+      end
+
+      attribute 155216 "GAT_EG_JOGO"
+	public explicit_type ""
+	init_value "=30"
+	cpp_decl "  ${comment}${name}${value},"
+	java_decl ""
+	idl_decl ""
+      end
+
+      attribute 155344 "GAT_EG_TOPGALERIA"
+	public explicit_type ""
+	init_value "=40"
+	cpp_decl "  ${comment}${name}${value},"
+	java_decl ""
+	idl_decl ""
+      end
+
+      attribute 155472 "GAT_EG_SAIR"
+	public explicit_type ""
+	init_value "=60"
+	cpp_decl "  ${comment}${name}${value},"
+	java_decl ""
+	idl_decl ""
+      end
+    end
+
+    class 138832 "GATEstadoMenu"
+      visibility package stereotype "enum"
+      cpp_decl "${comment}enum ${name} {
+${items}};
+"
+      java_decl "${comment}${public}${final}${abstract}enum ${name}${implements} {
+${items};
+${members}}
+"
+      idl_decl "${comment}enum ${name} {
+${items}};
+"
+      explicit_switch_type ""
+      
+      attribute 153168 "GAT_EM_INICIO"
+	public explicit_type ""
+	init_value "=0"
+	cpp_decl "  ${comment}${name}${value},"
+	java_decl ""
+	idl_decl ""
+      end
+
+      attribute 152016 "GAT_EM_PRINCIPAL"
+	public explicit_type ""
+	init_value "=10"
+	cpp_decl "  ${comment}${name}${value},"
+	java_decl ""
+	idl_decl ""
+      end
+
+      attribute 152144 "GAT_EM_AJUDA"
+	public explicit_type ""
+	init_value "=20"
+	cpp_decl "  ${comment}${name}${value},"
+	java_decl ""
+	idl_decl ""
+      end
+
+      attribute 152272 "GAT_EM_CREDITO"
+	public explicit_type ""
+	init_value "=30"
+	cpp_decl "  ${comment}${name}${value},"
+	java_decl ""
+	idl_decl ""
+      end
+
+      attribute 152400 "GAT_EM_SOBRE"
+	public explicit_type ""
+	init_value "=40"
+	cpp_decl "  ${comment}${name}${value},"
+	java_decl ""
+	idl_decl ""
+      end
+
+      attribute 152528 "GAT_EM_CONFIGURACAO"
+	public explicit_type ""
+	init_value "=50"
+	cpp_decl "  ${comment}${name}${value},"
+	java_decl ""
+	idl_decl ""
+      end
+    end
+
+    class 138960 "GATEstadoJogo"
+      visibility package stereotype "enum"
+      cpp_decl "${comment}enum ${name} {
+${items}};
+"
+      java_decl "${comment}${public}${final}${abstract}enum ${name}${implements} {
+${items};
+${members}}
+"
+      idl_decl "${comment}enum ${name} {
+${items}};
+"
+      explicit_switch_type ""
+      
+      attribute 153296 "GAT_EJ_INICIO"
+	public explicit_type ""
+	init_value "=0"
+	cpp_decl "  ${comment}${name}${value},"
+	java_decl ""
+	idl_decl ""
+      end
+
+      attribute 153424 "GAT_EJ_NOVO"
+	public explicit_type ""
+	init_value "=10"
+	cpp_decl "  ${comment}${name}${value},"
+	java_decl ""
+	idl_decl ""
+      end
+
+      attribute 153552 "GAT_EJ_EXECUTANDO"
+	public explicit_type ""
+	init_value "=20"
+	cpp_decl "  ${comment}${name}${value},"
+	java_decl ""
+	idl_decl ""
+      end
+
+      attribute 153680 "GAT_EJ_PAUSE"
+	public explicit_type ""
+	init_value "=30"
+	cpp_decl "  ${comment}${name}${value},"
+	java_decl ""
+	idl_decl ""
+      end
+
+      attribute 153808 "GAT_EJ_FASE_CARREGAR"
+	public explicit_type ""
+	init_value "=40"
+	cpp_decl "  ${comment}${name}${value},"
+	java_decl ""
+	idl_decl ""
+      end
+
+      attribute 153936 "GAT_EJ_FASE_FINALIZADA"
+	public explicit_type ""
+	init_value "=50"
+	cpp_decl "  ${comment}${name}${value},"
+	java_decl ""
+	idl_decl ""
+      end
+
+      attribute 154064 "GAT_EJ_GAMEOVER"
+	public explicit_type ""
+	init_value "=60"
+	cpp_decl "  ${comment}${name}${value},"
+	java_decl ""
+	idl_decl ""
+      end
+
+      attribute 154192 "GAT_EJ_ZERADO"
+	public explicit_type ""
+	init_value "=70"
+	cpp_decl "  ${comment}${name}${value},"
+	java_decl ""
+	idl_decl ""
+      end
+    end
+
+    class 139472 "GATEstadoTopGaleria"
+      visibility package stereotype "enum"
+      cpp_decl "${comment}enum ${name} {
+${items}};
+"
+      java_decl "${comment}${public}${final}${abstract}enum ${name}${implements} {
+${items};
+${members}}
+"
+      idl_decl "${comment}enum ${name} {
+${items}};
+"
+      explicit_switch_type ""
+      
+      attribute 155600 "GAT_ET_INICIO"
+	public explicit_type ""
+	init_value "=0"
+	cpp_decl "  ${comment}${name}${value},"
+	java_decl ""
+	idl_decl ""
+      end
+
+      attribute 155728 "GAT_ET_NOVO"
+	public explicit_type ""
+	init_value "=10"
+	cpp_decl "  ${comment}${name}${value},"
+	java_decl ""
+	idl_decl ""
+      end
+
+      attribute 155856 "GAT_ET_SALVAR"
+	public explicit_type ""
+	init_value "=20"
+	cpp_decl "  ${comment}${name}${value},"
+	java_decl ""
+	idl_decl ""
+      end
+
+      attribute 155984 "GAT_ET_EXIBIR"
+	public explicit_type ""
+	init_value "=30"
+	cpp_decl "  ${comment}${name}${value},"
+	java_decl ""
+	idl_decl ""
+      end
+    end
+
+    class 139856 "GATMaquinaEstado"
+      abstract visibility package 
+      cpp_decl "${comment}${template}class ${name}${inherit}
+{
+${members}
+};
+${inlines}
+"
+      java_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      attribute 154704 "tempoEspera"
+	class_attribute private type class_ref 130896 // TimerSystemCronometroDecrescente
+	cpp_decl "    ${comment}${static}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	java_decl ""
+	idl_decl ""
+      end
+
+      operation 206928 "GATMaquinaEstado"
+	public explicit_return_type ""
+	nparams 0
+	cpp_decl "    ${comment}${inline}${name}${(}${)}${volatile}${throw};
+"
+	cpp_def "${comment}${inline}${class}::${name}${(}${)}${volatile}${throw} 
+{
+${body}}"
+	
+	
+	comment "Construtor"
+      end
+
+      operation 207056 "~GATMaquinaEstado"
+	cpp_virtual public explicit_return_type ""
+	nparams 0
+	cpp_decl "    ${comment}${inline}${virtual}${name}${(}${)}${volatile}${throw};
+"
+	cpp_def "${comment}${inline}${class}::${name}${(}${)}${volatile}${throw} 
+{
+${body}}"
+	
+	
+	comment "Destrutor"
+      end
+
+      operation 201936 "isTempoEspera"
+	class_operation protected explicit_return_type "bool"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+${body}}"
+	
+	
+      end
+
+      operation 207184 "reiniciarTempo"
+	class_operation protected explicit_return_type "void"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+${body}}"
+	
+	
+      end
+
+      operation 207312 "executarTempo"
+	class_operation protected explicit_return_type "void"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+${body}}"
+	
+	
+      end
+    end
+
+    class 139216 "GATMaquinaEstadoGeral"
+      abstract visibility package 
+      cpp_decl "${comment}${template}class ${name}${inherit}
+{
+${members}
+};
+${inlines}
+"
+      java_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      attribute 154576 "estado"
+	private type class_ref 139344 // GATEstadoGeral
+	cpp_decl "    ${comment}${static}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	java_decl ""
+	idl_decl ""
+      end
+
+      operation 199888 "GATMaquinaEstadoGeral"
+	public explicit_return_type ""
+	nparams 0
+	cpp_decl "    ${comment}${inline}${name}${(}${)}${volatile}${throw};
+"
+	cpp_def "${comment}${inline}${class}::${name}${(}${)}${volatile}${throw} 
+{
+${body}}"
+	
+	
+	comment "Construtor"
+      end
+
+      operation 200016 "~GATMaquinaEstadoGeral"
+	cpp_virtual public explicit_return_type ""
+	nparams 0
+	cpp_decl "    ${comment}${inline}${virtual}${name}${(}${)}${volatile}${throw};
+"
+	cpp_def "${comment}${inline}${class}::${name}${(}${)}${volatile}${throw} 
+{
+${body}}"
+	
+	
+	comment "Destrutor"
+      end
+
+      operation 200144 "processarEstadoGeral"
+	public return_type class_ref 139344 // GATEstadoGeral
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+      end
+
+      operation 200272 "setMenu"
+	cpp_virtual protected explicit_return_type "bool"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+      end
+
+      operation 200400 "setApresentacao"
+	protected explicit_return_type "void"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+      end
+
+      operation 200528 "setJogo"
+	cpp_virtual protected explicit_return_type "bool"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+      end
+
+      operation 200784 "setTopGaleria"
+	cpp_virtual protected explicit_return_type "bool"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+      end
+
+      operation 200656 "setSair"
+	protected explicit_return_type "void"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+      end
+
+      operation 202448 "inicializarRecursos"
+	abstract cpp_virtual protected explicit_return_type "void"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	
+	
+	comment "Inicializa os recursos utilizados no jogo.
+Ex.: Imagens, sons, fontes, configuração do modo gráfico e etc.."
+      end
+
+      operation 200912 "menu"
+	abstract cpp_virtual protected explicit_return_type "void"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	
+	
+      end
+
+      operation 201040 "apresentacao"
+	abstract cpp_virtual protected explicit_return_type "void"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	
+	
+      end
+
+      operation 201168 "jogo"
+	abstract cpp_virtual protected explicit_return_type "void"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	
+	
+      end
+
+      operation 201296 "topGaleria"
+	abstract cpp_virtual protected explicit_return_type "void"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	
+	
+      end
+
+      operation 201424 "sair"
+	abstract cpp_virtual protected explicit_return_type "void"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	
+	
+      end
+
+      operation 201552 "gatilhoMenu"
+	cpp_virtual protected explicit_return_type "void"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+      end
+
+      operation 201680 "gatilhoApresentacao"
+	cpp_virtual protected explicit_return_type "void"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+      end
+
+      operation 202064 "gatilhoJogo"
+	cpp_virtual protected explicit_return_type "void"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+      end
+
+      operation 202320 "gatilhoTopGaleria"
+	cpp_virtual protected explicit_return_type "void"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+      end
+
+      operation 202192 "gatilhoSair"
+	cpp_virtual protected explicit_return_type "void"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+      end
+
+      operation 201808 "setInicio"
+	private explicit_return_type "void"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+      end
+
+      classrelation 152656 // <dependency>
+	relation 152656 -_->
+	  a default
+	    cpp default "#include in header"
+	    classrelation_ref 152656 // <dependency>
+	  b multiplicity "" parent class_ref 139344 // GATEstadoGeral
+      end
+
+      classrelation 154064 // <generalisation>
+	relation 154064 ---|>
+	  a public
+	    cpp default "${type}"
+	    classrelation_ref 154064 // <generalisation>
+	  b multiplicity "" parent class_ref 139856 // GATMaquinaEstado
+      end
+    end
+
+    class 138704 "GATMaquinaEstadoMenu"
+      abstract visibility package 
+      cpp_external cpp_decl "${name}
+#include <GBF/${name}.h>
+"
+      java_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      attribute 153040 "estado"
+	private type class_ref 138832 // GATEstadoMenu
+	cpp_decl "    ${comment}${static}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	java_decl ""
+	idl_decl ""
+      end
+
+      operation 194512 "GATMaquinaEstadoMenu"
+	public explicit_return_type ""
+	nparams 0
+	cpp_decl "    ${comment}${inline}${name}${(}${)}${volatile}${throw};
+"
+	cpp_def "${comment}${inline}${class}::${name}${(}${)}${volatile}${throw} 
+{
+${body}}"
+	
+	
+	comment "Construtor"
+      end
+
+      operation 194640 "~GATMaquinaEstadoMenu"
+	cpp_virtual public explicit_return_type ""
+	nparams 0
+	cpp_decl "    ${comment}${inline}${virtual}${name}${(}${)}${volatile}${throw};
+"
+	cpp_def "${comment}${inline}${class}::${name}${(}${)}${volatile}${throw} 
+{
+${body}}"
+	
+	
+	comment "Destrutor"
+      end
+
+      operation 194768 "processarEstadoMenu"
+	public return_type class_ref 138832 // GATEstadoMenu
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+      end
+
+      operation 194896 "setMenuPrincipal"
+	protected explicit_return_type "void"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+      end
+
+      operation 195024 "setMenuAjuda"
+	protected explicit_return_type "void"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+      end
+
+      operation 195152 "setMenuCredito"
+	protected explicit_return_type "void"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+      end
+
+      operation 195280 "setMenuSobre"
+	protected explicit_return_type "void"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+      end
+
+      operation 195408 "setMenuConfiguracao"
+	protected explicit_return_type "void"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+      end
+
+      operation 195664 "menuPrincipal"
+	abstract cpp_virtual protected explicit_return_type "void"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	
+	
+      end
+
+      operation 195792 "menuAjuda"
+	abstract cpp_virtual protected explicit_return_type "void"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	
+	
+      end
+
+      operation 195920 "menuCredito"
+	abstract cpp_virtual protected explicit_return_type "void"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	
+	
+      end
+
+      operation 196048 "menuSobre"
+	abstract cpp_virtual protected explicit_return_type "void"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	
+	
+      end
+
+      operation 196176 "menuConfiguracao"
+	cpp_virtual protected explicit_return_type "void"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+      end
+
+      operation 196304 "gatilhoMenuPrincipal"
+	cpp_virtual protected explicit_return_type "void"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+      end
+
+      operation 196432 "gatilhoMenuConfiguracao"
+	cpp_virtual protected explicit_return_type "void"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+      end
+
+      operation 196816 "setMenuInicio"
+	protected explicit_return_type "void"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+      end
+
+      classrelation 152272 // <dependency>
+	relation 152272 -_->
+	  a default
+	    cpp default "#include in header"
+	    classrelation_ref 152272 // <dependency>
+	  b multiplicity "" parent class_ref 138832 // GATEstadoMenu
+      end
+
+      classrelation 154448 // <generalisation>
+	relation 154448 ---|>
+	  a public
+	    cpp default "${type}"
+	    classrelation_ref 154448 // <generalisation>
+	  b multiplicity "" parent class_ref 139856 // GATMaquinaEstado
+      end
+    end
+
+    class 139088 "GATMaquinaEstadoJogo"
+      abstract visibility package 
+      cpp_external cpp_decl "${name}
+#include <GBF/${name}.h>
+"
+      java_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      attribute 154320 "estado"
+	private type class_ref 138960 // GATEstadoJogo
+	cpp_decl "    ${comment}${static}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	java_decl ""
+	idl_decl ""
+      end
+
+      operation 196944 "GATMaquinaEstadoJogo"
+	public explicit_return_type ""
+	nparams 0
+	cpp_decl "    ${comment}${inline}${name}${(}${)}${volatile}${throw};
+"
+	cpp_def "${comment}${inline}${class}::${name}${(}${)}${volatile}${throw} 
+{
+${body}}"
+	
+	
+	comment "Construtor"
+      end
+
+      operation 197072 "~GATMaquinaEstadoJogo"
+	cpp_virtual public explicit_return_type ""
+	nparams 0
+	cpp_decl "    ${comment}${inline}${virtual}${name}${(}${)}${volatile}${throw};
+"
+	cpp_def "${comment}${inline}${class}::${name}${(}${)}${volatile}${throw} 
+{
+${body}}"
+	
+	
+	comment "Destrutor"
+      end
+
+      operation 197200 "processarEstadoJogo"
+	public return_type class_ref 138960 // GATEstadoJogo
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+      end
+
+      operation 207568 "loopJogo"
+	protected explicit_return_type "void"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+      end
+
+      operation 197328 "setJogoNovo"
+	protected explicit_return_type "void"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+      end
+
+      operation 197456 "setJogoExecutando"
+	protected explicit_return_type "void"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+      end
+
+      operation 197584 "setJogoPause"
+	protected explicit_return_type "void"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+      end
+
+      operation 197712 "setJogoFaseCarregar"
+	protected explicit_return_type "void"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+      end
+
+      operation 197840 "setJogoFaseFinalizada"
+	protected explicit_return_type "void"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+      end
+
+      operation 199120 "setJogoGameOver"
+	protected explicit_return_type "void"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+      end
+
+      operation 199248 "setJogoZerado"
+	protected explicit_return_type "void"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+      end
+
+      operation 197968 "jogoNovo"
+	abstract cpp_virtual protected explicit_return_type "void"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	
+	
+      end
+
+      operation 198096 "jogoExecutando"
+	abstract cpp_virtual protected explicit_return_type "void"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	
+	
+      end
+
+      operation 198224 "jogoPause"
+	abstract cpp_virtual protected explicit_return_type "void"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	
+	
+      end
+
+      operation 198352 "jogoFaseCarregar"
+	abstract cpp_virtual protected explicit_return_type "void"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	
+	
+      end
+
+      operation 198480 "jogoFaseFinalizada"
+	abstract cpp_virtual protected explicit_return_type "void"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	
+	
+      end
+
+      operation 199376 "jogoGameOver"
+	abstract cpp_virtual protected explicit_return_type "void"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	
+	
+      end
+
+      operation 199504 "jogoZerado"
+	abstract cpp_virtual protected explicit_return_type "void"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	
+	
+      end
+
+      operation 198608 "gatilhoJogoNovo"
+	cpp_virtual protected explicit_return_type "void"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+      end
+
+      operation 198736 "gatilhoJogoExecutando"
+	cpp_virtual protected explicit_return_type "void"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+      end
+
+      operation 199632 "gatilhoJogoFaseCarregar"
+	cpp_virtual protected explicit_return_type "bool"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+      end
+
+      operation 199760 "gatilhoJogoFaseFinalizada"
+	cpp_virtual protected explicit_return_type "bool"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+      end
+
+      operation 198864 "setJogoInicio"
+	protected explicit_return_type "void"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+      end
+
+      classrelation 152528 // <dependency>
+	relation 152528 -_->
+	  a default
+	    cpp default "#include in header"
+	    classrelation_ref 152528 // <dependency>
+	  b multiplicity "" parent class_ref 138960 // GATEstadoJogo
+      end
+
+      classrelation 154192 // <generalisation>
+	relation 154192 ---|>
+	  a public
+	    cpp default "${type}"
+	    classrelation_ref 154192 // <generalisation>
+	  b multiplicity "" parent class_ref 139856 // GATMaquinaEstado
+      end
+    end
+
+    class 139600 "GATMaquinaEstadoTopGaleria"
+      abstract visibility package 
+      cpp_external cpp_decl "${name}
+#include <GBF/${name}.h>
+"
+      java_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      attribute 156368 "estado"
+	private type class_ref 139472 // GATEstadoTopGaleria
+	cpp_decl "    ${comment}${static}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	java_decl ""
+	idl_decl ""
+      end
+
+      operation 202576 "GATMaquinaEstadoTopGaleria"
+	public explicit_return_type ""
+	nparams 0
+	cpp_decl "    ${comment}${inline}${name}${(}${)}${volatile}${throw};
+"
+	cpp_def "${comment}${inline}${class}::${name}${(}${)}${volatile}${throw} 
+{
+${body}}"
+	
+	
+	comment "Construtor"
+      end
+
+      operation 202704 "~GATMaquinaEstadoTopGaleria"
+	cpp_virtual public explicit_return_type ""
+	nparams 0
+	cpp_decl "    ${comment}${inline}${virtual}${name}${(}${)}${volatile}${throw};
+"
+	cpp_def "${comment}${inline}${class}::${name}${(}${)}${volatile}${throw} 
+{
+${body}}"
+	
+	
+	comment "Destrutor"
+      end
+
+      operation 202832 "processarEstadoTopGaleria"
+	public return_type class_ref 139472 // GATEstadoTopGaleria
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+      end
+
+      operation 207440 "loopTopGaleria"
+	protected explicit_return_type "void"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+      end
+
+      operation 202960 "setTopGaleriaNovo"
+	protected explicit_return_type "void"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+      end
+
+      operation 203088 "setTopGaleriaSalvar"
+	protected explicit_return_type "void"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+      end
+
+      operation 203216 "setTopGaleriaExibir"
+	protected explicit_return_type "void"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+      end
+
+      operation 203728 "topGaleriaNovo"
+	abstract cpp_virtual protected explicit_return_type "void"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	
+	
+      end
+
+      operation 203856 "topGaleriaSalvar"
+	abstract cpp_virtual protected explicit_return_type "void"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	
+	
+      end
+
+      operation 203984 "topGaleriaExibir"
+	abstract cpp_virtual protected explicit_return_type "void"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	
+	
+      end
+
+      operation 204368 "gatilhoTopGaleriaNovo"
+	cpp_virtual protected explicit_return_type "bool"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+      end
+
+      operation 204496 "gatilhoTopGaleriaSalvar"
+	cpp_virtual protected explicit_return_type "bool"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+      end
+
+      operation 204624 "gatilhoTopGaleriaExibir"
+	cpp_virtual protected explicit_return_type "bool"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+      end
+
+      operation 205008 "setTopGaleriaInicio"
+	protected explicit_return_type "void"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+      end
+
+      classrelation 152912 // <dependency>
+	relation 152912 -_->
+	  a default
+	    cpp default "#include in header"
+	    classrelation_ref 152912 // <dependency>
+	  b multiplicity "" parent class_ref 139472 // GATEstadoTopGaleria
+      end
+
+      classrelation 154320 // <generalisation>
+	relation 154320 ---|>
+	  a public
+	    cpp default "${type}"
+	    classrelation_ref 154320 // <generalisation>
+	  b multiplicity "" parent class_ref 139856 // GATMaquinaEstado
+      end
+    end
+  end
+
+  deploymentview 129232 "Deploy"
+    //deployment diagram settings
+    package_name_in_tab default show_context default write_horizontally default auto_label_position default draw_all_relations default shadow default
+    draw_component_as_icon default show_component_req_prov default show_component_rea default
+    artifact 138448 "GATMaquinaEstadoMenu"
+      stereotype "source"
+      associated_classes
+	class_ref 138832 // GATEstadoMenu
+	class_ref 138704 // GATMaquinaEstadoMenu
+      end
+      comment "//    GBF - Gamework's Brazilian Framework
+//    Copyright (C) 2004-2007 David de Almeida Ferreira
+//
+//    This library is free software; you can redistribute it and/or
+//    modify it under the terms of the GNU Library General Public
+//    License as published by the Free Software Foundation; either
+//    version 2 of the License, or (at your option) any later version.
+//
+//    David de Almeida Ferreira (F-Z)
+//        davidferreira@uol.com.br or davidferreira.fz@gmail.com
+//        http://pjmoo.codigolivre.org.br
+//////////////////////////////////////////////////////////////////////
+"
+    end
+
+    artifact 138576 "GATMaquinaEstadoJogo"
+      stereotype "source"
+      cpp_h "${comment}
+#ifndef _${NAME}_H
+#define _${NAME}_H
+
+${all_includes}
+${declarations}
+${namespace_start}
+${definition}
+${namespace_end}
+#endif
+"
+      cpp_src "${comment}
+${includes}
+${namespace_start}
+${members}
+${namespace_end}"
+      associated_classes
+	class_ref 138960 // GATEstadoJogo
+	class_ref 139088 // GATMaquinaEstadoJogo
+      end
+      comment "//    GBF - Gamework's Brazilian Framework
+//    Copyright (C) 2004-2007 David de Almeida Ferreira
+//
+//    This library is free software; you can redistribute it and/or
+//    modify it under the terms of the GNU Library General Public
+//    License as published by the Free Software Foundation; either
+//    version 2 of the License, or (at your option) any later version.
+//
+//    David de Almeida Ferreira (F-Z)
+//        davidferreira@uol.com.br or davidferreira.fz@gmail.com
+//        http://pjmoo.codigolivre.org.br
+//////////////////////////////////////////////////////////////////////
+"
+    end
+
+    artifact 138704 "GATMaquinaEstadoGeral"
+      stereotype "source"
+      cpp_h "${comment}
+#ifndef _${NAME}_H
+#define _${NAME}_H
+
+${all_includes}
+${declarations}
+${namespace_start}
+${definition}
+${namespace_end}
+#endif
+"
+      cpp_src "${comment}
+${includes}
+${namespace_start}
+${members}
+${namespace_end}"
+      associated_classes
+	class_ref 139344 // GATEstadoGeral
+	class_ref 139216 // GATMaquinaEstadoGeral
+      end
+      comment "//    GBF - Gamework's Brazilian Framework
+//    Copyright (C) 2004-2007 David de Almeida Ferreira
+//
+//    This library is free software; you can redistribute it and/or
+//    modify it under the terms of the GNU Library General Public
+//    License as published by the Free Software Foundation; either
+//    version 2 of the License, or (at your option) any later version.
+//
+//    David de Almeida Ferreira (F-Z)
+//        davidferreira@uol.com.br or davidferreira.fz@gmail.com
+//        http://pjmoo.codigolivre.org.br
+//////////////////////////////////////////////////////////////////////
+"
+    end
+
+    artifact 138832 "GATMaquinaEstadoTopGaleria"
+      stereotype "source"
+      cpp_h "${comment}
+#ifndef _${NAME}_H
+#define _${NAME}_H
+
+${all_includes}
+${declarations}
+${namespace_start}
+${definition}
+${namespace_end}
+#endif
+"
+      cpp_src "${comment}
+${includes}
+${namespace_start}
+${members}
+${namespace_end}"
+      associated_classes
+	class_ref 139472 // GATEstadoTopGaleria
+	class_ref 139600 // GATMaquinaEstadoTopGaleria
+      end
+      comment "//    GBF - Gamework's Brazilian Framework
+//    Copyright (C) 2004-2007 David de Almeida Ferreira
+//
+//    This library is free software; you can redistribute it and/or
+//    modify it under the terms of the GNU Library General Public
+//    License as published by the Free Software Foundation; either
+//    version 2 of the License, or (at your option) any later version.
+//
+//    David de Almeida Ferreira (F-Z)
+//        davidferreira@uol.com.br or davidferreira.fz@gmail.com
+//        http://pjmoo.codigolivre.org.br
+//////////////////////////////////////////////////////////////////////
+"
+    end
+
+    artifact 138960 "GAT"
+      stereotype "source"
+      cpp_h "${comment}
+#ifndef _${NAME}_H
+#define _${NAME}_H
+
+${all_includes}
+${declarations}
+${namespace_start}
+${definition}
+${namespace_end}
+#endif
+"
+      cpp_src "${comment}
+${includes}
+${namespace_start}
+${members}
+${namespace_end}"
+      associated_classes
+	class_ref 139728 // GAT
+      end
+      comment "//    GBF - Gamework's Brazilian Framework
+//    Copyright (C) 2004-2007 David de Almeida Ferreira
+//
+//    This library is free software; you can redistribute it and/or
+//    modify it under the terms of the GNU Library General Public
+//    License as published by the Free Software Foundation; either
+//    version 2 of the License, or (at your option) any later version.
+//
+//    David de Almeida Ferreira (F-Z)
+//        davidferreira@uol.com.br or davidferreira.fz@gmail.com
+//        http://pjmoo.codigolivre.org.br
+//////////////////////////////////////////////////////////////////////
+"
+    end
+
+    artifact 139088 "GATMaquinaEstado"
+      stereotype "source"
+      cpp_h "${comment}
+#ifndef _${NAME}_H
+#define _${NAME}_H
+
+${all_includes}
+${declarations}
+${namespace_start}
+${definition}
+${namespace_end}
+#endif
+"
+      cpp_src "${comment}
+${includes}
+${namespace_start}
+${members}
+${namespace_end}"
+      associated_classes
+	class_ref 139856 // GATMaquinaEstado
+      end
+      comment "//    GBF - Gamework's Brazilian Framework
+//    Copyright (C) 2004-2007 David de Almeida Ferreira
+//
+//    This library is free software; you can redistribute it and/or
+//    modify it under the terms of the GNU Library General Public
+//    License as published by the Free Software Foundation; either
+//    version 2 of the License, or (at your option) any later version.
+//
+//    David de Almeida Ferreira (F-Z)
+//        davidferreira@uol.com.br or davidferreira.fz@gmail.com
+//        http://pjmoo.codigolivre.org.br
+//////////////////////////////////////////////////////////////////////
+"
+    end
+  end
+end

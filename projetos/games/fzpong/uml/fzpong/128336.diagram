@@ -1,0 +1,337 @@
+format 29
+
+classcanvas 128080 class_ref 131920 // GraphicSystemImage
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default shadow default
+  hidden_attributes
+    attribute_ref 133456 // imagem
+    attribute_ref 133584 // time
+    attribute_ref 133712 // tamanho
+    attribute_ref 133840 // posicao
+  hidden_operations
+    operation_ref 147280 // GraphicSystemImage
+    operation_ref 147408 // ~GraphicSystemImage
+    operation_ref 147536 // setAlpha
+    operation_ref 147664 // setColorKey
+    operation_ref 147792 // carregarArquivo
+    operation_ref 147920 // getTimer
+    operation_ref 148048 // getTamanho
+    operation_ref 148176 // getPosicao
+    operation_ref 148304 // converterSurface
+    operation_ref 148432 // setGraphicSystemScreen
+    operation_ref 148560 // setTimer
+  xyz 226 146 2005
+classcanvas 128464 class_ref 128464 // Area
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default shadow default
+  hidden_attributes
+    attribute_ref 132944 // top
+    attribute_ref 133072 // left
+    attribute_ref 133200 // bottom
+    attribute_ref 133328 // right
+  xyz 129 11 2000
+classcanvas 128592 class_ref 131408 // GraphicSystemScreen
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default shadow default
+  hidden_attributes
+    attribute_ref 134864 // pScreen
+  hidden_operations
+    operation_ref 151376 // ~GraphicSystemScreen
+    operation_ref 151504 // blitSurface
+    operation_ref 151632 // getScreen
+    operation_ref 151760 // travar
+    operation_ref 151888 // destravar
+    operation_ref 152016 // GraphicSystemScreen
+    operation_ref 152144 // setScreen
+  xyz 253 281 3005
+classcanvas 129360 class_ref 131152 // GraphicSystemGFX
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default shadow default
+  hidden_attributes
+    attribute_ref 132432 // pScreen
+    attribute_ref 132560 // bpp
+  hidden_operations
+    operation_ref 144848 // ~GraphicSystemGFX
+    operation_ref 144976 // getInstance
+    operation_ref 145104 // setColor
+    operation_ref 145232 // setColor
+    operation_ref 145360 // putPixel
+    operation_ref 145488 // putPixel
+    operation_ref 145616 // putPixel
+    operation_ref 145744 // getPixel
+    operation_ref 145872 // linha
+    operation_ref 146000 // circulo
+    operation_ref 146128 // circuloPreenchido
+    operation_ref 146256 // retangulo
+    operation_ref 146384 // retanguloPreenchido
+    operation_ref 146512 // gradeSuperior
+    operation_ref 146640 // gradeInferior
+    operation_ref 146768 // inicializar
+    operation_ref 146896 // offSetLimite
+    operation_ref 147024 // setGraphicSystemScreen
+    operation_ref 147152 // GraphicSystemGFX
+  xyz 478 490 2000
+classcanvas 130000 class_ref 131280 // GraphicSystemMode
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default shadow default
+  hidden_attributes
+    attribute_ref 134736 // screen
+  hidden_operations
+    operation_ref 150352 // GraphicSystemMode
+    operation_ref 150480 // ~GraphicSystemMode
+    operation_ref 150608 // setModeFullScreen
+    operation_ref 150736 // setModeWindowScreen
+    operation_ref 150864 // isFullScreen
+    operation_ref 150992 // setConfig
+    operation_ref 151120 // getConfig
+    operation_ref 151248 // getScreen
+  xyz 489 110 2000
+classcanvas 130768 class_ref 132176 // GraphicSystemImageBufferManager
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default shadow default
+  hidden_attributes
+    attribute_ref 133968 // objetomap
+    attribute_ref 134096 // pathBase
+  hidden_operations
+    operation_ref 149456 // ~GraphicSystemImageBufferManager
+    operation_ref 149584 // getInstance
+    operation_ref 149712 // getImageBuffer
+    operation_ref 149840 // carregar
+    operation_ref 149968 // apagar
+    operation_ref 150096 // setPathBase
+    operation_ref 150224 // GraphicSystemImageBufferManager
+  xyz 15 92 3005
+classcanvas 131280 class_ref 132048 // GraphicSystemImageBuffer
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default shadow default
+  hidden_operations
+    operation_ref 148688 // GraphicSystemImageBuffer
+    operation_ref 148816 // ~GraphicSystemImageBuffer
+    operation_ref 148944 // carregarArquivo
+    operation_ref 149072 // desenhar
+    operation_ref 149200 // desenhar
+    operation_ref 149328 // desenhar
+  xyz 74 312 3005
+classcanvas 131664 class_ref 129360 // GraphicSystem
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default shadow default
+  hidden_operations
+    operation_ref 143952 // ~GraphicSystem
+    operation_ref 144080 // getInstance
+    operation_ref 144208 // sincronizar
+    operation_ref 144336 // clear
+    operation_ref 144464 // flip
+    operation_ref 144592 // salvarScreenShot
+    operation_ref 144720 // GraphicSystem
+  xyz 516 281 3010
+classcanvas 136016 class_ref 128848 // SpriteFactory
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default shadow default
+  color gray
+  hidden_operations
+    operation_ref 175184 // ~SpriteFactory
+    operation_ref 175312 // criarSpriteItem
+    operation_ref 175440 // criarSpritePersonagem
+    operation_ref 175568 // criarFrameLayer
+    operation_ref 175696 // SpriteFactory
+  xyz 10 245 3005
+classcanvas 137168 class_ref 137936 // UtilLog
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default shadow default
+  color gray
+  hidden_attributes
+    attribute_ref 149584 // arquivo
+    attribute_ref 149712 // autor
+    attribute_ref 149840 // projeto
+    attribute_ref 149968 // handleArquivo
+  hidden_operations
+    operation_ref 187600 // setArquivo
+    operation_ref 187728 // setAutor
+    operation_ref 187856 // setProjeto
+    operation_ref 187984 // iniciar
+    operation_ref 188112 // finalizar
+    operation_ref 188240 // cabecalho
+    operation_ref 188368 // sistema
+    operation_ref 188496 // subSistema
+    operation_ref 188624 // comentario
+    operation_ref 188752 // comentarioComQuebra
+    operation_ref 188880 // tracer
+    operation_ref 189008 // escrever
+  xyz 211 206 3015
+classcanvas 137424 class_ref 137936 // UtilLog
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default shadow default
+  color gray
+  hidden_attributes
+    attribute_ref 149584 // arquivo
+    attribute_ref 149712 // autor
+    attribute_ref 149840 // projeto
+    attribute_ref 149968 // handleArquivo
+  hidden_operations
+    operation_ref 187600 // setArquivo
+    operation_ref 187728 // setAutor
+    operation_ref 187856 // setProjeto
+    operation_ref 187984 // iniciar
+    operation_ref 188112 // finalizar
+    operation_ref 188240 // cabecalho
+    operation_ref 188368 // sistema
+    operation_ref 188496 // subSistema
+    operation_ref 188624 // comentario
+    operation_ref 188752 // comentarioComQuebra
+    operation_ref 188880 // tracer
+    operation_ref 189008 // escrever
+  xyz 600 182 3015
+classcanvas 139088 class_ref 132304 // VideoConfig
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default shadow default
+  hidden_attributes
+    attribute_ref 134224 // w
+    attribute_ref 134352 // h
+    attribute_ref 134480 // color
+    attribute_ref 134608 // full
+  xyz 495 13 3005
+classcanvas 139856 class_ref 138448 // SDL
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default shadow default
+  color blue
+  xyz 298 9 2000
+classcanvas 140368 class_ref 138448 // SDL
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default shadow default
+  color blue
+  xyz 259 345 2000
+relationcanvas 128720 relation_ref 132432 // <unidirectional association>
+  geometry VHV
+  from ref 128080 z 1999 to point 282 229
+  line 143312 z 1999 to point 310 229
+  line 143440 z 1999 to ref 128592
+  role_a_pos 322 264 3000 no_role_b
+  no_multiplicity_a no_multiplicity_b
+relationcanvas 129232 relation_ref 147536 // <dependency>
+  geometry HVr
+  from ref 128080 z 1999 to point 282 35
+  line 144464 z 1999 to ref 128464
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+relationcanvas 129488 relation_ref 131920 // <unidirectional association>
+  from ref 129360 z 1999 to point 549 495
+  line 134480 z 1999 to point 619 494
+  line 134608 z 1999 to point 619 516
+  line 133584 z 1999 to point 595 516
+  line 134864 z 1999 to ref 129360
+  role_a_pos 601 500 3000 no_role_b
+  no_multiplicity_a no_multiplicity_b
+relationcanvas 129872 relation_ref 132176 // <unidirectional association>
+  geometry HV
+  from ref 129360 z 1999 to point 310 506
+  line 141776 z 1999 to ref 128592
+  role_a_pos 322 323 3000 no_role_b
+  no_multiplicity_a no_multiplicity_b
+relationcanvas 130896 relation_ref 133200 // <unidirectional association>
+  from ref 130768 z 1999 to point 198 97
+  line 135888 z 1999 to point 198 78
+  line 135376 z 1999 to point 248 78
+  line 131152 z 1999 to point 248 106
+  line 135248 z 1999 to ref 130768
+  role_a_pos 210 63 3000 no_role_b
+  no_multiplicity_a no_multiplicity_b
+relationcanvas 131408 relation_ref 132816 // <generalisation>
+  geometry VH
+  from ref 131280 z 1999 to point 146 162
+  line 144336 z 1999 to ref 128080
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+relationcanvas 131536 relation_ref 133072 // <dependency>
+  geometry HV
+  from ref 131280 z 1999 to point 108 328
+  line 141648 z 1999 stereotype "<<friend>>" xyz 84 209 3000 to ref 130768
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+relationcanvas 131792 relation_ref 131408 // <unidirectional association>
+  geometry VHV unfixed
+  from ref 131664 z 1999 to point 557 383
+  line 145872 z 1999 to point 529 383
+  line 146000 z 1999 to ref 129360
+  role_a_pos 541 473 3000 no_role_b
+  no_multiplicity_a no_multiplicity_b
+relationcanvas 131920 relation_ref 131536 // <unidirectional association>
+  geometry HV
+  from ref 131664 z 1999 to point 542 297
+  line 146640 z 1999 to ref 130000
+  role_a_pos 554 152 3000 no_role_b
+  no_multiplicity_a no_multiplicity_b
+relationcanvas 132048 relation_ref 131664 // <unidirectional association>
+  geometry HVr
+  from ref 131664 z 1999 to point 557 297
+  line 141904 z 1999 to ref 128592
+  role_a_pos 381 283 3000 no_role_b
+  no_multiplicity_a no_multiplicity_b
+relationcanvas 132176 relation_ref 131792 // <unidirectional association>
+  from ref 131664 z 1999 to point 589 278
+  line 134224 z 1999 to point 589 259
+  line 132304 z 1999 to point 630 259
+  line 132432 z 1999 to point 630 295
+  line 134096 z 1999 to ref 131664
+  role_a_pos 594 246 3000 no_role_b
+  no_multiplicity_a no_multiplicity_b
+relationcanvas 132560 relation_ref 133456 // <dependency>
+  from ref 128592 z 1999 to point 377 306
+  line 146512 z 1999 to point 377 358
+  line 146384 z 1999 stereotype "<<friend>>" xyz 382 337 3000 to point 489 358
+  line 133968 z 1999 to ref 131664
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+relationcanvas 132688 relation_ref 132304 // <dependency>
+  from ref 129360 z 1999 to point 462 430
+  line 146256 z 1999 stereotype "<<friend>>" xyz 469 391 3000 to ref 131664
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+relationcanvas 132816 relation_ref 132688 // <dependency>
+  from ref 128080 z 1999 to point 371 171
+  line 138064 z 1999 to point 372 244
+  line 138448 z 1999 stereotype "<<friend>>" xyz 390 215 3000 to point 467 244
+  line 138960 z 1999 to point 467 266
+  line 137936 z 1999 to ref 131664
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+relationcanvas 136144 relation_ref 139856 // <unidirectional association>
+  geometry VHV unfixed
+  from ref 136016 z 1999 to point 47 386
+  line 143056 z 1999 to point 146 386
+  line 143184 z 1999 to ref 131280
+  role_a_pos 158 354 3000 no_role_b
+  no_multiplicity_a no_multiplicity_b
+relationcanvas 137296 relation_ref 146512 // <dependency>
+  geometry VHr
+  from ref 128592 z 1999 to point 232 297
+  line 143696 z 1999 to ref 137168
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+relationcanvas 137552 relation_ref 148176 // <dependency>
+  geometry HV
+  from ref 130000 z 1999 to point 621 126
+  line 147280 z 1999 to ref 137424
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+relationcanvas 137680 relation_ref 148560 // <dependency>
+  from ref 131664 z 1999 to point 544 281
+  line 138832 z 1999 to point 544 241
+  line 138704 z 1999 to point 486 241
+  line 138320 z 1999 to point 486 156
+  line 137808 z 1999 to point 395 156
+  line 138192 z 1999 to ref 128080
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+relationcanvas 139216 relation_ref 133328 // <directional aggregation by value>
+  geometry VHV
+  from ref 130000 z 1999 to point 542 85
+  line 147024 z 1999 to point 527 85
+  line 147152 z 1999 to ref 139088
+  role_a_pos 539 71 3000 no_role_b
+  no_multiplicity_a no_multiplicity_b
+relationcanvas 139984 relation_ref 150608 // <dependency>
+  geometry HVH
+  from ref 130000 z 1999 to point 416 126
+  line 142032 z 1999 to point 416 33
+  line 142160 z 1999 to ref 139856
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+relationcanvas 140112 relation_ref 150736 // <dependency>
+  geometry VHr
+  from ref 128080 z 1999 to point 321 162
+  line 142416 z 1999 to ref 139856
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+relationcanvas 140496 relation_ref 150864 // <dependency>
+  geometry VHr
+  from ref 128592 z 1999 to point 282 297
+  line 144720 z 1999 to ref 140368
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+end

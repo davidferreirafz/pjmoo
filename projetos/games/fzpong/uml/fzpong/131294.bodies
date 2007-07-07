@@ -1,0 +1,18 @@
+class ItemFactory
+!!!145886.cpp!!!	criar(in eItem : EnumItem) : ItemAbstract
+
+    ItemAbstract *item = NULL;
+    
+    switch(eItem){
+        case ITEM_VELOCIDADE:
+                item = new ItemVelocidade();
+            break;
+        case ITEM_ARMA:
+                item = new ItemArma();
+            break;
+        case ITEM_ESCUDO:
+                item = new ItemEscudo();
+            break;
+    }
+    
+    return item;

@@ -1,0 +1,71 @@
+class GATMaquinaEstadoGeral
+!!!199888.cpp!!!	GATMaquinaEstadoGeral()
+    setInicio();
+!!!200144.cpp!!!	processarEstadoGeral() : GATEstadoGeral
+    return estado;
+!!!200272.cpp!!!	setMenu() : bool
+    bool mudou = false;
+    //if ((estado!=GAT_EG_MENU)&&(isTempoEspera())){
+    if (estado!=GAT_EG_MENU){
+        if ((estado==GAT_EG_APRESENTACAO)
+            ||(estado==GAT_EG_JOGO)
+            ||(estado==GAT_EG_TOPGALERIA)){
+                estado=GAT_EG_MENU;
+                mudou=true;
+                gatilhoMenu();
+                reiniciarTempo();
+        }
+    }
+
+    return mudou;
+!!!200400.cpp!!!	setApresentacao() : void
+    if (estado!=GAT_EG_APRESENTACAO){
+        if ((estado==GAT_EG_MENU)
+            ||(estado==GAT_EG_INICIO)){
+                gatilhoApresentacao();
+                estado=GAT_EG_APRESENTACAO;
+        }
+    }
+!!!200528.cpp!!!	setJogo() : bool
+    bool mudou = false;
+    if ((estado!=GAT_EG_JOGO)
+        //&&(estado==GAT_EG_MENU)&&(isTempoEspera())){
+        &&(estado==GAT_EG_MENU)){
+            estado=GAT_EG_JOGO;
+            mudou = true;
+            gatilhoJogo();
+            //reiniciarTempo();
+    }
+
+    return mudou;
+!!!200784.cpp!!!	setTopGaleria() : bool
+    bool mudou = false;
+
+    if ((estado!=GAT_EG_TOPGALERIA)&&(isTempoEspera())){
+        estado=GAT_EG_TOPGALERIA;
+        gatilhoJogo();
+        mudou = true;
+        reiniciarTempo();
+    }
+
+    return mudou;
+!!!200656.cpp!!!	setSair() : void
+//    if ((eEstadoGeral!=GAT_EG_SAIR)&&
+//        (eEstadoGeral==GAT_EG_MENU)&&
+//        (isTempoEspera())){
+    if (estado!=GAT_EG_SAIR){ //provisorio
+        gatilhoSair();
+        estado=GAT_EG_SAIR;
+    }
+!!!201552.cpp!!!	gatilhoMenu() : void
+    //opicional implementação de acordo com a necessidade
+!!!201680.cpp!!!	gatilhoApresentacao() : void
+    //opicional implementação de acordo com a necessidade
+!!!202064.cpp!!!	gatilhoJogo() : void
+    //opicional implementação de acordo com a necessidade
+!!!202320.cpp!!!	gatilhoTopGaleria() : void
+    //opicional implementação de acordo com a necessidade
+!!!202192.cpp!!!	gatilhoSair() : void
+    //opicional implementação de acordo com a necessidade
+!!!201808.cpp!!!	setInicio() : void
+    estado=GAT_EG_INICIO;

@@ -1,0 +1,41 @@
+class Placar
+!!!135700.cpp!!!	Placar()
+
+    iniciar();
+	if (!soundSystem){
+		soundSystem = SoundSystem::getInstance();
+	}
+!!!135828.cpp!!!	~Placar()
+
+    //dtor
+!!!135956.cpp!!!	iniciar() : void
+    jogador=0;
+    cpu=0;
+    partidaJogador=0;
+    partidaCPU=0;
+!!!136084.cpp!!!	novaPartida() : void
+    if (jogador>cpu){
+        vitoriaJogador();
+    } else if (jogador<cpu){
+        vitoriaCPU();
+    }
+    jogador=0;
+    cpu=0;
+!!!136212.cpp!!!	pontuarJogador() : void
+    soundSystem->fxManager->playPanEffect("ponto",640);
+    jogador++;
+!!!136340.cpp!!!	pontuarCPU() : void
+    soundSystem->fxManager->playPanEffect("ponto",0);
+    cpu++;
+!!!136468.cpp!!!	getJogador() : int
+    return jogador;
+!!!136596.cpp!!!	getCPU() : int
+    return cpu;
+!!!136724.cpp!!!	vitoriaJogador() : void
+    partidaJogador++;
+!!!136852.cpp!!!	vitoriaCPU() : void
+    partidaCPU++;
+!!!136980.cpp!!!	getVitoriaJogador() : int
+    return partidaJogador;
+!!!137108.cpp!!!	getVitoriaCPU() : int
+    return partidaCPU;

@@ -1,0 +1,10 @@
+class UtilDate
+!!!187216.cpp!!!	getInfo() : char
+    time_t ltime;
+    time(&ltime);
+    char *hora;
+    hora = new char[28];
+    hora = ctime(&ltime);
+    memcpy(hora+24, "\0", 1 );
+
+    return hora;

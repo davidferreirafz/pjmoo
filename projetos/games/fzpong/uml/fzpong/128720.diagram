@@ -1,0 +1,96 @@
+format 29
+
+classcanvas 128080 class_ref 129616 // WriteSystemManager
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default shadow default
+  hidden_attributes
+    attribute_ref 151120 // objetomap
+  hidden_operations
+    operation_ref 190288 // ~WriteSystemManager
+    operation_ref 190416 // getFonte
+    operation_ref 190544 // getInstance
+    operation_ref 190672 // carregar
+    operation_ref 190800 // escrever
+    operation_ref 192336 // escreverLocalizado
+    operation_ref 190928 // apagar
+    operation_ref 191056 // WriteSystemManager
+  xyz 157 75 3005
+classcanvas 128592 class_ref 138064 // WriteSystemBitmap
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default shadow default
+  hidden_attributes
+    attribute_ref 150096 // largura
+  hidden_operations
+    operation_ref 189136 // ~WriteSystemBitmap
+    operation_ref 189264 // carregarArquivo
+    operation_ref 189392 // setDimensao
+    operation_ref 189520 // getLargura
+    operation_ref 189648 // getAltura
+    operation_ref 189776 // getDimensao
+    operation_ref 189904 // escrever
+    operation_ref 190032 // WriteSystemBitmap
+    operation_ref 190160 // checkar
+  xyz 32 168 3005
+classcanvas 128848 class_ref 138192 // WriteSystemFontDefault
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default shadow default
+  hidden_attributes
+    attribute_ref 150224 // console
+    attribute_ref 150352 // pumpdemi
+    attribute_ref 150480 // fixedsys
+    attribute_ref 150608 // arial
+    attribute_ref 150736 // comic
+    attribute_ref 150864 // high
+    attribute_ref 150992 // stac
+  xyz 346 140 2000
+fragment 129104 "WriteSystem - Sistema de Escrita"
+  xyzwh 5 11 1994 509 251
+end
+classcanvas 130000 class_ref 138576 // UserInterfaceTexto
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default shadow default
+  color gray
+  hidden_attributes
+    attribute_ref 151248 // mapaTexto
+    attribute_ref 151376 // pathBase
+  hidden_operations
+    operation_ref 191312 // ~UserInterfaceTexto
+    operation_ref 191440 // atualizar
+    operation_ref 191824 // size
+    operation_ref 192080 // getInstance
+    operation_ref 191568 // getTexto
+    operation_ref 192208 // setPathBase
+    operation_ref 191696 // parser
+    operation_ref 191952 // limpar
+    operation_ref 191184 // UserInterfaceTexto
+  xyz 167 280 3005
+relationcanvas 128208 relation_ref 143312 // <unidirectional association>
+  from ref 128080 z 1999 to point 217 53
+  line 128336 z 1999 to point 139 53
+  line 128464 z 1999 to point 139 86
+  line 129360 z 1999 to ref 128080
+  role_a_pos 105 64 3000 no_role_b
+  no_multiplicity_a no_multiplicity_b
+relationcanvas 128720 relation_ref 143184 // <dependency>
+  geometry VH
+  from ref 128592 z 1999 to point 84 95
+  line 132560 z 1999 stereotype "<<friend>>" xyz 121 147 3000 to ref 128080
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+relationcanvas 128976 relation_ref 144720 // <dependency>
+  geometry HV
+  from ref 128080 z 1999 to point 409 95
+  line 129872 z 1999 to ref 128848
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+relationcanvas 130128 relation_ref 151504 // <unidirectional association>
+  from ref 130000 z 1999 to point 298 297
+  line 130256 z 1999 to point 298 331
+  line 130384 z 1999 to point 224 331
+  line 130512 z 1999 to ref 130000
+  role_a_pos 236 325 3000 no_role_b
+  no_multiplicity_a no_multiplicity_b
+relationcanvas 131152 relation_ref 152016 // <unidirectional association>
+  geometry VHV
+  from ref 128080 z 3004 to point 234 197
+  line 132304 z 3004 to point 218 197
+  line 132432 z 3004 to ref 130000
+  role_a_pos 230 263 3000 no_role_b
+  no_multiplicity_a no_multiplicity_b
+end

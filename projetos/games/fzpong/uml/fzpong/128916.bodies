@@ -1,0 +1,48 @@
+class CPU
+!!!130964.cpp!!!	CPU()
+
+    GraphicSystemImageBufferManager *gsImageBufferManager=GraphicSystemImageBufferManager::getInstance();
+    SpriteFactory *spriteFactory = new SpriteFactory(gsImageBufferManager->getImageBuffer("personagem"));
+    adicionarSpritePrincipal(spriteFactory->criarSpritePersonagem(15,21,14,80,1,1));
+    delete(spriteFactory);
+!!!131092.cpp!!!	~CPU()
+
+    //dtor
+!!!131220.cpp!!!	acao(inout input : InputSystem) : void
+    Area areaVisaoBola = IA::converter(getVisaoBola().getDimensao(),getVisaoBola().getPosicao());
+	Area visao         = IA::converter(getDimensao(),getPosicao());
+
+    Decisao decisao = IA::pensar(visao,areaVisaoBola,raioVisao,efeito);
+
+    if (decisao==DECISAO_SUBIR){
+        subir();
+    } else if (decisao==DECISAO_DESCER){
+        descer();
+    }
+!!!131348.cpp!!!	iniciar() : void
+    adaptarVelocidade();
+    setPosicao(0,(getAreaTela().bottom/2)-(getDimensao().h/2));
+!!!131476.cpp!!!	isColisao(inout personagem : PersonagemAbstract) : bool
+    if ((personagem->getPosicao().x <= posicao.x+getDimensao().w)&&
+        (posicao.y + getDimensao().h >= personagem->getPosicao().y)&&
+        (posicao.y <= personagem->getPosicao().y + personagem->getDimensao().h)){
+            efeito = Efeito(rand()%3);
+            return true;
+    } else {
+        return false;
+    }
+!!!131604.cpp!!!	saque() : Ponto
+    Ponto saque;
+
+    saque.x=posicao.x+getDimensao().w;
+    saque.y=posicao.y+rand()%(getDimensao().h-getVisaoBola().getDimensao().h);
+
+    return saque;
+!!!131732.cpp!!!	iniciarVisao() : void
+    raioVisao=380;
+!!!131860.cpp!!!	aumentarVisao() : void
+    raioVisao+=20;
+
+    if (raioVisao>=getAreaTela().bottom){
+        raioVisao=getAreaTela().bottom;
+    }

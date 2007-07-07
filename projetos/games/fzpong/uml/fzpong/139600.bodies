@@ -1,0 +1,52 @@
+class GATMaquinaEstadoTopGaleria
+!!!202576.cpp!!!	GATMaquinaEstadoTopGaleria()
+    setTopGaleriaInicio();
+!!!202832.cpp!!!	processarEstadoTopGaleria() : GATEstadoTopGaleria
+    return estado;
+!!!207440.cpp!!!	loopTopGaleria() : void
+    switch(processarEstadoTopGaleria()){
+        case GAT_ET_EXIBIR:
+                topGaleriaExibir();
+            break;
+        case GAT_ET_NOVO:
+                topGaleriaNovo();
+            break;
+        case GAT_ET_SALVAR:
+                topGaleriaSalvar();
+            break;
+        case GAT_ET_INICIO:
+        default:
+                setTopGaleriaExibir();
+            break;
+    }
+!!!202960.cpp!!!	setTopGaleriaNovo() : void
+    if ((estado!=GAT_ET_NOVO)&&(gatilhoTopGaleriaNovo())){
+        estado=GAT_ET_NOVO;
+//		reiniciarTempo();
+//      tempoEspera.setIniciar();
+    }
+!!!203088.cpp!!!	setTopGaleriaSalvar() : void
+//    if ((estado!=GAT_ET_SALVAR)&&(isTempoEspera())){
+    if (estado!=GAT_ET_SALVAR){
+        estado=GAT_ET_SALVAR;
+//        reiniciarTempo();            
+//        gatilhoTopGaleriaSalvar();            
+    }
+!!!203216.cpp!!!	setTopGaleriaExibir() : void
+    if ((estado==GAT_ET_INICIO)||
+        ((estado!=GAT_ET_EXIBIR)&&(isTempoEspera()))){
+        gatilhoTopGaleriaExibir();
+        estado=GAT_ET_EXIBIR;
+		reiniciarTempo();
+    }
+!!!204368.cpp!!!	gatilhoTopGaleriaNovo() : bool
+//opicional implementação de acordo com a necessidade
+    return true;
+!!!204496.cpp!!!	gatilhoTopGaleriaSalvar() : bool
+//opicional implementação de acordo com a necessidade
+    return true;
+!!!204624.cpp!!!	gatilhoTopGaleriaExibir() : bool
+//opicional implementação de acordo com a necessidade
+    return true;
+!!!205008.cpp!!!	setTopGaleriaInicio() : void
+    estado=GAT_ET_INICIO;

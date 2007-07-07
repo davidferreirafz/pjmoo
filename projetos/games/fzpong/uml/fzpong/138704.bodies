@@ -1,0 +1,42 @@
+class GATMaquinaEstadoMenu
+!!!194512.cpp!!!	GATMaquinaEstadoMenu()
+    setMenuInicio();
+!!!194768.cpp!!!	processarEstadoMenu() : GATEstadoMenu
+    return estado;
+!!!194896.cpp!!!	setMenuPrincipal() : void
+    if ((estado==GAT_EM_INICIO)
+        || ((estado!=GAT_EM_PRINCIPAL)
+        && (isTempoEspera()))){
+            estado=GAT_EM_PRINCIPAL;
+            gatilhoMenuPrincipal();
+            reiniciarTempo();
+    }
+!!!195024.cpp!!!	setMenuAjuda() : void
+    if ((estado!=GAT_EM_AJUDA)&&(isTempoEspera())){
+        estado=GAT_EM_AJUDA;
+        reiniciarTempo();
+    }
+!!!195152.cpp!!!	setMenuCredito() : void
+    if ((estado!=GAT_EM_CREDITO)&&(isTempoEspera())){
+        estado=GAT_EM_CREDITO;
+        reiniciarTempo();        
+    }
+!!!195280.cpp!!!	setMenuSobre() : void
+    if ((estado!=GAT_EM_SOBRE)&&(isTempoEspera())){
+        estado=GAT_EM_SOBRE;
+        reiniciarTempo();
+    }
+!!!195408.cpp!!!	setMenuConfiguracao() : void
+    if ((estado!=GAT_EM_CONFIGURACAO)&&(isTempoEspera())){
+        estado=GAT_EM_CONFIGURACAO;
+        gatilhoMenuConfiguracao();
+        reiniciarTempo();
+    }
+!!!196176.cpp!!!	menuConfiguracao() : void
+    //opicional implementação de acordo com a necessidade
+!!!196304.cpp!!!	gatilhoMenuPrincipal() : void
+//opicional implementação de acordo com a necessidade
+!!!196432.cpp!!!	gatilhoMenuConfiguracao() : void
+    //opicional implementação de acordo com a necessidade
+!!!196816.cpp!!!	setMenuInicio() : void
+    estado=GAT_EM_INICIO;

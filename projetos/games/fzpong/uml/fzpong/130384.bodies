@@ -1,0 +1,17 @@
+class GBFTela
+!!!142544.cpp!!!	~GBFTela()
+
+!!!142672.cpp!!!	GBFTela()
+
+!!!143440.cpp!!!	telaTopRecorde() : void
+
+//se for utilizar deve ser sobreescrita
+!!!143568.cpp!!!	telaTopRecordeNovo() : void
+
+//se for utilizar deve ser sobreescrita
+!!!143696.cpp!!!	telaConfigurar() : void
+
+//se for utilizar deve ser sobreescrita
+!!!143824.cpp!!!	telaSair() : void
+
+//se for utilizar deve ser sobreescrita

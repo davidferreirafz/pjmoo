@@ -1,0 +1,92 @@
+class Controle
+!!!129300.cpp!!!	Controle()
+
+    cenario    = FrameLayerManager::getInstance()->getFrameLayer("background");
+    wsManager  = WriteSystemManager::getInstance();
+!!!129428.cpp!!!	~Controle()
+
+
+!!!129556.cpp!!!	iniciar() : void
+    Objeto::setArea(cenario->getArea());
+
+    bola.iniciar();
+    Raquete::setBola(&bola);
+
+    raqueteJogador.iniciar();
+    raqueteCPU.iniciar();
+    raqueteCPU.iniciarVisao();
+
+    placar.iniciar();
+!!!129684.cpp!!!	iniciarSet() : void
+    placar.novaPartida();
+!!!129812.cpp!!!	prepararSet() : void
+    bola.continuar();
+    raqueteJogador.iniciar();
+    raqueteCPU.iniciar();
+!!!129940.cpp!!!	executar(inout input : InputSystem) : void
+    bola.acao(NULL);
+    raqueteJogador.acao(input);
+    raqueteCPU.acao(NULL);
+
+    bola.isColisao(&raqueteJogador);
+    bola.isColisao(&raqueteCPU);
+
+    juiz();
+
+    display();
+!!!130068.cpp!!!	isGameOver() : bool
+    bool terminou = false;
+
+    if (placar.getVitoriaCPU()>=placar.getVitoriaJogador()+DIFERENCA_VITORIA_TERMINAR){
+        terminou = true;
+    }
+
+    return terminou;
+!!!130196.cpp!!!	isFinalizado() : bool
+    bool terminou = false;
+
+    if (placar.getVitoriaJogador()>=placar.getVitoriaCPU()+DIFERENCA_VITORIA_TERMINAR){
+        terminou = true;
+    }
+
+    return terminou;
+!!!130324.cpp!!!	isSetFinalizado() : bool
+    bool finalizado = false;
+
+    int diferenca=placar.getCPU()-placar.getJogador();
+
+    if ((diferenca>=DIFERENCA_PARTIDA_TERMINAR)||(diferenca<=-DIFERENCA_PARTIDA_TERMINAR)){
+        finalizado = true;
+        placar.novaPartida();
+        if (placar.getVitoriaJogador()>=placar.getVitoriaCPU()){
+            raqueteCPU.aumentarVisao();
+        }
+    }
+
+    return finalizado;
+!!!130452.cpp!!!	getNumeroSet() : int
+    return placar.getVitoriaCPU()+placar.getVitoriaJogador();
+!!!130580.cpp!!!	display() : void
+    cenario->desenhar();
+    wsManager->escrever("texto",260,10,"%02d X %02d",placar.getCPU(),placar.getJogador());
+
+    wsManager->escrever("texto" ,20,10,"%02d",placar.getVitoriaCPU());
+    wsManager->escrever("texto",590,10,"%02d",placar.getVitoriaJogador());
+
+    bola.desenhar();
+    raqueteJogador.desenhar();
+    raqueteCPU.desenhar();
+!!!130708.cpp!!!	juiz() : void
+    if (bola.getPosicao().x>=cenario->getArea().right){
+        placar.pontuarCPU();
+        raqueteCPU.iniciar();
+        raqueteJogador.iniciar();
+
+        bola.iniciar(raqueteCPU.saque());
+    } else  if (bola.getPosicao().x+bola.getDimensao().w<=cenario->getArea().left){
+        placar.pontuarJogador();
+        raqueteJogador.iniciar();
+        raqueteCPU.iniciar();
+
+        bola.iniciar(raqueteJogador.saque());
+    }

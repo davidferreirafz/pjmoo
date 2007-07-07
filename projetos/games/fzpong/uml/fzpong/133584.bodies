@@ -1,0 +1,57 @@
+class PersonagemAbstract
+!!!163408.cpp!!!	~PersonagemAbstract()
+//  UtilLog::getInstance()->comentario("\tID:%d",ID);
+!!!163536.cpp!!!	desenhar() : void
+    sprites["principal"]->desenhar(posicao.x,posicao.y);
+!!!163664.cpp!!!	setAtivo(in valor : bool) : void
+    ativo=valor;
+!!!163792.cpp!!!	setVivo(in valor : bool) : void
+    vivo=valor;
+!!!163920.cpp!!!	isAtivo() : bool
+    return ativo;
+!!!164048.cpp!!!	isVivo() : bool
+    return vivo;
+!!!164176.cpp!!!	isColisao(inout personagem : PersonagemAbstract) : bool
+    return sprites["principal"]->isColisao(personagem->sprites["principal"]);
+!!!164304.cpp!!!	setPosicao(in x : int, in y : int) : void
+    posicao.x=x;
+    posicao.y=y;
+
+    if (sprites["principal"]!=NULL){
+        sprites["principal"]->setPosicao(posicao.x,posicao.y);
+    }
+!!!164432.cpp!!!	setPosicao(in ponto : Ponto) : void
+    setPosicao(ponto.x,ponto.y);
+!!!164560.cpp!!!	getPosicao() : Ponto
+    return posicao;
+!!!164688.cpp!!!	adicionarSpritePrincipal(inout sprite : SpritePersonagem) : bool
+    return adicionarSprite(sprite,"principal");
+!!!193744.cpp!!!	adicionarSprite(inout sprite : SpritePersonagem, in nome : std::string) : bool
+    if (sprite){
+        sprite->setAutomatico(true);
+        sprites[nome]=sprite;
+        return true;
+    } else {
+        return false;
+    }
+!!!193872.cpp!!!	getDimensao() : Dimensao
+    return sprites["principal"]->getTamanho();
+!!!194000.cpp!!!	getSpritePrincipal() : SpritePersonagem
+    return sprites["principal"];
+!!!194128.cpp!!!	getSprite(in nome : std::string) : SpritePersonagem
+    return sprites[nome];
+!!!164944.cpp!!!	PersonagemAbstract()
+    vivo  = true;
+    ativo = true;
+
+    delay.acao  = 0;
+    delay.tiroA = 0;
+    delay.tiroB = 0;
+    delay.tiroC = 0;
+    delay.tiroD = 0;
+
+    posicao.x   = 0;
+    posicao.y   = 0;
+
+    IDcontagem++;
+    ID=IDcontagem;

@@ -1,0 +1,23 @@
+class ItemEscudo
+!!!145374.cpp!!!	~ItemEscudo()
+
+    //UtilLog::getInstance()->status("[ItemEscudo]");
+!!!145502.cpp!!!	getTipo() : EnumItem
+
+    return ITEM_ESCUDO;
+!!!145630.cpp!!!	getHelp() : string
+
+    return "item_escudo";
+!!!145758.cpp!!!	ItemEscudo()
+
+    GraphicSystemImageBufferManager *gsImageBufferManager=GraphicSystemImageBufferManager::getInstance();
+
+    SpriteFactory * spriteFactory   = new SpriteFactory(gsImageBufferManager->getImageBuffer("tiles"));
+    adicionarSpritePrincipal(spriteFactory->criarSpritePersonagem(129,294,32,24,4,8));
+    delete (spriteFactory);
+
+    velocidade  = 1;
+    bonus       = 5;
+
+    selecionarPosicao();
+    path = PathFactory::criar(PATH_DOWN);

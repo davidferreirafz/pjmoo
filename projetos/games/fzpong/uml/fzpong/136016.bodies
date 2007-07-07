@@ -1,0 +1,27 @@
+class SoundSystemMusic
+!!!170192.cpp!!!	~SoundSystemMusic()
+    Mix_FreeMusic(musica);
+    musica = NULL;
+    //UtilLog::getInstance()->status("[SoundMusic Removido(a)]");
+!!!170320.cpp!!!	play() : void
+    Mix_PlayMusic(musica, 0);
+!!!170448.cpp!!!	playLoop(in vezes : int = 0) : void
+
+	Mix_PlayMusic(musica, vezes);
+
+!!!170576.cpp!!!	playInfinity() : void
+    playLoop(-1);
+!!!170704.cpp!!!	carregarArquivo(in arquivo : std::string) : bool
+    musica = Mix_LoadMUS(arquivo.c_str());
+
+    if (musica){
+        return true;
+    } else {
+        return false;
+    }
+!!!170832.cpp!!!	setVolume(in valor : int = 100) : void
+    Mix_VolumeMusic(valor);
+!!!170960.cpp!!!	stop() : void
+    Mix_HaltMusic();
+!!!171088.cpp!!!	SoundSystemMusic()
+

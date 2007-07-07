@@ -47,53 +47,22 @@ void CPU::aumentarVisao()
 }
 void CPU::iniciar()
 {
+    adaptarVelocidade();
     setPosicao(0,(getAreaTela().bottom/2)-(getDimensao().h/2));
 }
 
 void CPU::acao(InputSystem * input)
 {
-	float qx, qy, qr; //para guardar o quadrado de x, y e raio
+    Area areaVisaoBola = IA::converter(getVisaoBola().getDimensao(),getVisaoBola().getPosicao());
+	Area visao         = IA::converter(getDimensao(),getPosicao());
 
-	Area visao;
+    Decisao decisao = IA::pensar(visao,areaVisaoBola,raioVisao,efeito);
 
-	visao.left=posicao.x;
-	visao.top=posicao.y;
-	visao.right=getDimensao().w;
-	visao.bottom=getDimensao().h;
-
-    Area areaVisaoBola;
-    Dimensao tavb = getVisaoBola().getDimensao();
-    Ponto pavb    = getVisaoBola().getPosicao();
-
-    areaVisaoBola.left   = pavb.x;
-    areaVisaoBola.top    = pavb.y;
-    areaVisaoBola.right  = tavb.w;
-    areaVisaoBola.bottom = tavb.h;
-
-
-	//quadrado da distância em x
-	qx = std::pow(float((areaVisaoBola.left + areaVisaoBola.right/2) - (visao.left + visao.right/2)), 2);
-	//quadrado da distância em y
-	qy = std::pow(float((areaVisaoBola.top + areaVisaoBola.bottom/2) - (visao.top  + visao.bottom/2)), 2);
-	//quadrado da soma dos raios
-	qr = std::pow(float(raioVisao), 2);
-
-	if (qx + qy <= qr){
-        if (posicao.y+(getDimensao().h/4) <= getVisaoBola().getPosicao().y){
-            descer();
-        }
-        if (posicao.y+getDimensao().h-(getDimensao().h/4) >= getVisaoBola().getPosicao().y){
-            subir();
-        }
-	}
-/*
-//Apenas para facilitar os testes com a raquete do lado esquerdo
-	if ((input->teclado->isKey(SDLK_UP))||(input->joystick->isAxeUp())){
+    if (decisao==DECISAO_SUBIR){
         subir();
-    } else if ((input->teclado->isKey(SDLK_DOWN))||(input->joystick->isAxeDown())){
+    } else if (decisao==DECISAO_DESCER){
         descer();
     }
-*/
 }
 
 bool CPU::isColisao(PersonagemAbstract * personagem)
@@ -101,6 +70,7 @@ bool CPU::isColisao(PersonagemAbstract * personagem)
     if ((personagem->getPosicao().x <= posicao.x+getDimensao().w)&&
         (posicao.y + getDimensao().h >= personagem->getPosicao().y)&&
         (posicao.y <= personagem->getPosicao().y + personagem->getDimensao().h)){
+            efeito = Efeito(rand()%3);
             return true;
     } else {
         return false;

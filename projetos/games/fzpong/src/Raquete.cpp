@@ -80,3 +80,13 @@ Bola Raquete::getVisaoBola()
     return *visaoBola;
 }
 
+void Raquete::adaptarVelocidade()
+{
+    int vb = visaoBola->getVelocidade();
+
+    if (vb<0){
+        vb= - vb;
+    }
+
+    velocidade= (vb) * 1.5;
+}

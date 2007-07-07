@@ -27,6 +27,7 @@
 
 #include <cmath>
 
+#include "define.h"
 #include "Raquete.h"
 
 
@@ -45,6 +46,7 @@ class CPU : public Raquete
     protected:
     private:
         int raioVisao;
+        Efeito efeito;
 };
 
 

@@ -34,6 +34,8 @@
 class Jogo : public GAT
 {
   public:
+    int main(int argc, char * argv[]);
+
     //Construtor
     Jogo(int argc, char * argv[]);
 
@@ -74,15 +76,11 @@ class Jogo : public GAT
 
 
   private:
+    bool desenharBotaoEnter();
+
     Controle * controle;
 
     SpriteItem * david;
-
-    bool desenharBotaoEnter();
-
-
-  public:
-    int main(int argc, char * argv[]);
 
 };
 #endif

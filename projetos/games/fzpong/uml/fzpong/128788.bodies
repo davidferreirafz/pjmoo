@@ -5,6 +5,7 @@ class Jogador
     SpriteFactory *spriteFactory = new SpriteFactory(gsImageBufferManager->getImageBuffer("personagem"));
     adicionarSpritePrincipal(spriteFactory->criarSpritePersonagem(0,21,14,80,1,1));
     delete(spriteFactory);
+    CPUAtivo = false;
 !!!132372.cpp!!!	~Jogador()
 
     //dtor
@@ -12,21 +13,23 @@ class Jogador
     adaptarVelocidade();
     setPosicao(getAreaTela().right-getDimensao().w,(getAreaTela().bottom/2)-(getDimensao().h/2));
 !!!132628.cpp!!!	acao(inout input : InputSystem) : void
-	/*if ((input->teclado->isKey(SDLK_UP))||(input->joystick->isAxeUp())){
-        subir();
-    } else if ((input->teclado->isKey(SDLK_DOWN))||(input->joystick->isAxeDown())){
-        descer();
-    }*/
+    if (!CPUAtivo){
+        if ((input->teclado->isKey(SDLK_UP))||(input->joystick->isAxeUp())){
+            subir();
+        } else if ((input->teclado->isKey(SDLK_DOWN))||(input->joystick->isAxeDown())){
+            descer();
+        }
+    } else {
+        Area areaVisaoBola = IA::converter(getVisaoBola().getDimensao(),getVisaoBola().getPosicao());
+        Area visao         = IA::converter(getDimensao(),getPosicao());
 
-    Area areaVisaoBola = IA::converter(getVisaoBola().getDimensao(),getVisaoBola().getPosicao());
-	Area visao         = IA::converter(getDimensao(),getPosicao());
+        Decisao decisao = IA::pensar(visao,areaVisaoBola,380,EFEITO_SEM);
 
-    Decisao decisao = IA::pensar(visao,areaVisaoBola,380,EFEITO_SEM);
-
-    if (decisao==DECISAO_SUBIR){
-        subir();
-    } else if (decisao==DECISAO_DESCER){
-        descer();
+        if (decisao==DECISAO_SUBIR){
+            subir();
+        } else if (decisao==DECISAO_DESCER){
+            descer();
+        }
     }
 !!!132756.cpp!!!	isColisao(inout personagem : PersonagemAbstract) : bool
     if ((personagem->getPosicao().x+personagem->getDimensao().w >= posicao.x)&&
@@ -43,3 +46,5 @@ class Jogador
     saque.y=posicao.y+rand()%(getDimensao().h-getVisaoBola().getDimensao().h);
 
     return saque;
+!!!128265.cpp!!!	setAtivarCPU(in ativo : bool) : void
+    CPUAtivo=ativo;

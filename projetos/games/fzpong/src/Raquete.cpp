@@ -82,5 +82,27 @@ void Raquete::adaptarVelocidade()
 
     velocidade= (vb) * 1.5;
 }
+void Raquete::fazerJogada(int raioVisao, Efeito efeito) 
+{
+    Area areaVisaoBola = IA::converter(getVisaoBola().getDimensao(),getVisaoBola().getPosicao());
+	Area visao         = IA::converter(getDimensao(),getPosicao());
+
+    Decisao decisao = IA::pensar(visao,areaVisaoBola,raioVisao,efeito);
+
+
+    switch(decisao)
+    {
+        case DECISAO_SUBIR:
+                subir();
+            break;
+        case DECISAO_DESCER:
+                descer();
+            break;
+        case DECISAO_NADA:
+        default:
+                //nada para fazer
+            break;
+    }
+}
 Bola * Raquete::visaoBola =NULL;
 

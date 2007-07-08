@@ -1,7 +1,7 @@
 format 38
 "FZPong" // FZPong
-  revision 36
-  modified_by 59 "david"
+  revision 39
+  modified_by 106 "david"
   // class settings
   //class diagram settings
   draw_all_relations default hide_attributes yes hide_operations yes show_members_full_definition yes show_members_visibility default show_members_stereotype default show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode uml auto_label_position default show_infonote default shadow default
@@ -121,6 +121,34 @@ ${items}};
       end
     end
 
+    class 128148 "Velocidade"
+      visibility package stereotype "struct"
+      cpp_decl "${comment}${template}struct ${name}${inherit}
+{
+${members}};
+${inlines}
+"
+      java_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      attribute 128148 "x"
+	public explicit_type "float"
+	cpp_decl "    ${comment}${static}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	java_decl ""
+	idl_decl ""
+      end
+
+      attribute 128276 "y"
+	public explicit_type "float"
+	cpp_decl "    ${comment}${static}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	java_decl ""
+	idl_decl ""
+      end
+    end
+
     class 129556 "Jogo"
       visibility package 
       cpp_decl "${comment}${template}class ${name}${inherit}
@@ -132,6 +160,21 @@ ${inlines}
       idl_decl ""
       explicit_switch_type ""
       
+      operation 128138 "main"
+	stereotype "main"
+	public explicit_return_type "int"
+	nparams 2
+	  param in name "argc" explicit_type "int"
+	  param in name "argv" explicit_type "char"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${t0} ${p0}, ${t1} * ${p1}[]${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${name}${(}${t0} ${p0}, ${t1} * ${p1}[]${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+      end
+
       operation 133012 "Jogo"
 	public explicit_return_type ""
 	nparams 2
@@ -343,23 +386,6 @@ ${body}}"
 	
       end
 
-      classrelation 129556 // controle (<unidirectional association>)
-	relation 129556 --->
-	  a role_name "controle" multiplicity "" private
-	    cpp default "    ${comment}${static}${mutable}${volatile}${const}${type} * ${name}${value};
-"
-	    classrelation_ref 129556 // controle (<unidirectional association>)
-	  b multiplicity "" parent class_ref 128532 // Controle
-      end
-
-      attribute 129812 "david"
-	private explicit_type "SpriteItem"
-	cpp_decl "    ${comment}${static}${mutable}${volatile}${const}${type} * ${name}${value};
-"
-	java_decl ""
-	idl_decl ""
-      end
-
       operation 135060 "desenharBotaoEnter"
 	private explicit_return_type "bool"
 	nparams 0
@@ -372,27 +398,30 @@ ${body}}"
 	
       end
 
+      classrelation 129556 // controle (<unidirectional association>)
+	relation 129556 --->
+	  a role_name "controle" multiplicity "" private
+	    cpp default "    ${comment}${static}${mutable}${volatile}${const}${type} * ${name}${value};
+"
+	    classrelation_ref 129556 // controle (<unidirectional association>)
+	  b multiplicity "" parent class_ref 128532 // Controle
+      end
+
+      classrelation 128216 // david (<directional aggregation>)
+	relation 128216 o-->
+	  a role_name "david" multiplicity "1" private
+	    cpp default "    ${comment}${static}${mutable}${volatile}${const}${type} * ${name}${value};
+"
+	    classrelation_ref 128216 // david (<directional aggregation>)
+	  b multiplicity "" parent class_ref 136528 // SpriteItem
+      end
+
       classrelation 129510 // <generalisation>
 	relation 128230 ---|>
 	  a public
 	    cpp default "${type}"
 	    classrelation_ref 129510 // <generalisation>
 	  b multiplicity "" parent class_ref 139728 // GAT
-      end
-
-      operation 128138 "main"
-	stereotype "main"
-	public explicit_return_type "int"
-	nparams 2
-	  param in name "argc" explicit_type "int"
-	  param in name "argv" explicit_type "char"
-	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${t0} ${p0}, ${t1} * ${p1}[]${)}${const}${volatile}${throw}${abstract};
-"
-	cpp_def "${comment}${inline}${type} ${name}${(}${t0} ${p0}, ${t1} * ${p1}[]${)}${const}${volatile}${throw}${staticnl}
-{
-${body}}"
-	
-	
       end
 
       classrelation 129132 // <dependency>
@@ -409,34 +438,6 @@ ${body}}"
 	    cpp default "#include in header"
 	    classrelation_ref 129260 // <dependency>
 	  b multiplicity "" parent class_ref 140368 // UserInterfaceMenuItemTexto
-      end
-    end
-
-    class 128148 "Velocidade"
-      visibility package stereotype "struct"
-      cpp_decl "${comment}${template}struct ${name}${inherit}
-{
-${members}};
-${inlines}
-"
-      java_decl ""
-      idl_decl ""
-      explicit_switch_type ""
-      
-      attribute 128148 "x"
-	public explicit_type "float"
-	cpp_decl "    ${comment}${static}${mutable}${volatile}${const}${type} ${name}${value};
-"
-	java_decl ""
-	idl_decl ""
-      end
-
-      attribute 128276 "y"
-	public explicit_type "float"
-	cpp_decl "    ${comment}${static}${mutable}${volatile}${const}${type} ${name}${value};
-"
-	java_decl ""
-	idl_decl ""
       end
     end
 
@@ -666,6 +667,15 @@ ${body}}"
 ${body}}"
 	
 	
+      end
+
+      attribute 128106 "batidaParede"
+	private explicit_type "int"
+	init_value "0"
+	cpp_decl "    ${comment}${static}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	java_decl ""
+	idl_decl ""
       end
 
       classrelation 128276 // velocidade (<directional aggregation by value>)
@@ -984,6 +994,20 @@ ${body}}"
 	    classrelation_ref 128876 // <dependency>
 	  b multiplicity "" parent class_ref 128720 // FrameLayerManager
       end
+
+      operation 128393 "ativarDemo"
+	public explicit_return_type "void"
+	nparams 1
+	  param in name "ativo" explicit_type "bool"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${t0} ${p0}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${t0} ${p0}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+	comment "Ativar demonstração do jogo"
+      end
     end
 
     class 128660 "Placar"
@@ -1276,12 +1300,28 @@ ${body}}"
 	
       end
 
-      classrelation 129004 // <dependency>
-	relation 129004 -_->
-	  a default
-	    cpp default "#include in header"
-	    classrelation_ref 129004 // <dependency>
-	  b multiplicity "" parent class_ref 129428 // IA
+      attribute 128137 "CPUAtivo"
+	private explicit_type "bool"
+	init_value "false"
+	cpp_decl "    ${comment}${static}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	java_decl ""
+	idl_decl ""
+	comment "Se verdadeito(true), faz com que seja controlado automaticamente, utilizado para demostração."
+      end
+
+      operation 128265 "setAtivarCPU"
+	public explicit_return_type "void"
+	nparams 1
+	  param in name "ativo" explicit_type "bool"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${t0} ${p0}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${t0} ${p0}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+	comment "Se verdadeiro, ativa o controle automatico do jogador"
       end
     end
 
@@ -1579,6 +1619,20 @@ ${body}}"
 	
       end
 
+      operation 128137 "fazerJogada"
+	protected explicit_return_type "void"
+	nparams 2
+	  param in name "raioVisao" explicit_type "int"
+	  param in name "efeito" type class_ref 129172 // Efeito
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${t0} ${p0}, ${t1} ${p1}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${t0} ${p0}, ${t1} ${p1}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+      end
+
       attribute 130964 "velocidade"
 	private explicit_type "int"
 	cpp_decl "    ${comment}${static}${mutable}${volatile}${const}${type} ${name}${value};
@@ -1647,18 +1701,28 @@ ${body}}"
       end
     end
 
-    classdiagram 128372 "Classes"
+    classdiagram 128372 "DC - Integração GBF"
       draw_all_relations default hide_attributes no hide_operations no show_members_full_definition default show_members_visibility default show_members_stereotype default show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_infonote default shadow default
       size A2
     end
 
-    classdiagram 128148 "Diagram1"
+    classdiagram 128148 "DC - Geral"
       draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_infonote default shadow default
       size A2
     end
 
-    classdiagram 128177 "Diagram2"
-      draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_infonote default shadow default
+    classdiagram 128177 "DC - Raquete"
+      draw_all_relations no hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_infonote default shadow default
+      size A2
+    end
+
+    classdiagram 128137 "DC - Controle"
+      draw_all_relations default hide_attributes no hide_operations no show_members_full_definition default show_members_visibility default show_members_stereotype default show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_infonote default shadow default
+      size A2
+    end
+
+    sequencediagram 128106 "SQ - Jogo em Execução"
+      show_full_operations_definition default write_horizontally default drawing_language default draw_all_relations default shadow default
       size A2
     end
   end

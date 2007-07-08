@@ -26,6 +26,7 @@ Jogador::Jogador(){
     SpriteFactory *spriteFactory = new SpriteFactory(gsImageBufferManager->getImageBuffer("personagem"));
     adicionarSpritePrincipal(spriteFactory->criarSpritePersonagem(0,21,14,80,1,1));
     delete(spriteFactory);
+    CPUAtivo = false;
 }
 
 Jogador::~Jogador(){
@@ -40,21 +41,23 @@ void Jogador::iniciar()
 }
 void Jogador::acao(InputSystem * input) 
 {
-	/*if ((input->teclado->isKey(SDLK_UP))||(input->joystick->isAxeUp())){
-        subir();
-    } else if ((input->teclado->isKey(SDLK_DOWN))||(input->joystick->isAxeDown())){
-        descer();
-    }*/
+    if (!CPUAtivo){
+        if ((input->teclado->isKey(SDLK_UP))||(input->joystick->isAxeUp())){
+            subir();
+        } else if ((input->teclado->isKey(SDLK_DOWN))||(input->joystick->isAxeDown())){
+            descer();
+        }
+    } else {
+        Area areaVisaoBola = IA::converter(getVisaoBola().getDimensao(),getVisaoBola().getPosicao());
+        Area visao         = IA::converter(getDimensao(),getPosicao());
 
-    Area areaVisaoBola = IA::converter(getVisaoBola().getDimensao(),getVisaoBola().getPosicao());
-	Area visao         = IA::converter(getDimensao(),getPosicao());
+        Decisao decisao = IA::pensar(visao,areaVisaoBola,380,EFEITO_SEM);
 
-    Decisao decisao = IA::pensar(visao,areaVisaoBola,380,EFEITO_SEM);
-
-    if (decisao==DECISAO_SUBIR){
-        subir();
-    } else if (decisao==DECISAO_DESCER){
-        descer();
+        if (decisao==DECISAO_SUBIR){
+            subir();
+        } else if (decisao==DECISAO_DESCER){
+            descer();
+        }
     }
 }
 bool Jogador::isColisao(PersonagemAbstract * personagem) 
@@ -75,4 +78,9 @@ Ponto Jogador::saque()
     saque.y=posicao.y+rand()%(getDimensao().h-getVisaoBola().getDimensao().h);
 
     return saque;
+}
+//Se verdadeiro, ativa o controle automatico do jogador
+void Jogador::setAtivarCPU(bool ativo) 
+{
+    CPUAtivo=ativo;
 }

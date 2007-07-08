@@ -61,6 +61,8 @@ class Bola : public Objeto
 
 
   private:
+    int batidaParede;
+
     Velocidade velocidade;
 
     Velocidade velocidadeGradativa;

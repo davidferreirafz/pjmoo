@@ -1,7 +1,7 @@
 format 38
 "WriteSystem" // GBF::WriteSystem
-  revision 6
-  modified_by 108 "david"
+  revision 8
+  modified_by 69 "david"
   // class settings
   //class diagram settings
   draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_infonote default shadow default
@@ -63,9 +63,6 @@ Motivação:
 	nparams 0
 	cpp_decl "    ${comment}${inline}${virtual}${name}${(}${)}${volatile}${throw};
 "
-	cpp_def "${comment}${inline}${class}::${name}${(}${)}${volatile}${throw} 
-{
-${body}}"
 	
 	
 	comment "Destrutor"
@@ -78,9 +75,6 @@ ${body}}"
 	    defaultvalue "\"console\""
 	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} * ${name}${(}${t0} ${p0}${)}${const}${volatile}${throw}${abstract};
 "
-	cpp_def "${comment}${inline}${type} * ${class}::${name}${(}${t0} ${p0}${)}${const}${volatile}${throw}${staticnl}
-{
-${body}}"
 	
 	
 	comment "Retorna uma fonte para manipulação direta
@@ -92,8 +86,6 @@ Obs.: Ideal para casos em que se deseja manipulações avançadas"
 	nparams 0
 	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} * ${name}${(}${)}${const}${volatile}${throw}${abstract};
 "
-	cpp_def "${comment}${inline}${type} * ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
-${body}}"
 	
 	
 	comment "Pega uma Instância de FonteManager
@@ -107,9 +99,6 @@ Obs.: Esta classe é Singleton"
 	  param in name "arquivo" explicit_type "std::string"
 	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${t0} ${p0}, ${t1} ${p1}${)}${const}${volatile}${throw}${abstract};
 "
-	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${t0} ${p0}, ${t1} ${p1}${)}${const}${volatile}${throw}${staticnl}
-{
-${body}}"
 	
 	
 	comment "Carrega e adiciona uma fonte (WriteSystemBitmap)"
@@ -124,9 +113,6 @@ ${body}}"
 	  param in name "texto" explicit_type "char"
 	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${t0} ${p0}, ${t1} ${p1}, ${t2} ${p2}, const ${t3} * ${p3}, ...${)}${const}${volatile}${throw}${abstract};
 "
-	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${t0} ${p0}, ${t1} ${p1}, ${t2} ${p2}, const ${t3} * ${p3}, ...${)}${const}${volatile}${throw}${staticnl}
-{
-${body}}"
 	
 	
 	comment "Escreve um texto na tela"
@@ -141,9 +127,6 @@ ${body}}"
 	  param in name "chave" explicit_type "std::string"
 	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}const ${t0} & ${p0}, ${t1} ${p1}, ${t2} ${p2}, ${t3} ${p3}, ...${)}${const}${volatile}${throw}${abstract};
 "
-	cpp_def "${comment}${inline}${type} ${class}::${name}${(}const ${t0} & ${p0}, ${t1} ${p1}, ${t2} ${p2}, ${t3} ${p3}, ...${)}${const}${volatile}${throw}${staticnl}
-{
-${body}}"
 	
 	
 	comment "Escreve um texto na tela usando recursos de Localização (Tradução)"
@@ -159,9 +142,6 @@ ${body}}"
 	  param in name "subChave" explicit_type "std::string"
 	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}const ${t0} ${p0}, ${t1} ${p1}, ${t2} ${p2}, const ${t3} ${p3}, const ${t4} ${p4}${)}${const}${volatile}${throw}${abstract};
 "
-	cpp_def "${comment}${inline}${type} ${class}::${name}${(}const ${t0} ${p0}, ${t1} ${p1}, ${t2} ${p2}, const ${t3} ${p3}, const ${t4} ${p4}${)}${const}${volatile}${throw}${staticnl}
-{
-${body}}"
 	
 	
 	comment "Escreve na tela usando recursos de Localização (Tradução), baseado na junção de dois segmentos de localização"
@@ -173,9 +153,6 @@ ${body}}"
 	  param in name "nome" explicit_type "std::string"
 	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${t0} ${p0}${)}${const}${volatile}${throw}${abstract};
 "
-	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${t0} ${p0}${)}${const}${volatile}${throw}${staticnl}
-{
-${body}}"
 	
 	
 	comment "Remove uma fonte (WriteSystemFontBitmap)"
@@ -194,9 +171,6 @@ ${body}}"
 	nparams 0
 	cpp_decl "    ${comment}${inline}${name}${(}${)}${volatile}${throw};
 "
-	cpp_def "${comment}${inline}${class}::${name}${(}${)}${volatile}${throw} 
-{
-${body}}"
 	
 	
 	comment "Construtor"
@@ -256,9 +230,6 @@ Motivação:
 	nparams 0
 	cpp_decl "    ${comment}${inline}${virtual}${name}${(}${)}${volatile}${throw};
 "
-	cpp_def "${comment}${inline}${class}::${name}${(}${)}${volatile}${throw} 
-{
-${body}}"
 	
 	
 	comment "Destrutor"
@@ -270,9 +241,6 @@ ${body}}"
 	  param in name "ARQUIVO" explicit_type "std::string"
 	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${t0} ${p0}${)}${const}${volatile}${throw}${abstract};
 "
-	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${t0} ${p0}${)}${const}${volatile}${throw}${staticnl}
-{
-${body}}"
 	
 	
 	comment "Carrega arquivo de imagem contendo o desenho das letras.
@@ -286,9 +254,6 @@ Obs.: Se a imagem tiver arquivo de dimensão das letras este será carregado, caso
 	  param in name "altura" explicit_type "int"
 	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${t0} ${p0}, ${t1} ${p1}${)}${const}${volatile}${throw}${abstract};
 "
-	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${t0} ${p0}, ${t1} ${p1}${)}${const}${volatile}${throw}${staticnl}
-{
-${body}}"
 	
 	
 	comment "Configura altura e largura padrão para todas as letras.
@@ -310,9 +275,6 @@ Obs.: A altura e largura devem ser suficientes para evitar que a letra seja dese
 	nparams 0
 	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
 "
-	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}
-{
-${body}}"
 	
 	
 	comment "Retorna a altura padrão"
@@ -323,9 +285,6 @@ ${body}}"
 	nparams 0
 	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
 "
-	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}
-{
-${body}}"
 	
 	
 	comment "Retorna a dimensão (altura e largura) padrão"
@@ -339,9 +298,6 @@ ${body}}"
 	  param in name "Y" explicit_type "int"
 	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}const ${t0} * ${p0}, ${t1} ${p1}, ${t2} ${p2}${)}${const}${volatile}${throw}${abstract};
 "
-	cpp_def "${comment}${inline}${type} ${class}::${name}${(}const ${t0} * ${p0}, ${t1} ${p1}, ${t2} ${p2}${)}${const}${volatile}${throw}${staticnl}
-{
-${body}}"
 	
 	
 	comment "Desenha o texto na tela"
@@ -378,9 +334,6 @@ ${body}}"
 	nparams 0
 	cpp_decl "    ${comment}${inline}${name}${(}${)}${volatile}${throw};
 "
-	cpp_def "${comment}${inline}${class}::${name}${(}${)}${volatile}${throw} 
-{
-${body}}"
 	
 	
 	comment "Construtor"
@@ -391,9 +344,6 @@ ${body}}"
 	nparams 0
 	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
 "
-	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}
-{
-${body}}"
 	
 	
 	comment "Define altura e largura padrão baseada na maior altura e largura utilizada."
@@ -504,11 +454,6 @@ ${definition}
 ${namespace_end}
 #endif
 "
-      cpp_src "${comment}
-${includes}
-${namespace_start}
-${members}
-${namespace_end}"
       associated_classes
 	class_ref 138064 // WriteSystemBitmap
       end
@@ -540,11 +485,6 @@ ${definition}
 ${namespace_end}
 #endif
 "
-      cpp_src "${comment}
-${includes}
-${namespace_start}
-${members}
-${namespace_end}"
       associated_classes
 	class_ref 129616 // WriteSystemManager
       end
@@ -576,11 +516,6 @@ ${definition}
 ${namespace_end}
 #endif
 "
-      cpp_src "${comment}
-${includes}
-${namespace_start}
-${members}
-${namespace_end}"
       associated_classes
 	class_ref 138192 // WriteSystemFontDefault
       end

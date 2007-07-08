@@ -83,5 +83,10 @@ class Controle
 
     static int DIFERENCA_VITORIA_TERMINAR;
 
+
+  public:
+    //Ativar demonstração do jogo
+    void ativarDemo(bool ativo);
+
 };
 #endif

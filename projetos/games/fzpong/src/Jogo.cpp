@@ -20,6 +20,27 @@
 // ***************************************************************************/
 #include "Jogo.h"
 
+int main(int argc, char * argv[]) 
+{
+    GAT* jogo = NULL;
+    jogo = new Jogo(argc,argv);
+
+    try {
+        jogo->executar();
+    } catch (std::exception& e) {
+        UtilLog::sistema("!!!!!!!!!!");
+        UtilLog::sistema("Exceção: %s",e.what());
+        UtilLog::sistema("!!!!!!!!!!");
+    } catch (...) {
+        UtilLog::sistema("!!!!!!!!!!");
+        UtilLog::sistema("Exceção Desconhecida");
+        UtilLog::sistema("!!!!!!!!!!");
+    }
+
+    delete(jogo);
+
+    return 0;
+}
 //Construtor
 
 //Construtor
@@ -173,6 +194,11 @@ void Jogo::menuCredito()
             || (frameworkGBF->inputSystem->joystick->isButtonA())){
                 setMenuPrincipal();
         }
+    } else {
+        if (frameworkGBF->inputSystem->teclado->isKey(SDLK_t)){
+            controle->ativarDemo(true);
+            setJogo();
+        }
     }
 }
 void Jogo::menuSobre() 
@@ -300,27 +326,7 @@ bool Jogo::desenharBotaoEnter()
 
     if (desenhe){
         frameworkGBF->writeSystem->escreverLocalizado("menu",20,420,"botao_enter");
+        controle->ativarDemo(false);
     }
     return desenhe;
-}
-int main(int argc, char * argv[]) 
-{
-    GAT* jogo = NULL;
-    jogo = new Jogo(argc,argv);
-
-    try {
-        jogo->executar();
-    } catch (std::exception& e) {
-        UtilLog::sistema("!!!!!!!!!!");
-        UtilLog::sistema("Exceção: %s",e.what());
-        UtilLog::sistema("!!!!!!!!!!");
-    } catch (...) {
-        UtilLog::sistema("!!!!!!!!!!");
-        UtilLog::sistema("Exceção Desconhecida");
-        UtilLog::sistema("!!!!!!!!!!");
-    }
-
-    delete(jogo);
-
-    return 0;
 }

@@ -35,16 +35,7 @@ CPU::~CPU(){
 
 void CPU::acao(InputSystem * input) 
 {
-    Area areaVisaoBola = IA::converter(getVisaoBola().getDimensao(),getVisaoBola().getPosicao());
-	Area visao         = IA::converter(getDimensao(),getPosicao());
-
-    Decisao decisao = IA::pensar(visao,areaVisaoBola,raioVisao,efeito);
-
-    if (decisao==DECISAO_SUBIR){
-        subir();
-    } else if (decisao==DECISAO_DESCER){
-        descer();
-    }
+    fazerJogada(raioVisao,efeito);
 }
 void CPU::iniciar() 
 {

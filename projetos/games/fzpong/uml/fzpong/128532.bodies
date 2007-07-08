@@ -90,3 +90,5 @@ class Controle
 
         bola.iniciar(raqueteJogador.saque());
     }
+!!!128393.cpp!!!	ativarDemo(in ativo : bool) : void
+    raqueteJogador.setAtivarCPU(ativo);

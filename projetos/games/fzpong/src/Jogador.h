@@ -28,7 +28,6 @@
 
 #include <GBF/GBF_define.h>
 
-#include "IA.h"
 
 class Jogador : public Raquete
 {
@@ -44,6 +43,16 @@ class Jogador : public Raquete
     bool isColisao(PersonagemAbstract * personagem);
 
     Ponto saque();
+
+
+  private:
+    //Se verdadeito(true), faz com que seja controlado automaticamente, utilizado para demostração.
+    bool CPUAtivo;
+
+
+  public:
+    //Se verdadeiro, ativa o controle automatico do jogador
+    void setAtivarCPU(bool ativo);
 
 };
 #endif

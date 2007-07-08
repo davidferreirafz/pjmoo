@@ -25,6 +25,7 @@
 #include <GBF/GBF_define.h>
 
 #include "Bola.h"
+#include "define.h"
 #include "IA.h"
 
 class Raquete : public Objeto
@@ -55,6 +56,8 @@ class Raquete : public Objeto
     Bola getVisaoBola();
 
     void adaptarVelocidade();
+
+    void fazerJogada(int raioVisao, Efeito efeito);
 
 
   private:

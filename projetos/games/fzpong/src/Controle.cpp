@@ -142,3 +142,8 @@ int Controle::DIFERENCA_PARTIDA_TERMINAR =5;
 
 int Controle::DIFERENCA_VITORIA_TERMINAR =2;
 
+//Ativar demonstração do jogo
+void Controle::ativarDemo(bool ativo) 
+{
+    raqueteJogador.setAtivarCPU(ativo);
+}

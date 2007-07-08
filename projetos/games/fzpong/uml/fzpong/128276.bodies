@@ -12,9 +12,11 @@ class Bola
     velocidadeGradativa.x=8;
     velocidadeGradativa.y=4;
     continuar();
+    batidaParede=0;
 !!!128532.cpp!!!	iniciar(in saque : Ponto) : void
     elevarGrauDificuldade();
     setPosicao(saque.x,saque.y+getDimensao().h/2);
+    batidaParede=0;
 !!!128660.cpp!!!	continuar() : void
     elevarGrauDificuldade();
 
@@ -45,6 +47,11 @@ class Bola
         getSpritePrincipal()->setDirecao(DR_DIREITA);
     } else {
         getSpritePrincipal()->setDirecao(DR_ESQUERDA);
+    }
+
+    if (batidaParede>5){
+        elevarGrauDificuldade();
+        batidaParede=0;
     }
 !!!128916.cpp!!!	isColisao(inout personagem : PersonagemAbstract) : bool
     bool colisao=personagem->isColisao(this);
@@ -95,15 +102,24 @@ class Bola
 !!!129044.cpp!!!	getVelocidade() : int
     return velocidade.x;
 !!!129172.cpp!!!	elevarGrauDificuldade() : void
-    velocidadeGradativa.y+=1;//0.20;
-    velocidadeGradativa.x+=1;//0.50;
+    velocidadeGradativa.y+=1;
+    velocidadeGradativa.x+=1;
 
-    if (velocidadeGradativa.y>=getDimensao().w*0.8){
-        velocidadeGradativa.y=int(getDimensao().w*0.8);
+    if (velocidadeGradativa.y>=getDimensao().w*0.9){
+        velocidadeGradativa.y=int(getDimensao().w*0.9);
     }
     if (velocidadeGradativa.x>=getDimensao().w*0.9){
-        velocidadeGradativa.x=int(getDimensao().w*0.9);
+       velocidadeGradativa.x=int(getDimensao().w*0.9);
     }
 
-    velocidade.y=velocidadeGradativa.y;
-    velocidade.x=velocidadeGradativa.x;
+    if (velocidade.y>0){
+        velocidade.y=velocidadeGradativa.y;
+    } else {
+        velocidade.y= - velocidadeGradativa.y;
+    }
+
+    if (velocidade.x>0){
+        velocidade.x=velocidadeGradativa.x;
+    } else {
+        velocidade.x= - velocidadeGradativa.x;
+    }

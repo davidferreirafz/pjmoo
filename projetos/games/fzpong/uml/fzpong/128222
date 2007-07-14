@@ -1,7 +1,7 @@
 format 38
 "FZPong" // FZPong
-  revision 39
-  modified_by 106 "david"
+  revision 41
+  modified_by 81 "david"
   // class settings
   //class diagram settings
   draw_all_relations default hide_attributes yes hide_operations yes show_members_full_definition yes show_members_visibility default show_members_stereotype default show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode uml auto_label_position default show_infonote default shadow default
@@ -1703,26 +1703,46 @@ ${body}}"
 
     classdiagram 128372 "DC - Integração GBF"
       draw_all_relations default hide_attributes no hide_operations no show_members_full_definition default show_members_visibility default show_members_stereotype default show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_infonote default shadow default
+      comment "Diagrama de Classes, com foco na Integração entre o FZPong (Classe Jogo) e o framework GBF"
       size A2
     end
 
     classdiagram 128148 "DC - Geral"
-      draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_infonote default shadow default
+      draw_all_relations no hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_infonote default shadow default
+      comment "Diagrama de Classes
+Mostra o relacionamento entre os componentes do jogo e as principais classes do framework GBF"
       size A2
     end
 
     classdiagram 128177 "DC - Raquete"
       draw_all_relations no hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_infonote default shadow default
+      comment "Diagrama de Classes
+Foco na Classe Raquete, especialmente em sua composição"
       size A2
     end
 
     classdiagram 128137 "DC - Controle"
       draw_all_relations default hide_attributes no hide_operations no show_members_full_definition default show_members_visibility default show_members_stereotype default show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_infonote default shadow default
+      comment "Diagrama de Classe
+Com foco na Classe Controle"
       size A2
     end
 
     sequencediagram 128106 "SQ - Jogo em Execução"
       show_full_operations_definition default write_horizontally default drawing_language default draw_all_relations default shadow default
+      comment "Diagrama de Sequencia com foco na execução do jogo em si"
+      size A2
+    end
+
+    objectdiagram 128159 "DO - Controle"
+       write_horizontally default package_name_in_tab default show_context default auto_label_position default draw_all_relations default shadow default
+      comment "Diagrama de Objetos com foco no objeto Controle"
+      size A2
+    end
+
+    collaborationdiagram 128287 "DCO - Execução do Jogo"
+      show_full_operations_definition default show_hierarchical_rank default write_horizontally default drawing_language default package_name_in_tab default show_context default draw_all_relations default shadow default
+      comment "Diagrama de Colaboração com foco na execução do jogo"
       size A2
     end
   end

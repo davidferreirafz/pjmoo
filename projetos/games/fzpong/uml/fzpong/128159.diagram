@@ -1,0 +1,36 @@
+format 38
+
+classinstance 128415 class_ref 129556 // Jogo
+  xyz 53 90 2000 name "jogo"
+end
+classinstance 128543 class_ref 128532 // Controle
+  xyz 188 90 2000 name "controle"
+end
+classinstance 128671 class_ref 128276 // Bola
+  xyz 322 15 2000 name "bola"
+end
+classinstance 128799 class_ref 128788 // Jogador
+  xyz 353 108 2000 name "raqueteJogador"
+end
+classinstance 128927 class_ref 128660 // Placar
+  xyz 188 205 2000 name "placar"
+end
+classinstance 129183 class_ref 128916 // CPU
+  xyz 323 191 2000 name "raqueteCPU"
+end
+objectlinkcanvas 129311 norel
+  from ref 128415 z 1999 to ref 128543
+  no_role_a no_role_b
+objectlinkcanvas 129439 norel
+  from ref 128543 z 1999 to ref 129183
+  no_role_a no_role_b
+objectlinkcanvas 129567 norel
+  from ref 128543 z 1999 to ref 128799
+  no_role_a no_role_b
+objectlinkcanvas 129695 norel
+  from ref 128543 z 1999 to ref 128927
+  no_role_a no_role_b
+objectlinkcanvas 129823 norel
+  from ref 128543 z 1999 to ref 128671
+  no_role_a no_role_b
+end

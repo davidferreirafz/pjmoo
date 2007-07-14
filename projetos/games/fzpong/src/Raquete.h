@@ -27,8 +27,6 @@
 #include "Bola.h"
 #include <GBF/PersonagemAbstract.h>
 
-#include "define.h"
-#include "IA.h"
 
 enum Lado {
   //Lado direito da Tela
@@ -51,7 +49,7 @@ class Raquete : public Objeto
 
     void setLado(Lado valor);
 
-    bool isColisao(PersonagemAbstract * personagem);
+    virtual bool isColisao(PersonagemAbstract * personagem);
 
 
   protected:
@@ -70,8 +68,6 @@ class Raquete : public Objeto
     Bola getVisaoBola();
 
     void adaptarVelocidade();
-
-    void fazerJogada(int raioVisao, Efeito efeito);
 
 
   private:

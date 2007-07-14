@@ -18,22 +18,16 @@
 // *   Free Software Foundation, Inc.,                                       *
 // *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
 // ***************************************************************************/
-#ifndef _IA_H
-#define _IA_H
+#include "Util.h"
 
-#include <cmath>
-#include "define.h"
-#include <GBF/GraphicSystemImage.h>
+Area Util::converterArea(Dimensao dimensao, Ponto ponto)
 
-#include <GBF/GBF_define.h>
-
-
-class IA
 {
-  public:
-    static Decisao pensar(Area visao, Area areaVisaoBola, int raioVisao, Efeito efeito);
+    Area area;
+    area.left   = ponto.x;
+    area.top    = ponto.y;
+    area.right  = dimensao.w;
+    area.bottom = dimensao.h;
 
-    static Area converter(Dimensao dimensao, Ponto ponto);
-
-};
-#endif
+    return area;
+}

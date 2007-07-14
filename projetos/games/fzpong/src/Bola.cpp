@@ -93,42 +93,21 @@ bool Bola::isColisao(PersonagemAbstract * personagem)
         soundSystem->fxManager->playPanEffect("raquete",posicao.x);
         //bateu em baixo
         if (posicao.y>=personagem->getPosicao().y+personagem->getDimensao().h-getDimensao().h){
-
-            if (posicao.x<=personagem->getPosicao().x){
-                posicao.x=personagem->getPosicao().x-getDimensao().w-2;
-            } else if (posicao.x>=personagem->getPosicao().x){
-                posicao.x=personagem->getPosicao().x+getDimensao().w+2;
-            }
-
-            velocidade.x = - velocidade.x;
+            corrigirEixoX(personagem);
             //veio de baixo?
             if (velocidade.y<0){
                 velocidade.y = - velocidade.y;
             }
         //bateu em cima
         } else if (posicao.y<=personagem->getPosicao().y+getDimensao().h){
-
-            if (posicao.x<=personagem->getPosicao().x){
-                posicao.x=personagem->getPosicao().x-getDimensao().w-2;
-            } else if (posicao.x>=personagem->getPosicao().x){
-                posicao.x=personagem->getPosicao().x+getDimensao().w+2;
-            }
-
-            velocidade.x = - velocidade.x;
+            corrigirEixoX(personagem);
             //veio de cima ?
             if (velocidade.y>0){
                 velocidade.y = - velocidade.y;
             }
         //bateu no meio
         } else {
-
-            if (posicao.x<=personagem->getPosicao().x){
-                posicao.x=personagem->getPosicao().x-getDimensao().w-2;
-            } else if (posicao.x>=personagem->getPosicao().x){
-                posicao.x=personagem->getPosicao().x+getDimensao().w+2;
-            }
-
-            velocidade.x = - velocidade.x;
+            corrigirEixoX(personagem);
         }
     }
 
@@ -137,6 +116,23 @@ bool Bola::isColisao(PersonagemAbstract * personagem)
 int Bola::getVelocidade() 
 {
     return velocidade.x;
+}
+//Corrigir a posição da bola após colidir com uma raquete, evitando que a bola seja desenha dentro/após a raquete
+void Bola::corrigirEixoX(PersonagemAbstract * personagem) 
+{
+    //Colisão do lado direito da tela
+    if (getSpritePrincipal()->getDirecao()==DR_DIREITA){
+        if (posicao.x+getDimensao().w>=personagem->getPosicao().x){
+            posicao.x=personagem->getPosicao().x-getDimensao().w;
+            velocidade.x = - velocidade.x;
+        }
+    //Colisão do lado esquerdo da tela
+    } else {
+        if (posicao.x<=personagem->getPosicao().x+personagem->getDimensao().w){
+            posicao.x=personagem->getPosicao().x+personagem->getDimensao().w;
+            velocidade.x = - velocidade.x;
+        }
+    }
 }
 void Bola::elevarGrauDificuldade() 
 {

@@ -26,6 +26,8 @@ CPU::CPU(){
     SpriteFactory *spriteFactory = new SpriteFactory(gsImageBufferManager->getImageBuffer("personagem"));
     adicionarSpritePrincipal(spriteFactory->criarSpritePersonagem(15,21,14,80,1,1));
     delete(spriteFactory);
+
+    iniciarVisao();
 }
 
 CPU::~CPU(){
@@ -33,27 +35,11 @@ CPU::~CPU(){
     //dtor
 }
 
-void CPU::acao(InputSystem * input) 
+void CPU::acao(InputSystem * input)
 {
     fazerJogada(raioVisao,efeito);
 }
-void CPU::iniciar() 
-{
-    adaptarVelocidade();
-    setPosicao(0,(getAreaTela().bottom/2)-(getDimensao().h/2));
-}
-bool CPU::isColisao(PersonagemAbstract * personagem) 
-{
-    if ((personagem->getPosicao().x <= posicao.x+getDimensao().w)&&
-        (posicao.y + getDimensao().h >= personagem->getPosicao().y)&&
-        (posicao.y <= personagem->getPosicao().y + personagem->getDimensao().h)){
-            efeito = Efeito(rand()%3);
-            return true;
-    } else {
-        return false;
-    }
-}
-Ponto CPU::saque() 
+Ponto CPU::saque()
 {
     Ponto saque;
 
@@ -62,11 +48,21 @@ Ponto CPU::saque()
 
     return saque;
 }
-void CPU::iniciarVisao() 
+bool CPU::isColisao(PersonagemAbstract * personagem)
+{
+    bool retorno = Raquete::isColisao(personagem);
+
+    if (retorno){
+        efeito = Efeito(rand()%3);
+    }
+
+    return retorno;
+}
+void CPU::iniciarVisao()
 {
     raioVisao=380;
 }
-void CPU::aumentarVisao() 
+void CPU::aumentarVisao()
 {
     raioVisao+=20;
 

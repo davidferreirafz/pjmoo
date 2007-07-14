@@ -25,9 +25,17 @@
 #include <GBF/GBF_define.h>
 
 #include "Bola.h"
+#include <GBF/PersonagemAbstract.h>
+
 #include "define.h"
 #include "IA.h"
 
+enum Lado {
+  //Lado direito da Tela
+  LADO_DIREITO =1,
+  //Lado esquerdo da Tela
+  LADO_ESQUERDO =0
+};
 class Raquete : public Objeto
 {
   public:
@@ -35,14 +43,20 @@ class Raquete : public Objeto
 
     virtual ~Raquete();
 
-    virtual void iniciar() = 0;
+    void iniciar();
 
     virtual Ponto saque() = 0;
 
     static void setBola(Bola * bola);
 
+    void setLado(Lado valor);
+
+    bool isColisao(PersonagemAbstract * personagem);
+
 
   protected:
+    Lado lado;
+
     int getVelocidade();
 
     void setVelocidade(int valor);

@@ -61,13 +61,16 @@ class Bola : public Objeto
 
 
   private:
+    //Corrigir a posição da bola após colidir com uma raquete, evitando que a bola seja desenha dentro/após a raquete
+    void corrigirEixoX(PersonagemAbstract * personagem);
+
+    void elevarGrauDificuldade();
+
     int batidaParede;
 
     Velocidade velocidade;
 
     Velocidade velocidadeGradativa;
-
-    void elevarGrauDificuldade();
 
 };
 #endif

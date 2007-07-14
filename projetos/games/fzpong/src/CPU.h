@@ -24,9 +24,9 @@
 #include "Raquete.h"
 #include <GBF/InputSystem.h>
 
-#include <GBF/PersonagemAbstract.h>
-
 #include <GBF/GBF_define.h>
+
+#include <GBF/PersonagemAbstract.h>
 
 #include "define.h"
 
@@ -39,11 +39,9 @@ class CPU : public Raquete
 
     void acao(InputSystem * input);
 
-    void iniciar();
+    Ponto saque();
 
     bool isColisao(PersonagemAbstract * personagem);
-
-    Ponto saque();
 
     void iniciarVisao();
 

@@ -30,20 +30,73 @@ Raquete::~Raquete(){
     //dtor
 }
 
+void Raquete::iniciar()
+{
+    //Se for do lado direito da tela
+    if (lado==LADO_DIREITO){
+        setPosicao(getAreaTela().right-getDimensao().w,(getAreaTela().bottom/2)-(getDimensao().h/2));
+    //Se for do lado esquerdo da tela
+    } else {
+        setPosicao(0,(getAreaTela().bottom/2)-(getDimensao().h/2));
+    }
+}
 void Raquete::setBola(Bola * bola)
-
 {
     visaoBola=bola;
 }
-int Raquete::getVelocidade() 
+void Raquete::setLado(Lado valor)
+{
+    lado=valor;
+}
+bool Raquete::isColisao(PersonagemAbstract * personagem)
+{
+    bool retorno = false;
+
+//Se raquete no lado direito da tela
+    if (lado==LADO_DIREITO){
+/*
+        if ((personagem->getPosicao().x+personagem->getDimensao().w >= posicao.x)&&
+            (posicao.y + getDimensao().h >= personagem->getPosicao().y)&&
+            (posicao.y <= personagem->getPosicao().y + personagem->getDimensao().h)){
+            */
+        if ((posicao.x + getDimensao().w >= personagem->getPosicao().x) &&
+            (posicao.x <= personagem->getPosicao().x + personagem->getDimensao().w) &&
+            (posicao.y + getDimensao().h >= personagem->getPosicao().y) &&
+            (posicao.y <= personagem->getPosicao().y + personagem->getDimensao().h)){
+                retorno = true;
+        }
+//Se raquete no lado esquerdo da tela
+    } else {
+/*        if ((personagem->getPosicao().x <= posicao.x+getDimensao().w)&&
+            (posicao.y + getDimensao().h >= personagem->getPosicao().y)&&
+            (posicao.y <= personagem->getPosicao().y + personagem->getDimensao().h)){
+*/
+        if ((posicao.x + getDimensao().w >= personagem->getPosicao().x) &&
+            (posicao.x <= personagem->getPosicao().x + personagem->getDimensao().w) &&
+            (posicao.y + getDimensao().h >= personagem->getPosicao().y) &&
+            (posicao.y <= personagem->getPosicao().y + personagem->getDimensao().h)){
+                retorno = true;
+
+        }
+/*
+    if ((posicao.x + tamanho.w >= SPRITECOLISAO->posicao.x)&&
+        (posicao.x <= SPRITECOLISAO->posicao.x + SPRITECOLISAO->tamanho.w)&&
+        (posicao.y + tamanho.h >= SPRITECOLISAO->posicao.y)&&
+        (posicao.y <= SPRITECOLISAO->posicao.y + SPRITECOLISAO->tamanho.h)){
+*/
+    }
+
+    return retorno;
+}
+int Raquete::getVelocidade()
 {
     return velocidade;
 }
-void Raquete::setVelocidade(int valor) 
+void Raquete::setVelocidade(int valor)
 {
     velocidade=valor;
 }
-void Raquete::subir() 
+void Raquete::subir()
 {
     posicao.y-=getVelocidade();
 
@@ -51,14 +104,14 @@ void Raquete::subir()
         posicao.y=getAreaTela().top;
     }
 }
-void Raquete::descer() 
+void Raquete::descer()
 {
     posicao.y+=getVelocidade();
     if (posicao.y+getDimensao().h>=getAreaTela().bottom){
         posicao.y=getAreaTela().bottom-getDimensao().h;
     }
 }
-bool Raquete::isBateuParede() 
+bool Raquete::isBateuParede()
 {
     bool bateu = false;
 
@@ -68,11 +121,11 @@ bool Raquete::isBateuParede()
 
     return bateu;
 }
-Bola Raquete::getVisaoBola() 
+Bola Raquete::getVisaoBola()
 {
     return *visaoBola;
 }
-void Raquete::adaptarVelocidade() 
+void Raquete::adaptarVelocidade()
 {
     int vb = visaoBola->getVelocidade();
 
@@ -82,7 +135,7 @@ void Raquete::adaptarVelocidade()
 
     velocidade= (vb) * 1.5;
 }
-void Raquete::fazerJogada(int raioVisao, Efeito efeito) 
+void Raquete::fazerJogada(int raioVisao, Efeito efeito)
 {
     Area areaVisaoBola = IA::converter(getVisaoBola().getDimensao(),getVisaoBola().getPosicao());
 	Area visao         = IA::converter(getDimensao(),getPosicao());

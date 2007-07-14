@@ -24,8 +24,6 @@
 #include "Raquete.h"
 #include <GBF/InputSystem.h>
 
-#include <GBF/PersonagemAbstract.h>
-
 #include <GBF/GBF_define.h>
 
 
@@ -36,23 +34,9 @@ class Jogador : public Raquete
 
     virtual ~Jogador();
 
-    void iniciar();
-
     void acao(InputSystem * input);
 
-    bool isColisao(PersonagemAbstract * personagem);
-
     Ponto saque();
-
-
-  private:
-    //Se verdadeito(true), faz com que seja controlado automaticamente, utilizado para demostração.
-    bool CPUAtivo;
-
-
-  public:
-    //Se verdadeiro, ativa o controle automatico do jogador
-    void setAtivarCPU(bool ativo);
 
 };
 #endif

@@ -1,6 +1,6 @@
 #!/bin/sh
 
-export VERSAO=1.1
+export VERSAO=1.5
 export DISTRO=/home/desenvolvimento/pjmoo/distro/games
 export TMP_DIR=/tmp/pjmoo/opt/fzpong
 export PROJETO_DIR=/home/desenvolvimento/pjmoo/projetos/games/fzpong

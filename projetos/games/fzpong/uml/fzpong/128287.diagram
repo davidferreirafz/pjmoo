@@ -1,0 +1,115 @@
+format 38
+
+classinstance 128031 class_ref 129556 // Jogo
+  xyz 22 397 2000 name "jogo"  xyz 22 397 2000
+classinstance 128159 class_ref 128532 // Controle
+  xyz 248 333 2000 name "controle"  xyz 248 333 2000
+classinstance 128927 class_ref 128276 // Bola
+  xyz 72 138 2000 name "bola"  xyz 72 138 2000
+classinstance 129183 class_ref 128788 // Jogador
+  xyz 232 71 2000 name "raqueteJogador"  xyz 232 71 2000
+classinstance 129567 class_ref 128916 // CPU
+  xyz 459 91 2000 name "raqueteCPU"  xyz 459 91 2000
+classinstance 130335 class_ref 128660 // Placar
+  xyz 545 294 2000 name "placar"  xyz 545 294 2000
+note 130847 "É chamada apenas um dos dois metodos pontuar, pois apenas um pode pontuar por vez"
+  xyzwh 499 352 2000 162 57
+note 131743 "isColisao, primeiro passa o objeto raqueteJogador e na segunda chamada passa o objeto raqueteCPU"
+  xyzwh 22 9 2000 152 75
+note 132639 "Após o jogo entrar em execução, e ser iniciada um nova partida, o executar do objeto controle é acionado"
+  xyzwh 196 412 2000 194 61
+selflinkcanvas 128543 classinstance_ref 128031 // jogo:Jogo
+  xy 61 396
+  show_full_operations_definition default show_hierarchical_rank default write_horizontally default drawing_language default package_name_in_tab default show_context default draw_all_relations default shadow default
+  forward_label "1 executar()" xyz 61 369 3000
+linkcanvas 128671
+  from ref 128031 z 1999 to ref 128159
+dirscanvas 128799 z 1000 linkcanvas_ref 128671
+  show_full_operations_definition default show_hierarchical_rank default write_horizontally default drawing_language default package_name_in_tab default show_context default draw_all_relations default shadow default
+  forward_label "2 executar()" xyz 125 347 3000
+linkcanvas 129311
+  from ref 128159 z 1999 to ref 128927
+dirscanvas 129439 z 1000 linkcanvas_ref 129311
+  show_full_operations_definition default show_hierarchical_rank default write_horizontally default drawing_language default package_name_in_tab default show_context default draw_all_relations default shadow default
+  forward_label "3 acao()
+6 isColisao()
+7 isColisao()
+12 desenhar()" xyz 120 263 3000
+linkcanvas 129695
+  from ref 128159 z 1999 to ref 129183
+dirscanvas 129951 z 1000 linkcanvas_ref 129695
+  show_full_operations_definition default show_hierarchical_rank default write_horizontally default drawing_language default package_name_in_tab default show_context default draw_all_relations default shadow default
+  forward_label "4 acao()
+13 desenhar()" xyz 208 201 3000
+linkcanvas 129823
+  from ref 128159 z 1999 to ref 129567
+dirscanvas 130079 z 1000 linkcanvas_ref 129823
+  show_full_operations_definition default show_hierarchical_rank default write_horizontally default drawing_language default package_name_in_tab default show_context default draw_all_relations default shadow default
+  forward_label "5 acao()
+14 desenhar()" xyz 327 181 3000
+selflinkcanvas 130207 classinstance_ref 128159 // controle:Controle
+  xy 334 356
+  show_full_operations_definition default show_hierarchical_rank default write_horizontally default drawing_language default package_name_in_tab default show_context default draw_all_relations default shadow default
+  forward_label "8 juiz()
+11 display()" xyz 352 359 3000
+linkcanvas 130463
+  from ref 128159 z 1999 to ref 130335
+dirscanvas 130591 z 1000 linkcanvas_ref 130463
+  show_full_operations_definition default show_hierarchical_rank default write_horizontally default drawing_language default package_name_in_tab default show_context default draw_all_relations default shadow default
+  forward_label "9 pontuarJogador()
+10 pontuarCPU()" xyz 391 280 3000
+msgs
+  msg operation_ref 205392 // "executar() : void"
+    forward ranks 1 "1" selflinkcanvas_ref 128543
+    msgs
+      msg operation_ref 129940 // "executar(inout input : InputSystem) : void"
+	forward ranks 2 "1.1" dirscanvas_ref 128799
+	msgs
+	  msg operation_ref 128788 // "acao(inout input : InputSystem) : void"
+	    forward ranks 3 "1.1.1" dirscanvas_ref 129439
+	    no_msg
+	  msg operation_ref 132628 // "acao(inout input : InputSystem) : void"
+	    forward ranks 4 "1.1.2" dirscanvas_ref 129951
+	    no_msg
+	  msg operation_ref 131220 // "acao(inout input : InputSystem) : void"
+	    forward ranks 5 "1.1.3" dirscanvas_ref 130079
+	    no_msg
+	  msg operation_ref 128916 // "isColisao(inout personagem : PersonagemAbstract) : bool"
+	    forward ranks 6 "1.1.4" dirscanvas_ref 129439
+	    no_msg
+	  msg operation_ref 128916 // "isColisao(inout personagem : PersonagemAbstract) : bool"
+	    forward ranks 7 "1.1.5" dirscanvas_ref 129439
+	    no_msg
+	  msg operation_ref 130708 // "juiz() : void"
+	    forward ranks 8 "1.1.6" selflinkcanvas_ref 130207
+	    msgs
+	      msg operation_ref 136212 // "pontuarJogador() : void"
+		forward ranks 9 "1.1.6.1" dirscanvas_ref 130591
+		no_msg
+	      msg operation_ref 136340 // "pontuarCPU() : void"
+		forward ranks 10 "1.1.6.2" dirscanvas_ref 130591
+		no_msg
+	    msgsend
+	  msg operation_ref 130580 // "display() : void"
+	    forward ranks 11 "1.1.7" selflinkcanvas_ref 130207
+	    msgs
+	      msg operation_ref 163536 // "desenhar() : void"
+		forward ranks 12 "1.1.7.1" dirscanvas_ref 129439
+		no_msg
+	      msg operation_ref 163536 // "desenhar() : void"
+		forward ranks 13 "1.1.7.2" dirscanvas_ref 129951
+		no_msg
+	      msg operation_ref 163536 // "desenhar() : void"
+		forward ranks 14 "1.1.7.3" dirscanvas_ref 130079
+		no_msg
+	    msgsend
+	msgsend
+    msgsend
+msgsend
+line 131615 -_-_
+  from ref 130847 z 1999 to ref 130335
+line 132383 -_-_
+  from ref 128927 z 1999 to ref 131743
+line 132767 -_-_
+  from ref 132639 z 1999 to ref 128159
+end

@@ -25,7 +25,7 @@
 
 #include "Placar.h"
 #include "Bola.h"
-#include "Jogador.h"
+#include "Raquete.h"
 #include "CPU.h"
 #include <GBF/FrameLayer.h>
 
@@ -33,6 +33,8 @@
 
 #include <GBF/FrameLayerManager.h>
 
+
+class Jogador;
 
 class Controle
 {
@@ -59,6 +61,9 @@ class Controle
 
     void display();
 
+    //Ativar demonstração do jogo
+    void ativarDemo(bool ativo);
+
 
   protected:
     void juiz();
@@ -71,9 +76,9 @@ class Controle
 
     Bola bola;
 
-    Jogador raqueteJogador;
+    Raquete * raqueteJogador;
 
-    CPU raqueteCPU;
+    CPU * raqueteCPU;
 
     FrameLayer * cenario;
 
@@ -82,11 +87,6 @@ class Controle
     static int DIFERENCA_PARTIDA_TERMINAR;
 
     static int DIFERENCA_VITORIA_TERMINAR;
-
-
-  public:
-    //Ativar demonstração do jogo
-    void ativarDemo(bool ativo);
 
 };
 #endif

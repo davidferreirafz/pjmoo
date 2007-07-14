@@ -328,7 +328,7 @@ bool Jogo::desenharBotaoEnter()
 
     if (desenhe){
         frameworkGBF->writeSystem->escreverLocalizado("menu",20,420,"botao_enter");
-        controle->ativarDemo(false);
     }
+
     return desenhe;
 }

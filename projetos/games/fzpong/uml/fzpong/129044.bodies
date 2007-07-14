@@ -5,8 +5,46 @@ class Raquete
 !!!137364.cpp!!!	~Raquete()
 
     //dtor
+!!!137492.cpp!!!	iniciar() : void
+    //Se for do lado direito da tela
+    if (lado==LADO_DIREITO){
+        setPosicao(getAreaTela().right-getDimensao().w,(getAreaTela().bottom/2)-(getDimensao().h/2));
+    //Se for do lado esquerdo da tela
+    } else {
+        setPosicao(0,(getAreaTela().bottom/2)-(getDimensao().h/2));
+    }
 !!!137748.cpp!!!	setBola(inout bola : Bola) : void
     visaoBola=bola;
+!!!128153.cpp!!!	setLado(in valor : Lado) : void
+    lado=valor;
+!!!131476.cpp!!!	isColisao(inout personagem : PersonagemAbstract) : bool
+    bool retorno = false;
+
+//Se raquete no lado direito da tela
+    if (lado==LADO_DIREITO){
+        /*if ((personagem->getPosicao().x+personagem->getDimensao().w >= posicao.x)&&
+            (posicao.y + getDimensao().h >= personagem->getPosicao().y)&&
+            (posicao.y <= personagem->getPosicao().y + personagem->getDimensao().h)){*/
+        if ((posicao.x + getDimensao().w >= personagem->getPosicao().x) &&
+            (posicao.x <= personagem->getPosicao().x + personagem->getDimensao().w) &&
+            (posicao.y + getDimensao().h >= personagem->getPosicao().y) &&
+            (posicao.y <= personagem->getPosicao().y + personagem->getDimensao().h)){
+                retorno = true;
+        }
+//Se raquete no lado esquerdo da tela
+    } else {
+        /*if ((personagem->getPosicao().x <= posicao.x+getDimensao().w)&&
+            (posicao.y + getDimensao().h >= personagem->getPosicao().y)&&
+            (posicao.y <= personagem->getPosicao().y + personagem->getDimensao().h)){*/
+        if ((posicao.x + getDimensao().w >= personagem->getPosicao().x) &&
+            (posicao.x <= personagem->getPosicao().x + personagem->getDimensao().w) &&
+            (posicao.y + getDimensao().h >= personagem->getPosicao().y) &&
+            (posicao.y <= personagem->getPosicao().y + personagem->getDimensao().h)){
+                retorno = true;
+        }
+    }
+
+    return retorno;
 !!!137876.cpp!!!	getVelocidade() : int
     return velocidade;
 !!!138004.cpp!!!	setVelocidade(in valor : int) : void
@@ -40,23 +78,3 @@ class Raquete
     }
 
     velocidade= (vb) * 1.5;
-!!!128137.cpp!!!	pensar() : void
-    Area areaVisaoBola = IA::converter(getVisaoBola().getDimensao(),getVisaoBola().getPosicao());
-	Area visao         = IA::converter(getDimensao(),getPosicao());
-
-    Decisao decisao = IA::pensar(visao,areaVisaoBola,raioVisao,efeito);
-
-
-    switch(decisao)
-    {
-        case DECISAO_SUBIR:
-                subir();
-            break;
-        case DECISAO_DESCER:
-                descer();
-            break;
-        case DECISAO_NADA:
-        default:
-                //nada para fazer
-            break;
-    }

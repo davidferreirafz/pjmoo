@@ -18,45 +18,19 @@
 // *   Free Software Foundation, Inc.,                                       *
 // *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
 // ***************************************************************************/
-#ifndef _CPU_H
-#define _CPU_H
+#ifndef _UTIL_H
+#define _UTIL_H
 
-#include "Raquete.h"
-#include <GBF/InputSystem.h>
+#include <cmath>
+#include <GBF/GraphicSystemImage.h>
 
 #include <GBF/GBF_define.h>
 
-#include <GBF/PersonagemAbstract.h>
 
-#include "define.h"
-#include <GBF/GraphicSystemImage.h>
-
-#include "Util.h"
-
-class CPU : public Raquete
+class Util
 {
   public:
-    CPU();
-
-    virtual ~CPU();
-
-    void acao(InputSystem * input);
-
-    Ponto saque();
-
-    bool isColisao(PersonagemAbstract * personagem);
-
-    void iniciarVisao();
-
-    void aumentarVisao();
-
-
-  private:
-    Decisao pensar(Area visao, Area areaVisaoBola);
-
-    int raioVisao;
-
-    Efeito efeito;
+    static Area converterArea(Dimensao dimensao, Ponto ponto);
 
 };
 #endif

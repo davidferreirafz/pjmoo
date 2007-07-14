@@ -3,8 +3,15 @@ class Controle
 
     cenario    = FrameLayerManager::getInstance()->getFrameLayer("background");
     wsManager  = WriteSystemManager::getInstance();
-!!!129428.cpp!!!	~Controle()
 
+    raqueteJogador = new Jogador();
+    raqueteCPU     = new CPU();
+
+    raqueteJogador->setLado(LADO_DIREITO);
+    raqueteCPU->setLado(LADO_ESQUERDO);
+!!!129428.cpp!!!	~Controle()
+    delete(raqueteJogador);
+    delete(raqueteCPU);
 
 !!!129556.cpp!!!	iniciar() : void
     Objeto::setArea(cenario->getArea());
@@ -12,24 +19,24 @@ class Controle
     bola.iniciar();
     Raquete::setBola(&bola);
 
-    raqueteJogador.iniciar();
-    raqueteCPU.iniciar();
-    raqueteCPU.iniciarVisao();
+    raqueteJogador->iniciar();
+    raqueteCPU->iniciar();
+    raqueteCPU->iniciarVisao();
 
     placar.iniciar();
 !!!129684.cpp!!!	iniciarSet() : void
     placar.novaPartida();
 !!!129812.cpp!!!	prepararSet() : void
     bola.continuar();
-    raqueteJogador.iniciar();
-    raqueteCPU.iniciar();
+    raqueteJogador->iniciar();
+    raqueteCPU->iniciar();
 !!!129940.cpp!!!	executar(inout input : InputSystem) : void
     bola.acao(NULL);
-    raqueteJogador.acao(input);
-    raqueteCPU.acao(NULL);
+    raqueteJogador->acao(input);
+    raqueteCPU->acao(NULL);
 
-    bola.isColisao(&raqueteJogador);
-    bola.isColisao(&raqueteCPU);
+    bola.isColisao(raqueteJogador);
+    bola.isColisao(raqueteCPU);
 
     juiz();
 
@@ -59,7 +66,7 @@ class Controle
         finalizado = true;
         placar.novaPartida();
         if (placar.getVitoriaJogador()>=placar.getVitoriaCPU()){
-            raqueteCPU.aumentarVisao();
+            raqueteCPU->aumentarVisao();
         }
     }
 
@@ -74,21 +81,33 @@ class Controle
     wsManager->escrever("texto",590,10,"%02d",placar.getVitoriaJogador());
 
     bola.desenhar();
-    raqueteJogador.desenhar();
-    raqueteCPU.desenhar();
+    raqueteJogador->desenhar();
+    raqueteCPU->desenhar();
+!!!128393.cpp!!!	ativarDemo(in ativo : bool) : void
+    if (ativo){
+        if (raqueteJogador!=NULL){
+            delete(raqueteJogador);
+        }
+        raqueteJogador = new CPU();
+        raqueteJogador->setLado(LADO_DIREITO);
+    } else {
+        if (raqueteJogador!=NULL){
+            delete(raqueteJogador);
+        }
+        raqueteJogador = new Jogador();
+        raqueteJogador->setLado(LADO_DIREITO);
+    }
 !!!130708.cpp!!!	juiz() : void
     if (bola.getPosicao().x>=cenario->getArea().right){
         placar.pontuarCPU();
-        raqueteCPU.iniciar();
-        raqueteJogador.iniciar();
+        raqueteCPU->iniciar();
+        raqueteJogador->iniciar();
 
-        bola.iniciar(raqueteCPU.saque());
+        bola.iniciar(raqueteCPU->saque());
     } else  if (bola.getPosicao().x+bola.getDimensao().w<=cenario->getArea().left){
         placar.pontuarJogador();
-        raqueteJogador.iniciar();
-        raqueteCPU.iniciar();
+        raqueteJogador->iniciar();
+        raqueteCPU->iniciar();
 
-        bola.iniciar(raqueteJogador.saque());
+        bola.iniciar(raqueteJogador->saque());
     }
-!!!128393.cpp!!!	ativarDemo(in ativo : bool) : void
-    raqueteJogador.setAtivarCPU(ativo);

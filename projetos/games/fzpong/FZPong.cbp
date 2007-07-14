@@ -67,8 +67,6 @@
 		<Unit filename="src/CPU.h" />
 		<Unit filename="src/Controle.cpp" />
 		<Unit filename="src/Controle.h" />
-		<Unit filename="src/IA.cpp" />
-		<Unit filename="src/IA.h" />
 		<Unit filename="src/Jogador.cpp" />
 		<Unit filename="src/Jogador.h" />
 		<Unit filename="src/Jogo.cpp" />
@@ -79,6 +77,8 @@
 		<Unit filename="src/Placar.h" />
 		<Unit filename="src/Raquete.cpp" />
 		<Unit filename="src/Raquete.h" />
+		<Unit filename="src/Util.cpp" />
+		<Unit filename="src/Util.h" />
 		<Unit filename="src/define.h" />
 		<Extensions>
 			<code_completion />

@@ -5,23 +5,29 @@ class CPU
     SpriteFactory *spriteFactory = new SpriteFactory(gsImageBufferManager->getImageBuffer("personagem"));
     adicionarSpritePrincipal(spriteFactory->criarSpritePersonagem(15,21,14,80,1,1));
     delete(spriteFactory);
+
+    iniciarVisao();
 !!!131092.cpp!!!	~CPU()
 
     //dtor
 !!!131220.cpp!!!	acao(inout input : InputSystem) : void
-    fazerJogada(raioVisao,efeito);
-!!!131348.cpp!!!	iniciar() : void
-    adaptarVelocidade();
-    setPosicao(0,(getAreaTela().bottom/2)-(getDimensao().h/2));
-!!!131476.cpp!!!	isColisao(inout personagem : PersonagemAbstract) : bool
-    if ((personagem->getPosicao().x <= posicao.x+getDimensao().w)&&
-        (posicao.y + getDimensao().h >= personagem->getPosicao().y)&&
-        (posicao.y <= personagem->getPosicao().y + personagem->getDimensao().h)){
-            efeito = Efeito(rand()%3);
-            return true;
-    } else {
-        return false;
-    }
+//    fazerJogada(raioVisao,efeito);
+    Area areaVisaoBola = Util::converterArea(getVisaoBola().getDimensao(),getVisaoBola().getPosicao());
+    Area visao         = Util::converterArea(getDimensao(),getPosicao());
+
+    switch(pensar(visao,areaVisaoBola))
+    {
+        case DECISAO_SUBIR:
+                subir();
+            break;
+        case DECISAO_DESCER:
+                descer();
+            break;
+        case DECISAO_NADA:
+        default:
+                //nada para fazer
+            break;
+    }    
 !!!131604.cpp!!!	saque() : Ponto
     Ponto saque;
 
@@ -29,6 +35,14 @@ class CPU
     saque.y=posicao.y+rand()%(getDimensao().h-getVisaoBola().getDimensao().h);
 
     return saque;
+!!!128281.cpp!!!	isColisao(inout personagem : PersonagemAbstract) : bool
+    bool retorno = Raquete::isColisao(personagem);
+
+    if (retorno){
+        efeito = Efeito(rand()%3);
+    }
+
+    return retorno;
 !!!131732.cpp!!!	iniciarVisao() : void
     raioVisao=380;
 !!!131860.cpp!!!	aumentarVisao() : void
@@ -37,3 +51,58 @@ class CPU
     if (raioVisao>=getAreaTela().bottom){
         raioVisao=getAreaTela().bottom;
     }
+!!!131988.cpp!!!	pensar(in visao : Area, in areaVisaoBola : Area) : Decisao
+    float qx, qy, qr, qe; //para guardar o quadrado de x, y e raio
+    Decisao decisao = DECISAO_NADA;
+
+    //quadrado da distância em x
+    qx = std::pow(float((areaVisaoBola.left + areaVisaoBola.right/2) - (visao.left + visao.right/2)), 2);
+    //quadrado da distância em y
+    qy = std::pow(float((areaVisaoBola.top + areaVisaoBola.bottom/2) - (visao.top  + visao.bottom/2)), 2);
+    //quadrado da soma dos raios
+    qr = std::pow(float(raioVisao), 2);
+    //quadrado da soma dos raios para efeito
+    qe = std::pow(float(visao.bottom), 2);
+
+
+    if (qx + qy <= qr){
+
+        if (qx + qy <= qe){
+            switch (efeito){
+                case EFEITO_CIMA:
+                        if (visao.top >= areaVisaoBola.top+areaVisaoBola.bottom){
+                            decisao = DECISAO_SUBIR;
+                        } else if (visao.top+areaVisaoBola.bottom < areaVisaoBola.top+areaVisaoBola.bottom){
+                            decisao = DECISAO_DESCER;
+                        }
+                    break;
+
+                case EFEITO_BAIXO:
+                        if (visao.top+visao.bottom <= areaVisaoBola.top){
+                            decisao = DECISAO_DESCER;
+                        } else
+                        if (visao.top+visao.bottom >= areaVisaoBola.top+areaVisaoBola.bottom){
+                            decisao = DECISAO_SUBIR;
+                        }
+                    break;
+
+                case EFEITO_SEM:
+                default:
+                        if (visao.top > areaVisaoBola.top){
+                            decisao = DECISAO_SUBIR;
+                        } else  if (visao.top+visao.bottom < areaVisaoBola.top+areaVisaoBola.bottom){
+                            decisao = DECISAO_DESCER;
+                        }
+
+                    break;
+            }
+        } else {
+            if (visao.top > areaVisaoBola.top){
+                decisao = DECISAO_SUBIR;
+            } else  if (visao.top+visao.bottom < areaVisaoBola.top+areaVisaoBola.bottom){
+                decisao = DECISAO_DESCER;
+            }
+        }
+    }
+
+    return decisao;

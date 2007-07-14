@@ -35,7 +35,7 @@ CPU::~CPU(){
     //dtor
 }
 
-void CPU::acao(InputSystem * input)
+void CPU::acao(InputSystem * input) 
 {
 //    fazerJogada(raioVisao,efeito);
     Area areaVisaoBola = Util::converterArea(getVisaoBola().getDimensao(),getVisaoBola().getPosicao());
@@ -53,9 +53,9 @@ void CPU::acao(InputSystem * input)
         default:
                 //nada para fazer
             break;
-    }
+    }    
 }
-Ponto CPU::saque()
+Ponto CPU::saque() 
 {
     Ponto saque;
 
@@ -64,7 +64,7 @@ Ponto CPU::saque()
 
     return saque;
 }
-bool CPU::isColisao(PersonagemAbstract * personagem)
+bool CPU::isColisao(PersonagemAbstract * personagem) 
 {
     bool retorno = Raquete::isColisao(personagem);
 
@@ -74,11 +74,11 @@ bool CPU::isColisao(PersonagemAbstract * personagem)
 
     return retorno;
 }
-void CPU::iniciarVisao()
+void CPU::iniciarVisao() 
 {
     raioVisao=380;
 }
-void CPU::aumentarVisao()
+void CPU::aumentarVisao() 
 {
     raioVisao+=20;
 
@@ -86,24 +86,24 @@ void CPU::aumentarVisao()
         raioVisao=getAreaTela().bottom;
     }
 }
-Decisao CPU::pensar(Area visao, Area areaVisaoBola)
+Decisao CPU::pensar(Area visao, Area areaVisaoBola) 
 {
-	float qx, qy, qr, qe; //para guardar o quadrado de x, y e raio
+    float qx, qy, qr, qe; //para guardar o quadrado de x, y e raio
     Decisao decisao = DECISAO_NADA;
 
-	//quadrado da distância em x
-	qx = std::pow(float((areaVisaoBola.left + areaVisaoBola.right/2) - (visao.left + visao.right/2)), 2);
-	//quadrado da distância em y
-	qy = std::pow(float((areaVisaoBola.top + areaVisaoBola.bottom/2) - (visao.top  + visao.bottom/2)), 2);
-	//quadrado da soma dos raios
-	qr = std::pow(float(raioVisao), 2);
-	//quadrado da soma dos raios para efeito
-	qe = std::pow(float(visao.bottom), 2);
+    //quadrado da distância em x
+    qx = std::pow(float((areaVisaoBola.left + areaVisaoBola.right/2) - (visao.left + visao.right/2)), 2);
+    //quadrado da distância em y
+    qy = std::pow(float((areaVisaoBola.top + areaVisaoBola.bottom/2) - (visao.top  + visao.bottom/2)), 2);
+    //quadrado da soma dos raios
+    qr = std::pow(float(raioVisao), 2);
+    //quadrado da soma dos raios para efeito
+    qe = std::pow(float(visao.bottom), 2);
 
 
-	if (qx + qy <= qr){
+    if (qx + qy <= qr){
 
-       if (qx + qy <= qe){
+        if (qx + qy <= qe){
             switch (efeito){
                 case EFEITO_CIMA:
                         if (visao.top >= areaVisaoBola.top+areaVisaoBola.bottom){
@@ -139,7 +139,7 @@ Decisao CPU::pensar(Area visao, Area areaVisaoBola)
                 decisao = DECISAO_DESCER;
             }
         }
-	}
+    }
 
     return decisao;
 }

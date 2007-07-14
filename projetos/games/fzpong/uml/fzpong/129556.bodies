@@ -151,6 +151,8 @@ class Jogo
         if (frameworkGBF->inputSystem->teclado->isKey(SDLK_t)){
             controle->ativarDemo(true);
             setJogo();
+        } else if (frameworkGBF->inputSystem->teclado->isKey(SDLK_f)){
+            controle->ativarDemo(false);
         }
     }
 !!!133780.cpp!!!	menuSobre() : void
@@ -252,6 +254,6 @@ class Jogo
 
     if (desenhe){
         frameworkGBF->writeSystem->escreverLocalizado("menu",20,420,"botao_enter");
-        controle->ativarDemo(false);
     }
+
     return desenhe;

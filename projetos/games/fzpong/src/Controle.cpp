@@ -39,7 +39,7 @@ Controle::~Controle(){
 
 }
 
-void Controle::iniciar()
+void Controle::iniciar() 
 {
     Objeto::setArea(cenario->getArea());
 
@@ -52,17 +52,17 @@ void Controle::iniciar()
 
     placar.iniciar();
 }
-void Controle::iniciarSet()
+void Controle::iniciarSet() 
 {
     placar.novaPartida();
 }
-void Controle::prepararSet()
+void Controle::prepararSet() 
 {
     bola.continuar();
     raqueteJogador->iniciar();
     raqueteCPU->iniciar();
 }
-void Controle::executar(InputSystem * input)
+void Controle::executar(InputSystem * input) 
 {
     bola.acao(NULL);
     raqueteJogador->acao(input);
@@ -75,7 +75,7 @@ void Controle::executar(InputSystem * input)
 
     display();
 }
-bool Controle::isGameOver()
+bool Controle::isGameOver() 
 {
     bool terminou = false;
 
@@ -85,7 +85,7 @@ bool Controle::isGameOver()
 
     return terminou;
 }
-bool Controle::isFinalizado()
+bool Controle::isFinalizado() 
 {
     bool terminou = false;
 
@@ -95,7 +95,7 @@ bool Controle::isFinalizado()
 
     return terminou;
 }
-bool Controle::isSetFinalizado()
+bool Controle::isSetFinalizado() 
 {
     bool finalizado = false;
 
@@ -111,11 +111,11 @@ bool Controle::isSetFinalizado()
 
     return finalizado;
 }
-int Controle::getNumeroSet()
+int Controle::getNumeroSet() 
 {
     return placar.getVitoriaCPU()+placar.getVitoriaJogador();
 }
-void Controle::display()
+void Controle::display() 
 {
     cenario->desenhar();
     wsManager->escrever("texto",260,10,"%02d X %02d",placar.getCPU(),placar.getJogador());
@@ -123,15 +123,12 @@ void Controle::display()
     wsManager->escrever("texto" ,20,10,"%02d",placar.getVitoriaCPU());
     wsManager->escrever("texto",590,10,"%02d",placar.getVitoriaJogador());
 
+    bola.desenhar();
     raqueteJogador->desenhar();
     raqueteCPU->desenhar();
-
-    bola.desenhar();
-
-    wsManager->escrever("texto" ,300,450,"x%03d - y%03d",bola.getPosicao().x,bola.getPosicao().y);
 }
 //Ativar demonstração do jogo
-void Controle::ativarDemo(bool ativo)
+void Controle::ativarDemo(bool ativo) 
 {
     if (ativo){
         if (raqueteJogador!=NULL){
@@ -147,7 +144,7 @@ void Controle::ativarDemo(bool ativo)
         raqueteJogador->setLado(LADO_DIREITO);
     }
 }
-void Controle::juiz()
+void Controle::juiz() 
 {
     if (bola.getPosicao().x>=cenario->getArea().right){
         placar.pontuarCPU();
@@ -163,7 +160,7 @@ void Controle::juiz()
         bola.iniciar(raqueteJogador->saque());
     }
 }
-void Controle::setFinalizado()
+void Controle::setFinalizado() 
 {
 }
 int Controle::DIFERENCA_PARTIDA_TERMINAR =5;

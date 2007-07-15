@@ -177,16 +177,6 @@ class Jogo
     controle->iniciar();
     setJogoFaseCarregar();
 !!!134036.cpp!!!	jogoExecutando() : void
-/*
-    if (controle->isGameOver()){
-        frameworkGBF->soundSystem->fxManager->play("gameover");
-        setJogoGameOver();
-    } else if (controle->isSetFinalizado()){
-        setJogoFaseFinalizada();
-    } else {
-        controle->executar(frameworkGBF->inputSystem);
-    }
-*/
     if ((controle->isGameOver())||(controle->isSetFinalizado())){
         setJogoFaseFinalizada();
     } else {
@@ -195,16 +185,12 @@ class Jogo
 !!!134164.cpp!!!	jogoPause() : void
     setMenu();
 !!!134292.cpp!!!	jogoFaseCarregar() : void
-//    FrameLayerManager::getInstance()->getFrameLayer("background")->desenhar();
-
     controle->display();
     frameworkGBF->writeSystem->escreverLocalizado("menu" ,100,80,"fase_carregar");
 
-    //frameworkGBF->writeSystem->escrever("texto" ,60,80,"%02d",controle->getNumeroSet());
-
     if (isTempoEspera()){
-        setJogoExecutando();
         controle->iniciarSet();
+        setJogoExecutando();
     }
 !!!134420.cpp!!!	jogoFaseFinalizada() : void
     setJogoFaseCarregar();

@@ -1,7 +1,7 @@
 format 38
 "FZPong" // FZPong
-  revision 46
-  modified_by 74 "david"
+  revision 48
+  modified_by 91 "david"
   // class settings
   //class diagram settings
   draw_all_relations default hide_attributes yes hide_operations yes show_members_full_definition yes show_members_visibility default show_members_stereotype default show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode uml auto_label_position default show_infonote default shadow default
@@ -1438,6 +1438,19 @@ ${body}}"
 	comment "Inicia raquete"
       end
 
+      operation 128005 "desenhar"
+	cpp_virtual public explicit_return_type "void"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+	comment "Desenha o sprite principal do personagem"
+      end
+
       operation 131732 "iniciarVisao"
 	private explicit_return_type "void"
 	nparams 0
@@ -1499,6 +1512,14 @@ ${body}}"
 	    cpp default "#include in header"
 	    classrelation_ref 130068 // <dependency>
 	  b multiplicity "" parent class_ref 129428 // Util
+      end
+
+      classrelation 128005 // <dependency>
+	relation 128005 -_->
+	  a default
+	    cpp default "#include in header"
+	    classrelation_ref 128005 // <dependency>
+	  b multiplicity "" parent class_ref 131152 // GraphicSystemGFX
       end
     end
 
@@ -1804,7 +1825,7 @@ Com foco na Classe Controle"
     end
 
     classdiagram 128276 "Rascunhos"
-      draw_all_relations default hide_attributes no hide_operations no show_members_full_definition default show_members_visibility yes show_members_stereotype yes show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_infonote default shadow default
+      draw_all_relations no hide_attributes no hide_operations no show_members_full_definition default show_members_visibility yes show_members_stereotype yes show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_infonote default shadow default
       size A2
     end
 
@@ -2261,5 +2282,6 @@ ${namespace_end}"
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/"
     end
+
   end
 end

@@ -45,8 +45,20 @@ class CPU
 !!!128202.cpp!!!	iniciar() : void
     Raquete::iniciar();
     aumentarVisao();
+!!!128005.cpp!!!	desenhar() : void
+    Raquete::desenhar();
+
+#ifdef DEBUG
+    GraphicSystemGFX *gfx = GraphicSystemGFX::getInstance();
+
+    gfx->setColor(255,255,255);
+    gfx->circulo(posicao.x+getDimensao().w/2,posicao.y+getDimensao().h/2,raioVisao);
+
+    gfx->setColor(255,0,0);
+    gfx->circulo(posicao.x+getDimensao().w/2,posicao.y+getDimensao().h/2,getDimensao().h*1.4);
+#endif
 !!!131732.cpp!!!	iniciarVisao() : void
-    raioVisao=180;
+    raioVisao=200;
 !!!131860.cpp!!!	aumentarVisao() : void
     raioVisao+=20;
 

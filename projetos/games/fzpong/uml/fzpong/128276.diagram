@@ -1,7 +1,28 @@
 format 38
 
-classcanvas 128020 class_ref 128276 // Bola
+classcanvas 128023 class_ref 128916 // CPU
   draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_infonote default shadow default
-  xyz 129 126 2000
+  xyz 58 274 2000
   end
+note 128074 "CPU
+Preparar controles para resetar classe, permitir reposionamento e evolução"
+  xyzwh 27 60 2000 107 100
+classcanvas 128151 class_ref 128788 // Jogador
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_infonote default shadow default
+  xyz 368 276 2000
+  end
+classcanvas 128279 class_ref 129044 // Raquete
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_infonote default shadow default
+  xyz 202 14 3005
+  end
+relationcanvas 128535 relation_ref 129300 // <generalisation>
+  from ref 128151 z 1999 to ref 128279
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+relationcanvas 128663 relation_ref 129044 // <generalisation>
+  from ref 128023 z 1999 to ref 128279
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+line 128202 -_-_
+  from ref 128074 z 1999 to ref 128023
 end

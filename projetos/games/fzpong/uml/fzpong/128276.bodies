@@ -37,10 +37,12 @@ class Bola
         velocidade.y = - velocidade.y;
         posicao.y=getAreaTela().bottom-getDimensao().h;
         soundSystem->fxManager->playPanEffect("ping",posicao.x);
+        batidaParede++;
     } else if (posicao.y<=getAreaTela().top){
         velocidade.y = - velocidade.y;
         posicao.y=getAreaTela().top;
         soundSystem->fxManager->playPanEffect("ping",posicao.x);
+        batidaParede++;
     }
 
     if (posicao.x>=getAreaTela().right/2){
@@ -79,7 +81,7 @@ class Bola
 
     return colisao;
 !!!129044.cpp!!!	getVelocidade() : int
-    return velocidade.x;
+    return int(velocidade.x);
 !!!138772.cpp!!!	corrigirEixoX(in personagem : PersonagemAbstract) : void
     //Colisão do lado direito da tela
     if (getSpritePrincipal()->getDirecao()==DR_DIREITA){
@@ -95,7 +97,7 @@ class Bola
         }
     }
 !!!129172.cpp!!!	elevarGrauDificuldade() : void
-    velocidadeGradativa.y+=1;
+    velocidadeGradativa.y+=2;
     velocidadeGradativa.x+=1;
 
     if (velocidadeGradativa.y>=getDimensao().w*0.9){

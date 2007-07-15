@@ -1,11 +1,10 @@
 class Raquete
 !!!137236.cpp!!!	Raquete()
-
     velocidade = 10;
-!!!137364.cpp!!!	~Raquete()
-
-    //dtor
-!!!137492.cpp!!!	iniciar() : void
+!!!128074.cpp!!!	iniciar() : void
+    preparar();
+    adaptarVelocidade();
+!!!137492.cpp!!!	preparar() : void
     //Se for do lado direito da tela
     if (lado==LADO_DIREITO){
         setPosicao(getAreaTela().right-getDimensao().w,(getAreaTela().bottom/2)-(getDimensao().h/2));
@@ -77,4 +76,4 @@ class Raquete
         vb= - vb;
     }
 
-    velocidade= (vb) * 1.5;
+    velocidade= int((vb) * 0.9);

@@ -19,9 +19,8 @@ class Controle
     bola.iniciar();
     Raquete::setBola(&bola);
 
-    raqueteJogador->iniciar();
-    raqueteCPU->iniciar();
-    raqueteCPU->iniciarVisao();
+    raqueteJogador->preparar();
+    raqueteCPU->preparar();
 
     placar.iniciar();
 !!!129684.cpp!!!	iniciarSet() : void
@@ -44,7 +43,7 @@ class Controle
 !!!130068.cpp!!!	isGameOver() : bool
     bool terminou = false;
 
-    if (placar.getVitoriaCPU()>=placar.getVitoriaJogador()+DIFERENCA_VITORIA_TERMINAR){
+    if (placar.getVitoriaCPU()>=placar.getVitoriaJogador()+DIFERENCA_SET_VITORIA){
         terminou = true;
     }
 
@@ -52,7 +51,7 @@ class Controle
 !!!130196.cpp!!!	isFinalizado() : bool
     bool terminou = false;
 
-    if (placar.getVitoriaJogador()>=placar.getVitoriaCPU()+DIFERENCA_VITORIA_TERMINAR){
+    if (placar.getVitoriaJogador()>=placar.getVitoriaCPU()+DIFERENCA_SET_VITORIA){
         terminou = true;
     }
 
@@ -62,12 +61,11 @@ class Controle
 
     int diferenca=placar.getCPU()-placar.getJogador();
 
-    if ((diferenca>=DIFERENCA_PARTIDA_TERMINAR)||(diferenca<=-DIFERENCA_PARTIDA_TERMINAR)){
-        finalizado = true;
-        placar.novaPartida();
-        if (placar.getVitoriaJogador()>=placar.getVitoriaCPU()){
-            raqueteCPU->aumentarVisao();
-        }
+    if (((diferenca>=DIFERENCA_FIM_PARTIDA)||(diferenca<=-DIFERENCA_FIM_PARTIDA)) ||
+       (((placar.getCPU()>LIMITE_PARA_PRORROGACAO)||(placar.getJogador()>LIMITE_PARA_PRORROGACAO))
+          &&(diferenca>=DIFERENCA_FIM_PRORROGACAO))){
+            finalizado = true;
+            placar.novaPartida();
     }
 
     return finalizado;
@@ -100,14 +98,14 @@ class Controle
 !!!130708.cpp!!!	juiz() : void
     if (bola.getPosicao().x>=cenario->getArea().right){
         placar.pontuarCPU();
-        raqueteCPU->iniciar();
-        raqueteJogador->iniciar();
+        raqueteCPU->preparar();
+        raqueteJogador->preparar();
 
         bola.iniciar(raqueteCPU->saque());
     } else  if (bola.getPosicao().x+bola.getDimensao().w<=cenario->getArea().left){
         placar.pontuarJogador();
-        raqueteJogador->iniciar();
-        raqueteCPU->iniciar();
+        raqueteJogador->preparar();
+        raqueteCPU->preparar();
 
         bola.iniciar(raqueteJogador->saque());
     }

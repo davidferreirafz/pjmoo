@@ -11,7 +11,6 @@ class CPU
 
     //dtor
 !!!131220.cpp!!!	acao(inout input : InputSystem) : void
-//    fazerJogada(raioVisao,efeito);
     Area areaVisaoBola = Util::converterArea(getVisaoBola().getDimensao(),getVisaoBola().getPosicao());
     Area visao         = Util::converterArea(getDimensao(),getPosicao());
 
@@ -27,7 +26,7 @@ class CPU
         default:
                 //nada para fazer
             break;
-    }    
+    }
 !!!131604.cpp!!!	saque() : Ponto
     Ponto saque;
 
@@ -43,8 +42,11 @@ class CPU
     }
 
     return retorno;
+!!!128202.cpp!!!	iniciar() : void
+    Raquete::iniciar();
+    aumentarVisao();
 !!!131732.cpp!!!	iniciarVisao() : void
-    raioVisao=380;
+    raioVisao=180;
 !!!131860.cpp!!!	aumentarVisao() : void
     raioVisao+=20;
 
@@ -62,7 +64,7 @@ class CPU
     //quadrado da soma dos raios
     qr = std::pow(float(raioVisao), 2);
     //quadrado da soma dos raios para efeito
-    qe = std::pow(float(visao.bottom), 2);
+    qe = std::pow(float(visao.bottom*1.4), 2);
 
 
     if (qx + qy <= qr){

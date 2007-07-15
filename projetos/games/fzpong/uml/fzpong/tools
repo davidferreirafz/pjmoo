@@ -3,8 +3,6 @@ tool "HTML documentation" "ghtml" Class Operation Attribute Generalisation Reali
 tool "C++ utilities" "cpp_util" Class
 tool "HTML documentation" "ghtml" State Region StateAction Initial EntryPoint Final Terminate ExitPoint DeepHistory ShallowHistory Junction Choice Fork Join
 tool "C++ state machine" "stmgen" State
-tool "HTML documentation" "ghtml" Project Package UseCaseView ClassView UseCaseDiagram SeqDiagram ColDiagram ClassDiagram UseCase Component Inherit DependOn
-tool "Generate .pro" "gpro" Artifact
 tool "Import Rose" "irose" Project Package
 tool "Generate XMI" "gxmi" Project
-tool "Use case wizard" "usecasewizard" UseCase
+tool "HTML documentation" "ghtml" Package UseCaseView ClassView UseCaseDiagram SeqDiagram ColDiagram ClassDiagram ObjectDiagram Artifact

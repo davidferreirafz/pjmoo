@@ -20,7 +20,8 @@
 // ***************************************************************************/
 #include "Jogador.h"
 
-Jogador::Jogador(){
+Jogador::Jogador() 
+{
 
     GraphicSystemImageBufferManager *gsImageBufferManager=GraphicSystemImageBufferManager::getInstance();
     SpriteFactory *spriteFactory = new SpriteFactory(gsImageBufferManager->getImageBuffer("personagem"));
@@ -28,12 +29,11 @@ Jogador::Jogador(){
     delete(spriteFactory);
 
 }
-
-Jogador::~Jogador(){
+Jogador::~Jogador() 
+{
 
     //dtor
 }
-
 void Jogador::acao(InputSystem * input) 
 {
     if ((input->teclado->isKey(SDLK_UP))||(input->joystick->isAxeUp())){

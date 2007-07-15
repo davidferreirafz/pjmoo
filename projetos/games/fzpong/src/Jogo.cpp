@@ -49,16 +49,11 @@ Jogo::Jogo(int argc, char * argv[]):GAT(argc,argv)
 }
 
 //Destrutor
-
-//Destrutor
-Jogo::~Jogo(){
+Jogo::~Jogo() 
+{
     delete(david);
     delete(controle);
 }
-
-//Inicializa os recursos utilizados no jogo.
-//Ex.: Imagens, sons, fontes, configuração do modo gráfico e etc..
-
 //Inicializa os recursos utilizados no jogo.
 //Ex.: Imagens, sons, fontes, configuração do modo gráfico e etc..
 void Jogo::inicializarRecursos() 
@@ -313,11 +308,6 @@ bool Jogo::gatilhoJogoFaseCarregar()
     }
     return continua;
 }
-//* @brief (one liner)
-//  *
-//  * (documentation goes here)
-//  
-
 void Jogo::gatilhoMenuPrincipal() 
 {
     frameworkGBF->soundSystem->musicManager->playInfinity("menu");

@@ -20,19 +20,19 @@
 // ***************************************************************************/
 #include "Placar.h"
 
-Placar::Placar(){
+Placar::Placar() 
+{
 
     iniciar();
 	if (!soundSystem){
 		soundSystem = SoundSystem::getInstance();
 	}
 }
-
-Placar::~Placar(){
+Placar::~Placar() 
+{
 
     //dtor
 }
-
 void Placar::iniciar() 
 {
     jogador=0;

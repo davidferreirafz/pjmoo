@@ -20,7 +20,8 @@
 // ***************************************************************************/
 #include "CPU.h"
 
-CPU::CPU(){
+CPU::CPU()
+{
 
     GraphicSystemImageBufferManager *gsImageBufferManager=GraphicSystemImageBufferManager::getInstance();
     SpriteFactory *spriteFactory = new SpriteFactory(gsImageBufferManager->getImageBuffer("personagem"));
@@ -29,15 +30,13 @@ CPU::CPU(){
 
     iniciarVisao();
 }
-
-CPU::~CPU(){
+CPU::~CPU()
+{
 
     //dtor
 }
-
-void CPU::acao(InputSystem * input) 
+void CPU::acao(InputSystem * input)
 {
-//    fazerJogada(raioVisao,efeito);
     Area areaVisaoBola = Util::converterArea(getVisaoBola().getDimensao(),getVisaoBola().getPosicao());
     Area visao         = Util::converterArea(getDimensao(),getPosicao());
 
@@ -53,9 +52,9 @@ void CPU::acao(InputSystem * input)
         default:
                 //nada para fazer
             break;
-    }    
+    }
 }
-Ponto CPU::saque() 
+Ponto CPU::saque()
 {
     Ponto saque;
 
@@ -64,7 +63,7 @@ Ponto CPU::saque()
 
     return saque;
 }
-bool CPU::isColisao(PersonagemAbstract * personagem) 
+bool CPU::isColisao(PersonagemAbstract * personagem)
 {
     bool retorno = Raquete::isColisao(personagem);
 
@@ -74,11 +73,16 @@ bool CPU::isColisao(PersonagemAbstract * personagem)
 
     return retorno;
 }
-void CPU::iniciarVisao() 
+void CPU::iniciar()
+{
+    Raquete::iniciar();
+    aumentarVisao();
+}
+void CPU::iniciarVisao()
 {
     raioVisao=380;
 }
-void CPU::aumentarVisao() 
+void CPU::aumentarVisao()
 {
     raioVisao+=20;
 
@@ -86,7 +90,7 @@ void CPU::aumentarVisao()
         raioVisao=getAreaTela().bottom;
     }
 }
-Decisao CPU::pensar(Area visao, Area areaVisaoBola) 
+Decisao CPU::pensar(Area visao, Area areaVisaoBola)
 {
     float qx, qy, qr, qe; //para guardar o quadrado de x, y e raio
     Decisao decisao = DECISAO_NADA;

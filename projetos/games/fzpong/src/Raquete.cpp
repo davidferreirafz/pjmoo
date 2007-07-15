@@ -20,17 +20,17 @@
 // ***************************************************************************/
 #include "Raquete.h"
 
-Raquete::Raquete(){
+Raquete::Raquete()
+{
 
     velocidade = 10;
 }
-
-Raquete::~Raquete(){
+Raquete::~Raquete()
+{
 
     //dtor
 }
-
-void Raquete::iniciar() 
+void Raquete::preparar()
 {
     //Se for do lado direito da tela
     if (lado==LADO_DIREITO){
@@ -40,15 +40,21 @@ void Raquete::iniciar()
         setPosicao(0,(getAreaTela().bottom/2)-(getDimensao().h/2));
     }
 }
+
+void Raquete::iniciar()
+{
+    preparar();
+}
+
 void Raquete::setBola(Bola * bola)
 {
     visaoBola=bola;
 }
-void Raquete::setLado(Lado valor) 
+void Raquete::setLado(Lado valor)
 {
     lado=valor;
 }
-bool Raquete::isColisao(PersonagemAbstract * personagem) 
+bool Raquete::isColisao(PersonagemAbstract * personagem)
 {
     bool retorno = false;
 
@@ -78,15 +84,15 @@ bool Raquete::isColisao(PersonagemAbstract * personagem)
 
     return retorno;
 }
-int Raquete::getVelocidade() 
+int Raquete::getVelocidade()
 {
     return velocidade;
 }
-void Raquete::setVelocidade(int valor) 
+void Raquete::setVelocidade(int valor)
 {
     velocidade=valor;
 }
-void Raquete::subir() 
+void Raquete::subir()
 {
     posicao.y-=getVelocidade();
 
@@ -94,14 +100,14 @@ void Raquete::subir()
         posicao.y=getAreaTela().top;
     }
 }
-void Raquete::descer() 
+void Raquete::descer()
 {
     posicao.y+=getVelocidade();
     if (posicao.y+getDimensao().h>=getAreaTela().bottom){
         posicao.y=getAreaTela().bottom-getDimensao().h;
     }
 }
-bool Raquete::isBateuParede() 
+bool Raquete::isBateuParede()
 {
     bool bateu = false;
 
@@ -111,11 +117,11 @@ bool Raquete::isBateuParede()
 
     return bateu;
 }
-Bola Raquete::getVisaoBola() 
+Bola Raquete::getVisaoBola()
 {
     return *visaoBola;
 }
-void Raquete::adaptarVelocidade() 
+void Raquete::adaptarVelocidade()
 {
     int vb = visaoBola->getVelocidade();
 
@@ -123,7 +129,7 @@ void Raquete::adaptarVelocidade()
         vb= - vb;
     }
 
-    velocidade= (vb) * 1.5;
+    velocidade= int((vb) * 1.5);
 }
 Bola * Raquete::visaoBola =NULL;
 

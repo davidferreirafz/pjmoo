@@ -41,7 +41,8 @@ class Raquete : public Objeto
 
     virtual ~Raquete();
 
-    void iniciar();
+    virtual void iniciar();
+    void preparar();
 
     virtual Ponto saque() = 0;
 

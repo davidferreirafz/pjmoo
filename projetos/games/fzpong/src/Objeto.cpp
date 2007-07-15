@@ -20,21 +20,20 @@
 // ***************************************************************************/
 #include "Objeto.h"
 
-Objeto::Objeto(){
+Objeto::Objeto() 
+{
 
     alturaPedra=4;
 	if (!soundSystem){
 		soundSystem = SoundSystem::getInstance();
 	}
 }
-
-Objeto::~Objeto(){
+Objeto::~Objeto() 
+{
 
     //dtor
 }
-
 void Objeto::setArea(Area area)
-
 {
     areaTela=area;
 

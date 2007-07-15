@@ -50,7 +50,7 @@ class CPU : public Raquete
 
     void aumentarVisao();
 
-
+    void iniciar();
   private:
     Decisao pensar(Area visao, Area areaVisaoBola);
 

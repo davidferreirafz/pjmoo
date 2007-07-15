@@ -21,7 +21,6 @@
 #include "Util.h"
 
 Area Util::converterArea(Dimensao dimensao, Ponto ponto)
-
 {
     Area area;
     area.left   = ponto.x;

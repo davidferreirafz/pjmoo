@@ -20,19 +20,19 @@
 // ***************************************************************************/
 #include "Bola.h"
 
-Bola::Bola(){
+Bola::Bola() 
+{
     GraphicSystemImageBufferManager *gsImageBufferManager=GraphicSystemImageBufferManager::getInstance();
     SpriteFactory *spriteFactory = new SpriteFactory(gsImageBufferManager->getImageBuffer("personagem"));
     adicionarSpritePrincipal(spriteFactory->criarSpritePersonagem(0,0,20,20,1,1));
     getSpritePrincipal()->setAutomatico(false);
     getSpritePrincipal()->setQtdDirecoes(2);
 }
-
-Bola::~Bola(){
+Bola::~Bola() 
+{
 
     //dtor
 }
-
 void Bola::iniciar() 
 {
     velocidadeGradativa.x=8;
@@ -115,7 +115,7 @@ bool Bola::isColisao(PersonagemAbstract * personagem)
 }
 int Bola::getVelocidade() 
 {
-    return velocidade.x;
+    return int(velocidade.x);
 }
 //Corrigir a posição da bola após colidir com uma raquete, evitando que a bola seja desenha dentro/após a raquete
 void Bola::corrigirEixoX(PersonagemAbstract * personagem) 

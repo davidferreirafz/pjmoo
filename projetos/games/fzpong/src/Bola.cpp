@@ -20,7 +20,7 @@
 // ***************************************************************************/
 #include "Bola.h"
 
-Bola::Bola() 
+Bola::Bola()
 {
     GraphicSystemImageBufferManager *gsImageBufferManager=GraphicSystemImageBufferManager::getInstance();
     SpriteFactory *spriteFactory = new SpriteFactory(gsImageBufferManager->getImageBuffer("personagem"));
@@ -28,25 +28,25 @@ Bola::Bola()
     getSpritePrincipal()->setAutomatico(false);
     getSpritePrincipal()->setQtdDirecoes(2);
 }
-Bola::~Bola() 
+Bola::~Bola()
 {
 
     //dtor
 }
-void Bola::iniciar() 
+void Bola::iniciar()
 {
     velocidadeGradativa.x=8;
     velocidadeGradativa.y=4;
     continuar();
     batidaParede=0;
 }
-void Bola::iniciar(Ponto saque) 
+void Bola::iniciar(Ponto saque)
 {
     elevarGrauDificuldade();
     setPosicao(saque.x,saque.y+getDimensao().h/2);
     batidaParede=0;
 }
-void Bola::continuar() 
+void Bola::continuar()
 {
     elevarGrauDificuldade();
 
@@ -60,7 +60,7 @@ void Bola::continuar()
 
     setPosicao((getAreaTela().right/2)-(getDimensao().w/2),getAreaTela().bottom/2-(getDimensao().h/2));
 }
-void Bola::acao(InputSystem * input) 
+void Bola::acao(InputSystem * input)
 {
     posicao.x+=int(velocidade.x);
     posicao.y+=int(velocidade.y);
@@ -69,10 +69,12 @@ void Bola::acao(InputSystem * input)
         velocidade.y = - velocidade.y;
         posicao.y=getAreaTela().bottom-getDimensao().h;
         soundSystem->fxManager->playPanEffect("ping",posicao.x);
+        batidaParede++;
     } else if (posicao.y<=getAreaTela().top){
         velocidade.y = - velocidade.y;
         posicao.y=getAreaTela().top;
         soundSystem->fxManager->playPanEffect("ping",posicao.x);
+        batidaParede++;
     }
 
     if (posicao.x>=getAreaTela().right/2){
@@ -86,7 +88,7 @@ void Bola::acao(InputSystem * input)
         batidaParede=0;
     }
 }
-bool Bola::isColisao(PersonagemAbstract * personagem) 
+bool Bola::isColisao(PersonagemAbstract * personagem)
 {
     bool colisao=personagem->isColisao(this);
     if (colisao){
@@ -113,12 +115,12 @@ bool Bola::isColisao(PersonagemAbstract * personagem)
 
     return colisao;
 }
-int Bola::getVelocidade() 
+int Bola::getVelocidade()
 {
     return int(velocidade.x);
 }
 //Corrigir a posição da bola após colidir com uma raquete, evitando que a bola seja desenha dentro/após a raquete
-void Bola::corrigirEixoX(PersonagemAbstract * personagem) 
+void Bola::corrigirEixoX(PersonagemAbstract * personagem)
 {
     //Colisão do lado direito da tela
     if (getSpritePrincipal()->getDirecao()==DR_DIREITA){
@@ -134,7 +136,7 @@ void Bola::corrigirEixoX(PersonagemAbstract * personagem)
         }
     }
 }
-void Bola::elevarGrauDificuldade() 
+void Bola::elevarGrauDificuldade()
 {
     velocidadeGradativa.y+=1;
     velocidadeGradativa.x+=1;

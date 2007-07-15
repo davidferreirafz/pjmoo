@@ -37,11 +37,16 @@ enum Lado {
 class Raquete : public Objeto
 {
   public:
+    //Construtor
     Raquete();
 
+    //Destrutor
     virtual ~Raquete();
 
+    //Inicia raquete
     virtual void iniciar();
+
+    //Posiciona Raquete
     void preparar();
 
     virtual Ponto saque() = 0;

@@ -20,16 +20,22 @@
 // ***************************************************************************/
 #include "Raquete.h"
 
+//Construtor
 Raquete::Raquete()
 {
-
     velocidade = 10;
 }
+//Destrutor
 Raquete::~Raquete()
 {
-
-    //dtor
 }
+//Inicia raquete
+void Raquete::iniciar()
+{
+    preparar();
+    adaptarVelocidade();
+}
+//Posiciona Raquete
 void Raquete::preparar()
 {
     //Se for do lado direito da tela
@@ -40,12 +46,6 @@ void Raquete::preparar()
         setPosicao(0,(getAreaTela().bottom/2)-(getDimensao().h/2));
     }
 }
-
-void Raquete::iniciar()
-{
-    preparar();
-}
-
 void Raquete::setBola(Bola * bola)
 {
     visaoBola=bola;
@@ -129,7 +129,7 @@ void Raquete::adaptarVelocidade()
         vb= - vb;
     }
 
-    velocidade= int((vb) * 1.5);
+    velocidade= int((vb) * 0.9);
 }
 Bola * Raquete::visaoBola =NULL;
 

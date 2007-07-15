@@ -33,6 +33,8 @@
 
 #include "Util.h"
 
+#include <GBF/GraphicSystemGFX.h>
+
 class CPU : public Raquete
 {
   public:
@@ -46,12 +48,15 @@ class CPU : public Raquete
 
     bool isColisao(PersonagemAbstract * personagem);
 
+    //Inicia raquete
+    virtual void iniciar();
+    void desenhar();
+
+  private:
     void iniciarVisao();
 
     void aumentarVisao();
 
-    void iniciar();
-  private:
     Decisao pensar(Area visao, Area areaVisaoBola);
 
     int raioVisao;

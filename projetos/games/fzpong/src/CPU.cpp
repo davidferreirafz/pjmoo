@@ -20,7 +20,7 @@
 // ***************************************************************************/
 #include "CPU.h"
 
-CPU::CPU()
+CPU::CPU() 
 {
 
     GraphicSystemImageBufferManager *gsImageBufferManager=GraphicSystemImageBufferManager::getInstance();
@@ -30,12 +30,12 @@ CPU::CPU()
 
     iniciarVisao();
 }
-CPU::~CPU()
+CPU::~CPU() 
 {
 
     //dtor
 }
-void CPU::acao(InputSystem * input)
+void CPU::acao(InputSystem * input) 
 {
     Area areaVisaoBola = Util::converterArea(getVisaoBola().getDimensao(),getVisaoBola().getPosicao());
     Area visao         = Util::converterArea(getDimensao(),getPosicao());
@@ -54,7 +54,7 @@ void CPU::acao(InputSystem * input)
             break;
     }
 }
-Ponto CPU::saque()
+Ponto CPU::saque() 
 {
     Ponto saque;
 
@@ -63,7 +63,7 @@ Ponto CPU::saque()
 
     return saque;
 }
-bool CPU::isColisao(PersonagemAbstract * personagem)
+bool CPU::isColisao(PersonagemAbstract * personagem) 
 {
     bool retorno = Raquete::isColisao(personagem);
 
@@ -74,16 +74,31 @@ bool CPU::isColisao(PersonagemAbstract * personagem)
     return retorno;
 }
 //Inicia raquete
-void CPU::iniciar()
+void CPU::iniciar() 
 {
     Raquete::iniciar();
     aumentarVisao();
 }
-void CPU::iniciarVisao()
+//Desenha o sprite principal do personagem
+void CPU::desenhar() 
 {
-    raioVisao=180;
+    Raquete::desenhar();
+
+#ifdef DEBUG
+    GraphicSystemGFX *gfx = GraphicSystemGFX::getInstance();
+
+    gfx->setColor(255,255,255);
+    gfx->circulo(posicao.x+getDimensao().w/2,posicao.y+getDimensao().h/2,raioVisao);
+
+    gfx->setColor(255,0,0);
+    gfx->circulo(posicao.x+getDimensao().w/2,posicao.y+getDimensao().h/2,getDimensao().h*1.4);
+#endif
 }
-void CPU::aumentarVisao()
+void CPU::iniciarVisao() 
+{
+    raioVisao=200;
+}
+void CPU::aumentarVisao() 
 {
     raioVisao+=20;
 
@@ -91,7 +106,7 @@ void CPU::aumentarVisao()
         raioVisao=getAreaTela().bottom;
     }
 }
-Decisao CPU::pensar(Area visao, Area areaVisaoBola)
+Decisao CPU::pensar(Area visao, Area areaVisaoBola) 
 {
     float qx, qy, qr, qe; //para guardar o quadrado de x, y e raio
     Decisao decisao = DECISAO_NADA;
@@ -147,16 +162,4 @@ Decisao CPU::pensar(Area visao, Area areaVisaoBola)
     }
 
     return decisao;
-}
-
-void CPU::desenhar()
-{
-    Raquete::desenhar();
-    GraphicSystemGFX *gfx = GraphicSystemGFX::getInstance();
-
-    gfx->setColor(255,255,255);
-    gfx->circulo(posicao.x+getDimensao().w/2,posicao.y+getDimensao().h/2,raioVisao);
-
-    gfx->setColor(255,0,0);
-    gfx->circulo(posicao.x+getDimensao().w/2,posicao.y+getDimensao().h/2,getDimensao().h*1.4);
 }

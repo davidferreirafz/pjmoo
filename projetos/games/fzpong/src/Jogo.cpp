@@ -20,7 +20,7 @@
 // ***************************************************************************/
 #include "Jogo.h"
 
-int main(int argc, char * argv[])
+int main(int argc, char * argv[]) 
 {
     GAT* jogo = NULL;
     jogo = new Jogo(argc,argv);
@@ -49,14 +49,14 @@ Jogo::Jogo(int argc, char * argv[]):GAT(argc,argv)
 }
 
 //Destrutor
-Jogo::~Jogo()
+Jogo::~Jogo() 
 {
     delete(david);
     delete(controle);
 }
 //Inicializa os recursos utilizados no jogo.
 //Ex.: Imagens, sons, fontes, configuração do modo gráfico e etc..
-void Jogo::inicializarRecursos()
+void Jogo::inicializarRecursos() 
 {
 //configurando modo de vídeo
     frameworkGBF->setTitulo("FZPong","David de Almeida Ferreira");
@@ -126,7 +126,7 @@ void Jogo::inicializarRecursos()
 
     controle = new Controle();
 }
-void Jogo::menuPrincipal()
+void Jogo::menuPrincipal() 
 {
     FrameLayerManager::getInstance()->getFrameLayer("background")->desenhar();
 
@@ -152,7 +152,7 @@ void Jogo::menuPrincipal()
             break;
     }
 }
-void Jogo::menuAjuda()
+void Jogo::menuAjuda() 
 {
     char textoFormatado[30];
     FrameLayerManager::getInstance()->getFrameLayer("background")->desenhar();
@@ -171,7 +171,7 @@ void Jogo::menuAjuda()
         }
     }
 }
-void Jogo::menuCredito()
+void Jogo::menuCredito() 
 {
     char textoFormatado[30];
     FrameLayerManager::getInstance()->getFrameLayer("background")->desenhar();
@@ -198,7 +198,7 @@ void Jogo::menuCredito()
         }
     }
 }
-void Jogo::menuSobre()
+void Jogo::menuSobre() 
 {
     char textoFormatado[30];
     FrameLayerManager::getInstance()->getFrameLayer("background")->desenhar();
@@ -217,53 +217,39 @@ void Jogo::menuSobre()
         }
     }
 }
-void Jogo::jogoNovo()
+void Jogo::jogoNovo() 
 {
     frameworkGBF->soundSystem->musicManager->playInfinity("musica");
     controle->iniciar();
     setJogoFaseCarregar();
 }
-void Jogo::jogoExecutando()
+void Jogo::jogoExecutando() 
 {
-/*
-    if (controle->isGameOver()){
-        frameworkGBF->soundSystem->fxManager->play("gameover");
-        setJogoGameOver();
-    } else if (controle->isSetFinalizado()){
-        setJogoFaseFinalizada();
-    } else {
-        controle->executar(frameworkGBF->inputSystem);
-    }
-*/
     if ((controle->isGameOver())||(controle->isSetFinalizado())){
         setJogoFaseFinalizada();
     } else {
         controle->executar(frameworkGBF->inputSystem);
     }
 }
-void Jogo::jogoPause()
+void Jogo::jogoPause() 
 {
     setMenu();
 }
-void Jogo::jogoFaseCarregar()
+void Jogo::jogoFaseCarregar() 
 {
-//    FrameLayerManager::getInstance()->getFrameLayer("background")->desenhar();
-
     controle->display();
     frameworkGBF->writeSystem->escreverLocalizado("menu" ,100,80,"fase_carregar");
 
-    //frameworkGBF->writeSystem->escrever("texto" ,60,80,"%02d",controle->getNumeroSet());
-
     if (isTempoEspera()){
-        setJogoExecutando();
         controle->iniciarSet();
+        setJogoExecutando();
     }
 }
-void Jogo::jogoFaseFinalizada()
+void Jogo::jogoFaseFinalizada() 
 {
     setJogoFaseCarregar();
 }
-void Jogo::jogoGameOver()
+void Jogo::jogoGameOver() 
 {
     char textoFormatado[30];
     controle->display();
@@ -282,7 +268,7 @@ void Jogo::jogoGameOver()
         }
     }
 }
-void Jogo::jogoZerado()
+void Jogo::jogoZerado() 
 {
     char textoFormatado[30];
     controle->display();
@@ -301,7 +287,7 @@ void Jogo::jogoZerado()
         }
     }
 }
-bool Jogo::gatilhoJogoFaseCarregar()
+bool Jogo::gatilhoJogoFaseCarregar() 
 {
     bool continua = true;
 
@@ -319,11 +305,11 @@ bool Jogo::gatilhoJogoFaseCarregar()
     }
     return continua;
 }
-void Jogo::gatilhoMenuPrincipal()
+void Jogo::gatilhoMenuPrincipal() 
 {
     frameworkGBF->soundSystem->musicManager->playInfinity("menu");
 }
-bool Jogo::desenharBotaoEnter()
+bool Jogo::desenharBotaoEnter() 
 {
     bool desenhe = isTempoEspera();
 

@@ -32,8 +32,8 @@
 #include <GBF/GraphicSystemImage.h>
 
 #include "Util.h"
-
 #include <GBF/GraphicSystemGFX.h>
+
 
 class CPU : public Raquete
 {
@@ -50,7 +50,10 @@ class CPU : public Raquete
 
     //Inicia raquete
     virtual void iniciar();
-    void desenhar();
+
+    //Desenha o sprite principal do personagem
+    virtual void desenhar();
+
 
   private:
     void iniciarVisao();

@@ -102,7 +102,7 @@ bool Controle::isSetFinalizado()
     int diferenca=placar.getCPU()-placar.getJogador();
 
     if (((diferenca>=DIFERENCA_FIM_PARTIDA)||(diferenca<=-DIFERENCA_FIM_PARTIDA)) ||
-       (((placar.getCPU()>=LIMITE_PARA_PRORROGACAO)||(placar.getJogador()>=LIMITE_PARA_PRORROGACAO))
+       (((placar.getCPU()>LIMITE_PARA_PRORROGACAO)||(placar.getJogador()>LIMITE_PARA_PRORROGACAO))
           &&(diferenca>=DIFERENCA_FIM_PRORROGACAO))){
             finalizado = true;
             placar.novaPartida();

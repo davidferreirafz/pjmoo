@@ -73,6 +73,7 @@ bool CPU::isColisao(PersonagemAbstract * personagem)
 
     return retorno;
 }
+//Inicia raquete
 void CPU::iniciar()
 {
     Raquete::iniciar();
@@ -80,7 +81,7 @@ void CPU::iniciar()
 }
 void CPU::iniciarVisao()
 {
-    raioVisao=380;
+    raioVisao=180;
 }
 void CPU::aumentarVisao()
 {
@@ -102,7 +103,7 @@ Decisao CPU::pensar(Area visao, Area areaVisaoBola)
     //quadrado da soma dos raios
     qr = std::pow(float(raioVisao), 2);
     //quadrado da soma dos raios para efeito
-    qe = std::pow(float(visao.bottom), 2);
+    qe = std::pow(float(visao.bottom*1.4), 2);
 
 
     if (qx + qy <= qr){
@@ -146,4 +147,16 @@ Decisao CPU::pensar(Area visao, Area areaVisaoBola)
     }
 
     return decisao;
+}
+
+void CPU::desenhar()
+{
+    Raquete::desenhar();
+    GraphicSystemGFX *gfx = GraphicSystemGFX::getInstance();
+
+    gfx->setColor(255,255,255);
+    gfx->circulo(posicao.x+getDimensao().w/2,posicao.y+getDimensao().h/2,raioVisao);
+
+    gfx->setColor(255,0,0);
+    gfx->circulo(posicao.x+getDimensao().w/2,posicao.y+getDimensao().h/2,getDimensao().h*1.4);
 }

@@ -21,7 +21,7 @@
 #include "Controle.h"
 #include "Jogador.h"
 
-Controle::Controle()
+Controle::Controle() 
 {
 
     cenario    = FrameLayerManager::getInstance()->getFrameLayer("background");
@@ -33,13 +33,13 @@ Controle::Controle()
     raqueteJogador->setLado(LADO_DIREITO);
     raqueteCPU->setLado(LADO_ESQUERDO);
 }
-Controle::~Controle()
+Controle::~Controle() 
 {
     delete(raqueteJogador);
     delete(raqueteCPU);
 
 }
-void Controle::iniciar()
+void Controle::iniciar() 
 {
     Objeto::setArea(cenario->getArea());
 
@@ -51,17 +51,17 @@ void Controle::iniciar()
 
     placar.iniciar();
 }
-void Controle::iniciarSet()
+void Controle::iniciarSet() 
 {
     placar.novaPartida();
 }
-void Controle::prepararSet()
+void Controle::prepararSet() 
 {
     bola.continuar();
     raqueteJogador->iniciar();
     raqueteCPU->iniciar();
 }
-void Controle::executar(InputSystem * input)
+void Controle::executar(InputSystem * input) 
 {
     bola.acao(NULL);
     raqueteJogador->acao(input);
@@ -74,47 +74,47 @@ void Controle::executar(InputSystem * input)
 
     display();
 }
-bool Controle::isGameOver()
+bool Controle::isGameOver() 
 {
     bool terminou = false;
 
-    if (placar.getVitoriaCPU()>=placar.getVitoriaJogador()+DIFERENCA_VITORIA_TERMINAR){
+    if (placar.getVitoriaCPU()>=placar.getVitoriaJogador()+DIFERENCA_SET_VITORIA){
         terminou = true;
     }
 
     return terminou;
 }
-bool Controle::isFinalizado()
+bool Controle::isFinalizado() 
 {
     bool terminou = false;
 
-    if (placar.getVitoriaJogador()>=placar.getVitoriaCPU()+DIFERENCA_VITORIA_TERMINAR){
+    if (placar.getVitoriaJogador()>=placar.getVitoriaCPU()+DIFERENCA_SET_VITORIA){
         terminou = true;
     }
 
     return terminou;
 }
-bool Controle::isSetFinalizado()
+//Verifica se o set foi finalizado
+bool Controle::isSetFinalizado() 
 {
     bool finalizado = false;
 
     int diferenca=placar.getCPU()-placar.getJogador();
 
-    if ((diferenca>=DIFERENCA_PARTIDA_TERMINAR)||(diferenca<=-DIFERENCA_PARTIDA_TERMINAR)){
-        finalizado = true;
-        placar.novaPartida();
-        /*if (placar.getVitoriaJogador()>=placar.getVitoriaCPU()){
-            raqueteCPU->aumentarVisao();
-        }*/
+    if (((diferenca>=DIFERENCA_FIM_PARTIDA)||(diferenca<=-DIFERENCA_FIM_PARTIDA)) ||
+       (((placar.getCPU()>=LIMITE_PARA_PRORROGACAO)||(placar.getJogador()>=LIMITE_PARA_PRORROGACAO))
+          &&(diferenca>=DIFERENCA_FIM_PRORROGACAO))){
+            finalizado = true;
+            placar.novaPartida();
     }
 
     return finalizado;
 }
-int Controle::getNumeroSet()
+int Controle::getNumeroSet() 
 {
     return placar.getVitoriaCPU()+placar.getVitoriaJogador();
 }
-void Controle::display()
+void Controle::display() 
 {
     cenario->desenhar();
     wsManager->escrever("texto",260,10,"%02d X %02d",placar.getCPU(),placar.getJogador());
@@ -127,7 +127,7 @@ void Controle::display()
     raqueteCPU->desenhar();
 }
 //Ativar demonstração do jogo
-void Controle::ativarDemo(bool ativo)
+void Controle::ativarDemo(bool ativo) 
 {
     if (ativo){
         if (raqueteJogador!=NULL){
@@ -143,7 +143,7 @@ void Controle::ativarDemo(bool ativo)
         raqueteJogador->setLado(LADO_DIREITO);
     }
 }
-void Controle::juiz()
+void Controle::juiz() 
 {
     if (bola.getPosicao().x>=cenario->getArea().right){
         placar.pontuarCPU();
@@ -159,10 +159,18 @@ void Controle::juiz()
         bola.iniciar(raqueteJogador->saque());
     }
 }
-void Controle::setFinalizado()
+void Controle::setFinalizado() 
 {
 }
-int Controle::DIFERENCA_PARTIDA_TERMINAR =5;
+//Diferença para o fim da partida
+int Controle::DIFERENCA_FIM_PARTIDA =5;
 
-int Controle::DIFERENCA_VITORIA_TERMINAR =2;
+//Diferença para determinar fim da prorrogação
+int Controle::DIFERENCA_FIM_PRORROGACAO =2;
+
+//Limite para contar a prorrogação
+int Controle::LIMITE_PARA_PRORROGACAO =10;
+
+//Diferença de sets para determinar o ganhador
+int Controle::DIFERENCA_SET_VITORIA =2;
 

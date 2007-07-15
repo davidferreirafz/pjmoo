@@ -55,6 +55,7 @@ class Controle
 
     bool isFinalizado();
 
+    //Verifica se o set foi finalizado
     bool isSetFinalizado();
 
     int getNumeroSet();
@@ -84,9 +85,17 @@ class Controle
 
     WriteSystemManager * wsManager;
 
-    static int DIFERENCA_PARTIDA_TERMINAR;
+    //Diferença para o fim da partida
+    static int DIFERENCA_FIM_PARTIDA;
 
-    static int DIFERENCA_VITORIA_TERMINAR;
+    //Diferença para determinar fim da prorrogação
+    static int DIFERENCA_FIM_PRORROGACAO;
+
+    //Limite para contar a prorrogação
+    static int LIMITE_PARA_PRORROGACAO;
+
+    //Diferença de sets para determinar o ganhador
+    static int DIFERENCA_SET_VITORIA;
 
 };
 #endif

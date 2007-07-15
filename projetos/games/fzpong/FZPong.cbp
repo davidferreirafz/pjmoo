@@ -9,9 +9,8 @@
 			<Target title="win32 - release">
 				<Option output="bin/FZPong.exe" prefix_auto="0" extension_auto="0" />
 				<Option working_dir="bin/" />
-				<Option type="1" />
+				<Option type="0" />
 				<Option compiler="gcc" />
-				<Option use_console_runner="0" />
 				<Option projectResourceIncludeDirsRelation="1" />
 				<Compiler>
 					<Add option="-fexpensive-optimizations" />
@@ -24,6 +23,47 @@
 				</Linker>
 			</Target>
 			<Target title="linux - release">
+				<Option output="bin/FZPong" prefix_auto="0" extension_auto="0" />
+				<Option working_dir="bin/" />
+				<Option type="0" />
+				<Option compiler="gcc" />
+				<Option parameters="--window" />
+				<Option projectLinkerOptionsRelation="1" />
+				<Option projectResourceIncludeDirsRelation="0" />
+				<Compiler>
+					<Add option="-fexpensive-optimizations" />
+					<Add option="-Os" />
+					<Add option="-W" />
+					<Add option="-Wall" />
+					<Add option="-DGNU_LINUX" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+					<Add option="-mwindows" />
+					<Add library="GBF" />
+					<Add library="SDL_mixer" />
+					<Add library="SDL_image" />
+					<Add library="SDLmain" />
+					<Add library="SDL" />
+				</Linker>
+			</Target>
+			<Target title="win32 - debug">
+				<Option output="bin/FZPong.exe" prefix_auto="0" extension_auto="0" />
+				<Option working_dir="bin/" />
+				<Option type="0" />
+				<Option compiler="gcc" />
+				<Option projectResourceIncludeDirsRelation="1" />
+				<Compiler>
+					<Add option="-fexpensive-optimizations" />
+					<Add option="-Os" />
+					<Add option="-W" />
+					<Add option="-Wall" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+				</Linker>
+			</Target>
+			<Target title="linux - debug">
 				<Option output="bin/FZPong" prefix_auto="0" extension_auto="0" />
 				<Option working_dir="bin/" />
 				<Option type="0" />

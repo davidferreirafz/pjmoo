@@ -25,27 +25,26 @@ classcanvas 128025 class_ref 129044 // Raquete
     operation_ref 138388 // isBateuParede
     operation_ref 138516 // getVisaoBola
     operation_ref 138644 // adaptarVelocidade
-    operation_ref 128137 // fazerJogada
   xyz 124 374 3010
   end
 classcanvas 128106 class_ref 128916 // CPU
   draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_infonote default shadow default
   color lightblue
-  xyz 293 455 3005
+  xyz 290 300 3005
   end
 classcanvas 128137 class_ref 128532 // Controle
   draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_infonote default shadow default
-  xyz 146 1 3005
+  xyz 136 0 3005
   end
 classcanvas 128287 class_ref 128660 // Placar
   draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_infonote default shadow default
   color lightblue
-  xyz 567 191 3010
+  xyz 569 185 3010
   end
 classcanvas 128362 class_ref 128276 // Bola
   draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_infonote default shadow default
   color lightblue
-  xyz 454 11 3005
+  xyz 441 3 3005
   end
 classcanvas 128793 class_ref 128788 // Jogador
   draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_infonote default shadow default
@@ -58,39 +57,39 @@ classcanvas 128793 class_ref 128788 // Jogador
   xyz 26 326 3010
   end
 fragment 130329 "raqueteJogador"
-  xyzwh 12 300 1994 276 133
+  xyzwh 5 295 1994 276 133
 end
 relationcanvas 128234 relation_ref 128916 // <directional aggregation>
   from ref 128137 z 1999 to ref 128106
-  role_a_pos 464 438 3000 no_role_b
+  role_a_pos 373 283 3000 no_role_b
   no_multiplicity_a no_multiplicity_b
 relationcanvas 128265 relation_ref 129556 // <unidirectional association>
   geometry HVr
-  from ref 128009 z 1999 to point 57 137
+  from ref 128009 z 1999 to point 57 136
   line 130026 z 1999 to ref 128137
-  role_a_pos 99 123 3000 no_role_b
+  role_a_pos 89 122 3000 no_role_b
   no_multiplicity_a no_multiplicity_b
 relationcanvas 128409 relation_ref 129044 // <generalisation>
   geometry HVH
-  from ref 128106 z 1999 to point 254 528
-  line 130457 z 1999 to point 254 390
+  from ref 128106 z 1999 to point 253 373
+  line 130457 z 1999 to point 253 390
   line 130585 z 1999 to ref 128025
   no_role_a no_role_b
   no_multiplicity_a no_multiplicity_b
 relationcanvas 128415 relation_ref 128532 // <directional aggregation by value>
   from ref 128137 z 1999 to ref 128287
-  role_a_pos 530 273 3000 no_role_b
+  role_a_pos 532 253 3000 no_role_b
   no_multiplicity_a no_multiplicity_b
 relationcanvas 128490 relation_ref 128660 // <directional aggregation by value>
   geometry HVH
-  from ref 128137 z 1999 to point 404 137
-  line 129002 z 1999 to point 404 91
+  from ref 128137 z 1999 to point 392 136
+  line 129002 z 1999 to point 392 90
   line 129130 z 1999 to ref 128362
-  role_a_pos 425 77 3000 no_role_b
+  role_a_pos 412 76 3000 no_role_b
   no_multiplicity_a no_multiplicity_b
 relationcanvas 128537 relation_ref 128153 // <directional aggregation>
   from ref 128137 z 3004 to ref 128025
-  role_a_pos 187 357 3000 no_role_b
+  role_a_pos 186 357 3000 no_role_b
   no_multiplicity_a no_multiplicity_b
 relationcanvas 128921 relation_ref 129300 // <generalisation>
   geometry VH
@@ -99,7 +98,7 @@ relationcanvas 128921 relation_ref 129300 // <generalisation>
   no_role_a no_role_b
   no_multiplicity_a no_multiplicity_b
 relationcanvas 129049 relation_ref 128281 // <dependency>
-  from ref 128137 z 3004 stereotype "<<instance>>" xyz 84 277 3000 to ref 128793
+  from ref 128137 z 3004 stereotype "<<instance>>" xyz 79 281 3000 to ref 128793
   no_role_a no_role_b
   no_multiplicity_a no_multiplicity_b
 end

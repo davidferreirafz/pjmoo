@@ -1,13 +1,13 @@
 format 38
 
 classinstance 128106 class_ref 128532 // Controle
-  name "" xyz 162 25 2000 life_line_z 2000
+  name "" xyz 162 24 2000 life_line_z 2000
 classinstance 128234 class_ref 128276 // Bola
-  name "" xyz 226 24 2000 life_line_z 2000
+  name "" xyz 221 24 2000 life_line_z 2000
 classinstance 128362 class_ref 128788 // Jogador
-  name "" xyz 286 24 2000 life_line_z 2000
+  name "raqueteJogador" xyz 273 24 2000 life_line_z 2000
 classinstance 128490 class_ref 128916 // CPU
-  name "" xyz 345 24 2000 life_line_z 2000
+  name "raqueteCPU" xyz 392 24 2000 life_line_z 2000
 classinstance 129130 class_ref 129556 // Jogo
   name "" xyz 39 24 2000 life_line_z 2000
 fragment 130410 "if true"
@@ -17,7 +17,7 @@ fragment 130538 "if true"
   color lightblue xyzwh 10 80 1990 203 51
 end
 fragment 132586 "Jogo em Execução"
-  xyzwh 5 3 1995 412 467
+  xyzwh 1 3 1995 489 464
 end
 durationcanvas 129258 classinstance_ref 129130 // :Jogo
   xyzwh 58 74 2010 11 42
@@ -32,15 +32,15 @@ durationcanvas 130666 classinstance_ref 129130 // :Jogo
 durationcanvas 130794 classinstance_ref 128106 // :Controle
   xyzwh 182 226 2010 11 218
 durationcanvas 131050 classinstance_ref 128234 // :Bola
-  xyzwh 245 240 2010 11 25
-durationcanvas 131306 classinstance_ref 128362 // :Jogador
-  xyzwh 305 267 2010 11 25
-durationcanvas 131562 classinstance_ref 128490 // :CPU
-  xyzwh 364 293 2010 11 25
+  xyzwh 240 240 2010 11 25
+durationcanvas 131306 classinstance_ref 128362 // raqueteJogador:Jogador
+  xyzwh 326 267 2010 11 25
+durationcanvas 131562 classinstance_ref 128490 // raqueteCPU:CPU
+  xyzwh 429 293 2010 11 25
 durationcanvas 131818 classinstance_ref 128234 // :Bola
-  xyzwh 245 328 2010 11 25
+  xyzwh 240 328 2010 11 25
 durationcanvas 132074 classinstance_ref 128234 // :Bola
-  xyzwh 245 371 2010 11 26
+  xyzwh 240 371 2010 11 26
 msg 129514 synchronous
   from durationcanvas_ref 129258 // 129130
   to durationcanvas_ref 129386 // 128106

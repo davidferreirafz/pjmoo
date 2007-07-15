@@ -1,7 +1,7 @@
 format 38
 "FZPong" // FZPong
-  revision 43
-  modified_by 20 "david"
+  revision 46
+  modified_by 74 "david"
   // class settings
   //class diagram settings
   draw_all_relations default hide_attributes yes hide_operations yes show_members_full_definition yes show_members_visibility default show_members_stereotype default show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode uml auto_label_position default show_infonote default shadow default
@@ -231,11 +231,9 @@ ${body}}
 	nparams 0
 	cpp_decl "    ${comment}${inline}${virtual}${name}${(}${)}${volatile}${throw};
 "
-	cpp_def "//Destrutor
-
-${comment}${inline}${class}::${name}${(}${)}${throw}{
-${body}}
-"
+	cpp_def "${comment}${inline}${class}::${name}${(}${)}${volatile}${throw} 
+{
+${body}}"
 	
 	
 	comment "Destrutor"
@@ -246,10 +244,7 @@ ${body}}
 	nparams 0
 	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
 "
-	cpp_def "//Inicializa os recursos utilizados no jogo.
-//Ex.: Imagens, sons, fontes, configuração do modo gráfico e etc..
-
-${comment}${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}
 {
 ${body}}"
 	
@@ -407,12 +402,7 @@ ${body}}"
 	nparams 0
 	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
 "
-	cpp_def "//* @brief (one liner)
-//  *
-//  * (documentation goes here)
-//  
-
-${comment}${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}
 {
 ${body}}"
 	
@@ -490,9 +480,9 @@ ${inlines}
 	nparams 0
 	cpp_decl "    ${comment}${inline}${name}${(}${)}${volatile}${throw};
 "
-	cpp_def "${comment}${inline}${class}::${name}${(}${)}${throw}{
-${body}}
-"
+	cpp_def "${comment}${inline}${class}::${name}${(}${)}${volatile}${throw} 
+{
+${body}}"
 	
 	
       end
@@ -502,9 +492,9 @@ ${body}}
 	nparams 0
 	cpp_decl "    ${comment}${inline}${virtual}${name}${(}${)}${volatile}${throw};
 "
-	cpp_def "${comment}${inline}${class}::${name}${(}${)}${throw}{
-${body}}
-"
+	cpp_def "${comment}${inline}${class}::${name}${(}${)}${volatile}${throw} 
+{
+${body}}"
 	
 	
       end
@@ -515,8 +505,7 @@ ${body}}
 	  param in name "area" explicit_type "Area"
 	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${t0} ${p0}${)}${const}${volatile}${throw}${abstract};
 "
-	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${t0} ${p0}${)}${const}${volatile}${throw}${staticnl}
-{
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${t0} ${p0}${)}${const}${volatile}${throw}${staticnl}{
 ${body}}"
 	
 	
@@ -608,9 +597,9 @@ ${inlines}
 	nparams 0
 	cpp_decl "    ${comment}${inline}${name}${(}${)}${volatile}${throw};
 "
-	cpp_def "${comment}${inline}${class}::${name}${(}${)}${throw}{
-${body}}
-"
+	cpp_def "${comment}${inline}${class}::${name}${(}${)}${volatile}${throw} 
+{
+${body}}"
 	
 	
       end
@@ -620,9 +609,9 @@ ${body}}
 	nparams 0
 	cpp_decl "    ${comment}${inline}${virtual}${name}${(}${)}${volatile}${throw};
 "
-	cpp_def "${comment}${inline}${class}::${name}${(}${)}${throw}{
-${body}}
-"
+	cpp_def "${comment}${inline}${class}::${name}${(}${)}${volatile}${throw} 
+{
+${body}}"
 	
 	
       end
@@ -804,9 +793,9 @@ ${inlines}
 	nparams 0
 	cpp_decl "    ${comment}${inline}${name}${(}${)}${volatile}${throw};
 "
-	cpp_def "${comment}${inline}${class}::${name}${(}${)}${throw}{
-${body}}
-"
+	cpp_def "${comment}${inline}${class}::${name}${(}${)}${volatile}${throw} 
+{
+${body}}"
 	
 	
       end
@@ -816,9 +805,9 @@ ${body}}
 	nparams 0
 	cpp_decl "    ${comment}${inline}${virtual}${name}${(}${)}${volatile}${throw};
 "
-	cpp_def "${comment}${inline}${class}::${name}${(}${)}${throw}{
-${body}}
-"
+	cpp_def "${comment}${inline}${class}::${name}${(}${)}${volatile}${throw} 
+{
+${body}}"
 	
 	
       end
@@ -906,6 +895,7 @@ ${body}}"
 ${body}}"
 	
 	
+	comment "Verifica se o set foi finalizado"
       end
 
       operation 130452 "getNumeroSet"
@@ -1022,22 +1012,44 @@ ${body}}"
 	idl_decl ""
       end
 
-      attribute 128660 "DIFERENCA_PARTIDA_TERMINAR"
+      attribute 128660 "DIFERENCA_FIM_PARTIDA"
 	class_attribute private explicit_type "int"
 	init_value "=5"
 	cpp_decl "    ${comment}${static}${mutable}${volatile}${const}${type} ${name}${value};
 "
 	java_decl ""
 	idl_decl ""
+	comment "Diferença para o fim da partida"
       end
 
-      attribute 128788 "DIFERENCA_VITORIA_TERMINAR"
+      attribute 128074 "DIFERENCA_FIM_PRORROGACAO"
 	class_attribute private explicit_type "int"
 	init_value "=2"
 	cpp_decl "    ${comment}${static}${mutable}${volatile}${const}${type} ${name}${value};
 "
 	java_decl ""
 	idl_decl ""
+	comment "Diferença para determinar fim da prorrogação"
+      end
+
+      attribute 128202 "LIMITE_PARA_PRORROGACAO"
+	class_attribute private explicit_type "int"
+	init_value "=10"
+	cpp_decl "    ${comment}${static}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	java_decl ""
+	idl_decl ""
+	comment "Limite para contar a prorrogação"
+      end
+
+      attribute 128788 "DIFERENCA_SET_VITORIA"
+	class_attribute private explicit_type "int"
+	init_value "=2"
+	cpp_decl "    ${comment}${static}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	java_decl ""
+	idl_decl ""
+	comment "Diferença de sets para determinar o ganhador"
       end
 
       classrelation 128748 // <dependency>
@@ -1082,9 +1094,9 @@ ${inlines}
 	nparams 0
 	cpp_decl "    ${comment}${inline}${name}${(}${)}${volatile}${throw};
 "
-	cpp_def "${comment}${inline}${class}::${name}${(}${)}${throw}{
-${body}}
-"
+	cpp_def "${comment}${inline}${class}::${name}${(}${)}${volatile}${throw} 
+{
+${body}}"
 	
 	
       end
@@ -1094,9 +1106,9 @@ ${body}}
 	nparams 0
 	cpp_decl "    ${comment}${inline}${virtual}${name}${(}${)}${volatile}${throw};
 "
-	cpp_def "${comment}${inline}${class}::${name}${(}${)}${throw}{
-${body}}
-"
+	cpp_def "${comment}${inline}${class}::${name}${(}${)}${volatile}${throw} 
+{
+${body}}"
 	
 	
       end
@@ -1287,9 +1299,9 @@ ${inlines}
 	nparams 0
 	cpp_decl "    ${comment}${inline}${name}${(}${)}${volatile}${throw};
 "
-	cpp_def "${comment}${inline}${class}::${name}${(}${)}${throw}{
-${body}}
-"
+	cpp_def "${comment}${inline}${class}::${name}${(}${)}${volatile}${throw} 
+{
+${body}}"
 	
 	
       end
@@ -1299,9 +1311,9 @@ ${body}}
 	nparams 0
 	cpp_decl "    ${comment}${inline}${virtual}${name}${(}${)}${volatile}${throw};
 "
-	cpp_def "${comment}${inline}${class}::${name}${(}${)}${throw}{
-${body}}
-"
+	cpp_def "${comment}${inline}${class}::${name}${(}${)}${volatile}${throw} 
+{
+${body}}"
 	
 	
       end
@@ -1356,9 +1368,9 @@ ${inlines}
 	nparams 0
 	cpp_decl "    ${comment}${inline}${name}${(}${)}${volatile}${throw};
 "
-	cpp_def "${comment}${inline}${class}::${name}${(}${)}${throw}{
-${body}}
-"
+	cpp_def "${comment}${inline}${class}::${name}${(}${)}${volatile}${throw} 
+{
+${body}}"
 	
 	
       end
@@ -1368,9 +1380,9 @@ ${body}}
 	nparams 0
 	cpp_decl "    ${comment}${inline}${virtual}${name}${(}${)}${volatile}${throw};
 "
-	cpp_def "${comment}${inline}${class}::${name}${(}${)}${throw}{
-${body}}
-"
+	cpp_def "${comment}${inline}${class}::${name}${(}${)}${volatile}${throw} 
+{
+${body}}"
 	
 	
       end
@@ -1413,8 +1425,21 @@ ${body}}"
 	
       end
 
+      operation 128202 "iniciar"
+	cpp_virtual public explicit_return_type "void"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+	comment "Inicia raquete"
+      end
+
       operation 131732 "iniciarVisao"
-	public explicit_return_type "void"
+	private explicit_return_type "void"
 	nparams 0
 	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
 "
@@ -1426,7 +1451,7 @@ ${body}}"
       end
 
       operation 131860 "aumentarVisao"
-	public explicit_return_type "void"
+	private explicit_return_type "void"
 	nparams 0
 	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
 "
@@ -1471,7 +1496,7 @@ ${body}}"
       classrelation 130068 // <dependency>
 	relation 130068 -_->
 	  a default
-	    cpp default "Generated"
+	    cpp default "#include in header"
 	    classrelation_ref 130068 // <dependency>
 	  b multiplicity "" parent class_ref 129428 // Util
       end
@@ -1501,11 +1526,12 @@ ${inlines}
 	nparams 0
 	cpp_decl "    ${comment}${inline}${name}${(}${)}${volatile}${throw};
 "
-	cpp_def "${comment}${inline}${class}::${name}${(}${)}${throw}{
-${body}}
-"
+	cpp_def "${comment}${inline}${class}::${name}${(}${)}${volatile}${throw} 
+{
+${body}}"
 	
 	
+	comment "Construtor"
       end
 
       operation 137364 "~Raquete"
@@ -1513,14 +1539,28 @@ ${body}}
 	nparams 0
 	cpp_decl "    ${comment}${inline}${virtual}${name}${(}${)}${volatile}${throw};
 "
-	cpp_def "${comment}${inline}${class}::${name}${(}${)}${throw}{
-${body}}
-"
+	cpp_def "${comment}${inline}${class}::${name}${(}${)}${volatile}${throw} 
+{
+${body}}"
 	
 	
+	comment "Destrutor"
       end
 
-      operation 137492 "iniciar"
+      operation 128074 "iniciar"
+	cpp_virtual public explicit_return_type "void"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+	comment "Inicia raquete"
+      end
+
+      operation 137492 "preparar"
 	public explicit_return_type "void"
 	nparams 0
 	constraint "Inicializar Raquete"
@@ -1531,6 +1571,7 @@ ${body}}
 ${body}}"
 	
 	
+	comment "Posiciona Raquete"
       end
 
       operation 137620 "saque"
@@ -1690,7 +1731,6 @@ ${body}}"
 	    classrelation_ref 129940 // visaoBola (<unidirectional association>)
 	  b multiplicity "" parent class_ref 128276 // Bola
       end
-
     end
 
     class 129428 "Util"
@@ -1711,8 +1751,7 @@ ${inlines}
 	  param in name "ponto" explicit_type "Ponto"
 	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${t0} ${p0}, ${t1} ${p1}${)}${const}${volatile}${throw}${abstract};
 "
-	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${t0} ${p0}, ${t1} ${p1}${)}${const}${volatile}${throw}${staticnl}
-{
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${t0} ${p0}, ${t1} ${p1}${)}${const}${volatile}${throw}${staticnl}{
 ${body}}"
 	
 	
@@ -1764,8 +1803,14 @@ Com foco na Classe Controle"
       size A2
     end
 
-    classdiagram 128276 "Diagram1"
+    classdiagram 128276 "Rascunhos"
       draw_all_relations default hide_attributes no hide_operations no show_members_full_definition default show_members_visibility yes show_members_stereotype yes show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_infonote default shadow default
+      size A2
+    end
+
+    sequencediagram 128023 "SQ - Estados do Jogo"
+      show_full_operations_definition default write_horizontally default drawing_language default draw_all_relations default shadow default
+      comment "Diagrama de Sequencia com foco na mudança de estados do jogo"
       size A2
     end
   end

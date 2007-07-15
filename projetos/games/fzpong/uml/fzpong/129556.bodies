@@ -177,10 +177,17 @@ class Jogo
     controle->iniciar();
     setJogoFaseCarregar();
 !!!134036.cpp!!!	jogoExecutando() : void
+/*
     if (controle->isGameOver()){
         frameworkGBF->soundSystem->fxManager->play("gameover");
         setJogoGameOver();
     } else if (controle->isSetFinalizado()){
+        setJogoFaseFinalizada();
+    } else {
+        controle->executar(frameworkGBF->inputSystem);
+    }
+*/
+    if ((controle->isGameOver())||(controle->isSetFinalizado())){
         setJogoFaseFinalizada();
     } else {
         controle->executar(frameworkGBF->inputSystem);
@@ -241,6 +248,10 @@ class Jogo
     if (controle->isFinalizado()){
         frameworkGBF->soundSystem->fxManager->play("vitoria");
         setJogoZerado();
+        continua = false;
+    } else if (controle->isGameOver()){
+        frameworkGBF->soundSystem->fxManager->play("gameover");
+        setJogoGameOver();
         continua = false;
     } else {
         frameworkGBF->soundSystem->fxManager->play("iniciando");

@@ -39,7 +39,9 @@ tela_ajuda_05= -Ganha o jogo quem tiver a vantagem
 tela_ajuda_06=  de duas partidas.
 tela_ajuda_07= -Para vencer uma partida, ganha
 tela_ajuda_08=  aquele que tiver uma vantagem de
-tela_ajuda_09=  cinco pontos.
+tela_ajuda_09=  cinco pontos. Se pontuacao 
+tela_ajuda_10=  ultrapassar os dez pontos, basta  
+tela_ajuda_11=  uma diferenca de dois pontos.
 
 #Jogo::jogoGameOver()
 tela_gameover_01=Voce Perdeu!!!

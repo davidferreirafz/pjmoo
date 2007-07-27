@@ -10,7 +10,7 @@ rm -fR $TMP_DIR
 mkdir -p $TMP_DIR
 
 echo "    Copiando Arquivos..."
-cp -R ./bin/* $TMP_DIR
+cp -vR $PROJETO_DIR/bin/* $TMP_DIR
 
 echo "    Fixando permissoes"
 
@@ -23,20 +23,20 @@ chmod 2775 fzpong/data/screen
 chmod  775 fzpong/FZPong
 
 echo "    Criando pacote... (Zip - All)"
-zip -rq4 $DISTRO/FZPong.$VERSAO.bin.all.zip * -x *svn* *cvsignore* *xcf* *log*
+zip -vrq4 $DISTRO/FZPong.$VERSAO.bin.all.zip * -x *svn* *cvsignore* *xcf* *log*
 
 echo "    Criando pacote... (GNU/Linux)"
-rm  -f fzpong/*.exe
-tar -czf $DISTRO/FZPong.$VERSAO.bin.linux.tar.gz * --exclude=*svn* --exclude=*xcf* --exclude=*log*
+rm  -fv fzpong/*.exe
+tar -cvzf $DISTRO/FZPong.$VERSAO.bin.linux.tar.gz * --exclude=*svn* --exclude=*xcf* --exclude=*log*
 
 echo "    Copiando Source"
-mkdir -p /tmp/pjmoo/src/fzpong
+mkdir -vp /tmp/pjmoo/src/fzpong
 cp $PROJETO_DIR/*  /tmp/pjmoo/src/fzpong/
-cp -R $PROJETO_DIR/src /tmp/pjmoo/src/fzpong/
+cp -vR $PROJETO_DIR/src /tmp/pjmoo/src/fzpong/
 cd /tmp/pjmoo/src/fzpong/
 
 echo "    Criando pacote source ... (Linux/Win32)"
-rm -f $DISTRO/FZPong.$VERSAO.src.zip
-zip -rq4 $DISTRO/FZPong.$VERSAO.src.zip * -x *svn* *cvsignore* *doc* *objs* *bin* *log* *xcf*
-rm -fR $TMP_DIR
+rm -vf $DISTRO/FZPong.$VERSAO.src.zip
+zip -vrq4 $DISTRO/FZPong.$VERSAO.src.zip * -x *svn* *cvsignore* *doc* *objs* *bin* *log* *xcf*
+rm -vfR $TMP_DIR
 echo "    Pacote Finalizado"

@@ -22,8 +22,8 @@ OutputDir=C:\Projeto\pjmoo\distro\games
 OutputBaseFilename=FZPong.1.5.install.bin.win32
 AppCopyright=GPL
 SourceDir=C:\Projeto\pjmoo\projetos\games\fzpong\bin
-WizardImageFile=C:\Projeto\pjmoo\projetos\games\fzpong\etc\ImageBanner.bmp
-WizardSmallImageFile=C:\Projeto\pjmoo\projetos\games\fzpong\etc\ImageSmall.bmp
+WizardImageFile=C:\Projeto\pjmoo\projetos\games\fzpong\deploy\ImageBanner.bmp
+WizardSmallImageFile=C:\Projeto\pjmoo\projetos\games\fzpong\deploy\ImageSmall.bmp
 InternalCompressLevel=ultra
 LanguageDetectionMethod=locale
 DirExistsWarning=no
@@ -57,10 +57,10 @@ Filename: {app}\FZPong.exe; Description: {cm:LaunchProgram,FZPong}; Flags: nowai
 
 [INI]
 Filename: {group}\PJMOO.url; Section: InternetShortcut; Key: URL; String: http://pjmoo.sourceforge.net
-Filename: {group}\Projeto Código Livre.url; Section: InternetShortcut; Key: URL; String: http://codigolivre.org.br/projects/pjmoo/
+Filename: {group}\FZ Pong.url; Section: InternetShortcut; Key: URL; String: http://pjmoo.wiki.sourceforge.net/FZPong
 [UninstallDelete]
 Type: files; Name: {group}\PJMOO.url
-Type: files; Name: {group}\Projeto Código Livre.url
+Type: files; Name: {group}\FZ Pong.url
 [Languages]
 Name: English; MessagesFile: compiler:Default.isl
 Name: Portugues; MessagesFile: compiler:Languages\BrazilianPortuguese.isl

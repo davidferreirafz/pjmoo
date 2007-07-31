@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="Pancada" />
+		<Option pch_mode="0" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="win32 - release">
+				<Option output="bin/Pancada.exe" prefix_auto="0" extension_auto="0" />
+				<Option working_dir="bin/" />
+				<Option type="0" />
+				<Option compiler="gcc" />
+				<Option parameters="--window" />
+				<Option projectCompilerOptionsRelation="1" />
+				<Option projectLinkerOptionsRelation="2" />
+				<Option projectResourceIncludeDirsRelation="0" />
+				<Compiler>
+					<Add option="-fexpensive-optimizations" />
+					<Add option="-Os" />
+					<Add option="-W" />
+					<Add option="-Wall" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+					<Add library="mingw32" />
+				</Linker>
+			</Target>
+			<Target title="win32 - debug">
+				<Option output="bin/Pancada_DEBUG.exe" prefix_auto="0" extension_auto="0" />
+				<Option working_dir="bin/" />
+				<Option type="0" />
+				<Option compiler="gcc" />
+				<Option parameters="--window" />
+				<Option projectCompilerOptionsRelation="1" />
+				<Option projectLinkerOptionsRelation="2" />
+				<Option projectResourceIncludeDirsRelation="0" />
+				<Compiler>
+					<Add option="-W" />
+					<Add option="-Wall" />
+					<Add option="-pg" />
+					<Add option="-g" />
+					<Add option="-DDEBUG" />
+				</Compiler>
+				<Linker>
+					<Add option="-pg -lgmon" />
+					<Add option="-pg" />
+					<Add library="mingw32" />
+				</Linker>
+			</Target>
+			<Target title="linux - release">
+				<Option output="bin/Pancada" prefix_auto="0" extension_auto="0" />
+				<Option working_dir="bin/" />
+				<Option type="0" />
+				<Option compiler="gcc" />
+				<Option parameters="--window" />
+				<Option projectCompilerOptionsRelation="1" />
+				<Option projectLinkerOptionsRelation="2" />
+				<Option projectResourceIncludeDirsRelation="0" />
+				<Compiler>
+					<Add option="-fexpensive-optimizations" />
+					<Add option="-Os" />
+					<Add option="-W" />
+					<Add option="-Wall" />
+					<Add option="-DGNU_LINUX" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+				</Linker>
+			</Target>
+			<Target title="linux - debug">
+				<Option output="bin/Pancada_DEBUG" prefix_auto="0" extension_auto="0" />
+				<Option working_dir="bin/" />
+				<Option type="0" />
+				<Option compiler="gcc" />
+				<Option projectCompilerOptionsRelation="1" />
+				<Option projectLinkerOptionsRelation="2" />
+				<Option projectResourceIncludeDirsRelation="0" />
+				<Compiler>
+					<Add option="-W" />
+					<Add option="-Wall" />
+					<Add option="-pg" />
+					<Add option="-g" />
+					<Add option="-DGNU_LINUX" />
+					<Add option="-DDEBUG" />
+				</Compiler>
+				<Linker>
+					<Add option="-pg" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add directory="C:/SDK/Cpp/CodeBlocks/include/SDL" />
+			<Add directory="C:/SDK/Cpp/CodeBlocks/include/GBF" />
+		</Compiler>
+		<Linker>
+			<Add option="-mwindows" />
+			<Add library="GBF" />
+			<Add library="SDL_mixer" />
+			<Add library="SDL_image" />
+			<Add library="SDLmain" />
+			<Add library="SDL" />
+		</Linker>
+		<Unit filename="src/Cabeca.cpp" />
+		<Unit filename="src/Cabeca.h" />
+		<Unit filename="src/CabecaFactory.cpp" />
+		<Unit filename="src/CabecaFactory.h" />
+		<Unit filename="src/Controle.cpp" />
+		<Unit filename="src/Controle.h" />
+		<Unit filename="src/EfeitoAbstract.cpp" />
+		<Unit filename="src/EfeitoAbstract.h" />
+		<Unit filename="src/EfeitoContainer.cpp" />
+		<Unit filename="src/EfeitoContainer.h" />
+		<Unit filename="src/EfeitoSangue.cpp" />
+		<Unit filename="src/EfeitoSangue.h" />
+		<Unit filename="src/FaseAbstract.cpp" />
+		<Unit filename="src/FaseAbstract.h" />
+		<Unit filename="src/FaseFactory.cpp" />
+		<Unit filename="src/FaseFactory.h" />
+		<Unit filename="src/FaseUm.cpp" />
+		<Unit filename="src/FaseUm.h" />
+		<Unit filename="src/Jogo.cpp" />
+		<Unit filename="src/Jogo.h" />
+		<Unit filename="src/LutadorAbstract.cpp" />
+		<Unit filename="src/LutadorAbstract.h" />
+		<Unit filename="src/LutadorPC.cpp" />
+		<Unit filename="src/LutadorPC.h" />
+		<Unit filename="src/LutadorPlayer.cpp" />
+		<Unit filename="src/LutadorPlayer.h" />
+		<Unit filename="src/LuvaAbstract.cpp" />
+		<Unit filename="src/LuvaAbstract.h" />
+		<Unit filename="src/LuvaDireita.cpp" />
+		<Unit filename="src/LuvaDireita.h" />
+		<Unit filename="src/LuvaEsquerda.cpp" />
+		<Unit filename="src/LuvaEsquerda.h" />
+		<Unit filename="src/MembroBase.cpp" />
+		<Unit filename="src/MembroBase.h" />
+		<Unit filename="src/Placar.cpp" />
+		<Unit filename="src/Placar.h" />
+		<Extensions>
+			<code_completion />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>

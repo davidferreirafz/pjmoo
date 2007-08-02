@@ -6,7 +6,7 @@ WriteSystemManager * FaseAbstract::wsManager;
 FaseAbstract::FaseAbstract()
 {
 	//informa tempo por round
-	cronometroRound.setTempoOriginal(3);
+	cronometroRound.setTempoOriginal(10);
 
 	lutadorPlayer = NULL;
 	lutadorPC     = NULL;

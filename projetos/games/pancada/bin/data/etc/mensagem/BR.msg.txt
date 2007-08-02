@@ -1,11 +1,6 @@
 #Arquivo de Textos
 #Português Brasil
 
-#Menu::Config
-menu_idioma_br=Português
-menu_idioma_en=English
-menu_idioma_es=Español
-
 
 #Menu::Menu
 menu_1=SOBRE
@@ -17,11 +12,9 @@ menu_5=SAIR
 #Titulos
 titulo_sobre=SOBRE
 titulo_ajuda=AJUDA
-titulo_credito=CRÉDITO
+titulo_credito=CREDITO
 titulo_pause=PAUSE
 
-#diversos
-fase_carregar=Prepare-se! 
 
 #botao
 botao_enter=[ENTER]
@@ -83,9 +76,6 @@ tela_zerado_02=           Parabéns!
 tela_zerado_03=    Você é o novo campeão do
 tela_zerado_04=torneio 'DukItan Boxing Club'.
 tela_zerado_05= 
-tela_zerado_06=  Não perca tempo, envie agora
-tela_zerado_07=mesmo sua pontuação para o 
-tela_zerado_08=hall da fama!
 
 
 #Jogo::jogoGameOver

@@ -36,11 +36,11 @@ class Controle
     void executar(InputSystem * input);
 
     void desenhar();
-
+    void carregar();
 
 
   private:
-
+    SpriteItem *fight;
 
   protected:
     TimerSystemCronometroDecrescente tempoEspera;

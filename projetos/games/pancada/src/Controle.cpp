@@ -5,7 +5,7 @@
 Controle::Controle()
 {
     fase = NULL;
-    tempoEspera.setTempoOriginal(3);
+    tempoEspera.setTempoOriginal(4);
     tempoEspera.setUnidade(TEMPO_SEGUNDO);
     iniciar();
 }
@@ -16,6 +16,13 @@ Controle::~Controle()
         delete(fase);
         fase=NULL;
     }
+    delete(fight);
+}
+
+void Controle::carregar()
+{
+    SpriteFactory *spriteFactory = new SpriteFactory(GraphicSystemImageBufferManager::getInstance()->getImageBuffer("personagem"));
+    fight = spriteFactory->criarSpriteItem(0,316,453,82,1,1);
 }
 
 bool Controle::isGameOver()
@@ -75,7 +82,10 @@ void Controle::executar(InputSystem * input)
     if (!tempoEspera.isTerminou()){
         tempoEspera.processar();
         fase->desenhar();
-        WriteSystemManager::getInstance()->escrever(WriteSystemFontDefault::pumpdemi,100,100,"%02d",tempoEspera.getTempo());
+        WriteSystemManager::getInstance()->escrever("menu",180,170,"ROUND %02d",fase->getRound());
+        if (tempoEspera.getTempo()<=2){
+            fight->desenhar(50,200);
+        }
     } else if (fase->isFimRound()){
         if (fase->isProximoRound()){
             fase->iniciar();
@@ -87,7 +97,7 @@ void Controle::executar(InputSystem * input)
         fase->desenhar();
     }
 
-        WriteSystemManager::getInstance()->escrever(WriteSystemFontDefault::pumpdemi,100,150,"round %02d",fase->getRound());
+
 }
 
 void Controle::desenhar()

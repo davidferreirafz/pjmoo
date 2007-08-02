@@ -1,5 +1,5 @@
 ///***************************************************************************
-// *   FZPong <Game - Pong Clone>                                            *
+// *   Pancada <Game - Pong Clone>                                           *
 // *   Copyright (C) 2007 by David Ferreira - FZ                             *
 // *   davidferreira.fz@gmail.com - http://pjmoo.sourceforge.net             *
 // ***************************************************************************
@@ -57,7 +57,7 @@ Jogo::~Jogo()
 void Jogo::inicializarRecursos()
 {
 //configurando modo de vídeo
-    frameworkGBF->setTitulo("FZPong","David de Almeida Ferreira");
+    frameworkGBF->setTitulo("Pancada","David de Almeida Ferreira");
     frameworkGBF->iniciar(640,480,16,isFullScreen());
     frameworkGBF->inputSystem->setControleExclusivo(SDL_GRAB_ON);
     //carregando imagens
@@ -68,10 +68,9 @@ void Jogo::inicializarRecursos()
     GSIBManager->carregar("ringue","data//imagem//pancada_ringue_01.png");
 
     //carregando fontes
-    frameworkGBF->writeSystem->carregar("recorde",frameworkGBF->getPath()+"data//kernel//fonte//recorde.png");
-    frameworkGBF->writeSystem->carregar("tech",frameworkGBF->getPath()+"data//kernel//fonte//nisemega.png");
-    frameworkGBF->writeSystem->carregar("status",frameworkGBF->getPath()+"data//kernel//fonte//nisemega.png");
-    frameworkGBF->writeSystem->carregar("texto",frameworkGBF->getPath()+"data//kernel//fonte//texto.png");
+    frameworkGBF->writeSystem->carregar("texto",frameworkGBF->getPath()+"data//fonte//texto.png");
+    frameworkGBF->writeSystem->carregar("menu",frameworkGBF->getPath()+"data//fonte//army.png");
+
 
 //carregando audio - efeitos
 //Configura volume dos efeitos
@@ -113,13 +112,15 @@ void Jogo::inicializarRecursos()
 
     //Menu
     uiMenuPrincipal = new UserInterfaceMenuTextoTransparente(frameworkGBF->inputSystem);
-    uiMenuPrincipal->centralizarTela(640,120,HORIZONTAL);
+    uiMenuPrincipal->centralizarTela(500,120,HORIZONTAL);
     uiMenuPrincipal->setEspacoVertical(60);
     uiMenuPrincipal->adicionar(new UserInterfaceMenuItemTexto("menu_1","menu"));
     uiMenuPrincipal->adicionar(new UserInterfaceMenuItemTexto("menu_2","menu"));
     uiMenuPrincipal->adicionar(new UserInterfaceMenuItemTexto("menu_3","menu"));
     uiMenuPrincipal->adicionar(new UserInterfaceMenuItemTexto("menu_4","menu"));
     uiMenuPrincipal->adicionar(new UserInterfaceMenuItemTexto("menu_5","menu"));
+
+    controle.carregar();
 }
 void Jogo::menuPrincipal()
 {
@@ -154,10 +155,10 @@ void Jogo::menuAjuda()
 
     for (int i=0; i<11;i++){
         sprintf(textoFormatado,"tela_ajuda_%02d",(1)+i);
-        frameworkGBF->writeSystem->escreverLocalizado(WriteSystemFontDefault::comic,70,120+(26*i),textoFormatado);
+        frameworkGBF->writeSystem->escreverLocalizado("texto",70,120+(26*i),textoFormatado);
     }
 
-    frameworkGBF->writeSystem->escreverLocalizado(WriteSystemFontDefault::pumpdemi, 220, 88,"titulo_ajuda");
+    frameworkGBF->writeSystem->escreverLocalizado("menu", 220, 88,"titulo_ajuda");
 
     if (desenharBotaoEnter()){
         if ((frameworkGBF->inputSystem->teclado->isKey(SDLK_RETURN))
@@ -173,10 +174,10 @@ void Jogo::menuCredito()
 
     for (int i=0; i<11;i++){
         sprintf(textoFormatado,"tela_credito_%02d",(1)+i);
-        frameworkGBF->writeSystem->escreverLocalizado(WriteSystemFontDefault::comic,70,120+(26*i),textoFormatado);
+        frameworkGBF->writeSystem->escreverLocalizado("texto",70,120+(26*i),textoFormatado);
     }
 
-    frameworkGBF->writeSystem->escreverLocalizado(WriteSystemFontDefault::pumpdemi, 220, 88,"titulo_credito");
+    frameworkGBF->writeSystem->escreverLocalizado("menu", 220, 88,"titulo_credito");
 
     if (desenharBotaoEnter()){
         if ((frameworkGBF->inputSystem->teclado->isKey(SDLK_RETURN))||
@@ -192,10 +193,10 @@ void Jogo::menuSobre()
 
     for (int i=0; i<11;i++){
         sprintf(textoFormatado,"tela_sobre_%02d",(1)+i);
-        frameworkGBF->writeSystem->escreverLocalizado(WriteSystemFontDefault::comic,70,120+(26*i),textoFormatado);
+        frameworkGBF->writeSystem->escreverLocalizado("texto",70,120+(26*i),textoFormatado);
     }
 
-    frameworkGBF->writeSystem->escreverLocalizado(WriteSystemFontDefault::pumpdemi, 220, 88,"titulo_sobre");
+    frameworkGBF->writeSystem->escreverLocalizado("menu", 220, 88,"titulo_sobre");
 
     if (desenharBotaoEnter()){
         if ((frameworkGBF->inputSystem->teclado->isKey(SDLK_RETURN))
@@ -236,22 +237,16 @@ void Jogo::jogoPause()
 }
 void Jogo::jogoFaseCarregar()
 {
-    frameworkGBF->writeSystem->escreverLocalizado("menu" ,100,80,"fase_carregar");
-
-    //if (isTempoEspera()){
-        setJogoExecutando();
-   // }
+    setJogoExecutando();
 }
 void Jogo::jogoFaseFinalizada()
 {
-    //setJogoFaseCarregar();
-//novo
     char textoFormatado[30];
     FrameLayerManager::getInstance()->getFrameLayer("background")->desenhar();
 
     for (int i=0; i<7;i++){
         sprintf(textoFormatado,"tela_fasefinalizada_%02d",(1)+i);
-        frameworkGBF->writeSystem->escreverLocalizado(WriteSystemFontDefault::comic,70,120+(26*i),textoFormatado);
+        frameworkGBF->writeSystem->escreverLocalizado("texto",70,120+(26*i),textoFormatado);
     }
 
     if (desenharBotaoEnter()){
@@ -268,7 +263,7 @@ void Jogo::jogoGameOver()
 
     for (int i=0; i<6;i++){
         sprintf(textoFormatado,"tela_gameover_%02d",(1)+i);
-        frameworkGBF->writeSystem->escreverLocalizado(WriteSystemFontDefault::comic,70,120+(26*i),textoFormatado);
+        frameworkGBF->writeSystem->escreverLocalizado("texto",70,120+(26*i),textoFormatado);
     }
 
     if (desenharBotaoEnter()){
@@ -285,7 +280,7 @@ void Jogo::jogoZerado()
 
     for (int i=0; i<8;i++){
         sprintf(textoFormatado,"tela_zerado_%02d",(1)+i);
-        frameworkGBF->writeSystem->escreverLocalizado(WriteSystemFontDefault::comic,70,120+(26*i),textoFormatado);
+        frameworkGBF->writeSystem->escreverLocalizado("texto",70,120+(26*i),textoFormatado);
     }
 
     if (desenharBotaoEnter()){
@@ -302,7 +297,6 @@ bool Jogo::gatilhoJogoFaseCarregar()
     if(!continua){
         setJogoZerado();
         //frameworkGBF->soundSystem->fxManager->play("iniciando");
-        controle.carregarFase();
     }
 
     return continua;

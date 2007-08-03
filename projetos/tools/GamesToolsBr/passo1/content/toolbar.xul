@@ -1,0 +1,296 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<?xml-stylesheet href="chrome://global/skin" type="text/css"?>
+<overlay id="games_toolsbr"
+   xmlns:html="http://www.w3.org/1999/xhtml"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+   orient="vertical">
+<script type="application/x-javascript" src="chrome://games_toolsbr/content/aes.js"/>
+  <toolbox id="navigator-toolbox">
+    <toolbar id="games_toolsbr-main" toolbarname="GamesToolsBR" class="chromeclass-toolbar" context="toolbar-context-menu" persist="collapsed" collapsed="false" accesskey="O">  
+// comunidades
+      <toolbarbutton type="menu" label="Comunidades"  orient="horizontal" container="true" disabled="false" persist="hidden ordinal" hidden="false" ordinal="1">
+        <menupopup id="comunidadesmain-popup">
+            <menu label="Associação">
+                <menupopup>
+                    <menuitem label="ABRAGAMES" onclick="window._content.document.location='http://www.abragames.com.br';"/>
+                    <menuseparator/>                
+                    <menuitem label="ESA" onclick="window._content.document.location='http://www.theesa.com';"/>
+                    <menuitem label="IDGA" onclick="window._content.document.location='http://www.igda.org';"/>
+                    <menuitem label="OnGameDev" onclick="window._content.document.location='http://www.ongamedev.com';"/>
+                </menupopup>
+            </menu>
+            <menu label="Blogs">
+                <menupopup>
+                    <menuitem label="Chien Loco" onclick="window._content.document.location='http://blog.chienloco.com';"/>
+                    <menuitem label="Game AI Blog" onclick="window._content.document.location='http://www.ai-blog.net';"/>
+                    <menuitem label="Game Cultura" onclick="window._content.document.location='http://gamecultura.blogspot.com';"/>
+                    <menuitem label="GameDevBlog" onclick="window._content.document.location='http://gamedevblog.blogspot.com';"/>
+                    <menuitem label="Grand Text Auto" onclick="window._content.document.location='http://grandtextauto.gatech.edu';"/>
+                    <menuitem label="Marcelo Eduardo" onclick="window._content.document.location='http://www.marceloeduardo.com/blog';"/>
+                    <menuitem label="Robson Franca" onclick="window._content.document.location='http://blog.robsonfranca.eti.br';"/>
+                </menupopup>
+            </menu>
+            <menu label="Divulgação">
+                <menupopup>
+                    <menuitem label="Game Alchemy" onclick="window._content.document.location='http://www.gamealchemy.com';"/>
+                    <menuitem label="Game Hippo" onclick="window._content.document.location='http://www.gamehippo.com';"/>
+                    <menuitem label="Garage Games" onclick="window._content.document.location='http://www.garagegames.com';"/>
+                    <menuitem label="Happy Penguin" onclick="window._content.document.location='http://www.happypenguin.org';"/>
+                    <menuitem label="MOG - Million Of Games" onclick="window._content.document.location='http://www.millionsofgames.com';"/>
+                </menupopup>
+            </menu>   
+            <menu label="Wiki">
+                <menupopup>
+                    <menuitem label="Ludens Artis" onclick="window._content.document.location='http://ludensartis.com.br/wikimedia';"/>
+                    <menuitem label="PJMOO" onclick="window._content.document.location='http://pjmoo.codigolivre.org.br/wiki';"/>                    
+                </menupopup>
+            </menu>
+            <menuseparator/>
+            <menu label="Unidev">
+                <menupopup>
+                    <menuitem label="Home Unidev" onclick="window._content.document.location='http://www.unidev.com.br';"/>
+                    <menuitem label="Fórum" onclick="window._content.document.location='http://www.unidev.com.br/forum';"/>
+                    <menuitem label="Projetos" onclick="window._content.document.location='http://www.unidev.com.br/projetoexibe.asp';"/>
+                    <menuitem label="Galeria" onclick="window._content.document.location='http://www.unidev.com.br/galeria.asp';"/>          
+                    <menuitem label="Artigos e Tutoriais" onclick="window._content.document.location='http://www.unidev.com.br/artigosCat.asp';"/>  
+                    <menuitem label="F.A.Q" onclick="window._content.document.location='http://www.unidev.com.br/faq.asp';"/>          
+                    <menuseparator/>         
+                    <menuitem label="Cursos" onclick="window._content.document.location='http://www.unidev.com.br/curso/calendario.asp';"/>            
+                    <menuitem label="Loja" onclick="window._content.document.location='http://www.unidev.com.br/loja/produtos.asp';"/>
+                </menupopup>
+            </menu>
+            <menu label="Xuti">
+                <menupopup>
+                    <menuitem label="Jogos" onclick="window._content.document.location='http://www.xuti.net/index.php?option=com_content&amp;task=category&amp;sectionid=5&amp;id=16&amp;Itemid=30';"/>  
+                    <menuitem label="Textos e Artigos" onclick="window._content.document.location='http://www.xuti.net/index.php?option=com_content&amp;task=section&amp;id=6&amp;Itemid=46';"/>  
+                    <menuitem label="Download" onclick="window._content.document.location='http://www.xuti.net/index.php?option=com_docman&amp;Itemid=40';"/>  
+                    <menuitem label="Listas e Informativos" onclick="window._content.document.location='http://www.xuti.net/index.php?option=com_content&amp;task=view&amp;id=76&amp;Itemid=50';"/>  
+                    <menuitem label="Links" onclick="window._content.document.location='http://www.xuti.net/index.php?option=com_weblinks&amp;Itemid=48';"/>  
+                    <menuitem label="Sobre a XUTI" onclick="window._content.document.location='http://www.xuti.net/index.php?option=com_content&amp;task=view&amp;id=21&amp;Itemid=44';"/>  
+                    <menuitem label="Contato" onclick="window._content.document.location='http://www.xuti.net/index.php?option=com_contact&amp;task=view&amp;contact_id=3&amp;Itemid=29';"/>  
+                </menupopup>
+            </menu>
+            <menuitem label="GameDev-PT"    onclick="window._content.document.location='http://www.gamedev-pt.net';"/>
+            <menuitem label="OpenGL Brasil" onclick="window._content.document.location='http://www.opengl.com.br';"/>
+            <menuitem label="PDJ"           onclick="window._content.document.location='http://www.pdj.com.br';"/>
+            <menuitem label="Tilt"          onclick="window._content.document.location='http://www.tilt.net';"/>            
+            <menuseparator/>
+            <menuitem label="JogosPro e-Magazine" onclick="window._content.document.location='http://www.jogospro.com.br';"/>
+            <menuseparator/>
+            <menuitem label="Flip Code"        onclick="window._content.document.location='http://www.flipcode.com';"/>
+            <menuitem label="GamaSutra"        onclick="window._content.document.location='http://www.gamasutra.com';"/>           
+            <menuitem label="Gamedev"          onclick="window._content.document.location='http://www.gamedev.net';"/>
+            <menuitem label="NeHe Productions" onclick="window._content.document.location='http://nehe.gamedev.net';"/>
+            <menuitem label="Xenonaut"         onclick="window._content.document.location='http://www.xenonaut.com';"/>          
+            <menuseparator/>
+            <menu label="Diversas">
+                <menupopup>            
+                    <menuitem label="ElfLand"       onclick="window._content.document.location='http://www.elfland.com.br';"/>
+                    <menuitem label="FinalBoss.com" onclick="window._content.document.location='http://www.finalboss.com.br';"/>
+                    <menuitem label="GameTV"        onclick="window._content.document.location='http://www.gametv.com.br';"/>
+                    <menuitem label="G4 Brasil"     onclick="window._content.document.location='http://www.g4brasil.com.br';"/>
+                    <menuitem label="UOL Jogos"     onclick="window._content.document.location='http://jogos.uol.com.br';"/>
+                    <menuitem label="Outer Space"   onclick="window._content.document.location='http://outerspace.terra.com.br';"/>
+                </menupopup>
+            </menu>
+        </menupopup>
+      </toolbarbutton> 
+// empresas
+      <toolbarbutton  type="menu" label="Empresas"  orient="horizontal" container="true" disabled="false" persist="hidden ordinal" hidden="false" ordinal="1">
+        <menupopup id="empresasmain-popup">
+            <menuitem label="BrasFoot" onclick="window._content.document.location='http://www.brasfoot.com.br';"/> 
+            <menuitem label="Calibre" onclick="window._content.document.location='http://grisotto.com.br/packs';"/> 
+            <menuitem label="Cia do Software" onclick="window._content.document.location='http://www.ciadosoftware.com.br';"/>      
+            <menuitem label="Cyprux" onclick="window._content.document.location='http://www.cyprux.com.br';"/>        
+            <menuitem label="Continuum" onclick="window._content.document.location='http://www.continuum.com.br';"/>
+            <menuitem label="Delirus" onclick="window._content.document.location='http://www.delirus.com.br';"/>        
+            <menuitem label="Devworks" onclick="window._content.document.location='http://www.devworks.com.br';"/>
+            <menuitem label="Dynamic Games Entertainment" onclick="window._content.document.location='http://www.dynamicgames.com.br';"/>
+            <menuitem label="Espaço Informática" onclick="window._content.document.location='http://www.hades2.com';"/>            
+            <menuitem label="FourX" onclick="window._content.document.location='http://www.4x.com.br';"/>            
+            <menuitem label="Green Land Studios" onclick="window._content.document.location='http://www.greenlandstudios.com';"/>
+            <menuitem label="Hoplon" onclick="window._content.document.location='http://www.hoplon.com.br';"/>
+            <menuitem label="Inflammation" onclick="window._content.document.location='http://www.inflammatio.com.br';"/> 
+            <menuitem label="Ignis" onclick="window._content.document.location='http://www.ignisgames.com.br';"/>
+            <menuitem label="Jynx" onclick="window._content.document.location='http://www.jynx.com.br';"/>          
+            <menuitem label="Locz Games" onclick="window._content.document.location='http://www.locz.com.br';"/>                      
+            <menuitem label="Ludens Artis" onclick="window._content.document.location='http://www.ludensartis.com.br';"/>            
+            <menuitem label="Lumen Technology" onclick="window._content.document.location='http://www.lumentechnology.com.br';"/> 
+            <menuitem label="Madgam" onclick="window._content.document.location='http://www.madgam.com.br';"/> 
+            <menuitem label="Meantime" onclick="window._content.document.location='http://www.meantime.com.br';"/>
+            <menuitem label="M.R.A" onclick="window._content.document.location='http://www.mracg.com.br';"/> 
+            <menuitem label="Nology" onclick="window._content.document.location='http://www.nology.com.br';"/>
+            <menuitem label="Oniria" onclick="window._content.document.location='http://www.oniriagames.com.br';"/>            
+            <menuitem label="PalmSoft" onclick="window._content.document.location='http://www.palmsoft.com.br';"/> 
+            <menuitem label="Perceptum" onclick="window._content.document.location='http://www.perceptum.com';"/>                        
+            <menuitem label="South Logic" onclick="window._content.document.location='http://www.southlogic.com.br';"/>
+            <menuitem label="Sylic" onclick="window._content.document.location='http://www.sylic.com.br';"/>            
+            <menuitem label="TILT online" onclick="window._content.document.location='http://www.tilt.net';"/>
+            <menuitem label="Vortex Entertainment" onclick="window._content.document.location='http://www.vortexentertainment.com';"/>
+            <menuitem label="Xuti" onclick="window._content.document.location='http://www.xuti.net';"/>
+            <menuitem label="Z80" onclick="window._content.document.location='http://www.z80software.com';"/>
+            <menuitem label="3WT Entretenimento" onclick="window._content.document.location='http://www.3wt.com.br/entretenimento';"/>
+            <menuitem label="44 Bico Largo" onclick="window._content.document.location='http://www.44bicolargo.com.br';"/> 
+        </menupopup>
+      </toolbarbutton>
+// projetos independentes
+      <toolbarbutton  type="menu" label="Projetos Independentes"   orient="horizontal" container="true" disabled="false" persist="hidden ordinal" hidden="false" ordinal="1">
+        <menupopup id="independentesmain-popup">
+            <menuitem label="Airrox" onclick="window._content.document.location='http://twiki.im.ufba.br/bin/view/Indigente/AirroX';"/>
+            <menuitem label="Atena"  onclick="window._content.document.location='http://www.diegogiacomelli.com.br/index.php?p=content&amp;mn=2&amp;id=22';"/>
+            <menuitem label="Batalha Naval" onclick="window._content.document.location='http://twiki.im.ufba.br/bin/view/Indigente/BatalhaNaval';"/>            
+            <menuitem label="Batalhão" onclick="window._content.document.location='http://batalhao.codigolivre.org.br';"/>            
+            <menuitem label="Breakout" onclick="window._content.document.location='http://www.diegogiacomelli.com.br/index.php?p=content&amp;mn=2&amp;id=87';"/>
+            <menuitem label="Earth Force" onclick="window._content.document.location='http://www.earthforce.com.br';"/>
+            <menuitem label="ECTEAM" onclick="window._content.document.location='http://horst.homelinux.com/ecteam';"/>
+            <menuitem label="Engine Indigente" onclick="window._content.document.location='http://indigente.sf.net';"/>                                   
+            <menuitem label="enJine" onclick="window._content.document.location='http://enjine.incubadora.fapesp.br/portal/projeto';"/>           
+            <menuitem label="JFrog" onclick="window._content.document.location='http://www.inf.pucrs.br/~jricardo/jfrog';"/>
+            <menuitem label="Kaiowa Games" onclick="window._content.document.location='http://kaiowa.incubadora.fapesp.br/portal';"/>
+            <menuitem label="Leandro Correia" onclick="window._content.document.location='http://www.leandrocorreia.com';"/> 
+            <menuitem label="Novus Aster" onclick="window._content.document.location='http://www.novusaster.com.br';"/>            
+            <menuitem label="PJMOO" onclick="window._content.document.location='http://pjmoo.codigolivre.org.br';"/>
+        </menupopup>
+      </toolbarbutton> 
+// listas
+      <toolbarbutton  type="menu" label="Listas"  orient="horizontal" container="true" disabled="false" persist="hidden ordinal" hidden="false" ordinal="1">
+        <menupopup id="listasmain-popup">
+            <menuitem label="DJBR"        onclick="window._content.document.location='http://groups.yahoo.com/group/djbr';"/>
+            <menu label="GDJ - (Grupo de Desenvolvedores de Jogos)">
+                <menupopup>
+                    <menuitem label="Ceará (GDJCE)" onclick="window._content.document.location='http://groups.yahoo.com/group/gdjce';"/>
+                    <menuitem label="São Paulo (GDJSP)" onclick="window._content.document.location='http://groups.yahoo.com/group/gdj-sp';"/>
+                    <menuitem label="Rio de Janeiro (GDJRJ)" onclick="window._content.document.location='http://groups.yahoo.com/group/gdjrj';"/>
+                </menupopup>
+            </menu>            
+            <menuitem label="IDGA Brasil" onclick="window._content.document.location='http://groups.yahoo.com/group/igdabrasil';"/>            
+            <menuitem label="JogosPro"    onclick="window._content.document.location='http://groups.yahoo.com/group/jogospro';"/>            
+            <menuitem label="Programação de jogos em C#"   onclick="window._content.document.location='http://br.groups.yahoo.com/group/prog-jogos-csharp';"/>                        
+            <menuitem label="SDL Brasil"   onclick="window._content.document.location='http://br.groups.yahoo.com/group/SDLBrasil';"/>
+            <menuitem label="XUTI Update"   onclick="window._content.document.location='http://br.groups.yahoo.com/group/xutiupdate';"/>            
+        </menupopup>
+      </toolbarbutton>       
+//orkut
+      <toolbarbutton type="menu" label="Grupos Orkut"  orient="horizontal" container="true" disabled="false" persist="hidden ordinal" hidden="false" ordinal="1">
+        <menupopup id="orkutmain-popup">
+            <menuitem label="Desenvolvimento de Jogos" onclick="window._content.document.location='http://www.orkut.com/Community.aspx?cmm=34798';"/>
+            <menuitem label="Game Developers Brazil" onclick="window._content.document.location='http://www.orkut.com/Community.aspx?cmm=72434';"/>
+            <menuitem label="Game Design Brasil" onclick="window._content.document.location='http://www.orkut.com/Community.aspx?cmm=114278';"/>
+            <menuitem label="GameCoreBr" onclick="window._content.document.location='http://www.orkut.com/Community.aspx?cmm=21441';"/>            
+            <menuitem label="GameDevel-BR" onclick="window._content.document.location='http://www.orkut.com/Community.aspx?cmm=21647';"/>
+            <menuitem label="GDJ-CE" onclick="window._content.document.location='http://www.orkut.com/Community.aspx?cmm=5627647';"/>            
+            <menuitem label="OpenGL-BR" onclick="window._content.document.location='http://www.orkut.com/Community.aspx?cmm=8220';"/>
+            <menuitem label="SDL Brasil" onclick="window._content.document.location='http://www.orkut.com/Community.aspx?cmm=175416';"/>
+            <menuitem label="Tilt" onclick="window._content.document.location='http://www.orkut.com/Community.aspx?cmm=29806';"/>
+            <menuitem label="Unidev" onclick="window._content.document.location='http://www.orkut.com/Community.aspx?cmm=179248';"/>            
+        </menupopup>
+      </toolbarbutton>   
+//PJMOO
+      <toolbarbutton type="menu" label="PJMOO" image="chrome://games_toolsbr/content/image/blog.gif" orient="horizontal" container="true" disabled="false" persist="hidden ordinal" hidden="false" ordinal="1">
+        <menupopup id="pjmoomain-popup">
+            <menuitem label="Gerenciador do Projeto" onclick="window._content.document.location='https://codigolivre.org.br/projects/pjmoo';"/>        
+            <menu label="Site do Projeto">
+                <menupopup>
+                <menuitem label="Home" onclick="window._content.document.location='http://pjmoo.codigolivre.org.br';"/>
+                <menuitem label="Colaboradores" onclick="window._content.document.location='http://pjmoo.codigolivre.org.br/wiki/index.php/Colaboradores';"/>
+                <menuitem label="Artigos" onclick="window._content.document.location='http://pjmoo.codigolivre.org.br/wiki/index.php/Artigos';"/>
+                <menuitem label="ScreenShots" onclick="window._content.document.location='http://pjmoo.codigolivre.org.br/wiki/index.php/ScreensShots';"/>
+                <menuitem label="Eventos" onclick="window._content.document.location='http://pjmoo.codigolivre.org.br/wiki/index.php/Current_events';"/>
+                <menuitem label="Downloads" onclick="window._content.document.location='http://pjmoo.codigolivre.org.br/wiki/index.php/Downloads';"/>
+                <menuitem label="Links" onclick="window._content.document.location='http://pjmoo.codigolivre.org.br/wiki/index.php/Links';"/>            
+                </menupopup>
+            </menu>
+            <menu label="Produtos">
+                <menupopup>
+                <menuitem label="GBF Framework" onclick="window._content.document.location='http://pjmoo.codigolivre.org.br/wiki/index.php/GBF';"/>
+                <menuseparator/>                
+                <menu label="Produzidos com GBF">
+                    <menupopup>
+                    <menuitem label="Pancada" onclick="window._content.document.location='http://pjmoo.codigolivre.org.br/wiki/index.php/Pancada';"/>                
+                    <menuitem label="SpaceShooter" onclick="window._content.document.location='http://pjmoo.codigolivre.org.br/wiki/index.php/SpaceShooter';"/>              
+                    </menupopup>
+                </menu>
+                <menuseparator/>                
+                <menu label="Pré GBF">
+                    <menupopup>
+                    <menuitem label="PacZero" onclick="window._content.document.location='http://pjmoo.codigolivre.org.br/wiki/index.php/PacZero';"/>
+                    <menuitem label="Pesca" onclick="window._content.document.location='http://pjmoo.codigolivre.org.br/wiki/index.php/Pesca';"/>
+                    <menuitem label="Kombat" onclick="window._content.document.location='http://pjmoo.codigolivre.org.br/wiki/index.php/Kombat';"/>
+                    <menuitem label="SpaceInvaders" onclick="window._content.document.location='http://pjmoo.codigolivre.org.br/wiki/index.php/SpaceInvaders';"/>
+                    <menuitem label="CET" onclick="window._content.document.location='http://pjmoo.codigolivre.org.br/wiki/index.php/CET';"/>
+                    </menupopup>
+                </menu>             
+                </menupopup>
+            </menu>
+        </menupopup>
+      </toolbarbutton> 
+//jogosdaqui
+      <toolbarbutton type="menu" label="jogosdaqui" image="chrome://games_toolsbr/content/image/jogosdaqui.ico" orient="horizontal" container="true" disabled="false" persist="hidden ordinal" hidden="false" ordinal="1">
+        <menupopup id="pjmoomain-popup">
+                <menuitem label="Home" onclick="window._content.document.location='http://www.jogosdaqui.com.br';"/>
+                <menu label="Jogos">
+                    <menupopup>
+                        <menuitem label="Ação" onclick="window._content.document.location='http://www.jogosdaqui.com.br/index.php?p=cl&amp;t=19&amp;idc=1';"/>
+                        <menuitem label="Aventura" onclick="window._content.document.location='http://www.jogosdaqui.com.br/index.php?p=cl&amp;t=19&amp;idc=4';"/>
+                        <menuitem label="Adventure" onclick="window._content.document.location='http://www.jogosdaqui.com.br/index.php?p=cl&amp;t=19&amp;idc=2';"/>
+                        <menuitem label="Arcade" onclick="window._content.document.location='http://www.jogosdaqui.com.br/index.php?p=cl&amp;t=19&amp;idc=3';"/>
+                        <menuitem label="Corrida" onclick="window._content.document.location='http://www.jogosdaqui.com.br/index.php?p=cl&amp;t=19&amp;idc=5';"/>
+                        <menuitem label="Educacional" onclick="window._content.document.location='http://www.jogosdaqui.com.br/index.php?p=cl&amp;t=19&amp;idc=6';"/>
+                        <menuitem label="Esporte" onclick="window._content.document.location='http://www.jogosdaqui.com.br/index.php?p=cl&amp;t=19&amp;idc=7';"/>
+                        <menuitem label="Estratégia" onclick="window._content.document.location='http://www.jogosdaqui.com.br/index.php?p=cl&amp;t=19&amp;idc=8';"/>
+                        <menuitem label="Online" onclick="window._content.document.location='http://www.jogosdaqui.com.br/index.php?p=cl&amp;t=19&amp;idc=10';"/>
+                        <menuitem label="Plataforma" onclick="window._content.document.location='http://www.jogosdaqui.com.br/index.php?p=cl&amp;t=19&amp;idc=11';"/>
+                        <menuitem label="Publicitário" onclick="window._content.document.location='http://www.jogosdaqui.com.br/index.php?p=cl&amp;t=19&amp;idc=19';"/>
+                        <menuitem label="Quebra-cabeça" onclick="window._content.document.location='http://www.jogosdaqui.com.br/index.php?p=cl&amp;t=19&amp;idc=12';"/>
+                        <menuitem label="Quiz" onclick="window._content.document.location='http://www.jogosdaqui.com.br/index.php?p=cl&amp;t=19&amp;idc=13';"/>
+                        <menuitem label="RPG" onclick="window._content.document.location='http://www.jogosdaqui.com.br/index.php?p=cl&amp;t=19&amp;idc=18';"/>
+                        <menuitem label="Simulador" onclick="window._content.document.location='http://www.jogosdaqui.com.br/index.php?p=cl&amp;t=19&amp;idc=14';"/>
+                        <menuitem label="Tabuleiro" onclick="window._content.document.location='http://www.jogosdaqui.com.br/index.php?p=cl&amp;t=19&amp;idc=15';"/>
+                        <menuitem label="Tiro" onclick="window._content.document.location='http://www.jogosdaqui.com.br/index.php?p=cl&amp;t=19&amp;idc=16';"/>
+                        <menuitem label="Tiro em 1ª Pessoa" onclick="window._content.document.location='http://www.jogosdaqui.com.br/index.php?p=cl&amp;t=19&amp;idc=17';"/>
+                    </menupopup>
+                </menu>
+                <menuitem label="Notícias" onclick="window._content.document.location='http://www.jogosdaqui.com.br/index.php?p=cl&amp;t=10';"/>
+                <menuitem label="Eventos" onclick="window._content.document.location='http://www.jogosdaqui.com.br/index.php?p=cl&amp;t=25';"/>
+                <menuitem label="Enquetes" onclick="window._content.document.location='http://www.jogosdaqui.com.br/index.php?p=s';"/>
+                <menuitem label="Lançamentos" onclick="window._content.document.location='http://www.jogosdaqui.com.br/index.php?p=cl&amp;t=24';"/>
+                <menuseparator/>
+                <menuitem label="Missão" onclick="window._content.document.location='http://www.jogosdaqui.com.br/index.php?p=m';"/>
+                <menuitem label="Equipe" onclick="window._content.document.location='http://www.jogosdaqui.com.br/index.php?p=e';"/>
+                <menuitem label="Contato" onclick="window._content.document.location='http://www.jogosdaqui.com.br/index.php?p=n';"/>
+                <menuitem label="Cadastro" onclick="window._content.document.location='http://www.jogosdaqui.com.br/index.php?p=r';"/>
+        </menupopup>
+      </toolbarbutton>   
+      <toolbarbutton label="GamesToolsBr" image="chrome://games_toolsbr/content/image/fotoblog.gif" id="uol_fotoblog" onclick="window._content.document.location='http://pjmoo.codigolivre.org.br/wiki/index.php/GamesToolsBr';"/>      
+// buscas
+      <hbox id="search-textbox" persist="collapsed width" collapsed="false">
+          <menulist id="chave_busca" editable="true" onkeypress="if( event.keyCode == 13 ) { Search(event); }" onfocus="CriteriaSelect(event);" onclick="CriteriaSelect(event);" ondblclick="CriteriaSelect(event);" onmousedown="CriteriaSelect(event);" width="150">
+            <menupopup />
+          </menulist>
+      </hbox>  
+      <toolbarbutton type="menu" label="Buscar" image="chrome://games_toolsbr/content/image/busca.gif" id="busca" orient="horizontal" container="true" disabled="false" oncommand="Search(event);">      
+        <menupopup>
+            <menuitem id="busca_imagens" class="menuitem-iconic" label="Código Livre" oncommand="setSearchType('Codigo Livre');"/>                    
+            <menuitem id="busca_imagens" class="menuitem-iconic" label="Gamedev" oncommand="setSearchType('Gamedev');"/>       
+            <menuitem id="busca_imagens" class="menuitem-iconic" label="GameDev-PT" oncommand="setSearchType('GameDev-PT');"/>
+            <menuitem id="busca_imagens" class="menuitem-iconic" label="jogosdaqui" oncommand="setSearchType('jogosdaqui');"/>                        
+            <menuitem id="busca_imagens" class="menuitem-iconic" label="OpenGL Brasil" oncommand="setSearchType('OpenGL Brasil');"/>
+            <menuitem id="busca_imagens" class="menuitem-iconic" label="PJMOO" oncommand="setSearchType('PJMOO');"/>                    
+            <menuitem id="busca_imagens" class="menuitem-iconic" label="Unidev" oncommand="setSearchType('Unidev');"/>            
+            <menuseparator/>
+            <menuitem id="busca_recomendados" class="menuitem-iconic" label="Google" oncommand="setSearchType('Google');"/>        
+            <menuseparator/>
+            <menuitem label="Limpar Histórico" oncommand="setSearchType('Clear'); clearSearchHistory();"/>
+        </menupopup>
+      </toolbarbutton>    
+    <spacer flex="1" />
+    <toolbarbutton id="btn_obHide" class="tabs-closebutton close-button" flex="0" oncommand="showHide();"/>     
+    </toolbar>
+  </toolbox>
+  
+    <statusbar id="games_toolsbr-status">
+        <statusbarpanel id="btn_obShow" image="chrome://games_toolsbr/content/image/fotoblog.gif" class="statusbarpanel-iconic" onclick="showHide();"
+            persist="collapsed" collapsed="true" insertafter="statusbar-display,statusbar-progresspanel,foxytunes-statusbar-restore-foxytunes,foxytunes-statusbar-panel,gm-notifier-statusbar,security-button,page-report-button,livemark-button,adblock-status"/>
+    </statusbar>  
+</overlay>

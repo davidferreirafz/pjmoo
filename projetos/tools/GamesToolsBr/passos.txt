@@ -1,0 +1,6 @@
+1 - Criar arquivo games_toolsbr.jar
+     dentro deve existir a pasta content
+2 - Adicionar arquivo games_toolsbr.jar na pasta
+     'chrome' e compactar o conteúdo da pasta 2
+     na extensão (xpi) - gamestools_vX.X.xpi
+3 - Compactar o arquivo .xpi e html

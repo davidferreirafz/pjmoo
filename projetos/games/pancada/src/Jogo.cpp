@@ -242,7 +242,7 @@ void Jogo::jogoFaseCarregar()
 void Jogo::jogoFaseFinalizada()
 {
     char textoFormatado[30];
-    FrameLayerManager::getInstance()->getFrameLayer("background")->desenhar();
+    controle.desenhar();
 
     for (int i=0; i<7;i++){
         sprintf(textoFormatado,"tela_fasefinalizada_%02d",(1)+i);

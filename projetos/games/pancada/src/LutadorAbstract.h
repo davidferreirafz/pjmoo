@@ -31,6 +31,9 @@
 
 class LutadorAbstract : public PersonagemControlado
 {
+  private:
+    int energia;
+
   protected:
     static Area ringue;
 
@@ -44,7 +47,7 @@ class LutadorAbstract : public PersonagemControlado
 
 
   public:
-    //Construtor 
+    //Construtor
     LutadorAbstract();
 
     //Destrutor
@@ -81,6 +84,8 @@ class LutadorAbstract : public PersonagemControlado
     bool levouSoco(LuvaAbstract * luva);
 
     void mover(InputSystem * input, LutadorAbstract * adversario);
+
+    bool isNocaute();
 
 
 };

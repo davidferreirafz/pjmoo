@@ -92,6 +92,12 @@ void Controle::executar(InputSystem * input)
             fase->proximoRound();
             tempoEspera.setResetar();
         }
+    } else if (fase->isNocaute()){
+        fase->desenhar();
+        for (int i=100;i<460;i+=30){
+            WriteSystemManager::getInstance()->escrever("menu",180,i,"NOCAUTE");
+        }
+
     } else {
         fase->executar(input);
         fase->desenhar();

@@ -38,6 +38,8 @@ LutadorAbstract::LutadorAbstract()
 
     luvaesquerda->setSoco(false);
     luvadireita->setSoco(false);
+
+    energia = 10;
 }
 //Destrutor
 LutadorAbstract::~LutadorAbstract()
@@ -202,22 +204,34 @@ bool LutadorAbstract::levouSoco(LuvaAbstract * luva)
 					posicao.x-=20;
 				}
 			}
+			energia--;
 			setPosicao(posicao.x,posicao.y);
 			EfeitoContainer::getInstance()->adicionar(pntCabeca.x,pntCabeca.y,EFEITO_SANGUE);
 		}
 	} else {
         delay.acao--;
-        return false;
 	}
 	return levou;
 }
 void LutadorAbstract::mover(InputSystem * input, LutadorAbstract * adversario)
 {
-	Ponto pAnterior = getPosicao();
+    if (!isNocaute()){
+        Ponto pAnterior = getPosicao();
 
-	acao(input);
-	checklimites();
-	if (choqueAdversario(adversario->getArea())){
-		setPosicao(pAnterior.x,pAnterior.y);
-	}
+        acao(input);
+        checklimites();
+        if (choqueAdversario(adversario->getArea())){
+            setPosicao(pAnterior.x,pAnterior.y);
+        }
+    }
+}
+bool LutadorAbstract::isNocaute()
+{
+    bool caiu = false;
+
+    if (energia<=0){
+        caiu = true;
+    }
+
+    return caiu;
 }

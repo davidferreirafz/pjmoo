@@ -28,4 +28,5 @@ void FaseUm::iniciar()
     lutadorPlayer->olharCima();
 
     cronometroRound.setResetar();
+    cronometroAuxiliar.setResetar();
 }

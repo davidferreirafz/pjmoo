@@ -36,6 +36,7 @@ class FaseAbstract
     LutadorAbstract * lutadorPC;
 
     TimerSystemCronometroDecrescente cronometroRound;
+    TimerSystemCronometroDecrescente cronometroAuxiliar;
 
     FrameLayer * ringue;
 
@@ -58,7 +59,7 @@ class FaseAbstract
     bool isFaseFinalizada();
 
     bool isFimRound();
-
+    bool isNocaute();
     bool isProximoRound();
     void proximoRound();
 

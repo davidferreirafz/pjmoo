@@ -7,6 +7,7 @@ FaseAbstract::FaseAbstract()
 {
 	//informa tempo por round
 	cronometroRound.setTempoOriginal(10);
+	cronometroAuxiliar.setTempoOriginal(6);
 
 	lutadorPlayer = NULL;
 	lutadorPC     = NULL;
@@ -41,8 +42,14 @@ FaseAbstract::~FaseAbstract()
 bool FaseAbstract::isGameOver()
 {
     bool perdeu = false;
+/*
     if ((eRound==ROUND_TRES)&&(cronometroRound.isTerminou())&&
         (placar.getPontosPlayer()<=placar.getPontosPC())){
+        perdeu = true;
+    }
+*/
+    if (((lutadorPlayer->isNocaute())&&(cronometroAuxiliar.isTerminou())) ||
+       ((eRound==ROUND_TRES) && (cronometroRound.isTerminou()) && (placar.getPontosPlayer()<=placar.getPontosPC()))){
         perdeu = true;
     }
 
@@ -51,8 +58,13 @@ bool FaseAbstract::isGameOver()
 bool FaseAbstract::isFaseFinalizada()
 {
     bool finalizou = false;
-    if ((eRound==ROUND_TRES)&&(cronometroRound.isTerminou())&&
+/*    if ((eRound==ROUND_TRES)&&(cronometroRound.isTerminou())&&
         (placar.getPontosPlayer()>placar.getPontosPC())){
+        finalizou = true;
+    }*/
+
+    if (((lutadorPC->isNocaute())&&(cronometroAuxiliar.isTerminou())) ||
+       ((eRound==ROUND_TRES) && (cronometroRound.isTerminou()) && (placar.getPontosPlayer()>placar.getPontosPC()))){
         finalizou = true;
     }
 
@@ -91,12 +103,10 @@ void FaseAbstract::proximoRound()
 //Retorna o valor do tempo
 int FaseAbstract::getTempo()
 {
-
     return cronometroRound.getTempo();
 }
 int FaseAbstract::getRound()
 {
-
 	return int(eRound);
 }
 void FaseAbstract::executar(InputSystem * input)
@@ -116,7 +126,6 @@ void FaseAbstract::executar(InputSystem * input)
 	}
     //executa o cronometro
     cronometroRound.processar();
-
 }
 void FaseAbstract::desenhar()
 {
@@ -151,4 +160,17 @@ void FaseAbstract::ordenacao()
 		lutadorPlayer->olharCima();
 		lutadorPC->olharBaixo();
 	}
+}
+
+bool FaseAbstract::isNocaute()
+{
+    bool nocaute = false;
+
+    if ((lutadorPlayer->isNocaute())||(lutadorPC->isNocaute())){
+        nocaute = true;
+        cronometroAuxiliar.processar();
+    }
+
+
+    return nocaute;
 }

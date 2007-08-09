@@ -12,7 +12,10 @@ FaseAbstract::FaseAbstract()
 	lutadorPlayer = NULL;
 	lutadorPC     = NULL;
 	ringue        = FrameLayerManager::getInstance()->getFrameLayer("ringue");
-	status        = FrameLayerManager::getInstance()->getFrameLayer("status");
+//	status        = FrameLayerManager::getInstance()->getFrameLayer("status");
+    status1        = new StatusPlayer();
+    status2        = new StatusPC();
+
 
     eRound=ROUND_NULL;
 
@@ -21,6 +24,7 @@ FaseAbstract::FaseAbstract()
     }
 
 	LutadorAbstract::setRingue(ringue->getArea());
+	Status::setPlacar(&placar);
 
     primeiroRound();
 }
@@ -35,8 +39,14 @@ FaseAbstract::~FaseAbstract()
     if (ringue){
 	    ringue=NULL;
     }
-    if (status){
-        status=NULL;
+    if (indicadorPlayer){
+        delete(indicadorPlayer);
+    }
+    if (status1){
+        delete(status1);
+    }
+    if (status2){
+        delete(status2);
     }
 }
 bool FaseAbstract::isGameOver()
@@ -130,23 +140,27 @@ void FaseAbstract::executar(InputSystem * input)
 void FaseAbstract::desenhar()
 {
     ringue->desenhar();
-    status->desenhar();
+    //status->desenhar();
+
 	//desenha lutadores
 	lutadorPlayer->desenhar();
 	lutadorPC->desenhar();
 
 
+
     wsManager->escrever(WriteSystemFontDefault::pumpdemi,542,34,"TEMPO");
     wsManager->escrever(WriteSystemFontDefault::pumpdemi,572,62,"%02d",getTempo());
     //Lutador - PC
-    wsManager->escrever(WriteSystemFontDefault::pumpdemi,542,110,"CPU");
-    wsManager->escrever(WriteSystemFontDefault::pumpdemi,572,138,"%03d",placar.getPontosPC());
+//    wsManager->escrever(WriteSystemFontDefault::pumpdemi,542,110,"CPU");
+//    wsManager->escrever(WriteSystemFontDefault::pumpdemi,572,138,"%03d",placar.getPontosPC());
     //Lutador - Player
-    wsManager->escrever(WriteSystemFontDefault::pumpdemi,542,168,"Player");
-    wsManager->escrever(WriteSystemFontDefault::pumpdemi,572,198,"%03d",placar.getPontosPlayer());
+//    wsManager->escrever(WriteSystemFontDefault::pumpdemi,542,168,"Player");
+//    wsManager->escrever(WriteSystemFontDefault::pumpdemi,572,198,"%03d",placar.getPontosPlayer());
 
 	//desenha efeitos especiais
 	EfeitoContainer::getInstance()->desenhar();
+	status1->desenhar();
+	status2->desenhar();
 }
 // so para virar de costas corretamente
 void FaseAbstract::ordenacao()

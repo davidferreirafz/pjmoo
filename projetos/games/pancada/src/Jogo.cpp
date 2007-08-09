@@ -64,12 +64,13 @@ void Jogo::inicializarRecursos()
     GraphicSystemImageBufferManager *GSIBManager = GraphicSystemImageBufferManager::getInstance();
     GSIBManager->carregar("personagem","data//imagem//pancada_personagem.png");
     GSIBManager->carregar("background","data//imagem//pancada_console.png");
-    GSIBManager->carregar("status","data//imagem//pancada_status.png");
+    GSIBManager->carregar("interface","data//imagem//pancada_interface.png");
     GSIBManager->carregar("ringue","data//imagem//pancada_ringue_01.png");
 
     //carregando fontes
     frameworkGBF->writeSystem->carregar("texto",frameworkGBF->getPath()+"data//fonte//texto.png");
     frameworkGBF->writeSystem->carregar("menu",frameworkGBF->getPath()+"data//fonte//army.png");
+    frameworkGBF->writeSystem->carregar("kiloton16",frameworkGBF->getPath()+"data//fonte//kiloton_16.png");
 
 
 //carregando audio - efeitos
@@ -92,11 +93,11 @@ void Jogo::inicializarRecursos()
     FrameLayerManager::getInstance()->adicionar("status",status);
     delete(spriteFactory);
 
-    spriteFactory = new SpriteFactory(GSIBManager->getImageBuffer("ringue"));
-    FrameLayer * ringue = spriteFactory->criarFrameLayer(0, 0,544,480);
-    ringue->setFrame(0,0,544,480);
+    spriteFactory = new SpriteFactory(GSIBManager->getImageBuffer("background"));
+    FrameLayer * ringue = spriteFactory->criarFrameLayer(0, 0,640,480);
+    ringue->setFrame(0,0,640,480);
     ringue->setTiles(1,1);
-    ringue->setPixelTile(544,480);
+    ringue->setPixelTile(640,480);
     ringue->iniciarRandomico(1);
     FrameLayerManager::getInstance()->adicionar("ringue",ringue);
     delete(spriteFactory);
@@ -112,7 +113,7 @@ void Jogo::inicializarRecursos()
 
     //Menu
     uiMenuPrincipal = new UserInterfaceMenuTextoTransparente(frameworkGBF->inputSystem);
-    uiMenuPrincipal->centralizarTela(500,120,HORIZONTAL);
+    uiMenuPrincipal->centralizarTela(640,120,HORIZONTAL);
     uiMenuPrincipal->setEspacoVertical(60);
     uiMenuPrincipal->adicionar(new UserInterfaceMenuItemTexto("menu_1","menu"));
     uiMenuPrincipal->adicionar(new UserInterfaceMenuItemTexto("menu_2","menu"));

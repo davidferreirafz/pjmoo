@@ -16,6 +16,10 @@
 
 #include "EfeitoContainer.h"
 
+#include "Status.h"
+#include "StatusPlayer.h"
+#include "StatusPC.h"
+
 //Status de Roundes
 enum EnumRound {
   ROUND_NULL =0,
@@ -40,7 +44,9 @@ class FaseAbstract
 
     FrameLayer * ringue;
 
-    FrameLayer * status;
+    //FrameLayer * status;
+
+    SpriteItem * indicadorPlayer;
 
     static WriteSystemManager * wsManager;
 
@@ -48,6 +54,9 @@ class FaseAbstract
   private:
     EnumRound eRound;
 
+
+    Status *status1;
+    Status *status2;
 
   public:
     FaseAbstract();

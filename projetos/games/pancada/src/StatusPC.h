@@ -9,7 +9,7 @@ class StatusPC : public Status
     public:
         StatusPC();
         virtual ~StatusPC();
-        void desenhar();
+        void desenhar(int pontos, int round);
     protected:
     private:
 };

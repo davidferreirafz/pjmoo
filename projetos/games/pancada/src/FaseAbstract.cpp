@@ -6,16 +6,11 @@ WriteSystemManager * FaseAbstract::wsManager;
 FaseAbstract::FaseAbstract()
 {
 	//informa tempo por round
-	cronometroRound.setTempoOriginal(10);
 	cronometroAuxiliar.setTempoOriginal(6);
 
 	lutadorPlayer = NULL;
 	lutadorPC     = NULL;
 	ringue        = FrameLayerManager::getInstance()->getFrameLayer("ringue");
-//	status        = FrameLayerManager::getInstance()->getFrameLayer("status");
-    status1        = new StatusPlayer();
-    status2        = new StatusPC();
-
 
     eRound=ROUND_NULL;
 
@@ -23,8 +18,13 @@ FaseAbstract::FaseAbstract()
         wsManager = WriteSystemManager::getInstance();
     }
 
-	LutadorAbstract::setRingue(ringue->getArea());
-	Status::setPlacar(&placar);
+    Area areaRingue;
+    areaRingue.top    =  34;
+    areaRingue.bottom = 469;
+    areaRingue.left   =  28;
+    areaRingue.right  = 611;
+
+	LutadorAbstract::setRingue(areaRingue);
 
     primeiroRound();
 }
@@ -39,27 +39,13 @@ FaseAbstract::~FaseAbstract()
     if (ringue){
 	    ringue=NULL;
     }
-    if (indicadorPlayer){
-        delete(indicadorPlayer);
-    }
-    if (status1){
-        delete(status1);
-    }
-    if (status2){
-        delete(status2);
-    }
 }
 bool FaseAbstract::isGameOver()
 {
     bool perdeu = false;
-/*
-    if ((eRound==ROUND_TRES)&&(cronometroRound.isTerminou())&&
-        (placar.getPontosPlayer()<=placar.getPontosPC())){
-        perdeu = true;
-    }
-*/
+
     if (((lutadorPlayer->isNocaute())&&(cronometroAuxiliar.isTerminou())) ||
-       ((eRound==ROUND_TRES) && (cronometroRound.isTerminou()) && (placar.getPontosPlayer()<=placar.getPontosPC()))){
+       ((eRound==ROUND_TRES) && (placar.isTempoTerminou()) && (placar.isPCGanhou()))){
         perdeu = true;
     }
 
@@ -68,13 +54,9 @@ bool FaseAbstract::isGameOver()
 bool FaseAbstract::isFaseFinalizada()
 {
     bool finalizou = false;
-/*    if ((eRound==ROUND_TRES)&&(cronometroRound.isTerminou())&&
-        (placar.getPontosPlayer()>placar.getPontosPC())){
-        finalizou = true;
-    }*/
 
     if (((lutadorPC->isNocaute())&&(cronometroAuxiliar.isTerminou())) ||
-       ((eRound==ROUND_TRES) && (cronometroRound.isTerminou()) && (placar.getPontosPlayer()>placar.getPontosPC()))){
+       ((eRound==ROUND_TRES) && (placar.isTempoTerminou()) && (placar.isPlayerGanhou()))){
         finalizou = true;
     }
 
@@ -82,7 +64,7 @@ bool FaseAbstract::isFaseFinalizada()
 }
 bool FaseAbstract::isFimRound()
 {
-    if (cronometroRound.isTerminou()){
+    if (placar.isTempoTerminou()){
         return true;
     } else {
         return false;
@@ -110,11 +92,6 @@ void FaseAbstract::proximoRound()
 		}
 	}
 }
-//Retorna o valor do tempo
-int FaseAbstract::getTempo()
-{
-    return cronometroRound.getTempo();
-}
 int FaseAbstract::getRound()
 {
 	return int(eRound);
@@ -135,38 +112,27 @@ void FaseAbstract::executar(InputSystem * input)
 		placar.adicionarPontoPC();
 	}
     //executa o cronometro
-    cronometroRound.processar();
+    placar.processarTempo();
 }
 void FaseAbstract::desenhar()
 {
     ringue->desenhar();
-    //status->desenhar();
 
 	//desenha lutadores
 	lutadorPlayer->desenhar();
 	lutadorPC->desenhar();
 
 
-
-    wsManager->escrever(WriteSystemFontDefault::pumpdemi,542,34,"TEMPO");
-    wsManager->escrever(WriteSystemFontDefault::pumpdemi,572,62,"%02d",getTempo());
-    //Lutador - PC
-//    wsManager->escrever(WriteSystemFontDefault::pumpdemi,542,110,"CPU");
-//    wsManager->escrever(WriteSystemFontDefault::pumpdemi,572,138,"%03d",placar.getPontosPC());
-    //Lutador - Player
-//    wsManager->escrever(WriteSystemFontDefault::pumpdemi,542,168,"Player");
-//    wsManager->escrever(WriteSystemFontDefault::pumpdemi,572,198,"%03d",placar.getPontosPlayer());
-
 	//desenha efeitos especiais
 	EfeitoContainer::getInstance()->desenhar();
-	status1->desenhar();
-	status2->desenhar();
+	placar.desenhar();
 }
 // so para virar de costas corretamente
 void FaseAbstract::ordenacao()
 {
 	Ponto pc     = lutadorPC->getPosicao();
 	Ponto player = lutadorPlayer->getPosicao();
+
 	if (player.y <= pc.y){
 		lutadorPlayer->olharBaixo();
 		lutadorPC->olharCima();

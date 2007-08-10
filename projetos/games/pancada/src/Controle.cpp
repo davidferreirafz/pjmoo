@@ -36,7 +36,6 @@ bool Controle::isGameOver()
 
 bool Controle::isFaseFinalizada()
 {
-  //   if ((!FaseFactory::isProximaFase(faseNumero))&&(fase->isFaseFinalizada())){
     if ((fase!=NULL)&&(fase->isFaseFinalizada())){
         return true;
     } else {

@@ -81,6 +81,8 @@ bool FaseAbstract::isProximoRound()
 void FaseAbstract::primeiroRound()
 {
     eRound=ROUND_UM;
+    placar.iniciar();
+    cronometroAuxiliar.setResetar();
 }
 void FaseAbstract::proximoRound()
 {
@@ -90,6 +92,7 @@ void FaseAbstract::proximoRound()
 		} else {
 			eRound=ROUND_TRES;
 		}
+		placar.iniciarRound();
 	}
 }
 int FaseAbstract::getRound()
@@ -121,11 +124,12 @@ void FaseAbstract::desenhar()
 	//desenha lutadores
 	lutadorPlayer->desenhar();
 	lutadorPC->desenhar();
-
+    placar.desenhar();
+    //-- falha ao desenhar
 
 	//desenha efeitos especiais
 	EfeitoContainer::getInstance()->desenhar();
-	placar.desenhar();
+
 }
 // so para virar de costas corretamente
 void FaseAbstract::ordenacao()

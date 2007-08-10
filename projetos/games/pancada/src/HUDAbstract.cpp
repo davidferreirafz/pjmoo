@@ -13,8 +13,6 @@ HUDAbstract::HUDAbstract()
 
 HUDAbstract::~HUDAbstract()
 {
-    wsManager = NULL;
-
     if (painel){
         delete(painel);
     }

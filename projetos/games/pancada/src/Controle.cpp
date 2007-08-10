@@ -16,7 +16,9 @@ Controle::~Controle()
         delete(fase);
         fase=NULL;
     }
-    delete(fight);
+    if (fight){
+        delete(fight);
+    }
 }
 
 void Controle::carregar()
@@ -46,13 +48,14 @@ bool Controle::isFaseFinalizada()
 void Controle::iniciar()
 {
     faseNumero=0;
+    tempoEspera.setResetar();
 }
 void Controle::mudarFase()
 {
     FaseAbstract* novaFase = FaseFactory::criarFase(faseNumero);
     if (novaFase!=NULL){
         if (fase){
-            delete (fase);
+            delete(fase);
             fase = NULL;
         }
         fase = novaFase;
@@ -68,13 +71,11 @@ bool Controle::carregarFase()
         faseNumero++;
         mudarFase();
     } else {
-        faseNumero=8;
+        faseNumero++;
     }
 
     return maisFase;
 }
-
-
 
 void Controle::executar(InputSystem * input)
 {
@@ -96,13 +97,10 @@ void Controle::executar(InputSystem * input)
         for (int i=100;i<460;i+=30){
             WriteSystemManager::getInstance()->escrever("menu",180,i,"NOCAUTE");
         }
-
     } else {
         fase->executar(input);
         fase->desenhar();
     }
-
-
 }
 
 void Controle::desenhar()

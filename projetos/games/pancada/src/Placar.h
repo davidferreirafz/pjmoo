@@ -38,6 +38,9 @@ class Placar
 
     virtual ~Placar();
 
+    void iniciar();
+    void iniciarRound();
+
     // Pontos do PC
     int getPontosPC();
 
@@ -57,7 +60,7 @@ class Placar
     bool isTempoTerminou();
 
   protected:
-    void zerar();
+
 
 
 };

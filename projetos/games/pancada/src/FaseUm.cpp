@@ -21,11 +21,9 @@ FaseUm::~FaseUm(){
 void FaseUm::iniciar()
 {
     SoundSystem::getInstance()->musicManager->playInfinity("fundo");
-    lutadorPC->setPosicao(243,20);
-    lutadorPC->olharBaixo();
 
-    lutadorPlayer->setPosicao(243,404);
-    lutadorPlayer->olharCima();
+    lutadorPC->iniciar(243,20);
+    lutadorPlayer->iniciar(243,404);
 
 //    cronometroRound.setResetar();
     cronometroAuxiliar.setResetar();

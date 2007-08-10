@@ -59,7 +59,7 @@ void Jogo::inicializarRecursos()
 //configurando modo de vídeo
     frameworkGBF->setTitulo("Pancada","David de Almeida Ferreira");
     frameworkGBF->iniciar(640,480,16,isFullScreen());
-    frameworkGBF->inputSystem->setControleExclusivo(SDL_GRAB_ON);
+    frameworkGBF->inputSystem->setControleExclusivo(SDL_GRAB_OFF);
     //carregando imagens
     GraphicSystemImageBufferManager *GSIBManager = GraphicSystemImageBufferManager::getInstance();
     GSIBManager->carregar("personagem","data//imagem//pancada_personagem.png");
@@ -129,7 +129,6 @@ void Jogo::menuPrincipal()
     FrameLayerManager::getInstance()->getFrameLayer("background")->desenhar();
 
     uiMenuPrincipal->executar();
-
 
     switch(uiMenuPrincipal->confirmarSelecao())
     {

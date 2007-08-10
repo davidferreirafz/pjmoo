@@ -29,17 +29,12 @@ LutadorAbstract::LutadorAbstract()
 	luvaesquerda = new LuvaEsquerda();
 	luvadireita  = new LuvaDireita();
 
-	delay.acao  = 0;
-	delay.tiroA = 0;
-	delay.tiroB = 0;
-
 	posicao.x = 0;
 	posicao.y = 0;
 
-    luvaesquerda->setSoco(false);
-    luvadireita->setSoco(false);
-
     energia = 100;
+
+    resetar();
 }
 //Destrutor
 LutadorAbstract::~LutadorAbstract()
@@ -54,10 +49,30 @@ LutadorAbstract::~LutadorAbstract()
 	    delete(luvadireita);
 	}
 }
+void LutadorAbstract::resetar()
+{
+	delay.acao  = 0;
+	delay.tiroA = 0;
+	delay.tiroB = 0;
+
+    luvaesquerda->setSoco(false);
+    luvadireita->setSoco(false);
+}
+void LutadorAbstract::iniciar(int x, int y)
+{
+    resetar();
+
+    setPosicao(x,y);
+
+    if (y>=200){
+        olharCima();
+    } else {
+        olharBaixo();
+    }
+}
 //Desenha na tela
 void LutadorAbstract::desenhar()
 {
-//    corrigirPosicao();
     checklimites();
     PersonagemControlado::desenhar();
 	cabeca->desenhar();

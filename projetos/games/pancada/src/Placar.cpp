@@ -4,12 +4,10 @@
 Placar::Placar()
 {
     statusPlayer = new StatusPlayer();
-    statusPC     = new StatusPC();
-    statusTempo  = new StatusTempo();
+    statusPC = new StatusPC();
+    statusTempo = new StatusTempo();
 
-	cronometroRound.setTempoOriginal(60);
-
-    zerar();
+	cronometroRound.setTempoOriginal(6);
 }
 Placar::~Placar()
 {
@@ -24,12 +22,12 @@ Placar::~Placar()
     }
 }
 
-//* Pontos do PC
+// Pontos do PC
 int Placar::getPontosPC()
 {
 	return pontos.pc;
 }
-//* Pontos do Jogador
+// Pontos do Jogador
 int Placar::getPontosPlayer()
 {
 	return pontos.player;
@@ -43,13 +41,6 @@ void Placar::adicionarPontoPlayer()
 {
 	pontos.player++;
 }
-void Placar::zerar()
-{
-	pontos.pc      = 0;
-	pontos.player  = 0;
-
-    cronometroRound.setResetar();
-}
 void Placar::desenhar()
 {
     statusPlayer->desenhar(pontos.player,rand()%10);
@@ -62,7 +53,7 @@ bool Placar::isPlayerGanhou()
 }
 bool Placar::isPCGanhou()
 {
-    return (pontos.player<pontos.pc);
+    return (pontos.player<=pontos.pc);
 }
 void Placar::processarTempo()
 {
@@ -71,4 +62,17 @@ void Placar::processarTempo()
 bool Placar::isTempoTerminou()
 {
     return cronometroRound.isTerminou();
+}
+void Placar::iniciar()
+{
+	pontos.pc      = 0;
+	pontos.player  = 0;
+    iniciarRound();
+}
+void Placar::iniciarRound()
+{
+	pontos.pc      = 0;
+	pontos.player  = 0;
+
+    cronometroRound.setResetar();
 }

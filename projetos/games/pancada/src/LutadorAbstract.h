@@ -33,6 +33,7 @@ class LutadorAbstract : public PersonagemControlado
 {
   private:
     int energia;
+    void resetar();
 
   protected:
     static Area ringue;
@@ -53,6 +54,7 @@ class LutadorAbstract : public PersonagemControlado
     //Destrutor
     virtual ~LutadorAbstract();
 
+    void iniciar(int x, int y);
     //Desenha na tela
     virtual void desenhar();
 

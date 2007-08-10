@@ -28,7 +28,7 @@ enum EnumRound {
 class FaseAbstract
 {
   public:
-    Placar placar;
+
 
 
   protected:
@@ -42,6 +42,7 @@ class FaseAbstract
     FrameLayer * ringue;
 
     //FrameLayer * status;
+    Placar placar;
 
     static WriteSystemManager * wsManager;
 

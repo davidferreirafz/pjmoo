@@ -13,40 +13,38 @@
 
 #include "LutadorPC.h"
 
-LutadorPC::LutadorPC() 
+LutadorPC::LutadorPC()
 {
 	CabecaFactory cFactory;
-	cabeca = cFactory.criar(3);	
+	cabeca = cFactory.criar(3);
 	olharBaixo();
 }
 LutadorPC::~LutadorPC(){
 
 }
 
-void LutadorPC::acao(InputSystem * input) 
+void LutadorPC::acao(InputSystem * input)
 {
-//	float passo=deslocar(100.0f);
-
 	int passo=3;
-	//Movimentação 
+
+	//Movimentação
 	if (input->teclado->isKey(SDLK_w)){
 		posicao.y-=passo;
 	} else if (input->teclado->isKey(SDLK_s)){
 		posicao.y+=passo;
-	} 
+	}
     if (input->teclado->isKey(SDLK_a)){
         posicao.x-=passo;
     } else if (input->teclado->isKey(SDLK_d)){
         posicao.x+=passo;
-    }	
+    }
  	//Controle de Socos - Soco Esquerdo
     if (delay.tiroA<=0){
         if(input->teclado->isKey(SDLK_v)){
             luvaesquerda->setSoco(true);
             delay.tiroA=10;
-        }                      
+        }
     } else {
-//        tempo.tiroA-=deslocar(20);
         delay.tiroA--;
         if (delay.tiroA<=6){
                 luvaesquerda->setSoco(false);
@@ -57,9 +55,8 @@ void LutadorPC::acao(InputSystem * input)
         if((input->teclado->isKey(SDLK_b))){
             luvadireita->setSoco(true);
             delay.tiroB=10;
-        }                      
+        }
     } else {
-//        tempo.tiroB-=deslocar(20);
         delay.tiroB--;
         if (delay.tiroB<=6){
                 luvadireita->setSoco(false);

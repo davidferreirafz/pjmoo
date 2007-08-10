@@ -1,44 +1,74 @@
 
 #include "Placar.h"
 
-Placar::Placar() 
+Placar::Placar()
 {
+    statusPlayer = new StatusPlayer();
+    statusPC     = new StatusPC();
+    statusTempo  = new StatusTempo();
+
+	cronometroRound.setTempoOriginal(60);
+
     zerar();
 }
-Placar::~Placar(){
-
+Placar::~Placar()
+{
+    if (statusPlayer){
+        delete(statusPlayer);
+    }
+    if (statusPC){
+        delete(statusPC);
+    }
+    if (statusTempo){
+        delete(statusTempo);
+    }
 }
 
 //* Pontos do PC
-int Placar::getPontosPC() 
+int Placar::getPontosPC()
 {
-
-	return pontosPC;
+	return pontos.pc;
 }
 //* Pontos do Jogador
-int Placar::getPontosPlayer() 
+int Placar::getPontosPlayer()
 {
+	return pontos.player;
+}
 
-	return pontosPlayer;
-}
-//* Soma dos pontos do lutador 
-int Placar::getPontosRecorde() 
+void Placar::adicionarPontoPC()
 {
-	return 0;//pontosRecorde;
+	pontos.pc++;
 }
-void Placar::adicionarPontoPC() 
+void Placar::adicionarPontoPlayer()
 {
+	pontos.player++;
+}
+void Placar::zerar()
+{
+	pontos.pc      = 0;
+	pontos.player  = 0;
 
-	pontosPC++;
+    cronometroRound.setResetar();
 }
-void Placar::adicionarPontoPlayer() 
+void Placar::desenhar()
 {
-
-	pontosPlayer++;
+    statusPlayer->desenhar(pontos.player,rand()%10);
+    statusPC->desenhar(pontos.pc,rand()%10);
+    statusTempo->desenhar(cronometroRound.getTempo());
 }
-void Placar::zerar() 
+bool Placar::isPlayerGanhou()
 {
-	pontosPC      = 0;
-	pontosPlayer  = 0;
-	//pontosRecorde = 0;	
+    return (pontos.player>pontos.pc);
+}
+bool Placar::isPCGanhou()
+{
+    return (pontos.player<pontos.pc);
+}
+void Placar::processarTempo()
+{
+    cronometroRound.processar();
+}
+bool Placar::isTempoTerminou()
+{
+    return cronometroRound.isTerminou();
 }

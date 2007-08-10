@@ -71,6 +71,7 @@ void Jogo::inicializarRecursos()
     frameworkGBF->writeSystem->carregar("texto",frameworkGBF->getPath()+"data//fonte//texto.png");
     frameworkGBF->writeSystem->carregar("menu",frameworkGBF->getPath()+"data//fonte//army.png");
     frameworkGBF->writeSystem->carregar("kiloton16",frameworkGBF->getPath()+"data//fonte//kiloton_16.png");
+    frameworkGBF->writeSystem->carregar("kiloton24",frameworkGBF->getPath()+"data//fonte//kiloton_24.png");
 
 
 //carregando audio - efeitos

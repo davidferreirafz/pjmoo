@@ -9,7 +9,7 @@ class StatusPlayer : public Status
     public:
         StatusPlayer();
         virtual ~StatusPlayer();
-        void desenhar();
+        void desenhar(int pontos, int round);
     protected:
     private:
 };

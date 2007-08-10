@@ -119,6 +119,8 @@
 		<Unit filename="src/FaseFactory.h" />
 		<Unit filename="src/FaseUm.cpp" />
 		<Unit filename="src/FaseUm.h" />
+		<Unit filename="src/HUDAbstract.cpp" />
+		<Unit filename="src/HUDAbstract.h" />
 		<Unit filename="src/Jogo.cpp" />
 		<Unit filename="src/Jogo.h" />
 		<Unit filename="src/LutadorAbstract.cpp" />
@@ -143,6 +145,8 @@
 		<Unit filename="src/StatusPC.h" />
 		<Unit filename="src/StatusPlayer.cpp" />
 		<Unit filename="src/StatusPlayer.h" />
+		<Unit filename="src/StatusTempo.cpp" />
+		<Unit filename="src/StatusTempo.h" />
 		<Extensions>
 			<code_completion />
 		</Extensions>

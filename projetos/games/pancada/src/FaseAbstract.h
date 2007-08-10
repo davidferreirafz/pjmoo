@@ -16,9 +16,6 @@
 
 #include "EfeitoContainer.h"
 
-#include "Status.h"
-#include "StatusPlayer.h"
-#include "StatusPC.h"
 
 //Status de Roundes
 enum EnumRound {
@@ -39,14 +36,12 @@ class FaseAbstract
 
     LutadorAbstract * lutadorPC;
 
-    TimerSystemCronometroDecrescente cronometroRound;
+
     TimerSystemCronometroDecrescente cronometroAuxiliar;
 
     FrameLayer * ringue;
 
     //FrameLayer * status;
-
-    SpriteItem * indicadorPlayer;
 
     static WriteSystemManager * wsManager;
 
@@ -55,8 +50,6 @@ class FaseAbstract
     EnumRound eRound;
 
 
-    Status *status1;
-    Status *status2;
 
   public:
     FaseAbstract();
@@ -71,9 +64,6 @@ class FaseAbstract
     bool isNocaute();
     bool isProximoRound();
     void proximoRound();
-
-    //Retorna o valor do tempo
-    int getTempo();
 
     int getRound();
 

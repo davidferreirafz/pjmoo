@@ -39,7 +39,7 @@ LutadorAbstract::LutadorAbstract()
     luvaesquerda->setSoco(false);
     luvadireita->setSoco(false);
 
-    energia = 10;
+    energia = 100;
 }
 //Destrutor
 LutadorAbstract::~LutadorAbstract()
@@ -58,6 +58,7 @@ LutadorAbstract::~LutadorAbstract()
 void LutadorAbstract::desenhar()
 {
 //    corrigirPosicao();
+    checklimites();
     PersonagemControlado::desenhar();
 	cabeca->desenhar();
 	luvaesquerda->desenhar();
@@ -92,10 +93,10 @@ void LutadorAbstract::setPosicao(int x, int y)
 }
 void LutadorAbstract::setRingue(Area ringue)
 {
-    ringue.left   +=32;
-	ringue.top    +=32;
-	ringue.right  -=32;
-	ringue.bottom -=32;
+    ringue.left   +=10;
+	ringue.top    +=20;
+	ringue.right  -=10;
+	ringue.bottom -=20;
 
     LutadorAbstract::ringue=ringue;
 }
@@ -157,12 +158,10 @@ bool LutadorAbstract::socouAdversario(LutadorAbstract * adversario)
 {
 	bool retorno =  false;
 
-	if ((luvaesquerda->isSoco())&&
-		(adversario->levouSoco(luvaesquerda))){
-			retorno = true;
-	}else if ((luvadireita->isSoco())&&
-				(adversario->levouSoco(luvadireita))){
-			retorno = true;
+	if ((luvaesquerda->isSoco()) && (adversario->levouSoco(luvaesquerda))){
+        retorno = true;
+	} else if ((luvadireita->isSoco()) && (adversario->levouSoco(luvadireita))){
+		retorno = true;
 	}
 
 	if (retorno){
@@ -176,41 +175,50 @@ bool LutadorAbstract::socouAdversario(LutadorAbstract * adversario)
 
 		setPosicao(posicao.x,posicao.y);
 	}
+
 	checklimites();
+
 	return retorno;
 }
 bool LutadorAbstract::levouSoco(LuvaAbstract * luva)
 {
 	bool levou = false;
+
 	if (delay.acao<=0){
 		delay.acao=2;
-		if ((levou=cabeca->isColisao(luva->getArea()))){
+
+		levou=cabeca->isColisao(luva->getArea());
+
+		if (levou){
 			Ponto pntCabeca = cabeca->getPosicao();
 			Ponto posicao = getPosicao();
-			pntCabeca.x+=22;
-			if (getSpritePrincipal()->getDirecao()!=DR_CIMA){
+
+			DIRECAO olhando = getSpritePrincipal()->getDirecao();
+
+            pntCabeca.x+=22;
+
+			if (olhando!=DR_CIMA){
 				pntCabeca.y+=53;
 				posicao.y-=20;
-				if (luva->isLuvaEsquerda()){
-					posicao.x+=20;
-				} else {
-					posicao.x-=20;
-				}
-			}else {
+			} else {
 				posicao.y+=20;
-				if (luva->isLuvaEsquerda()){
-					posicao.x+=20;
-				} else {
-					posicao.x-=20;
-				}
 			}
+
+            if (luva->isLuvaEsquerda()){
+                posicao.x-=20;
+            } else {
+                posicao.x+=20;
+            }
+
 			energia--;
 			setPosicao(posicao.x,posicao.y);
+
 			EfeitoContainer::getInstance()->adicionar(pntCabeca.x,pntCabeca.y,EFEITO_SANGUE);
 		}
 	} else {
         delay.acao--;
 	}
+
 	return levou;
 }
 void LutadorAbstract::mover(InputSystem * input, LutadorAbstract * adversario)

@@ -2,21 +2,24 @@
 #ifndef _EFEITOSANGUE_H
 #define _EFEITOSANGUE_H
 
-#include "EfeitoAbstract.h"
+#include <GBF/ParticleSystemSprite.h>
 #include <GBF/GraphicSystemImageBufferManager.h>
 #include <GBF/SpriteFactory.h>
 
-class EfeitoSangue : public EfeitoAbstract
+class EfeitoSangue : public ParticleSystemSprite
 {
   public:
     virtual ~EfeitoSangue();
 
     EfeitoSangue();
 
+    void executar();
+    void criar(int x, int y);
+
+
+  protected:
+    static GraphicSystemImageBufferManager *gsImageBufferManager;
 
 };
-//Tipos de Efeitos
-enum EnumEfeito {
-  EFEITO_SANGUE
-};
+
 #endif

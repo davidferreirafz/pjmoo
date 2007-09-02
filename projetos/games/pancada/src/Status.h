@@ -12,10 +12,11 @@ class Status : public HUDAbstract
     public:
         Status();
         virtual ~Status();
-        void virtual desenhar(int pontos, int round)=0;
+        void virtual desenhar(int pontos, int round, int energia)=0;
 
     protected:
         SpriteItem * pontuacao;
+        SpriteItem * statusEnergia;
 
     private:
 };

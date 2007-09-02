@@ -33,6 +33,8 @@ class Placar
     Status *statusPC;
     StatusTempo *statusTempo;
 
+    void calcular();
+
   public:
     Placar();
 
@@ -40,12 +42,6 @@ class Placar
 
     void iniciar();
     void iniciarRound();
-
-    // Pontos do PC
-    int getPontosPC();
-
-    // Pontos do Jogador
-    int getPontosPlayer();
 
     void adicionarPontoPC();
 

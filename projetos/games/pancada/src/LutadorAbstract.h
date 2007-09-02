@@ -15,18 +15,18 @@
 #define _LUTADORABSTRACT_H
 
 #include <GBF/GraphicSystemImageBufferManager.h>
-
+#include <GBF/ParticleSystemManager.h>
 #include <GBF/PersonagemControlado.h>
-
 #include <GBF/SpriteFactory.h>
+#include <GBF/InputSystem.h>
 
-#include "EfeitoContainer.h"
 #include "CabecaFactory.h"
 #include "Cabeca.h"
 #include "LuvaEsquerda.h"
 #include "LuvaDireita.h"
 #include "LuvaAbstract.h"
-#include <GBF/InputSystem.h>
+#include "EfeitoSangue.h"
+
 
 
 class LutadorAbstract : public PersonagemControlado
@@ -46,6 +46,7 @@ class LutadorAbstract : public PersonagemControlado
 
     LuvaDireita * luvadireita;
 
+    static ParticleSystemManager *particleManager;
 
   public:
     //Construtor

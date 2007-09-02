@@ -1,8 +1,8 @@
 
 #include "FaseUm.h"
 
-FaseUm::FaseUm(){
-
+FaseUm::FaseUm()
+{
 	//Player, jogador humano
 	if (lutadorPlayer==NULL){
     	lutadorPlayer = new LutadorPlayer();
@@ -11,10 +11,12 @@ FaseUm::FaseUm(){
 	if (lutadorPC==NULL){
     	lutadorPC = new LutadorPC();
     }
+
+    round.setMaximo(2);
 }
 
-FaseUm::~FaseUm(){
-
+FaseUm::~FaseUm()
+{
 
 }
 

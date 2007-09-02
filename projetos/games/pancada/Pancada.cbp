@@ -107,10 +107,6 @@
 		<Unit filename="src/CabecaFactory.h" />
 		<Unit filename="src/Controle.cpp" />
 		<Unit filename="src/Controle.h" />
-		<Unit filename="src/EfeitoAbstract.cpp" />
-		<Unit filename="src/EfeitoAbstract.h" />
-		<Unit filename="src/EfeitoContainer.cpp" />
-		<Unit filename="src/EfeitoContainer.h" />
 		<Unit filename="src/EfeitoSangue.cpp" />
 		<Unit filename="src/EfeitoSangue.h" />
 		<Unit filename="src/FaseAbstract.cpp" />

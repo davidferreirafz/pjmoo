@@ -14,7 +14,7 @@
 #include "LutadorAbstract.h"
 
 Area LutadorAbstract::ringue;
-
+ParticleSystemManager * LutadorAbstract::particleManager;
 //Construtor
 LutadorAbstract::LutadorAbstract()
 {
@@ -33,6 +33,12 @@ LutadorAbstract::LutadorAbstract()
 	posicao.y = 0;
 
     energia = 100;
+
+
+    if (particleManager==NULL){
+        particleManager = ParticleSystemManager::getInstance();
+    }
+
 
     resetar();
 }
@@ -228,7 +234,10 @@ bool LutadorAbstract::levouSoco(LuvaAbstract * luva)
 			energia--;
 			setPosicao(posicao.x,posicao.y);
 
-			EfeitoContainer::getInstance()->adicionar(pntCabeca.x,pntCabeca.y,EFEITO_SANGUE);
+            EfeitoSangue *sangue = new EfeitoSangue();
+            sangue->criar(pntCabeca.x,pntCabeca.y);
+
+            particleManager->adicionar(sangue);
 		}
 	} else {
         delay.acao--;

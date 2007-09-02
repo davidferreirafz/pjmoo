@@ -2,6 +2,7 @@
 #include "FaseAbstract.h"
 
 WriteSystemManager * FaseAbstract::wsManager;
+ParticleSystemManager * FaseAbstract::particleManager;
 
 FaseAbstract::FaseAbstract()
 {
@@ -16,6 +17,10 @@ FaseAbstract::FaseAbstract()
 
     if (wsManager==NULL){
         wsManager = WriteSystemManager::getInstance();
+    }
+
+    if (particleManager==NULL){
+        particleManager = ParticleSystemManager::getInstance();
     }
 
     Area areaRingue;
@@ -45,7 +50,7 @@ bool FaseAbstract::isGameOver()
     bool perdeu = false;
 
     if (((lutadorPlayer->isNocaute())&&(cronometroAuxiliar.isTerminou())) ||
-       ((eRound==ROUND_TRES) && (placar.isTempoTerminou()) && (placar.isPCGanhou()))){
+       ((round.isUltimo()) && (placar.isTempoTerminou()) && (placar.isPCGanhou()))){
         perdeu = true;
     }
 
@@ -56,7 +61,7 @@ bool FaseAbstract::isFaseFinalizada()
     bool finalizou = false;
 
     if (((lutadorPC->isNocaute())&&(cronometroAuxiliar.isTerminou())) ||
-       ((eRound==ROUND_TRES) && (placar.isTempoTerminou()) && (placar.isPlayerGanhou()))){
+       ((round.isUltimo()) && (placar.isTempoTerminou()) && (placar.isPlayerGanhou()))){
         finalizou = true;
     }
 
@@ -72,32 +77,40 @@ bool FaseAbstract::isFimRound()
 }
 bool FaseAbstract::isProximoRound()
 {
-	if (eRound!=ROUND_TRES){
-		return true;
-	} else {
-		return false;
-	}
+    //mecanismo para evitar empate em numero de rounds
+    bool proximo = true;
+
+    if ((round.isUltimo())&&((placar.isPlayerGanhou())||(placar.isPCGanhou()))){
+        proximo = false;
+    }
+   // return proximo;
+   //return (!round.isUltimo());
 }
 void FaseAbstract::primeiroRound()
 {
-    eRound=ROUND_UM;
+    round.setPrimeiro();
     placar.iniciar();
     cronometroAuxiliar.setResetar();
 }
 void FaseAbstract::proximoRound()
 {
-	if (eRound!=ROUND_TRES){
-		if (eRound==ROUND_UM){
-			eRound=ROUND_DOIS;
-		} else {
-			eRound=ROUND_TRES;
-		}
+    if (!round.isUltimo()){
+//    if ((!round.isUltimo())||
+//    ((round.isUltimo())&&((!placar.isPlayerGanhou())&&(!placar.isPCGanhou())))
+//    ){
+        round.proximo();
 		placar.iniciarRound();
-	}
+    } else if (round.isUltimo()){
+
+        if ((!placar.isPlayerGanhou())||(!placar.isPCGanhou())){
+            round.proximo();
+            placar.iniciarRound();
+        }
+    }
 }
 int FaseAbstract::getRound()
 {
-	return int(eRound);
+	return int(round.get());
 }
 void FaseAbstract::executar(InputSystem * input)
 {
@@ -116,6 +129,7 @@ void FaseAbstract::executar(InputSystem * input)
 	}
     //executa o cronometro
     placar.processarTempo();
+    particleManager->executar();
 }
 void FaseAbstract::desenhar()
 {
@@ -124,12 +138,11 @@ void FaseAbstract::desenhar()
 	//desenha lutadores
 	lutadorPlayer->desenhar();
 	lutadorPC->desenhar();
-    placar.desenhar();
-    //-- falha ao desenhar
 
 	//desenha efeitos especiais
-	EfeitoContainer::getInstance()->desenhar();
+	particleManager->desenhar();
 
+    placar.desenhar();
 }
 // so para virar de costas corretamente
 void FaseAbstract::ordenacao()
@@ -154,7 +167,6 @@ bool FaseAbstract::isNocaute()
         nocaute = true;
         cronometroAuxiliar.processar();
     }
-
 
     return nocaute;
 }

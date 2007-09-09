@@ -5,9 +5,11 @@
 #include "FaseAbstract.h"
 #include <GBF/InputSystem.h>
 
-#include "FaseFactory.h"
+#include <GBF/SpriteItem.h>
+
 #include <GBF/TimerSystemCronometroDecrescente.h>
 
+#include "FaseFactory.h"
 
 class Controle
 {
@@ -21,12 +23,13 @@ class Controle
     //Construtor
     Controle();
 
-    // Destrutor
+    //Destrutor
     virtual ~Controle();
 
     void iniciar();
 
     bool carregarFase();
+
     void mudarFase();
 
     bool isGameOver();
@@ -36,15 +39,16 @@ class Controle
     void executar(InputSystem * input);
 
     void desenhar();
+
     void carregar();
 
 
   private:
-    SpriteItem *fight;
+    SpriteItem * fight;
+
 
   protected:
     TimerSystemCronometroDecrescente tempoEspera;
-
 
 };
 #endif

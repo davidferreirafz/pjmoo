@@ -1,5 +1,5 @@
 ///***************************************************************************
-// *   FZPong <Game - Pong Clone>                                            *
+// *   Pancada <Game - Boxing Clone>                                         *
 // *   Copyright (C) 2007 by David Ferreira - FZ                             *
 // *   davidferreira.fz@gmail.com - http://pjmoo.sourceforge.net             *
 // ***************************************************************************
@@ -18,78 +18,45 @@
 // *   Free Software Foundation, Inc.,                                       *
 // *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
 // ***************************************************************************/
-#ifndef _JOGO_H
-#define _JOGO_H
 
-#include "Controle.h"
-#include <GBF/SpriteItem.h>
-
-#include <GBF/GAT.h>
-
-#include <GBF/UserInterfaceMenuTextoTransparente.h>
-
-#include <GBF/UserInterfaceMenuItemTexto.h>
-
-#include <GBF/SpriteFactory.h>
+#ifndef _CAIXATEXTOTITULO_H
+#define _CAIXATEXTOTITULO_H
 
 #include "CaixaTexto.h"
-#include "CaixaTextoTitulo.h"
+#include <string>
 
-class Jogo : public GAT
+#include <GBF/GBF_define.h>
+
+
+class CaixaTextoTitulo : public CaixaTexto
 {
   public:
-    int main(int argc, char * argv[]);
+    CaixaTextoTitulo();
 
-    //Construtor
-    Jogo(int argc, char * argv[]);
+    virtual ~CaixaTextoTitulo();
 
-    //Destrutor
-    virtual ~Jogo();
+    void executar();
+
+    //Informa o tipo de fonte a ser utilizado
+    void setFonteTitulo(std::string fonte);
+
+    void setChaveTituloLocalizado(std::string chaveTitulo);
+
+    //Informa como deve ser o alinhamento do texto
+    void setTituloAlinhamento(TextoAlinhamento alinhamento);
 
 
   protected:
-    //Inicializa os recursos utilizados no jogo.
-    //Ex.: Imagens, sons, fontes, configuração do modo gráfico e etc..
-    void inicializarRecursos();
+    std::string fonteTitulo;
 
-    void menuPrincipal();
+    //Chave de localização do texto para utilizar recursos de tradução(localização)
+    std::string chaveTituloLocalizado;
 
-    void menuAjuda();
+    //Maior dimensão possível de um caracter com o tipo de fonte utilizado
+    Dimensao dimensaoLetraTitulo;
 
-    void menuCredito();
-
-    void menuSobre();
-
-    void jogoNovo();
-
-    void jogoExecutando();
-
-    void jogoPause();
-
-    void jogoFaseCarregar();
-
-    void jogoFaseFinalizada();
-
-    void jogoGameOver();
-
-    void jogoZerado();
-
-    bool gatilhoJogoFaseCarregar();
-
-    void gatilhoMenuPrincipal();
-
-
-  private:
-    bool desenharBotaoEnter();
-
-    Controle controle;
-
-    CaixaTextoTitulo *caixaAjuda;
-    CaixaTextoTitulo *caixaCredito;
-    CaixaTextoTitulo *caixaSobre;
-    CaixaTexto *caixaGameOver;
-    CaixaTexto *caixaFaseFinalizada;
-    CaixaTexto *caixaZerado;
+    //Alinhamento do Titulo
+    TextoAlinhamento tituloAlinhamento;
 
 };
 #endif

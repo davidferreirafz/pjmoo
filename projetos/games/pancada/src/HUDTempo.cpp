@@ -1,8 +1,8 @@
-#include "StatusTempo.h"
 
+#include "HUDTempo.h"
 
-StatusTempo::StatusTempo()
-{
+HUDTempo::HUDTempo(){
+
     GraphicSystemImageBufferManager *gsImageBufferManager=GraphicSystemImageBufferManager::getInstance();
 
     SpriteFactory *spriteFactory = new SpriteFactory(gsImageBufferManager->getImageBuffer("interface"));
@@ -12,14 +12,13 @@ StatusTempo::StatusTempo()
     delete(spriteFactory);
 }
 
-StatusTempo::~StatusTempo()
-{
+HUDTempo::~HUDTempo(){
+
     //dtor
 }
 
-void StatusTempo::desenhar(int tempo)
+void HUDTempo::desenhar(int tempo) 
 {
     painel->desenhar(274,0);
     wsManager->escrever("kiloton24",298,11,"%02d",tempo);
 }
-

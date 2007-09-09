@@ -1,19 +1,35 @@
 
 #include "FaseAbstract.h"
 
-WriteSystemManager * FaseAbstract::wsManager;
 ParticleSystemManager * FaseAbstract::particleManager;
 
-FaseAbstract::FaseAbstract()
+WriteSystemManager * FaseAbstract::wsManager;
+
+// so para virar de costas corretamente
+
+// so para virar de costas corretamente
+void FaseAbstract::ordenacao() 
 {
-	//informa tempo por round
-	cronometroAuxiliar.setTempoOriginal(6);
+	Ponto pc     = lutadorPC->getPosicao();
+	Ponto player = lutadorPlayer->getPosicao();
 
-	lutadorPlayer = NULL;
-	lutadorPC     = NULL;
-	ringue        = FrameLayerManager::getInstance()->getFrameLayer("ringue");
+	if (player.y <= pc.y){
+		lutadorPlayer->olharBaixo();
+		lutadorPC->olharCima();
+	} else {
+		lutadorPlayer->olharCima();
+		lutadorPC->olharBaixo();
+	}
+}
+//Destrutor
+FaseAbstract::FaseAbstract() 
+{
+    //informa tempo por round
+    cronometroAuxiliar.setTempoOriginal(6);
 
-    eRound=ROUND_NULL;
+    lutadorPlayer = NULL;
+    lutadorPC     = NULL;
+    ringue        = FrameLayerManager::getInstance()->getFrameLayer("ringue");
 
     if (wsManager==NULL){
         wsManager = WriteSystemManager::getInstance();
@@ -29,11 +45,12 @@ FaseAbstract::FaseAbstract()
     areaRingue.left   =  28;
     areaRingue.right  = 611;
 
-	LutadorAbstract::setRingue(areaRingue);
+    LutadorAbstract::setRingue(areaRingue);
 
     primeiroRound();
 }
-FaseAbstract::~FaseAbstract()
+//Construtor
+FaseAbstract::~FaseAbstract() 
 {
     if (lutadorPlayer){
     	delete(lutadorPlayer);
@@ -45,7 +62,7 @@ FaseAbstract::~FaseAbstract()
 	    ringue=NULL;
     }
 }
-bool FaseAbstract::isGameOver()
+bool FaseAbstract::isGameOver() 
 {
     bool perdeu = false;
 
@@ -56,7 +73,7 @@ bool FaseAbstract::isGameOver()
 
     return perdeu;
 }
-bool FaseAbstract::isFaseFinalizada()
+bool FaseAbstract::isFaseFinalizada() 
 {
     bool finalizou = false;
 
@@ -67,7 +84,7 @@ bool FaseAbstract::isFaseFinalizada()
 
     return finalizou;
 }
-bool FaseAbstract::isFimRound()
+bool FaseAbstract::isFimRound() 
 {
     if (placar.isTempoTerminou()){
         return true;
@@ -75,7 +92,18 @@ bool FaseAbstract::isFimRound()
         return false;
     }
 }
-bool FaseAbstract::isProximoRound()
+bool FaseAbstract::isNocaute() 
+{
+    bool nocaute = false;
+
+    if ((lutadorPlayer->isNocaute())||(lutadorPC->isNocaute())){
+        nocaute = true;
+        cronometroAuxiliar.processar();
+    }
+
+    return nocaute;
+}
+bool FaseAbstract::isProximoRound() 
 {
     //mecanismo para evitar empate em numero de rounds
     bool proximo = true;
@@ -83,36 +111,30 @@ bool FaseAbstract::isProximoRound()
     if ((round.isUltimo())&&((placar.isPlayerGanhou())||(placar.isPCGanhou()))){
         proximo = false;
     }
-   // return proximo;
+
+    return proximo;
    //return (!round.isUltimo());
 }
-void FaseAbstract::primeiroRound()
-{
-    round.setPrimeiro();
-    placar.iniciar();
-    cronometroAuxiliar.setResetar();
-}
-void FaseAbstract::proximoRound()
+void FaseAbstract::proximoRound() 
 {
     if (!round.isUltimo()){
 //    if ((!round.isUltimo())||
 //    ((round.isUltimo())&&((!placar.isPlayerGanhou())&&(!placar.isPCGanhou())))
 //    ){
         round.proximo();
-		placar.iniciarRound();
+        placar.iniciarRound();
     } else if (round.isUltimo()){
-
         if ((!placar.isPlayerGanhou())||(!placar.isPCGanhou())){
             round.proximo();
             placar.iniciarRound();
         }
     }
 }
-int FaseAbstract::getRound()
+int FaseAbstract::getRound() 
 {
 	return int(round.get());
 }
-void FaseAbstract::executar(InputSystem * input)
+void FaseAbstract::executar(InputSystem * input) 
 {
     //Movimenta os lutadores
 	lutadorPlayer->mover(input,lutadorPC);
@@ -131,42 +153,24 @@ void FaseAbstract::executar(InputSystem * input)
     placar.processarTempo();
     particleManager->executar();
 }
-void FaseAbstract::desenhar()
+void FaseAbstract::primeiroRound() 
+{
+    round.setPrimeiro();
+    placar.iniciar();
+    cronometroAuxiliar.setResetar();
+}
+void FaseAbstract::desenhar() 
 {
     ringue->desenhar();
 
-	//desenha lutadores
-	lutadorPlayer->desenhar();
-	lutadorPC->desenhar();
+    //desenha lutadores
+    lutadorPlayer->desenhar();
+    lutadorPC->desenhar();
 
-	//desenha efeitos especiais
-	particleManager->desenhar();
+    //desenha efeitos especiais
+    particleManager->desenhar();
 
-    placar.desenhar();
-}
-// so para virar de costas corretamente
-void FaseAbstract::ordenacao()
-{
-	Ponto pc     = lutadorPC->getPosicao();
-	Ponto player = lutadorPlayer->getPosicao();
-
-	if (player.y <= pc.y){
-		lutadorPlayer->olharBaixo();
-		lutadorPC->olharCima();
-	} else {
-		lutadorPlayer->olharCima();
-		lutadorPC->olharBaixo();
-	}
-}
-
-bool FaseAbstract::isNocaute()
-{
-    bool nocaute = false;
-
-    if ((lutadorPlayer->isNocaute())||(lutadorPC->isNocaute())){
-        nocaute = true;
-        cronometroAuxiliar.processar();
-    }
-
-    return nocaute;
+    statusPlayer.desenhar(placar.getPontosPlayer(),placar.getRoundsPlayer(),lutadorPlayer->getEnergia());
+    statusPC.desenhar(placar.getPontosPC(),placar.getRoundsPC(),lutadorPC->getEnergia());
+    statusTempo.desenhar(placar.getRoundTempo());
 }

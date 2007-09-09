@@ -5,59 +5,69 @@
 #include <GBF/TimerSystemCronometroDecrescente.h>
 
 
-#include "Status.h"
-#include "StatusPlayer.h"
-#include "StatusPC.h"
-#include "StatusTempo.h"
-
 struct ContagemPontos
 {
     int player;
-    int pc;
-};
 
+    int pc;
+
+};
 struct ContagemRound
 {
     int player;
-    int pc;
-};
 
+    int pc;
+
+};
 class Placar
 {
   private:
-    ContagemPontos pontos;
-    ContagemRound round;
     TimerSystemCronometroDecrescente cronometroRound;
 
-    Status *statusPlayer;
-    Status *statusPC;
-    StatusTempo *statusTempo;
+    ContagemPontos pontos;
+
+    ContagemRound round;
 
     void calcular();
 
+
   public:
+    //Construtor
     Placar();
 
+    //Destrutor
     virtual ~Placar();
 
     void iniciar();
+
     void iniciarRound();
 
     void adicionarPontoPC();
 
     void adicionarPontoPlayer();
 
-    void desenhar();
-
     bool isPlayerGanhou();
+
     bool isPCGanhou();
 
-    void processarTempo();
     bool isTempoTerminou();
 
-  protected:
+    void processarTempo();
 
+    //Retorna a pontuação do Computador
+    int getPontosPC();
 
+    //Retorna pontuação do Jogador
+    int getPontosPlayer();
+
+    //Retorna a quantidade de rounds que o Computador Ganhou
+    int getRoundsPC();
+
+    //Retorna a quantidade de rounds que o Jogador Ganhou
+    int getRoundsPlayer();
+
+    //Retorna o tempo restante para terminar o round
+    int getRoundTempo();
 
 };
 #endif

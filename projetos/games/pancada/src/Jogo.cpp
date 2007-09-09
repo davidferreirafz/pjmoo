@@ -50,7 +50,9 @@ Jogo::Jogo(int argc, char * argv[]):GAT(argc,argv)
 //Destrutor
 Jogo::~Jogo()
 {
-
+    delete(caixaAjuda);
+    delete(caixaCredito);
+    delete(caixaSobre);
 }
 //Inicializa os recursos utilizados no jogo.
 //Ex.: Imagens, sons, fontes, configuração do modo gráfico e etc..
@@ -66,6 +68,7 @@ void Jogo::inicializarRecursos()
     GSIBManager->carregar("background","data//imagem//pancada_console.png");
     GSIBManager->carregar("interface","data//imagem//pancada_interface.png");
     GSIBManager->carregar("ringue","data//imagem//pancada_ringue_01.png");
+    GSIBManager->carregar("gbf-window-background","data//kernel//imagem//window-background-chess.png");
 
     //carregando fontes
     frameworkGBF->writeSystem->carregar("texto",frameworkGBF->getPath()+"data//fonte//texto.png");
@@ -122,6 +125,58 @@ void Jogo::inicializarRecursos()
     uiMenuPrincipal->adicionar(new UserInterfaceMenuItemTexto("menu_4","menu"));
     uiMenuPrincipal->adicionar(new UserInterfaceMenuItemTexto("menu_5","menu"));
 
+
+    caixaAjuda = new CaixaTextoTitulo();
+    caixaAjuda->setFonte("texto");
+    caixaAjuda->setPosicao(40,46);
+    caixaAjuda->setDimensao(560,402);
+    caixaAjuda->setChaveTextoLocalizado("tela_ajuda_%02d");
+    caixaAjuda->setFonteTitulo("menu");
+    caixaAjuda->setChaveTituloLocalizado("titulo_ajuda");
+    caixaAjuda->inicializar();
+
+    caixaCredito = new CaixaTextoTitulo();
+    caixaCredito->setFonte("texto");
+    caixaCredito->setPosicao(40,46);
+    caixaCredito->setDimensao(560,402);
+    caixaCredito->setChaveTextoLocalizado("tela_credito_%02d");
+    caixaCredito->setFonteTitulo("menu");
+    caixaCredito->setChaveTituloLocalizado("titulo_credito");
+    caixaCredito->inicializar();
+
+    caixaSobre = new CaixaTextoTitulo();
+    caixaSobre->setFonte("texto");
+    caixaSobre->setPosicao(40,46);
+    caixaSobre->setDimensao(560,418);
+    caixaSobre->setChaveTextoLocalizado("tela_sobre_%02d");
+    caixaSobre->setFonteTitulo("menu");
+    caixaSobre->setChaveTituloLocalizado("titulo_sobre");
+    caixaSobre->inicializar();
+
+    caixaFaseFinalizada = new CaixaTexto();
+    caixaFaseFinalizada->setFonte("texto");
+    caixaFaseFinalizada->setPosicao(120,140);
+    caixaFaseFinalizada->setDimensao(400,200);
+    caixaFaseFinalizada->setChaveTextoLocalizado("tela_fasefinalizada_%02d");
+    caixaFaseFinalizada->setTextoAlinhamento(TEXTO_CENTRALIZADO);
+    caixaFaseFinalizada->inicializar();
+
+    caixaGameOver = new CaixaTexto();
+    caixaGameOver->setFonte("texto");
+    caixaGameOver->setPosicao(120,140);
+    caixaGameOver->setDimensao(400,200);
+    caixaGameOver->setChaveTextoLocalizado("tela_gameover_%02d");
+    caixaGameOver->setTextoAlinhamento(TEXTO_CENTRALIZADO);
+    caixaGameOver->inicializar();
+
+    caixaZerado = new CaixaTexto();
+    caixaZerado->setFonte("texto");
+    caixaZerado->setPosicao(120,140);
+    caixaZerado->setDimensao(400,200);
+    caixaZerado->setChaveTextoLocalizado("tela_zerado_%02d");
+    caixaZerado->setTextoAlinhamento(TEXTO_CENTRALIZADO);
+    caixaZerado->inicializar();
+
     controle.carregar();
 }
 void Jogo::menuPrincipal()
@@ -151,15 +206,9 @@ void Jogo::menuPrincipal()
 }
 void Jogo::menuAjuda()
 {
-    char textoFormatado[30];
     FrameLayerManager::getInstance()->getFrameLayer("background")->desenhar();
 
-    for (int i=0; i<11;i++){
-        sprintf(textoFormatado,"tela_ajuda_%02d",(1)+i);
-        frameworkGBF->writeSystem->escreverLocalizado("texto",70,120+(26*i),textoFormatado);
-    }
-
-    frameworkGBF->writeSystem->escreverLocalizado("menu", 220, 88,"titulo_ajuda");
+    caixaAjuda->executar();
 
     if (desenharBotaoEnter()){
         if ((frameworkGBF->inputSystem->teclado->isKey(SDLK_RETURN))
@@ -170,15 +219,9 @@ void Jogo::menuAjuda()
 }
 void Jogo::menuCredito()
 {
-    char textoFormatado[30];
     FrameLayerManager::getInstance()->getFrameLayer("background")->desenhar();
 
-    for (int i=0; i<11;i++){
-        sprintf(textoFormatado,"tela_credito_%02d",(1)+i);
-        frameworkGBF->writeSystem->escreverLocalizado("texto",70,120+(26*i),textoFormatado);
-    }
-
-    frameworkGBF->writeSystem->escreverLocalizado("menu", 220, 88,"titulo_credito");
+    caixaCredito->executar();
 
     if (desenharBotaoEnter()){
         if ((frameworkGBF->inputSystem->teclado->isKey(SDLK_RETURN))||
@@ -189,15 +232,9 @@ void Jogo::menuCredito()
 }
 void Jogo::menuSobre()
 {
-    char textoFormatado[30];
     FrameLayerManager::getInstance()->getFrameLayer("background")->desenhar();
 
-    for (int i=0; i<11;i++){
-        sprintf(textoFormatado,"tela_sobre_%02d",(1)+i);
-        frameworkGBF->writeSystem->escreverLocalizado("texto",70,120+(26*i),textoFormatado);
-    }
-
-    frameworkGBF->writeSystem->escreverLocalizado("menu", 220, 88,"titulo_sobre");
+    caixaSobre->executar();
 
     if (desenharBotaoEnter()){
         if ((frameworkGBF->inputSystem->teclado->isKey(SDLK_RETURN))
@@ -242,13 +279,9 @@ void Jogo::jogoFaseCarregar()
 }
 void Jogo::jogoFaseFinalizada()
 {
-    char textoFormatado[30];
     controle.desenhar();
 
-    for (int i=0; i<7;i++){
-        sprintf(textoFormatado,"tela_fasefinalizada_%02d",(1)+i);
-        frameworkGBF->writeSystem->escreverLocalizado("texto",70,120+(26*i),textoFormatado);
-    }
+    caixaFaseFinalizada->executar();
 
     if (desenharBotaoEnter()){
         if ((frameworkGBF->inputSystem->teclado->isKey(SDLK_RETURN))
@@ -259,13 +292,9 @@ void Jogo::jogoFaseFinalizada()
 }
 void Jogo::jogoGameOver()
 {
-    char textoFormatado[30];
     FrameLayerManager::getInstance()->getFrameLayer("background")->desenhar();
 
-    for (int i=0; i<6;i++){
-        sprintf(textoFormatado,"tela_gameover_%02d",(1)+i);
-        frameworkGBF->writeSystem->escreverLocalizado("texto",70,120+(26*i),textoFormatado);
-    }
+    caixaGameOver->executar();
 
     if (desenharBotaoEnter()){
         if ((frameworkGBF->inputSystem->teclado->isKey(SDLK_RETURN))
@@ -276,13 +305,9 @@ void Jogo::jogoGameOver()
 }
 void Jogo::jogoZerado()
 {
-    char textoFormatado[30];
     FrameLayerManager::getInstance()->getFrameLayer("background")->desenhar();
 
-    for (int i=0; i<8;i++){
-        sprintf(textoFormatado,"tela_zerado_%02d",(1)+i);
-        frameworkGBF->writeSystem->escreverLocalizado("texto",70,120+(26*i),textoFormatado);
-    }
+    caixaZerado->executar();
 
     if (desenharBotaoEnter()){
         if ((frameworkGBF->inputSystem->teclado->isKey(SDLK_RETURN))

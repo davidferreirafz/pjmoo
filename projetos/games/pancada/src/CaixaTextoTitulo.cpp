@@ -1,5 +1,5 @@
 ///***************************************************************************
-// *   FZPong <Game - Pong Clone>                                            *
+// *   Pancada <Game - Boxing Clone>                                         *
 // *   Copyright (C) 2007 by David Ferreira - FZ                             *
 // *   davidferreira.fz@gmail.com - http://pjmoo.sourceforge.net             *
 // ***************************************************************************
@@ -18,78 +18,44 @@
 // *   Free Software Foundation, Inc.,                                       *
 // *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
 // ***************************************************************************/
-#ifndef _JOGO_H
-#define _JOGO_H
 
-#include "Controle.h"
-#include <GBF/SpriteItem.h>
-
-#include <GBF/GAT.h>
-
-#include <GBF/UserInterfaceMenuTextoTransparente.h>
-
-#include <GBF/UserInterfaceMenuItemTexto.h>
-
-#include <GBF/SpriteFactory.h>
-
-#include "CaixaTexto.h"
 #include "CaixaTextoTitulo.h"
 
-class Jogo : public GAT
+CaixaTextoTitulo::CaixaTextoTitulo() 
 {
-  public:
-    int main(int argc, char * argv[]);
+    tituloAlinhamento=TEXTO_CENTRALIZADO;
+}
+CaixaTextoTitulo::~CaixaTextoTitulo() 
+{
+}
+void CaixaTextoTitulo::executar() 
+{
+    int posicaoTextoHorizontal = 0;
 
-    //Construtor
-    Jogo(int argc, char * argv[]);
+    CaixaTexto::executar();
 
-    //Destrutor
-    virtual ~Jogo();
+    if (tituloAlinhamento==TEXTO_CENTRALIZADO){
+        int auxiliar = wsManager->getLarguraLinha(fonteTitulo,chaveTituloLocalizado);
+        posicaoTextoHorizontal=int (posicao.x+(dimensao.w/2)-(auxiliar/2));
+    } else {
+        posicaoTextoHorizontal = posicao.x+dimensaoLetra.w;
+    }
 
-
-  protected:
-    //Inicializa os recursos utilizados no jogo.
-    //Ex.: Imagens, sons, fontes, configuração do modo gráfico e etc..
-    void inicializarRecursos();
-
-    void menuPrincipal();
-
-    void menuAjuda();
-
-    void menuCredito();
-
-    void menuSobre();
-
-    void jogoNovo();
-
-    void jogoExecutando();
-
-    void jogoPause();
-
-    void jogoFaseCarregar();
-
-    void jogoFaseFinalizada();
-
-    void jogoGameOver();
-
-    void jogoZerado();
-
-    bool gatilhoJogoFaseCarregar();
-
-    void gatilhoMenuPrincipal();
-
-
-  private:
-    bool desenharBotaoEnter();
-
-    Controle controle;
-
-    CaixaTextoTitulo *caixaAjuda;
-    CaixaTextoTitulo *caixaCredito;
-    CaixaTextoTitulo *caixaSobre;
-    CaixaTexto *caixaGameOver;
-    CaixaTexto *caixaFaseFinalizada;
-    CaixaTexto *caixaZerado;
-
-};
-#endif
+    wsManager->escreverLocalizado(fonteTitulo,posicaoTextoHorizontal,posicao.y,chaveTituloLocalizado);
+}
+//Informa o tipo de fonte a ser utilizado
+void CaixaTextoTitulo::setFonteTitulo(std::string fonte) 
+{
+    this->fonteTitulo=fonte;
+    dimensaoLetraTitulo=wsManager->getFonte(fonte)->getDimensao();
+    espacoAntesTexto=int(dimensaoLetraTitulo.h*ESTILO_LINHA_UMA_MEIA);
+}
+void CaixaTextoTitulo::setChaveTituloLocalizado(std::string chaveTitulo) 
+{
+    chaveTituloLocalizado=chaveTitulo;
+}
+//Informa como deve ser o alinhamento do texto
+void CaixaTextoTitulo::setTituloAlinhamento(TextoAlinhamento alinhamento) 
+{
+    textoAlinhamento=alinhamento;
+}

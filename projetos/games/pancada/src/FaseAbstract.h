@@ -2,111 +2,107 @@
 #ifndef _FASEABSTRACT_H
 #define _FASEABSTRACT_H
 
+#include <GBF/ParticleSystemManager.h>
+
+#include <GBF/WriteSystemManager.h>
+
+#include <GBF/FrameLayer.h>
 
 #include <GBF/TimerSystemCronometroDecrescente.h>
-#include <GBF/ParticleSystemManager.h>
-#include <GBF/FrameLayer.h>
-#include <GBF/WriteSystemManager.h>
-#include <GBF/InputSystem.h>
+
+#include "LutadorAbstract.h"
+#include "Placar.h"
+#include "HUDTempo.h"
+#include "StatusPC.h"
+#include "StatusPlayer.h"
 #include <GBF/FrameLayerManager.h>
 
-#include "Placar.h"
-#include "LutadorAbstract.h"
+#include <GBF/InputSystem.h>
 
-
-
-//Status de Roundes
-enum EnumRound {
-  ROUND_NULL =0,
-  ROUND_UM   =1,
-  ROUND_DOIS =2,
-  ROUND_TRES =3,
-  ROUND_TERMINOU =4
-};
 
 class Round
 {
   public:
     int atual;
+
     int ultimo;
-    bool prorrogacao;
 
-    void setProrrogacao()
-    {
-        prorrogacao=true;
-    }
+    inline void setPrimeiro() {
+            atual=1;
+        };
 
-    void setPrimeiro()
-    {
-        atual=1;
-    }
+    inline bool isUltimo() {
+            if (atual==ultimo){
+                return true;
+            } else {
+                return false;
+            }
+        };
 
-    bool isUltimo()
-    {
-        if (atual==ultimo){
-            return true;
-        } else {
-            return false;
-        }
-    }
+    inline void proximo() {
+            atual++;
+        };
 
-    void proximo()
-    {
-        atual++;
-    }
+    inline void setMaximo(int maximo) {
+            ultimo=maximo;
+        };
 
-    void setMaximo(int maximo)
-    {
-        ultimo=maximo;
-    }
+    inline int get() {
+            return atual;
+        };
 
-    int get()
-    {
-        return atual;
-    }
 };
-
 class FaseAbstract
 {
-  public:
-
-
-
   protected:
-    LutadorAbstract * lutadorPlayer;
+    static ParticleSystemManager * particleManager;
 
-    LutadorAbstract * lutadorPC;
-
-
-    TimerSystemCronometroDecrescente cronometroAuxiliar;
+    static WriteSystemManager * wsManager;
 
     FrameLayer * ringue;
 
-    //FrameLayer * status;
-    Placar placar;
+    TimerSystemCronometroDecrescente cronometroAuxiliar;
 
-    static WriteSystemManager * wsManager;
-    static ParticleSystemManager * particleManager;
+    LutadorAbstract * lutadorPC;
+
+    LutadorAbstract * lutadorPlayer;
+
+    Placar placar;
 
     Round round;
 
-  private:
-    EnumRound eRound;
+    HUDTempo statusTempo;
 
+    StatusPC statusPC;
+
+    StatusPlayer statusPlayer;
+
+
+  private:
+    // so para virar de costas corretamente
+    void ordenacao();
 
 
   public:
+    //Destrutor
     FaseAbstract();
 
+    //Construtor
     virtual ~FaseAbstract();
+
+    //* Inicia a fase
+    virtual void iniciar() = 0;
 
     bool isGameOver();
 
     bool isFaseFinalizada();
 
     bool isFimRound();
+
     bool isNocaute();
+
     bool isProximoRound();
+
     void proximoRound();
 
     int getRound();
@@ -115,19 +111,7 @@ class FaseAbstract
 
     void primeiroRound();
 
-  protected:
-
-
-
-  public:
-    //* Inicia a fase
-    virtual void iniciar() = 0;
     void desenhar();
-
-  private:
-    // so para virar de costas corretamente
-    void ordenacao();
-
 
 };
 #endif

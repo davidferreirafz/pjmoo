@@ -1,11 +1,9 @@
-#include "Status.h"
 
+#include "HUDLutador.h"
 
+//Construtor
+HUDLutador::HUDLutador(){
 
-
-
-Status::Status()
-{
     GraphicSystemImageBufferManager *gsImageBufferManager=GraphicSystemImageBufferManager::getInstance();
 
     SpriteFactory *spriteFactory = new SpriteFactory(gsImageBufferManager->getImageBuffer("interface"));
@@ -17,8 +15,8 @@ Status::Status()
 
 }
 
-Status::~Status()
-{
+//Destrutor
+HUDLutador::~HUDLutador(){
     if (pontuacao){
         delete(pontuacao);
     }

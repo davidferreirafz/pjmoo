@@ -1,8 +1,10 @@
+
 #include "StatusPlayer.h"
 
-
-StatusPlayer::StatusPlayer()
+//Construtor
+StatusPlayer::StatusPlayer() 
 {
+
     GraphicSystemImageBufferManager *gsImageBufferManager=GraphicSystemImageBufferManager::getInstance();
 
     SpriteFactory *spriteFactory = new SpriteFactory(gsImageBufferManager->getImageBuffer("interface"));
@@ -11,22 +13,23 @@ StatusPlayer::StatusPlayer()
 
     delete(spriteFactory);
 }
-
-StatusPlayer::~StatusPlayer()
+//Destrutor
+StatusPlayer::~StatusPlayer() 
 {
-    //dtor
-}
 
-void StatusPlayer::desenhar(int pontos, int round, int energia)
+}
+//Desenha a barra de informações do jogador
+void StatusPlayer::desenhar(int pontos, int round, int energia) 
 {
     painel->desenhar(0,0);
     pontuacao->desenhar(45,0);
 
-    for (int se=0;((se<energia)&&(se<83));se++){
+    int barraEnergia=int((energia*83)/100);
+
+    for (int se=0;se<barraEnergia;se++){
         statusEnergia->desenhar(7,253-(2*se));
-	}
+    }
 
     wsManager->escrever("kiloton16",52,18,"%03d",pontos);
     wsManager->escrever("kiloton16",6,64, "%02d",round);
 }
-

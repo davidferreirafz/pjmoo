@@ -1,19 +1,20 @@
-#ifndef STATUSPC_H
-#define STATUSPC_H
 
-#include "Status.h"
+#ifndef _STATUSPC_H
+#define _STATUSPC_H
 
+#include "HUDLutador.h"
 
-class StatusPC : public Status
+class StatusPC : public HUDLutador
 {
-    public:
-        StatusPC();
-        virtual ~StatusPC();
-        void desenhar(int pontos, int round, int energia);
-    protected:
-    private:
+  public:
+    //Construtor
+    StatusPC();
+
+    //Destrutor
+    virtual ~StatusPC();
+
+    //Desenha a barra de informações do PC
+    void desenhar(int pontos, int round, int energia);
+
 };
-
-
-
-#endif // STATUSPC_H
+#endif

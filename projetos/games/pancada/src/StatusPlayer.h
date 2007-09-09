@@ -1,19 +1,20 @@
-#ifndef STATUSPLAYER_H
-#define STATUSPLAYER_H
 
-#include "Status.h"
+#ifndef _STATUSPLAYER_H
+#define _STATUSPLAYER_H
 
+#include "HUDLutador.h"
 
-class StatusPlayer : public Status
+class StatusPlayer : public HUDLutador
 {
-    public:
-        StatusPlayer();
-        virtual ~StatusPlayer();
-        void desenhar(int pontos, int round, int energia);
-    protected:
-    private:
+  public:
+    //Construtor
+    StatusPlayer();
+
+    //Destrutor
+    virtual ~StatusPlayer();
+
+    //Desenha a barra de informações do jogador
+    void desenhar(int pontos, int round, int energia);
+
 };
-
-
-
-#endif // STATUSPLAYER_H
+#endif

@@ -1,82 +1,7 @@
 
 #include "Placar.h"
 
-Placar::Placar()
-{
-    statusPlayer = new StatusPlayer();
-    statusPC = new StatusPC();
-    statusTempo = new StatusTempo();
-
-	cronometroRound.setTempoOriginal(6);
-}
-Placar::~Placar()
-{
-    if (statusPlayer){
-        delete(statusPlayer);
-    }
-    if (statusPC){
-        delete(statusPC);
-    }
-    if (statusTempo){
-        delete(statusTempo);
-    }
-}
-
-void Placar::adicionarPontoPC()
-{
-	pontos.pc++;
-}
-void Placar::adicionarPontoPlayer()
-{
-	pontos.player++;
-}
-void Placar::desenhar()
-{
-    statusPlayer->desenhar(pontos.player,round.player,100);
-    statusPC->desenhar(pontos.pc,round.pc,60);
-    statusTempo->desenhar(cronometroRound.getTempo());
-}
-bool Placar::isPlayerGanhou()
-{
-    if (round.player>round.pc){
-        return true;
-    } else {
-        return false;
-    }
-}
-bool Placar::isPCGanhou()
-{
-    if (round.pc>round.player){
-        return true;
-    } else {
-        return false;
-    }
-}
-void Placar::processarTempo()
-{
-    cronometroRound.processar();
-
-    if (isTempoTerminou()){
-        calcular();
-    }
-}
-bool Placar::isTempoTerminou()
-{
-    return cronometroRound.isTerminou();
-}
-void Placar::iniciar()
-{
-	round.pc      = 0;
-	round.player  = 0;
-    iniciarRound();
-}
-void Placar::iniciarRound()
-{
-	pontos.pc      = 0;
-	pontos.player  = 0;
-    cronometroRound.setResetar();
-}
-void Placar::calcular()
+void Placar::calcular() 
 {
     if (pontos.player>pontos.pc){
         round.player++;
@@ -84,4 +9,85 @@ void Placar::calcular()
         round.pc++;
     }
 }
+//Construtor
+Placar::Placar() 
+{
+    cronometroRound.setTempoOriginal(30);
+}
+//Destrutor
+Placar::~Placar() 
+{
+}
+void Placar::iniciar() 
+{
+	round.pc      = 0;
+	round.player  = 0;
+    iniciarRound();
+}
+void Placar::iniciarRound() 
+{
+	pontos.pc      = 0;
+	pontos.player  = 0;
+    cronometroRound.setResetar();
+}
+void Placar::adicionarPontoPC() 
+{
+	pontos.pc++;
+}
+void Placar::adicionarPontoPlayer() 
+{
+	pontos.player++;
+}
+bool Placar::isPlayerGanhou() 
+{
+    if (round.player>round.pc){
+        return true;
+    } else {
+        return false;
+    }
+}
+bool Placar::isPCGanhou() 
+{
+    if (round.pc>round.player){
+        return true;
+    } else {
+        return false;
+    }
+}
+bool Placar::isTempoTerminou() 
+{
+    return cronometroRound.isTerminou();
+}
+void Placar::processarTempo() 
+{
+    cronometroRound.processar();
 
+    if (isTempoTerminou()){
+        calcular();
+    }
+}
+//Retorna a pontuação do Computador
+int Placar::getPontosPC() 
+{
+    return pontos.pc;
+}
+//Retorna pontuação do Jogador
+int Placar::getPontosPlayer() 
+{
+    return pontos.player;
+}
+//Retorna a quantidade de rounds que o Computador Ganhou
+int Placar::getRoundsPC() 
+{
+    return round.pc;
+}
+//Retorna a quantidade de rounds que o Jogador Ganhou
+int Placar::getRoundsPlayer() 
+{
+    return round.player;
+}
+//Retorna o tempo restante para terminar o round
+int Placar::getRoundTempo() 
+{
+    return cronometroRound.getTempo();
+}

@@ -1,21 +1,20 @@
+
 #include "HUDAbstract.h"
 
+HUDAbstract::HUDAbstract(){
 
-WriteSystemManager * HUDAbstract::wsManager = NULL;
-
-HUDAbstract::HUDAbstract()
-{
 
     if (wsManager==NULL){
         wsManager = WriteSystemManager::getInstance();
     }
 }
 
-HUDAbstract::~HUDAbstract()
-{
+HUDAbstract::~HUDAbstract(){
+
     if (painel){
         delete(painel);
     }
 }
 
+WriteSystemManager * HUDAbstract::wsManager = NULL;
 

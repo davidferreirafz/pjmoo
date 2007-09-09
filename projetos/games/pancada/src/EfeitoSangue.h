@@ -17,9 +17,6 @@ class EfeitoSangue : public ParticleSystemSprite
     void criar(int x, int y);
 
 
-  protected:
-    static GraphicSystemImageBufferManager *gsImageBufferManager;
-
 };
 
 #endif

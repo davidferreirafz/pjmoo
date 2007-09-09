@@ -1,20 +1,19 @@
-////    Pacanda - Based boxing game
-////    Copyright (C) 2004-2006 David de Almeida Ferreira
-////
-////    This is free software; you can redistribute it and/or
-////    modify it under the terms of the GNU General Public
-////    License as published by the Free Software Foundation; either
-////    version 2 of the License, or (at your option) any later version.
-////
-////    David de Almeida Ferreira (F-Z)
-////        davidferreira@uol.com.br or davidferreira.fz@gmail.com
-////        http://pjmoo.codigolivre.org.br
-////////////////////////////////////////////////////////////////////////
 
 #include "LutadorAbstract.h"
 
 Area LutadorAbstract::ringue;
+
 ParticleSystemManager * LutadorAbstract::particleManager;
+
+void LutadorAbstract::resetar()
+{
+	delay.acao  = 0;
+	delay.tiroA = 0;
+	delay.tiroB = 0;
+
+    luvaesquerda->setSoco(false);
+    luvadireita->setSoco(false);
+}
 //Construtor
 LutadorAbstract::LutadorAbstract()
 {
@@ -32,7 +31,7 @@ LutadorAbstract::LutadorAbstract()
 	posicao.x = 0;
 	posicao.y = 0;
 
-    energia = 100;
+    energia = 10;
 
 
     if (particleManager==NULL){
@@ -55,14 +54,15 @@ LutadorAbstract::~LutadorAbstract()
 	    delete(luvadireita);
 	}
 }
-void LutadorAbstract::resetar()
-{
-	delay.acao  = 0;
-	delay.tiroA = 0;
-	delay.tiroB = 0;
+void LutadorAbstract::setRingue(Area ringue)
 
-    luvaesquerda->setSoco(false);
-    luvadireita->setSoco(false);
+{
+    ringue.left   +=10;
+	ringue.top    +=20;
+	ringue.right  -=10;
+	ringue.bottom -=20;
+
+    LutadorAbstract::ringue=ringue;
 }
 void LutadorAbstract::iniciar(int x, int y)
 {
@@ -77,6 +77,8 @@ void LutadorAbstract::iniciar(int x, int y)
     }
 }
 //Desenha na tela
+
+//Desenha na tela
 void LutadorAbstract::desenhar()
 {
     checklimites();
@@ -86,6 +88,8 @@ void LutadorAbstract::desenhar()
 	luvadireita->desenhar();
 }
 //O lutador está na olhando pra cima
+
+//O lutador está na olhando pra cima
 void LutadorAbstract::olharCima()
 {
 	cabeca->setCima();
@@ -93,6 +97,8 @@ void LutadorAbstract::olharCima()
 	luvadireita->setCima();
     getSpritePrincipal()->setDirecao(DR_CIMA);
 }
+//O lutador está na olhando pra baixo
+
 //O lutador está na olhando pra baixo
 void LutadorAbstract::olharBaixo()
 {
@@ -112,15 +118,6 @@ void LutadorAbstract::setPosicao(int x, int y)
 	luvadireita->setPosicao(x,y);
 	cabeca->setPosicao(x,y);
 }
-void LutadorAbstract::setRingue(Area ringue)
-{
-    ringue.left   +=10;
-	ringue.top    +=20;
-	ringue.right  -=10;
-	ringue.bottom -=20;
-
-    LutadorAbstract::ringue=ringue;
-}
 Area LutadorAbstract::getArea()
 {
     Area area;
@@ -134,46 +131,6 @@ Area LutadorAbstract::getArea()
     area.right=d.w;
 
     return area;
-}
-//checka com limites do ringue
-void LutadorAbstract::checklimites()
-{
-	Ponto posicao     = getPosicao();
-	Dimensao dimensao = getDimensao();
-
-    if (posicao.x-22<=ringue.left){
-        posicao.x=ringue.left+22;
-    } else if (posicao.x+dimensao.w+22>=(ringue.right)){
-        posicao.x=(ringue.right) - dimensao.w-22;
-    }
-	if (getSpritePrincipal()->getDirecao()==DR_CIMA){
-	    if (posicao.y-32<=ringue.top){
-	        posicao.y=ringue.top+32;
-	    } else if (posicao.y+dimensao.h-32>=(ringue.bottom)){
-	        posicao.y=(ringue.bottom) - dimensao.h+32;
-	    }
-	} else {
-	    if (posicao.y+32<=ringue.top){
-	        posicao.y=ringue.top-32;
-	    } else if (posicao.y+dimensao.h+32>=(ringue.bottom)){
-	        posicao.y=(ringue.bottom) - dimensao.h-32;
-	    }
-	}
-
-	setPosicao(posicao.x,posicao.y);
-}
-bool LutadorAbstract::choqueAdversario(Area aCorpoAdversario)
-{
-	Area aCorpoLcl  = getArea();
-
-	if ((aCorpoLcl.left + aCorpoLcl.right  >= aCorpoAdversario.left)&&
-		(aCorpoLcl.left                    <= aCorpoAdversario.left + aCorpoAdversario.right)&&
-		(aCorpoLcl.top  + aCorpoLcl.bottom >= aCorpoAdversario.top) &&
-		(aCorpoLcl.top                     <= aCorpoAdversario.top + aCorpoAdversario.bottom)){
-		return true;
-	} else {
-		return false;
-	}
 }
 bool LutadorAbstract::socouAdversario(LutadorAbstract * adversario)
 {
@@ -266,4 +223,51 @@ bool LutadorAbstract::isNocaute()
     }
 
     return caiu;
+}
+//Retorna a energia vital do lutador
+int LutadorAbstract::getEnergia()
+{
+    return energia;
+}
+bool LutadorAbstract::choqueAdversario(Area aCorpoAdversario)
+{
+	Area aCorpoLcl  = getArea();
+
+	if ((aCorpoLcl.left + aCorpoLcl.right  >= aCorpoAdversario.left)&&
+		(aCorpoLcl.left                    <= aCorpoAdversario.left + aCorpoAdversario.right)&&
+		(aCorpoLcl.top  + aCorpoLcl.bottom >= aCorpoAdversario.top) &&
+		(aCorpoLcl.top                     <= aCorpoAdversario.top + aCorpoAdversario.bottom)){
+		return true;
+	} else {
+		return false;
+	}
+}
+//checka com limites do ringue
+
+//checka com limites do ringue
+void LutadorAbstract::checklimites()
+{
+	Ponto posicao     = getPosicao();
+	Dimensao dimensao = getDimensao();
+
+    if (posicao.x-22<=ringue.left){
+        posicao.x=ringue.left+22;
+    } else if (posicao.x+dimensao.w+22>=(ringue.right)){
+        posicao.x=(ringue.right) - dimensao.w-22;
+    }
+	if (getSpritePrincipal()->getDirecao()==DR_CIMA){
+	    if (posicao.y-32<=ringue.top){
+	        posicao.y=ringue.top+32;
+	    } else if (posicao.y+dimensao.h-32>=(ringue.bottom)){
+	        posicao.y=(ringue.bottom) - dimensao.h+32;
+	    }
+	} else {
+	    if (posicao.y+32<=ringue.top){
+	        posicao.y=ringue.top-32;
+	    } else if (posicao.y+dimensao.h+32>=(ringue.bottom)){
+	        posicao.y=(ringue.bottom) - dimensao.h-32;
+	    }
+	}
+
+	setPosicao(posicao.x,posicao.y);
 }

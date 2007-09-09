@@ -12,7 +12,7 @@ FaseUm::FaseUm()
     	lutadorPC = new LutadorPC();
     }
 
-    round.setMaximo(2);
+    round.setMaximo(3);
 }
 
 FaseUm::~FaseUm()

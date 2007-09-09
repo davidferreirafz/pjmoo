@@ -1,22 +1,24 @@
-#ifndef HUDABSTRACT_H
-#define HUDABSTRACT_H
+
+#ifndef _HUDABSTRACT_H
+#define _HUDABSTRACT_H
 
 #include <GBF/WriteSystemManager.h>
+
 #include <GBF/SpriteItem.h>
+
 
 class HUDAbstract
 {
-    public:
-        HUDAbstract();
-        virtual ~HUDAbstract();
+  public:
+    HUDAbstract();
 
-    protected:
-            static WriteSystemManager * wsManager;
-            SpriteItem * painel;
+    virtual ~HUDAbstract();
 
-    private:
+
+  protected:
+    static WriteSystemManager * wsManager;
+
+    SpriteItem * painel;
+
 };
-
-
-
-#endif // HUDABSTRACT_H
+#endif

@@ -105,6 +105,10 @@
 		<Unit filename="src/Cabeca.h" />
 		<Unit filename="src/CabecaFactory.cpp" />
 		<Unit filename="src/CabecaFactory.h" />
+		<Unit filename="src/CaixaTexto.cpp" />
+		<Unit filename="src/CaixaTexto.h" />
+		<Unit filename="src/CaixaTextoTitulo.cpp" />
+		<Unit filename="src/CaixaTextoTitulo.h" />
 		<Unit filename="src/Controle.cpp" />
 		<Unit filename="src/Controle.h" />
 		<Unit filename="src/EfeitoSangue.cpp" />
@@ -117,6 +121,10 @@
 		<Unit filename="src/FaseUm.h" />
 		<Unit filename="src/HUDAbstract.cpp" />
 		<Unit filename="src/HUDAbstract.h" />
+		<Unit filename="src/HUDLutador.cpp" />
+		<Unit filename="src/HUDLutador.h" />
+		<Unit filename="src/HUDTempo.cpp" />
+		<Unit filename="src/HUDTempo.h" />
 		<Unit filename="src/Jogo.cpp" />
 		<Unit filename="src/Jogo.h" />
 		<Unit filename="src/LutadorAbstract.cpp" />
@@ -135,14 +143,10 @@
 		<Unit filename="src/MembroBase.h" />
 		<Unit filename="src/Placar.cpp" />
 		<Unit filename="src/Placar.h" />
-		<Unit filename="src/Status.cpp" />
-		<Unit filename="src/Status.h" />
 		<Unit filename="src/StatusPC.cpp" />
 		<Unit filename="src/StatusPC.h" />
 		<Unit filename="src/StatusPlayer.cpp" />
 		<Unit filename="src/StatusPlayer.h" />
-		<Unit filename="src/StatusTempo.cpp" />
-		<Unit filename="src/StatusTempo.h" />
 		<Extensions>
 			<code_completion />
 		</Extensions>

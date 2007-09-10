@@ -147,6 +147,12 @@
 		<Unit filename="src/StatusPC.h" />
 		<Unit filename="src/StatusPlayer.cpp" />
 		<Unit filename="src/StatusPlayer.h" />
+		<Unit filename="src/UserInterfaceEstiloVisual.cpp" />
+		<Unit filename="src/UserInterfaceEstiloVisual.h" />
+		<Unit filename="src/UserInterfaceEstiloVisualImagem.cpp" />
+		<Unit filename="src/UserInterfaceEstiloVisualImagem.h" />
+		<Unit filename="src/UserInterfaceEstiloVisualSolido.cpp" />
+		<Unit filename="src/UserInterfaceEstiloVisualSolido.h" />
 		<Extensions>
 			<code_completion />
 		</Extensions>

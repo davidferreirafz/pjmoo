@@ -126,55 +126,71 @@ void Jogo::inicializarRecursos()
     uiMenuPrincipal->adicionar(new UserInterfaceMenuItemTexto("menu_5","menu"));
 
 
+    UserInterfaceEstiloVisualSolido *uieVisual = new UserInterfaceEstiloVisualSolido();
+    uieVisual->setCorBorda(255,0,0);
+    uieVisual->setCorFundo(100,200,100);
+
+
+    UserInterfaceEstiloVisualImagem *uieVisualImagem = new UserInterfaceEstiloVisualImagem();
+    uieVisualImagem->setCorBorda(255,0,0);
+
+
+
     caixaAjuda = new CaixaTextoTitulo();
-    caixaAjuda->setFonte("texto");
-    caixaAjuda->setPosicao(40,46);
-    caixaAjuda->setDimensao(560,402);
-    caixaAjuda->setChaveTextoLocalizado("tela_ajuda_%02d");
-    caixaAjuda->setFonteTitulo("menu");
-    caixaAjuda->setChaveTituloLocalizado("titulo_ajuda");
+    caixaAjuda->setPosicao(40,50);
+    caixaAjuda->setDimensao(560,400);
+    caixaAjuda->texto.setFonte("texto");
+    caixaAjuda->texto.setChaveTexto("tela_ajuda_%02d");
+    caixaAjuda->titulo.setFonte("menu");
+    caixaAjuda->titulo.setChaveTexto("titulo_ajuda");
+    caixaAjuda->setEstiloVisual(uieVisual);
     caixaAjuda->inicializar();
 
     caixaCredito = new CaixaTextoTitulo();
-    caixaCredito->setFonte("texto");
-    caixaCredito->setPosicao(40,46);
-    caixaCredito->setDimensao(560,402);
-    caixaCredito->setChaveTextoLocalizado("tela_credito_%02d");
-    caixaCredito->setFonteTitulo("menu");
-    caixaCredito->setChaveTituloLocalizado("titulo_credito");
+    caixaCredito->setPosicao(40,50);
+    caixaCredito->setDimensao(560,400);
+    caixaCredito->texto.setFonte("texto");
+    caixaCredito->texto.setChaveTexto("tela_credito_%02d");
+    caixaCredito->titulo.setFonte("menu");
+    caixaCredito->titulo.setChaveTexto("titulo_credito");
+    caixaCredito->setEstiloVisual(uieVisual);
     caixaCredito->inicializar();
 
     caixaSobre = new CaixaTextoTitulo();
-    caixaSobre->setFonte("texto");
-    caixaSobre->setPosicao(40,46);
-    caixaSobre->setDimensao(560,418);
-    caixaSobre->setChaveTextoLocalizado("tela_sobre_%02d");
-    caixaSobre->setFonteTitulo("menu");
-    caixaSobre->setChaveTituloLocalizado("titulo_sobre");
+    caixaSobre->setPosicao(40,50);
+    caixaSobre->setDimensao(560,400);
+    caixaSobre->texto.setFonte("texto");
+    caixaSobre->texto.setChaveTexto("tela_sobre_%02d");
+    caixaSobre->titulo.setFonte("menu");
+    caixaSobre->titulo.setChaveTexto("titulo_sobre");
+    caixaSobre->setEstiloVisual(uieVisualImagem);
     caixaSobre->inicializar();
 
     caixaFaseFinalizada = new CaixaTexto();
-    caixaFaseFinalizada->setFonte("texto");
     caixaFaseFinalizada->setPosicao(120,140);
     caixaFaseFinalizada->setDimensao(400,200);
-    caixaFaseFinalizada->setChaveTextoLocalizado("tela_fasefinalizada_%02d");
+    caixaFaseFinalizada->texto.setFonte("texto");
+    caixaFaseFinalizada->texto.setChaveTexto("tela_fasefinalizada_%02d");
     caixaFaseFinalizada->setTextoAlinhamento(TEXTO_CENTRALIZADO);
+    caixaFaseFinalizada->setEstiloVisual(uieVisualImagem);
     caixaFaseFinalizada->inicializar();
 
     caixaGameOver = new CaixaTexto();
-    caixaGameOver->setFonte("texto");
     caixaGameOver->setPosicao(120,140);
     caixaGameOver->setDimensao(400,200);
-    caixaGameOver->setChaveTextoLocalizado("tela_gameover_%02d");
+    caixaGameOver->texto.setFonte("texto");
+    caixaGameOver->texto.setChaveTexto("tela_gameover_%02d");
     caixaGameOver->setTextoAlinhamento(TEXTO_CENTRALIZADO);
+    caixaGameOver->setEstiloVisual(uieVisual);
     caixaGameOver->inicializar();
 
     caixaZerado = new CaixaTexto();
-    caixaZerado->setFonte("texto");
     caixaZerado->setPosicao(120,140);
     caixaZerado->setDimensao(400,200);
-    caixaZerado->setChaveTextoLocalizado("tela_zerado_%02d");
+    caixaZerado->texto.setFonte("texto");
+    caixaZerado->texto.setChaveTexto("tela_zerado_%02d");
     caixaZerado->setTextoAlinhamento(TEXTO_CENTRALIZADO);
+    caixaZerado->setEstiloVisual(uieVisual);
     caixaZerado->inicializar();
 
     controle.carregar();

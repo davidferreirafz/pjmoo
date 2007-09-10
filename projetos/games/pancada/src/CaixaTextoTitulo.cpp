@@ -35,27 +35,23 @@ void CaixaTextoTitulo::executar()
     CaixaTexto::executar();
 
     if (tituloAlinhamento==TEXTO_CENTRALIZADO){
-        int auxiliar = wsManager->getLarguraLinha(fonteTitulo,chaveTituloLocalizado);
+        int auxiliar = wsManager->getLarguraLinha(titulo.getFonte(),titulo.getChaveTexto());
         posicaoTextoHorizontal=int (posicao.x+(dimensao.w/2)-(auxiliar/2));
     } else {
-        posicaoTextoHorizontal = posicao.x+dimensaoLetra.w;
+        posicaoTextoHorizontal = posicao.x+titulo.getDimensaoLetra().w;
     }
 
-    wsManager->escreverLocalizado(fonteTitulo,posicaoTextoHorizontal,posicao.y,chaveTituloLocalizado);
-}
-//Informa o tipo de fonte a ser utilizado
-void CaixaTextoTitulo::setFonteTitulo(std::string fonte) 
-{
-    this->fonteTitulo=fonte;
-    dimensaoLetraTitulo=wsManager->getFonte(fonte)->getDimensao();
-    espacoAntesTexto=int(dimensaoLetraTitulo.h*ESTILO_LINHA_UMA_MEIA);
-}
-void CaixaTextoTitulo::setChaveTituloLocalizado(std::string chaveTitulo) 
-{
-    chaveTituloLocalizado=chaveTitulo;
+    wsManager->escreverLocalizado(titulo.getFonte(),posicaoTextoHorizontal,posicao.y,titulo.getChaveTexto());
 }
 //Informa como deve ser o alinhamento do texto
 void CaixaTextoTitulo::setTituloAlinhamento(TextoAlinhamento alinhamento) 
 {
     textoAlinhamento=alinhamento;
+}
+//Inicializa as configurações da caixa de texto
+void CaixaTextoTitulo::inicializar() 
+{
+    CaixaTexto::inicializar();
+    titulo.setDimensaoLetra(wsManager->getFonte(titulo.getFonte())->getDimensao());
+    espacoAntesTexto=int(titulo.getDimensaoLetra().h*titulo.ENTRELINHA_UMA_MEIA);
 }

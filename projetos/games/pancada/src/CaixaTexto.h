@@ -28,16 +28,9 @@
 
 #include <GBF/WriteSystemManager.h>
 
-#include <GBF/GraphicSystemImageBufferManager.h>
-
 #include <GBF/UserInterfaceTexto.h>
 
-#include <GBF/FrameLayer.h>
-
-#include <GBF/SpriteFactory.h>
-
-#include <GBF/GraphicSystemGFX.h>
-
+#include "UserInterfaceEstiloVisual.h"
 
 enum TextoAlinhamento {
   //Texto Alinhado a esquerda
@@ -45,16 +38,61 @@ enum TextoAlinhamento {
   //Texto Alinhado ao Centro (Centralizado)
   TEXTO_CENTRALIZADO =1
 };
+class Texto
+{
+  public:
+    static const float ENTRELINHA_SIMPLES;
+
+    static const float ENTRELINHA_UMA_MEIA;
+
+    static const float ENTRELINHA_DUPLA;
+
+
+  protected:
+    float entreLinhas;
+
+    std::string fonte;
+
+    std::string chaveTexto;
+
+    //Espaçamento entre linhas
+    int espacoEntreLinhas;
+
+
+  public:
+    //Construtor
+    Texto();
+
+    //Destrutor
+    ~Texto();
+
+    void setFonte(std::string fonte);
+
+    void setChaveTexto(std::string chaveTexto);
+
+    std::string getFonte();
+
+    std::string getChaveTexto();
+
+
+  protected:
+    Dimensao dimensaoLetra;
+
+
+  public:
+    void setDimensaoLetra(const Dimensao & dimensao);
+
+    Dimensao getDimensaoLetra();
+
+    //Informa o Estilo de entrelinhas a ser utilizado
+    void setEntreLinha(float estiloEntreLinhas);
+
+    //Retorna em pixel o espaçamento entre as linhas
+    int getEspacoEntreLinhas();
+
+};
 class CaixaTexto
 {
-  protected:
-    static const float ESTILO_LINHA_SIMPLES;
-
-    static const float ESTILO_LINHA_UMA_MEIA;
-
-    static const float ESTILO_LINHA_DUPLA;
-
-
   public:
     //Construtor
     CaixaTexto();
@@ -64,21 +102,16 @@ class CaixaTexto
 
     virtual void executar();
 
-    //Informa o tipo de fonte a ser utilizado
-    void setFonte(std::string fonte);
-
     //Posicação da Caixa na tela
     void setPosicao(int x, int y);
 
     void setDimensao(int largura, int altura);
 
-    void setChaveTextoLocalizado(std::string chaveTexto);
-
     //Informa como deve ser o alinhamento do texto
     void setTextoAlinhamento(TextoAlinhamento alinhamento);
 
     //Inicializa as configurações da caixa de texto
-    void inicializar();
+    virtual void inicializar();
 
 
   protected:
@@ -86,38 +119,31 @@ class CaixaTexto
 
     Ponto posicao;
 
-    std::string fonte;
-
-    //Espaçamento entre linhas
-    int espacoEntreLinhas;
-
-    //Chave de localização do texto para utilizar recursos de tradução(localização)
-    std::string chaveTextoLocalizado;
-
-    float estiloEntreLinhas;
-
     //Espaço que deve ser dado antes da primeira linha
     int espacoAntesTexto;
 
     static WriteSystemManager * wsManager;
 
-    static GraphicSystemImageBufferManager * gsImageBufferManager;
-
     UserInterfaceTexto * uiTexto;
 
-    //Maior dimensão possível de um caracter com o tipo de fonte utilizado
-    
-    Dimensao dimensaoLetra;
-
     TextoAlinhamento textoAlinhamento;
-
-    //Layer de fundo da caixa de texto
-    FrameLayer * background;
 
     //Desenha o background da caixa de texto
     void desenharBackground();
 
-    static GraphicSystemGFX * gsGFX;
+
+  public:
+    Texto texto;
+
+
+  protected:
+    //EstiloVIsual a ser Aplicado no componente
+    UserInterfaceEstiloVisual * estiloVisual;
+
+
+  public:
+    //EstiloVisual a ser Aplicado no Componente
+    void setEstiloVisual(UserInterfaceEstiloVisual * estilo);
 
 };
 #endif

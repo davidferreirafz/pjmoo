@@ -34,6 +34,9 @@
 
 #include "CaixaTexto.h"
 #include "CaixaTextoTitulo.h"
+#include "UserInterfaceEstiloVisual.h"
+#include "UserInterfaceEstiloVisualImagem.h"
+#include "UserInterfaceEstiloVisualSolido.h"
 
 class Jogo : public GAT
 {

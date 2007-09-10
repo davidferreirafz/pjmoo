@@ -23,10 +23,6 @@
 #define _CAIXATEXTOTITULO_H
 
 #include "CaixaTexto.h"
-#include <string>
-
-#include <GBF/GBF_define.h>
-
 
 class CaixaTextoTitulo : public CaixaTexto
 {
@@ -37,26 +33,20 @@ class CaixaTextoTitulo : public CaixaTexto
 
     void executar();
 
-    //Informa o tipo de fonte a ser utilizado
-    void setFonteTitulo(std::string fonte);
-
-    void setChaveTituloLocalizado(std::string chaveTitulo);
-
     //Informa como deve ser o alinhamento do texto
     void setTituloAlinhamento(TextoAlinhamento alinhamento);
 
 
   protected:
-    std::string fonteTitulo;
-
-    //Chave de localização do texto para utilizar recursos de tradução(localização)
-    std::string chaveTituloLocalizado;
-
-    //Maior dimensão possível de um caracter com o tipo de fonte utilizado
-    Dimensao dimensaoLetraTitulo;
-
     //Alinhamento do Titulo
     TextoAlinhamento tituloAlinhamento;
+
+
+  public:
+    Texto titulo;
+
+    //Inicializa as configurações da caixa de texto
+    virtual void inicializar();
 
 };
 #endif

@@ -1,26 +1,26 @@
 
 #include "UserInterfaceEstiloVisualImagem.h"
 
-UserInterfaceEstiloVisualImagem::UserInterfaceEstiloVisualImagem() 
+UserInterfaceVisualImagem::UserInterfaceVisualImagem() 
 {
     if (gsImageBufferManager==NULL){
         gsImageBufferManager = GraphicSystemImageBufferManager::getInstance();
     }
 }
-UserInterfaceEstiloVisualImagem::UserInterfaceEstiloVisualImagem(const UserInterfaceEstiloVisualImagem & base):UserInterfaceEstiloVisual(base) 
+UserInterfaceVisualImagem::UserInterfaceVisualImagem(const UserInterfaceVisualImagem & base):UserInterfaceVisual(base) 
 {
     background=base.background;
 }
-UserInterfaceEstiloVisualImagem::~UserInterfaceEstiloVisualImagem() 
+UserInterfaceVisualImagem::~UserInterfaceVisualImagem() 
 {
     if (background!=NULL){
         delete(background);
     }
 }
 //Aplica o efeito visual
-void UserInterfaceEstiloVisualImagem::aplicar(const Ponto & posicao, const Dimensao & dimensao) 
+void UserInterfaceVisualImagem::aplicar(const Ponto & posicao, const Dimensao & dimensao) 
 {
-    UserInterfaceEstiloVisual::aplicar(posicao,dimensao);
+    UserInterfaceVisual::aplicar(posicao,dimensao);
     SpriteFactory *spriteFactory = new SpriteFactory(gsImageBufferManager->getImageBuffer("gbf-window-background"));
     background = spriteFactory->criarFrameLayer(0,0,10,10);
     delete(spriteFactory);
@@ -29,11 +29,11 @@ void UserInterfaceEstiloVisualImagem::aplicar(const Ponto & posicao, const Dimen
         background->setFrame(posicao.x,posicao.y,dimensao.w,dimensao.h);
         background->setTiles((dimensao.w/10),(dimensao.h/10));
         background->setPixelTile(10,10);
-        background->iniciarOrdenado(0);
+        background->iniciarCom(0);
     }
 }
 //Desenha o EstiloVisual do Componente
-void UserInterfaceEstiloVisualImagem::desenhar() 
+void UserInterfaceVisualImagem::desenhar() 
 {
     if (background!=NULL){
         background->desenhar();
@@ -41,9 +41,13 @@ void UserInterfaceEstiloVisualImagem::desenhar()
     gsGFX->setColor(corBorda.r,corBorda.g,corBorda.b);
     gsGFX->retangulo(posicao.x,posicao.y,dimensao.w,dimensao.h);
 }
-GraphicSystemImageBufferManager * UserInterfaceEstiloVisualImagem::gsImageBufferManager =NULL;
-
-UserInterfaceEstiloVisual * UserInterfaceEstiloVisualImagem::clone() 
+UserInterfaceVisual * UserInterfaceVisualImagem::clone() 
 {
-   return new UserInterfaceEstiloVisualImagem(*this);
+   return new UserInterfaceVisualImagem(*this);
 }
+//Define o estilo de background a ser utilizado
+void UserInterfaceVisualImagem::setTipoBackground(UserInterfaceVisualTipoBackground tipo) 
+{
+}
+GraphicSystemImageBufferManager * UserInterfaceVisualImagem::gsImageBufferManager =NULL;
+

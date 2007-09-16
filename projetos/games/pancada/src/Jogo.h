@@ -87,12 +87,12 @@ class Jogo : public GAT
 
     Controle controle;
 
-    CaixaTextoTitulo *caixaAjuda;
-    CaixaTextoTitulo *caixaCredito;
-    CaixaTextoTitulo *caixaSobre;
-    CaixaTexto *caixaGameOver;
-    CaixaTexto *caixaFaseFinalizada;
-    CaixaTexto *caixaZerado;
+    UserInterfaceWindowTitulo *caixaAjuda;
+    UserInterfaceWindowTitulo *caixaCredito;
+    UserInterfaceWindowTitulo *caixaSobre;
+    UserInterfaceWindow *caixaGameOver;
+    UserInterfaceWindow *caixaFaseFinalizada;
+    UserInterfaceWindow *caixaZerado;
 
 };
 #endif

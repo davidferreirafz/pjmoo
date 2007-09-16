@@ -9,14 +9,14 @@
 #include <GBF/GraphicSystemGFX.h>
 
 
-class UserInterfaceEstiloVisual
+class UserInterfaceVisual
 {
   public:
-    UserInterfaceEstiloVisual();
+    UserInterfaceVisual();
 
-    UserInterfaceEstiloVisual(const UserInterfaceEstiloVisual & base);
+    UserInterfaceVisual(const UserInterfaceVisual & base);
 
-    virtual ~UserInterfaceEstiloVisual();
+    virtual ~UserInterfaceVisual();
 
     void setCorBorda(const CorPaleta & r, const CorPaleta & g, const CorPaleta & b);
 
@@ -25,6 +25,8 @@ class UserInterfaceEstiloVisual
 
     //Desenha o EstiloVisual do Componente
     virtual void desenhar() = 0;
+
+    virtual UserInterfaceVisual * clone() = 0;
 
 
   protected:
@@ -35,10 +37,6 @@ class UserInterfaceEstiloVisual
     Dimensao dimensao;
 
     static GraphicSystemGFX * gsGFX;
-
-
-  public:
-    virtual UserInterfaceEstiloVisual * clone() = 0;
 
 };
 #endif

@@ -21,51 +21,51 @@
 
 #include "CaixaTexto.h"
 
-const float Texto::ENTRELINHA_SIMPLES =1.0;
+const float UserInterfaceObjetoTexto::ENTRELINHA_SIMPLES =1.0;
 
-const float Texto::ENTRELINHA_UMA_MEIA =1.5;
+const float UserInterfaceObjetoTexto::ENTRELINHA_UMA_MEIA =1.5;
 
-const float Texto::ENTRELINHA_DUPLA =2.0;
+const float UserInterfaceObjetoTexto::ENTRELINHA_DUPLA =2.0;
 
 //Construtor
-Texto::Texto() 
+UserInterfaceObjetoTexto::UserInterfaceObjetoTexto() 
 {
     entreLinhas=ENTRELINHA_UMA_MEIA;
 }
 //Destrutor
-Texto::~Texto() 
+UserInterfaceObjetoTexto::~UserInterfaceObjetoTexto() 
 {
 }
-void Texto::setFonte(std::string fonte) 
+void UserInterfaceObjetoTexto::setFonte(std::string fonte) 
 {
     this->fonte=fonte;
 
 //    dimensaoLetra=wsManager->getFonte(fonte)->getDimensao();
 //    espacoEntreLinhas=int(dimensaoLetra.w*estiloEntreLinhas);
 }
-void Texto::setChaveTexto(std::string chaveTexto) 
+void UserInterfaceObjetoTexto::setChaveTexto(std::string chaveTexto) 
 {
     this->chaveTexto=chaveTexto;
 }
-std::string Texto::getFonte() 
+std::string UserInterfaceObjetoTexto::getFonte() 
 {
     return fonte;
 }
-std::string Texto::getChaveTexto() 
+std::string UserInterfaceObjetoTexto::getChaveTexto() 
 {
     return chaveTexto;
 }
-void Texto::setDimensaoLetra(const Dimensao & dimensao) 
+void UserInterfaceObjetoTexto::setDimensaoLetra(const Dimensao & dimensao) 
 {
     dimensaoLetra=dimensao;
     espacoEntreLinhas=int(dimensaoLetra.w*entreLinhas);
 }
-Dimensao Texto::getDimensaoLetra() 
+Dimensao UserInterfaceObjetoTexto::getDimensaoLetra() 
 {
     return dimensaoLetra;
 }
 //Informa o Estilo de entrelinhas a ser utilizado
-void Texto::setEntreLinha(float estiloEntreLinhas) 
+void UserInterfaceObjetoTexto::setEntreLinha(float estiloEntreLinhas) 
 {
     if ((estiloEntreLinhas==ENTRELINHA_SIMPLES)||(estiloEntreLinhas==ENTRELINHA_UMA_MEIA)||
        (estiloEntreLinhas==ENTRELINHA_DUPLA)){
@@ -73,12 +73,12 @@ void Texto::setEntreLinha(float estiloEntreLinhas)
     }
 }
 //Retorna em pixel o espaçamento entre as linhas
-int Texto::getEspacoEntreLinhas() 
+int UserInterfaceObjetoTexto::getEspacoEntreLinhas() 
 {
     return espacoEntreLinhas;
 }
 //Construtor
-CaixaTexto::CaixaTexto() 
+UserInterfaceWindow::UserInterfaceWindow() 
 {
     if (wsManager==NULL){
         wsManager = WriteSystemManager::getInstance();
@@ -93,13 +93,13 @@ CaixaTexto::CaixaTexto()
 
 }
 //Destrutor
-CaixaTexto::~CaixaTexto() 
+UserInterfaceWindow::~UserInterfaceWindow() 
 {
-    if (estiloVisual!=NULL){
-        delete(estiloVisual);
+    if (visual!=NULL){
+        delete(visual);
     }
 }
-void CaixaTexto::executar() 
+void UserInterfaceWindow::executar() 
 {
     int numeroLinha=1;
     char textoChave[30];
@@ -135,33 +135,38 @@ void CaixaTexto::executar()
     } while(true);
 }
 //Posicação da Caixa na tela
-void CaixaTexto::setPosicao(int x, int y) 
+void UserInterfaceWindow::setPosicao(int x, int y) 
 {
     posicao.x=x;
     posicao.y=y;
 }
-void CaixaTexto::setDimensao(int largura, int altura) 
+void UserInterfaceWindow::setDimensao(int largura, int altura) 
 {
     dimensao.w=largura;
     dimensao.h=altura;
 }
 //Informa como deve ser o alinhamento do texto
-void CaixaTexto::setTextoAlinhamento(TextoAlinhamento alinhamento) 
+void UserInterfaceWindow::setTextoAlinhamento(UserInterfaceTextoAlinhamento alinhamento) 
 {
     textoAlinhamento=alinhamento;
 }
 //Inicializa as configurações da caixa de texto
-void CaixaTexto::inicializar() 
+void UserInterfaceWindow::inicializar() 
 {
     texto.setDimensaoLetra(wsManager->getFonte(texto.getFonte())->getDimensao());
-    if (estiloVisual!=NULL){
-        estiloVisual->aplicar(posicao,dimensao);
+    if (visual!=NULL){
+        visual->aplicar(posicao,dimensao);
     }
 }
-WriteSystemManager * CaixaTexto::wsManager =NULL;
+//Estilo Visual a ser Aplicado no Componente
+void UserInterfaceWindow::setVisual(UserInterfaceVisual * visual) 
+{
+    this->visual=visual;
+}
+WriteSystemManager * UserInterfaceWindow::wsManager =NULL;
 
 //Desenha o background da caixa de texto
-void CaixaTexto::desenharBackground() 
+void UserInterfaceWindow::desenharBackground() 
 {
 //    if (background!=NULL){
 //        background->desenhar();
@@ -169,12 +174,7 @@ void CaixaTexto::desenharBackground()
 
 //    gsGFX->setColor(20,20,20);
 //    gsGFX->retangulo(posicao.x,posicao.y,dimensao.w,dimensao.h);
-    if (estiloVisual!=NULL){
-        estiloVisual->desenhar();
+    if (visual!=NULL){
+        visual->desenhar();
     }
-}
-//EstiloVisual a ser Aplicado no Componente
-void CaixaTexto::setEstiloVisual(UserInterfaceEstiloVisual * estilo) 
-{
-    estiloVisual=estilo;
 }

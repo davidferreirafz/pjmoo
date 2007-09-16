@@ -1,37 +1,41 @@
 
 #include "UserInterfaceEstiloVisualImagem.h"
 
-UserInterfaceEstiloVisualImagem::UserInterfaceEstiloVisualImagem()
+UserInterfaceEstiloVisualImagem::UserInterfaceEstiloVisualImagem() 
 {
     if (gsImageBufferManager==NULL){
         gsImageBufferManager = GraphicSystemImageBufferManager::getInstance();
     }
 }
-UserInterfaceEstiloVisualImagem::~UserInterfaceEstiloVisualImagem()
+UserInterfaceEstiloVisualImagem::UserInterfaceEstiloVisualImagem(const UserInterfaceEstiloVisualImagem & base):UserInterfaceEstiloVisual(base) 
+{
+    background=base.background;
+}
+UserInterfaceEstiloVisualImagem::~UserInterfaceEstiloVisualImagem() 
 {
     if (background!=NULL){
         delete(background);
     }
 }
 //Aplica o efeito visual
-void UserInterfaceEstiloVisualImagem::aplicar(Ponto posicao, Dimensao dimensao)
+void UserInterfaceEstiloVisualImagem::aplicar(const Ponto & posicao, const Dimensao & dimensao) 
 {
+    UserInterfaceEstiloVisual::aplicar(posicao,dimensao);
     SpriteFactory *spriteFactory = new SpriteFactory(gsImageBufferManager->getImageBuffer("gbf-window-background"));
     background = spriteFactory->criarFrameLayer(0,0,10,10);
     delete(spriteFactory);
 
-    //if (background!=NULL){
-
-    //}
-}
-//Desenha o EstiloVisual do Componente
-void UserInterfaceEstiloVisualImagem::desenhar(const Ponto & posicao, const Dimensao & dimensao)
-{
     if (background!=NULL){
         background->setFrame(posicao.x,posicao.y,dimensao.w,dimensao.h);
         background->setTiles((dimensao.w/10),(dimensao.h/10));
         background->setPixelTile(10,10);
         background->iniciarOrdenado(0);
+    }
+}
+//Desenha o EstiloVisual do Componente
+void UserInterfaceEstiloVisualImagem::desenhar() 
+{
+    if (background!=NULL){
         background->desenhar();
     }
     gsGFX->setColor(corBorda.r,corBorda.g,corBorda.b);
@@ -39,3 +43,7 @@ void UserInterfaceEstiloVisualImagem::desenhar(const Ponto & posicao, const Dime
 }
 GraphicSystemImageBufferManager * UserInterfaceEstiloVisualImagem::gsImageBufferManager =NULL;
 
+UserInterfaceEstiloVisual * UserInterfaceEstiloVisualImagem::clone() 
+{
+   return new UserInterfaceEstiloVisualImagem(*this);
+}

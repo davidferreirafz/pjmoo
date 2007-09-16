@@ -143,7 +143,7 @@ void Jogo::inicializarRecursos()
     caixaAjuda->texto.setChaveTexto("tela_ajuda_%02d");
     caixaAjuda->titulo.setFonte("menu");
     caixaAjuda->titulo.setChaveTexto("titulo_ajuda");
-    caixaAjuda->setEstiloVisual(uieVisual);
+    caixaAjuda->setEstiloVisual(uieVisual->clone());
     caixaAjuda->inicializar();
 
     caixaCredito = new CaixaTextoTitulo();
@@ -153,7 +153,7 @@ void Jogo::inicializarRecursos()
     caixaCredito->texto.setChaveTexto("tela_credito_%02d");
     caixaCredito->titulo.setFonte("menu");
     caixaCredito->titulo.setChaveTexto("titulo_credito");
-    caixaCredito->setEstiloVisual(uieVisual);
+    caixaCredito->setEstiloVisual(uieVisual->clone());
     caixaCredito->inicializar();
 
     caixaSobre = new CaixaTextoTitulo();
@@ -163,7 +163,7 @@ void Jogo::inicializarRecursos()
     caixaSobre->texto.setChaveTexto("tela_sobre_%02d");
     caixaSobre->titulo.setFonte("menu");
     caixaSobre->titulo.setChaveTexto("titulo_sobre");
-    caixaSobre->setEstiloVisual(uieVisualImagem);
+    caixaSobre->setEstiloVisual(uieVisualImagem->clone());
     caixaSobre->inicializar();
 
     caixaFaseFinalizada = new CaixaTexto();
@@ -172,7 +172,7 @@ void Jogo::inicializarRecursos()
     caixaFaseFinalizada->texto.setFonte("texto");
     caixaFaseFinalizada->texto.setChaveTexto("tela_fasefinalizada_%02d");
     caixaFaseFinalizada->setTextoAlinhamento(TEXTO_CENTRALIZADO);
-    caixaFaseFinalizada->setEstiloVisual(uieVisualImagem);
+    caixaFaseFinalizada->setEstiloVisual(uieVisualImagem->clone());
     caixaFaseFinalizada->inicializar();
 
     caixaGameOver = new CaixaTexto();
@@ -181,7 +181,7 @@ void Jogo::inicializarRecursos()
     caixaGameOver->texto.setFonte("texto");
     caixaGameOver->texto.setChaveTexto("tela_gameover_%02d");
     caixaGameOver->setTextoAlinhamento(TEXTO_CENTRALIZADO);
-    caixaGameOver->setEstiloVisual(uieVisual);
+    caixaGameOver->setEstiloVisual(uieVisual->clone());
     caixaGameOver->inicializar();
 
     caixaZerado = new CaixaTexto();
@@ -190,7 +190,7 @@ void Jogo::inicializarRecursos()
     caixaZerado->texto.setFonte("texto");
     caixaZerado->texto.setChaveTexto("tela_zerado_%02d");
     caixaZerado->setTextoAlinhamento(TEXTO_CENTRALIZADO);
-    caixaZerado->setEstiloVisual(uieVisual);
+    caixaZerado->setEstiloVisual(uieVisual->clone());
     caixaZerado->inicializar();
 
     controle.carregar();

@@ -26,19 +26,19 @@
 
 #include <GBF/GBF_define.h>
 
+#include "UserInterfaceEstiloVisual.h"
 #include <GBF/WriteSystemManager.h>
 
 #include <GBF/UserInterfaceTexto.h>
 
-#include "UserInterfaceEstiloVisual.h"
 
-enum TextoAlinhamento {
+enum UserInterfaceTextoAlinhamento {
   //Texto Alinhado a esquerda
   TEXTO_NORMAL =0,
   //Texto Alinhado ao Centro (Centralizado)
   TEXTO_CENTRALIZADO =1
 };
-class Texto
+class UserInterfaceObjetoTexto
 {
   public:
     static const float ENTRELINHA_SIMPLES;
@@ -61,10 +61,10 @@ class Texto
 
   public:
     //Construtor
-    Texto();
+    UserInterfaceObjetoTexto();
 
     //Destrutor
-    ~Texto();
+    ~UserInterfaceObjetoTexto();
 
     void setFonte(std::string fonte);
 
@@ -91,14 +91,14 @@ class Texto
     int getEspacoEntreLinhas();
 
 };
-class CaixaTexto
+class UserInterfaceWindow
 {
   public:
     //Construtor
-    CaixaTexto();
+    UserInterfaceWindow();
 
     //Destrutor
-    virtual ~CaixaTexto();
+    virtual ~UserInterfaceWindow();
 
     virtual void executar();
 
@@ -108,10 +108,13 @@ class CaixaTexto
     void setDimensao(int largura, int altura);
 
     //Informa como deve ser o alinhamento do texto
-    void setTextoAlinhamento(TextoAlinhamento alinhamento);
+    void setTextoAlinhamento(UserInterfaceTextoAlinhamento alinhamento);
 
     //Inicializa as configurações da caixa de texto
     virtual void inicializar();
+
+    //Estilo Visual a ser Aplicado no Componente
+    void setVisual(UserInterfaceVisual * visual);
 
 
   protected:
@@ -126,24 +129,19 @@ class CaixaTexto
 
     UserInterfaceTexto * uiTexto;
 
-    TextoAlinhamento textoAlinhamento;
+    UserInterfaceTextoAlinhamento textoAlinhamento;
 
     //Desenha o background da caixa de texto
     void desenharBackground();
 
 
   public:
-    Texto texto;
+    UserInterfaceObjetoTexto texto;
 
 
   protected:
     //EstiloVIsual a ser Aplicado no componente
-    UserInterfaceEstiloVisual * estiloVisual;
-
-
-  public:
-    //EstiloVisual a ser Aplicado no Componente
-    void setEstiloVisual(UserInterfaceEstiloVisual * estilo);
+    UserInterfaceVisual * visual;
 
 };
 #endif

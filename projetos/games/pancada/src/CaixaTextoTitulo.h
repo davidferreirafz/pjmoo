@@ -24,29 +24,27 @@
 
 #include "CaixaTexto.h"
 
-class CaixaTextoTitulo : public CaixaTexto
+class UserInterfaceWindowTitulo : public UserInterfaceWindow
 {
   public:
-    CaixaTextoTitulo();
+    UserInterfaceWindowTitulo();
 
-    virtual ~CaixaTextoTitulo();
+    virtual ~UserInterfaceWindowTitulo();
+
+    //Informa como deve ser o alinhamento do texto
+    void setTituloAlinhamento(UserInterfaceTextoAlinhamento alinhamento);
 
     void executar();
 
-    //Informa como deve ser o alinhamento do texto
-    void setTituloAlinhamento(TextoAlinhamento alinhamento);
+    //Inicializa as configurações da caixa de texto
+    virtual void inicializar();
+
+    UserInterfaceObjetoTexto titulo;
 
 
   protected:
     //Alinhamento do Titulo
-    TextoAlinhamento tituloAlinhamento;
-
-
-  public:
-    Texto titulo;
-
-    //Inicializa as configurações da caixa de texto
-    virtual void inicializar();
+    UserInterfaceTextoAlinhamento tituloAlinhamento;
 
 };
 #endif

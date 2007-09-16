@@ -21,18 +21,23 @@
 
 #include "CaixaTextoTitulo.h"
 
-CaixaTextoTitulo::CaixaTextoTitulo() 
+UserInterfaceWindowTitulo::UserInterfaceWindowTitulo() 
 {
     tituloAlinhamento=TEXTO_CENTRALIZADO;
 }
-CaixaTextoTitulo::~CaixaTextoTitulo() 
+UserInterfaceWindowTitulo::~UserInterfaceWindowTitulo() 
 {
 }
-void CaixaTextoTitulo::executar() 
+//Informa como deve ser o alinhamento do texto
+void UserInterfaceWindowTitulo::setTituloAlinhamento(UserInterfaceTextoAlinhamento alinhamento) 
+{
+    textoAlinhamento=alinhamento;
+}
+void UserInterfaceWindowTitulo::executar() 
 {
     int posicaoTextoHorizontal = 0;
 
-    CaixaTexto::executar();
+    UserInterfaceWindow::executar();
 
     if (tituloAlinhamento==TEXTO_CENTRALIZADO){
         int auxiliar = wsManager->getLarguraLinha(titulo.getFonte(),titulo.getChaveTexto());
@@ -43,15 +48,10 @@ void CaixaTextoTitulo::executar()
 
     wsManager->escreverLocalizado(titulo.getFonte(),posicaoTextoHorizontal,posicao.y,titulo.getChaveTexto());
 }
-//Informa como deve ser o alinhamento do texto
-void CaixaTextoTitulo::setTituloAlinhamento(TextoAlinhamento alinhamento) 
-{
-    textoAlinhamento=alinhamento;
-}
 //Inicializa as configurações da caixa de texto
-void CaixaTextoTitulo::inicializar() 
+void UserInterfaceWindowTitulo::inicializar() 
 {
-    CaixaTexto::inicializar();
+    UserInterfaceWindow::inicializar();
     titulo.setDimensaoLetra(wsManager->getFonte(titulo.getFonte())->getDimensao());
     espacoAntesTexto=int(titulo.getDimensaoLetra().h*titulo.ENTRELINHA_UMA_MEIA);
 }

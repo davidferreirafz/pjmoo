@@ -4,31 +4,29 @@
 
 #include <GBF/GBF_define.h>
 
+#include "UserInterfaceEstiloVisual.h"
 #include <GBF/UtilColor.h>
 
-#include "UserInterfaceEstiloVisual.h"
 
-class UserInterfaceEstiloVisualSolido : public UserInterfaceEstiloVisual
+class UserInterfaceVisualSolido : public UserInterfaceVisual
 {
   public:
-    UserInterfaceEstiloVisualSolido();
+    UserInterfaceVisualSolido();
 
-    UserInterfaceEstiloVisualSolido(const UserInterfaceEstiloVisualSolido & base);
+    UserInterfaceVisualSolido(const UserInterfaceVisualSolido & base);
 
-    virtual ~UserInterfaceEstiloVisualSolido();
+    virtual ~UserInterfaceVisualSolido();
 
     void setCorFundo(const CorPaleta & r, const CorPaleta & g, const CorPaleta & b);
 
     //Desenha o EstiloVisual do Componente
     virtual void desenhar();
 
+    virtual UserInterfaceVisual * clone();
+
 
   protected:
     RGB corFundo;
-
-
-  public:
-    virtual UserInterfaceEstiloVisual * clone();
 
 };
 #endif

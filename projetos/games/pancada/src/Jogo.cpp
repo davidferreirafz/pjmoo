@@ -68,7 +68,7 @@ void Jogo::inicializarRecursos()
     GSIBManager->carregar("background","data//imagem//pancada_console.png");
     GSIBManager->carregar("interface","data//imagem//pancada_interface.png");
     GSIBManager->carregar("ringue","data//imagem//pancada_ringue_01.png");
-    GSIBManager->carregar("gbf-window-background","data//kernel//imagem//window-background-chess.png");
+    GSIBManager->carregar("gbf-window-background","data//kernel//imagem//window-background.png");
 
     //carregando fontes
     frameworkGBF->writeSystem->carregar("texto",frameworkGBF->getPath()+"data//fonte//texto.png");
@@ -126,71 +126,71 @@ void Jogo::inicializarRecursos()
     uiMenuPrincipal->adicionar(new UserInterfaceMenuItemTexto("menu_5","menu"));
 
 
-    UserInterfaceEstiloVisualSolido *uieVisual = new UserInterfaceEstiloVisualSolido();
+    UserInterfaceVisualSolido *uieVisual = new UserInterfaceVisualSolido();
     uieVisual->setCorBorda(255,0,0);
     uieVisual->setCorFundo(100,200,100);
 
 
-    UserInterfaceEstiloVisualImagem *uieVisualImagem = new UserInterfaceEstiloVisualImagem();
+    UserInterfaceVisualImagem *uieVisualImagem = new UserInterfaceVisualImagem();
     uieVisualImagem->setCorBorda(255,0,0);
 
 
 
-    caixaAjuda = new CaixaTextoTitulo();
+    caixaAjuda = new UserInterfaceWindowTitulo();
     caixaAjuda->setPosicao(40,50);
     caixaAjuda->setDimensao(560,400);
     caixaAjuda->texto.setFonte("texto");
     caixaAjuda->texto.setChaveTexto("tela_ajuda_%02d");
     caixaAjuda->titulo.setFonte("menu");
     caixaAjuda->titulo.setChaveTexto("titulo_ajuda");
-    caixaAjuda->setEstiloVisual(uieVisual->clone());
+    caixaAjuda->setVisual(uieVisual->clone());
     caixaAjuda->inicializar();
 
-    caixaCredito = new CaixaTextoTitulo();
+    caixaCredito = new UserInterfaceWindowTitulo();
     caixaCredito->setPosicao(40,50);
     caixaCredito->setDimensao(560,400);
     caixaCredito->texto.setFonte("texto");
     caixaCredito->texto.setChaveTexto("tela_credito_%02d");
     caixaCredito->titulo.setFonte("menu");
     caixaCredito->titulo.setChaveTexto("titulo_credito");
-    caixaCredito->setEstiloVisual(uieVisual->clone());
+    caixaCredito->setVisual(uieVisual->clone());
     caixaCredito->inicializar();
 
-    caixaSobre = new CaixaTextoTitulo();
+    caixaSobre = new UserInterfaceWindowTitulo();
     caixaSobre->setPosicao(40,50);
     caixaSobre->setDimensao(560,400);
     caixaSobre->texto.setFonte("texto");
     caixaSobre->texto.setChaveTexto("tela_sobre_%02d");
     caixaSobre->titulo.setFonte("menu");
     caixaSobre->titulo.setChaveTexto("titulo_sobre");
-    caixaSobre->setEstiloVisual(uieVisualImagem->clone());
+    caixaSobre->setVisual(uieVisualImagem->clone());
     caixaSobre->inicializar();
 
-    caixaFaseFinalizada = new CaixaTexto();
+    caixaFaseFinalizada = new UserInterfaceWindow();
     caixaFaseFinalizada->setPosicao(120,140);
     caixaFaseFinalizada->setDimensao(400,200);
     caixaFaseFinalizada->texto.setFonte("texto");
     caixaFaseFinalizada->texto.setChaveTexto("tela_fasefinalizada_%02d");
     caixaFaseFinalizada->setTextoAlinhamento(TEXTO_CENTRALIZADO);
-    caixaFaseFinalizada->setEstiloVisual(uieVisualImagem->clone());
+    caixaFaseFinalizada->setVisual(uieVisualImagem->clone());
     caixaFaseFinalizada->inicializar();
 
-    caixaGameOver = new CaixaTexto();
+    caixaGameOver = new UserInterfaceWindow();
     caixaGameOver->setPosicao(120,140);
     caixaGameOver->setDimensao(400,200);
     caixaGameOver->texto.setFonte("texto");
     caixaGameOver->texto.setChaveTexto("tela_gameover_%02d");
     caixaGameOver->setTextoAlinhamento(TEXTO_CENTRALIZADO);
-    caixaGameOver->setEstiloVisual(uieVisual->clone());
+    caixaGameOver->setVisual(uieVisual->clone());
     caixaGameOver->inicializar();
 
-    caixaZerado = new CaixaTexto();
+    caixaZerado = new UserInterfaceWindow();
     caixaZerado->setPosicao(120,140);
     caixaZerado->setDimensao(400,200);
     caixaZerado->texto.setFonte("texto");
     caixaZerado->texto.setChaveTexto("tela_zerado_%02d");
     caixaZerado->setTextoAlinhamento(TEXTO_CENTRALIZADO);
-    caixaZerado->setEstiloVisual(uieVisual->clone());
+    caixaZerado->setVisual(uieVisual->clone());
     caixaZerado->inicializar();
 
     controle.carregar();

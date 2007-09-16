@@ -12,14 +12,20 @@
 #include <GBF/SpriteFactory.h>
 
 
-class UserInterfaceEstiloVisualImagem : public UserInterfaceEstiloVisual
+enum UserInterfaceVisualTipoBackground {
+  BACKGROUND_LINES =0,
+  BACKGROUND_RINGS =1,
+  BACKGROUND_CHESS =2,
+  BAKCGROUND_SQUARE =3
+};
+class UserInterfaceVisualImagem : public UserInterfaceVisual
 {
   public:
-    UserInterfaceEstiloVisualImagem();
+    UserInterfaceVisualImagem();
 
-    UserInterfaceEstiloVisualImagem(const UserInterfaceEstiloVisualImagem & base);
+    UserInterfaceVisualImagem(const UserInterfaceVisualImagem & base);
 
-    virtual ~UserInterfaceEstiloVisualImagem();
+    virtual ~UserInterfaceVisualImagem();
 
     //Aplica o efeito visual
     virtual void aplicar(const Ponto & posicao, const Dimensao & dimensao);
@@ -27,15 +33,19 @@ class UserInterfaceEstiloVisualImagem : public UserInterfaceEstiloVisual
     //Desenha o EstiloVisual do Componente
     virtual void desenhar();
 
+    virtual UserInterfaceVisual * clone();
+
+    //Define o estilo de background a ser utilizado
+    void setTipoBackground(UserInterfaceVisualTipoBackground tipo);
+
 
   protected:
     FrameLayer * background;
 
     static GraphicSystemImageBufferManager * gsImageBufferManager;
 
-
-  public:
-    virtual UserInterfaceEstiloVisual * clone();
+    //Tipo de Background a ser utilizado
+    UserInterfaceVisualTipoBackground tipoBackground;
 
 };
 #endif

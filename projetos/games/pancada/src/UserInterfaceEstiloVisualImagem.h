@@ -17,19 +17,25 @@ class UserInterfaceEstiloVisualImagem : public UserInterfaceEstiloVisual
   public:
     UserInterfaceEstiloVisualImagem();
 
+    UserInterfaceEstiloVisualImagem(const UserInterfaceEstiloVisualImagem & base);
+
     virtual ~UserInterfaceEstiloVisualImagem();
 
     //Aplica o efeito visual
-    virtual void aplicar(Ponto posicao, Dimensao dimensao);
+    virtual void aplicar(const Ponto & posicao, const Dimensao & dimensao);
 
     //Desenha o EstiloVisual do Componente
-    virtual void desenhar(const Ponto & posicao, const Dimensao & dimensao);
+    virtual void desenhar();
 
 
   protected:
     FrameLayer * background;
 
     static GraphicSystemImageBufferManager * gsImageBufferManager;
+
+
+  public:
+    virtual UserInterfaceEstiloVisual * clone();
 
 };
 #endif

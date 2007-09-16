@@ -28,44 +28,44 @@ const float Texto::ENTRELINHA_UMA_MEIA =1.5;
 const float Texto::ENTRELINHA_DUPLA =2.0;
 
 //Construtor
-Texto::Texto()
+Texto::Texto() 
 {
     entreLinhas=ENTRELINHA_UMA_MEIA;
 }
 //Destrutor
-Texto::~Texto()
+Texto::~Texto() 
 {
 }
-void Texto::setFonte(std::string fonte)
+void Texto::setFonte(std::string fonte) 
 {
     this->fonte=fonte;
 
 //    dimensaoLetra=wsManager->getFonte(fonte)->getDimensao();
 //    espacoEntreLinhas=int(dimensaoLetra.w*estiloEntreLinhas);
 }
-void Texto::setChaveTexto(std::string chaveTexto)
+void Texto::setChaveTexto(std::string chaveTexto) 
 {
     this->chaveTexto=chaveTexto;
 }
-std::string Texto::getFonte()
+std::string Texto::getFonte() 
 {
     return fonte;
 }
-std::string Texto::getChaveTexto()
+std::string Texto::getChaveTexto() 
 {
     return chaveTexto;
 }
-void Texto::setDimensaoLetra(const Dimensao & dimensao)
+void Texto::setDimensaoLetra(const Dimensao & dimensao) 
 {
     dimensaoLetra=dimensao;
     espacoEntreLinhas=int(dimensaoLetra.w*entreLinhas);
 }
-Dimensao Texto::getDimensaoLetra()
+Dimensao Texto::getDimensaoLetra() 
 {
     return dimensaoLetra;
 }
 //Informa o Estilo de entrelinhas a ser utilizado
-void Texto::setEntreLinha(float estiloEntreLinhas)
+void Texto::setEntreLinha(float estiloEntreLinhas) 
 {
     if ((estiloEntreLinhas==ENTRELINHA_SIMPLES)||(estiloEntreLinhas==ENTRELINHA_UMA_MEIA)||
        (estiloEntreLinhas==ENTRELINHA_DUPLA)){
@@ -73,12 +73,12 @@ void Texto::setEntreLinha(float estiloEntreLinhas)
     }
 }
 //Retorna em pixel o espaçamento entre as linhas
-int Texto::getEspacoEntreLinhas()
+int Texto::getEspacoEntreLinhas() 
 {
     return espacoEntreLinhas;
 }
 //Construtor
-CaixaTexto::CaixaTexto()
+CaixaTexto::CaixaTexto() 
 {
     if (wsManager==NULL){
         wsManager = WriteSystemManager::getInstance();
@@ -93,10 +93,13 @@ CaixaTexto::CaixaTexto()
 
 }
 //Destrutor
-CaixaTexto::~CaixaTexto()
+CaixaTexto::~CaixaTexto() 
 {
+    if (estiloVisual!=NULL){
+        delete(estiloVisual);
+    }
 }
-void CaixaTexto::executar()
+void CaixaTexto::executar() 
 {
     int numeroLinha=1;
     char textoChave[30];
@@ -132,23 +135,23 @@ void CaixaTexto::executar()
     } while(true);
 }
 //Posicação da Caixa na tela
-void CaixaTexto::setPosicao(int x, int y)
+void CaixaTexto::setPosicao(int x, int y) 
 {
     posicao.x=x;
     posicao.y=y;
 }
-void CaixaTexto::setDimensao(int largura, int altura)
+void CaixaTexto::setDimensao(int largura, int altura) 
 {
     dimensao.w=largura;
     dimensao.h=altura;
 }
 //Informa como deve ser o alinhamento do texto
-void CaixaTexto::setTextoAlinhamento(TextoAlinhamento alinhamento)
+void CaixaTexto::setTextoAlinhamento(TextoAlinhamento alinhamento) 
 {
     textoAlinhamento=alinhamento;
 }
 //Inicializa as configurações da caixa de texto
-void CaixaTexto::inicializar()
+void CaixaTexto::inicializar() 
 {
     texto.setDimensaoLetra(wsManager->getFonte(texto.getFonte())->getDimensao());
     if (estiloVisual!=NULL){
@@ -158,7 +161,7 @@ void CaixaTexto::inicializar()
 WriteSystemManager * CaixaTexto::wsManager =NULL;
 
 //Desenha o background da caixa de texto
-void CaixaTexto::desenharBackground()
+void CaixaTexto::desenharBackground() 
 {
 //    if (background!=NULL){
 //        background->desenhar();
@@ -167,11 +170,11 @@ void CaixaTexto::desenharBackground()
 //    gsGFX->setColor(20,20,20);
 //    gsGFX->retangulo(posicao.x,posicao.y,dimensao.w,dimensao.h);
     if (estiloVisual!=NULL){
-        estiloVisual->desenhar(posicao,dimensao);
+        estiloVisual->desenhar();
     }
 }
 //EstiloVisual a ser Aplicado no Componente
-void CaixaTexto::setEstiloVisual(UserInterfaceEstiloVisual * estilo)
+void CaixaTexto::setEstiloVisual(UserInterfaceEstiloVisual * estilo) 
 {
     estiloVisual=estilo;
 }

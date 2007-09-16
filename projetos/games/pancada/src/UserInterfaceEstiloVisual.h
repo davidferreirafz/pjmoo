@@ -14,21 +14,31 @@ class UserInterfaceEstiloVisual
   public:
     UserInterfaceEstiloVisual();
 
+    UserInterfaceEstiloVisual(const UserInterfaceEstiloVisual & base);
+
     virtual ~UserInterfaceEstiloVisual();
 
     void setCorBorda(const CorPaleta & r, const CorPaleta & g, const CorPaleta & b);
 
     //Aplica o efeito visual
-    virtual void aplicar(Ponto posicao, Dimensao dimensao)=0;
+    virtual void aplicar(const Ponto & posicao, const Dimensao & dimensao);
 
     //Desenha o EstiloVisual do Componente
-    virtual void desenhar(const Ponto & posicao, const Dimensao & dimensao) = 0;
+    virtual void desenhar() = 0;
 
 
   protected:
     RGB corBorda;
 
+    Ponto posicao;
+
+    Dimensao dimensao;
+
     static GraphicSystemGFX * gsGFX;
+
+
+  public:
+    virtual UserInterfaceEstiloVisual * clone() = 0;
 
 };
 #endif

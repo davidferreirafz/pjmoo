@@ -171,7 +171,7 @@ void Jogo::inicializarRecursos()
     caixaFaseFinalizada->setDimensao(400,200);
     caixaFaseFinalizada->texto.setFonte("texto");
     caixaFaseFinalizada->texto.setChaveTexto("tela_fasefinalizada_%02d");
-    caixaFaseFinalizada->setTextoAlinhamento(TEXTO_CENTRALIZADO);
+    caixaFaseFinalizada->texto.setAlinhamento(TEXTO_CENTRALIZADO);
     caixaFaseFinalizada->setVisual(uieVisualImagem->clone());
     caixaFaseFinalizada->inicializar();
 
@@ -180,7 +180,7 @@ void Jogo::inicializarRecursos()
     caixaGameOver->setDimensao(400,200);
     caixaGameOver->texto.setFonte("texto");
     caixaGameOver->texto.setChaveTexto("tela_gameover_%02d");
-    caixaGameOver->setTextoAlinhamento(TEXTO_CENTRALIZADO);
+    caixaGameOver->texto.setAlinhamento(TEXTO_CENTRALIZADO);
     caixaGameOver->setVisual(uieVisual->clone());
     caixaGameOver->inicializar();
 
@@ -189,7 +189,7 @@ void Jogo::inicializarRecursos()
     caixaZerado->setDimensao(400,200);
     caixaZerado->texto.setFonte("texto");
     caixaZerado->texto.setChaveTexto("tela_zerado_%02d");
-    caixaZerado->setTextoAlinhamento(TEXTO_CENTRALIZADO);
+    caixaZerado->texto.setAlinhamento(TEXTO_CENTRALIZADO);
     caixaZerado->setVisual(uieVisual->clone());
     caixaZerado->inicializar();
 

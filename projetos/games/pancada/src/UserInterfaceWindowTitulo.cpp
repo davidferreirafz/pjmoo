@@ -19,19 +19,14 @@
 // *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
 // ***************************************************************************/
 
-#include "CaixaTextoTitulo.h"
+#include "UserInterfaceWindowTitulo.h"
 
 UserInterfaceWindowTitulo::UserInterfaceWindowTitulo() 
 {
-    tituloAlinhamento=TEXTO_CENTRALIZADO;
+    titulo.setAlinhamento(TEXTO_CENTRALIZADO);
 }
 UserInterfaceWindowTitulo::~UserInterfaceWindowTitulo() 
 {
-}
-//Informa como deve ser o alinhamento do texto
-void UserInterfaceWindowTitulo::setTituloAlinhamento(UserInterfaceTextoAlinhamento alinhamento) 
-{
-    textoAlinhamento=alinhamento;
 }
 void UserInterfaceWindowTitulo::executar() 
 {
@@ -39,7 +34,7 @@ void UserInterfaceWindowTitulo::executar()
 
     UserInterfaceWindow::executar();
 
-    if (tituloAlinhamento==TEXTO_CENTRALIZADO){
+    if (titulo.getAlinhamento()==TEXTO_CENTRALIZADO){
         int auxiliar = wsManager->getLarguraLinha(titulo.getFonte(),titulo.getChaveTexto());
         posicaoTextoHorizontal=int (posicao.x+(dimensao.w/2)-(auxiliar/2));
     } else {

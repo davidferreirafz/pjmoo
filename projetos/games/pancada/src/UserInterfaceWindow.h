@@ -19,78 +19,18 @@
 // *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
 // ***************************************************************************/
 
-#ifndef _CAIXATEXTO_H
-#define _CAIXATEXTO_H
+#ifndef _USERINTERFACEWINDOW_H
+#define _USERINTERFACEWINDOW_H
 
-#include <string>
-
+#include "UserInterfaceVisual.h"
 #include <GBF/GBF_define.h>
 
-#include "UserInterfaceEstiloVisual.h"
 #include <GBF/WriteSystemManager.h>
 
 #include <GBF/UserInterfaceTexto.h>
 
+#include "UserInterfaceObjetoTexto.h"
 
-enum UserInterfaceTextoAlinhamento {
-  //Texto Alinhado a esquerda
-  TEXTO_NORMAL =0,
-  //Texto Alinhado ao Centro (Centralizado)
-  TEXTO_CENTRALIZADO =1
-};
-class UserInterfaceObjetoTexto
-{
-  public:
-    static const float ENTRELINHA_SIMPLES;
-
-    static const float ENTRELINHA_UMA_MEIA;
-
-    static const float ENTRELINHA_DUPLA;
-
-
-  protected:
-    float entreLinhas;
-
-    std::string fonte;
-
-    std::string chaveTexto;
-
-    //Espaçamento entre linhas
-    int espacoEntreLinhas;
-
-
-  public:
-    //Construtor
-    UserInterfaceObjetoTexto();
-
-    //Destrutor
-    ~UserInterfaceObjetoTexto();
-
-    void setFonte(std::string fonte);
-
-    void setChaveTexto(std::string chaveTexto);
-
-    std::string getFonte();
-
-    std::string getChaveTexto();
-
-
-  protected:
-    Dimensao dimensaoLetra;
-
-
-  public:
-    void setDimensaoLetra(const Dimensao & dimensao);
-
-    Dimensao getDimensaoLetra();
-
-    //Informa o Estilo de entrelinhas a ser utilizado
-    void setEntreLinha(float estiloEntreLinhas);
-
-    //Retorna em pixel o espaçamento entre as linhas
-    int getEspacoEntreLinhas();
-
-};
 class UserInterfaceWindow
 {
   public:
@@ -106,9 +46,6 @@ class UserInterfaceWindow
     void setPosicao(int x, int y);
 
     void setDimensao(int largura, int altura);
-
-    //Informa como deve ser o alinhamento do texto
-    void setTextoAlinhamento(UserInterfaceTextoAlinhamento alinhamento);
 
     //Inicializa as configurações da caixa de texto
     virtual void inicializar();

@@ -19,10 +19,11 @@
 // *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
 // ***************************************************************************/
 
-#ifndef _CAIXATEXTOTITULO_H
-#define _CAIXATEXTOTITULO_H
+#ifndef _USERINTERFACEWINDOWTITULO_H
+#define _USERINTERFACEWINDOWTITULO_H
 
-#include "CaixaTexto.h"
+#include "UserInterfaceWindow.h"
+#include "UserInterfaceObjetoTexto.h"
 
 class UserInterfaceWindowTitulo : public UserInterfaceWindow
 {
@@ -31,20 +32,12 @@ class UserInterfaceWindowTitulo : public UserInterfaceWindow
 
     virtual ~UserInterfaceWindowTitulo();
 
-    //Informa como deve ser o alinhamento do texto
-    void setTituloAlinhamento(UserInterfaceTextoAlinhamento alinhamento);
-
     void executar();
 
     //Inicializa as configurações da caixa de texto
     virtual void inicializar();
 
     UserInterfaceObjetoTexto titulo;
-
-
-  protected:
-    //Alinhamento do Titulo
-    UserInterfaceTextoAlinhamento tituloAlinhamento;
 
 };
 #endif

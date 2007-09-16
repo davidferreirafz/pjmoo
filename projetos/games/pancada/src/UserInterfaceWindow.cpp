@@ -19,64 +19,8 @@
 // *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
 // ***************************************************************************/
 
-#include "CaixaTexto.h"
+#include "UserInterfaceWindow.h"
 
-const float UserInterfaceObjetoTexto::ENTRELINHA_SIMPLES =1.0;
-
-const float UserInterfaceObjetoTexto::ENTRELINHA_UMA_MEIA =1.5;
-
-const float UserInterfaceObjetoTexto::ENTRELINHA_DUPLA =2.0;
-
-//Construtor
-UserInterfaceObjetoTexto::UserInterfaceObjetoTexto() 
-{
-    entreLinhas=ENTRELINHA_UMA_MEIA;
-}
-//Destrutor
-UserInterfaceObjetoTexto::~UserInterfaceObjetoTexto() 
-{
-}
-void UserInterfaceObjetoTexto::setFonte(std::string fonte) 
-{
-    this->fonte=fonte;
-
-//    dimensaoLetra=wsManager->getFonte(fonte)->getDimensao();
-//    espacoEntreLinhas=int(dimensaoLetra.w*estiloEntreLinhas);
-}
-void UserInterfaceObjetoTexto::setChaveTexto(std::string chaveTexto) 
-{
-    this->chaveTexto=chaveTexto;
-}
-std::string UserInterfaceObjetoTexto::getFonte() 
-{
-    return fonte;
-}
-std::string UserInterfaceObjetoTexto::getChaveTexto() 
-{
-    return chaveTexto;
-}
-void UserInterfaceObjetoTexto::setDimensaoLetra(const Dimensao & dimensao) 
-{
-    dimensaoLetra=dimensao;
-    espacoEntreLinhas=int(dimensaoLetra.w*entreLinhas);
-}
-Dimensao UserInterfaceObjetoTexto::getDimensaoLetra() 
-{
-    return dimensaoLetra;
-}
-//Informa o Estilo de entrelinhas a ser utilizado
-void UserInterfaceObjetoTexto::setEntreLinha(float estiloEntreLinhas) 
-{
-    if ((estiloEntreLinhas==ENTRELINHA_SIMPLES)||(estiloEntreLinhas==ENTRELINHA_UMA_MEIA)||
-       (estiloEntreLinhas==ENTRELINHA_DUPLA)){
-        entreLinhas=estiloEntreLinhas;
-    }
-}
-//Retorna em pixel o espaçamento entre as linhas
-int UserInterfaceObjetoTexto::getEspacoEntreLinhas() 
-{
-    return espacoEntreLinhas;
-}
 //Construtor
 UserInterfaceWindow::UserInterfaceWindow() 
 {
@@ -144,11 +88,6 @@ void UserInterfaceWindow::setDimensao(int largura, int altura)
 {
     dimensao.w=largura;
     dimensao.h=altura;
-}
-//Informa como deve ser o alinhamento do texto
-void UserInterfaceWindow::setTextoAlinhamento(UserInterfaceTextoAlinhamento alinhamento) 
-{
-    textoAlinhamento=alinhamento;
 }
 //Inicializa as configurações da caixa de texto
 void UserInterfaceWindow::inicializar() 

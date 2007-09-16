@@ -19,35 +19,77 @@
 // *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
 // ***************************************************************************/
 
-#include "UserInterfaceVisual.h"
+#ifndef _USERINTERFACEOBJETOTEXTO_H
+#define _USERINTERFACEOBJETOTEXTO_H
 
-UserInterfaceVisual::UserInterfaceVisual() 
-{
-    if (gsGFX==NULL){
-        gsGFX = GraphicSystemGFX::getInstance();
-    }
+#include <string>
 
-}
-UserInterfaceVisual::UserInterfaceVisual(const UserInterfaceVisual & base) 
-{
-    posicao  = base.posicao;
-    dimensao = base.dimensao;
-    corBorda = base.corBorda;
-}
-UserInterfaceVisual::~UserInterfaceVisual() 
-{
-}
-void UserInterfaceVisual::setCorBorda(const CorPaleta & r, const CorPaleta & g, const CorPaleta & b) 
-{
-    corBorda.r=r;
-    corBorda.g=g;
-    corBorda.b=b;
-}
-//Aplica o efeito visual
-void UserInterfaceVisual::aplicar(const Ponto & posicao, const Dimensao & dimensao) 
-{
-    this->dimensao=dimensao;
-    this->posicao=posicao;
-}
-GraphicSystemGFX * UserInterfaceVisual::gsGFX =NULL;
+#include <GBF/GBF_define.h>
 
+
+enum UserInterfaceTextoAlinhamento {
+  //Texto Alinhado a esquerda
+  TEXTO_NORMAL =0,
+  //Texto Alinhado ao Centro (Centralizado)
+  TEXTO_CENTRALIZADO =1
+};
+class UserInterfaceObjetoTexto
+{
+  public:
+    static const float ENTRELINHA_SIMPLES;
+
+    static const float ENTRELINHA_UMA_MEIA;
+
+    static const float ENTRELINHA_DUPLA;
+
+
+  protected:
+    float entreLinhas;
+
+    std::string fonte;
+
+    std::string chaveTexto;
+
+    //Espaçamento entre linhas
+    int espacoEntreLinhas;
+
+
+  public:
+    //Construtor
+    UserInterfaceObjetoTexto();
+
+    //Destrutor
+    ~UserInterfaceObjetoTexto();
+
+    void setFonte(std::string fonte);
+
+    std::string getFonte();
+
+    void setChaveTexto(std::string chaveTexto);
+
+    std::string getChaveTexto();
+
+    void setDimensaoLetra(const Dimensao & dimensao);
+
+    Dimensao getDimensaoLetra();
+
+    //Informa o Estilo de entrelinhas a ser utilizado
+    void setEntreLinha(float estiloEntreLinhas);
+
+    //Retorna em pixel o espaçamento entre as linhas
+    int getEspacoEntreLinhas();
+
+    //Configura o Alinhamento do Texto
+    void setAlinhamento(UserInterfaceTextoAlinhamento alinhamento);
+
+    //Retorna o alinhamento utilizado
+    UserInterfaceTextoAlinhamento getAlinhamento();
+
+
+  protected:
+    Dimensao dimensaoLetra;
+
+    UserInterfaceTextoAlinhamento alinhamento;
+
+};
+#endif

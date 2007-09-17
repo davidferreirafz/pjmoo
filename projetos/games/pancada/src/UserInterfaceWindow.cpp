@@ -22,37 +22,104 @@
 #include "UserInterfaceWindow.h"
 
 //Construtor
-UserInterfaceWindow::UserInterfaceWindow() 
+UserInterfaceWindow::UserInterfaceWindow()
 {
-    if (wsManager==NULL){
-        wsManager = WriteSystemManager::getInstance();
-    }
-
-    if (uiTexto==NULL){
-        uiTexto = UserInterfaceTexto::getInstance();
-    }
-
     espacoAntesTexto=0;
     textoAlinhamento=TEXTO_NORMAL;
 
+    tempoEspera.setTempoOriginal(1);
+    tempoEspera.setUnidade(TEMPO_MEIO);
+    tempoEspera.setResetar();
 }
 //Destrutor
-UserInterfaceWindow::~UserInterfaceWindow() 
+UserInterfaceWindow::~UserInterfaceWindow()
 {
     if (visual!=NULL){
         delete(visual);
     }
+    if (botao!=NULL){
+        delete(botao);
+    }
 }
-void UserInterfaceWindow::executar() 
+//Configura o dispositivo de Input
+void UserInterfaceWindow::setInputSystem(InputSystem * input)
+{
+    UserInterfaceWindow::input=input;
+}
+void UserInterfaceWindow::executar()
+{
+    tempoEspera.processar();
+
+    desenharBackground();
+
+    desenharConteudo();
+
+    desenharBotao();
+}
+//Posicação da Caixa na tela
+void UserInterfaceWindow::setPosicao(int x, int y)
+{
+    posicao.x=x;
+    posicao.y=y;
+}
+void UserInterfaceWindow::setDimensao(int largura, int altura)
+{
+    dimensao.w=largura;
+    dimensao.h=altura;
+}
+//Inicializa as configurações da caixa de texto
+void UserInterfaceWindow::inicializar()
+{
+    texto.setDimensaoLetra(wsManager->getFonte(texto.getFonte())->getDimensao());
+    if (visual!=NULL){
+        visual->aplicar(posicao,dimensao);
+    }
+}
+//Estilo Visual a ser Aplicado no Componente
+void UserInterfaceWindow::setVisual(UserInterfaceVisual * visual)
+{
+    this->visual=visual;
+}
+void UserInterfaceWindow::adicionarBotao(UserInterfaceBotao * novoBotao)
+{
+    botao=novoBotao;
+}
+int UserInterfaceWindow::confirmarSelecao()
+{
+    int selecionado = -1;
+
+    if (((input->teclado->isKey(SDLK_RETURN))||(input->joystick->isButtonA()))&&
+        (tempoEspera.isTerminou())){
+        tempoEspera.setResetar();
+        selecionado=1;
+        //selecionado=itemSelecionado;
+    }
+
+    return selecionado;
+}
+//Desenha o background da caixa de texto
+void UserInterfaceWindow::desenharBackground()
+{
+//    if (background!=NULL){
+//        background->desenhar();
+//    }
+
+//    gsGFX->setColor(20,20,20);
+//    gsGFX->retangulo(posicao.x,posicao.y,dimensao.w,dimensao.h);
+    if (visual!=NULL){
+        visual->desenhar();
+    }
+}
+//Desenha o conteudo da janela
+void UserInterfaceWindow::desenharConteudo()
 {
     int numeroLinha=1;
-    char textoChave[30];
     bool continuar = false;
+    char textoChave[30];
+
     int posicaoTextoVertical   = posicao.y+espacoAntesTexto;
     int posicaoTextoHorizontal = 0;
     int auxiliar=0;
-
-    desenharBackground();
 
     do {
         sprintf(textoChave,texto.getChaveTexto().c_str(),numeroLinha);
@@ -78,42 +145,14 @@ void UserInterfaceWindow::executar()
 
     } while(true);
 }
-//Posicação da Caixa na tela
-void UserInterfaceWindow::setPosicao(int x, int y) 
+//Desenha o botão de ação da janela
+void UserInterfaceWindow::desenharBotao()
 {
-    posicao.x=x;
-    posicao.y=y;
-}
-void UserInterfaceWindow::setDimensao(int largura, int altura) 
-{
-    dimensao.w=largura;
-    dimensao.h=altura;
-}
-//Inicializa as configurações da caixa de texto
-void UserInterfaceWindow::inicializar() 
-{
-    texto.setDimensaoLetra(wsManager->getFonte(texto.getFonte())->getDimensao());
-    if (visual!=NULL){
-        visual->aplicar(posicao,dimensao);
+    if ((botao!=NULL)&&(tempoEspera.isTerminou())){
+        Ponto pontoAux = posicao;
+        pontoAux.y = posicao.y+dimensao.h;
+        botao->desenhar(pontoAux);
     }
 }
-//Estilo Visual a ser Aplicado no Componente
-void UserInterfaceWindow::setVisual(UserInterfaceVisual * visual) 
-{
-    this->visual=visual;
-}
-WriteSystemManager * UserInterfaceWindow::wsManager =NULL;
+InputSystem * UserInterfaceWindow::input;
 
-//Desenha o background da caixa de texto
-void UserInterfaceWindow::desenharBackground() 
-{
-//    if (background!=NULL){
-//        background->desenhar();
-//    }
-
-//    gsGFX->setColor(20,20,20);
-//    gsGFX->retangulo(posicao.x,posicao.y,dimensao.w,dimensao.h);
-    if (visual!=NULL){
-        visual->desenhar();
-    }
-}

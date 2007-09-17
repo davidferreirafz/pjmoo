@@ -32,8 +32,12 @@ class UserInterfaceWindowTitulo : public UserInterfaceWindow
 
     virtual ~UserInterfaceWindowTitulo();
 
-    void executar();
 
+  protected:
+    void desenharConteudo();
+
+
+  public:
     //Inicializa as configurações da caixa de texto
     virtual void inicializar();
 

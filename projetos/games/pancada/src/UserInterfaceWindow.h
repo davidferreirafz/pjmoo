@@ -22,16 +22,18 @@
 #ifndef _USERINTERFACEWINDOW_H
 #define _USERINTERFACEWINDOW_H
 
+#include <GBF/InputSystem.h>
+
 #include "UserInterfaceVisual.h"
+#include "UserInterfaceBotao.h"
 #include <GBF/GBF_define.h>
 
-#include <GBF/WriteSystemManager.h>
-
-#include <GBF/UserInterfaceTexto.h>
-
 #include "UserInterfaceObjetoTexto.h"
+#include "UserInterfaceComponente.h"
+#include <GBF/TimerSystemCronometroDecrescente.h>
 
-class UserInterfaceWindow
+
+class UserInterfaceWindow : public UserInterfaceComponente
 {
   public:
     //Construtor
@@ -39,6 +41,9 @@ class UserInterfaceWindow
 
     //Destrutor
     virtual ~UserInterfaceWindow();
+
+    //Configura o dispositivo de Input
+    static void setInputSystem(InputSystem * input);
 
     virtual void executar();
 
@@ -53,6 +58,10 @@ class UserInterfaceWindow
     //Estilo Visual a ser Aplicado no Componente
     void setVisual(UserInterfaceVisual * visual);
 
+    void adicionarBotao(UserInterfaceBotao * novoBotao);
+
+    int confirmarSelecao();
+
 
   protected:
     Dimensao dimensao;
@@ -62,14 +71,16 @@ class UserInterfaceWindow
     //Espaço que deve ser dado antes da primeira linha
     int espacoAntesTexto;
 
-    static WriteSystemManager * wsManager;
-
-    UserInterfaceTexto * uiTexto;
-
     UserInterfaceTextoAlinhamento textoAlinhamento;
 
     //Desenha o background da caixa de texto
     void desenharBackground();
+
+    //Desenha o conteudo da janela
+    void desenharConteudo();
+
+    //Desenha o botão de ação da janela
+    void desenharBotao();
 
 
   public:
@@ -79,6 +90,12 @@ class UserInterfaceWindow
   protected:
     //EstiloVIsual a ser Aplicado no componente
     UserInterfaceVisual * visual;
+
+    UserInterfaceBotao * botao;
+
+    TimerSystemCronometroDecrescente tempoEspera;
+
+    static InputSystem * input;
 
 };
 #endif

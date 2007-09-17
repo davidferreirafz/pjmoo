@@ -50,9 +50,12 @@ Jogo::Jogo(int argc, char * argv[]):GAT(argc,argv)
 //Destrutor
 Jogo::~Jogo()
 {
-    delete(caixaAjuda);
-    delete(caixaCredito);
-    delete(caixaSobre);
+    delete(janelaAjuda);
+    delete(janelaCredito);
+    delete(janelaSobre);
+    delete(janelaGameOver);
+    delete(janelaFaseFinalizada);
+    delete(janelaZerado);
 }
 //Inicializa os recursos utilizados no jogo.
 //Ex.: Imagens, sons, fontes, configuração do modo gráfico e etc..
@@ -126,72 +129,84 @@ void Jogo::inicializarRecursos()
     uiMenuPrincipal->adicionar(new UserInterfaceMenuItemTexto("menu_5","menu"));
 
 
-    UserInterfaceVisualSolido *uieVisual = new UserInterfaceVisualSolido();
-    uieVisual->setCorBorda(255,0,0);
-    uieVisual->setCorFundo(100,200,100);
+    UserInterfaceVisualSolido * uiVisualSolido = new UserInterfaceVisualSolido();
+    uiVisualSolido->setCorBorda(255,0,0);
+    uiVisualSolido->setCorFundo(100,200,100);
 
 
-    UserInterfaceVisualImagem *uieVisualImagem = new UserInterfaceVisualImagem();
-    uieVisualImagem->setCorBorda(255,0,0);
+    UserInterfaceVisualImagem *uiVisualImagem = new UserInterfaceVisualImagem();
+    uiVisualImagem->setCorBorda(255,0,0);
 
 
+    janelaCredito = new UserInterfaceWindowTitulo();
+    janelaCredito->setPosicao(40,50);
+    janelaCredito->setDimensao(560,400);
+    janelaCredito->texto.setFonte("texto");
+    janelaCredito->texto.setChaveTexto("tela_credito_%02d");
+    janelaCredito->titulo.setFonte("menu");
+    janelaCredito->titulo.setChaveTexto("titulo_credito");
+    janelaCredito->setVisual(uiVisualSolido->clone());
+    janelaCredito->adicionarBotao(new UserInterfaceBotao("menu","botao_enter"));
+    janelaCredito->inicializar();
 
-    caixaAjuda = new UserInterfaceWindowTitulo();
-    caixaAjuda->setPosicao(40,50);
-    caixaAjuda->setDimensao(560,400);
-    caixaAjuda->texto.setFonte("texto");
-    caixaAjuda->texto.setChaveTexto("tela_ajuda_%02d");
-    caixaAjuda->titulo.setFonte("menu");
-    caixaAjuda->titulo.setChaveTexto("titulo_ajuda");
-    caixaAjuda->setVisual(uieVisual->clone());
-    caixaAjuda->inicializar();
+    janelaSobre = new UserInterfaceWindowTitulo();
+    janelaSobre->setPosicao(40,50);
+    janelaSobre->setDimensao(560,400);
+    janelaSobre->texto.setFonte("texto");
+    janelaSobre->texto.setChaveTexto("tela_sobre_%02d");
+    janelaSobre->titulo.setFonte("menu");
+    janelaSobre->titulo.setChaveTexto("titulo_sobre");
+    janelaSobre->setVisual(uiVisualImagem->clone());
+    janelaSobre->adicionarBotao(new UserInterfaceBotao("menu","botao_enter"));
+    janelaSobre->inicializar();
 
-    caixaCredito = new UserInterfaceWindowTitulo();
-    caixaCredito->setPosicao(40,50);
-    caixaCredito->setDimensao(560,400);
-    caixaCredito->texto.setFonte("texto");
-    caixaCredito->texto.setChaveTexto("tela_credito_%02d");
-    caixaCredito->titulo.setFonte("menu");
-    caixaCredito->titulo.setChaveTexto("titulo_credito");
-    caixaCredito->setVisual(uieVisual->clone());
-    caixaCredito->inicializar();
+    janelaFaseFinalizada = new UserInterfaceWindow();
+    janelaFaseFinalizada->setPosicao(120,140);
+    janelaFaseFinalizada->setDimensao(400,200);
+    janelaFaseFinalizada->texto.setFonte("texto");
+    janelaFaseFinalizada->texto.setChaveTexto("tela_fasefinalizada_%02d");
+    janelaFaseFinalizada->texto.setAlinhamento(TEXTO_CENTRALIZADO);
+    janelaFaseFinalizada->setVisual(uiVisualImagem->clone());
+    janelaFaseFinalizada->inicializar();
 
-    caixaSobre = new UserInterfaceWindowTitulo();
-    caixaSobre->setPosicao(40,50);
-    caixaSobre->setDimensao(560,400);
-    caixaSobre->texto.setFonte("texto");
-    caixaSobre->texto.setChaveTexto("tela_sobre_%02d");
-    caixaSobre->titulo.setFonte("menu");
-    caixaSobre->titulo.setChaveTexto("titulo_sobre");
-    caixaSobre->setVisual(uieVisualImagem->clone());
-    caixaSobre->inicializar();
+    janelaGameOver = new UserInterfaceWindow();
+    janelaGameOver->setPosicao(120,140);
+    janelaGameOver->setDimensao(400,200);
+    janelaGameOver->texto.setFonte("texto");
+    janelaGameOver->texto.setChaveTexto("tela_gameover_%02d");
+    janelaGameOver->texto.setAlinhamento(TEXTO_CENTRALIZADO);
+    janelaGameOver->setVisual(uiVisualSolido->clone());
+    janelaGameOver->inicializar();
 
-    caixaFaseFinalizada = new UserInterfaceWindow();
-    caixaFaseFinalizada->setPosicao(120,140);
-    caixaFaseFinalizada->setDimensao(400,200);
-    caixaFaseFinalizada->texto.setFonte("texto");
-    caixaFaseFinalizada->texto.setChaveTexto("tela_fasefinalizada_%02d");
-    caixaFaseFinalizada->texto.setAlinhamento(TEXTO_CENTRALIZADO);
-    caixaFaseFinalizada->setVisual(uieVisualImagem->clone());
-    caixaFaseFinalizada->inicializar();
+    janelaZerado = new UserInterfaceWindow();
+    janelaZerado->setPosicao(120,140);
+    janelaZerado->setDimensao(400,200);
+    janelaZerado->texto.setFonte("texto");
+    janelaZerado->texto.setChaveTexto("tela_zerado_%02d");
+    janelaZerado->texto.setAlinhamento(TEXTO_CENTRALIZADO);
+    janelaZerado->setVisual(uiVisualSolido->clone());
+    janelaZerado->inicializar();
 
-    caixaGameOver = new UserInterfaceWindow();
-    caixaGameOver->setPosicao(120,140);
-    caixaGameOver->setDimensao(400,200);
-    caixaGameOver->texto.setFonte("texto");
-    caixaGameOver->texto.setChaveTexto("tela_gameover_%02d");
-    caixaGameOver->texto.setAlinhamento(TEXTO_CENTRALIZADO);
-    caixaGameOver->setVisual(uieVisual->clone());
-    caixaGameOver->inicializar();
 
-    caixaZerado = new UserInterfaceWindow();
-    caixaZerado->setPosicao(120,140);
-    caixaZerado->setDimensao(400,200);
-    caixaZerado->texto.setFonte("texto");
-    caixaZerado->texto.setChaveTexto("tela_zerado_%02d");
-    caixaZerado->texto.setAlinhamento(TEXTO_CENTRALIZADO);
-    caixaZerado->setVisual(uieVisual->clone());
-    caixaZerado->inicializar();
+    janelaAjuda = new UserInterfaceWindowTitulo();
+    janelaAjuda->setPosicao(40,50);
+    janelaAjuda->setDimensao(560,400);
+    janelaAjuda->texto.setFonte("texto");
+    janelaAjuda->texto.setChaveTexto("tela_ajuda_%02d");
+    janelaAjuda->titulo.setFonte("menu");
+    janelaAjuda->titulo.setChaveTexto("titulo_ajuda");
+    janelaAjuda->setVisual(uiVisualSolido->clone());
+    janelaAjuda->adicionarBotao(new UserInterfaceBotao("menu","botao_enter"));
+//    janelaAjuda->setKey(SDLK_RETURN);
+//    janelaAjuda->setJoyButton()
+    janelaAjuda->inicializar();
+
+
+    //remover depois, colocar embutido no framework
+    UserInterfaceWindow::setInputSystem(frameworkGBF->inputSystem);
+
+    delete(uiVisualSolido);
+    delete(uiVisualImagem);
 
     controle.carregar();
 }
@@ -224,39 +239,30 @@ void Jogo::menuAjuda()
 {
     FrameLayerManager::getInstance()->getFrameLayer("background")->desenhar();
 
-    caixaAjuda->executar();
+    janelaAjuda->executar();
 
-    if (desenharBotaoEnter()){
-        if ((frameworkGBF->inputSystem->teclado->isKey(SDLK_RETURN))
-            || (frameworkGBF->inputSystem->joystick->isButtonA())){
-                setMenuPrincipal();
-        }
+    if (janelaAjuda->confirmarSelecao()==1){
+        setMenuPrincipal();
     }
 }
 void Jogo::menuCredito()
 {
     FrameLayerManager::getInstance()->getFrameLayer("background")->desenhar();
 
-    caixaCredito->executar();
+    janelaCredito->executar();
 
-    if (desenharBotaoEnter()){
-        if ((frameworkGBF->inputSystem->teclado->isKey(SDLK_RETURN))||
-            (frameworkGBF->inputSystem->joystick->isButtonA())){
-                setMenuPrincipal();
-        }
+    if (janelaCredito->confirmarSelecao()==1){
+        setMenuPrincipal();
     }
 }
 void Jogo::menuSobre()
 {
     FrameLayerManager::getInstance()->getFrameLayer("background")->desenhar();
 
-    caixaSobre->executar();
+    janelaSobre->executar();
 
-    if (desenharBotaoEnter()){
-        if ((frameworkGBF->inputSystem->teclado->isKey(SDLK_RETURN))
-            || (frameworkGBF->inputSystem->joystick->isButtonA())){
-                setMenuPrincipal();
-        }
+    if (janelaSobre->confirmarSelecao()==1){
+        setMenuPrincipal();
     }
 }
 void Jogo::jogoNovo()
@@ -297,39 +303,30 @@ void Jogo::jogoFaseFinalizada()
 {
     controle.desenhar();
 
-    caixaFaseFinalizada->executar();
+    janelaFaseFinalizada->executar();
 
-    if (desenharBotaoEnter()){
-        if ((frameworkGBF->inputSystem->teclado->isKey(SDLK_RETURN))
-            || (frameworkGBF->inputSystem->joystick->isButtonA())){
-                setJogoFaseCarregar();
-        }
+    if (janelaFaseFinalizada->confirmarSelecao()==1){
+        setJogoFaseCarregar();
     }
 }
 void Jogo::jogoGameOver()
 {
     FrameLayerManager::getInstance()->getFrameLayer("background")->desenhar();
 
-    caixaGameOver->executar();
+    janelaGameOver->executar();
 
-    if (desenharBotaoEnter()){
-        if ((frameworkGBF->inputSystem->teclado->isKey(SDLK_RETURN))
-            || (frameworkGBF->inputSystem->joystick->isButtonA())){
-                setMenu();
-        }
+    if (janelaGameOver->confirmarSelecao()==1){
+        setMenu();
     }
 }
 void Jogo::jogoZerado()
 {
     FrameLayerManager::getInstance()->getFrameLayer("background")->desenhar();
 
-    caixaZerado->executar();
+    janelaZerado->executar();
 
-    if (desenharBotaoEnter()){
-        if ((frameworkGBF->inputSystem->teclado->isKey(SDLK_RETURN))
-            || (frameworkGBF->inputSystem->joystick->isButtonA())){
-                setMenu();
-        }
+    if (janelaZerado->confirmarSelecao()==1){
+        setMenu();
     }
 }
 bool Jogo::gatilhoJogoFaseCarregar()
@@ -347,13 +344,4 @@ void Jogo::gatilhoMenuPrincipal()
 {
     frameworkGBF->soundSystem->musicManager->playInfinity("menu");
 }
-bool Jogo::desenharBotaoEnter()
-{
-    bool desenhe = isTempoEspera();
 
-    if (desenhe){
-        frameworkGBF->writeSystem->escreverLocalizado("menu",20,420,"botao_enter");
-    }
-
-    return desenhe;
-}

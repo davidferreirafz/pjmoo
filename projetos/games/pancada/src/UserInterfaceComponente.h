@@ -1,5 +1,5 @@
 ///***************************************************************************
-// *   FZPong <Game - Pong Clone>                                            *
+// *   Pancada <Game - Boxing Clone>                                         *
 // *   Copyright (C) 2007 by David Ferreira - FZ                             *
 // *   davidferreira.fz@gmail.com - http://pjmoo.sourceforge.net             *
 // ***************************************************************************
@@ -18,80 +18,27 @@
 // *   Free Software Foundation, Inc.,                                       *
 // *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
 // ***************************************************************************/
-#ifndef _JOGO_H
-#define _JOGO_H
 
-#include "Controle.h"
-#include <GBF/SpriteItem.h>
+#ifndef _USERINTERFACECOMPONENTE_H
+#define _USERINTERFACECOMPONENTE_H
 
-#include <GBF/GAT.h>
+#include <GBF/WriteSystemManager.h>
 
-#include <GBF/UserInterfaceMenuTextoTransparente.h>
+#include <GBF/UserInterfaceTexto.h>
 
-#include <GBF/UserInterfaceMenuItemTexto.h>
 
-#include <GBF/SpriteFactory.h>
-
-#include "UserInterfaceWindow.h"
-#include "UserInterfaceWindowTitulo.h"
-#include "UserInterfaceVisual.h"
-#include "UserInterfaceVisualImagem.h"
-#include "UserInterfaceVisualSolido.h"
-
-class Jogo : public GAT
+class UserInterfaceComponente
 {
   public:
-    int main(int argc, char * argv[]);
+    UserInterfaceComponente();
 
-    //Construtor
-    Jogo(int argc, char * argv[]);
-
-    //Destrutor
-    virtual ~Jogo();
+    virtual ~UserInterfaceComponente();
 
 
   protected:
-    //Inicializa os recursos utilizados no jogo.
-    //Ex.: Imagens, sons, fontes, configuração do modo gráfico e etc..
-    void inicializarRecursos();
+    static WriteSystemManager * wsManager;
 
-    void menuPrincipal();
-
-    void menuAjuda();
-
-    void menuCredito();
-
-    void menuSobre();
-
-    void jogoNovo();
-
-    void jogoExecutando();
-
-    void jogoPause();
-
-    void jogoFaseCarregar();
-
-    void jogoFaseFinalizada();
-
-    void jogoGameOver();
-
-    void jogoZerado();
-
-    bool gatilhoJogoFaseCarregar();
-
-    void gatilhoMenuPrincipal();
-
-
-  private:
-
-    Controle controle;
-
-    UserInterfaceWindowTitulo *janelaAjuda;
-    UserInterfaceWindowTitulo *janelaCredito;
-    UserInterfaceWindowTitulo *janelaSobre;
-    UserInterfaceWindow *janelaGameOver;
-    UserInterfaceWindow *janelaFaseFinalizada;
-    UserInterfaceWindow *janelaZerado;
+    static UserInterfaceTexto * uiTexto;
 
 };
 #endif

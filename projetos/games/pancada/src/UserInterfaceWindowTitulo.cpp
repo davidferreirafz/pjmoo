@@ -28,11 +28,11 @@ UserInterfaceWindowTitulo::UserInterfaceWindowTitulo()
 UserInterfaceWindowTitulo::~UserInterfaceWindowTitulo() 
 {
 }
-void UserInterfaceWindowTitulo::executar() 
+void UserInterfaceWindowTitulo::desenharConteudo() 
 {
-    int posicaoTextoHorizontal = 0;
+    UserInterfaceWindow::desenharConteudo();
 
-    UserInterfaceWindow::executar();
+    int posicaoTextoHorizontal = 0;
 
     if (titulo.getAlinhamento()==TEXTO_CENTRALIZADO){
         int auxiliar = wsManager->getLarguraLinha(titulo.getFonte(),titulo.getChaveTexto());
@@ -42,6 +42,7 @@ void UserInterfaceWindowTitulo::executar()
     }
 
     wsManager->escreverLocalizado(titulo.getFonte(),posicaoTextoHorizontal,posicao.y,titulo.getChaveTexto());
+
 }
 //Inicializa as configurações da caixa de texto
 void UserInterfaceWindowTitulo::inicializar() 

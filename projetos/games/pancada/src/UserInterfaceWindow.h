@@ -36,6 +36,8 @@
 class UserInterfaceWindow : public UserInterfaceComponente
 {
   public:
+    static const int BOTAO_OK;
+
     //Construtor
     UserInterfaceWindow();
 
@@ -62,6 +64,9 @@ class UserInterfaceWindow : public UserInterfaceComponente
 
     int confirmarSelecao();
 
+    //Retorna se o Botão informado foi acionado
+    bool isBotao(int tipoBotao);
+
 
   protected:
     Dimensao dimensao;
@@ -77,7 +82,7 @@ class UserInterfaceWindow : public UserInterfaceComponente
     void desenharBackground();
 
     //Desenha o conteudo da janela
-    void desenharConteudo();
+    virtual void desenharConteudo();
 
     //Desenha o botão de ação da janela
     void desenharBotao();

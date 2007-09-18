@@ -1,10 +1,11 @@
 
 #include "UserInterfaceBotao.h"
 
-UserInterfaceBotao::UserInterfaceBotao(std::string fonte, std::string chaveTexto) 
+UserInterfaceBotao::UserInterfaceBotao(std::string fonte, std::string chaveTexto, const SDLKey & tecla) 
 {
     botao.setFonte(fonte);
     botao.setChaveTexto(chaveTexto);
+    this->tecla=tecla;
 }
 UserInterfaceBotao::~UserInterfaceBotao() 
 {
@@ -15,8 +16,12 @@ void UserInterfaceBotao::desenhar(const Ponto & posicao)
     Dimensao dimensao = wsManager->getFonte(botao.getFonte())->getDimensao();
 
     int posicaoTextoHorizontal = posicao.x;
-    int posicaoTextoVertical  = posicao.y - (dimensao.h * 1.2);
+    int posicaoTextoVertical  = int(posicao.y - (dimensao.h * 1.2));
 
     wsManager->escreverLocalizado(botao.getFonte(),posicaoTextoHorizontal,posicaoTextoVertical,botao.getChaveTexto());
-
+}
+//Retorna a tecla correspondente ao botão
+SDLKey UserInterfaceBotao::getTecla() 
+{
+    return tecla;
 }

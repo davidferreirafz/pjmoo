@@ -146,7 +146,7 @@ void Jogo::inicializarRecursos()
     janelaCredito->titulo.setFonte("menu");
     janelaCredito->titulo.setChaveTexto("titulo_credito");
     janelaCredito->setVisual(uiVisualSolido->clone());
-    janelaCredito->adicionarBotao(new UserInterfaceBotao("menu","botao_enter"));
+    janelaCredito->adicionarBotao(new UserInterfaceBotao("menu","botao_enter",SDLK_RETURN));
     janelaCredito->inicializar();
 
     janelaSobre = new UserInterfaceWindowTitulo();
@@ -157,7 +157,7 @@ void Jogo::inicializarRecursos()
     janelaSobre->titulo.setFonte("menu");
     janelaSobre->titulo.setChaveTexto("titulo_sobre");
     janelaSobre->setVisual(uiVisualImagem->clone());
-    janelaSobre->adicionarBotao(new UserInterfaceBotao("menu","botao_enter"));
+    janelaSobre->adicionarBotao(new UserInterfaceBotao("menu","botao_enter",SDLK_RETURN));
     janelaSobre->inicializar();
 
     janelaFaseFinalizada = new UserInterfaceWindow();
@@ -196,9 +196,7 @@ void Jogo::inicializarRecursos()
     janelaAjuda->titulo.setFonte("menu");
     janelaAjuda->titulo.setChaveTexto("titulo_ajuda");
     janelaAjuda->setVisual(uiVisualSolido->clone());
-    janelaAjuda->adicionarBotao(new UserInterfaceBotao("menu","botao_enter"));
-//    janelaAjuda->setKey(SDLK_RETURN);
-//    janelaAjuda->setJoyButton()
+    janelaAjuda->adicionarBotao(new UserInterfaceBotao("menu","botao_enter",SDLK_RETURN));
     janelaAjuda->inicializar();
 
 
@@ -241,7 +239,7 @@ void Jogo::menuAjuda()
 
     janelaAjuda->executar();
 
-    if (janelaAjuda->confirmarSelecao()==1){
+    if (janelaAjuda->isBotao(UserInterfaceWindow::BOTAO_OK)){
         setMenuPrincipal();
     }
 }
@@ -251,7 +249,7 @@ void Jogo::menuCredito()
 
     janelaCredito->executar();
 
-    if (janelaCredito->confirmarSelecao()==1){
+    if (janelaCredito->isBotao(UserInterfaceWindow::BOTAO_OK)){
         setMenuPrincipal();
     }
 }
@@ -261,7 +259,7 @@ void Jogo::menuSobre()
 
     janelaSobre->executar();
 
-    if (janelaSobre->confirmarSelecao()==1){
+    if (janelaSobre->isBotao(UserInterfaceWindow::BOTAO_OK)){
         setMenuPrincipal();
     }
 }

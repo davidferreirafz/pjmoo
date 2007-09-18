@@ -34,7 +34,7 @@ class UserInterfaceWindowTitulo : public UserInterfaceWindow
 
 
   protected:
-    void desenharConteudo();
+    virtual void desenharConteudo();
 
 
   public:

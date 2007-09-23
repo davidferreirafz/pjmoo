@@ -130,7 +130,7 @@ void Jogo::inicializarRecursos()
 
     UserInterfaceVisualImagem *uiVisualImagem = new UserInterfaceVisualImagem();
     uiVisualImagem->setCorBorda(255,0,0);
-
+    uiVisualImagem->setTipoBackground(BAKCGROUND_SQUARE);
 
     janelaCredito = new UserInterfaceWindowTitulo();
     janelaCredito->setPosicao(40,50);

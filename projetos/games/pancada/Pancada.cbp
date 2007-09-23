@@ -62,7 +62,6 @@
 					<Add option="-Os" />
 					<Add option="-W" />
 					<Add option="-Wall" />
-					<Add option="-DGNU_LINUX" />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
@@ -81,7 +80,6 @@
 					<Add option="-Wall" />
 					<Add option="-pg" />
 					<Add option="-g" />
-					<Add option="-DGNU_LINUX" />
 					<Add option="-DDEBUG" />
 				</Compiler>
 				<Linker>
@@ -105,10 +103,6 @@
 		<Unit filename="src/Cabeca.h" />
 		<Unit filename="src/CabecaFactory.cpp" />
 		<Unit filename="src/CabecaFactory.h" />
-		<Unit filename="src/CaixaTexto.cpp" />
-		<Unit filename="src/CaixaTexto.h" />
-		<Unit filename="src/CaixaTextoTitulo.cpp" />
-		<Unit filename="src/CaixaTextoTitulo.h" />
 		<Unit filename="src/Controle.cpp" />
 		<Unit filename="src/Controle.h" />
 		<Unit filename="src/EfeitoSangue.cpp" />
@@ -147,12 +141,22 @@
 		<Unit filename="src/StatusPC.h" />
 		<Unit filename="src/StatusPlayer.cpp" />
 		<Unit filename="src/StatusPlayer.h" />
-		<Unit filename="src/UserInterfaceEstiloVisual.cpp" />
-		<Unit filename="src/UserInterfaceEstiloVisual.h" />
-		<Unit filename="src/UserInterfaceEstiloVisualImagem.cpp" />
-		<Unit filename="src/UserInterfaceEstiloVisualImagem.h" />
-		<Unit filename="src/UserInterfaceEstiloVisualSolido.cpp" />
-		<Unit filename="src/UserInterfaceEstiloVisualSolido.h" />
+		<Unit filename="src/UserInterfaceBotao.cpp" />
+		<Unit filename="src/UserInterfaceBotao.h" />
+		<Unit filename="src/UserInterfaceComponente.cpp" />
+		<Unit filename="src/UserInterfaceComponente.h" />
+		<Unit filename="src/UserInterfaceObjetoTexto.cpp" />
+		<Unit filename="src/UserInterfaceObjetoTexto.h" />
+		<Unit filename="src/UserInterfaceVisual.cpp" />
+		<Unit filename="src/UserInterfaceVisual.h" />
+		<Unit filename="src/UserInterfaceVisualImagem.cpp" />
+		<Unit filename="src/UserInterfaceVisualImagem.h" />
+		<Unit filename="src/UserInterfaceVisualSolido.cpp" />
+		<Unit filename="src/UserInterfaceVisualSolido.h" />
+		<Unit filename="src/UserInterfaceWindow.cpp" />
+		<Unit filename="src/UserInterfaceWindow.h" />
+		<Unit filename="src/UserInterfaceWindowTitulo.cpp" />
+		<Unit filename="src/UserInterfaceWindowTitulo.h" />
 		<Extensions>
 			<code_completion />
 		</Extensions>

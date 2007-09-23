@@ -24,7 +24,7 @@
 const int UserInterfaceWindow::BOTAO_OK =1;
 
 //Construtor
-UserInterfaceWindow::UserInterfaceWindow() 
+UserInterfaceWindow::UserInterfaceWindow()
 {
     espacoAntesTexto=0;
     textoAlinhamento=TEXTO_NORMAL;
@@ -34,7 +34,7 @@ UserInterfaceWindow::UserInterfaceWindow()
     tempoEspera.setResetar();
 }
 //Destrutor
-UserInterfaceWindow::~UserInterfaceWindow() 
+UserInterfaceWindow::~UserInterfaceWindow()
 {
     if (visual!=NULL){
         delete(visual);
@@ -48,7 +48,7 @@ void UserInterfaceWindow::setInputSystem(InputSystem * input)
 {
     UserInterfaceWindow::input=input;
 }
-void UserInterfaceWindow::executar() 
+void UserInterfaceWindow::executar()
 {
     tempoEspera.processar();
 
@@ -59,18 +59,18 @@ void UserInterfaceWindow::executar()
     desenharBotao();
 }
 //Posicação da Caixa na tela
-void UserInterfaceWindow::setPosicao(int x, int y) 
+void UserInterfaceWindow::setPosicao(int x, int y)
 {
     posicao.x=x;
     posicao.y=y;
 }
-void UserInterfaceWindow::setDimensao(int largura, int altura) 
+void UserInterfaceWindow::setDimensao(int largura, int altura)
 {
     dimensao.w=largura;
     dimensao.h=altura;
 }
 //Inicializa as configurações da caixa de texto
-void UserInterfaceWindow::inicializar() 
+void UserInterfaceWindow::inicializar()
 {
     texto.setDimensaoLetra(wsManager->getFonte(texto.getFonte())->getDimensao());
     if (visual!=NULL){
@@ -78,15 +78,15 @@ void UserInterfaceWindow::inicializar()
     }
 }
 //Estilo Visual a ser Aplicado no Componente
-void UserInterfaceWindow::setVisual(UserInterfaceVisual * visual) 
+void UserInterfaceWindow::setVisual(UserInterfaceVisual * visual)
 {
     this->visual=visual;
 }
-void UserInterfaceWindow::adicionarBotao(UserInterfaceBotao * novoBotao) 
+void UserInterfaceWindow::adicionarBotao(UserInterfaceBotao * novoBotao)
 {
     botao=novoBotao;
 }
-int UserInterfaceWindow::confirmarSelecao() 
+int UserInterfaceWindow::confirmarSelecao()
 {
     int selecionado = -1;
 
@@ -99,7 +99,7 @@ int UserInterfaceWindow::confirmarSelecao()
     return selecionado;
 }
 //Retorna se o Botão informado foi acionado
-bool UserInterfaceWindow::isBotao(int tipoBotao) 
+bool UserInterfaceWindow::isBotao(int tipoBotao)
 {
     if (confirmarSelecao()==tipoBotao){
         return true;
@@ -108,14 +108,14 @@ bool UserInterfaceWindow::isBotao(int tipoBotao)
     }
 }
 //Desenha o background da caixa de texto
-void UserInterfaceWindow::desenharBackground() 
+void UserInterfaceWindow::desenharBackground()
 {
     if (visual!=NULL){
         visual->desenhar();
     }
 }
 //Desenha o conteudo da janela
-void UserInterfaceWindow::desenharConteudo() 
+void UserInterfaceWindow::desenharConteudo()
 {
     int numeroLinha=1;
     bool continuar = false;
@@ -150,11 +150,12 @@ void UserInterfaceWindow::desenharConteudo()
     } while(true);
 }
 //Desenha o botão de ação da janela
-void UserInterfaceWindow::desenharBotao() 
+void UserInterfaceWindow::desenharBotao()
 {
     if ((botao!=NULL)&&(tempoEspera.isTerminou())){
         Ponto pontoAux = posicao;
         pontoAux.y = posicao.y+dimensao.h;
+        pontoAux.x = posicao.x+dimensao.w;
         botao->desenhar(pontoAux);
     }
 }

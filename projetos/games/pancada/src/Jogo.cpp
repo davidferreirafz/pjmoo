@@ -128,12 +128,6 @@ void Jogo::inicializarRecursos()
     uiMenuPrincipal->adicionar(new UserInterfaceMenuItemTexto("menu_4","menu"));
     uiMenuPrincipal->adicionar(new UserInterfaceMenuItemTexto("menu_5","menu"));
 
-
-    UserInterfaceVisualSolido * uiVisualSolido = new UserInterfaceVisualSolido();
-    uiVisualSolido->setCorBorda(255,0,0);
-    uiVisualSolido->setCorFundo(100,200,100);
-
-
     UserInterfaceVisualImagem *uiVisualImagem = new UserInterfaceVisualImagem();
     uiVisualImagem->setCorBorda(255,0,0);
 
@@ -145,7 +139,7 @@ void Jogo::inicializarRecursos()
     janelaCredito->texto.setChaveTexto("tela_credito_%02d");
     janelaCredito->titulo.setFonte("menu");
     janelaCredito->titulo.setChaveTexto("titulo_credito");
-    janelaCredito->setVisual(uiVisualSolido->clone());
+    janelaCredito->setVisual(uiVisualImagem->clone());
     janelaCredito->adicionarBotao(new UserInterfaceBotao("menu","botao_enter",SDLK_RETURN));
     janelaCredito->inicializar();
 
@@ -175,7 +169,7 @@ void Jogo::inicializarRecursos()
     janelaGameOver->texto.setFonte("texto");
     janelaGameOver->texto.setChaveTexto("tela_gameover_%02d");
     janelaGameOver->texto.setAlinhamento(TEXTO_CENTRALIZADO);
-    janelaGameOver->setVisual(uiVisualSolido->clone());
+    janelaGameOver->setVisual(uiVisualImagem->clone());
     janelaGameOver->inicializar();
 
     janelaZerado = new UserInterfaceWindow();
@@ -184,7 +178,7 @@ void Jogo::inicializarRecursos()
     janelaZerado->texto.setFonte("texto");
     janelaZerado->texto.setChaveTexto("tela_zerado_%02d");
     janelaZerado->texto.setAlinhamento(TEXTO_CENTRALIZADO);
-    janelaZerado->setVisual(uiVisualSolido->clone());
+    janelaZerado->setVisual(uiVisualImagem->clone());
     janelaZerado->inicializar();
 
 
@@ -195,7 +189,7 @@ void Jogo::inicializarRecursos()
     janelaAjuda->texto.setChaveTexto("tela_ajuda_%02d");
     janelaAjuda->titulo.setFonte("menu");
     janelaAjuda->titulo.setChaveTexto("titulo_ajuda");
-    janelaAjuda->setVisual(uiVisualSolido->clone());
+    janelaAjuda->setVisual(uiVisualImagem->clone());
     janelaAjuda->adicionarBotao(new UserInterfaceBotao("menu","botao_enter",SDLK_RETURN));
     janelaAjuda->inicializar();
 
@@ -203,7 +197,6 @@ void Jogo::inicializarRecursos()
     //remover depois, colocar embutido no framework
     UserInterfaceWindow::setInputSystem(frameworkGBF->inputSystem);
 
-    delete(uiVisualSolido);
     delete(uiVisualImagem);
 
     controle.carregar();

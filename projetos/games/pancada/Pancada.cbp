@@ -141,22 +141,6 @@
 		<Unit filename="src/StatusPC.h" />
 		<Unit filename="src/StatusPlayer.cpp" />
 		<Unit filename="src/StatusPlayer.h" />
-		<Unit filename="src/UserInterfaceBotao.cpp" />
-		<Unit filename="src/UserInterfaceBotao.h" />
-		<Unit filename="src/UserInterfaceComponente.cpp" />
-		<Unit filename="src/UserInterfaceComponente.h" />
-		<Unit filename="src/UserInterfaceObjetoTexto.cpp" />
-		<Unit filename="src/UserInterfaceObjetoTexto.h" />
-		<Unit filename="src/UserInterfaceVisual.cpp" />
-		<Unit filename="src/UserInterfaceVisual.h" />
-		<Unit filename="src/UserInterfaceVisualImagem.cpp" />
-		<Unit filename="src/UserInterfaceVisualImagem.h" />
-		<Unit filename="src/UserInterfaceVisualSolido.cpp" />
-		<Unit filename="src/UserInterfaceVisualSolido.h" />
-		<Unit filename="src/UserInterfaceWindow.cpp" />
-		<Unit filename="src/UserInterfaceWindow.h" />
-		<Unit filename="src/UserInterfaceWindowTitulo.cpp" />
-		<Unit filename="src/UserInterfaceWindowTitulo.h" />
 		<Extensions>
 			<code_completion />
 		</Extensions>

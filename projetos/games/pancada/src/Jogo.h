@@ -32,11 +32,13 @@
 
 #include <GBF/SpriteFactory.h>
 
-#include "UserInterfaceWindow.h"
-#include "UserInterfaceWindowTitulo.h"
-#include "UserInterfaceVisual.h"
-#include "UserInterfaceVisualImagem.h"
-#include "UserInterfaceVisualSolido.h"
+#include <GBF/UserInterfaceWindow.h>
+#include <GBF/UserInterfaceWindowTitulo.h>
+#include <GBF/UserInterfaceVisualImagem.h>
+
+
+//#include "UserInterfaceVisual.h"
+//#include "UserInterfaceVisualSolido.h"
 
 class Jogo : public GAT
 {

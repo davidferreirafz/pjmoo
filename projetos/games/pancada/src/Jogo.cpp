@@ -71,14 +71,12 @@ void Jogo::inicializarRecursos()
     GSIBManager->carregar("background","data//imagem//pancada_console.png");
     GSIBManager->carregar("interface","data//imagem//pancada_interface.png");
     GSIBManager->carregar("ringue","data//imagem//pancada_ringue_01.png");
-    GSIBManager->carregar("gbf-window-background","data//kernel//imagem//window-background.png");
 
     //carregando fontes
     frameworkGBF->writeSystem->carregar("texto",frameworkGBF->getPath()+"data//fonte//texto.png");
     frameworkGBF->writeSystem->carregar("menu",frameworkGBF->getPath()+"data//fonte//army.png");
     frameworkGBF->writeSystem->carregar("kiloton16",frameworkGBF->getPath()+"data//fonte//kiloton_16.png");
     frameworkGBF->writeSystem->carregar("kiloton24",frameworkGBF->getPath()+"data//fonte//kiloton_24.png");
-
 
 //carregando audio - efeitos
 //Configura volume dos efeitos

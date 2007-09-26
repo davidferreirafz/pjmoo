@@ -1,0 +1,102 @@
+#Arquivo de Textos
+#Português Brasil
+
+
+#Menu::Menu
+menu_1=SOBRE
+menu_2=JOGAR
+menu_3=CREDITO
+menu_4=AJUDA
+menu_5=SAIR
+
+#Titulos
+titulo_sobre=SOBRE
+titulo_ajuda=AJUDA
+titulo_credito=CREDITO
+titulo_pause=PAUSE
+
+
+#botao
+botao_enter=[ENTER]
+
+
+#Jogo::menuSobre
+tela_sobre_01=  Pancada, é um jogo de boxing baseado
+tela_sobre_02= nos clássico jogos do atari.
+tela_sobre_03= 
+tela_sobre_04=  É um  jogo  para um jogador,  o qual 
+tela_sobre_05= deverá passar por cinco grandes lutas 
+tela_sobre_06= para consagrar-se, campeão do torneio
+tela_sobre_07= 'DukItan Boxing Club'.
+tela_sobre_08= 
+tela_sobre_09= 
+tela_sobre_10= 
+tela_sobre_11=        
+
+#Jogo::menuAjuda
+tela_ajuda_01= 
+tela_ajuda_02=Movimentação:
+tela_ajuda_03=  Joystick e Setas de Direção
+tela_ajuda_04= 
+tela_ajuda_05=Soco:
+tela_ajuda_06=  Direito, tecla '<'
+tela_ajuda_07=  Esquerdo, tecla '>'
+tela_ajuda_08= 
+tela_ajuda_09= 
+tela_ajuda_10= 
+tela_ajuda_11= 
+
+
+#Jogo::menuCredito
+tela_credito_01=Desenvolvedor:
+tela_credito_02=    David de Almeida Ferreira
+tela_credito_03=E-Mail:
+tela_credito_04=    davidferreira.fz@gmail.com
+tela_credito_05=Site:
+tela_credito_06=    pjmoo.codigolivre.org.br  
+tela_credito_07=Ferramentas:
+tela_credito_08=    GNU Compiler/MinGW,
+tela_credito_09=    CodeBlocks & BoUML
+tela_credito_10=Bibliotecas:
+tela_credito_11=    GBF & SDL (Mixer/Image)
+
+
+#Jogo::jogoPause
+tela_pause_01= Pancada está em modo de Pausa.
+tela_pause_02=   Para continuar aperte [ENTER]
+tela_pause_03= 
+tela_pause_04= Veja mais informações no site:
+tela_pause_05= 
+tela_pause_06=   http://pjmoo.codigolivre.org.br
+
+
+#Jogo::jogoZerado
+tela_zerado_01= 
+tela_zerado_02=           Parabéns!  
+tela_zerado_03=    Você é o novo campeão do
+tela_zerado_04=torneio 'DukItan Boxing Club'.
+tela_zerado_05= 
+
+
+#Jogo::jogoGameOver
+tela_gameover_01= 
+tela_gameover_02=          GAME OVER!!!        
+tela_gameover_03=   GAME OVER!!! GAME OVER!!! 
+tela_gameover_04= 
+tela_gameover_05=  Você não está qualificado para
+tela_gameover_06=o torneio 'DukItan Boxing Club'.
+tela_gameover_07= 
+
+
+#Jogo::jogoFaseFinalizada
+tela_fasefinalizada_01= 
+tela_fasefinalizada_02=          Parabéns
+tela_fasefinalizada_03=   
+tela_fasefinalizada_04=  Você teve sorte, conseguiu
+tela_fasefinalizada_05= derrotar um lutador D.I.B.
+tela_fasefinalizada_06= 
+tela_fasefinalizada_07=                  Prepare-se! 
+
+
+
+

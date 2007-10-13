@@ -1,7 +1,7 @@
 
 #include "FaseUm.h"
 
-FaseUm::FaseUm()
+FaseUm::FaseUm(TipoLutador tipo)
 {
 	//Player, jogador humano
 	if (lutadorPlayer==NULL){
@@ -9,10 +9,8 @@ FaseUm::FaseUm()
     }
 	//PC, jogador automático
 	if (lutadorPC==NULL){
-    	lutadorPC = new LutadorPC();
+    	lutadorPC = new LutadorPC(tipo);
     }
-
-    round.setMaximo(3);
 }
 
 FaseUm::~FaseUm()

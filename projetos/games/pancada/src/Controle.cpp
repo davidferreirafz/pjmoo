@@ -100,6 +100,6 @@ void Controle::desenhar()
 }
 void Controle::carregar()
 {
-    SpriteFactory *spriteFactory = new SpriteFactory(GraphicSystemImageBufferManager::getInstance()->getImageBuffer("personagem"));
+    SpriteFactory *spriteFactory = new SpriteFactory(GraphicSystem::getInstance()->imageBufferManager->getImageBuffer("personagem"));
     fight = spriteFactory->criarSpriteItem(0,316,453,82,1,1);
 }

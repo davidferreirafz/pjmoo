@@ -14,13 +14,13 @@
 #ifndef _LUVAABSTRACT_H
 #define _LUVAABSTRACT_H
 
-#include <GBF/GraphicSystemImageBufferManager.h>
+#include <GBF/GraphicSystem.h>
 
 #include <GBF/SpriteFactory.h>
 
 #include "MembroBase.h"
 
-//Tipos de Efeitos 
+//Tipos de Efeitos
 enum EnumLuva {
   LUVA_ESQUERDA,
   LUVA_DIREITA
@@ -36,10 +36,10 @@ class LuvaAbstract : public MembroBase
 
 
   public:
-    //Construtor 
+    //Construtor
     LuvaAbstract();
 
-    //Destrutor 
+    //Destrutor
     virtual ~LuvaAbstract();
 
     void setSoco(bool soco);

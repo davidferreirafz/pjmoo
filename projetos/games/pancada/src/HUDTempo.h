@@ -3,7 +3,7 @@
 #define _HUDTEMPO_H
 
 #include "HUDAbstract.h"
-#include <GBF/GraphicSystemImageBufferManager.h>
+#include <GBF/GraphicSystem.h>
 
 #include <GBF/SpriteFactory.h>
 

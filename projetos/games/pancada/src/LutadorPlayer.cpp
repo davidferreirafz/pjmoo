@@ -16,7 +16,7 @@
 LutadorPlayer::LutadorPlayer()
 {
 	CabecaFactory cFactory;
-	cabeca = cFactory.criar(1);
+	cabeca = cFactory.criar(FZ);
 	olharCima();
 }
 LutadorPlayer::~LutadorPlayer(){

@@ -13,10 +13,10 @@
 
 #include "LutadorPC.h"
 
-LutadorPC::LutadorPC()
+LutadorPC::LutadorPC(TipoLutador tipo)
 {
 	CabecaFactory cFactory;
-	cabeca = cFactory.criar(3);
+	cabeca = cFactory.criar(tipo);
 	olharBaixo();
 }
 LutadorPC::~LutadorPC(){

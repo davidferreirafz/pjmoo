@@ -5,7 +5,7 @@
 #include "HUDAbstract.h"
 #include <GBF/SpriteItem.h>
 
-#include <GBF/GraphicSystemImageBufferManager.h>
+#include <GBF/GraphicSystem.h>
 
 #include <GBF/SpriteFactory.h>
 

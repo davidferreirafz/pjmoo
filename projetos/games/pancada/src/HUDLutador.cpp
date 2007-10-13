@@ -4,9 +4,8 @@
 //Construtor
 HUDLutador::HUDLutador(){
 
-    GraphicSystemImageBufferManager *gsImageBufferManager=GraphicSystemImageBufferManager::getInstance();
-
-    SpriteFactory *spriteFactory = new SpriteFactory(gsImageBufferManager->getImageBuffer("interface"));
+    GraphicSystem  *graphicSystem = GraphicSystem::getInstance();
+    SpriteFactory  *spriteFactory = new SpriteFactory(graphicSystem->imageBufferManager->getImageBuffer("interface"));
 
     pontuacao     = spriteFactory->criarSpriteItem(0,306,62,44,1,1);
     statusEnergia = spriteFactory->criarSpriteItem(63,306,12,2,1,1);

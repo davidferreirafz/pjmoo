@@ -64,13 +64,13 @@ void Jogo::inicializarRecursos()
 //configurando modo de vídeo
     frameworkGBF->setTitulo("Pancada","David de Almeida Ferreira");
     frameworkGBF->iniciar(640,480,16,isFullScreen());
-    frameworkGBF->inputSystem->setControleExclusivo(SDL_GRAB_OFF);
+    frameworkGBF->inputSystemCore->setControleExclusivo(SDL_GRAB_OFF);
     //carregando imagens
-    GraphicSystemImageBufferManager *GSIBManager = GraphicSystemImageBufferManager::getInstance();
-    GSIBManager->carregar("personagem","data//imagem//pancada_personagem.png");
-    GSIBManager->carregar("background","data//imagem//pancada_console.png");
-    GSIBManager->carregar("interface","data//imagem//pancada_interface.png");
-    GSIBManager->carregar("ringue","data//imagem//pancada_ringue_01.png");
+//    GraphicSystemImageBufferManager *GSIBManager = GraphicSystemImageBufferManager::getInstance();
+    frameworkGBF->graphicSystemCore->graphicSystem->imageBufferManager->carregar("personagem","data//imagem//pancada_personagem.png");
+    frameworkGBF->graphicSystemCore->graphicSystem->imageBufferManager->carregar("background","data//imagem//pancada_console.png");
+    frameworkGBF->graphicSystemCore->graphicSystem->imageBufferManager->carregar("interface","data//imagem//pancada_interface.png");
+
 
     //carregando fontes
     frameworkGBF->writeSystem->carregar("texto",frameworkGBF->getPath()+"data//fonte//texto.png");
@@ -89,7 +89,7 @@ void Jogo::inicializarRecursos()
 //Layers
     SpriteFactory * spriteFactory = NULL;
 
-    spriteFactory = new SpriteFactory(GSIBManager->getImageBuffer("status"));
+    spriteFactory = new SpriteFactory(frameworkGBF->graphicSystemCore->graphicSystem->imageBufferManager->getImageBuffer("status"));
     FrameLayer * status = spriteFactory->criarFrameLayer(0, 0,96,480);
     status->setFrame(544,0,96,480);
     status->setTiles(1,1);
@@ -98,26 +98,17 @@ void Jogo::inicializarRecursos()
     FrameLayerManager::getInstance()->adicionar("status",status);
     delete(spriteFactory);
 
-    spriteFactory = new SpriteFactory(GSIBManager->getImageBuffer("background"));
-    FrameLayer * ringue = spriteFactory->criarFrameLayer(0, 0,640,480);
-    ringue->setFrame(0,0,640,480);
-    ringue->setTiles(1,1);
-    ringue->setPixelTile(640,480);
-    ringue->iniciarRandomico(1);
-    FrameLayerManager::getInstance()->adicionar("ringue",ringue);
-    delete(spriteFactory);
-
-    spriteFactory = new SpriteFactory(GSIBManager->getImageBuffer("background"));
-    FrameLayer * console = spriteFactory->criarFrameLayer(0, 0,640,480);
+    spriteFactory = new SpriteFactory(frameworkGBF->graphicSystemCore->graphicSystem->imageBufferManager->getImageBuffer("background"));
+    FrameLayer * console = spriteFactory->criarFrameLayer(0, 0,64,480);
     console->setFrame(0,0,640,480);
-    console->setTiles(1,1);
-    console->setPixelTile(640,480);
-    console->iniciarRandomico(1);
+    console->setTiles(10,1);
+    console->setPixelTile(64,480);
+    console->iniciarOrdenado(10);
     FrameLayerManager::getInstance()->adicionar("background",console);
     delete(spriteFactory);
 
     //Menu
-    uiMenuPrincipal = new UserInterfaceMenuTextoTransparente(frameworkGBF->inputSystem);
+    uiMenuPrincipal = new UserInterfaceMenuTextoTransparente();
     uiMenuPrincipal->centralizarTela(640,120,HORIZONTAL);
     uiMenuPrincipal->setEspacoVertical(60);
     uiMenuPrincipal->adicionar(new UserInterfaceMenuItemTexto("menu_1","menu"));
@@ -128,7 +119,7 @@ void Jogo::inicializarRecursos()
 
     UserInterfaceVisualImagem *uiVisualImagem = new UserInterfaceVisualImagem();
     uiVisualImagem->setCorBorda(255,0,0);
-    uiVisualImagem->setTipoBackground(BAKCGROUND_SQUARE);
+    uiVisualImagem->setTipoBackground(BACKGROUND_LINES);
 
     janelaCredito = new UserInterfaceWindowTitulo();
     janelaCredito->setPosicao(40,50);
@@ -191,11 +182,8 @@ void Jogo::inicializarRecursos()
     janelaAjuda->adicionarBotao(new UserInterfaceBotao("menu","botao_enter",SDLK_RETURN));
     janelaAjuda->inicializar();
 
-
-    //remover depois, colocar embutido no framework
-    UserInterfaceWindow::setInputSystem(frameworkGBF->inputSystem);
-
     delete(uiVisualImagem);
+
 
     controle.carregar();
 }
@@ -256,7 +244,7 @@ void Jogo::menuSobre()
 }
 void Jogo::jogoNovo()
 {
-    frameworkGBF->soundSystem->musicManager->playInfinity("musica");
+    frameworkGBF->soundSystemCore->soundSystem->musicManager->playInfinity("musica");
     controle.iniciar();
     setJogoFaseCarregar();
 }
@@ -267,14 +255,14 @@ void Jogo::jogoExecutando()
     } else if (controle.isFaseFinalizada()){
         setJogoFaseFinalizada();
     } else {
-        controle.executar(frameworkGBF->inputSystem);
-        if ((frameworkGBF->inputSystem->teclado->isKey(SDLK_p))||
-            (frameworkGBF->inputSystem->joystick->isButtonC())){
+        controle.executar(frameworkGBF->inputSystemCore->inputSystem);
+        if ((frameworkGBF->inputSystemCore->inputSystem->teclado->isKey(SDLK_p))||
+            (frameworkGBF->inputSystemCore->inputSystem->joystick->isButtonC())){
                 setJogoPause();
         }
         #ifdef DEBUG
         //Codigo utilizado para avança uma fase
-        else if (frameworkGBF->inputSystem->teclado->isKey(SDLK_n)){
+        else if (frameworkGBF->inputSystemCore->inputSystem->teclado->isKey(SDLK_n)){
                 setJogoFaseCarregar();
         }
         #endif
@@ -331,6 +319,6 @@ bool Jogo::gatilhoJogoFaseCarregar()
 }
 void Jogo::gatilhoMenuPrincipal()
 {
-    frameworkGBF->soundSystem->musicManager->playInfinity("menu");
+    frameworkGBF->soundSystemCore->soundSystem->musicManager->playInfinity("menu");
 }
 

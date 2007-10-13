@@ -2,25 +2,23 @@
 #include "StatusPC.h"
 
 //Construtor
-StatusPC::StatusPC() 
+StatusPC::StatusPC()
 {
-
-    GraphicSystemImageBufferManager *gsImageBufferManager=GraphicSystemImageBufferManager::getInstance();
-
-    SpriteFactory *spriteFactory = new SpriteFactory(gsImageBufferManager->getImageBuffer("interface"));
+    GraphicSystem  *graphicSystem = GraphicSystem::getInstance();
+    SpriteFactory  *spriteFactory = new SpriteFactory(graphicSystem->imageBufferManager->getImageBuffer("interface"));
 
     painel = spriteFactory->criarSpriteItem(45,0,45,264,1,1);
 
     delete(spriteFactory);
 }
 //Destrutor
-StatusPC::~StatusPC() 
+StatusPC::~StatusPC()
 {
 
     //dtor
 }
 //Desenha a barra de informações do PC
-void StatusPC::desenhar(int pontos, int round, int energia) 
+void StatusPC::desenhar(int pontos, int round, int energia)
 {
     painel->desenhar(595,0);
     pontuacao->desenhar(534,0);

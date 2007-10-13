@@ -17,9 +17,9 @@ void LutadorAbstract::resetar()
 //Construtor
 LutadorAbstract::LutadorAbstract()
 {
-    GraphicSystemImageBufferManager *gsImageBufferManager=GraphicSystemImageBufferManager::getInstance();
+    GraphicSystem  *graphicSystem = GraphicSystem::getInstance();
+    SpriteFactory  *spriteFactory = new SpriteFactory(graphicSystem->imageBufferManager->getImageBuffer("personagem"));
 
-    SpriteFactory *spriteFactory = new SpriteFactory(gsImageBufferManager->getImageBuffer("personagem"));
     adicionarSpritePrincipal(spriteFactory->criarSpritePersonagem(0,0,153,76,2,8));
     delete(spriteFactory);
 
@@ -77,8 +77,6 @@ void LutadorAbstract::iniciar(int x, int y)
     }
 }
 //Desenha na tela
-
-//Desenha na tela
 void LutadorAbstract::desenhar()
 {
     checklimites();
@@ -88,8 +86,6 @@ void LutadorAbstract::desenhar()
 	luvadireita->desenhar();
 }
 //O lutador está na olhando pra cima
-
-//O lutador está na olhando pra cima
 void LutadorAbstract::olharCima()
 {
 	cabeca->setCima();
@@ -97,8 +93,6 @@ void LutadorAbstract::olharCima()
 	luvadireita->setCima();
     getSpritePrincipal()->setDirecao(DR_CIMA);
 }
-//O lutador está na olhando pra baixo
-
 //O lutador está na olhando pra baixo
 void LutadorAbstract::olharBaixo()
 {
@@ -171,7 +165,7 @@ bool LutadorAbstract::levouSoco(LuvaAbstract * luva)
 			Ponto pntCabeca = cabeca->getPosicao();
 			Ponto posicao = getPosicao();
 
-			DIRECAO olhando = getSpritePrincipal()->getDirecao();
+			SpriteDirecao olhando = getSpritePrincipal()->getDirecao();
 
             pntCabeca.x+=22;
 
@@ -242,8 +236,6 @@ bool LutadorAbstract::choqueAdversario(Area aCorpoAdversario)
 		return false;
 	}
 }
-//checka com limites do ringue
-
 //checka com limites do ringue
 void LutadorAbstract::checklimites()
 {

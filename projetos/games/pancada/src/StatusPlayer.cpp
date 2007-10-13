@@ -2,24 +2,23 @@
 #include "StatusPlayer.h"
 
 //Construtor
-StatusPlayer::StatusPlayer() 
+StatusPlayer::StatusPlayer()
 {
 
-    GraphicSystemImageBufferManager *gsImageBufferManager=GraphicSystemImageBufferManager::getInstance();
-
-    SpriteFactory *spriteFactory = new SpriteFactory(gsImageBufferManager->getImageBuffer("interface"));
+    GraphicSystem  *graphicSystem = GraphicSystem::getInstance();
+    SpriteFactory  *spriteFactory = new SpriteFactory(graphicSystem->imageBufferManager->getImageBuffer("interface"));
 
     painel = spriteFactory->criarSpriteItem(0,0,45,264,1,1);
 
     delete(spriteFactory);
 }
 //Destrutor
-StatusPlayer::~StatusPlayer() 
+StatusPlayer::~StatusPlayer()
 {
 
 }
 //Desenha a barra de informações do jogador
-void StatusPlayer::desenhar(int pontos, int round, int energia) 
+void StatusPlayer::desenhar(int pontos, int round, int energia)
 {
     painel->desenhar(0,0);
     pontuacao->desenhar(45,0);

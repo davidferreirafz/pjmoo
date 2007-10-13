@@ -21,7 +21,7 @@
 class LutadorPC : public LutadorAbstract
 {
   public:
-    LutadorPC();
+    LutadorPC(TipoLutador tipo);
 
     virtual ~LutadorPC();
 

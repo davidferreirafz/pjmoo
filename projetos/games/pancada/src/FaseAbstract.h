@@ -113,5 +113,7 @@ class FaseAbstract
 
     void desenhar();
 
+    void setTotalRound(int total);
+
 };
 #endif

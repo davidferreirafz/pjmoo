@@ -11,7 +11,7 @@
 class FaseUm : public FaseAbstract
 {
   public:
-    FaseUm();
+    FaseUm(TipoLutador tipo);
 
     virtual ~FaseUm();
 

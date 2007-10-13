@@ -13,46 +13,46 @@
 
 #include "CabecaFactory.h"
 
-CabecaFactory::CabecaFactory() 
+CabecaFactory::CabecaFactory()
 {
 //não implementado
 }
-CabecaFactory::~CabecaFactory() 
+CabecaFactory::~CabecaFactory()
 {
 //não implementado
 }
-Cabeca * CabecaFactory::criar(int tipo) 
+Cabeca * CabecaFactory::criar(TipoLutador tipo)
 {
-    GraphicSystemImageBufferManager *gsImageBufferManager=GraphicSystemImageBufferManager::getInstance();
-    SpriteFactory    *spriteFactory = new SpriteFactory(gsImageBufferManager->getImageBuffer("personagem"));
-    SpritePersonagem *sprite = NULL;
+    GraphicSystem      *graphicSystem = GraphicSystem::getInstance();
+    SpriteFactory      *spriteFactory = new SpriteFactory(graphicSystem->imageBufferManager->getImageBuffer("personagem"));
+    SpritePersonagem   *sprite = NULL;
 
 	switch (tipo)
 	{
-		case 5:
+		case Skar:
                 sprite=spriteFactory->criarSpritePersonagem(237,231,59,76,2,10);
-			break;	
-		case 4:
+			break;
+		case Cobra:
 				sprite=spriteFactory->criarSpritePersonagem(237,154,59,76,2,10);
-			break;	
-		case 3:
-				sprite=spriteFactory->criarSpritePersonagem(0,154,59,76,2,10);
-			break;		
-		case 2:
+			break;
+		case Punk:
 				sprite=spriteFactory->criarSpritePersonagem(237,77,59,76,2,10);
 			break;
-		case 1: 
+		case Mascarado:
+				sprite=spriteFactory->criarSpritePersonagem(0,154,59,76,2,10);
+			break;
+		case FZ:
 		default:
 				sprite=spriteFactory->criarSpritePersonagem(0,77,59,76,2,10);
-			break;	
+			break;
 	}
-	
+
 	delete(spriteFactory);
 
-    sprite->setQtdDirecoes(2);	
+    sprite->setQtdDirecoes(2);
 
     Cabeca *cabeca = new Cabeca();
 	cabeca->setSprite(sprite);
-   
+
 	return cabeca;
 }

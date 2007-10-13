@@ -17,8 +17,18 @@
 #include "Cabeca.h"
 #include <GBF/SpriteFactory.h>
 
-#include <GBF/GraphicSystemImageBufferManager.h>
+#include <GBF/GraphicSystem.h>
 
+
+enum TipoLutador
+{
+    FZ,
+    Mascarado,
+    Cobra,
+    Punk,
+    Skar
+
+};
 
 class CabecaFactory
 {
@@ -27,7 +37,7 @@ class CabecaFactory
 
     virtual ~CabecaFactory();
 
-    Cabeca * criar(int tipo);
+    Cabeca * criar(TipoLutador tipo);
 
 
 };

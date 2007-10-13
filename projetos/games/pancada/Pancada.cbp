@@ -72,6 +72,7 @@
 				<Option working_dir="bin/" />
 				<Option type="0" />
 				<Option compiler="gcc" />
+				<Option parameters="--window" />
 				<Option projectCompilerOptionsRelation="1" />
 				<Option projectLinkerOptionsRelation="2" />
 				<Option projectResourceIncludeDirsRelation="0" />

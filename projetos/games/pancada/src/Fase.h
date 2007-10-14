@@ -18,23 +18,20 @@
 //    Free Software Foundation, Inc.,                                       
 //    59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 //***************************************************************************
-#ifndef _FASEFACTORY_H
-#define _FASEFACTORY_H
+#ifndef _FASE_H
+#define _FASE_H
 
 #include "FaseAbstract.h"
-#include "Fase.h"
 #include "Define.h"
 
-class FaseFactory
+class Fase : public FaseAbstract
 {
   public:
-    static FaseAbstract * criarFase(int numero);
+    Fase(TipoLutador tipo);
 
-    static bool isProximaFase(int faseAtual);
+    virtual ~Fase();
 
-
-  private:
-    static const int MAX_FASE =   1;
+    virtual void iniciar();
 
 };
 #endif

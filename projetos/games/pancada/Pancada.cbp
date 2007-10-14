@@ -5,7 +5,7 @@
 		<Option title="Pancada" />
 		<Option pch_mode="0" />
 		<Option compiler="gcc" />
-		<Option virtualFolders="Corpo/;Lutador/;Factory/;Interface/;Fase/;" />
+		<Option virtualFolders="Corpo/;Lutador/;Factory/;Fase/;Status/;Util/;Placar/;Main/;" />
 		<Build>
 			<Target title="win32 - release">
 				<Option output="bin/Pancada.exe" prefix_auto="0" extension_auto="0" />
@@ -113,11 +113,27 @@
 		<Unit filename="src/CabecaFactory.h">
 			<Option virtualFolder="Factory/" />
 		</Unit>
-		<Unit filename="src/Controle.cpp" />
-		<Unit filename="src/Controle.h" />
-		<Unit filename="src/Define.h" />
-		<Unit filename="src/EfeitoSangue.cpp" />
-		<Unit filename="src/EfeitoSangue.h" />
+		<Unit filename="src/Controle.cpp">
+			<Option virtualFolder="Main/" />
+		</Unit>
+		<Unit filename="src/Controle.h">
+			<Option virtualFolder="Main/" />
+		</Unit>
+		<Unit filename="src/Define.h">
+			<Option virtualFolder="Util/" />
+		</Unit>
+		<Unit filename="src/EfeitoSangue.cpp">
+			<Option virtualFolder="Util/" />
+		</Unit>
+		<Unit filename="src/EfeitoSangue.h">
+			<Option virtualFolder="Util/" />
+		</Unit>
+		<Unit filename="src/Fase.cpp">
+			<Option virtualFolder="Fase/" />
+		</Unit>
+		<Unit filename="src/Fase.h">
+			<Option virtualFolder="Fase/" />
+		</Unit>
 		<Unit filename="src/FaseAbstract.cpp">
 			<Option virtualFolder="Fase/" />
 		</Unit>
@@ -130,26 +146,12 @@
 		<Unit filename="src/FaseFactory.h">
 			<Option virtualFolder="Factory/" />
 		</Unit>
-		<Unit filename="src/FaseUm.cpp">
-			<Option virtualFolder="Fase/" />
+		<Unit filename="src/Jogo.cpp">
+			<Option virtualFolder="Main/" />
 		</Unit>
-		<Unit filename="src/FaseUm.h">
-			<Option virtualFolder="Fase/" />
+		<Unit filename="src/Jogo.h">
+			<Option virtualFolder="Main/" />
 		</Unit>
-		<Unit filename="src/HUDAbstract.cpp">
-			<Option virtualFolder="Interface/" />
-		</Unit>
-		<Unit filename="src/HUDAbstract.h" />
-		<Unit filename="src/HUDLutador.cpp">
-			<Option virtualFolder="Interface/" />
-		</Unit>
-		<Unit filename="src/HUDLutador.h" />
-		<Unit filename="src/HUDTempo.cpp">
-			<Option virtualFolder="Interface/" />
-		</Unit>
-		<Unit filename="src/HUDTempo.h" />
-		<Unit filename="src/Jogo.cpp" />
-		<Unit filename="src/Jogo.h" />
 		<Unit filename="src/LutadorAbstract.cpp">
 			<Option virtualFolder="Lutador/" />
 		</Unit>
@@ -192,18 +194,48 @@
 		<Unit filename="src/MembroBase.h">
 			<Option virtualFolder="Corpo/" />
 		</Unit>
-		<Unit filename="src/Placar.cpp" />
-		<Unit filename="src/Placar.h" />
-		<Unit filename="src/Round.cpp" />
-		<Unit filename="src/Round.h" />
+		<Unit filename="src/Placar.cpp">
+			<Option virtualFolder="Placar/" />
+		</Unit>
+		<Unit filename="src/Placar.h">
+			<Option virtualFolder="Placar/" />
+		</Unit>
+		<Unit filename="src/Round.cpp">
+			<Option virtualFolder="Fase/" />
+		</Unit>
+		<Unit filename="src/Round.h">
+			<Option virtualFolder="Fase/" />
+		</Unit>
+		<Unit filename="src/Status.cpp">
+			<Option virtualFolder="Status/" />
+		</Unit>
+		<Unit filename="src/Status.h">
+			<Option virtualFolder="Status/" />
+		</Unit>
+		<Unit filename="src/StatusLutador.cpp">
+			<Option virtualFolder="Status/" />
+		</Unit>
+		<Unit filename="src/StatusLutador.h">
+			<Option virtualFolder="Status/" />
+		</Unit>
 		<Unit filename="src/StatusPC.cpp">
-			<Option virtualFolder="Interface/" />
+			<Option virtualFolder="Status/" />
 		</Unit>
-		<Unit filename="src/StatusPC.h" />
+		<Unit filename="src/StatusPC.h">
+			<Option virtualFolder="Status/" />
+		</Unit>
 		<Unit filename="src/StatusPlayer.cpp">
-			<Option virtualFolder="Interface/" />
+			<Option virtualFolder="Status/" />
 		</Unit>
-		<Unit filename="src/StatusPlayer.h" />
+		<Unit filename="src/StatusPlayer.h">
+			<Option virtualFolder="Status/" />
+		</Unit>
+		<Unit filename="src/StatusTempo.cpp">
+			<Option virtualFolder="Status/" />
+		</Unit>
+		<Unit filename="src/StatusTempo.h">
+			<Option virtualFolder="Status/" />
+		</Unit>
 		<Extensions>
 			<code_completion />
 		</Extensions>

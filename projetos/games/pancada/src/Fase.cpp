@@ -18,23 +18,30 @@
 //    Free Software Foundation, Inc.,                                       
 //    59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 //***************************************************************************
-#ifndef _FASEFACTORY_H
-#define _FASEFACTORY_H
-
-#include "FaseAbstract.h"
 #include "Fase.h"
-#include "Define.h"
 
-class FaseFactory
+Fase::Fase(TipoLutador tipo){
+	//Player, jogador humano
+	if (lutadorPlayer==NULL){
+    	lutadorPlayer = new LutadorPlayer();
+    }
+	//PC, jogador automático
+	if (lutadorPC==NULL){
+    	lutadorPC = new LutadorPC(tipo);
+    }
+}
+
+Fase::~Fase(){
+
+}
+
+void Fase::iniciar() 
 {
-  public:
-    static FaseAbstract * criarFase(int numero);
+    SoundSystem::getInstance()->musicManager->playInfinity("fundo");
 
-    static bool isProximaFase(int faseAtual);
+    lutadorPC->iniciar(243,20);
+    lutadorPlayer->iniciar(243,404);
 
-
-  private:
-    static const int MAX_FASE =   1;
-
-};
-#endif
+//    cronometroRound.setResetar();
+    cronometroAuxiliar.setResetar();
+}

@@ -43,11 +43,9 @@ class Controle
     void carregar();
 
 
-  private:
+  protected:
     SpriteItem * fight;
 
-
-  protected:
     TimerSystemCronometroDecrescente tempoEspera;
 
 };

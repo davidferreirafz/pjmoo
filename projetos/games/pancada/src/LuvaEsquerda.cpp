@@ -1,26 +1,14 @@
-////    Pacanda - Based boxing game
-////    Copyright (C) 2004-2006 David de Almeida Ferreira
-////
-////    This is free software; you can redistribute it and/or
-////    modify it under the terms of the GNU General Public
-////    License as published by the Free Software Foundation; either
-////    version 2 of the License, or (at your option) any later version.
-////
-////    David de Almeida Ferreira (F-Z)
-////        davidferreira@uol.com.br or davidferreira.fz@gmail.com
-////        http://pjmoo.codigolivre.org.br
-////////////////////////////////////////////////////////////////////////
 
 #include "LuvaEsquerda.h"
 
-LuvaEsquerda::LuvaEsquerda() 
-{
+LuvaEsquerda::LuvaEsquerda(){
 	eLuva	= LUVA_ESQUERDA;
 }
-LuvaEsquerda::~LuvaEsquerda() 
-{
+
+LuvaEsquerda::~LuvaEsquerda(){
 //não implementado
 }
+
 void LuvaEsquerda::setPosicao(int x, int y) 
 {
 	posicao.x=x-32;

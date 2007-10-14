@@ -16,5 +16,5 @@ HUDAbstract::~HUDAbstract(){
     }
 }
 
-WriteSystemManager * HUDAbstract::wsManager = NULL;
+WriteSystemManager * HUDAbstract::wsManager =NULL;
 

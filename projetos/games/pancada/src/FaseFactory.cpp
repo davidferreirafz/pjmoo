@@ -1,18 +1,10 @@
 
 #include "FaseFactory.h"
 
-const int FaseFactory::MAX_FASE;
-
-bool FaseFactory::isProximaFase(int faseAtual)
-{
-    if (faseAtual<MAX_FASE){
-        return true;
-    } else {
-        return false;
-    }
-}
 //criar fabrica de fase baseada no conceito de prototype
+
 FaseAbstract * FaseFactory::criarFase(int numero)
+
 {
     FaseAbstract * fase = NULL;
     switch(numero){
@@ -38,3 +30,14 @@ FaseAbstract * FaseFactory::criarFase(int numero)
 
     return fase;
 }
+bool FaseFactory::isProximaFase(int faseAtual)
+
+{
+    if (faseAtual<MAX_FASE){
+        return true;
+    } else {
+        return false;
+    }
+}
+const int FaseFactory::MAX_FASE;
+

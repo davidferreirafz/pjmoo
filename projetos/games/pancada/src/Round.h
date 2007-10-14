@@ -18,25 +18,31 @@
 //    Free Software Foundation, Inc.,                                       
 //    59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 //**************************************************************************
-#ifndef _EFEITOSANGUE_H
-#define _EFEITOSANGUE_H
+#ifndef _ROUND_H
+#define _ROUND_H
 
-#include <GBF/ParticleSystemSprite.h>
-
-#include <GBF/SpriteFactory.h>
-
-
-//Cria o efeito de sangue espirrando do lutador atingido
-class EfeitoSangue : public ParticleSystemSprite
+class Round
 {
+  private:
+    int atual;
+
+    int ultimo;
+
+
   public:
-    virtual ~EfeitoSangue();
+    void setPrimeiro();
 
-    EfeitoSangue();
+    bool isUltimo();
 
-    void executar();
+    inline void proximo();
 
-    void criar(int x, int y);
+    void setMaximo(int maximo);
+
+    int get();
 
 };
+inline void Round::proximo() 
+{
+    atual++;
+}
 #endif

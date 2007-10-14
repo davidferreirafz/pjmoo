@@ -1,26 +1,7 @@
-///***************************************************************************
-// *   Pancada <Game - Pong Clone>                                           *
-// *   Copyright (C) 2007 by David Ferreira - FZ                             *
-// *   davidferreira.fz@gmail.com - http://pjmoo.sourceforge.net             *
-// ***************************************************************************
-// *   Este programa é software livre; você pode redistribuí-lo e/ou         *
-// *   modificá-lo sob os termos da Licença Pública Geral GNU, conforme      *
-// *   publicada pela Free Software Foundation; tanto a versão 2 da          *
-// *   Licença como (a seu critério) qualquer versão mais nova.              *
-// ***************************************************************************
-// *   This program is free software; you can redistribute it and/or modify  *
-// *   it under the terms of the GNU General Public License as published by  *
-// *   the Free Software Foundation; either version 2 of the License, or     *
-// *   (at your option) any later version.                                   *
-// *                                                                         *
-// *   You should have received a copy of the GNU General Public License     *
-// *   along with this program; if not, write to the                         *
-// *   Free Software Foundation, Inc.,                                       *
-// *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
-// ***************************************************************************/
+
 #include "Jogo.h"
 
-int main(int argc, char * argv[])
+int main(int argc, char * argv[]) 
 {
     GAT* jogo = NULL;
     jogo = new Jogo(argc,argv);
@@ -41,6 +22,7 @@ int main(int argc, char * argv[])
 
     return 0;
 }
+//Construtor
 
 //Construtor
 Jogo::Jogo(int argc, char * argv[]):GAT(argc,argv)
@@ -48,8 +30,9 @@ Jogo::Jogo(int argc, char * argv[]):GAT(argc,argv)
 }
 
 //Destrutor
-Jogo::~Jogo()
-{
+
+//Destrutor
+Jogo::~Jogo(){
     delete(janelaAjuda);
     delete(janelaCredito);
     delete(janelaSobre);
@@ -57,9 +40,13 @@ Jogo::~Jogo()
     delete(janelaFaseFinalizada);
     delete(janelaZerado);
 }
+
 //Inicializa os recursos utilizados no jogo.
 //Ex.: Imagens, sons, fontes, configuração do modo gráfico e etc..
-void Jogo::inicializarRecursos()
+
+//Inicializa os recursos utilizados no jogo.
+//Ex.: Imagens, sons, fontes, configuração do modo gráfico e etc..
+void Jogo::inicializarRecursos() 
 {
 //configurando modo de vídeo
     frameworkGBF->setTitulo("Pancada","David de Almeida Ferreira");
@@ -187,7 +174,7 @@ void Jogo::inicializarRecursos()
 
     controle.carregar();
 }
-void Jogo::menuPrincipal()
+void Jogo::menuPrincipal() 
 {
     FrameLayerManager::getInstance()->getFrameLayer("background")->desenhar();
 
@@ -212,7 +199,7 @@ void Jogo::menuPrincipal()
             break;
     }
 }
-void Jogo::menuAjuda()
+void Jogo::menuAjuda() 
 {
     FrameLayerManager::getInstance()->getFrameLayer("background")->desenhar();
 
@@ -222,7 +209,7 @@ void Jogo::menuAjuda()
         setMenuPrincipal();
     }
 }
-void Jogo::menuCredito()
+void Jogo::menuCredito() 
 {
     FrameLayerManager::getInstance()->getFrameLayer("background")->desenhar();
 
@@ -232,7 +219,7 @@ void Jogo::menuCredito()
         setMenuPrincipal();
     }
 }
-void Jogo::menuSobre()
+void Jogo::menuSobre() 
 {
     FrameLayerManager::getInstance()->getFrameLayer("background")->desenhar();
 
@@ -242,13 +229,13 @@ void Jogo::menuSobre()
         setMenuPrincipal();
     }
 }
-void Jogo::jogoNovo()
+void Jogo::jogoNovo() 
 {
     frameworkGBF->soundSystemCore->soundSystem->musicManager->playInfinity("musica");
     controle.iniciar();
     setJogoFaseCarregar();
 }
-void Jogo::jogoExecutando()
+void Jogo::jogoExecutando() 
 {
     if (controle.isGameOver()){
         setJogoGameOver();
@@ -268,15 +255,15 @@ void Jogo::jogoExecutando()
         #endif
     }
 }
-void Jogo::jogoPause()
+void Jogo::jogoPause() 
 {
     setMenu();
 }
-void Jogo::jogoFaseCarregar()
+void Jogo::jogoFaseCarregar() 
 {
     setJogoExecutando();
 }
-void Jogo::jogoFaseFinalizada()
+void Jogo::jogoFaseFinalizada() 
 {
     controle.desenhar();
 
@@ -286,7 +273,7 @@ void Jogo::jogoFaseFinalizada()
         setJogoFaseCarregar();
     }
 }
-void Jogo::jogoGameOver()
+void Jogo::jogoGameOver() 
 {
     FrameLayerManager::getInstance()->getFrameLayer("background")->desenhar();
 
@@ -296,7 +283,7 @@ void Jogo::jogoGameOver()
         setMenu();
     }
 }
-void Jogo::jogoZerado()
+void Jogo::jogoZerado() 
 {
     FrameLayerManager::getInstance()->getFrameLayer("background")->desenhar();
 
@@ -306,7 +293,7 @@ void Jogo::jogoZerado()
         setMenu();
     }
 }
-bool Jogo::gatilhoJogoFaseCarregar()
+bool Jogo::gatilhoJogoFaseCarregar() 
 {
     bool continua = controle.carregarFase();
 
@@ -317,8 +304,7 @@ bool Jogo::gatilhoJogoFaseCarregar()
 
     return continua;
 }
-void Jogo::gatilhoMenuPrincipal()
+void Jogo::gatilhoMenuPrincipal() 
 {
     frameworkGBF->soundSystemCore->soundSystem->musicManager->playInfinity("menu");
 }
-

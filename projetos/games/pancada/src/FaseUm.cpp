@@ -1,8 +1,7 @@
 
 #include "FaseUm.h"
 
-FaseUm::FaseUm(TipoLutador tipo)
-{
+FaseUm::FaseUm(TipoLutador tipo){
 	//Player, jogador humano
 	if (lutadorPlayer==NULL){
     	lutadorPlayer = new LutadorPlayer();
@@ -13,12 +12,11 @@ FaseUm::FaseUm(TipoLutador tipo)
     }
 }
 
-FaseUm::~FaseUm()
-{
+FaseUm::~FaseUm(){
 
 }
 
-void FaseUm::iniciar()
+void FaseUm::iniciar() 
 {
     SoundSystem::getInstance()->musicManager->playInfinity("fundo");
 

@@ -16,7 +16,7 @@ HUDTempo::~HUDTempo(){
     //dtor
 }
 
-void HUDTempo::desenhar(int tempo)
+void HUDTempo::desenhar(int tempo) 
 {
     painel->desenhar(274,0);
     wsManager->escrever("kiloton24",298,11,"%02d",tempo);

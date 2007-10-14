@@ -2,6 +2,8 @@
 #include "HUDLutador.h"
 
 //Construtor
+
+//Construtor
 HUDLutador::HUDLutador(){
 
     GraphicSystem  *graphicSystem = GraphicSystem::getInstance();
@@ -13,6 +15,8 @@ HUDLutador::HUDLutador(){
     delete(spriteFactory);
 
 }
+
+//Destrutor
 
 //Destrutor
 HUDLutador::~HUDLutador(){

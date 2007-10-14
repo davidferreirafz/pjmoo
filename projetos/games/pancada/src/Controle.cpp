@@ -2,6 +2,8 @@
 #include "Controle.h"
 
 //Construtor
+
+//Construtor
 Controle::Controle(){
     fase = NULL;
     tempoEspera.setTempoOriginal(4);
@@ -10,8 +12,9 @@ Controle::Controle(){
 }
 
 //Destrutor
-Controle::~Controle()
-{
+
+//Destrutor
+Controle::~Controle(){
     if (fase){
         delete(fase);
         fase=NULL;
@@ -20,14 +23,15 @@ Controle::~Controle()
         delete(fight);
     }
 }
+
 //inicia novo jogo
 
-void Controle::iniciar()
+void Controle::iniciar() 
 {
     faseNumero=0;
     tempoEspera.setResetar();
 }
-bool Controle::carregarFase()
+bool Controle::carregarFase() 
 {
     bool maisFase = FaseFactory::isProximaFase(faseNumero);
 
@@ -40,7 +44,7 @@ bool Controle::carregarFase()
 
     return maisFase;
 }
-void Controle::mudarFase()
+void Controle::mudarFase() 
 {
     FaseAbstract* novaFase = FaseFactory::criarFase(faseNumero);
     if (novaFase!=NULL){
@@ -53,7 +57,7 @@ void Controle::mudarFase()
         fase->iniciar();
     }
 }
-bool Controle::isGameOver()
+bool Controle::isGameOver() 
 {
     if ((fase!=NULL)&&(fase->isGameOver())){
         return true;
@@ -61,7 +65,7 @@ bool Controle::isGameOver()
         return false;
     }
 }
-bool Controle::isFaseFinalizada()
+bool Controle::isFaseFinalizada() 
 {
     if ((fase!=NULL)&&(fase->isFaseFinalizada())){
         return true;
@@ -69,7 +73,7 @@ bool Controle::isFaseFinalizada()
         return false;
     }
 }
-void Controle::executar(InputSystem * input)
+void Controle::executar(InputSystem * input) 
 {
     if (!tempoEspera.isTerminou()){
         tempoEspera.processar();
@@ -94,11 +98,11 @@ void Controle::executar(InputSystem * input)
         fase->desenhar();
     }
 }
-void Controle::desenhar()
+void Controle::desenhar() 
 {
     fase->desenhar();
 }
-void Controle::carregar()
+void Controle::carregar() 
 {
     SpriteFactory *spriteFactory = new SpriteFactory(GraphicSystem::getInstance()->imageBufferManager->getImageBuffer("personagem"));
     fight = spriteFactory->criarSpriteItem(0,316,453,82,1,1);

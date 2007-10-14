@@ -2,67 +2,32 @@
 #ifndef _FASEABSTRACT_H
 #define _FASEABSTRACT_H
 
-#include <GBF/ParticleSystemManager.h>
-
-#include <GBF/WriteSystemManager.h>
-
-#include <GBF/FrameLayer.h>
-
-#include <GBF/TimerSystemCronometroDecrescente.h>
-
 #include "LutadorAbstract.h"
 #include "Placar.h"
+#include "Round.h"
 #include "HUDTempo.h"
 #include "StatusPC.h"
 #include "StatusPlayer.h"
-#include <GBF/FrameLayerManager.h>
-
 #include <GBF/InputSystem.h>
 
+#include <GBF/FrameLayer.h>
 
-class Round
-{
-  public:
-    int atual;
+#include <GBF/WriteSystemManager.h>
 
-    int ultimo;
+#include <GBF/TimerSystemCronometroDecrescente.h>
 
-    inline void setPrimeiro() {
-            atual=1;
-        };
+#include <GBF/ParticleSystemManager.h>
 
-    inline bool isUltimo() {
-            if (atual==ultimo){
-                return true;
-            } else {
-                return false;
-            }
-        };
+#include <GBF/FrameLayerManager.h>
 
-    inline void proximo() {
-            atual++;
-        };
+#include "LutadorPlayer.h"
+#include "LutadorPC.h"
+#include <GBF/SoundSystem.h>
 
-    inline void setMaximo(int maximo) {
-            ultimo=maximo;
-        };
 
-    inline int get() {
-            return atual;
-        };
-
-};
 class FaseAbstract
 {
   protected:
-    static ParticleSystemManager * particleManager;
-
-    static WriteSystemManager * wsManager;
-
-    FrameLayer * ringue;
-
-    TimerSystemCronometroDecrescente cronometroAuxiliar;
-
     LutadorAbstract * lutadorPC;
 
     LutadorAbstract * lutadorPlayer;
@@ -114,6 +79,16 @@ class FaseAbstract
     void desenhar();
 
     void setTotalRound(int total);
+
+
+  protected:
+    FrameLayer * ringue;
+
+    static WriteSystemManager * wsManager;
+
+    TimerSystemCronometroDecrescente cronometroAuxiliar;
+
+    static ParticleSystemManager * particleManager;
 
 };
 #endif

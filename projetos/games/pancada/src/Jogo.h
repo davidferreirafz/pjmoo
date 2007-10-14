@@ -1,45 +1,23 @@
-///***************************************************************************
-// *   FZPong <Game - Pong Clone>                                            *
-// *   Copyright (C) 2007 by David Ferreira - FZ                             *
-// *   davidferreira.fz@gmail.com - http://pjmoo.sourceforge.net             *
-// ***************************************************************************
-// *   Este programa é software livre; você pode redistribuí-lo e/ou         *
-// *   modificá-lo sob os termos da Licença Pública Geral GNU, conforme      *
-// *   publicada pela Free Software Foundation; tanto a versão 2 da          *
-// *   Licença como (a seu critério) qualquer versão mais nova.              *
-// ***************************************************************************
-// *   This program is free software; you can redistribute it and/or modify  *
-// *   it under the terms of the GNU General Public License as published by  *
-// *   the Free Software Foundation; either version 2 of the License, or     *
-// *   (at your option) any later version.                                   *
-// *                                                                         *
-// *   You should have received a copy of the GNU General Public License     *
-// *   along with this program; if not, write to the                         *
-// *   Free Software Foundation, Inc.,                                       *
-// *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
-// ***************************************************************************/
+
 #ifndef _JOGO_H
 #define _JOGO_H
 
 #include "Controle.h"
-#include <GBF/SpriteItem.h>
-
 #include <GBF/GAT.h>
+
+#include <GBF/UserInterfaceWindowTitulo.h>
+
+#include <GBF/UserInterfaceWindow.h>
 
 #include <GBF/UserInterfaceMenuTextoTransparente.h>
 
 #include <GBF/UserInterfaceMenuItemTexto.h>
 
-#include <GBF/SpriteFactory.h>
-
-#include <GBF/UserInterfaceWindow.h>
-#include <GBF/UserInterfaceWindowTitulo.h>
 #include <GBF/UserInterfaceVisualImagem.h>
 
 
 //#include "UserInterfaceVisual.h"
 //#include "UserInterfaceVisualSolido.h"
-
 class Jogo : public GAT
 {
   public:
@@ -85,15 +63,21 @@ class Jogo : public GAT
 
 
   private:
-
     Controle controle;
 
-    UserInterfaceWindowTitulo *janelaAjuda;
-    UserInterfaceWindowTitulo *janelaCredito;
-    UserInterfaceWindowTitulo *janelaSobre;
-    UserInterfaceWindow *janelaGameOver;
-    UserInterfaceWindow *janelaFaseFinalizada;
-    UserInterfaceWindow *janelaZerado;
+
+  protected:
+    UserInterfaceWindowTitulo * janelaSobre;
+
+    UserInterfaceWindowTitulo * janelaCredito;
+
+    UserInterfaceWindowTitulo * janelaAjuda;
+
+    UserInterfaceWindow * janelaZerado;
+
+    UserInterfaceWindow * janelaGameOver;
+
+    UserInterfaceWindow * janelaFaseFinalizada;
 
 };
 #endif

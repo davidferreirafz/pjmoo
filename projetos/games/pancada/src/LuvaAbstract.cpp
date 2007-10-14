@@ -1,21 +1,10 @@
-////    Pacanda - Based boxing game
-////    Copyright (C) 2004-2006 David de Almeida Ferreira
-////
-////    This is free software; you can redistribute it and/or
-////    modify it under the terms of the GNU General Public
-////    License as published by the Free Software Foundation; either
-////    version 2 of the License, or (at your option) any later version.
-////
-////    David de Almeida Ferreira (F-Z)
-////        davidferreira@uol.com.br or davidferreira.fz@gmail.com
-////        http://pjmoo.codigolivre.org.br
-////////////////////////////////////////////////////////////////////////
 
 #include "LuvaAbstract.h"
 
 //Construtor
-LuvaAbstract::LuvaAbstract()
-{
+
+//Construtor
+LuvaAbstract::LuvaAbstract(){
     GraphicSystem  *graphicSystem = GraphicSystem::getInstance();
     SpriteFactory  *spriteFactory = new SpriteFactory(graphicSystem->imageBufferManager->getImageBuffer("personagem"));
 
@@ -27,19 +16,22 @@ LuvaAbstract::LuvaAbstract()
 
 	setSoco(false);
 }
+
 //Destrutor
-LuvaAbstract::~LuvaAbstract()
-{
+
+//Destrutor
+LuvaAbstract::~LuvaAbstract(){
 }
-void LuvaAbstract::setSoco(bool soco)
+
+void LuvaAbstract::setSoco(bool soco) 
 {
 	this->soco=soco;
 }
-bool LuvaAbstract::isSoco()
+bool LuvaAbstract::isSoco() 
 {
 	return soco;
 }
-bool LuvaAbstract::isLuvaDireita()
+bool LuvaAbstract::isLuvaDireita() 
 {
 	if (eLuva==LUVA_DIREITA){
 		return true;
@@ -47,7 +39,7 @@ bool LuvaAbstract::isLuvaDireita()
 		return false;
 	}
 }
-bool LuvaAbstract::isLuvaEsquerda()
+bool LuvaAbstract::isLuvaEsquerda() 
 {
 	if (eLuva==LUVA_ESQUERDA){
 		return true;

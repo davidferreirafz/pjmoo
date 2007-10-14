@@ -7,15 +7,14 @@
 
 class FaseFactory
 {
-  private:
-    static const int MAX_FASE =  1;
-
-
   public:
-    static bool isProximaFase(int faseAtual);
-
     static FaseAbstract * criarFase(int numero);
 
+    static bool isProximaFase(int faseAtual);
+
+
+  private:
+    static const int MAX_FASE =   1;
 
 };
 #endif

@@ -18,25 +18,19 @@
 //    Free Software Foundation, Inc.,                                       
 //    59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 //**************************************************************************
-#ifndef _EFEITOSANGUE_H
-#define _EFEITOSANGUE_H
+#ifndef _DEFINE_H
+#define _DEFINE_H
 
-#include <GBF/ParticleSystemSprite.h>
-
-#include <GBF/SpriteFactory.h>
-
-
-//Cria o efeito de sangue espirrando do lutador atingido
-class EfeitoSangue : public ParticleSystemSprite
-{
-  public:
-    virtual ~EfeitoSangue();
-
-    EfeitoSangue();
-
-    void executar();
-
-    void criar(int x, int y);
-
+enum TipoLutador {
+  //Representação do Jogador
+  FZ,
+  //Representação do Lutador de 1° Nível
+  Mascarado,
+  //Representação do Lutador de 2° Nível
+  Cobra,
+  //Representação do Lutador de 3° Nível
+  Punk,
+  //Representação do Lutador de 4° Nível
+  Skar
 };
 #endif

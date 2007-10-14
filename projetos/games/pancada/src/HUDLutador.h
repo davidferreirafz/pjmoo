@@ -5,10 +5,6 @@
 #include "HUDAbstract.h"
 #include <GBF/SpriteItem.h>
 
-#include <GBF/GraphicSystem.h>
-
-#include <GBF/SpriteFactory.h>
-
 
 class HUDLutador : public HUDAbstract
 {

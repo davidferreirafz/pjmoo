@@ -1,7 +1,7 @@
 
 #include "Placar.h"
 
-void Placar::calcular()
+void Placar::calcular() 
 {
     if (pontos.player>pontos.pc){
         round.player++;
@@ -13,7 +13,7 @@ void Placar::calcular()
 
 //Construtor
 Placar::Placar(){
-    cronometroRound.setTempoOriginal(10);
+    cronometroRound.setTempoOriginal(30);
 }
 
 //Destrutor
@@ -22,27 +22,27 @@ Placar::Placar(){
 Placar::~Placar(){
 }
 
-void Placar::iniciar()
+void Placar::iniciar() 
 {
 	round.pc      = 0;
 	round.player  = 0;
     iniciarRound();
 }
-void Placar::iniciarRound()
+void Placar::iniciarRound() 
 {
 	pontos.pc      = 0;
 	pontos.player  = 0;
     cronometroRound.setResetar();
 }
-void Placar::adicionarPontoPC()
+void Placar::adicionarPontoPC() 
 {
 	pontos.pc++;
 }
-void Placar::adicionarPontoPlayer()
+void Placar::adicionarPontoPlayer() 
 {
 	pontos.player++;
 }
-bool Placar::isPlayerGanhou()
+bool Placar::isPlayerGanhou() 
 {
     if (round.player>round.pc){
         return true;
@@ -50,7 +50,7 @@ bool Placar::isPlayerGanhou()
         return false;
     }
 }
-bool Placar::isPCGanhou()
+bool Placar::isPCGanhou() 
 {
     if (round.pc>round.player){
         return true;
@@ -58,11 +58,11 @@ bool Placar::isPCGanhou()
         return false;
     }
 }
-bool Placar::isTempoTerminou()
+bool Placar::isTempoTerminou() 
 {
     return cronometroRound.isTerminou();
 }
-void Placar::processarTempo()
+void Placar::processarTempo() 
 {
     cronometroRound.processar();
 
@@ -73,35 +73,35 @@ void Placar::processarTempo()
 //Retorna a pontuação do Computador
 
 //Retorna a pontuação do Computador
-int Placar::getPontosPC()
+int Placar::getPontosPC() 
 {
     return pontos.pc;
 }
 //Retorna pontuação do Jogador
 
 //Retorna pontuação do Jogador
-int Placar::getPontosPlayer()
+int Placar::getPontosPlayer() 
 {
     return pontos.player;
 }
 //Retorna a quantidade de rounds que o Computador Ganhou
 
 //Retorna a quantidade de rounds que o Computador Ganhou
-int Placar::getRoundsPC()
+int Placar::getRoundsPC() 
 {
     return round.pc;
 }
 //Retorna a quantidade de rounds que o Jogador Ganhou
 
 //Retorna a quantidade de rounds que o Jogador Ganhou
-int Placar::getRoundsPlayer()
+int Placar::getRoundsPlayer() 
 {
     return round.player;
 }
 //Retorna o tempo restante para terminar o round
 
 //Retorna o tempo restante para terminar o round
-int Placar::getRoundTempo()
+int Placar::getRoundTempo() 
 {
     return cronometroRound.getTempo();
 }

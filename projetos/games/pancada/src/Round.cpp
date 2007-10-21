@@ -26,7 +26,7 @@ void Round::setPrimeiro()
 }
 bool Round::isUltimo() 
 {
-    if (atual==ultimo){
+    if (atual>=ultimo){
         return true;
     } else {
         return false;

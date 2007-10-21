@@ -20,7 +20,8 @@
 //***************************************************************************
 #include "StatusTempo.h"
 
-StatusTempo::StatusTempo(){
+StatusTempo::StatusTempo() 
+{
 
     GraphicSystem  *graphicSystem = GraphicSystem::getInstance();
     SpriteFactory  *spriteFactory = new SpriteFactory(graphicSystem->imageBufferManager->getImageBuffer("interface"));
@@ -29,12 +30,11 @@ StatusTempo::StatusTempo(){
 
     delete(spriteFactory);
 }
-
-StatusTempo::~StatusTempo(){
+StatusTempo::~StatusTempo() 
+{
 
     //dtor
 }
-
 void StatusTempo::desenhar(int tempo) 
 {
     painel->desenhar(274,0);

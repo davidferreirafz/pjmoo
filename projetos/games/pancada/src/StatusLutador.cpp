@@ -21,26 +21,36 @@
 #include "StatusLutador.h"
 
 //Construtor
-
-//Construtor
-StatusLutador::StatusLutador(){
-
+StatusLutador::StatusLutador() 
+{
     GraphicSystem  *graphicSystem = GraphicSystem::getInstance();
     SpriteFactory  *spriteFactory = new SpriteFactory(graphicSystem->imageBufferManager->getImageBuffer("interface"));
 
-    pontuacao     = spriteFactory->criarSpriteItem(0,306,62,44,1,1);
-    statusEnergia = spriteFactory->criarSpriteItem(63,306,12,2,1,1);
+    pontuacao     = spriteFactory->criarSpriteItem( 0,306,62,44,1,1);
+    statusEnergia = spriteFactory->criarSpriteItem(63,306,12, 2,1,1);
 
     delete(spriteFactory);
 
+    spriteFactory = new SpriteFactory(graphicSystem->imageBufferManager->getImageBuffer("personagem"));
+
+    icone = spriteFactory->criarSpriteItem(454,361,30,37,5,1);
+
+    delete(spriteFactory);
 }
-
 //Destrutor
-
-//Destrutor
-StatusLutador::~StatusLutador(){
+StatusLutador::~StatusLutador() 
+{
     if (pontuacao){
         delete(pontuacao);
     }
+    if (statusEnergia){
+        delete(statusEnergia);
+    }
+    if (icone){
+        delete(icone);
+    }
 }
-
+void StatusLutador::iconeLutador(TipoLutador lutador) 
+{
+    icone->setFrame(lutador);
+}

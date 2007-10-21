@@ -20,20 +20,17 @@
 //***************************************************************************
 #include "Status.h"
 
-Status::Status(){
-
-
+Status::Status() 
+{
     if (wsManager==NULL){
         wsManager = WriteSystemManager::getInstance();
     }
 }
-
-Status::~Status(){
-
+Status::~Status() 
+{
     if (painel){
         delete(painel);
     }
 }
-
 WriteSystemManager * Status::wsManager =NULL;
 

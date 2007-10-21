@@ -19,7 +19,7 @@ LutadorAbstract::LutadorAbstract(){
 	posicao.x = 0;
 	posicao.y = 0;
 
-    energia = 10;
+    energia = 100;
 
 
     if (particleManager==NULL){
@@ -55,7 +55,7 @@ void LutadorAbstract::setRingue(Area ringue)
 
     LutadorAbstract::ringue=ringue;
 }
-void LutadorAbstract::iniciar(int x, int y) 
+void LutadorAbstract::iniciar(int x, int y)
 {
     resetar();
 
@@ -70,7 +70,7 @@ void LutadorAbstract::iniciar(int x, int y)
 //Desenha na tela
 
 //Desenha na tela
-void LutadorAbstract::desenhar() 
+void LutadorAbstract::desenhar()
 {
     checklimites();
     PersonagemControlado::desenhar();
@@ -81,7 +81,7 @@ void LutadorAbstract::desenhar()
 //O lutador está na olhando pra cima
 
 //O lutador está na olhando pra cima
-void LutadorAbstract::olharCima() 
+void LutadorAbstract::olharCima()
 {
 	cabeca->setCima();
 	luvaesquerda->setCima();
@@ -91,25 +91,25 @@ void LutadorAbstract::olharCima()
 //O lutador está na olhando pra baixo
 
 //O lutador está na olhando pra baixo
-void LutadorAbstract::olharBaixo() 
+void LutadorAbstract::olharBaixo()
 {
 	cabeca->setBaixo();
 	luvaesquerda->setBaixo();
 	luvadireita->setBaixo();
     getSpritePrincipal()->setDirecao(DR_BAIXO);
 }
-Ponto LutadorAbstract::getPosicao() 
+Ponto LutadorAbstract::getPosicao()
 {
 	return posicao;
 }
-void LutadorAbstract::setPosicao(int x, int y) 
+void LutadorAbstract::setPosicao(int x, int y)
 {
     PersonagemAbstract::setPosicao(x,y);
 	luvaesquerda->setPosicao(x,y);
 	luvadireita->setPosicao(x,y);
 	cabeca->setPosicao(x,y);
 }
-Area LutadorAbstract::getArea() 
+Area LutadorAbstract::getArea()
 {
     Area area;
 
@@ -123,7 +123,7 @@ Area LutadorAbstract::getArea()
 
     return area;
 }
-bool LutadorAbstract::socouAdversario(LutadorAbstract * adversario) 
+bool LutadorAbstract::socouAdversario(LutadorAbstract * adversario)
 {
 	bool retorno =  false;
 
@@ -149,7 +149,7 @@ bool LutadorAbstract::socouAdversario(LutadorAbstract * adversario)
 
 	return retorno;
 }
-bool LutadorAbstract::levouSoco(LuvaAbstract * luva) 
+bool LutadorAbstract::levouSoco(LuvaAbstract * luva)
 {
 	bool levou = false;
 
@@ -193,7 +193,7 @@ bool LutadorAbstract::levouSoco(LuvaAbstract * luva)
 
 	return levou;
 }
-void LutadorAbstract::mover(InputSystem * input, LutadorAbstract * adversario) 
+void LutadorAbstract::mover(InputSystem * input, LutadorAbstract * adversario)
 {
     if (!isNocaute()){
         Ponto pAnterior = getPosicao();
@@ -205,7 +205,7 @@ void LutadorAbstract::mover(InputSystem * input, LutadorAbstract * adversario)
         }
     }
 }
-bool LutadorAbstract::isNocaute() 
+bool LutadorAbstract::isNocaute()
 {
     bool caiu = false;
 
@@ -218,7 +218,7 @@ bool LutadorAbstract::isNocaute()
 //Retorna a energia vital do lutador
 
 //Retorna a energia vital do lutador
-int LutadorAbstract::getEnergia() 
+int LutadorAbstract::getEnergia()
 {
     return energia;
 }
@@ -226,7 +226,7 @@ ParticleSystemManager * LutadorAbstract::particleManager =NULL;
 
 Area LutadorAbstract::ringue;
 
-bool LutadorAbstract::choqueAdversario(Area aCorpoAdversario) 
+bool LutadorAbstract::choqueAdversario(Area aCorpoAdversario)
 {
 	Area aCorpoLcl  = getArea();
 
@@ -242,7 +242,7 @@ bool LutadorAbstract::choqueAdversario(Area aCorpoAdversario)
 //checka com limites do ringue
 
 //checka com limites do ringue
-void LutadorAbstract::checklimites() 
+void LutadorAbstract::checklimites()
 {
 	Ponto posicao     = getPosicao();
 	Dimensao dimensao = getDimensao();
@@ -268,7 +268,7 @@ void LutadorAbstract::checklimites()
 
 	setPosicao(posicao.x,posicao.y);
 }
-void LutadorAbstract::resetar() 
+void LutadorAbstract::resetar()
 {
 	delay.acao  = 0;
 	delay.tiroA = 0;

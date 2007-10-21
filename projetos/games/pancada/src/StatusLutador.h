@@ -24,6 +24,7 @@
 #include "Status.h"
 #include <GBF/SpriteItem.h>
 
+#include "Define.h"
 
 class StatusLutador : public Status
 {
@@ -38,9 +39,15 @@ class StatusLutador : public Status
 
 
   protected:
+    SpriteItem * statusEnergia;
+
     SpriteItem * pontuacao;
 
-    SpriteItem * statusEnergia;
+    SpriteItem * icone;
+
+
+  public:
+    void iconeLutador(TipoLutador lutador);
 
 };
 #endif

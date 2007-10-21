@@ -21,23 +21,17 @@
 #ifndef _CONTROLE_H
 #define _CONTROLE_H
 
-#include "FaseAbstract.h"
 #include <GBF/InputSystem.h>
 
 #include <GBF/SpriteItem.h>
 
 #include <GBF/TimerSystemCronometroDecrescente.h>
 
+#include "FaseAbstract.h"
 #include "FaseFactory.h"
 
 class Controle
 {
-  private:
-    int faseNumero;
-
-    FaseAbstract * fase;
-
-
   public:
     //Construtor
     Controle();
@@ -66,6 +60,12 @@ class Controle
     SpriteItem * fight;
 
     TimerSystemCronometroDecrescente tempoEspera;
+
+
+  private:
+    int faseNumero;
+
+    FaseAbstract * fase;
 
 };
 #endif

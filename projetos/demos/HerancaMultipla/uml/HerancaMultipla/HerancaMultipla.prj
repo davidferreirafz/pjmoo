@@ -1,0 +1,647 @@
+format 45
+"HerancaMultipla"
+  revision 4
+  modified_by 119 "david"
+
+  artifact_default_description "//***************************************************************************
+//  HerancaMultipla <Demo de Recursos>
+//  Copyright (C) 2007 by David Ferreira - FZ
+//  davidferreira.fz@gmail.com - http://pjmoo.sourceforge.net 
+//***************************************************************************
+//    Este programa é software livre; você pode redistribuí-lo e/ou
+//    modificá-lo sob os termos da Licença Pública Geral GNU, conforme
+//    publicada pela Free Software Foundation; tanto a versão 2 da 
+//    Licença como (a seu critério) qualquer versão mais nova.
+//***************************************************************************
+//    This program is free software; you can redistribute it and/or modify
+//    it under the terms of the GNU General Public License as published by
+//    the Free Software Foundation; either version 2 of the License, or 
+//    (at your option) any later version.
+//
+//    You should have received a copy of the GNU General Public License
+//    along with this program; if not, write to the
+//    Free Software Foundation, Inc.,                                       
+//    59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
+//***************************************************************************"
+
+  
+  // class settings
+  default_attribute_visibility protected default_relation_visibility protected default_operation_visibility public
+  //class diagram settings
+  draw_all_relations yes hide_attributes no hide_operations no show_members_full_definition no show_members_visibility no show_members_stereotype no show_parameter_dir yes show_parameter_name yes package_name_in_tab no class_drawing_mode natural drawing_language uml show_context_mode no auto_label_position yes show_infonote no shadow yes
+  //use case diagram settings
+  package_name_in_tab no show_context no auto_label_position yes draw_all_relations yes shadow yes
+  //sequence diagram settings
+  show_full_operations_definition no write_horizontally yes class_drawing_mode natural drawing_language uml draw_all_relations yes shadow yes
+  //collaboration diagram settings
+  show_full_operations_definition no show_hierarchical_rank no write_horizontally yes drawing_language uml package_name_in_tab no show_context no draw_all_relations yes shadow yes
+  //object diagram settings
+   write_horizontally yes package_name_in_tab no show_context no auto_label_position yes draw_all_relations yes shadow yes
+  //component diagram settings
+  package_name_in_tab no show_context no auto_label_position yes draw_all_relations yes shadow yes
+  draw_component_as_icon no show_component_req_prov no show_component_rea no
+  //deployment diagram settings
+  package_name_in_tab no show_context no write_horizontally yes auto_label_position yes draw_all_relations yes shadow yes
+  draw_component_as_icon no show_component_req_prov no show_component_rea no
+  //state diagram settings
+  package_name_in_tab no show_context no auto_label_position yes write_trans_label_horizontally yes show_trans_definition no draw_all_relations yes shadow yes
+  show_activities yes region_horizontally yes drawing_language uml
+  //activity diagram settings
+  package_name_in_tab no show_context no show_opaque_action_definition no auto_label_position yes write_flow_label_horizontally no draw_all_relations yes shadow yes
+  show_infonote yes drawing_language uml
+  
+  class_color yellow duration_color transparent continuation_color gray note_color blue fragment_color transparent subject_color transparent usecase_color yellow package_color transparent component_color green artifact_color green deploymentnode_color gray state_color yellow stateaction_color transparent activity_color transparent activityregion_color transparent activityaction_color transparent parameterpin_color white 
+  font_size 10
+  diagram_format A4
+
+  mark_for_import
+  
+  cpp_h_dir "/home/desenvolvimento/pjmoo/projetos/demos/HerancaMultipla/src/"
+  cpp_src_dir "/home/desenvolvimento/pjmoo/projetos/demos/HerancaMultipla/src/"
+  classview 128084 "Classes"
+    //class diagram settings
+    draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_infonote default shadow default
+    //collaboration diagram settings
+    show_full_operations_definition default show_hierarchical_rank default write_horizontally default drawing_language default package_name_in_tab default show_context default draw_all_relations default shadow default
+    //object diagram settings
+     write_horizontally default package_name_in_tab default show_context default auto_label_position default draw_all_relations default shadow default
+    //sequence diagram settings
+    show_full_operations_definition default write_horizontally default class_drawing_mode default drawing_language default draw_all_relations default shadow default
+    //state diagram settings
+    package_name_in_tab default show_context default auto_label_position default write_trans_label_horizontally default show_trans_definition default draw_all_relations default shadow default
+    show_activities default region_horizontally default drawing_language default
+    //class settings
+    //activity diagram settings
+    package_name_in_tab default show_context default show_opaque_action_definition default auto_label_position default write_flow_label_horizontally default draw_all_relations default shadow default
+    show_infonote default drawing_language default
+    classdiagram 128084 "Diagrama de Classes"
+      draw_all_relations default hide_attributes default hide_operations default show_members_full_definition yes show_members_visibility yes show_members_stereotype default show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_infonote default shadow default
+      size A4
+    end
+
+    class 128084 "Veiculo"
+      abstract visibility package 
+      cpp_decl "${comment}${template}class ${name}${inherit} {
+${members}};
+${inlines}
+"
+      java_decl ""
+      php_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      operation 128724 "Veiculo"
+	public explicit_return_type ""
+	nparams 0
+	cpp_decl "    ${comment}${inline}${name}${(}${)}${volatile}${throw};
+"
+	cpp_def "${comment}${inline}${class}::${name}${(}${)}${volatile}${throw} 
+{
+${body}}
+"
+	
+	
+	
+      end
+
+      operation 128852 "~Veiculo"
+	cpp_virtual public explicit_return_type ""
+	nparams 0
+	cpp_decl "    ${comment}${inline}${virtual}${name}${(}${)}${volatile}${throw};
+"
+	cpp_def "${comment}${inline}${class}::${name}${(}${)}${volatile}${throw} 
+{
+${body}}
+"
+	
+	
+	
+      end
+
+      operation 128084 "setCor"
+	public explicit_return_type "void"
+	nparams 1
+	  param in name "cor" explicit_type "string"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${t0} ${p0}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${t0} ${p0}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}
+"
+	
+	
+	
+      end
+
+      operation 128212 "getCor"
+	public explicit_return_type "string"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}
+"
+	
+	
+	
+      end
+
+      operation 128340 "imprimir"
+	abstract cpp_virtual public explicit_return_type "void"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	
+	
+	
+      end
+
+      attribute 128084 "cor"
+	protected explicit_type "string"
+	cpp_decl "    ${comment}${static}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	java_decl ""
+	php_decl ""
+	idl_decl ""
+      end
+
+      classrelation 128143 // <dependency>
+	relation 128143 -_->
+	  a default
+	    cpp default "#include in header"
+	    classrelation_ref 128143 // <dependency>
+	  b parent class_ref 128015 // iostream
+      end
+    end
+
+    class 128212 "Terrestre"
+      visibility package 
+      cpp_decl "${comment}${template}class ${name}${inherit} {
+${members}};
+${inlines}
+"
+      java_decl ""
+      php_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      classrelation 128084 // <generalisation>
+	relation 128084 ---|>
+	  a public
+	    cpp default "${type}"
+	    classrelation_ref 128084 // <generalisation>
+	  b parent class_ref 128084 // Veiculo
+      end
+
+      operation 128468 "Terrestre"
+	public explicit_return_type ""
+	nparams 0
+	cpp_decl "    ${comment}${inline}${name}${(}${)}${volatile}${throw};
+"
+	cpp_def "${comment}${inline}${class}::${name}${(}${)}${volatile}${throw} 
+{
+${body}}
+"
+	
+	
+	
+      end
+
+      operation 128596 "~Terrestre"
+	cpp_virtual public explicit_return_type ""
+	nparams 0
+	cpp_decl "    ${comment}${inline}${virtual}${name}${(}${)}${volatile}${throw};
+"
+	cpp_def "${comment}${inline}${class}::${name}${(}${)}${volatile}${throw} 
+{
+${body}}
+"
+	
+	
+	
+      end
+
+      operation 129236 "imprimir"
+	cpp_virtual public explicit_return_type "void"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}
+"
+	
+	
+	
+      end
+    end
+
+    class 128340 "Aquatico"
+      visibility package 
+      cpp_decl "${comment}${template}class ${name}${inherit} {
+${members}};
+${inlines}
+"
+      java_decl ""
+      php_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      classrelation 128212 // <generalisation>
+	relation 128212 ---|>
+	  a public
+	    cpp default "${type}"
+	    classrelation_ref 128212 // <generalisation>
+	  b parent class_ref 128084 // Veiculo
+      end
+
+      operation 128980 "Aquatico"
+	public explicit_return_type ""
+	nparams 0
+	cpp_decl "    ${comment}${inline}${name}${(}${)}${volatile}${throw};
+"
+	cpp_def "${comment}${inline}${class}::${name}${(}${)}${volatile}${throw} 
+{
+${body}}
+"
+	
+	
+	
+      end
+
+      operation 129108 "~Aquatico"
+	cpp_virtual public explicit_return_type ""
+	nparams 0
+	cpp_decl "    ${comment}${inline}${virtual}${name}${(}${)}${volatile}${throw};
+"
+	cpp_def "${comment}${inline}${class}::${name}${(}${)}${volatile}${throw} 
+{
+${body}}
+"
+	
+	
+	
+      end
+
+      operation 129364 "imprimir"
+	cpp_virtual public explicit_return_type "void"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}
+"
+	
+	
+	
+      end
+    end
+
+    class 128468 "Anfibio"
+      visibility package 
+      cpp_decl "${comment}${template}class ${name}${inherit} {
+${members}};
+${inlines}
+"
+      java_decl ""
+      php_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      classrelation 128340 // <generalisation>
+	relation 128340 ---|>
+	  a public
+	    cpp default "${type}"
+	    classrelation_ref 128340 // <generalisation>
+	  b parent class_ref 128212 // Terrestre
+      end
+
+      classrelation 128468 // <generalisation>
+	relation 128468 ---|>
+	  a public
+	    cpp default "${type}"
+	    classrelation_ref 128468 // <generalisation>
+	  b parent class_ref 128340 // Aquatico
+      end
+
+      operation 129492 "Anfibio"
+	public explicit_return_type ""
+	nparams 0
+	cpp_decl "    ${comment}${inline}${name}${(}${)}${volatile}${throw};
+"
+	cpp_def "${comment}${inline}${class}::${name}${(}${)}${volatile}${throw} 
+{
+${body}}
+"
+	
+	
+	
+      end
+
+      operation 129620 "~Anfibio"
+	cpp_virtual public explicit_return_type ""
+	nparams 0
+	cpp_decl "    ${comment}${inline}${virtual}${name}${(}${)}${volatile}${throw};
+"
+	cpp_def "${comment}${inline}${class}::${name}${(}${)}${volatile}${throw} 
+{
+${body}}
+"
+	
+	
+	
+      end
+
+      operation 129748 "imprimirNovo"
+	public explicit_return_type "void"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}
+"
+	
+	
+	
+      end
+    end
+
+    class 128596 "ClasseTeste"
+      visibility public stereotype "test"
+      cpp_decl "${comment}${template}class ${name}${inherit} {
+${members}};
+${inlines}
+"
+      java_decl ""
+      php_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      operation 129876 "main"
+	public explicit_return_type "int"
+	nparams 2
+	  param in name "argc" explicit_type "int"
+	  param in name "argv" explicit_type "char"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${t0} ${p0}, ${t1} * ${p1}[]${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${name}${(}${t0} ${p0}, ${t1} * ${p1}[]${)}${const}${volatile}${throw}${staticnl}
+{
+  ${body}}
+"
+	
+	
+	
+      end
+
+      classrelation 128596 // <dependency>
+	relation 128596 -_->
+	  a default
+	    cpp default "#include in header"
+	    classrelation_ref 128596 // <dependency>
+	  b parent class_ref 128468 // Anfibio
+      end
+
+      classrelation 128724 // <dependency>
+	relation 128724 -_->
+	  a default
+	    cpp default "#include in header"
+	    classrelation_ref 128724 // <dependency>
+	  b parent class_ref 128212 // Terrestre
+      end
+
+      classrelation 128852 // <dependency>
+	relation 128852 -_->
+	  a default
+	    cpp default "#include in header"
+	    classrelation_ref 128852 // <dependency>
+	  b parent class_ref 128340 // Aquatico
+      end
+
+    end
+  end
+
+  deploymentview 128084 "Deploy"
+    //deployment diagram settings
+    package_name_in_tab default show_context default write_horizontally default auto_label_position default draw_all_relations default shadow default
+    draw_component_as_icon default show_component_req_prov default show_component_rea default
+    artifact 128015 "Anfibio"
+      stereotype "source"
+      cpp_h "#ifndef ${NAMESPACE}_${NAME}_H
+#define ${NAMESPACE}_${NAME}_H
+
+${comment}
+${includes}
+${declarations}
+${namespace_start}
+${definition}
+${namespace_end}
+#endif
+"
+      cpp_src "${comment}
+${includes}
+${namespace_start}
+${members}
+${namespace_end}"
+      associated_classes
+	class_ref 128468 // Anfibio
+      end
+      comment "//***************************************************************************
+//  HerancaMultipla <Demo de Recursos>
+//  Copyright (C) 2007 by David Ferreira - FZ
+//  davidferreira.fz@gmail.com - http://pjmoo.sourceforge.net 
+//***************************************************************************
+//    Este programa é software livre; você pode redistribuí-lo e/ou
+//    modificá-lo sob os termos da Licença Pública Geral GNU, conforme
+//    publicada pela Free Software Foundation; tanto a versão 2 da 
+//    Licença como (a seu critério) qualquer versão mais nova.
+//***************************************************************************
+//    This program is free software; you can redistribute it and/or modify
+//    it under the terms of the GNU General Public License as published by
+//    the Free Software Foundation; either version 2 of the License, or 
+//    (at your option) any later version.
+//
+//    You should have received a copy of the GNU General Public License
+//    along with this program; if not, write to the
+//    Free Software Foundation, Inc.,                                       
+//    59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
+//***************************************************************************"
+    end
+
+    artifact 128143 "Aquatico"
+      stereotype "source"
+      cpp_h "#ifndef ${NAMESPACE}_${NAME}_H
+#define ${NAMESPACE}_${NAME}_H
+
+${comment}
+${includes}
+${declarations}
+${namespace_start}
+${definition}
+${namespace_end}
+#endif
+"
+      cpp_src "${comment}
+${includes}
+${namespace_start}
+${members}
+${namespace_end}"
+      associated_classes
+	class_ref 128340 // Aquatico
+      end
+      comment "//***************************************************************************
+//  HerancaMultipla <Demo de Recursos>
+//  Copyright (C) 2007 by David Ferreira - FZ
+//  davidferreira.fz@gmail.com - http://pjmoo.sourceforge.net 
+//***************************************************************************
+//    Este programa é software livre; você pode redistribuí-lo e/ou
+//    modificá-lo sob os termos da Licença Pública Geral GNU, conforme
+//    publicada pela Free Software Foundation; tanto a versão 2 da 
+//    Licença como (a seu critério) qualquer versão mais nova.
+//***************************************************************************
+//    This program is free software; you can redistribute it and/or modify
+//    it under the terms of the GNU General Public License as published by
+//    the Free Software Foundation; either version 2 of the License, or 
+//    (at your option) any later version.
+//
+//    You should have received a copy of the GNU General Public License
+//    along with this program; if not, write to the
+//    Free Software Foundation, Inc.,                                       
+//    59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
+//***************************************************************************"
+    end
+
+    artifact 128271 "Veiculo"
+      stereotype "source"
+      cpp_h "#ifndef ${NAMESPACE}_${NAME}_H
+#define ${NAMESPACE}_${NAME}_H
+
+${comment}
+${includes}
+${declarations}
+${namespace_start}
+${definition}
+${namespace_end}
+#endif
+"
+      cpp_src "${comment}
+${includes}
+${namespace_start}
+${members}
+${namespace_end}"
+      associated_classes
+	class_ref 128084 // Veiculo
+      end
+      comment "//***************************************************************************
+//  HerancaMultipla <Demo de Recursos>
+//  Copyright (C) 2007 by David Ferreira - FZ
+//  davidferreira.fz@gmail.com - http://pjmoo.sourceforge.net 
+//***************************************************************************
+//    Este programa é software livre; você pode redistribuí-lo e/ou
+//    modificá-lo sob os termos da Licença Pública Geral GNU, conforme
+//    publicada pela Free Software Foundation; tanto a versão 2 da 
+//    Licença como (a seu critério) qualquer versão mais nova.
+//***************************************************************************
+//    This program is free software; you can redistribute it and/or modify
+//    it under the terms of the GNU General Public License as published by
+//    the Free Software Foundation; either version 2 of the License, or 
+//    (at your option) any later version.
+//
+//    You should have received a copy of the GNU General Public License
+//    along with this program; if not, write to the
+//    Free Software Foundation, Inc.,                                       
+//    59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
+//***************************************************************************"
+    end
+
+    artifact 128399 "Terrestre"
+      stereotype "source"
+      cpp_h "#ifndef ${NAMESPACE}_${NAME}_H
+#define ${NAMESPACE}_${NAME}_H
+
+${comment}
+${includes}
+${declarations}
+${namespace_start}
+${definition}
+${namespace_end}
+#endif
+"
+      cpp_src "${comment}
+${includes}
+${namespace_start}
+${members}
+${namespace_end}"
+      associated_classes
+	class_ref 128212 // Terrestre
+      end
+      comment "//***************************************************************************
+//  HerancaMultipla <Demo de Recursos>
+//  Copyright (C) 2007 by David Ferreira - FZ
+//  davidferreira.fz@gmail.com - http://pjmoo.sourceforge.net 
+//***************************************************************************
+//    Este programa é software livre; você pode redistribuí-lo e/ou
+//    modificá-lo sob os termos da Licença Pública Geral GNU, conforme
+//    publicada pela Free Software Foundation; tanto a versão 2 da 
+//    Licença como (a seu critério) qualquer versão mais nova.
+//***************************************************************************
+//    This program is free software; you can redistribute it and/or modify
+//    it under the terms of the GNU General Public License as published by
+//    the Free Software Foundation; either version 2 of the License, or 
+//    (at your option) any later version.
+//
+//    You should have received a copy of the GNU General Public License
+//    along with this program; if not, write to the
+//    Free Software Foundation, Inc.,                                       
+//    59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
+//***************************************************************************"
+    end
+
+    artifact 128527 "main"
+      stereotype "source"
+      cpp_h "#ifndef ${NAMESPACE}_${NAME}_H
+#define ${NAMESPACE}_${NAME}_H
+
+${comment}
+${includes}
+${declarations}
+${namespace_start}
+${definition}
+${namespace_end}
+#endif
+"
+      cpp_src "${comment}
+${includes}
+${namespace_start}
+${members}
+${namespace_end}"
+      associated_classes
+	class_ref 128596 // ClasseTeste
+      end
+      comment "//***************************************************************************
+//  HerancaMultipla <Demo de Recursos>
+//  Copyright (C) 2007 by David Ferreira - FZ
+//  davidferreira.fz@gmail.com - http://pjmoo.sourceforge.net 
+//***************************************************************************
+//    Este programa é software livre; você pode redistribuí-lo e/ou
+//    modificá-lo sob os termos da Licença Pública Geral GNU, conforme
+//    publicada pela Free Software Foundation; tanto a versão 2 da 
+//    Licença como (a seu critério) qualquer versão mais nova.
+//***************************************************************************
+//    This program is free software; you can redistribute it and/or modify
+//    it under the terms of the GNU General Public License as published by
+//    the Free Software Foundation; either version 2 of the License, or 
+//    (at your option) any later version.
+//
+//    You should have received a copy of the GNU General Public License
+//    along with this program; if not, write to the
+//    Free Software Foundation, Inc.,                                       
+//    59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
+//***************************************************************************"
+    end
+  end
+
+  package_ref 128015 // Extern
+end

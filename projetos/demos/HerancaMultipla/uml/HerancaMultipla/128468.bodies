@@ -1,0 +1,5 @@
+class Anfibio
+!!!129748.cpp!!!	imprimirNovo() : void
+    std::cout << "\timprimirNovo()" << std::endl;
+    Aquatico::imprimir();
+    Terrestre::imprimir();

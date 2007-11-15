@@ -1,0 +1,71 @@
+format 45
+
+classcanvas 128084 class_ref 128084 // Veiculo
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_infonote default shadow default
+  xyz 195 9 2000
+  end
+classcanvas 128143 class_ref 128015 // iostream
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_infonote default shadow default
+  color lightgreen
+  xyz 21 6 2000
+  end
+classcanvas 128212 class_ref 128212 // Terrestre
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_infonote default shadow default
+  xyz 55 121 2000
+  end
+classcanvas 128340 class_ref 128340 // Aquatico
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_infonote default shadow default
+  xyz 388 121 2000
+  end
+classcanvas 128724 class_ref 128468 // Anfibio
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_infonote default shadow default
+  xyz 210 189 2000
+  end
+classcanvas 129748 class_ref 128596 // ClasseTeste
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_infonote default shadow default
+  color lightblue
+  xyz 165 329 2005
+  end
+relationcanvas 128399 relation_ref 128143 // <dependency>
+  geometry HVr
+  from ref 128084 z 1999 to point 271 33
+  line 128655 z 1999 to ref 128143
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+relationcanvas 128468 relation_ref 128084 // <generalisation>
+  geometry HV
+  from ref 128212 z 1999 to point 271 161
+  line 129108 z 1999 to ref 128084
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+relationcanvas 128596 relation_ref 128212 // <generalisation>
+  geometry VHr
+  from ref 128340 z 1999 to point 271 161
+  line 129364 z 1999 to ref 128084
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+relationcanvas 128852 relation_ref 128340 // <generalisation>
+  geometry VHr
+  from ref 128724 z 1999 to point 102 229
+  line 129492 z 1999 to ref 128212
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+relationcanvas 128980 relation_ref 128468 // <generalisation>
+  geometry HV
+  from ref 128724 z 1999 to point 435 229
+  line 129620 z 1999 to ref 128340
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+relationcanvas 129876 relation_ref 128596 // <dependency>
+  from ref 129748 z 1999 to ref 128724
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+relationcanvas 130004 relation_ref 128724 // <dependency>
+  from ref 129748 z 1999 to ref 128212
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+relationcanvas 130132 relation_ref 128852 // <dependency>
+  from ref 129748 z 1999 to ref 128340
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+end

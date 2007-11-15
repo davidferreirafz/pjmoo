@@ -1,0 +1,5 @@
+class Aquatico
+!!!128980.cpp!!!	Aquatico()
+    setCor("azul");
+!!!129364.cpp!!!	imprimir() : void
+    std::cout << "\timprimir() - Aquatico::Cor = " << getCor() << std::endl;

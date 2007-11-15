@@ -1,0 +1,5 @@
+class Terrestre
+!!!128468.cpp!!!	Terrestre()
+    setCor("verde");
+!!!129236.cpp!!!	imprimir() : void
+    std::cout << "\timprimir() - Terrestre::Cor = " << getCor() << std::endl;

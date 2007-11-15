@@ -1,0 +1,24 @@
+class ClasseTeste
+!!!129876.cpp!!!	main(in argc : int, in argv : char) : int
+    std::cout << "Terrestre * anfiTerrestre = new Anfibio();" << std::endl;
+    Terrestre * anfiTerrestre = new Anfibio();
+    anfiTerrestre->imprimir();
+    delete(anfiTerrestre);
+
+
+    std::cout << "\n\r" << std::endl;
+
+
+    std::cout << "Aquatico * anfiAquatico = new Anfibio();" << std::endl;
+    Aquatico * anfiAquatico = new Anfibio();
+    anfiAquatico->imprimir();
+    delete(anfiAquatico);
+
+
+    std::cout << "\n\r" << std::endl;
+
+
+    std::cout << "Anfibio * anfibio = new Anfibio();" << std::endl;
+    Anfibio * anfibio = new Anfibio();
+    anfibio->imprimirNovo();
+    delete(anfibio);

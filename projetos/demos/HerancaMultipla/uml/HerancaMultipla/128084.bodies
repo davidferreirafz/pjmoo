@@ -1,0 +1,7 @@
+class Veiculo
+!!!128724.cpp!!!	Veiculo()
+    setCor("branco");
+!!!128084.cpp!!!	setCor(in cor : string) : void
+    this->cor=cor;
+!!!128212.cpp!!!	getCor() : string
+    return cor;

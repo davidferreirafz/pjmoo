@@ -20,126 +20,46 @@
 ////***************************************************************************
 #include "main.h"
 
-
-
-
-template <class T>
-class InstanceOf
-{
-public:
-    template <class Tipo>
-    static bool is (Tipo *tipo)
-    {
-        if (dynamic_cast<T*>(tipo)){
-            return true;
-        } else {
-            return false;
-        }
-    }
-    template <class Tipo>
-    static bool is (Tipo tipo)
-    {
-        if (dynamic_cast<T*>(&tipo)){
-            return true;
-        } else {
-            return false;
-        }
-    }
-};
-//////-------------------------
-template <class T, class Tipo>
-bool instanceOF (Tipo tipo)
-{
-    if (dynamic_cast<T*>(&tipo)){
-        return true;
-    } else {
-        return false;
-    }
-};
-template <class T, class Tipo>
-bool instanceOF (Tipo *tipo)
-{
-    if (dynamic_cast<T*>(tipo)){
-        return true;
-    } else {
-        return false;
-    }
-};
-
-class Objeto
-{
-    public:
-     Objeto(){};
-     virtual ~Objeto(){};
-
-     template <class T>
-     bool is(T tipo)
-     {
-         return instanceOF< T >( tipo );
-     }
-
-     template <class T>
-     bool isInstance()
-     {
-        if (dynamic_cast<T*>(this)){
-            return true;
-        } else {
-            return false;
-        }
-     }
-
-     template <class T>
-     bool isInstance(T)
-     {
-        if (dynamic_cast<T*>(this)){
-            return true;
-        } else {
-            return false;
-        }
-     }
-};
-
-class Novo : public Objeto
-{
-    public:
-     Novo(){};
-     virtual ~Novo(){};
-};
-
-class Teste: public Objeto {
-    public:
-    virtual ~Teste(){}
-};
-
 int main(int argc, char * argv[])
 {
-    ObjetoBase obj;
-    ObjetoManager m;
-    Teste t;
-    Objeto o;
-    Novo n;
+      Sprite sprite;
+      SpriteManager * spriteManager = new SpriteManager();
+      SpritePersonagem * spritePersonagem = new SpritePersonagem();
+      Sprite * spritePersonagem2 = new SpritePersonagem();
 
+      if (sprite.isInstance<Sprite>()){
+          std::cout << "sprite eh Sprite" << std::endl;
+      }
 
+      if (spritePersonagem->isInstance(SpritePersonagem())){
+          std::cout << "spritePersonagem eh SpritePersonagem" << std::endl;
+      }
 
-//    if (iof.is(n)){
-//    if (instanceOF<Objeto>( obj )){
-//    if (instanceOf<Novo>::is( o )){
-//    if (itf.is( t )){
-    if (t.isInstance(Novo())){
-//    if (o.is(t)){
-        std::cout << "Ok é do tipo" << std::endl;
-    } else {
-        std::cout << "Não é do tipo" << std::endl;
-    }
+      if (spritePersonagem2->isInstance(Sprite())){
+          std::cout << "spritePersonagem2 eh Sprite" << std::endl;
+      }
 
-//    if (instanceOF<Objeto>( o )){
-//    if (InstanceOf<Teste>::is( n )){
-//    if (t.isInstance<Teste>()){
-    if (t.isInstance(o)){
-        std::cout << "Ok é do tipo" << std::endl;
-    } else {
-        std::cout << "Não é do tipo" << std::endl;
-    }
+      if (spritePersonagem2->isInstance(new SpritePersonagem())){
+          std::cout << "spritePersonagem2 eh SpritePersonagem" << std::endl;
+      }
+
+      if (spriteManager->isInstance(ObjetoManager())){
+          std::cout << "spriteManager eh ObjetoManager" << std::endl;
+      }
+
+      if (!sprite.isInstance<SpritePersonagem>()){
+          std::cout << "sprite NAO eh SpritePersonagem" << std::endl;
+      }
+
+      if (!spriteManager->isInstance(Sprite())){
+          std::cout << "spriteManager NAO eh Sprite" << std::endl;
+      }
+
+      if (spriteManager->isInstance(ObjetoBase())){
+          std::cout << "spriteManager eh ObjetoBase" << std::endl;
+      }
+
+    return 0;
 
 }
 

@@ -26,7 +26,8 @@
 class ObjetoBase
 {
   public:
-    template <class Tipo1, class Tipo2> bool is(Tipo1 t1, Tipo2 t2);
+    template <class T> bool isInstance();
+    template <class T> bool isInstance(T);
 
     virtual ~ObjetoBase();
 

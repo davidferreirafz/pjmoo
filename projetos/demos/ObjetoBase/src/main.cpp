@@ -78,6 +78,25 @@ class Objeto
          return instanceOF< T >( tipo );
      }
 
+     template <class T>
+     bool isInstance()
+     {
+        if (dynamic_cast<T*>(this)){
+            return true;
+        } else {
+            return false;
+        }
+     }
+
+     template <class T>
+     bool isInstance(T)
+     {
+        if (dynamic_cast<T*>(this)){
+            return true;
+        } else {
+            return false;
+        }
+     }
 };
 
 class Novo : public Objeto
@@ -85,10 +104,9 @@ class Novo : public Objeto
     public:
      Novo(){};
      virtual ~Novo(){};
-
 };
 
-class Teste {
+class Teste: public Objeto {
     public:
     virtual ~Teste(){}
 };
@@ -107,14 +125,17 @@ int main(int argc, char * argv[])
 //    if (instanceOF<Objeto>( obj )){
 //    if (instanceOf<Novo>::is( o )){
 //    if (itf.is( t )){
-    if (o.is(t)){
+    if (t.isInstance(Novo())){
+//    if (o.is(t)){
         std::cout << "Ok é do tipo" << std::endl;
     } else {
         std::cout << "Não é do tipo" << std::endl;
     }
 
 //    if (instanceOF<Objeto>( o )){
-    if (InstanceOf<Teste>::is( n )){
+//    if (InstanceOf<Teste>::is( n )){
+//    if (t.isInstance<Teste>()){
+    if (t.isInstance(o)){
         std::cout << "Ok é do tipo" << std::endl;
     } else {
         std::cout << "Não é do tipo" << std::endl;

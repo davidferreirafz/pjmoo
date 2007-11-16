@@ -29,14 +29,13 @@ class ObjetoBase
     virtual ~ObjetoBase();
 
     template<class T>
-      inline bool isInstance() {
+      bool isInstance() {
             if (dynamic_cast<T*>(this)){
                 return true;
             } else {
                 return false;
             }
         };
-
     template<class T>
       inline bool isInstance( T) {
             if (dynamic_cast<T*>(this)){

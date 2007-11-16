@@ -39,6 +39,12 @@
 		<Unit filename="src/ObjetoBase.h" />
 		<Unit filename="src/ObjetoManager.cpp" />
 		<Unit filename="src/ObjetoManager.h" />
+		<Unit filename="src/Sprite.cpp" />
+		<Unit filename="src/Sprite.h" />
+		<Unit filename="src/SpriteManager.cpp" />
+		<Unit filename="src/SpriteManager.h" />
+		<Unit filename="src/SpritePersonagem.cpp" />
+		<Unit filename="src/SpritePersonagem.h" />
 		<Unit filename="src/main.cpp" />
 		<Unit filename="src/main.h" />
 		<Extensions>

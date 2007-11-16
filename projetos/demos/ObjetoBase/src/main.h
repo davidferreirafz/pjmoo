@@ -23,8 +23,10 @@
 ////***************************************************************************
 #include <iostream>
 
+#include "SpritePersonagem.h"
+#include "SpriteManager.h"
+#include "Sprite.h"
 #include "ObjetoBase.h"
-#include "ObjetoManager.h"
 
 class ClasseTeste {
   public:

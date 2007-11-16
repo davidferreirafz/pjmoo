@@ -1,3 +1,6 @@
+#ifndef _SPRITEPERSONAGEM_H
+#define _SPRITEPERSONAGEM_H
+
 ////***************************************************************************
 ////  ObjetoBase <Demo de Recursos>
 ////  Copyright (C) 2007 by David Ferreira - FZ
@@ -18,13 +21,14 @@
 ////    Free Software Foundation, Inc.,                                       
 ////    59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 ////***************************************************************************
-#include "ObjetoManager.h"
+#include "Sprite.h"
 
-ObjetoManager::ObjetoManager() 
+class SpritePersonagem : public Sprite
 {
-}
+  public:
+    SpritePersonagem();
 
-ObjetoManager::~ObjetoManager() 
-{
-}
+    virtual ~SpritePersonagem();
 
+};
+#endif

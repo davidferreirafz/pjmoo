@@ -1,3 +1,6 @@
+#ifndef _SPRITEMANAGER_H
+#define _SPRITEMANAGER_H
+
 ////***************************************************************************
 ////  ObjetoBase <Demo de Recursos>
 ////  Copyright (C) 2007 by David Ferreira - FZ
@@ -20,11 +23,12 @@
 ////***************************************************************************
 #include "ObjetoManager.h"
 
-ObjetoManager::ObjetoManager() 
+class SpriteManager : public ObjetoManager
 {
-}
+  public:
+    SpriteManager();
 
-ObjetoManager::~ObjetoManager() 
-{
-}
+    virtual ~SpriteManager();
 
+};
+#endif

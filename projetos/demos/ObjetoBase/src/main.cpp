@@ -20,14 +20,11 @@
 ////***************************************************************************
 #include "main.h"
 
-    class Teste {
-        public:
-        virtual ~Teste(){}
-    };
+
 
 
 template <class T>
-class instanceOf
+class InstanceOf
 {
 public:
     template <class Tipo>
@@ -51,7 +48,7 @@ public:
 };
 //////-------------------------
 template <class T, class Tipo>
-bool instance (Tipo tipo)
+bool instanceOF (Tipo tipo)
 {
     if (dynamic_cast<T*>(&tipo)){
         return true;
@@ -60,7 +57,7 @@ bool instance (Tipo tipo)
     }
 };
 template <class T, class Tipo>
-bool instance (Tipo *tipo)
+bool instanceOF (Tipo *tipo)
 {
     if (dynamic_cast<T*>(tipo)){
         return true;
@@ -69,16 +66,55 @@ bool instance (Tipo *tipo)
     }
 };
 
+class Objeto
+{
+    public:
+     Objeto(){};
+     virtual ~Objeto(){};
 
+     template <class T>
+     bool is(T tipo)
+     {
+         return instanceOF< T >( tipo );
+     }
+
+};
+
+class Novo : public Objeto
+{
+    public:
+     Novo(){};
+     virtual ~Novo(){};
+
+};
+
+class Teste {
+    public:
+    virtual ~Teste(){}
+};
 
 int main(int argc, char * argv[])
 {
     ObjetoBase obj;
     ObjetoManager m;
     Teste t;
+    Objeto o;
+    Novo n;
 
-    if (instance<ObjetoBase>(t)){
-//    if (instanceOf<Teste>::is(m)){
+
+
+//    if (iof.is(n)){
+//    if (instanceOF<Objeto>( obj )){
+//    if (instanceOf<Novo>::is( o )){
+//    if (itf.is( t )){
+    if (o.is(t)){
+        std::cout << "Ok é do tipo" << std::endl;
+    } else {
+        std::cout << "Não é do tipo" << std::endl;
+    }
+
+//    if (instanceOF<Objeto>( o )){
+    if (InstanceOf<Teste>::is( n )){
         std::cout << "Ok é do tipo" << std::endl;
     } else {
         std::cout << "Não é do tipo" << std::endl;

@@ -35,6 +35,12 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
+		<Unit filename="src/ObjetoBase.cpp" />
+		<Unit filename="src/ObjetoBase.h" />
+		<Unit filename="src/ObjetoManager.cpp" />
+		<Unit filename="src/ObjetoManager.h" />
+		<Unit filename="src/main.cpp" />
+		<Unit filename="src/main.h" />
 		<Extensions>
 			<code_completion />
 			<debugger />

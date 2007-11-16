@@ -20,16 +20,25 @@
 ////***************************************************************************
 #include "ObjetoBase.h"
 
-template <class Tipo1, class Tipo2>
-bool ObjetoBase::is(Tipo1 t1, Tipo2 t2)
+
+template <class T>
+bool ObjetoBase::isInstance()
 {
-/*    if (dynamic_cast<ObjetoBase*>(t)){
+    if (dynamic_cast<T*>(this)){
         return true;
     } else {
         return false;
     }
-*/
+}
 
+template <class T>
+bool ObjetoBase::isInstance(T)
+{
+    if (dynamic_cast<T*>(this)){
+        return true;
+    } else {
+        return false;
+    }
 }
 
 ObjetoBase::~ObjetoBase(){

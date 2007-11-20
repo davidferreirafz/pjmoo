@@ -1,0 +1,21 @@
+Para compilar é necessário:
+
+	Os seguintes softwares, os quais são todos livres e encontrados nos principais
+Sistemas Operacionais.
+	
+	Sendo assim você deve possuir a IDE Codeblocks, uma ide multiplataforma que 
+permite que um único projeto possa compilar executaveis para diversas plataformas, além
+de ser necessário possuir a biblioteca SDL e seus módulos complementares, e do framework
+de jogos brasileiro chamado de GBF.
+
+	
+*CodeBlocks (IDE)
+	http://www.codeblocks.org
+*SDL (Biblioteca)
+	http://www.libsdl.org/download-1.2.php
+*SDL Mixer (Biblioteca)
+	http://www.libsdl.org/projects/SDL_mixer
+*SDL Image (Biblioteca)
+	http://www.libsdl.org/projects/SDL_image
+*GBF (Biblioteca)
+	http://pjmoo.codigolivre.org.br/wiki/index.php/GBF

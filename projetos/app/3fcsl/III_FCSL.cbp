@@ -9,9 +9,8 @@
 			<Target title="win32 - release">
 				<Option output="bin/III_FCSL.exe" prefix_auto="0" extension_auto="0" />
 				<Option working_dir="bin/" />
-				<Option type="1" />
+				<Option type="0" />
 				<Option compiler="gcc" />
-				<Option use_console_runner="0" />
 				<Option projectResourceIncludeDirsRelation="1" />
 				<Compiler>
 					<Add option="-fexpensive-optimizations" />
@@ -48,9 +47,6 @@
 				</Linker>
 			</Target>
 		</Build>
-		<VirtualTargets>
-			<Add alias="All" targets="win32 - release;linux - release;" />
-		</VirtualTargets>
 		<Compiler>
 			<Add directory="C:/SDK/Cpp/CodeBlocks/include/SDL" />
 			<Add directory="C:/SDK/Cpp/CodeBlocks/include/GBF" />

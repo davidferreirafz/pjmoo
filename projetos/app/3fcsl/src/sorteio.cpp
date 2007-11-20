@@ -52,32 +52,31 @@ int main(int argc, char* argv[])
 
     frameworkGBF->setPath(argv[0]);
     frameworkGBF->setTitulo("GBF :: Sorteio - III FCSL","David Ferreira");
-    frameworkGBF->iniciar(640,480,16,true);
-    frameworkGBF->inputSystem->setControleExclusivo(SDL_GRAB_OFF);
+    frameworkGBF->iniciar(640,480,16,false);
+    frameworkGBF->inputSystemCore->setControleExclusivo(SDL_GRAB_OFF);
 
 
-    frameworkGBF->writeSystem->carregar("bfa",frameworkGBF->getPath()+"//data//kernel//fonte//bfa.png");
+    frameworkGBF->writeSystem->carregar("bfa",frameworkGBF->getPath()+"//data//fonte//bfa.png");
+    frameworkGBF->writeSystem->carregar("arial",frameworkGBF->getPath()+"//data//fonte//arial.png");
+    frameworkGBF->writeSystem->carregar("console",frameworkGBF->getPath()+"//data//fonte//console.png");
 
 //carregando imagens
-    GraphicSystemImageBufferManager *GSIBManager = GraphicSystemImageBufferManager::getInstance();
-    GSIBManager->carregar("figuras","//data//imagem//figuras.png");
-    GSIBManager->carregar("logo","//data//imagem//logo.png");
-    GSIBManager->carregar("onda","//data//imagem//ondas.png");
+    frameworkGBF->graphicSystemCore->graphicSystem->imageBufferManager->carregar("figuras","//data//imagem//figuras.png");
+    frameworkGBF->graphicSystemCore->graphicSystem->imageBufferManager->carregar("logo","//data//imagem//logo.png");
 
-    SpriteFactory *spriteFactory = new SpriteFactory(GSIBManager->getImageBuffer("figuras"));
+    SpriteFactory *spriteFactory = new SpriteFactory(frameworkGBF->graphicSystemCore->graphicSystem->imageBufferManager->getImageBuffer("figuras"));
 
     SpritePersonagem *superTux = spriteFactory->criarSpritePersonagem(0,0,300,276,0,0);
     SpriteItem       *tux      = spriteFactory->criarSpriteItem(300,0,200,196,2,20);
     FrameLayer       *tiles    = spriteFactory->criarFrameLayer(0,276,32,32);
 
-    SpriteItem       *onda[3];
-                onda[0] = spriteFactory->criarSpriteItem(539,267,40,40,4,20);
-                onda[1] = spriteFactory->criarSpriteItem(539,267,40,40,4,20);
-                onda[2] = spriteFactory->criarSpriteItem(539,267,40,40,4,20);
-
+    SpriteItem *onda[3];
+    onda[0] = spriteFactory->criarSpriteItem(539,267,40,40,4,20);
+    onda[1] = spriteFactory->criarSpriteItem(539,267,40,40,4,20);
+    onda[2] = spriteFactory->criarSpriteItem(539,267,40,40,4,20);
     delete (spriteFactory);
 
-    spriteFactory = new SpriteFactory(GSIBManager->getImageBuffer("logo"));
+    spriteFactory = new SpriteFactory(frameworkGBF->graphicSystemCore->graphicSystem->imageBufferManager->getImageBuffer("logo"));
     SpriteItem *logo  = spriteFactory->criarSpriteItem(0,0,640,288,0,0);
     delete (spriteFactory);
 
@@ -87,29 +86,27 @@ int main(int argc, char* argv[])
     tiles->iniciarRandomico(1);
     FrameLayerManager::getInstance()->adicionar("tiles",tiles);
 
-    tux->setAutomatico(true);
-    onda[0]->setAutomatico(true);
-    onda[1]->setAutomatico(true);
-    onda[2]->setAutomatico(true);
-
+    tux->animacao.setAutomatico(true);
+    onda[0]->animacao.setAutomatico(true);
+    onda[1]->animacao.setAutomatico(true);
+    onda[2]->animacao.setAutomatico(true);
 
 	int numero = 0;
 	bool ativo = false;
 
 	while(true) {
-		if (frameworkGBF->inputSystem->teclado->isKey(SDLK_ESCAPE)){
+		if (frameworkGBF->inputSystemCore->inputSystem->teclado->isKey(SDLK_ESCAPE)){
 			break;
 		}
 		//Inicia a rolagem de numeros
-		if (frameworkGBF->inputSystem->teclado->isKey(SDLK_SPACE)){
+		if (frameworkGBF->inputSystemCore->inputSystem->teclado->isKey(SDLK_SPACE)){
 			ativo = true;
 			mover = false;
             ponto.x = 350;
             ponto.y = 600;
 		}
 		//Para a rolagem revelando o numero sorteado
-		if (frameworkGBF->inputSystem->teclado->isKey(SDLK_RETURN)){
-			//ativo = false;
+		if (frameworkGBF->inputSystemCore->inputSystem->teclado->isKey(SDLK_RETURN)){
 			mover = true;
 		}
 		//Gera numero para sorterio
@@ -136,15 +133,15 @@ int main(int argc, char* argv[])
             }
         }
 
-	    frameworkGBF->writeSystem->escrever(WriteSystemFontDefault::console,5,450,"Use a [spacebar] para iniciar e [enter] para selecionar.");
+	    frameworkGBF->writeSystem->escrever("console",5,450,"Use a [spacebar] para iniciar e [enter] para selecionar.");
 
         frameworkGBF->writeSystem->escrever("bfa",300,300,"%03d",numero);
 
 		//se sorteio rolando, exibe a msg abaixo
 		if (ativo){
-		    frameworkGBF->writeSystem->escrever(WriteSystemFontDefault::arial,310,340,"Sorteando...");
+		    frameworkGBF->writeSystem->escrever("arial",310,340,"Sorteando...");
 		} else if (numero>0){
-			frameworkGBF->writeSystem->escrever(WriteSystemFontDefault::arial,310,340,"Sorteado!!!");
+			frameworkGBF->writeSystem->escrever("arial",310,340,"Sorteado!!!");
 		}
 
         superTux->desenhar(ponto.x,ponto.y);
@@ -156,9 +153,7 @@ int main(int argc, char* argv[])
         delete(logo);
         delete(superTux);
         delete(tux);
-        delete(onda[0]);
-        delete(onda[1]);
-        delete(onda[2]);
+        delete(onda[0]);        delete(onda[1]);        delete(onda[2]);
         delete(frameworkGBF);
     }
 	return 0;

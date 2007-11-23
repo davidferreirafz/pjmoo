@@ -19,6 +19,7 @@
 //    59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 //***************************************************************************
 #include "Room.h"
+#include "Door.h"
 
 void Room::enter()
 {
@@ -31,6 +32,20 @@ MapSite * Room::getSide(Direction direction) const
 {
     return sides[direction];
 }
+Direction Room::getDirection(MapSite *map)
+{
+    Direction direction;
+
+    for (int i=0; i<4; i++){
+        if (sides[i]==map){
+            direction = (Direction) i;
+            break;
+        }
+    }
+
+    return direction;
+}
+
 Room::Room(int number)
 {
     roomNumber = number;
@@ -44,6 +59,12 @@ Room::~Room()
 {
     for (int i=0; i<4; i++){
         if (sides[i]){
+            if (sides[i]->isInstance<Door>()){
+                Door * door = (Door *)sides[i];
+                Room * room = door->otherSideFrom(this);
+                Direction direction = room->getDirection(door);
+                room->setSide(direction,NULL);
+            }
             delete(sides[i]);
         }
     }

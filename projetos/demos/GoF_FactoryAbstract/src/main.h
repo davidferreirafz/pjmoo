@@ -21,13 +21,10 @@
 #ifndef _MAIN_H
 #define _MAIN_H
 
-#include "MapSite.h"
-#include "Wall.h"
-#include "Door.h"
-#include "Room.h"
-#include "Maze.h"
 #include <GBF/GBF.h>
 
+#include "Maze.h"
+#include "MazeGame.h"
 
 class Test
 {

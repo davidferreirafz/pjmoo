@@ -31,40 +31,24 @@ int main(int argc, char * argv[])
 //carregando imagens
     frameworkGBF.graphicSystemCore->graphicSystem->imageBufferManager->carregar("tiles","//data//imagem//tiles.png");
 
-    Maze * aMaze = new Maze();
 
-    Room* r1 = new Room(1);
-    Room* r2 = new Room(2);
-
-    Door* theDoor = new Door(r1,r2);
-
-    aMaze->addRoom(r1,0,0);
-    aMaze->addRoom(r2,2,0);
-
-
-    r1->setSide(North, new Wall);
-    r1->setSide(East, theDoor);
-    r1->setSide(South, new Wall);
-    r1->setSide(West, new Wall);
-
-    r2->setSide(North, new Wall);
-    r2->setSide(East, new Wall);
-    r2->setSide(South, new Wall);
-    r2->setSide(West, new Wall);
-//    r2->setSide(West, theDoor);
-
-
+    MazeGame mazeGame;
+    Maze * aMaze = mazeGame.create();
 
 
     while(true) {
+
         if (frameworkGBF.inputSystemCore->inputSystem->teclado->isKey(SDLK_ESCAPE)){
             break;
         }
+
         aMaze->draw();
+
         //realiza refresh, fps, flip
         frameworkGBF.atualizar();
     }
 
     delete(aMaze);
+
     return 0;
 }

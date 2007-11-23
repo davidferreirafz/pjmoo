@@ -18,56 +18,23 @@
 //    Free Software Foundation, Inc.,                                       
 //    59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 //***************************************************************************
+#ifndef _MAZEGAME_H
+#define _MAZEGAME_H
+
 #include "Maze.h"
+#include "Wall.h"
+#include "Door.h"
+#include "Room.h"
+#include "MapSite.h"
 
-Maze::Maze() 
+class MazeGame
 {
-    for (int x=0; x<19; x++){
-        for (int y=0; y<14; y++){
-            rooms[x][y]=NULL;
-        }
-    }
-}
-Maze::~Maze() 
-{
-    for (int x=0; x<19; x++){
-        for (int y=0; y<14; y++){
-            if (rooms[x][y]!=NULL){
-                delete(rooms[x][y]);
-            }
-        }
-    }
-}
-void Maze::addRoom(Room * room, int column, int line) 
-{
-    rooms[column][line]=room;
-}
-Room * Maze::roomNo(int number) const 
-{
-    Room * room = NULL;
-    for (int x=0; x<19; x++){
-        for (int y=0; y<14; y++){
-            if (rooms[x][y]->getNumber()==number){
-                room = rooms[x][y];
-            }
-        }
-    }
+  public:
+    MazeGame();
 
-    return room;
-}
-void Maze::draw() 
-{
-    int xVirtual=0;
-    int yVirtual=0;
+    virtual ~MazeGame();
 
-    for (int x=0; x<19; x++){
-        for (int y=0; y<14; y++){
-            if (rooms[x][y]!=NULL){
+    Maze * create();
 
-                xVirtual=(x*32)+32;
-                yVirtual=(y*32)+32;
-                rooms[x][y]->draw(xVirtual,yVirtual);
-            }
-        }
-    }
-}
+};
+#endif

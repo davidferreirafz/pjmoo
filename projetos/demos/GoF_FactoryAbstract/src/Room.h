@@ -23,6 +23,8 @@
 
 #include "MapSite.h"
 
+class Door;
+
 class Room : public MapSite
 {
   protected:
@@ -36,6 +38,7 @@ class Room : public MapSite
 
     MapSite * getSide(Direction direction) const;
 
+    Direction getDirection(MapSite * map);
 
   protected:
     MapSite * sides[4];

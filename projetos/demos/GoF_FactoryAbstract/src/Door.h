@@ -27,23 +27,19 @@
 class Door : public MapSite
 {
   public:
-    virtual void enter();
-
     Door(Room * room1, Room * room2);
 
     virtual ~Door();
 
+    virtual void enter();
+
+    Room * otherSideFrom(Room * theRoom);
+
 
   private:
-    Room * room1;
-
-    Room * room2;
+    Room * room[2];
 
     bool open;
-
-
-  public:
-    Room * otherSideFrom(Room * room);
 
 };
 #endif

@@ -20,9 +20,6 @@
 //***************************************************************************
 #include "Wall.h"
 
-void Wall::enter() 
-{
-}
 Wall::Wall() 
 {
     SpriteFactory  *spriteFactory = new SpriteFactory(graphicSystem->imageBufferManager->getImageBuffer("tiles"));
@@ -33,4 +30,7 @@ Wall::Wall()
 Wall::~Wall() 
 {
 
+}
+void Wall::enter() 
+{
 }

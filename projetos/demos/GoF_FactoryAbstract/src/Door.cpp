@@ -20,9 +20,6 @@
 //***************************************************************************
 #include "Door.h"
 
-void Door::enter() 
-{
-}
 Door::Door(Room * room1, Room * room2) 
 {
     SpriteFactory  *spriteFactory = new SpriteFactory(graphicSystem->imageBufferManager->getImageBuffer("tiles"));
@@ -30,21 +27,23 @@ Door::Door(Room * room1, Room * room2)
 
     delete(spriteFactory);
 
-
-    this->room1=room1;
-    this->room2=room2;
+    room[0]=room1;
+    room[1]=room2;
 }
 Door::~Door() 
 {
-    room1=NULL;
-    room2=NULL;
+    room[0]=NULL;
+    room[1]=NULL;
 }
-Room * Door::otherSideFrom(Room * room) 
+void Door::enter() 
 {
-    if (room==room1){
-        return room2;
-    } else if (room==room2){
-        return room1;
+}
+Room * Door::otherSideFrom(Room * theRoom) 
+{
+    if (theRoom==room[0]){
+        return room[1];
+    } else if (theRoom==room[1]){
+        return room[0];
     } else {
         return NULL;
     }

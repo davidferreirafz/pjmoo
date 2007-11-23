@@ -26,11 +26,11 @@
 class Wall : public MapSite
 {
   public:
-    virtual void enter();
-
     Wall();
 
     virtual ~Wall();
+
+    virtual void enter();
 
 };
 #endif

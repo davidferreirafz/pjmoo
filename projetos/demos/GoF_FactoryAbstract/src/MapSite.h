@@ -25,25 +25,26 @@
 
 #include <GBF/GraphicSystemUtility.h>
 
-#include <GBF/SpriteFactory.h>
-
 #include <GBF/ObjetoBase.h>
+
+#include <GBF/SpriteFactory.h>
 
 
 enum Direction {
   North,
   South,
   East,
-  West
+  West,
+  INVALID
 };
 class MapSite : public GraphicSystemUtility, public ObjetoBase
 {
   public:
-    virtual void enter() = 0;
-
     MapSite();
 
     virtual ~MapSite();
+
+    virtual void enter() = 0;
 
     virtual void draw(int x, int y);
 

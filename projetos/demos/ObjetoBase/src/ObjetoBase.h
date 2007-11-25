@@ -36,6 +36,7 @@ class ObjetoBase
                 return false;
             }
         };
+
     template<class T>
       inline bool isInstance( T) {
             if (dynamic_cast<T*>(this)){

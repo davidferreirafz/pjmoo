@@ -7,23 +7,23 @@ classcanvas 128019 class_ref 129731 // ObjetoBase
 classcanvas 128143 class_ref 128015 // iostream
   draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_infonote default shadow default
   color lightgreen
-  xyz 14 407 2000
+  xyz 36 408 2000
   end
 classcanvas 128190 class_ref 128190 // ObjetoManager
   draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_infonote default shadow default
-  xyz 414 138 2000
+  xyz 414 131 2000
   end
 classcanvas 128451 class_ref 129219 // SpriteManager
   draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_infonote default shadow default
-  xyz 344 241 2000
+  xyz 344 235 2000
   end
 classcanvas 128707 class_ref 129347 // Sprite
   draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_infonote default shadow default
-  xyz 216 139 2000
+  xyz 216 131 2000
   end
 classcanvas 128835 class_ref 129475 // SpritePersonagem
   draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_infonote default shadow default
-  xyz 208 241 2000
+  xyz 208 236 2000
   end
 classcanvas 129748 class_ref 128596 // ClasseTeste
   draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_infonote default shadow default
@@ -32,13 +32,13 @@ classcanvas 129748 class_ref 128596 // ClasseTeste
   end
 relationcanvas 128147 relation_ref 129171 // <generalisation>
   geometry HV
-  from ref 128707 z 1999 to point 341 170
+  from ref 128707 z 1999 to point 341 162
   line 129299 z 1999 to ref 128019
   no_role_a no_role_b
   no_multiplicity_a no_multiplicity_b
 relationcanvas 128275 relation_ref 129299 // <generalisation>
   geometry VHr
-  from ref 128190 z 1999 to point 341 169
+  from ref 128190 z 1999 to point 341 162
   line 129555 z 1999 to ref 128019
   no_role_a no_role_b
   no_multiplicity_a no_multiplicity_b
@@ -54,8 +54,8 @@ relationcanvas 128574 relation_ref 128190 // <dependency>
   no_multiplicity_a no_multiplicity_b
 relationcanvas 128579 relation_ref 129347 // <generalisation>
   geometry VHV
-  from ref 128451 z 1999 to point 396 220
-  line 129859 z 1999 to point 468 220
+  from ref 128451 z 1999 to point 396 214
+  line 129859 z 1999 to point 468 214
   line 129987 z 1999 to ref 128190
   no_role_a no_role_b
   no_multiplicity_a no_multiplicity_b
@@ -67,8 +67,8 @@ relationcanvas 129043 relation_ref 129555 // <dependency>
   no_multiplicity_a no_multiplicity_b
 relationcanvas 129219 relation_ref 129603 // <generalisation>
   geometry VHV
-  from ref 128835 z 1999 to point 270 221
-  line 129475 z 1999 to point 247 221
+  from ref 128835 z 1999 to point 270 214
+  line 129475 z 1999 to point 247 214
   line 129603 z 1999 to ref 128707
   no_role_a no_role_b
   no_multiplicity_a no_multiplicity_b
@@ -86,7 +86,7 @@ relationcanvas 130243 relation_ref 129859 // <dependency>
   no_multiplicity_a no_multiplicity_b
 relationcanvas 130499 relation_ref 129987 // <dependency>
   geometry VH
-  from ref 129748 z 1999 to point 115 170
+  from ref 129748 z 1999 to point 115 162
   line 128659 z 1999 to ref 128707
   no_role_a no_role_b
   no_multiplicity_a no_multiplicity_b

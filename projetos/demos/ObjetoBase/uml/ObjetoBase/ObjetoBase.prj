@@ -1,7 +1,7 @@
 format 45
 "ObjetoBase"
-  revision 10
-  modified_by 19 "david"
+  revision 11
+  modified_by 41 "david"
 
   artifact_default_description "//***************************************************************************
 //  ObjetoBase <Demo de Recursos>
@@ -123,7 +123,8 @@ ${body}}
         } else {
             return false;
         }
-    };"
+    };
+"
 	
 	
 	
@@ -235,7 +236,7 @@ ${inlines}
       classrelation 129427 // <dependency>
 	relation 129427 -_->
 	  a default
-	    cpp default "Generated"
+	    cpp default "#include in header"
 	    classrelation_ref 129427 // <dependency>
 	  b parent class_ref 129731 // ObjetoBase
       end
@@ -243,7 +244,7 @@ ${inlines}
       classrelation 129555 // <dependency>
 	relation 129555 -_->
 	  a default
-	    cpp default "Generated"
+	    cpp default "#include in header"
 	    classrelation_ref 129555 // <dependency>
 	  b parent class_ref 128190 // ObjetoManager
       end

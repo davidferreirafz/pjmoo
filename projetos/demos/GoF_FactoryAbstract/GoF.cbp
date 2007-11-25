@@ -14,12 +14,11 @@
 				<Option projectLinkerOptionsRelation="1" />
 				<Option projectResourceIncludeDirsRelation="0" />
 				<Compiler>
-					<Add option="-fexpensive-optimizations" />
-					<Add option="-Os" />
 					<Add option="-W" />
 					<Add option="-Wall" />
 					<Add option="-pg" />
 					<Add option="-g" />
+					<Add option="-DDEBUG" />
 				</Compiler>
 				<Linker>
 					<Add option="-pg" />
@@ -63,6 +62,8 @@
 		<Unit filename="src/MapSite.h" />
 		<Unit filename="src/Maze.cpp" />
 		<Unit filename="src/Maze.h" />
+		<Unit filename="src/MazeGame.cpp" />
+		<Unit filename="src/MazeGame.h" />
 		<Unit filename="src/Room.cpp" />
 		<Unit filename="src/Room.h" />
 		<Unit filename="src/Wall.cpp" />

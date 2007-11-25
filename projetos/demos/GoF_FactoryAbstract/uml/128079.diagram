@@ -1,0 +1,51 @@
+format 38
+
+classcanvas 128335 class_ref 129689 // StatusPlayer
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_infonote default shadow default
+  xyz 389 75 2004
+  end
+classcanvas 128591 class_ref 129433 // StatusTempo
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_infonote default shadow default
+  xyz 331 326 2000
+  end
+classcanvas 128719 class_ref 128665 // FaseAbstract
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_infonote default shadow default
+  xyz 24 24 3005
+  end
+classcanvas 129103 class_ref 129561 // StatusPC
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_infonote default shadow default
+  xyz 259 8 3005
+  end
+classcanvas 130511 class_ref 129305 // Placar
+  draw_all_relations default hide_attributes yes hide_operations no show_members_full_definition default show_members_visibility default show_members_stereotype default show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_infonote default shadow default
+  xyz 523 114 3010
+  end
+relationcanvas 128847 relation_ref 128921 // <directional aggregation by value>
+  geometry HVH
+  from ref 128719 z 1999 to point 232 166
+  line 130767 z 1999 to point 232 366
+  line 130895 z 1999 to ref 128591
+  role_a_pos 256 348 3000 no_role_b
+  no_multiplicity_a no_multiplicity_b
+relationcanvas 128975 relation_ref 129177 // <directional aggregation by value>
+  geometry HVH
+  from ref 128719 z 1999 to point 261 166
+  line 131535 z 1999 to point 261 115
+  line 131663 z 1999 to ref 128335
+  role_a_pos 317 97 3000 no_role_b
+  no_multiplicity_a no_multiplicity_b
+relationcanvas 129359 relation_ref 129049 // <directional aggregation by value>
+  geometry HVH
+  from ref 128719 z 1999 to point 196 166
+  line 131279 z 1999 to point 196 48
+  line 131407 z 1999 to ref 129103
+  role_a_pos 203 30 3000 no_role_b
+  no_multiplicity_a no_multiplicity_b
+relationcanvas 130639 relation_ref 128665 // <directional aggregation by value>
+  geometry HVH
+  from ref 128719 z 1999 to point 328 166
+  line 131023 z 1999 to point 328 264
+  line 131151 z 1999 to ref 130511
+  role_a_pos 482 246 3000 no_role_b
+  no_multiplicity_a no_multiplicity_b
+end

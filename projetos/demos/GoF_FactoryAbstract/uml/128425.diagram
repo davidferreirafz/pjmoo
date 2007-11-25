@@ -1,0 +1,127 @@
+format 38
+
+classcanvas 128041 class_ref 128665 // FaseAbstract
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_infonote default shadow default
+  xyz 141 89 2000
+  end
+classcanvas 128079 class_ref 128281 // TipoLutador
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_infonote default shadow default
+  xyz 381 448 3010
+  end
+classcanvas 128169 class_ref 129817 // FaseFactory
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_infonote default shadow default
+  xyz 251 419 2000
+  end
+classcanvas 128297 class_ref 129945 // Fase
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_infonote default shadow default
+  xyz 134 441 2004
+  end
+classcanvas 128553 class_ref 128080 // FrameLayer
+  draw_all_relations default hide_attributes yes hide_operations yes show_members_full_definition default show_members_visibility default show_members_stereotype default show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode uml auto_label_position default show_infonote default shadow default
+  color gray
+  xyz 270 135 2000
+  end
+classcanvas 128681 class_ref 130896 // TimerSystemCronometroDecrescente
+  draw_all_relations default hide_attributes yes hide_operations yes show_members_full_definition default show_members_visibility default show_members_stereotype default show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode uml auto_label_position default show_infonote default shadow default
+  color gray
+  xyz 33 5 2000
+  end
+classcanvas 128809 class_ref 129616 // WriteSystemManager
+  draw_all_relations default hide_attributes yes hide_operations yes show_members_full_definition default show_members_visibility default show_members_stereotype default show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode uml auto_label_position default show_infonote default shadow default
+  color gray
+  xyz 380 256 3005
+  end
+classcanvas 129321 class_ref 134480 // ParticleSystemManager
+  draw_all_relations default hide_attributes yes hide_operations yes show_members_full_definition default show_members_visibility default show_members_stereotype default show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode uml auto_label_position default show_infonote default shadow default
+  color gray
+  xyz 333 66 3010
+  end
+classcanvas 131625 class_ref 128720 // FrameLayerManager
+  draw_all_relations default hide_attributes yes hide_operations yes show_members_full_definition default show_members_visibility default show_members_stereotype default show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode uml auto_label_position default show_infonote default shadow default
+  color gray
+  xyz 405 322 2000
+  end
+classcanvas 132137 class_ref 128118 // SoundSystem
+  draw_all_relations default hide_attributes yes hide_operations yes show_members_full_definition default show_members_visibility default show_members_stereotype default show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode uml auto_label_position default show_infonote default shadow default
+  color gray
+  xyz 375 400 2000
+  end
+classcanvas 132393 class_ref 129049 // Round
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_infonote default shadow default
+  xyz 16 276 3010
+  end
+classcanvas 132777 class_ref 129305 // Placar
+  draw_all_relations default hide_attributes yes hide_operations yes show_members_full_definition default show_members_visibility default show_members_stereotype default show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_infonote default shadow default
+  xyz 27 99 3015
+  end
+relationcanvas 128207 relation_ref 128079 // <dependency>
+  geometry VH
+  from ref 128169 z 1999 to point 301 514
+  line 128335 z 1999 to ref 128079
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+relationcanvas 128425 relation_ref 129305 // <generalisation>
+  geometry VHV
+  from ref 128297 z 1999 to point 163 407
+  line 131881 z 1999 to point 196 407
+  line 132009 z 1999 to ref 128041
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+relationcanvas 129833 relation_ref 130217 // <directional aggregation>
+  geometry HV
+  from ref 128041 z 1999 to point 370 231
+  line 131113 z 1999 to ref 128553
+  role_a_pos 382 180 3000 no_role_b
+  no_multiplicity_a no_multiplicity_b
+relationcanvas 129961 relation_ref 130345 // <directional aggregation>
+  geometry HV
+  from ref 128041 z 1999 to point 522 231
+  line 130857 z 1999 to ref 128809
+  role_a_pos 534 235 3000 no_role_b
+  no_multiplicity_a no_multiplicity_b
+relationcanvas 130089 relation_ref 130473 // <directional aggregation by value>
+  geometry VHV
+  from ref 128041 z 1999 to point 196 64
+  line 130345 z 1999 to point 220 64
+  line 130473 z 1999 to ref 128681
+  role_a_pos 232 50 3000 no_role_b
+  no_multiplicity_a no_multiplicity_b
+relationcanvas 130217 relation_ref 130601 // <directional aggregation>
+  geometry HV
+  from ref 128041 z 1999 to point 487 231
+  line 130985 z 1999 to ref 129321
+  role_a_pos 499 111 3000 no_role_b
+  no_multiplicity_a no_multiplicity_b
+relationcanvas 131241 relation_ref 130729 // <dependency>
+  from ref 128169 z 1999 to ref 128041
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+relationcanvas 131369 relation_ref 130857 // <dependency>
+  geometry HVH
+  from ref 128169 z 1999 to point 221 456
+  line 128463 z 1999 to point 221 481
+  line 128591 z 1999 to ref 128297
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+relationcanvas 131753 relation_ref 130985 // <dependency>
+  from ref 128041 z 1999 to ref 131625
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+relationcanvas 132265 relation_ref 131369 // <dependency>
+  from ref 128041 z 1999 to ref 132137
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+relationcanvas 132521 relation_ref 128793 // <directional aggregation by value>
+  geometry VHr
+  from ref 128041 z 1999 to point 57 231
+  line 133545 z 1999 to ref 132393
+  role_a_pos 69 255 3000 no_role_b
+  no_multiplicity_a no_multiplicity_b
+relationcanvas 132905 relation_ref 128665 // <directional aggregation by value>
+  geometry HVH
+  from ref 128041 z 1999 to point 104 231
+  line 133033 z 1999 to point 104 116
+  line 133161 z 1999 to ref 132777
+  role_a_pos 81 98 3000 no_role_b
+  no_multiplicity_a no_multiplicity_b
+end

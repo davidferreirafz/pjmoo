@@ -1,0 +1,1068 @@
+format 48
+"GoF - AbstractFactory" // GoF - AbstractFactory
+  revision 12
+  modified_by 15 "david"
+  // class settings
+  //class diagram settings
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_infonote default shadow default
+  //use case diagram settings
+  package_name_in_tab default show_context default auto_label_position default draw_all_relations default shadow default
+  //sequence diagram settings
+  show_full_operations_definition default write_horizontally default class_drawing_mode default drawing_language default draw_all_relations default shadow default
+  //collaboration diagram settings
+  show_full_operations_definition default show_hierarchical_rank default write_horizontally default drawing_language default package_name_in_tab default show_context default draw_all_relations default shadow default
+  //object diagram settings
+   write_horizontally default package_name_in_tab default show_context default auto_label_position default draw_all_relations default shadow default
+  //component diagram settings
+  package_name_in_tab default show_context default auto_label_position default draw_all_relations default shadow default
+  draw_component_as_icon default show_component_req_prov default show_component_rea default
+  //deployment diagram settings
+  package_name_in_tab default show_context default write_horizontally default auto_label_position default draw_all_relations default shadow default
+  draw_component_as_icon default show_component_req_prov default show_component_rea default
+  //state diagram settings
+  package_name_in_tab default show_context default auto_label_position default write_trans_label_horizontally default show_trans_definition default draw_all_relations default shadow default
+  show_activities default region_horizontally default drawing_language default
+  //activity diagram settings
+  package_name_in_tab default show_context default show_opaque_action_definition default auto_label_position default write_flow_label_horizontally default draw_all_relations default shadow default
+  show_infonote default drawing_language default
+  
+  cpp_h_dir "/home/desenvolvimento/pjmoo/projetos/demos/GoF_FactoryAbstract/src/"
+  cpp_src_dir "/home/desenvolvimento/pjmoo/projetos/demos/GoF_FactoryAbstract/src/"
+  classview 128032 "classes"
+    //class diagram settings
+    draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_infonote default shadow default
+    //collaboration diagram settings
+    show_full_operations_definition default show_hierarchical_rank default write_horizontally default drawing_language default package_name_in_tab default show_context default draw_all_relations default shadow default
+    //object diagram settings
+     write_horizontally default package_name_in_tab default show_context default auto_label_position default draw_all_relations default shadow default
+    //sequence diagram settings
+    show_full_operations_definition default write_horizontally default class_drawing_mode default drawing_language default draw_all_relations default shadow default
+    //state diagram settings
+    package_name_in_tab default show_context default auto_label_position default write_trans_label_horizontally default show_trans_definition default draw_all_relations default shadow default
+    show_activities default region_horizontally default drawing_language default
+    //class settings
+    //activity diagram settings
+    package_name_in_tab default show_context default show_opaque_action_definition default auto_label_position default write_flow_label_horizontally default draw_all_relations default shadow default
+    show_infonote default drawing_language default
+    associated_deployment_view deploymentview_ref 128032 // deploy
+    classdiagram 129258 "IncludeTest"
+      draw_all_relations yes hide_attributes yes hide_operations yes show_members_full_definition default show_members_visibility default show_members_stereotype default show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_infonote default shadow default
+      size A4
+    end
+
+    classdiagram 128032 "Diagrama de Classes"
+      draw_all_relations yes hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_infonote default shadow default
+      size A4
+    end
+
+    class 129184 "Test"
+      visibility package stereotype "test"
+      cpp_decl "${comment}${template}class ${name}${inherit}
+{
+${members}};
+${inlines}
+"
+      java_decl ""
+      php_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      operation 130208 "main"
+	stereotype "main"
+	public explicit_return_type "int"
+	nparams 2
+	  param in name "argc" explicit_type "int"
+	  param inout name "argv" explicit_type "char"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${t0} ${p0}, ${t1} * ${p1}[]${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${name}${(}${t0} ${p0}, ${t1} * ${p1}[]${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+	
+      end
+
+      classrelation 130026 // <dependency>
+	relation 130026 -_->
+	  a default
+	    cpp default "#include in header"
+	    classrelation_ref 130026 // <dependency>
+	  b parent class_ref 129232 // GBF
+      end
+
+      classrelation 135387 // <dependency>
+	relation 129499 -_->
+	  a default
+	    cpp default "#include in header"
+	    classrelation_ref 135387 // <dependency>
+	  b parent class_ref 130136 // Maze
+      end
+
+      classrelation 136539 // <dependency>
+	relation 130651 -_->
+	  a default
+	    cpp default "#include in header"
+	    classrelation_ref 136539 // <dependency>
+	  b parent class_ref 129243 // MazeGame
+      end
+    end
+
+    class 128672 "Direction"
+      visibility package stereotype "enum"
+      cpp_decl "${comment}enum ${name} {
+${items}};
+"
+      java_decl "${comment}${public}${final}${abstract}enum ${name}${implements} {
+${items};
+${members}}
+"
+      php_decl "${comment}final ${visibility}class ${name} {
+${items}}
+"
+      idl_decl "${comment}enum ${name} {
+${items}};
+"
+      explicit_switch_type ""
+      
+      attribute 128160 "North"
+	public type class_ref 128672 // Direction
+	cpp_decl "  ${comment}${name}${value},"
+	java_decl ""
+	php_decl ""
+	idl_decl ""
+      end
+
+      attribute 128288 "South"
+	public type class_ref 128672 // Direction
+	cpp_decl "  ${comment}${name}${value},"
+	java_decl ""
+	php_decl ""
+	idl_decl ""
+      end
+
+      attribute 128416 "East"
+	public type class_ref 128672 // Direction
+	cpp_decl "  ${comment}${name}${value},"
+	java_decl ""
+	php_decl ""
+	idl_decl ""
+      end
+
+      attribute 128544 "West"
+	public type class_ref 128672 // Direction
+	cpp_decl "  ${comment}${name}${value},"
+	java_decl ""
+	php_decl ""
+	idl_decl ""
+      end
+
+      attribute 129271 "INVALID"
+	public type class_ref 128672 // Direction
+	cpp_decl "  ${comment}${name}${value},"
+	java_decl ""
+	php_decl ""
+	idl_decl ""
+      end
+    end
+
+    class 129240 "Door"
+      visibility package 
+      cpp_decl "${comment}${template}class ${name}${inherit}
+{
+${members}};
+${inlines}
+"
+      java_decl ""
+      php_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      classrelation 129240 // <generalisation>
+	relation 129240 ---|>
+	  a public
+	    cpp default "${type}"
+	    classrelation_ref 129240 // <generalisation>
+	  b parent class_ref 129368 // MapSite
+      end
+
+      operation 129368 "Door"
+	public explicit_return_type ""
+	nparams 2
+	  param inout name "room1" type class_ref 129496 // Room
+	  param inout name "room2" type class_ref 129496 // Room
+	cpp_decl "    ${comment}${inline}${name}${(}${t0} * ${p0}, ${t1} * ${p1}${)}${volatile}${throw};
+"
+	cpp_def "${comment}${inline}${class}::${name}${(}${t0} * ${p0}, ${t1} * ${p1}${)}${volatile}${throw} 
+{
+${body}}"
+	
+	
+	
+      end
+
+      operation 129496 "~Door"
+	cpp_virtual public explicit_return_type ""
+	nparams 0
+	cpp_decl "    ${comment}${inline}${virtual}${name}${(}${)}${volatile}${throw};
+"
+	cpp_def "${comment}${inline}${class}::${name}${(}${)}${volatile}${throw} 
+{
+${body}}"
+	
+	
+	
+      end
+
+      operation 129240 "enter"
+	cpp_virtual public explicit_return_type "void"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+	
+      end
+
+      operation 129624 "otherSideFrom"
+	public return_type class_ref 129496 // Room
+	nparams 1
+	  param inout name "theRoom" type class_ref 129496 // Room
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} * ${name}${(}${t0} * ${p0}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} * ${class}::${name}${(}${t0} * ${p0}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+	
+      end
+
+      classrelation 129368 // room (<unidirectional association>)
+	relation 129368 --->
+	  a role_name "room" multiplicity "2" private
+	    cpp default "    ${comment}${static}${mutable}${volatile}${const}${type} * ${name}${multiplicity}${value};
+"
+	    classrelation_ref 129368 // room (<unidirectional association>)
+	  b parent class_ref 129496 // Room
+      end
+
+      attribute 129240 "open"
+	private explicit_type "bool"
+	cpp_decl "    ${comment}${static}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	java_decl ""
+	php_decl ""
+	idl_decl ""
+      end
+    end
+
+    class 129368 "MapSite"
+      abstract visibility package 
+      cpp_decl "${comment}${template}class ${name}${inherit}
+{
+${members}};
+${inlines}
+"
+      java_decl ""
+      php_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      operation 130008 "MapSite"
+	public explicit_return_type ""
+	nparams 0
+	cpp_decl "    ${comment}${inline}${name}${(}${)}${volatile}${throw};
+"
+	cpp_def "${comment}${inline}${class}::${name}${(}${)}${volatile}${throw} 
+{
+${body}}"
+	
+	
+	
+      end
+
+      operation 130136 "~MapSite"
+	cpp_virtual public explicit_return_type ""
+	nparams 0
+	cpp_decl "    ${comment}${inline}${virtual}${name}${(}${)}${volatile}${throw};
+"
+	cpp_def "${comment}${inline}${class}::${name}${(}${)}${volatile}${throw} 
+{
+${body}}"
+	
+	
+	
+      end
+
+      operation 129880 "enter"
+	abstract cpp_virtual public explicit_return_type "void"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	
+	
+	
+      end
+
+      operation 130264 "draw"
+	cpp_virtual public explicit_return_type "void"
+	nparams 2
+	  param in name "x" explicit_type "int"
+	  param in name "y" explicit_type "int"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${t0} ${p0}, ${t1} ${p1}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${t0} ${p0}, ${t1} ${p1}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+	
+      end
+
+      attribute 129880 "sprite"
+	protected explicit_type "SpriteItem"
+	cpp_decl "    ${comment}${static}${mutable}${volatile}${const}${type} * ${name}${value};
+"
+	java_decl ""
+	php_decl ""
+	idl_decl ""
+      end
+
+      classrelation 135131 // <generalisation>
+	relation 129243 ---|>
+	  a public
+	    cpp default "${type}"
+	    classrelation_ref 135131 // <generalisation>
+	  b parent class_ref 128089 // GraphicSystemUtility
+      end
+
+      classrelation 129271 // <generalisation>
+	relation 129271 ---|>
+	  a public
+	    cpp default "${type}"
+	    classrelation_ref 129271 // <generalisation>
+	  b parent class_ref 129499 // ObjetoBase
+      end
+
+      classrelation 135259 // <dependency>
+	relation 129371 -_->
+	  a default
+	    cpp default "#include in header"
+	    classrelation_ref 135259 // <dependency>
+	  b parent class_ref 128848 // SpriteFactory
+      end
+    end
+
+    class 130136 "Maze"
+      visibility package 
+      cpp_decl "${comment}${template}class ${name}${inherit}
+{
+${members}};
+${inlines}
+"
+      java_decl ""
+      php_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      operation 130392 "Maze"
+	public explicit_return_type ""
+	nparams 0
+	cpp_decl "    ${comment}${inline}${name}${(}${)}${volatile}${throw};
+"
+	cpp_def "${comment}${inline}${class}::${name}${(}${)}${volatile}${throw} 
+{
+${body}}"
+	
+	
+	
+      end
+
+      operation 130520 "~Maze"
+	cpp_virtual public explicit_return_type ""
+	nparams 0
+	cpp_decl "    ${comment}${inline}${virtual}${name}${(}${)}${volatile}${throw};
+"
+	cpp_def "${comment}${inline}${class}::${name}${(}${)}${volatile}${throw} 
+{
+${body}}"
+	
+	
+	
+      end
+
+      operation 130648 "addRoom"
+	public explicit_return_type "void"
+	nparams 3
+	  param inout name "room" type class_ref 129496 // Room
+	  param in name "column" explicit_type "int"
+	  param in name "line" explicit_type "int"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${t0} * ${p0}, ${t1} ${p1}, ${t2} ${p2}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${t0} * ${p0}, ${t1} ${p1}, ${t2} ${p2}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+	
+      end
+
+      operation 130776 "roomNo"
+	const public return_type class_ref 129496 // Room
+	nparams 1
+	  param in name "number" explicit_type "int"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} * ${name}${(}${t0} ${p0}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} * ${class}::${name}${(}${t0} ${p0}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+	
+      end
+
+      operation 130904 "draw"
+	public explicit_return_type "void"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+	
+      end
+
+      classrelation 129880 // rooms (<unidirectional association>)
+	relation 129880 --->
+	  a role_name "rooms" multiplicity "[19][14]" private
+	    cpp default "    ${comment}${static}${mutable}${volatile}${const}${type} * ${name}${multiplicity}${value};
+"
+	    classrelation_ref 129880 // rooms (<unidirectional association>)
+	  b parent class_ref 129496 // Room
+      end
+    end
+
+    class 129243 "MazeGame"
+      visibility package 
+      cpp_decl "${comment}${template}class ${name}${inherit}
+{
+${members}};
+${inlines}
+"
+      java_decl ""
+      php_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      operation 129243 "MazeGame"
+	public explicit_return_type ""
+	nparams 0
+	cpp_decl "    ${comment}${inline}${name}${(}${)}${volatile}${throw};
+"
+	cpp_def "${comment}${inline}${class}::${name}${(}${)}${volatile}${throw} 
+{
+${body}}"
+	
+	
+	
+      end
+
+      operation 129371 "~MazeGame"
+	cpp_virtual public explicit_return_type ""
+	nparams 0
+	cpp_decl "    ${comment}${inline}${virtual}${name}${(}${)}${volatile}${throw};
+"
+	cpp_def "${comment}${inline}${class}::${name}${(}${)}${volatile}${throw} 
+{
+${body}}"
+	
+	
+	
+      end
+
+      operation 129499 "create"
+	public return_type class_ref 130136 // Maze
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} * ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} * ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+	
+      end
+
+      classrelation 136027 // <dependency>
+	relation 130139 -_->
+	  a default
+	    cpp default "#include in header"
+	    classrelation_ref 136027 // <dependency>
+	  b parent class_ref 130264 // Wall
+      end
+
+      classrelation 136155 // <dependency>
+	relation 130267 -_->
+	  a default
+	    cpp default "#include in header"
+	    classrelation_ref 136155 // <dependency>
+	  b parent class_ref 129240 // Door
+      end
+
+      classrelation 136283 // <dependency>
+	relation 130395 -_->
+	  a default
+	    cpp default "#include in header"
+	    classrelation_ref 136283 // <dependency>
+	  b parent class_ref 129496 // Room
+      end
+
+      classrelation 136411 // <dependency>
+	relation 130523 -_->
+	  a default
+	    cpp default "#include in header"
+	    classrelation_ref 136411 // <dependency>
+	  b parent class_ref 128672 // Direction
+      end
+
+      classrelation 128003 // <dependency>
+	relation 128003 -_->
+	  a default
+	    cpp default "#include in header"
+	    classrelation_ref 128003 // <dependency>
+	  b parent class_ref 130136 // Maze
+      end
+    end
+
+    class 129496 "Room"
+      visibility package 
+      cpp_decl "${comment}${template}class ${name}${inherit}
+{
+${members}};
+${inlines}
+"
+      java_decl ""
+      php_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      operation 131416 "Room"
+	public explicit_return_type ""
+	nparams 1
+	  param in name "number" explicit_type "int"
+	cpp_decl "    ${comment}${inline}${name}${(}${t0} ${p0}${)}${volatile}${throw};
+"
+	cpp_def "${comment}${inline}${class}::${name}${(}${t0} ${p0}${)}${volatile}${throw} 
+{
+${body}}"
+	
+	
+	
+      end
+
+      operation 131544 "~Room"
+	cpp_virtual public explicit_return_type ""
+	nparams 0
+	cpp_decl "    ${comment}${inline}${virtual}${name}${(}${)}${volatile}${throw};
+"
+	cpp_def "${comment}${inline}${class}::${name}${(}${)}${volatile}${throw} 
+{
+${body}}"
+	
+	
+	
+      end
+
+      operation 131032 "enter"
+	cpp_virtual public explicit_return_type "void"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+	
+      end
+
+      operation 131672 "draw"
+	cpp_virtual public explicit_return_type "void"
+	nparams 2
+	  param in name "x" explicit_type "int"
+	  param in name "y" explicit_type "int"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${t0} ${p0}, ${t1} ${p1}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${t0} ${p0}, ${t1} ${p1}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+	
+      end
+
+      operation 131160 "setSide"
+	public explicit_return_type "void"
+	nparams 2
+	  param in name "direction" explicit_type "Direction"
+	  param inout name "map" type class_ref 129368 // MapSite
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${t0} ${p0}, ${t1} * ${p1}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${t0} ${p0}, ${t1} * ${p1}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+	
+      end
+
+      operation 131288 "getSide"
+	const public return_type class_ref 129368 // MapSite
+	nparams 1
+	  param in name "direction" explicit_type "Direction"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} * ${name}${(}${t0} ${p0}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} * ${class}::${name}${(}${t0} ${p0}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+	
+      end
+
+      operation 129399 "getDirection"
+	public return_type class_ref 128672 // Direction
+	nparams 1
+	  param in name "map" type class_ref 129368 // MapSite
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${t0} * ${p0}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${t0} * ${p0}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+	
+      end
+
+      operation 131800 "getNumber"
+	public explicit_return_type "int"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+	
+      end
+
+      classrelation 130008 // <generalisation>
+	relation 130008 ---|>
+	  a public
+	    cpp default "${type}"
+	    classrelation_ref 130008 // <generalisation>
+	  b parent class_ref 129368 // MapSite
+      end
+
+      attribute 130008 "roomNumber"
+	protected explicit_type "int"
+	cpp_decl "    ${comment}${static}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	java_decl ""
+	php_decl ""
+	idl_decl ""
+      end
+
+      classrelation 130136 // sides (<unidirectional association>)
+	relation 130136 --->
+	  a role_name "sides" multiplicity "[4]" protected
+	    cpp default "    ${comment}${static}${mutable}${volatile}${const}${type} * ${name}${multiplicity}${value};
+"
+	    classrelation_ref 130136 // sides (<unidirectional association>)
+	  b parent class_ref 129368 // MapSite
+      end
+
+      classrelation 129527 // <dependency>
+	relation 129527 -_->
+	  a package
+	    cpp default "#include in source"
+	    classrelation_ref 129527 // <dependency>
+	  b parent class_ref 129240 // Door
+      end
+    end
+
+    class 130264 "Wall"
+      visibility package 
+      cpp_decl "${comment}${template}class ${name}${inherit}
+{
+${members}};
+${inlines}
+"
+      java_decl ""
+      php_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      operation 132056 "Wall"
+	public explicit_return_type ""
+	nparams 0
+	cpp_decl "    ${comment}${inline}${name}${(}${)}${volatile}${throw};
+"
+	cpp_def "${comment}${inline}${class}::${name}${(}${)}${volatile}${throw} 
+{
+${body}}"
+	
+	
+	
+      end
+
+      operation 132184 "~Wall"
+	cpp_virtual public explicit_return_type ""
+	nparams 0
+	cpp_decl "    ${comment}${inline}${virtual}${name}${(}${)}${volatile}${throw};
+"
+	cpp_def "${comment}${inline}${class}::${name}${(}${)}${volatile}${throw} 
+{
+${body}}"
+	
+	
+	
+      end
+
+      operation 131928 "enter"
+	cpp_virtual public explicit_return_type "void"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+	
+      end
+
+      classrelation 130264 // <generalisation>
+	relation 130264 ---|>
+	  a public
+	    cpp default "${type}"
+	    classrelation_ref 130264 // <generalisation>
+	  b parent class_ref 129368 // MapSite
+      end
+    end
+  end
+
+  deploymentview 128032 "deploy"
+    //deployment diagram settings
+    package_name_in_tab default show_context default write_horizontally default auto_label_position default draw_all_relations default shadow default
+    draw_component_as_icon default show_component_req_prov default show_component_rea default
+    artifact 128672 "main"
+      stereotype "source"
+      cpp_h "${comment}
+#ifndef _${NAME}_H
+#define _${NAME}_H
+
+${all_includes}
+${declarations}
+${namespace_start}
+${definition}
+${namespace_end}
+#endif
+"
+      cpp_src "${comment}
+${includes}
+${namespace_start}
+${members}
+${namespace_end}"
+      associated_classes
+	class_ref 129184 // Test
+      end
+      comment "***************************************************************************
+  UML <Demo - GoF - Designer Patterns>
+  Copyright (C) 2007 by David Ferreira - FZ
+  davidferreira.fz@gmail.com - http://pjmoo.wiki.sourceforge.net/GoF
+***************************************************************************
+    Este programa é software livre; você pode redistribuí-lo e/ou
+    modificá-lo sob os termos da Licença Pública Geral GNU, conforme
+    publicada pela Free Software Foundation; tanto a versão 2 da 
+    Licença como (a seu critério) qualquer versão mais nova.
+***************************************************************************
+    This program is free software; you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation; either version 2 of the License, or 
+    (at your option) any later version.
+
+    You should have received a copy of the GNU General Public License
+    along with this program; if not, write to the
+    Free Software Foundation, Inc.,                                       
+    59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
+***************************************************************************"
+    end
+
+    artifact 128032 "Wall"
+      stereotype "source"
+      cpp_h "${comment}
+#ifndef _${NAME}_H
+#define _${NAME}_H
+
+${all_includes}
+${declarations}
+${namespace_start}
+${definition}
+${namespace_end}
+#endif
+"
+      cpp_src "${comment}
+${includes}
+${namespace_start}
+${members}
+${namespace_end}"
+      associated_classes
+	class_ref 130264 // Wall
+      end
+      comment "***************************************************************************
+  UML <Demo - GoF - Designer Patterns>
+  Copyright (C) 2007 by David Ferreira - FZ
+  davidferreira.fz@gmail.com - http://pjmoo.wiki.sourceforge.net/GoF
+***************************************************************************
+    Este programa é software livre; você pode redistribuí-lo e/ou
+    modificá-lo sob os termos da Licença Pública Geral GNU, conforme
+    publicada pela Free Software Foundation; tanto a versão 2 da 
+    Licença como (a seu critério) qualquer versão mais nova.
+***************************************************************************
+    This program is free software; you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation; either version 2 of the License, or 
+    (at your option) any later version.
+
+    You should have received a copy of the GNU General Public License
+    along with this program; if not, write to the
+    Free Software Foundation, Inc.,                                       
+    59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
+***************************************************************************"
+    end
+
+    artifact 128160 "Door"
+      stereotype "source"
+      cpp_h "${comment}
+#ifndef _${NAME}_H
+#define _${NAME}_H
+
+${all_includes}
+${declarations}
+${namespace_start}
+${definition}
+${namespace_end}
+#endif
+"
+      cpp_src "${comment}
+${includes}
+${namespace_start}
+${members}
+${namespace_end}"
+      associated_classes
+	class_ref 129240 // Door
+      end
+      comment "***************************************************************************
+  UML <Demo - GoF - Designer Patterns>
+  Copyright (C) 2007 by David Ferreira - FZ
+  davidferreira.fz@gmail.com - http://pjmoo.wiki.sourceforge.net/GoF
+***************************************************************************
+    Este programa é software livre; você pode redistribuí-lo e/ou
+    modificá-lo sob os termos da Licença Pública Geral GNU, conforme
+    publicada pela Free Software Foundation; tanto a versão 2 da 
+    Licença como (a seu critério) qualquer versão mais nova.
+***************************************************************************
+    This program is free software; you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation; either version 2 of the License, or 
+    (at your option) any later version.
+
+    You should have received a copy of the GNU General Public License
+    along with this program; if not, write to the
+    Free Software Foundation, Inc.,                                       
+    59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
+***************************************************************************"
+    end
+
+    artifact 128288 "MapSite"
+      stereotype "source"
+      cpp_h "${comment}
+#ifndef _${NAME}_H
+#define _${NAME}_H
+
+${all_includes}
+${declarations}
+${namespace_start}
+${definition}
+${namespace_end}
+#endif
+"
+      cpp_src "${comment}
+${includes}
+${namespace_start}
+${members}
+${namespace_end}"
+      associated_classes
+	class_ref 128672 // Direction
+	class_ref 129368 // MapSite
+      end
+      comment "***************************************************************************
+  UML <Demo - GoF - Designer Patterns>
+  Copyright (C) 2007 by David Ferreira - FZ
+  davidferreira.fz@gmail.com - http://pjmoo.wiki.sourceforge.net/GoF
+***************************************************************************
+    Este programa é software livre; você pode redistribuí-lo e/ou
+    modificá-lo sob os termos da Licença Pública Geral GNU, conforme
+    publicada pela Free Software Foundation; tanto a versão 2 da 
+    Licença como (a seu critério) qualquer versão mais nova.
+***************************************************************************
+    This program is free software; you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation; either version 2 of the License, or 
+    (at your option) any later version.
+
+    You should have received a copy of the GNU General Public License
+    along with this program; if not, write to the
+    Free Software Foundation, Inc.,                                       
+    59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
+***************************************************************************"
+    end
+
+    artifact 128416 "Room"
+      stereotype "source"
+      cpp_h "${comment}
+#ifndef _${NAME}_H
+#define _${NAME}_H
+
+${all_includes}
+${declarations}
+${namespace_start}
+${definition}
+${namespace_end}
+#endif
+"
+      cpp_src "${comment}
+${includes}
+${namespace_start}
+${members}
+${namespace_end}"
+      associated_classes
+	class_ref 129496 // Room
+      end
+      comment "***************************************************************************
+  UML <Demo - GoF - Designer Patterns>
+  Copyright (C) 2007 by David Ferreira - FZ
+  davidferreira.fz@gmail.com - http://pjmoo.wiki.sourceforge.net/GoF
+***************************************************************************
+    Este programa é software livre; você pode redistribuí-lo e/ou
+    modificá-lo sob os termos da Licença Pública Geral GNU, conforme
+    publicada pela Free Software Foundation; tanto a versão 2 da 
+    Licença como (a seu critério) qualquer versão mais nova.
+***************************************************************************
+    This program is free software; you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation; either version 2 of the License, or 
+    (at your option) any later version.
+
+    You should have received a copy of the GNU General Public License
+    along with this program; if not, write to the
+    Free Software Foundation, Inc.,                                       
+    59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
+***************************************************************************"
+    end
+
+    artifact 129258 "Maze"
+      stereotype "source"
+      cpp_h "${comment}
+#ifndef _${NAME}_H
+#define _${NAME}_H
+
+${all_includes}
+${declarations}
+${namespace_start}
+${definition}
+${namespace_end}
+#endif
+"
+      cpp_src "${comment}
+${includes}
+${namespace_start}
+${members}
+${namespace_end}"
+      associated_classes
+	class_ref 130136 // Maze
+      end
+      comment "***************************************************************************
+  UML <Demo - GoF - Designer Patterns>
+  Copyright (C) 2007 by David Ferreira - FZ
+  davidferreira.fz@gmail.com - http://pjmoo.wiki.sourceforge.net/GoF
+***************************************************************************
+    Este programa é software livre; você pode redistribuí-lo e/ou
+    modificá-lo sob os termos da Licença Pública Geral GNU, conforme
+    publicada pela Free Software Foundation; tanto a versão 2 da 
+    Licença como (a seu critério) qualquer versão mais nova.
+***************************************************************************
+    This program is free software; you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation; either version 2 of the License, or 
+    (at your option) any later version.
+
+    You should have received a copy of the GNU General Public License
+    along with this program; if not, write to the
+    Free Software Foundation, Inc.,                                       
+    59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
+***************************************************************************"
+    end
+
+    artifact 129243 "MazeGame"
+      stereotype "source"
+      cpp_h "${comment}
+#ifndef _${NAME}_H
+#define _${NAME}_H
+
+${all_includes}
+${declarations}
+${namespace_start}
+${definition}
+${namespace_end}
+#endif
+"
+      cpp_src "${comment}
+${includes}
+${namespace_start}
+${members}
+${namespace_end}"
+      associated_classes
+	class_ref 129243 // MazeGame
+      end
+      comment "***************************************************************************
+  UML <Demo - GoF - Designer Patterns>
+  Copyright (C) 2007 by David Ferreira - FZ
+  davidferreira.fz@gmail.com - http://pjmoo.wiki.sourceforge.net/GoF
+***************************************************************************
+    Este programa é software livre; você pode redistribuí-lo e/ou
+    modificá-lo sob os termos da Licença Pública Geral GNU, conforme
+    publicada pela Free Software Foundation; tanto a versão 2 da 
+    Licença como (a seu critério) qualquer versão mais nova.
+***************************************************************************
+    This program is free software; you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation; either version 2 of the License, or 
+    (at your option) any later version.
+
+    You should have received a copy of the GNU General Public License
+    along with this program; if not, write to the
+    Free Software Foundation, Inc.,                                       
+    59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
+***************************************************************************"
+    end
+  end
+end

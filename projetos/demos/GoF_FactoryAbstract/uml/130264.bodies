@@ -1,8 +1,0 @@
-class Wall
-!!!132056.cpp!!!	Wall()
-    SpriteFactory  *spriteFactory = new SpriteFactory(graphicSystem->imageBufferManager->getImageBuffer("tiles"));
-    sprite = spriteFactory->criarSpriteItem(0,0,32,32,1,1);
-
-    delete(spriteFactory);
-!!!132184.cpp!!!	~Wall()
-

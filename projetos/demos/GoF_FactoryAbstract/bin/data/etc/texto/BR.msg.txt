@@ -1,7 +1,0 @@
-#Arquivo de Textos
-#Português Brasil
-#LANG=pt_BR
-
-message=GoF - Exemplo com GBF - http://davidferreira-fz.blogspot.com
-
-

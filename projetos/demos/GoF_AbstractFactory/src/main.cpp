@@ -31,6 +31,10 @@ int main(int argc, char * argv[])
 //carregando imagens
     frameworkGBF.graphicSystemCore->graphicSystem->imageBufferManager->carregar("tiles","//data//imagem//tiles.png");
 
+//configurando suporte a idiomas
+    frameworkGBF.writeSystem->uiTexto->setArquivo("msg.txt");
+    frameworkGBF.writeSystem->uiTexto->detectarIdioma();
+
 
     MazeGame mazeGame;
     Maze * aMaze = mazeGame.create();
@@ -43,6 +47,9 @@ int main(int argc, char * argv[])
         }
 
         aMaze->draw();
+
+        //write
+        frameworkGBF.writeSystem->escreverLocalizado(WriteSystemManager::defaultFont,10,440,"message");
 
         //realiza refresh, fps, flip
         frameworkGBF.atualizar();

@@ -1,7 +1,7 @@
 format 48
 "GoF - AbstractFactory" // GoF - AbstractFactory
-  revision 12
-  modified_by 15 "david"
+  revision 13
+  modified_by 57 "david"
   // class settings
   //class diagram settings
   draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_infonote default shadow default
@@ -26,8 +26,8 @@ format 48
   package_name_in_tab default show_context default show_opaque_action_definition default auto_label_position default write_flow_label_horizontally default draw_all_relations default shadow default
   show_infonote default drawing_language default
   
-  cpp_h_dir "/home/desenvolvimento/pjmoo/projetos/demos/GoF_FactoryAbstract/src/"
-  cpp_src_dir "/home/desenvolvimento/pjmoo/projetos/demos/GoF_FactoryAbstract/src/"
+  cpp_h_dir "/home/desenvolvimento/pjmoo/projetos/demos/GoF_AbstractFactory/src/"
+  cpp_src_dir "/home/desenvolvimento/pjmoo/projetos/demos/GoF_AbstractFactory/src/"
   classview 128032 "classes"
     //class diagram settings
     draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_infonote default shadow default

@@ -1,0 +1,90 @@
+#Arquivo de Textos
+#Português Brasil
+
+
+#Menu::Menu
+menu_1=SOBRE
+menu_2=JOGAR
+menu_3=CREDITO
+menu_4=AJUDA
+menu_5=SAIR
+
+#Titulos
+titulo_sobre=SOBRE
+titulo_ajuda=AJUDA
+titulo_credito=CREDITO
+titulo_pause=PAUSE
+
+
+#botao
+botao_enter=[ENTER]
+
+
+#Jogo::menuSobre
+tela_sobre_01=  Pancada, é um jogo de boxing baseado no
+tela_sobre_02=clássico jogo de boxing do atari 2600.
+tela_sobre_03= 
+tela_sobre_04=  É um jogo individual, onde o jogador
+tela_sobre_05=deverá  passar  por cinco desafios para
+tela_sobre_06=consagrar-se  campeão internacional  do
+tela_sobre_07=torneio "DukItan Boxing Club".
+
+
+#Jogo::menuAjuda
+tela_ajuda_01=  Os controles do jogo são simples e 
+tela_ajuda_02=baseados no uso das setas e botões,
+tela_ajuda_03=podendo ser utilizado tanto o teclado
+tela_ajuda_04=(setas direcionais) quanto o Joystick.
+tela_ajuda_05= 
+tela_ajuda_06=  Para acionar as ações de soco:
+tela_ajuda_07=     *Esquerdo: "Botão 1" ou Tecla "A"
+tela_ajuda_08=     *Direito:  "Botão 2" ou Tecla "D"
+
+
+#Jogo::menuCredito
+tela_credito_01=*Desenvolvedor:
+tela_credito_02=    David de Almeida Ferreira
+tela_credito_03=    <davidferreira.fz@gmail.com>
+tela_credito_04=    <http://pjmoo.sourceforge.net>
+tela_credito_05= 
+tela_credito_06=*Ferramentas:
+tela_credito_07=    GNU Compiler/MinGW, CodeBlocks,
+tela_credito_08=    BoUML e F2IBuilder
+tela_credito_09=*Bibliotecas:
+tela_credito_10=  GBF & SDL (Mixer/Image)
+
+
+#Jogo::jogoPause
+tela_pause_01=Pancada está em modo de Pausa.
+tela_pause_02= Para continuar aperte [ENTER]
+tela_pause_03= 
+tela_pause_04= Veja mais informações no site:
+tela_pause_05= 
+tela_pause_06=http://pjmoo.sourceforge.net
+
+
+#Jogo::jogoZerado
+tela_zerado_01=Parabéns!
+tela_zerado_02=Você é o novo campeão do
+tela_zerado_03=torneio 'DukItan Boxing Club'.
+
+
+#Jogo::jogoGameOver
+tela_gameover_01=GAME OVER!!!
+tela_gameover_02=GAME OVER!!! GAME OVER!!!
+tela_gameover_03= 
+tela_gameover_04=Você não está qualificado para
+tela_gameover_05=o torneio 'DukItan Boxing Club'.
+
+
+#Jogo::jogoFaseFinalizada
+tela_fasefinalizada_01=Parabéns
+tela_fasefinalizada_02= 
+tela_fasefinalizada_03=Você teve sorte, conseguiu
+tela_fasefinalizada_04=derrotar um lutador do 
+tela_fasefinalizada_05="Boxing Club"
+
+
+
+
+

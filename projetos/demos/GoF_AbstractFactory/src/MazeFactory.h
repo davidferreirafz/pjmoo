@@ -18,21 +18,28 @@
 //    Free Software Foundation, Inc.,                                       
 //    59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 //***************************************************************************
-#ifndef _MAIN_H
-#define _MAIN_H
-
-#include <GBF/GBF.h>
+#ifndef _MAZEFACTORY_H
+#define _MAZEFACTORY_H
 
 #include "Maze.h"
-#include "MazeGame.h"
-#include "MazeFactory.h"
-#include "EnchantedMazeFactory.h"
-#include "BombedMazeFactory.h"
+#include "Wall.h"
+#include "Room.h"
+#include "Door.h"
 
-class Test
+class MazeFactory
 {
   public:
-    int main(int argc, char * argv[]);
+    MazeFactory();
+
+    virtual ~MazeFactory();
+
+    virtual Maze * makeMaze();
+
+    virtual Wall * makeWall();
+
+    virtual Room * makeRoom(int number);
+
+    virtual Door * makeDoor(Room * room1, Room * room2);
 
 };
 #endif

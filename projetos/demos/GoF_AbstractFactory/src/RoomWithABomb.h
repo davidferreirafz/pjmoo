@@ -18,21 +18,17 @@
 //    Free Software Foundation, Inc.,                                       
 //    59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 //***************************************************************************
-#ifndef _MAIN_H
-#define _MAIN_H
+#ifndef _ROOMWITHABOMB_H
+#define _ROOMWITHABOMB_H
 
-#include <GBF/GBF.h>
+#include "Room.h"
 
-#include "Maze.h"
-#include "MazeGame.h"
-#include "MazeFactory.h"
-#include "EnchantedMazeFactory.h"
-#include "BombedMazeFactory.h"
-
-class Test
+class RoomWithABomb : public Room
 {
   public:
-    int main(int argc, char * argv[]);
+    RoomWithABomb(int number);
+
+    virtual ~RoomWithABomb();
 
 };
 #endif

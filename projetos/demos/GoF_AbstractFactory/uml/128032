@@ -1,7 +1,7 @@
 format 48
 "GoF - AbstractFactory" // GoF - AbstractFactory
-  revision 13
-  modified_by 57 "david"
+  revision 16
+  modified_by 90 "david"
   // class settings
   //class diagram settings
   draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_infonote default shadow default
@@ -106,6 +106,31 @@ ${body}}"
 	    classrelation_ref 136539 // <dependency>
 	  b parent class_ref 129243 // MazeGame
       end
+
+      classrelation 129416 // <dependency>
+	relation 129416 -_->
+	  a package
+	    cpp default "#include in header"
+	    classrelation_ref 129416 // <dependency>
+	  b parent class_ref 128008 // MazeFactory
+      end
+
+      classrelation 129544 // <dependency>
+	relation 129544 -_->
+	  a package
+	    cpp default "#include in header"
+	    classrelation_ref 129544 // <dependency>
+	  b parent class_ref 128136 // EnchantedMazeFactory
+      end
+
+      classrelation 128602 // <dependency>
+	relation 128090 -_->
+	  a package
+	    cpp default "#include in header"
+	    classrelation_ref 128602 // <dependency>
+	  b parent class_ref 129213 // BombedMazeFactory
+      end
+
     end
 
     class 128672 "Direction"
@@ -488,10 +513,11 @@ ${body}}"
 
       operation 129499 "create"
 	public return_type class_ref 130136 // Maze
-	nparams 0
-	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} * ${name}${(}${)}${const}${volatile}${throw}${abstract};
+	nparams 1
+	  param in name "factory" type class_ref 128008 // MazeFactory
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} * ${name}${(}${t0} & ${p0}${)}${const}${volatile}${throw}${abstract};
 "
-	cpp_def "${comment}${inline}${type} * ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}
+	cpp_def "${comment}${inline}${type} * ${class}::${name}${(}${t0} & ${p0}${)}${const}${volatile}${throw}${staticnl}
 {
 ${body}}"
 	
@@ -537,6 +563,14 @@ ${body}}"
 	    cpp default "#include in header"
 	    classrelation_ref 128003 // <dependency>
 	  b parent class_ref 130136 // Maze
+      end
+
+      classrelation 128008 // <dependency>
+	relation 128008 -_->
+	  a default
+	    cpp default "#include in source"
+	    classrelation_ref 128008 // <dependency>
+	  b parent class_ref 128008 // MazeFactory
       end
     end
 
@@ -755,6 +789,506 @@ ${body}}"
 	    cpp default "${type}"
 	    classrelation_ref 130264 // <generalisation>
 	  b parent class_ref 129368 // MapSite
+      end
+    end
+
+    class 128008 "MazeFactory"
+      visibility package 
+      cpp_decl "${comment}${template}class ${name}${inherit}
+{
+${members}};
+${inlines}
+"
+      java_decl ""
+      php_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      operation 128008 "MazeFactory"
+	public explicit_return_type ""
+	nparams 0
+	cpp_decl "    ${comment}${inline}${name}${(}${)}${volatile}${throw};
+"
+	cpp_def "${comment}${inline}${class}::${name}${(}${)}${volatile}${throw} 
+{
+${body}}"
+	
+	
+	
+      end
+
+      operation 128136 "~MazeFactory"
+	cpp_virtual public explicit_return_type ""
+	nparams 0
+	cpp_decl "    ${comment}${inline}${virtual}${name}${(}${)}${volatile}${throw};
+"
+	cpp_def "${comment}${inline}${class}::${name}${(}${)}${volatile}${throw} 
+{
+${body}}"
+	
+	
+	
+      end
+
+      operation 128264 "makeMaze"
+	cpp_virtual public return_type class_ref 130136 // Maze
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} * ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} * ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+	
+      end
+
+      operation 128392 "makeWall"
+	cpp_virtual public return_type class_ref 130264 // Wall
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} * ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} * ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+	
+      end
+
+      operation 128520 "makeRoom"
+	cpp_virtual public return_type class_ref 129496 // Room
+	nparams 1
+	  param in name "number" explicit_type "int"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} * ${name}${(}${t0} ${p0}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} * ${class}::${name}${(}${t0} ${p0}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+	
+      end
+
+      operation 128648 "makeDoor"
+	cpp_virtual public return_type class_ref 129240 // Door
+	nparams 2
+	  param in name "room1" type class_ref 129496 // Room
+	  param in name "room2" type class_ref 129496 // Room
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} * ${name}${(}${t0} * ${p0}, ${t1} * ${p1}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} * ${class}::${name}${(}${t0} * ${p0}, ${t1} * ${p1}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+	
+      end
+
+      classrelation 128136 // <dependency>
+	relation 128136 -_->
+	  a package
+	    cpp default "#include in header"
+	    classrelation_ref 128136 // <dependency>
+	  b parent class_ref 129240 // Door
+      end
+
+      classrelation 128264 // <dependency>
+	relation 128264 -_->
+	  a default
+	    cpp default "#include in source"
+	    classrelation_ref 128264 // <dependency>
+	  b parent class_ref 130264 // Wall
+      end
+
+      classrelation 128392 // <dependency>
+	relation 128392 -_->
+	  a default
+	    cpp default "#include in source"
+	    classrelation_ref 128392 // <dependency>
+	  b parent class_ref 129496 // Room
+      end
+
+      classrelation 128520 // <dependency>
+	relation 128520 -_->
+	  a default
+	    cpp default "#include in source"
+	    classrelation_ref 128520 // <dependency>
+	  b parent class_ref 130136 // Maze
+      end
+    end
+
+    class 128136 "EnchantedMazeFactory"
+      visibility package 
+      cpp_decl "${comment}${template}class ${name}${inherit}
+{
+${members}};
+${inlines}
+"
+      java_decl ""
+      php_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      classrelation 128648 // <generalisation>
+	relation 128648 ---|>
+	  a public
+	    cpp default "${type}"
+	    classrelation_ref 128648 // <generalisation>
+	  b parent class_ref 128008 // MazeFactory
+      end
+
+      operation 129032 "EnchantedMazeFactory"
+	public explicit_return_type ""
+	nparams 0
+	cpp_decl "    ${comment}${inline}${name}${(}${)}${volatile}${throw};
+"
+	cpp_def "${comment}${inline}${class}::${name}${(}${)}${volatile}${throw} 
+{
+${body}}"
+	
+	
+	
+      end
+
+      operation 129160 "~EnchantedMazeFactory"
+	cpp_virtual public explicit_return_type ""
+	nparams 0
+	cpp_decl "    ${comment}${inline}${virtual}${name}${(}${)}${volatile}${throw};
+"
+	cpp_def "${comment}${inline}${class}::${name}${(}${)}${volatile}${throw} 
+{
+${body}}"
+	
+	
+	
+      end
+
+      classrelation 129160 // <dependency>
+	relation 129160 -_->
+	  a package
+	    cpp default "#include in header"
+	    classrelation_ref 129160 // <dependency>
+	  b parent class_ref 128392 // EnchantedRoom
+      end
+
+      classrelation 129288 // <dependency>
+	relation 129288 -_->
+	  a package
+	    cpp default "#include in header"
+	    classrelation_ref 129288 // <dependency>
+	  b parent class_ref 128520 // EnchantedDoor
+      end
+
+      operation 129288 "makeRoom"
+	public return_type class_ref 129496 // Room
+	nparams 1
+	  param in name "number" explicit_type "int"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} * ${name}${(}${t0} ${p0}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} * ${class}::${name}${(}${t0} ${p0}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+	
+      end
+
+      operation 129416 "makeDoor"
+	public return_type class_ref 129240 // Door
+	nparams 2
+	  param in name "room1" type class_ref 129496 // Room
+	  param in name "room2" type class_ref 129496 // Room
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} * ${name}${(}${t0} * ${p0}, ${t1} * ${p1}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} * ${class}::${name}${(}${t0} * ${p0}, ${t1} * ${p1}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+	
+      end
+    end
+
+    class 128392 "EnchantedRoom"
+      visibility package 
+      cpp_decl "${comment}${template}class ${name}${inherit}
+{
+${members}};
+${inlines}
+"
+      java_decl ""
+      php_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      classrelation 129032 // <generalisation>
+	relation 129032 ---|>
+	  a public
+	    cpp default "${type}"
+	    classrelation_ref 129032 // <generalisation>
+	  b parent class_ref 129496 // Room
+      end
+
+      operation 129544 "EnchantedRoom"
+	public explicit_return_type ""
+	nparams 1
+	  param in name "number" explicit_type "int"
+	cpp_decl "    ${comment}${inline}${name}${(}${t0} ${p0}${)}${volatile}${throw};
+"
+	cpp_def "${comment}${inline}${class}::${name}${(}${t0} ${p0}${)}${volatile}${throw} : Room(${p0})
+{
+${body}}"
+	
+	
+	
+      end
+
+      operation 129672 "~EnchantedRoom"
+	cpp_virtual public explicit_return_type ""
+	nparams 0
+	cpp_decl "    ${comment}${inline}${virtual}${name}${(}${)}${volatile}${throw};
+"
+	cpp_def "${comment}${inline}${class}::${name}${(}${)}${volatile}${throw} 
+{
+${body}}"
+	
+	
+	
+      end
+    end
+
+    class 128520 "EnchantedDoor"
+      visibility package 
+      cpp_decl "${comment}${template}class ${name}${inherit}
+{
+${members}};
+${inlines}
+"
+      java_decl ""
+      php_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      classrelation 128904 // <generalisation>
+	relation 128904 ---|>
+	  a public
+	    cpp default "${type}"
+	    classrelation_ref 128904 // <generalisation>
+	  b parent class_ref 129240 // Door
+      end
+
+      operation 129800 "EnchantedDoor"
+	public explicit_return_type ""
+	nparams 2
+	  param in name "room1" type class_ref 129496 // Room
+	  param in name "room2" type class_ref 129496 // Room
+	cpp_decl "    ${comment}${inline}${name}${(}${t0} * ${p0}, ${t1} * ${p1}${)}${volatile}${throw};
+"
+	cpp_def "${comment}${inline}${class}::${name}${(}${t0} * ${p0}, ${t1} * ${p1}${)}${volatile}${throw} : Door(${p0},${p1})
+{
+${body}}"
+	
+	
+	
+      end
+
+      operation 129928 "~EnchantedDoor"
+	cpp_virtual public explicit_return_type ""
+	nparams 0
+	cpp_decl "    ${comment}${inline}${virtual}${name}${(}${)}${volatile}${throw};
+"
+	cpp_def "${comment}${inline}${class}::${name}${(}${)}${volatile}${throw} 
+{
+${body}}"
+	
+	
+	
+      end
+    end
+
+    class 129213 "BombedMazeFactory"
+      visibility package 
+      cpp_decl "${comment}${template}class ${name}${inherit}
+{
+${members}};
+${inlines}
+"
+      java_decl ""
+      php_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      classrelation 129213 // <generalisation>
+	relation 129213 ---|>
+	  a public
+	    cpp default "${type}"
+	    classrelation_ref 129213 // <generalisation>
+	  b parent class_ref 128008 // MazeFactory
+      end
+
+      classrelation 129597 // <dependency>
+	relation 129597 -_->
+	  a package
+	    cpp default "#include in header"
+	    classrelation_ref 129597 // <dependency>
+	  b parent class_ref 129469 // RoomWithABomb
+      end
+
+      classrelation 129725 // <dependency>
+	relation 129725 -_->
+	  a package
+	    cpp default "#include in header"
+	    classrelation_ref 129725 // <dependency>
+	  b parent class_ref 129341 // BombedWall
+      end
+
+      operation 129213 "BombedMazeFactory"
+	public explicit_return_type ""
+	nparams 0
+	cpp_decl "    ${comment}${inline}${name}${(}${)}${volatile}${throw};
+"
+	cpp_def "${comment}${inline}${class}::${name}${(}${)}${volatile}${throw} 
+{
+${body}}"
+	
+	
+	
+      end
+
+      operation 129341 "~BombedMazeFactory"
+	cpp_virtual public explicit_return_type ""
+	nparams 0
+	cpp_decl "    ${comment}${inline}${virtual}${name}${(}${)}${volatile}${throw};
+"
+	cpp_def "${comment}${inline}${class}::${name}${(}${)}${volatile}${throw} 
+{
+${body}}"
+	
+	
+	
+      end
+
+      operation 128090 "makeWall"
+	cpp_virtual public return_type class_ref 130264 // Wall
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} * ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} * ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+	
+      end
+
+      operation 128218 "makeRoom"
+	cpp_virtual public return_type class_ref 129496 // Room
+	nparams 1
+	  param in name "number" explicit_type "int"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} * ${name}${(}${t0} ${p0}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} * ${class}::${name}${(}${t0} ${p0}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+	
+      end
+    end
+
+    class 129341 "BombedWall"
+      visibility package 
+      cpp_decl "${comment}${template}class ${name}${inherit}
+{
+${members}};
+${inlines}
+"
+      java_decl ""
+      php_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      classrelation 129469 // <generalisation>
+	relation 129469 ---|>
+	  a public
+	    cpp default "${type}"
+	    classrelation_ref 129469 // <generalisation>
+	  b parent class_ref 130264 // Wall
+      end
+
+      operation 129725 "BombedWall"
+	public explicit_return_type ""
+	nparams 0
+	cpp_decl "    ${comment}${inline}${name}${(}${)}${volatile}${throw};
+"
+	cpp_def "${comment}${inline}${class}::${name}${(}${)}${volatile}${throw} 
+{
+${body}}"
+	
+	
+	
+      end
+
+      operation 129853 "~BombedWall"
+	cpp_virtual public explicit_return_type ""
+	nparams 0
+	cpp_decl "    ${comment}${inline}${virtual}${name}${(}${)}${volatile}${throw};
+"
+	cpp_def "${comment}${inline}${class}::${name}${(}${)}${volatile}${throw} 
+{
+${body}}"
+	
+	
+	
+      end
+    end
+
+    class 129469 "RoomWithABomb"
+      visibility package 
+      cpp_decl "${comment}${template}class ${name}${inherit}
+{
+${members}};
+${inlines}
+"
+      java_decl ""
+      php_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      classrelation 129341 // <generalisation>
+	relation 129341 ---|>
+	  a public
+	    cpp default "${type}"
+	    classrelation_ref 129341 // <generalisation>
+	  b parent class_ref 129496 // Room
+      end
+
+      operation 129469 "RoomWithABomb"
+	public explicit_return_type ""
+	nparams 1
+	  param in name "number" explicit_type "int"
+	cpp_decl "    ${comment}${inline}${name}${(}${t0} ${p0}${)}${volatile}${throw};
+"
+	cpp_def "${comment}${inline}${class}::${name}${(}${t0} ${p0}${)}${volatile}${throw} : Room(${p0})
+{
+${body}}"
+	
+	
+	
+      end
+
+      operation 129597 "~RoomWithABomb"
+	cpp_virtual public explicit_return_type ""
+	nparams 0
+	cpp_decl "    ${comment}${inline}${virtual}${name}${(}${)}${volatile}${throw};
+"
+	cpp_def "${comment}${inline}${class}::${name}${(}${)}${volatile}${throw} 
+{
+${body}}"
+	
+	
+	
       end
     end
   end
@@ -1042,6 +1576,307 @@ ${members}
 ${namespace_end}"
       associated_classes
 	class_ref 129243 // MazeGame
+      end
+      comment "***************************************************************************
+  UML <Demo - GoF - Designer Patterns>
+  Copyright (C) 2007 by David Ferreira - FZ
+  davidferreira.fz@gmail.com - http://pjmoo.wiki.sourceforge.net/GoF
+***************************************************************************
+    Este programa é software livre; você pode redistribuí-lo e/ou
+    modificá-lo sob os termos da Licença Pública Geral GNU, conforme
+    publicada pela Free Software Foundation; tanto a versão 2 da 
+    Licença como (a seu critério) qualquer versão mais nova.
+***************************************************************************
+    This program is free software; you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation; either version 2 of the License, or 
+    (at your option) any later version.
+
+    You should have received a copy of the GNU General Public License
+    along with this program; if not, write to the
+    Free Software Foundation, Inc.,                                       
+    59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
+***************************************************************************"
+    end
+
+    artifact 128008 "MazeFactory"
+      stereotype "source"
+      cpp_h "${comment}
+#ifndef _${NAME}_H
+#define _${NAME}_H
+
+${all_includes}
+${declarations}
+${namespace_start}
+${definition}
+${namespace_end}
+#endif
+"
+      cpp_src "${comment}
+${includes}
+${namespace_start}
+${members}
+${namespace_end}"
+      associated_classes
+	class_ref 128008 // MazeFactory
+      end
+      comment "***************************************************************************
+  UML <Demo - GoF - Designer Patterns>
+  Copyright (C) 2007 by David Ferreira - FZ
+  davidferreira.fz@gmail.com - http://pjmoo.wiki.sourceforge.net/GoF
+***************************************************************************
+    Este programa é software livre; você pode redistribuí-lo e/ou
+    modificá-lo sob os termos da Licença Pública Geral GNU, conforme
+    publicada pela Free Software Foundation; tanto a versão 2 da 
+    Licença como (a seu critério) qualquer versão mais nova.
+***************************************************************************
+    This program is free software; you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation; either version 2 of the License, or 
+    (at your option) any later version.
+
+    You should have received a copy of the GNU General Public License
+    along with this program; if not, write to the
+    Free Software Foundation, Inc.,                                       
+    59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
+***************************************************************************"
+    end
+
+    artifact 128136 "EnchantedRoom"
+      stereotype "source"
+      cpp_h "${comment}
+#ifndef _${NAME}_H
+#define _${NAME}_H
+
+${all_includes}
+${declarations}
+${namespace_start}
+${definition}
+${namespace_end}
+#endif
+"
+      cpp_src "${comment}
+${includes}
+${namespace_start}
+${members}
+${namespace_end}"
+      associated_classes
+	class_ref 128392 // EnchantedRoom
+      end
+      comment "***************************************************************************
+  UML <Demo - GoF - Designer Patterns>
+  Copyright (C) 2007 by David Ferreira - FZ
+  davidferreira.fz@gmail.com - http://pjmoo.wiki.sourceforge.net/GoF
+***************************************************************************
+    Este programa é software livre; você pode redistribuí-lo e/ou
+    modificá-lo sob os termos da Licença Pública Geral GNU, conforme
+    publicada pela Free Software Foundation; tanto a versão 2 da 
+    Licença como (a seu critério) qualquer versão mais nova.
+***************************************************************************
+    This program is free software; you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation; either version 2 of the License, or 
+    (at your option) any later version.
+
+    You should have received a copy of the GNU General Public License
+    along with this program; if not, write to the
+    Free Software Foundation, Inc.,                                       
+    59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
+***************************************************************************"
+    end
+
+    artifact 128264 "EnchantedDoor"
+      stereotype "source"
+      cpp_h "${comment}
+#ifndef _${NAME}_H
+#define _${NAME}_H
+
+${all_includes}
+${declarations}
+${namespace_start}
+${definition}
+${namespace_end}
+#endif
+"
+      cpp_src "${comment}
+${includes}
+${namespace_start}
+${members}
+${namespace_end}"
+      associated_classes
+	class_ref 128520 // EnchantedDoor
+      end
+      comment "***************************************************************************
+  UML <Demo - GoF - Designer Patterns>
+  Copyright (C) 2007 by David Ferreira - FZ
+  davidferreira.fz@gmail.com - http://pjmoo.wiki.sourceforge.net/GoF
+***************************************************************************
+    Este programa é software livre; você pode redistribuí-lo e/ou
+    modificá-lo sob os termos da Licença Pública Geral GNU, conforme
+    publicada pela Free Software Foundation; tanto a versão 2 da 
+    Licença como (a seu critério) qualquer versão mais nova.
+***************************************************************************
+    This program is free software; you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation; either version 2 of the License, or 
+    (at your option) any later version.
+
+    You should have received a copy of the GNU General Public License
+    along with this program; if not, write to the
+    Free Software Foundation, Inc.,                                       
+    59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
+***************************************************************************"
+    end
+
+    artifact 128392 "EnchantedMazeFactory"
+      stereotype "source"
+      cpp_h "${comment}
+#ifndef _${NAME}_H
+#define _${NAME}_H
+
+${all_includes}
+${declarations}
+${namespace_start}
+${definition}
+${namespace_end}
+#endif
+"
+      cpp_src "${comment}
+${includes}
+${namespace_start}
+${members}
+${namespace_end}"
+      associated_classes
+	class_ref 128136 // EnchantedMazeFactory
+      end
+      comment "***************************************************************************
+  UML <Demo - GoF - Designer Patterns>
+  Copyright (C) 2007 by David Ferreira - FZ
+  davidferreira.fz@gmail.com - http://pjmoo.wiki.sourceforge.net/GoF
+***************************************************************************
+    Este programa é software livre; você pode redistribuí-lo e/ou
+    modificá-lo sob os termos da Licença Pública Geral GNU, conforme
+    publicada pela Free Software Foundation; tanto a versão 2 da 
+    Licença como (a seu critério) qualquer versão mais nova.
+***************************************************************************
+    This program is free software; you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation; either version 2 of the License, or 
+    (at your option) any later version.
+
+    You should have received a copy of the GNU General Public License
+    along with this program; if not, write to the
+    Free Software Foundation, Inc.,                                       
+    59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
+***************************************************************************"
+    end
+
+    artifact 128520 "BombedMazeFactory"
+      stereotype "source"
+      cpp_h "${comment}
+#ifndef _${NAME}_H
+#define _${NAME}_H
+
+${all_includes}
+${declarations}
+${namespace_start}
+${definition}
+${namespace_end}
+#endif
+"
+      cpp_src "${comment}
+${includes}
+${namespace_start}
+${members}
+${namespace_end}"
+      associated_classes
+	class_ref 129213 // BombedMazeFactory
+      end
+      comment "***************************************************************************
+  UML <Demo - GoF - Designer Patterns>
+  Copyright (C) 2007 by David Ferreira - FZ
+  davidferreira.fz@gmail.com - http://pjmoo.wiki.sourceforge.net/GoF
+***************************************************************************
+    Este programa é software livre; você pode redistribuí-lo e/ou
+    modificá-lo sob os termos da Licença Pública Geral GNU, conforme
+    publicada pela Free Software Foundation; tanto a versão 2 da 
+    Licença como (a seu critério) qualquer versão mais nova.
+***************************************************************************
+    This program is free software; you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation; either version 2 of the License, or 
+    (at your option) any later version.
+
+    You should have received a copy of the GNU General Public License
+    along with this program; if not, write to the
+    Free Software Foundation, Inc.,                                       
+    59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
+***************************************************************************"
+    end
+
+    artifact 128090 "RoomWithABomb"
+      stereotype "source"
+      cpp_h "${comment}
+#ifndef _${NAME}_H
+#define _${NAME}_H
+
+${all_includes}
+${declarations}
+${namespace_start}
+${definition}
+${namespace_end}
+#endif
+"
+      cpp_src "${comment}
+${includes}
+${namespace_start}
+${members}
+${namespace_end}"
+      associated_classes
+	class_ref 129469 // RoomWithABomb
+      end
+      comment "***************************************************************************
+  UML <Demo - GoF - Designer Patterns>
+  Copyright (C) 2007 by David Ferreira - FZ
+  davidferreira.fz@gmail.com - http://pjmoo.wiki.sourceforge.net/GoF
+***************************************************************************
+    Este programa é software livre; você pode redistribuí-lo e/ou
+    modificá-lo sob os termos da Licença Pública Geral GNU, conforme
+    publicada pela Free Software Foundation; tanto a versão 2 da 
+    Licença como (a seu critério) qualquer versão mais nova.
+***************************************************************************
+    This program is free software; you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation; either version 2 of the License, or 
+    (at your option) any later version.
+
+    You should have received a copy of the GNU General Public License
+    along with this program; if not, write to the
+    Free Software Foundation, Inc.,                                       
+    59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
+***************************************************************************"
+    end
+
+    artifact 128218 "BombedWall"
+      stereotype "source"
+      cpp_h "${comment}
+#ifndef _${NAME}_H
+#define _${NAME}_H
+
+${all_includes}
+${declarations}
+${namespace_start}
+${definition}
+${namespace_end}
+#endif
+"
+      cpp_src "${comment}
+${includes}
+${namespace_start}
+${members}
+${namespace_end}"
+      associated_classes
+	class_ref 129341 // BombedWall
       end
       comment "***************************************************************************
   UML <Demo - GoF - Designer Patterns>

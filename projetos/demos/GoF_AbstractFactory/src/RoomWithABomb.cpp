@@ -18,21 +18,18 @@
 //    Free Software Foundation, Inc.,                                       
 //    59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 //***************************************************************************
-#ifndef _MAIN_H
-#define _MAIN_H
+#include "RoomWithABomb.h"
 
-#include <GBF/GBF.h>
-
-#include "Maze.h"
-#include "MazeGame.h"
-#include "MazeFactory.h"
-#include "EnchantedMazeFactory.h"
-#include "BombedMazeFactory.h"
-
-class Test
+RoomWithABomb::RoomWithABomb(int number) : Room(number)
 {
-  public:
-    int main(int argc, char * argv[]);
+    if (sprite){
+        delete(sprite);
+    }
+    SpriteFactory  *spriteFactory = new SpriteFactory(graphicSystem->imageBufferManager->getImageBuffer("tiles"));
+    sprite = spriteFactory->criarSpriteItem(32,64,32,32,1,1);
 
-};
-#endif
+    delete(spriteFactory);
+}
+RoomWithABomb::~RoomWithABomb() 
+{
+}

@@ -1,24 +1,25 @@
 class MazeGame
-!!!129499.cpp!!!	create() : Maze
-    Maze * aMaze = new Maze();
+!!!129499.cpp!!!	create(in factory : MazeFactory) : Maze
+    Maze* aMaze = factory.makeMaze();
 
-    Room* r1 = new Room(1);
-    Room* r2 = new Room(2);
+    Room* r1 = factory.makeRoom(1);
+    Room* r2 = factory.makeRoom(2);
 
-    Door* theDoor = new Door(r1,r2);
+    Door* theDoor = factory.makeDoor(r1,r2);
+
 
     aMaze->addRoom(r1,8,6);
     aMaze->addRoom(r2,10,6);
 
 
-    r1->setSide(North, new Wall);
-    r1->setSide(East, theDoor);
-    r1->setSide(South, new Wall);
-    r1->setSide(West, new Wall);
+    r1->setSide(North, factory.makeWall());
+    r1->setSide(East,  theDoor);
+    r1->setSide(South, factory.makeWall());
+    r1->setSide(West,  factory.makeWall());
 
-    r2->setSide(North, new Wall);
-    r2->setSide(East, new Wall);
-    r2->setSide(South, new Wall);
-    r2->setSide(West, theDoor);
+    r2->setSide(North, factory.makeWall());
+    r2->setSide(East,  factory.makeWall());
+    r2->setSide(South, factory.makeWall());
+    r2->setSide(West,  theDoor);
 
     return aMaze;

@@ -1,0 +1,5 @@
+class BombedMazeFactory
+!!!128090.cpp!!!	makeWall() : Wall
+    return new BombedWall();
+!!!128218.cpp!!!	makeRoom(in number : int) : Room
+    return new RoomWithABomb(number);

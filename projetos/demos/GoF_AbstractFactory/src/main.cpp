@@ -37,7 +37,12 @@ int main(int argc, char * argv[])
 
 
     MazeGame mazeGame;
-    Maze * aMaze = mazeGame.create();
+
+//    MazeFactory factory;
+//    EnchantedMazeFactory factory;
+    BombedMazeFactory factory;
+
+    Maze * aMaze = mazeGame.create(factory);
 
 
     while(true) {

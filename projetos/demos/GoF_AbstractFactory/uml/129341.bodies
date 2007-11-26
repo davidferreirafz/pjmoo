@@ -1,0 +1,9 @@
+class BombedWall
+!!!129725.cpp!!!	BombedWall()
+    if (sprite){
+        delete(sprite);
+    }
+    SpriteFactory  *spriteFactory = new SpriteFactory(graphicSystem->imageBufferManager->getImageBuffer("tiles"));
+    sprite = spriteFactory->criarSpriteItem(0,64,32,32,1,1);
+
+    delete(spriteFactory);

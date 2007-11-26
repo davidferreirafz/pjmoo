@@ -18,21 +18,19 @@
 //    Free Software Foundation, Inc.,                                       
 //    59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 //***************************************************************************
-#ifndef _MAIN_H
-#define _MAIN_H
+#include "EnchantedDoor.h"
 
-#include <GBF/GBF.h>
-
-#include "Maze.h"
-#include "MazeGame.h"
-#include "MazeFactory.h"
-#include "EnchantedMazeFactory.h"
-#include "BombedMazeFactory.h"
-
-class Test
+EnchantedDoor::EnchantedDoor(Room * room1, Room * room2) : Door(room1,room2)
 {
-  public:
-    int main(int argc, char * argv[]);
+    if (sprite){
+        delete(sprite);
+    }
+    
+    SpriteFactory  *spriteFactory = new SpriteFactory(graphicSystem->imageBufferManager->getImageBuffer("tiles"));
+    sprite = spriteFactory->criarSpriteItem(64,32,32,32,1,1);
 
-};
-#endif
+    delete(spriteFactory);
+}
+EnchantedDoor::~EnchantedDoor() 
+{
+}

@@ -1,7 +1,7 @@
-format 45
+format 48
 "uml"
-  revision 22
-  modified_by 91 "david"
+  revision 24
+  modified_by 61 "david"
 
   artifact_default_description "***************************************************************************
   UML <Demo - GoF - Designer Patterns>
@@ -59,10 +59,9 @@ format 45
   comment "
 
 "
-  package_ref 128032 // FactoryAbstract
+  package_ref 128032 // GoF - AbstractFactory
 
   package_ref 128080 // framework GBF
 
   package_ref 128208 // Extern
-
 end

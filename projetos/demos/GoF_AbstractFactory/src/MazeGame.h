@@ -22,6 +22,7 @@
 #define _MAZEGAME_H
 
 #include "Maze.h"
+#include "MazeFactory.h"
 #include "Wall.h"
 #include "Door.h"
 #include "Room.h"
@@ -34,7 +35,7 @@ class MazeGame
 
     virtual ~MazeGame();
 
-    Maze * create();
+    Maze * create(MazeFactory & factory);
 
 };
 #endif

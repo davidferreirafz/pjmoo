@@ -18,21 +18,19 @@
 //    Free Software Foundation, Inc.,                                       
 //    59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 //***************************************************************************
-#ifndef _MAIN_H
-#define _MAIN_H
-
-#include <GBF/GBF.h>
-
-#include "Maze.h"
-#include "MazeGame.h"
-#include "MazeFactory.h"
 #include "EnchantedMazeFactory.h"
-#include "BombedMazeFactory.h"
 
-class Test
+EnchantedMazeFactory::EnchantedMazeFactory() 
 {
-  public:
-    int main(int argc, char * argv[]);
-
-};
-#endif
+}
+EnchantedMazeFactory::~EnchantedMazeFactory() 
+{
+}
+Room * EnchantedMazeFactory::makeRoom(int number) 
+{
+    return new EnchantedRoom(number);
+}
+Door * EnchantedMazeFactory::makeDoor(Room * room1, Room * room2) 
+{
+    return new EnchantedDoor(room1,room2);
+}

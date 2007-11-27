@@ -2,4 +2,4 @@
 #English
 #LANG=en_US
 
-message=GoF - Example with GBF - http://davidferreira-fz.blogspot.com
+message=GoF AbstractFactory - Example with GBF - http://davidferreira-fz.blogspot.com

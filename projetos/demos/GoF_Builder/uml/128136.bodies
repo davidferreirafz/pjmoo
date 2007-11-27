@@ -1,0 +1,36 @@
+class StandardMazeBuilder
+!!!129401.cpp!!!	buildMaze() : void
+    currentMaze = new Maze();
+!!!129529.cpp!!!	buildRoom(in number : int, in column : int, in line : int) : void
+    Room * room = new Room(number);
+
+    room->setSide(North, new Wall());
+    room->setSide(East,  new Wall());
+    room->setSide(South, new Wall());
+    room->setSide(West,  new Wall());
+
+    currentMaze->addRoom(room,column,line);
+!!!129657.cpp!!!	buildDoor(in roomFrom : int, in roomTo : int) : void
+    Room *rFrom = currentMaze->roomNo(roomFrom);
+    Room *rTo   = currentMaze->roomNo(roomTo);
+
+    Door* door = new Door(rFrom,rTo);
+
+    MapSite * tmp = NULL;
+
+    tmp = rFrom->getSide(East);
+    if (tmp){
+        rFrom->setSide(East,NULL);
+        delete(tmp);
+    }
+
+    tmp = rTo->getSide(West);
+    if (tmp){
+        rTo->setSide(West,NULL);
+        delete(tmp);
+    }
+
+    rFrom->setSide(East, door);
+    rTo->setSide(West, door);
+!!!129785.cpp!!!	getMaze() : Maze
+    return currentMaze;

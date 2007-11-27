@@ -1,0 +1,42 @@
+class Maze
+!!!130392.cpp!!!	Maze()
+    for (int x=0; x<19; x++){
+        for (int y=0; y<14; y++){
+            rooms[x][y]=NULL;
+        }
+    }
+!!!130520.cpp!!!	~Maze()
+    for (int x=0; x<19; x++){
+        for (int y=0; y<14; y++){
+            if (rooms[x][y]!=NULL){
+                delete(rooms[x][y]);
+            }
+        }
+    }
+!!!130648.cpp!!!	addRoom(inout room : Room, in column : int, in line : int) : void
+    rooms[column][line]=room;
+!!!130776.cpp!!!	roomNo(in number : int) : Room
+    Room * room = NULL;
+    for (int x=0; x<19; x++){
+        for (int y=0; y<14; y++){
+            if ((rooms[x][y])&&(rooms[x][y]->getNumber()==number)){
+                room = rooms[x][y];
+            }
+        }
+    }
+
+    return room;
+!!!130904.cpp!!!	draw() : void
+    int xVirtual=0;
+    int yVirtual=0;
+
+    for (int x=0; x<19; x++){
+        for (int y=0; y<14; y++){
+            if (rooms[x][y]!=NULL){
+
+                xVirtual=(x*32)+32;
+                yVirtual=(y*32)+32;
+                rooms[x][y]->draw(xVirtual,yVirtual);
+            }
+        }
+    }

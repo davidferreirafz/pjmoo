@@ -1,0 +1,3 @@
+class MazeBuilder
+!!!129273.cpp!!!	getMaze() : Maze
+    return NULL;

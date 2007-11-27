@@ -1,0 +1,2065 @@
+format 45
+"Sprite" // framework GBF::Sprite
+  revision 31
+  modified_by 106 "david"
+  // class settings
+  //class diagram settings
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_infonote default shadow default
+  //use case diagram settings
+  package_name_in_tab default show_context default auto_label_position default draw_all_relations default shadow default
+  //sequence diagram settings
+  show_full_operations_definition default write_horizontally default class_drawing_mode default drawing_language default draw_all_relations default shadow default
+  //collaboration diagram settings
+  show_full_operations_definition default show_hierarchical_rank default write_horizontally default drawing_language default package_name_in_tab default show_context default draw_all_relations default shadow default
+  //object diagram settings
+   write_horizontally default package_name_in_tab default show_context default auto_label_position default draw_all_relations default shadow default
+  //component diagram settings
+  package_name_in_tab default show_context default auto_label_position default draw_all_relations default shadow default
+  draw_component_as_icon default show_component_req_prov default show_component_rea default
+  //deployment diagram settings
+  package_name_in_tab default show_context default write_horizontally default auto_label_position default draw_all_relations default shadow default
+  draw_component_as_icon default show_component_req_prov default show_component_rea default
+  //state diagram settings
+  package_name_in_tab default show_context default auto_label_position default write_trans_label_horizontally default show_trans_definition default draw_all_relations default shadow default
+  show_activities default region_horizontally default drawing_language default
+  //activity diagram settings
+  package_name_in_tab default show_context default show_opaque_action_definition default auto_label_position default write_flow_label_horizontally default draw_all_relations default shadow default
+  show_infonote default drawing_language default
+  
+  cpp_h_dir "/home/desenvolvimento/pjmoo-gbf/trunk/projeto/src/"
+  cpp_src_dir "/home/desenvolvimento/pjmoo-gbf/trunk/projeto/src/"
+  classview 128976 "Classes"
+    //class diagram settings
+    draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_infonote default shadow default
+    //collaboration diagram settings
+    show_full_operations_definition default show_hierarchical_rank default write_horizontally default drawing_language default package_name_in_tab default show_context default draw_all_relations default shadow default
+    //object diagram settings
+     write_horizontally default package_name_in_tab default show_context default auto_label_position default draw_all_relations default shadow default
+    //sequence diagram settings
+    show_full_operations_definition default write_horizontally default class_drawing_mode default drawing_language default draw_all_relations default shadow default
+    //state diagram settings
+    package_name_in_tab default show_context default auto_label_position default write_trans_label_horizontally default show_trans_definition default draw_all_relations default shadow default
+    show_activities default region_horizontally default drawing_language default
+    //class settings
+    //activity diagram settings
+    package_name_in_tab default show_context default show_opaque_action_definition default auto_label_position default write_flow_label_horizontally default draw_all_relations default shadow default
+    show_infonote default drawing_language default
+    class 128222 "Frame"
+      visibility package stereotype "struct"
+      cpp_decl "${comment}${template}struct ${name}${inherit}
+{
+${members}};
+${inlines}
+"
+      java_decl ""
+      php_decl ""
+      idl_decl "${comment}struct ${name} {
+${members}};
+"
+      explicit_switch_type ""
+      
+      attribute 128222 "atual"
+	public explicit_type "int"
+	init_value "=0"
+	cpp_decl "    ${comment}${static}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	java_decl ""
+	php_decl ""
+	idl_decl ""
+      end
+
+      attribute 128350 "total"
+	public explicit_type "int"
+	init_value "=0"
+	cpp_decl "    ${comment}${static}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	java_decl ""
+	php_decl ""
+	idl_decl ""
+      end
+    end
+
+    class 128241 "Animacao"
+      visibility package stereotype "auxiliary"
+      cpp_decl "${comment}${template}class ${name}${inherit}
+{
+${members}};
+${inlines}
+"
+      java_decl ""
+      php_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      operation 128497 "Animacao"
+	public explicit_return_type ""
+	nparams 0
+	cpp_decl "    ${comment}${inline}${name}${(}${)}${volatile}${throw};
+"
+	cpp_def "${comment}${inline}${class}::${name}${(}${)}${volatile}${throw} 
+{
+${body}}"
+	
+	
+	
+	comment "Construtor"
+      end
+
+      operation 128376 "ajustarCorte"
+	public explicit_return_type "void"
+	nparams 2
+	  param in name "direcao" explicit_type "int"
+	  param in name "largura" explicit_type "int"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${t0} ${p0}, ${t1} ${p1}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${t0} ${p0}, ${t1} ${p1}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+	
+	comment "Ajusta a area de corte do sprite - posicionamento nos frames"
+      end
+
+      operation 174800 "isFim"
+	public explicit_return_type "bool"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+	
+	comment "Informa se animação está no fim - último frame"
+      end
+
+      operation 174672 "isInicio"
+	public explicit_return_type "bool"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+	
+	comment "Informa se animação está no inicio - primeiro frame"
+      end
+
+      operation 128248 "getDimensaoFrame"
+	public explicit_return_type "SDL_Rect"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+	
+	comment "Retorna a dimensão do quadro"
+      end
+
+      operation 128753 "processar"
+	public explicit_return_type "int"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+	
+      end
+
+      operation 173904 "processarManual"
+	public explicit_return_type "void"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+	
+	comment "Anima o sprite de forma manual, toda chamada a esse metodo anima o personagem "
+      end
+
+      operation 128504 "setDimensaoFrame"
+	public explicit_return_type "void"
+	nparams 1
+	  param in name "area" explicit_type "SDL_Rect"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}const ${t0} & ${p0}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}const ${t0} & ${p0}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+	
+	comment "Define a dimensão do quadro"
+      end
+
+      operation 173648 "setAutomatico"
+	public explicit_return_type "void"
+	nparams 1
+	  param in name "automatico" explicit_type "bool"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${t0} ${p0}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${t0} ${p0}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+	
+	comment "Define se a animação é automática ou manual "
+      end
+
+      operation 128625 "config"
+	public explicit_return_type "void"
+	nparams 2
+	  param in name "quantidade" explicit_type "int"
+	  param in name "taxaRepeticao" explicit_type "int"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${t0} ${p0}, ${t1} ${p1}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${t0} ${p0}, ${t1} ${p1}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+	
+	comment "Informa a quantidade de quadros e a taxa de repetição"
+      end
+
+      operation 174928 "setInicio"
+	public explicit_return_type "void"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+	
+	comment "Coloca a animação no primeiro frame"
+      end
+
+      attribute 142928 "automatico"
+	protected explicit_type "bool"
+	cpp_decl "    ${comment}${static}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	java_decl ""
+	php_decl ""
+	idl_decl ""
+      end
+
+      attribute 143312 "areaCorte"
+	protected explicit_type "SDL_Rect"
+	cpp_decl "    ${comment}${static}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	java_decl ""
+	php_decl ""
+	idl_decl ""
+      end
+
+      operation 128203 "setFrame"
+	protected explicit_return_type "void"
+	nparams 1
+	  param in name "quadro" explicit_type "int"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${t0} ${p0}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${t0} ${p0}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+	
+	comment "Informa o quadro a ser usado na animação"
+      end
+
+      operation 173776 "animar"
+	private explicit_return_type "int"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+	
+	comment "Anima o Sprite de forma automática "
+      end
+
+      classrelation 128222 // repeticao (<directional aggregation by value>)
+	relation 128222 *-->
+	  a role_name "repeticao" multiplicity "1" protected
+	    cpp default "    ${comment}${static}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	    classrelation_ref 128222 // repeticao (<directional aggregation by value>)
+	  b parent class_ref 128222 // Frame
+      end
+
+      classrelation 128478 // frame (<directional aggregation by value>)
+	relation 128350 *-->
+	  a role_name "frame" multiplicity "1" protected
+	    cpp default "    ${comment}${static}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	    classrelation_ref 128478 // frame (<directional aggregation by value>)
+	  b parent class_ref 128222 // Frame
+      end
+    end
+
+    class 136272 "SpriteDirecao"
+      visibility package stereotype "enum"
+      cpp_decl "${comment}enum ${name} {
+${items}};
+"
+      java_decl ""
+      php_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      comment "Definição de direções"
+      attribute 141392 "DR_CIMA"
+	public explicit_type ""
+	cpp_decl "  ${comment}${name}${value},"
+	java_decl ""
+	php_decl ""
+	idl_decl ""
+      end
+
+      attribute 141520 "DR_DIREITA"
+	public explicit_type ""
+	cpp_decl "  ${comment}${name}${value},"
+	java_decl ""
+	php_decl ""
+	idl_decl ""
+      end
+
+      attribute 141648 "DR_BAIXO"
+	public explicit_type ""
+	cpp_decl "  ${comment}${name}${value},"
+	java_decl ""
+	php_decl ""
+	idl_decl ""
+      end
+
+      attribute 141776 "DR_ESQUERDA"
+	public explicit_type ""
+	cpp_decl "  ${comment}${name}${value},"
+	java_decl ""
+	php_decl ""
+	idl_decl ""
+      end
+
+      attribute 141904 "DR_CIMADIREITA"
+	public explicit_type ""
+	cpp_decl "  ${comment}${name}${value},"
+	java_decl ""
+	php_decl ""
+	idl_decl ""
+      end
+
+      attribute 142032 "DR_BAIXODIREITA"
+	public explicit_type ""
+	cpp_decl "  ${comment}${name}${value},"
+	java_decl ""
+	php_decl ""
+	idl_decl ""
+      end
+
+      attribute 142160 "DR_BAIXOESQUERDA"
+	public explicit_type ""
+	cpp_decl "  ${comment}${name}${value},"
+	java_decl ""
+	php_decl ""
+	idl_decl ""
+      end
+
+      attribute 142288 "DR_CIMAESQUERDA"
+	public explicit_type ""
+	cpp_decl "  ${comment}${name}${value},"
+	java_decl ""
+	php_decl ""
+	idl_decl ""
+      end
+    end
+
+    class 136144 "SpriteDirecaoStatus"
+      visibility package stereotype "struct"
+      cpp_decl "${comment}${template}struct ${name}${inherit}
+{
+${members}};
+${inlines}
+"
+      java_decl ""
+      php_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      comment "Definição de Status"
+      attribute 140368 "cima"
+	public explicit_type "bool"
+	cpp_decl "    ${comment}${static}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	java_decl ""
+	php_decl ""
+	idl_decl ""
+      end
+
+      attribute 140496 "direita"
+	public explicit_type "bool"
+	cpp_decl "    ${comment}${static}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	java_decl ""
+	php_decl ""
+	idl_decl ""
+      end
+
+      attribute 140624 "baixo"
+	public explicit_type "bool"
+	cpp_decl "    ${comment}${static}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	java_decl ""
+	php_decl ""
+	idl_decl ""
+      end
+
+      attribute 140752 "esquerda"
+	public explicit_type "bool"
+	cpp_decl "    ${comment}${static}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	java_decl ""
+	php_decl ""
+	idl_decl ""
+      end
+
+      attribute 140880 "cimaDireita"
+	public explicit_type "bool"
+	cpp_decl "    ${comment}${static}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	java_decl ""
+	php_decl ""
+	idl_decl ""
+      end
+
+      attribute 141008 "baixoDireita"
+	public explicit_type "bool"
+	cpp_decl "    ${comment}${static}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	java_decl ""
+	php_decl ""
+	idl_decl ""
+      end
+
+      attribute 141136 "baixoEsquerda"
+	public explicit_type "bool"
+	cpp_decl "    ${comment}${static}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	java_decl ""
+	php_decl ""
+	idl_decl ""
+      end
+
+      attribute 141264 "cimaEsquerda"
+	public explicit_type "bool"
+	cpp_decl "    ${comment}${static}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	java_decl ""
+	php_decl ""
+	idl_decl ""
+      end
+    end
+
+    class 128848 "SpriteFactory"
+      visibility package 
+      cpp_external cpp_decl "${name}
+#include <GBF/${name}.h>
+"
+      java_decl ""
+      php_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      operation 175184 "~SpriteFactory"
+	cpp_virtual public explicit_return_type ""
+	nparams 0
+	cpp_decl "    ${comment}${inline}${virtual}${name}${(}${)}${volatile}${throw};
+"
+	
+	
+	
+	comment "Destrutor"
+      end
+
+      operation 175312 "criarSpriteItem"
+	public return_type class_ref 136528 // SpriteItem
+	nparams 6
+	  param in name "left" explicit_type "int"
+	  param in name "top" explicit_type "int"
+	  param in name "largura" explicit_type "int"
+	  param in name "altura" explicit_type "int"
+	  param in name "frameTotal" explicit_type "int"
+	  param in name "frameRate" explicit_type "int"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} * ${name}${(}${t0} ${p0}, ${t1} ${p1}, ${t2} ${p2}, ${t3} ${p3}, ${t4} ${p4}, ${t5} ${p5}${)}${const}${volatile}${throw}${abstract};
+"
+	
+	
+	
+      end
+
+      operation 175440 "criarSpritePersonagem"
+	public return_type class_ref 134736 // SpritePersonagem
+	nparams 6
+	  param in name "left" explicit_type "int"
+	  param in name "top" explicit_type "int"
+	  param in name "largura" explicit_type "int"
+	  param in name "altura" explicit_type "int"
+	  param in name "frameTotal" explicit_type "int"
+	  param in name "frameRate" explicit_type "int"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} * ${name}${(}${t0} ${p0}, ${t1} ${p1}, ${t2} ${p2}, ${t3} ${p3}, ${t4} ${p4}, ${t5} ${p5}${)}${const}${volatile}${throw}${abstract};
+"
+	
+	
+	
+      end
+
+      operation 175568 "criarFrameLayer"
+	public return_type class_ref 128080 // FrameLayer
+	nparams 4
+	  param in name "left" explicit_type "int"
+	  param in name "top" explicit_type "int"
+	  param in name "largura" explicit_type "int"
+	  param in name "altura" explicit_type "int"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} * ${name}${(}${t0} ${p0}, ${t1} ${p1}, ${t2} ${p2}, ${t3} ${p3}${)}${const}${volatile}${throw}${abstract};
+"
+	
+	
+	
+      end
+
+      operation 175696 "SpriteFactory"
+	public explicit_return_type ""
+	nparams 1
+	  param inout name "gsiBuffer" type class_ref 132048 // GraphicSystemImageBuffer
+	cpp_decl "    ${comment}${inline}${name}${(}${t0} * ${p0}${)}${volatile}${throw};
+"
+	
+	
+	
+	comment "Construtor"
+      end
+
+      classrelation 139856 // gsiBuffer (<unidirectional association>)
+	relation 139856 --->
+	  a role_name "gsiBuffer" protected
+	    cpp default "    ${comment}${static}${mutable}${volatile}${const}${type} * ${name}${value};
+"
+	    classrelation_ref 139856 // gsiBuffer (<unidirectional association>)
+	  b parent class_ref 132048 // GraphicSystemImageBuffer
+      end
+
+      classrelation 148816 // <dependency>
+	relation 148816 -_->
+	  a protected
+	    cpp default "    ${comment}${static}${mutable}${volatile}${const}${type} * ${name}${value};
+"
+	    classrelation_ref 148816 // <dependency>
+	  b parent class_ref 136528 // SpriteItem
+      end
+
+      classrelation 148944 // <dependency>
+	relation 148944 -_->
+	  a protected
+	    cpp default "    ${comment}${static}${mutable}${volatile}${const}${type} * ${name}${value};
+"
+	    classrelation_ref 148944 // <dependency>
+	  b parent class_ref 134736 // SpritePersonagem
+      end
+
+      classrelation 149200 // <dependency>
+	relation 149200 -_->
+	  a protected
+	    cpp default "    ${comment}${static}${mutable}${volatile}${const}${type} * ${name}${value};
+"
+	    classrelation_ref 149200 // <dependency>
+	  b parent class_ref 128080 // FrameLayer
+      end
+    end
+
+    class 134736 "SpritePersonagem"
+      visibility package 
+      cpp_external cpp_decl "${name}
+#include <GBF/${name}.h>
+"
+      java_decl ""
+      php_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      classrelation 140496 // <generalisation>
+	relation 140496 ---|>
+	  a public
+	    cpp default "${type}"
+	    classrelation_ref 140496 // <generalisation>
+	  b parent class_ref 136400 // Sprite
+      end
+
+      operation 176720 "~SpritePersonagem"
+	cpp_virtual public explicit_return_type ""
+	nparams 0
+	cpp_decl "    ${comment}${inline}${virtual}${name}${(}${)}${volatile}${throw};
+"
+	cpp_def "${comment}${inline}${class}::${name}${(}${)}${volatile}${throw} 
+{
+${body}}"
+	
+	
+	
+	comment "Destrutor "
+      end
+
+      operation 176848 "setDirecao"
+	public explicit_return_type "void"
+	nparams 1
+	  param in name "DIR" type class_ref 136272 // SpriteDirecao
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${t0} ${p0}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${t0} ${p0}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+	
+      end
+
+      operation 176976 "setQtdDirecoes"
+	public explicit_return_type "void"
+	nparams 1
+	  param in name "QTD" explicit_type "int"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${t0} ${p0}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${t0} ${p0}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+	
+      end
+
+      operation 177104 "desenhar"
+	cpp_virtual public explicit_return_type "void"
+	nparams 2
+	  param in name "x" explicit_type "int"
+	  param in name "y" explicit_type "int"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${t0} ${p0}, ${t1} ${p1}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${t0} ${p0}, ${t1} ${p1}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+	
+      end
+
+      operation 177232 "getQtdDirecoes"
+	public explicit_return_type "int"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+	
+	comment "Retorna a quantidade de direções que o personagem possui "
+      end
+
+      operation 177360 "getDirecao"
+	public return_type class_ref 136272 // SpriteDirecao
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+	
+      end
+
+      operation 177488 "SpritePersonagem"
+	public explicit_return_type ""
+	nparams 0
+	cpp_decl "    ${comment}${inline}${name}${(}${)}${volatile}${throw};
+"
+	cpp_def "${comment}${inline}${class}::${name}${(}${)}${volatile}${throw} 
+{
+${body}}"
+	
+	
+	
+	comment "Construtor"
+      end
+
+      classrelation 140624 // direcao (<directional aggregation by value>)
+	relation 140624 *-->
+	  a role_name "direcao" protected
+	    cpp default "    ${comment}${static}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	    classrelation_ref 140624 // direcao (<directional aggregation by value>)
+	  b parent class_ref 136272 // SpriteDirecao
+      end
+
+      attribute 143440 "qtdDirecao"
+	protected explicit_type "int"
+	cpp_decl "    ${comment}${static}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	java_decl ""
+	php_decl ""
+	idl_decl ""
+      end
+    end
+
+    class 136528 "SpriteItem"
+      visibility package 
+      cpp_external cpp_decl "${name}
+#include <GBF/${name}.h>
+"
+      java_decl ""
+      php_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      classrelation 140240 // <generalisation>
+	relation 140240 ---|>
+	  a public
+	    cpp default "${type}"
+	    classrelation_ref 140240 // <generalisation>
+	  b parent class_ref 136400 // Sprite
+      end
+
+      operation 176592 "SpriteItem"
+	public explicit_return_type ""
+	nparams 0
+	cpp_decl "    ${comment}${inline}${name}${(}${)}${volatile}${throw};
+"
+	cpp_def "${comment}${inline}${class}::${name}${(}${)}${volatile}${throw} 
+{
+${body}}"
+	
+	
+	
+	comment "Construtor "
+      end
+
+      operation 176208 "~SpriteItem"
+	cpp_virtual public explicit_return_type ""
+	nparams 0
+	cpp_decl "    ${comment}${inline}${virtual}${name}${(}${)}${volatile}${throw};
+"
+	cpp_def "${comment}${inline}${class}::${name}${(}${)}${volatile}${throw} 
+{
+${body}}"
+	
+	
+	
+	comment "Destrutor "
+      end
+
+      operation 176464 "desenhar"
+	cpp_virtual public explicit_return_type "void"
+	nparams 2
+	  param in name "x" explicit_type "int"
+	  param in name "y" explicit_type "int"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${t0} ${p0}, ${t1} ${p1}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${t0} ${p0}, ${t1} ${p1}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+	
+	comment "Depreciado - observar para remover metodo"
+      end
+
+      operation 128075 "setFrame"
+	public explicit_return_type "void"
+	nparams 1
+	  param in name "quadro" explicit_type "int"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${t0} ${p0}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${t0} ${p0}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+	
+	comment "Informa o quadro de animação"
+      end
+    end
+
+    class 128208 "SpriteInterface"
+      visibility package stereotype "interface"
+      cpp_external cpp_decl "${name}
+#include <GBF/${name}.h>
+"
+      java_decl "${comment}${public}interface ${name}${extends} {
+${members}}
+"
+      php_decl ""
+      idl_decl "${comment}${abstract}${local}interface ${name}${inherit} {
+${members}};
+"
+      explicit_switch_type ""
+      
+      operation 175824 "~SpriteInterface"
+	cpp_virtual public explicit_return_type ""
+	nparams 0
+	cpp_decl "    ${comment}${inline}${virtual}${name}${(}${)}${volatile}${throw};
+"
+	cpp_def "${comment}${inline}${class}::${name}${(}${)}${volatile}${throw} 
+{
+${body}}"
+	
+	
+	
+	comment "Destrutor"
+      end
+
+      operation 175952 "criar"
+	public explicit_return_type "void"
+	nparams 5
+	  param in name "left" explicit_type "int"
+	  param in name "top" explicit_type "int"
+	  param in name "largura" explicit_type "int"
+	  param in name "altura" explicit_type "int"
+	  param inout name "gsiBuffer" type class_ref 132048 // GraphicSystemImageBuffer
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${t0} ${p0}, ${t1} ${p1}, ${t2} ${p2}, ${t3} ${p3}, ${t4} * ${p4}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${t0} ${p0}, ${t1} ${p1}, ${t2} ${p2}, ${t3} ${p3}, ${t4} * ${p4}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+	
+      end
+
+      operation 176080 "SpriteInterface"
+	protected explicit_return_type ""
+	nparams 0
+	cpp_decl "    ${comment}${inline}${name}${(}${)}${volatile}${throw};
+"
+	cpp_def "${comment}${inline}${class}::${name}${(}${)}${volatile}${throw} 
+{
+${body}}"
+	
+	
+	
+	comment "Construtor"
+      end
+
+      classrelation 140112 // imagem (<directional aggregation>)
+	relation 140112 o-->
+	  a role_name "imagem" protected
+	    cpp default "    ${comment}${static}${mutable}${volatile}${const}${type} * ${name}${value};
+"
+	    classrelation_ref 140112 // imagem (<directional aggregation>)
+	  b parent class_ref 132048 // GraphicSystemImageBuffer
+      end
+
+      attribute 143056 "posicao"
+	protected explicit_type "SDL_Rect"
+	cpp_decl "    ${comment}${static}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	java_decl ""
+	php_decl ""
+	idl_decl ""
+      end
+
+      attribute 143184 "tamanho"
+	protected explicit_type "SDL_Rect"
+	cpp_decl "    ${comment}${static}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	java_decl ""
+	php_decl ""
+	idl_decl ""
+      end
+
+      classrelation 149712 // <dependency>
+	relation 149712 -_->
+	  a protected
+	    cpp default "    ${comment}${static}${mutable}${volatile}${const}${type} * ${name}${value};
+"
+	    classrelation_ref 149712 // <dependency>
+	  b parent class_ref 138448 // SDL
+      end
+
+      classrelation 129393 // animacao (<directional aggregation by value>)
+	relation 129265 *-->
+	  a role_name "animacao" multiplicity "1" public
+	    cpp default "    ${comment}${static}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	    classrelation_ref 129393 // animacao (<directional aggregation by value>)
+	  b parent class_ref 128241 // Animacao
+      end
+    end
+
+    class 136400 "Sprite"
+      visibility package 
+      cpp_external cpp_decl "${name}
+#include <GBF/${name}.h>
+"
+      java_decl ""
+      php_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      operation 173392 "~Sprite"
+	cpp_virtual public explicit_return_type ""
+	nparams 0
+	cpp_decl "    ${comment}${inline}${virtual}${name}${(}${)}${volatile}${throw};
+"
+	cpp_def "${comment}${inline}${class}::${name}${(}${)}${volatile}${throw} 
+{
+${body}}"
+	
+	
+	
+	comment "Destrutor"
+      end
+
+      operation 174032 "criar"
+	public explicit_return_type "void"
+	nparams 7
+	  param in name "left" explicit_type "int"
+	  param in name "top" explicit_type "int"
+	  param in name "largura" explicit_type "int"
+	  param in name "altura" explicit_type "int"
+	  param in name "quantitadeQuadro" explicit_type "int"
+	  param in name "repeticaoQuadro" explicit_type "int"
+	  param inout name "gsiBuffer" type class_ref 132048 // GraphicSystemImageBuffer
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${t0} ${p0}, ${t1} ${p1}, ${t2} ${p2}, ${t3} ${p3}, ${t4} ${p4}, ${t5} ${p5}, ${t6} * ${p6}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${t0} ${p0}, ${t1} ${p1}, ${t2} ${p2}, ${t3} ${p3}, ${t4} ${p4}, ${t5} ${p5}, ${t6} * ${p6}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+	
+      end
+
+      operation 174160 "desenhar"
+	cpp_virtual public explicit_return_type "void"
+	nparams 2
+	  param in name "x" explicit_type "int"
+	  param in name "y" explicit_type "int"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${t0} ${p0}, ${t1} ${p1}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${t0} ${p0}, ${t1} ${p1}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+	
+      end
+
+      operation 128085 "desenhar"
+	cpp_virtual public explicit_return_type "void"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+	
+	comment "Desenha o sprite na tela, com base na última posição informada ou desenhada"
+      end
+
+      operation 174544 "getTamanho"
+	public return_type class_ref 129104 // Dimensao
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+	
+	comment "Retorna a dimensão do sprite 'width' e 'height' "
+      end
+
+      operation 174416 "isColisao"
+	public explicit_return_type "bool"
+	nparams 1
+	  param in name "spriteColisao" type class_ref 136400 // Sprite
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${t0} * ${p0}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${t0} * ${p0}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+	
+	comment "Colisão baseada no tamanho dos Sprites "
+      end
+
+      operation 176336 "setPosicao"
+	public explicit_return_type "void"
+	nparams 1
+	  param in name "ponto" type class_ref 128976 // Ponto
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${t0} ${p0}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${t0} ${p0}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+	
+	comment "Posiciona o Sprite na tela "
+      end
+
+      operation 173520 "setPosicao"
+	cpp_virtual public explicit_return_type "void"
+	nparams 2
+	  param in name "x" explicit_type "int"
+	  param in name "y" explicit_type "int"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${t0} ${p0}, ${t1} ${p1}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${t0} ${p0}, ${t1} ${p1}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+	
+	comment "Posiciona o Sprite na tela "
+      end
+
+      operation 175056 "Sprite"
+	protected explicit_return_type ""
+	nparams 0
+	cpp_decl "    ${comment}${inline}${name}${(}${)}${volatile}${throw};
+"
+	cpp_def "${comment}${inline}${class}::${name}${(}${)}${volatile}${throw} 
+{
+${body}}"
+	
+	
+	
+	comment "Construtor"
+      end
+
+      classrelation 148304 // <dependency>
+	relation 148304 -_->
+	  a protected
+	    classrelation_ref 148304 // <dependency>
+	  b parent class_ref 136144 // SpriteDirecaoStatus
+      end
+
+      classrelation 139728 // <generalisation>
+	relation 139728 ---|>
+	  a public
+	    cpp default "${type}"
+	    classrelation_ref 139728 // <generalisation>
+	  b parent class_ref 128208 // SpriteInterface
+      end
+
+      classrelation 148432 // <dependency>
+	relation 148432 -_->
+	  a protected
+	    classrelation_ref 148432 // <dependency>
+	  b parent class_ref 136272 // SpriteDirecao
+      end
+    end
+
+    class 128080 "FrameLayer"
+      visibility package 
+      cpp_external cpp_decl "${name}
+#include <GBF/${name}.h>
+"
+      java_decl ""
+      php_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      comment "Classe para Desenho de TileMaps"
+      classrelation 128080 // <generalisation>
+	relation 128080 ---|>
+	  a public
+	    cpp default "${type}"
+	    classrelation_ref 128080 // <generalisation>
+	  b parent class_ref 128208 // SpriteInterface
+      end
+
+      classrelation 128208 // camera (<directional aggregation by value>)
+	relation 128208 *-->
+	  a role_name "camera" public
+	    cpp default "    ${comment}${static}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	    classrelation_ref 128208 // camera (<directional aggregation by value>)
+	  b parent class_ref 128336 // FrameLayerCamera
+      end
+
+      operation 128080 "FrameLayer"
+	public explicit_return_type ""
+	nparams 0
+	cpp_decl "    ${comment}${inline}${name}${(}${)}${volatile}${throw};
+"
+	cpp_def "${comment}${inline}${class}::${name}${(}${)}${volatile}${throw} 
+{
+${body}}"
+	
+	
+	
+	comment "Construtor"
+      end
+
+      operation 128208 "~FrameLayer"
+	cpp_virtual public explicit_return_type ""
+	nparams 0
+	cpp_decl "    ${comment}${inline}${virtual}${name}${(}${)}${volatile}${throw};
+"
+	cpp_def "${comment}${inline}${class}::${name}${(}${)}${volatile}${throw} 
+{
+${body}}"
+	
+	
+	
+	comment "Destrutor"
+      end
+
+      operation 128336 "desenhar"
+	public explicit_return_type "void"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+	
+	comment "Desenha o mapa"
+      end
+
+      operation 128976 "getArea"
+	public return_type class_ref 128464 // Area
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+	
+	comment "Retorna a area do layer relacionado com o ponto de desenho (x e y) e  o tamanho interno (w e h)"
+      end
+
+      operation 129744 "getDistanciaScrollVertical"
+	public explicit_return_type "int"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+	
+	comment "Distancia restante para finalizar Scrolling Vertical"
+      end
+
+      operation 129616 "getPorcentagemScrollHorizontal"
+	public explicit_return_type "int"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+	
+	comment "Porcentagem percorrida do Scroll Horizontal"
+      end
+
+      operation 129488 "getPorcentagemScrollVertical"
+	public explicit_return_type "int"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+	
+	comment "Porcentagem percorrida do Scroll Vertical"
+      end
+
+      operation 129872 "getTotalScrollVertical"
+	public explicit_return_type "int"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+	
+	comment "Distancia total do Scrolling Vertical"
+      end
+
+      operation 129104 "iniciarArquivo"
+	public explicit_return_type "void"
+	nparams 1
+	  param in name "arquivo" explicit_type "std::string"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${t0} ${p0}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${t0} ${p0}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+	
+	comment "Inicializa tiles com valores do arquivo"
+      end
+
+      operation 128118 "iniciarCom"
+	public explicit_return_type "void"
+	nparams 1
+	  param in name "quadro" explicit_type "int"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${t0} ${p0}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${t0} ${p0}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+	
+	comment "Iniciar preenchendo apenas com o quadro informado"
+      end
+
+      operation 129360 "iniciarOrdenado"
+	public explicit_return_type "void"
+	nparams 1
+	  param in name "quadroMaximo" explicit_type "int"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${t0} ${p0}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${t0} ${p0}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+	
+	comment "Iniciar ordenado até o quadro informado"
+      end
+
+      operation 129232 "iniciarRandomico"
+	public explicit_return_type "void"
+	nparams 1
+	  param in name "range" explicit_type "int"
+	    defaultvalue "0"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${t0} ${p0}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${t0} ${p0}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+	
+	comment "Inicializa tiles de forma aleatória"
+      end
+
+      operation 128592 "setFrame"
+	public explicit_return_type "void"
+	nparams 4
+	  param in name "left" explicit_type "int"
+	  param in name "top" explicit_type "int"
+	  param in name "largura" explicit_type "int"
+	  param in name "altura" explicit_type "int"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${t0} ${p0}, ${t1} ${p1}, ${t2} ${p2}, ${t3} ${p3}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${t0} ${p0}, ${t1} ${p1}, ${t2} ${p2}, ${t3} ${p3}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+	
+	comment "Informa o posicionamento da area de desenho e as suas dimensões internas"
+      end
+
+      operation 128720 "setTiles"
+	public explicit_return_type "void"
+	nparams 2
+	  param in name "largura" explicit_type "int"
+	  param in name "altura" explicit_type "int"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${t0} ${p0}, ${t1} ${p1}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${t0} ${p0}, ${t1} ${p1}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+	
+	comment "Informa o tamanho do mundo em tiles horizontais e verticais"
+      end
+
+      operation 128848 "setPixelTile"
+	public explicit_return_type "void"
+	nparams 2
+	  param in name "largura" explicit_type "int"
+	  param in name "altura" explicit_type "int"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${t0} ${p0}, ${t1} ${p1}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${t0} ${p0}, ${t1} ${p1}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+	
+	comment "Informa o tamanho em pixels dos tiles usados no layer"
+      end
+
+      operation 128464 "showGrade"
+	public explicit_return_type "void"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+	
+	comment "Desenha a grade de tiles do mapa"
+      end
+
+      attribute 128080 "mapa"
+	protected explicit_type "int"
+	cpp_decl "    ${comment}${static}${mutable}${volatile}${const}${type} * ${name}${value};
+"
+	java_decl ""
+	php_decl ""
+	idl_decl ""
+      end
+
+      classrelation 128464 // mundo (<directional aggregation by value>)
+	relation 128464 *-->
+	  a role_name "mundo" protected
+	    cpp default "    ${comment}${static}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	    classrelation_ref 128464 // mundo (<directional aggregation by value>)
+	  b parent class_ref 128592 // FrameLayerMundo
+      end
+
+      classrelation 128336 // screen_dimensao (<directional aggregation by value>)
+	relation 128336 *-->
+	  a role_name "screen_dimensao" protected
+	    cpp default "    ${comment}${static}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	    classrelation_ref 128336 // screen_dimensao (<directional aggregation by value>)
+	  b parent class_ref 128464 // Area
+      end
+
+      classrelation 128592 // <dependency>
+	relation 128592 -_->
+	  stereotype "friend"
+	  a protected
+	    cpp default "${type}"
+	    classrelation_ref 128592 // <dependency>
+	  b parent class_ref 128720 // FrameLayerManager
+      end
+    end
+
+    class 128336 "FrameLayerCamera"
+      visibility package 
+      cpp_external cpp_decl "${name}
+#include <GBF/${name}.h>
+"
+      java_decl ""
+      php_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      operation 130000 "~FrameLayerCamera"
+	cpp_virtual public explicit_return_type ""
+	nparams 0
+	cpp_decl "    ${comment}${inline}${virtual}${name}${(}${)}${volatile}${throw};
+"
+	cpp_def "${comment}${inline}${class}::${name}${(}${)}${volatile}${throw} 
+{
+${body}}"
+	
+	
+	
+	comment "Destrutor"
+      end
+
+      operation 130896 "getPosicao"
+	public return_type class_ref 128976 // Ponto
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+	
+	comment "Retorna a Posição Atual da Camera "
+      end
+
+      operation 131152 "isBottom"
+	public explicit_return_type "bool"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+	
+	comment "Verifica se a Camera está no limite inferior do mapa "
+      end
+
+      operation 131408 "isLeft"
+	public explicit_return_type "bool"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+	
+	comment "Verifica se a Camera está no limite esquerdo do mapa "
+      end
+
+      operation 131280 "isRight"
+	public explicit_return_type "bool"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+	
+	comment "Verifica se a Camera está no limite direito do mapa "
+      end
+
+      operation 131024 "isTop"
+	public explicit_return_type "bool"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+	
+	comment "Verifica se a Camera está no limite superior do mapa"
+      end
+
+      operation 131664 "runDown"
+	public explicit_return_type "void"
+	nparams 1
+	  param in name "deslocamento" explicit_type "int"
+	    defaultvalue "1"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${t0} ${p0}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${t0} ${p0}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+	
+	comment "Movimenta camera para Baixo "
+      end
+
+      operation 131792 "runLeft"
+	public explicit_return_type "void"
+	nparams 1
+	  param in name "deslocamento" explicit_type "int"
+	    defaultvalue "1"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${t0} ${p0}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${t0} ${p0}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+	
+	comment "Movimenta camera para Esquerda "
+      end
+
+      operation 131920 "runRight"
+	public explicit_return_type "void"
+	nparams 1
+	  param in name "deslocamento" explicit_type "int"
+	    defaultvalue "1"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${t0} ${p0}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${t0} ${p0}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+	
+	comment "Movimenta camera para Direita "
+      end
+
+      operation 131536 "runUp"
+	public explicit_return_type "void"
+	nparams 1
+	  param in name "deslocamento" explicit_type "int"
+	    defaultvalue "1"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${t0} ${p0}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${t0} ${p0}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+	
+	comment "Movimenta camera para Cima "
+      end
+
+      operation 130768 "setBottom"
+	public explicit_return_type "void"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+	
+	comment "Posiciona a Camera no Final do mapa "
+      end
+
+      operation 130256 "setMundo"
+	public explicit_return_type "void"
+	nparams 1
+	  param in name "mundo" type class_ref 128592 // FrameLayerMundo
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${t0} * ${p0}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${t0} * ${p0}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+	
+      end
+
+      operation 130512 "setPosicao"
+	public explicit_return_type "void"
+	nparams 2
+	  param in name "X" explicit_type "int"
+	  param in name "Y" explicit_type "int"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${t0} ${p0}, ${t1} ${p1}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${t0} ${p0}, ${t1} ${p1}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+	
+	comment "Posiciona a Camera em um ponto do Mapa "
+      end
+
+      operation 130640 "setTop"
+	public explicit_return_type "void"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+	
+	comment "Posiciona a Camera no inicio do mapa "
+      end
+
+      operation 130384 "show"
+	public explicit_return_type "void"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+	
+	comment "Mostra o posicionamento da camera no mapa "
+      end
+
+      operation 132048 "limiteUp"
+	protected explicit_return_type "void"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+	
+	comment "Não permite que a camera ultrapasse o limite do mapa pelo lado superior "
+      end
+
+      operation 132176 "limiteDown"
+	protected explicit_return_type "void"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+	
+	comment "Não permite que a camera ultrapasse o limite do mapa pelo lado inferior "
+      end
+
+      operation 132304 "limiteLeft"
+	protected explicit_return_type "void"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+	
+	comment "Não permite que a camera ultrapasse o limite do mapa pelo lado esquerdo "
+      end
+
+      operation 132432 "limiteRight"
+	protected explicit_return_type "void"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+	
+	comment "Não permite que a camera ultrapasse o limite do mapa pelo lado direito "
+      end
+
+      classrelation 128976 // mundo (<directional aggregation>)
+	relation 128976 o-->
+	  a role_name "mundo" private
+	    cpp default "    ${comment}${static}${mutable}${volatile}${const}${type} * ${name}${value};
+"
+	    classrelation_ref 128976 // mundo (<directional aggregation>)
+	  b parent class_ref 128592 // FrameLayerMundo
+      end
+
+      classrelation 128848 // ponto (<directional aggregation by value>)
+	relation 128848 *-->
+	  a role_name "ponto" private
+	    cpp default "    ${comment}${static}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	    classrelation_ref 128848 // ponto (<directional aggregation by value>)
+	  b parent class_ref 128976 // Ponto
+      end
+
+      classrelation 128304 // <dependency>
+	relation 128304 -_->
+	  stereotype "friend"
+	  a package
+	    cpp default "${type}"
+	    classrelation_ref 128304 // <dependency>
+	  b parent class_ref 128080 // FrameLayer
+      end
+
+      operation 130128 "FrameLayerCamera"
+	private explicit_return_type ""
+	nparams 0
+	cpp_decl "    ${comment}${inline}${name}${(}${)}${volatile}${throw};
+"
+	cpp_def "${comment}${inline}${class}::${name}${(}${)}${volatile}${throw} 
+{
+${body}}"
+	
+	
+	
+	comment "Construtor"
+      end
+    end
+
+    class 128592 "FrameLayerMundo"
+      visibility package 
+      cpp_external cpp_decl "${name}
+#include <GBF/${name}.h>
+"
+      java_decl ""
+      php_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      operation 133200 "~FrameLayerMundo"
+	cpp_virtual public explicit_return_type ""
+	nparams 0
+	cpp_decl "    ${comment}${inline}${virtual}${name}${(}${)}${volatile}${throw};
+"
+	cpp_def "${comment}${inline}${class}::${name}${(}${)}${volatile}${throw} 
+{
+${body}}"
+	
+	
+	
+	comment "Destrutor"
+      end
+
+      operation 134096 "getPixelTile"
+	public return_type class_ref 129104 // Dimensao
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+	
+      end
+
+      operation 134224 "getPixelTileHorizontal"
+	public explicit_return_type "int"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+	
+      end
+
+      operation 134352 "getPixelTileVertical"
+	public explicit_return_type "int"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+	
+      end
+
+      operation 134608 "getPixelVisivel"
+	public return_type class_ref 129104 // Dimensao
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+	
+      end
+
+      operation 134736 "getPixelVisivelHorizontal"
+	public explicit_return_type "int"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+	
+      end
+
+      operation 134864 "getPixelVisivelVertical"
+	public explicit_return_type "int"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+	
+      end
+
+      operation 133584 "getTiles"
+	public return_type class_ref 129104 // Dimensao
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+	
+      end
+
+      operation 133712 "getTilesHorizontal"
+	public explicit_return_type "int"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+	
+      end
+
+      operation 133840 "getTilesVertical"
+	public explicit_return_type "int"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+	
+      end
+
+      operation 133968 "setPixelTile"
+	public explicit_return_type "void"
+	nparams 2
+	  param in name "largura" explicit_type "int"
+	  param in name "altura" explicit_type "int"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${t0} ${p0}, ${t1} ${p1}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${t0} ${p0}, ${t1} ${p1}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+	
+      end
+
+      operation 134480 "setPixelVisivel"
+	public explicit_return_type "void"
+	nparams 2
+	  param in name "largura" explicit_type "int"
+	  param in name "altura" explicit_type "int"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${t0} ${p0}, ${t1} ${p1}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${t0} ${p0}, ${t1} ${p1}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+	
+      end
+
+      operation 133456 "setTiles"
+	public explicit_return_type "void"
+	nparams 2
+	  param in name "largura" explicit_type "int"
+	  param in name "altura" explicit_type "int"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${t0} ${p0}, ${t1} ${p1}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${t0} ${p0}, ${t1} ${p1}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+	
+      end
+
+      classrelation 129360 // areaVisivel (<directional aggregation by value>)
+	relation 129360 *-->
+	  a role_name "areaVisivel" private
+	    cpp default "    ${comment}${static}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	    classrelation_ref 129360 // areaVisivel (<directional aggregation by value>)
+	  b parent class_ref 129104 // Dimensao
+      end
+
+      classrelation 129232 // quantidadeTiles (<directional aggregation by value>)
+	relation 129232 *-->
+	  a role_name "quantidadeTiles" private
+	    cpp default "    ${comment}${static}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	    classrelation_ref 129232 // quantidadeTiles (<directional aggregation by value>)
+	  b parent class_ref 129104 // Dimensao
+      end
+
+      classrelation 129488 // tile (<directional aggregation by value>)
+	relation 129488 *-->
+	  a role_name "tile" private
+	    cpp default "    ${comment}${static}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	    classrelation_ref 129488 // tile (<directional aggregation by value>)
+	  b parent class_ref 129104 // Dimensao
+      end
+
+      operation 133328 "FrameLayerMundo"
+	private explicit_return_type ""
+	nparams 0
+	cpp_decl "    ${comment}${inline}${name}${(}${)}${volatile}${throw};
+"
+	cpp_def "${comment}${inline}${class}::${name}${(}${)}${volatile}${throw} 
+{
+${body}}"
+	
+	
+	
+	comment "Construtor"
+      end
+
+      classrelation 128176 // <dependency>
+	relation 128176 -_->
+	  stereotype "friend"
+	  a package
+	    cpp default "${type}"
+	    classrelation_ref 128176 // <dependency>
+	  b parent class_ref 128080 // FrameLayer
+      end
+    end
+
+    class 128720 "FrameLayerManager"
+      visibility package 
+      cpp_external cpp_decl "${name}
+#include <GBF/${name}.h>
+"
+      java_decl ""
+      php_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      comment "Classe para Gerenciamento de FrameLayer
+"
+      operation 132560 "~FrameLayerManager"
+	cpp_virtual public explicit_return_type ""
+	nparams 0
+	cpp_decl "    ${comment}${inline}${virtual}${name}${(}${)}${volatile}${throw};
+"
+	cpp_def "${comment}${inline}${class}::${name}${(}${)}${volatile}${throw} 
+{
+${body}}"
+	
+	
+	
+	comment "Destrutor"
+      end
+
+      operation 132688 "getInstance"
+	class_operation public return_type class_ref 128720 // FrameLayerManager
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} * ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} * ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}{
+${body}}"
+	
+	
+	
+	comment "Retorna uma instancia de FrameLayerManager "
+      end
+
+      operation 132816 "getFrameLayer"
+	public return_type class_ref 128080 // FrameLayer
+	nparams 1
+	  param in name "nome" explicit_type "std::string"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} * ${name}${(}${t0} ${p0}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} * ${class}::${name}${(}${t0} ${p0}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+	
+	comment "Retorna FrameLayer para manipulação "
+      end
+
+      operation 132944 "adicionar"
+	public explicit_return_type "void"
+	nparams 2
+	  param in name "nome" explicit_type "std::string"
+	  param inout name "frameLayer" type class_ref 128080 // FrameLayer
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${t0} ${p0}, ${t1} * ${p1}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${t0} ${p0}, ${t1} * ${p1}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+	
+	comment "Adiciona FrameLayer no FrameLayerManager "
+      end
+
+      operation 133072 "FrameLayerManager"
+	protected explicit_return_type ""
+	nparams 0
+	cpp_decl "    ${comment}${inline}${name}${(}${)}${volatile}${throw};
+"
+	cpp_def "${comment}${inline}${class}::${name}${(}${)}${volatile}${throw} 
+{
+${body}}"
+	
+	
+	
+	comment "Construtor"
+      end
+
+      classrelation 129104 // instance (<unidirectional association>)
+	relation 129104 --->
+	  a role_name "instance" class_relation protected
+	    cpp default "    ${comment}${static}${mutable}${volatile}${const}${type} * ${name}${value};
+"
+	    classrelation_ref 129104 // instance (<unidirectional association>)
+	  b parent class_ref 128720 // FrameLayerManager
+      end
+
+      attribute 128208 "objetomap"
+	protected explicit_type "std::map<std::string,FrameLayer*>"
+	cpp_decl "    ${comment}${static}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	java_decl ""
+	php_decl ""
+	idl_decl ""
+      end
+
+      classrelation 143696 // <dependency>
+	relation 143696 -_->
+	  a protected
+	    cpp default "    ${comment}${static}${mutable}${volatile}${const}${type} * ${name}${value};
+"
+	    classrelation_ref 143696 // <dependency>
+	  b parent class_ref 137936 // UtilLog
+      end
+    end
+  end
+end

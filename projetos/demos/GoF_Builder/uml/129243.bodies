@@ -1,0 +1,8 @@
+class MazeGame
+!!!129499.cpp!!!	create(in builder : MazeBuilder) : Maze
+    builder.buildMaze();
+    builder.buildRoom(1,8,6);
+    builder.buildRoom(2,10,6);
+    builder.buildDoor(1,2);
+
+    return builder.getMaze();

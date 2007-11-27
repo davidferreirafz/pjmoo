@@ -2,6 +2,6 @@
 #Português Brasil
 #LANG=pt_BR
 
-message=GoF - Exemplo com GBF - http://davidferreira-fz.blogspot.com
+message=GoF AbstractFactory - Exemplo com GBF - http://davidferreira-fz.blogspot.com
 
 

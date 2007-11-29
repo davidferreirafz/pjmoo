@@ -8,6 +8,16 @@ class Door
     room[0]=room1;
     room[1]=room2;
 !!!129496.cpp!!!	~Door()
+    if (room[0]){
+        Direction d = room[0]->getDirection(this);
+        room[0]->setSide(d,NULL);
+    }
+
+    if (room[1]){
+        Direction d = room[1]->getDirection(this);
+        room[1]->setSide(d,NULL);
+    }
+
     room[0]=NULL;
     room[1]=NULL;
 !!!129624.cpp!!!	otherSideFrom(inout theRoom : Room) : Room

@@ -16,9 +16,12 @@ class Test
 
     Maze * maze;
     MazeGame mazeGame;
-    StandardMazeBuilder builder;
-    mazeGame.create(builder);
     
+    StandardMazeBuilder builder;
+//    BombedMazeBuilder builder;
+
+    mazeGame.create(builder);
+
     maze = builder.getMaze();
 
 

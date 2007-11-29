@@ -22,7 +22,6 @@
 #define _STANDARDMAZEBUILDER_H
 
 #include "MazeBuilder.h"
-#include "Maze.h"
 
 class StandardMazeBuilder : public MazeBuilder
 {
@@ -31,17 +30,9 @@ class StandardMazeBuilder : public MazeBuilder
 
     virtual ~StandardMazeBuilder();
 
-    virtual void buildMaze();
-
     virtual void buildRoom(int number, int column, int line);
 
     virtual void buildDoor(int roomFrom, int roomTo);
-
-    virtual Maze * getMaze();
-
-
-  private:
-    Maze * currentMaze;
 
 };
 #endif

@@ -1,3 +1,5 @@
 class MazeBuilder
+!!!129401.cpp!!!	buildMaze() : void
+    currentMaze = new Maze();
 !!!129273.cpp!!!	getMaze() : Maze
-    return NULL;
+    return currentMaze;

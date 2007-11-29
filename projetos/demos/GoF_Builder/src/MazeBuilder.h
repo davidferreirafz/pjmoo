@@ -35,13 +35,17 @@ class MazeBuilder
   public:
     virtual ~MazeBuilder();
 
-    virtual void buildMaze();
-
     virtual void buildRoom(int number, int column, int line);
 
     virtual void buildDoor(int roomFrom, int roomTo);
 
+    virtual void buildMaze();
+
     virtual Maze * getMaze();
+
+
+  protected:
+    Maze * currentMaze;
 
 };
 #endif

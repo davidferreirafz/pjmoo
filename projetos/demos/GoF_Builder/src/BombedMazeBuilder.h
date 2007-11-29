@@ -23,7 +23,6 @@
 
 #include "MazeBuilder.h"
 #include "BombedWall.h"
-#include "Maze.h"
 
 class BombedMazeBuilder : public MazeBuilder
 {
@@ -32,13 +31,7 @@ class BombedMazeBuilder : public MazeBuilder
 
     virtual ~BombedMazeBuilder();
 
-
-  private:
-    Maze * currentMaze;
-
-
-  public:
-    virtual void buildRoom(int number);
+    virtual void buildRoom(int number, int column, int line);
 
 };
 #endif

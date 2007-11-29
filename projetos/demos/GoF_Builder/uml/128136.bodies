@@ -1,6 +1,4 @@
 class StandardMazeBuilder
-!!!129401.cpp!!!	buildMaze() : void
-    currentMaze = new Maze();
 !!!129529.cpp!!!	buildRoom(in number : int, in column : int, in line : int) : void
     Room * room = new Room(number);
 
@@ -32,5 +30,3 @@ class StandardMazeBuilder
 
     rFrom->setSide(East, door);
     rTo->setSide(West, door);
-!!!129785.cpp!!!	getMaze() : Maze
-    return currentMaze;

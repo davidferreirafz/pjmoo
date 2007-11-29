@@ -1,7 +1,7 @@
 format 48
 "GoF - Builder" // GoF - Builder
-  revision 17
-  modified_by 121 "david"
+  revision 19
+  modified_by 69 "david"
   // class settings
   //class diagram settings
   draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_infonote default shadow default
@@ -689,14 +689,6 @@ ${body}}"
 	    classrelation_ref 130136 // sides (<unidirectional association>)
 	  b parent class_ref 129368 // MapSite
       end
-
-      classrelation 129527 // <dependency>
-	relation 129527 -_->
-	  a package
-	    cpp default "#include in source"
-	    classrelation_ref 129527 // <dependency>
-	  b parent class_ref 129240 // Door
-      end
     end
 
     class 130264 "Wall"
@@ -759,6 +751,53 @@ ${body}}"
       end
     end
 
+    class 129341 "BombedWall"
+      visibility package 
+      cpp_decl "${comment}${template}class ${name}${inherit}
+{
+${members}};
+${inlines}
+"
+      java_decl ""
+      php_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      classrelation 129469 // <generalisation>
+	relation 129469 ---|>
+	  a public
+	    cpp default "${type}"
+	    classrelation_ref 129469 // <generalisation>
+	  b parent class_ref 130264 // Wall
+      end
+
+      operation 129725 "BombedWall"
+	public explicit_return_type ""
+	nparams 0
+	cpp_decl "    ${comment}${inline}${name}${(}${)}${volatile}${throw};
+"
+	cpp_def "${comment}${inline}${class}::${name}${(}${)}${volatile}${throw} 
+{
+${body}}"
+	
+	
+	
+      end
+
+      operation 129853 "~BombedWall"
+	cpp_virtual public explicit_return_type ""
+	nparams 0
+	cpp_decl "    ${comment}${inline}${virtual}${name}${(}${)}${volatile}${throw};
+"
+	cpp_def "${comment}${inline}${class}::${name}${(}${)}${volatile}${throw} 
+{
+${body}}"
+	
+	
+	
+      end
+    end
+
     class 128008 "MazeBuilder"
       visibility package 
       cpp_decl "${comment}${template}class ${name}${inherit}
@@ -797,19 +836,6 @@ ${body}}"
 	
       end
 
-      operation 128264 "buildMaze"
-	cpp_virtual public explicit_return_type "void"
-	nparams 0
-	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
-"
-	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}
-{
-${body}}"
-	
-	
-	
-      end
-
       operation 128520 "buildRoom"
 	cpp_virtual public explicit_return_type "void"
 	nparams 3
@@ -834,6 +860,19 @@ ${body}}"
 	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${t0} ${p0}, ${t1} ${p1}${)}${const}${volatile}${throw}${abstract};
 "
 	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${t0} ${p0}, ${t1} ${p1}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+	
+      end
+
+      operation 129401 "buildMaze"
+	cpp_virtual public explicit_return_type "void"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}
 {
 ${body}}"
 	
@@ -885,6 +924,15 @@ ${body}}"
 	    classrelation_ref 129401 // <dependency>
 	  b parent class_ref 130264 // Wall
       end
+
+      classrelation 128038 // currentMaze (<unidirectional association>)
+	relation 128038 --->
+	  a role_name "currentMaze" protected
+	    cpp default "    ${comment}${static}${mutable}${volatile}${const}${type} * ${name}${value};
+"
+	    classrelation_ref 128038 // currentMaze (<unidirectional association>)
+	  b parent class_ref 130136 // Maze
+      end
     end
 
     class 128136 "StandardMazeBuilder"
@@ -933,19 +981,6 @@ ${body}}"
 	
       end
 
-      operation 129401 "buildMaze"
-	cpp_virtual public explicit_return_type "void"
-	nparams 0
-	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
-"
-	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}
-{
-${body}}"
-	
-	
-	
-      end
-
       operation 129529 "buildRoom"
 	cpp_virtual public explicit_return_type "void"
 	nparams 3
@@ -975,28 +1010,6 @@ ${body}}"
 	
 	
 	
-      end
-
-      operation 129785 "getMaze"
-	cpp_virtual public return_type class_ref 130136 // Maze
-	nparams 0
-	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} * ${name}${(}${)}${const}${volatile}${throw}${abstract};
-"
-	cpp_def "${comment}${inline}${type} * ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}
-{
-${body}}"
-	
-	
-	
-      end
-
-      classrelation 128377 // currentMaze (<unidirectional association>)
-	relation 128249 --->
-	  a role_name "currentMaze" private
-	    cpp default "    ${comment}${static}${mutable}${volatile}${const}${type} * ${name}${value};
-"
-	    classrelation_ref 128377 // currentMaze (<unidirectional association>)
-	  b parent class_ref 130136 // Maze
       end
 
     end
@@ -1055,15 +1068,6 @@ ${body}}"
 	
       end
 
-      classrelation 128505 // currentMaze (<unidirectional association>)
-	relation 128377 --->
-	  a role_name "currentMaze" private
-	    cpp default "    ${comment}${static}${mutable}${volatile}${const}${type} * ${name}${value};
-"
-	    classrelation_ref 128505 // currentMaze (<unidirectional association>)
-	  b parent class_ref 130136 // Maze
-      end
-
       operation 130169 "buildRoom"
 	cpp_virtual public explicit_return_type "void"
 	nparams 3
@@ -1079,55 +1083,8 @@ ${body}}"
 	
 	
       end
+
     end
-
-    class 129341 "BombedWall"
-      visibility package 
-      cpp_decl "${comment}${template}class ${name}${inherit}
-{
-${members}};
-${inlines}
-"
-      java_decl ""
-      php_decl ""
-      idl_decl ""
-      explicit_switch_type ""
-      
-      classrelation 129469 // <generalisation>
-	relation 129469 ---|>
-	  a public
-	    cpp default "${type}"
-	    classrelation_ref 129469 // <generalisation>
-	  b parent class_ref 130264 // Wall
-      end
-
-      operation 129725 "BombedWall"
-	public explicit_return_type ""
-	nparams 0
-	cpp_decl "    ${comment}${inline}${name}${(}${)}${volatile}${throw};
-"
-	cpp_def "${comment}${inline}${class}::${name}${(}${)}${volatile}${throw} 
-{
-${body}}"
-	
-	
-	
-      end
-
-      operation 129853 "~BombedWall"
-	cpp_virtual public explicit_return_type ""
-	nparams 0
-	cpp_decl "    ${comment}${inline}${virtual}${name}${(}${)}${volatile}${throw};
-"
-	cpp_def "${comment}${inline}${class}::${name}${(}${)}${volatile}${throw} 
-{
-${body}}"
-	
-	
-	
-      end
-    end
-
   end
 
   deploymentview 128032 "deploy"

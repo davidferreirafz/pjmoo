@@ -2,37 +2,37 @@ format 48
 
 classcanvas 128008 class_ref 128008 // MazeBuilder
   draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_infonote default shadow default
-  xyz 315 327 2004
+  xyz 299 249 2004
   end
 classcanvas 128090 class_ref 129213 // BombedMazeBuilder
   draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_infonote default shadow default
-  xyz 209 529 2004
+  xyz 102 367 2004
   end
 classcanvas 128091 class_ref 129240 // Door
   draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_infonote default shadow default
   color lightgreen
-  xyz 364 138 2000
+  xyz 316 124 2000
   end
 classcanvas 128106 class_ref 129184 // Test
   draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_infonote default shadow default
   color lightmagenta
-  xyz 84 437 2000
+  xyz 644 415 2000
   end
 note 128131 "Dependency View (Include)
 
 Adapted by:
 David Ferreira - FZ
 http://davidferreira-fz.blogspot.com"
-  font bold  xyzwh 492 12 2000 212 101
+  color verylightgray  font bold  xyzwh 492 12 2000 212 101
 classcanvas 128219 class_ref 130136 // Maze
   draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_infonote default shadow default
   color verylightorange
-  xyz 16 87 2000
+  xyz 34 196 2000
   end
 classcanvas 128347 class_ref 130264 // Wall
   draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_infonote default shadow default
   color lightgreen
-  xyz 434 77 2000
+  xyz 434 66 2000
   end
 classcanvas 128475 class_ref 129368 // MapSite
   draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_infonote default shadow default
@@ -42,63 +42,73 @@ classcanvas 128475 class_ref 129368 // MapSite
 classcanvas 128859 class_ref 129496 // Room
   draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_infonote default shadow default
   color lightgreen
-  xyz 191 109 3005
+  xyz 154 92 3005
   end
 classcanvas 128904 class_ref 128136 // StandardMazeBuilder
   draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_infonote default shadow default
-  xyz 477 405 2005
+  xyz 449 367 2005
+  end
+classcanvas 129958 class_ref 129341 // BombedWall
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_infonote default shadow default
+  color lightgreen
+  xyz 416 188 2004
   end
 classcanvas 130523 class_ref 129243 // MazeGame
   draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_infonote default shadow default
-  xyz 256 268 2004
+  xyz 463 317 2004
   end
 classcanvas 131690 class_ref 129232 // GBF
   draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode uml auto_label_position default show_infonote default shadow default
   color darkgray
-  xyz 17 590 2000
+  xyz 262 501 2000
   end
 relationcanvas 128003 relation_ref 128003 // <dependency>
   geometry VHr
-  from ref 130523 z 1999 to point 36 285
+  from ref 130523 z 1999 to point 54 334
   line 128387 z 1999 to ref 128219
   no_role_a no_role_b
   no_multiplicity_a no_multiplicity_b
-relationcanvas 128121 relation_ref 128377 // <unidirectional association>
-  from ref 128090 z 1999 to ref 128219
-  role_a_pos 60 132 3000 no_role_b
+relationcanvas 128038 relation_ref 128038 // <unidirectional association>
+  from ref 128008 z 1999 to point 106 265
+  line 129702 z 1999 to ref 128219
+  role_a_pos 85 224 3000 no_role_b
   no_multiplicity_a no_multiplicity_b
 relationcanvas 128218 relation_ref 129213 // <generalisation>
   geometry HV
-  from ref 128090 z 1999 to point 351 546
+  from ref 128090 z 1999 to point 335 384
   line 128346 z 1999 to ref 128008
   no_role_a no_role_b
   no_multiplicity_a no_multiplicity_b
-relationcanvas 128249 relation_ref 128249 // <unidirectional association>
-  from ref 128904 z 1999 to ref 128219
-  role_a_pos 70 105 3000 no_role_b
-  no_multiplicity_a no_multiplicity_b
 relationcanvas 128377 relation_ref 129017 // <dependency>
-  from ref 128008 z 2003 to ref 128859
+  geometry VHV
+  from ref 128008 z 2003 to point 335 187
+  line 128934 z 2003 to point 174 187
+  line 129062 z 2003 to ref 128859
   no_role_a no_role_b
   no_multiplicity_a no_multiplicity_b
 relationcanvas 128474 relation_ref 128090 // <dependency>
-  from ref 128106 z 1999 to ref 128090
+  geometry VHr
+  from ref 128106 z 1999 to point 161 442
+  line 128550 z 1999 to ref 128090
   no_role_a no_role_b
   no_multiplicity_a no_multiplicity_b
 relationcanvas 128505 relation_ref 129145 // <dependency>
-  from ref 128008 z 1999 to ref 128091
+  geometry VHV
+  from ref 128008 z 1999 to point 335 203
+  line 129190 z 1999 to point 336 203
+  line 129318 z 1999 to ref 128091
   no_role_a no_role_b
   no_multiplicity_a no_multiplicity_b
 relationcanvas 128520 relation_ref 128520 // <dependency>
-  geometry VHr
-  from ref 128008 z 1999 to point 36 344
-  line 129672 z 1999 to ref 128219
+  geometry HVr
+  from ref 128008 z 1999 to point 335 213
+  line 128806 z 1999 to ref 128219
   no_role_a no_role_b
   no_multiplicity_a no_multiplicity_b
 relationcanvas 128603 relation_ref 129240 // <generalisation>
   geometry VHV
-  from ref 128091 z 1999 to point 384 94
-  line 129399 z 1999 to point 342 94
+  from ref 128091 z 1999 to point 336 87
+  line 129399 z 1999 to point 342 87
   line 129527 z 1999 to ref 128475
   no_role_a no_role_b
   no_multiplicity_a no_multiplicity_b
@@ -107,7 +117,9 @@ relationcanvas 128633 relation_ref 129273 // <dependency>
   no_role_a no_role_b
   no_multiplicity_a no_multiplicity_b
 relationcanvas 128648 relation_ref 128008 // <dependency>
-  from ref 130523 z 1999 to ref 128008
+  geometry HVr
+  from ref 130523 z 1999 to point 496 266
+  line 129830 z 1999 to ref 128008
   no_role_a no_role_b
   no_multiplicity_a no_multiplicity_b
 relationcanvas 128731 relation_ref 130264 // <generalisation>
@@ -115,7 +127,9 @@ relationcanvas 128731 relation_ref 130264 // <generalisation>
   no_role_a no_role_b
   no_multiplicity_a no_multiplicity_b
 relationcanvas 128776 relation_ref 129416 // <dependency>
-  from ref 128106 z 1999 to ref 128008
+  geometry HVr
+  from ref 128106 z 1999 to point 669 266
+  line 128166 z 1999 to ref 128008
   no_role_a no_role_b
   no_multiplicity_a no_multiplicity_b
 relationcanvas 128987 relation_ref 130008 // <generalisation>
@@ -124,57 +138,60 @@ relationcanvas 128987 relation_ref 130008 // <generalisation>
   no_multiplicity_a no_multiplicity_b
 relationcanvas 129032 relation_ref 128648 // <generalisation>
   geometry HV
-  from ref 128904 z 1999 to point 351 422
+  from ref 128904 z 1999 to point 335 384
   line 129416 z 1999 to ref 128008
   no_role_a no_role_b
   no_multiplicity_a no_multiplicity_b
 relationcanvas 129115 relation_ref 130136 // <unidirectional association>
   geometry VH
-  from ref 128859 z 1999 to point 211 34
+  from ref 128859 z 1999 to point 174 34
   line 128119 z 1999 to ref 128475
   role_a_pos 280 16 3000 no_role_b
   multiplicity_a_pos 294 43 3000 no_multiplicity_b
 relationcanvas 129243 relation_ref 129368 // <unidirectional association>
   geometry HVH unfixed
-  from ref 128091 z 1999 to point 280 155
-  line 129655 z 1999 to point 280 126
+  from ref 128091 z 1999 to point 280 141
+  line 129655 z 1999 to point 280 109
   line 129783 z 1999 to ref 128859
-  role_a_pos 245 108 3000 no_role_b
-  multiplicity_a_pos 245 135 3000 no_multiplicity_b
+  role_a_pos 208 91 3000 no_role_b
+  multiplicity_a_pos 208 118 3000 no_multiplicity_b
 relationcanvas 129499 relation_ref 129880 // <unidirectional association>
-  geometry HVH
-  from ref 128219 z 1999 to point 123 104
-  line 128247 z 1999 to point 123 126
-  line 128375 z 1999 to ref 128859
-  role_a_pos 149 108 3000 no_role_b
-  multiplicity_a_pos 144 135 3000 no_multiplicity_b
+  geometry VH
+  from ref 128219 z 1999 to point 54 109
+  line 128678 z 1999 to ref 128859
+  role_a_pos 112 91 3000 no_role_b
+  multiplicity_a_pos 107 118 3000 no_multiplicity_b
 relationcanvas 129627 relation_ref 129499 // <dependency>
   geometry VHr
-  from ref 128106 z 1999 to point 36 464
+  from ref 128106 z 1999 to point 54 442
   line 128631 z 1999 to ref 128219
   no_role_a no_role_b
   no_multiplicity_a no_multiplicity_b
-relationcanvas 130167 relation_ref 129527 // <dependency>
-  from ref 128859 z 1999 to point 261 219
-  line 128771 z 1999 to ref 128091
+relationcanvas 130086 relation_ref 129469 // <generalisation>
+  from ref 129958 z 1999 to ref 128347
+  no_role_a no_role_b
+  no_multiplicity_a no_multiplicity_b
+relationcanvas 130214 relation_ref 129725 // <dependency>
+  from ref 128090 z 1999 to point 425 308
+  line 130342 z 1999 to ref 129958
   no_role_a no_role_b
   no_multiplicity_a no_multiplicity_b
 relationcanvas 131035 relation_ref 130651 // <dependency>
-  geometry HV
-  from ref 128106 z 1999 to point 289 464
-  line 128759 z 1999 to ref 130523
+  geometry HVr
+  from ref 128106 z 1999 to point 669 334
+  line 128294 z 1999 to ref 130523
   no_role_a no_role_b
   no_multiplicity_a no_multiplicity_b
 relationcanvas 131080 relation_ref 129544 // <dependency>
-  geometry HV
-  from ref 128106 z 1999 to point 537 464
-  line 132104 z 1999 to ref 128904
+  geometry HVr
+  from ref 128106 z 1999 to point 669 384
+  line 128422 z 1999 to ref 128904
   no_role_a no_role_b
   no_multiplicity_a no_multiplicity_b
 relationcanvas 131818 relation_ref 130026 // <dependency>
   geometry VHV
-  from ref 128106 z 1999 to point 109 540
-  line 128515 z 1999 to point 94 540
+  from ref 128106 z 1999 to point 669 485
+  line 128515 z 1999 to point 339 485
   line 128643 z 1999 to ref 131690
   no_role_a no_role_b
   no_multiplicity_a no_multiplicity_b

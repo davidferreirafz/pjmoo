@@ -26,6 +26,14 @@ BombedMazeBuilder::BombedMazeBuilder()
 BombedMazeBuilder::~BombedMazeBuilder() 
 {
 }
-void BombedMazeBuilder::buildRoom(int number) 
+void BombedMazeBuilder::buildRoom(int number, int column, int line) 
 {
+    Room * room = new Room(number);
+
+    room->setSide(North, new BombedWall());
+    room->setSide(East,  new BombedWall());
+    room->setSide(South, new BombedWall());
+    room->setSide(West,  new BombedWall());
+
+    currentMaze->addRoom(room,column,line);
 }

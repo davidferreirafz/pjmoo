@@ -1,5 +1,10 @@
-class BombedMazeFactory
-!!!128090.cpp!!!	makeWall() : Wall
-    return new BombedWall();
-!!!128218.cpp!!!	makeRoom(in number : int) : Room
-    return new RoomWithABomb(number);
+class BombedMazeBuilder
+!!!130169.cpp!!!	buildRoom(in number : int, in column : int, in line : int) : void
+    Room * room = new Room(number);
+
+    room->setSide(North, new BombedWall());
+    room->setSide(East,  new BombedWall());
+    room->setSide(South, new BombedWall());
+    room->setSide(West,  new BombedWall());
+
+    currentMaze->addRoom(room,column,line);

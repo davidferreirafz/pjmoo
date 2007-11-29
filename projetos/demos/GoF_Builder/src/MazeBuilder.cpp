@@ -26,16 +26,17 @@ MazeBuilder::MazeBuilder()
 MazeBuilder::~MazeBuilder() 
 {
 }
-void MazeBuilder::buildMaze() 
-{
-}
 void MazeBuilder::buildRoom(int number, int column, int line) 
 {
 }
 void MazeBuilder::buildDoor(int roomFrom, int roomTo) 
 {
 }
+void MazeBuilder::buildMaze() 
+{
+    currentMaze = new Maze();
+}
 Maze * MazeBuilder::getMaze() 
 {
-    return NULL;
+    return currentMaze;
 }

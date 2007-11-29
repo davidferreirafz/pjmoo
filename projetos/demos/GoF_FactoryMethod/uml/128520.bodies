@@ -1,0 +1,10 @@
+class EnchantedDoor
+!!!129800.cpp!!!	EnchantedDoor(in room1 : Room, in room2 : Room)
+    if (sprite){
+        delete(sprite);
+    }
+    
+    SpriteFactory  *spriteFactory = new SpriteFactory(graphicSystem->imageBufferManager->getImageBuffer("tiles"));
+    sprite = spriteFactory->criarSpriteItem(64,32,32,32,1,1);
+
+    delete(spriteFactory);

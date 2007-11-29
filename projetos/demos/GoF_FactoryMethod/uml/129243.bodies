@@ -1,0 +1,33 @@
+class MazeGame
+!!!129499.cpp!!!	create(in factory : MazeFactory) : Maze
+    Maze* aMaze = makeMaze();
+
+    Room* r1 = makeRoom(1);
+    Room* r2 = makeRoom(2);
+
+    Door* theDoor = makeDoor(r1,r2);
+
+
+    aMaze->addRoom(r1,8,6);
+    aMaze->addRoom(r2,10,6);
+
+
+    r1->setSide(North, makeWall());
+    r1->setSide(East,  theDoor);
+    r1->setSide(South, makeWall());
+    r1->setSide(West,  makeWall());
+
+    r2->setSide(North, makeWall());
+    r2->setSide(East,  makeWall());
+    r2->setSide(South, makeWall());
+    r2->setSide(West,  theDoor);
+
+    return aMaze;
+!!!128264.cpp!!!	makeMaze() : Maze
+    return new Maze();
+!!!128392.cpp!!!	makeWall() : Wall
+    return new Wall();
+!!!128520.cpp!!!	makeRoom(in number : int) : Room
+    return new Room(number);
+!!!128648.cpp!!!	makeDoor(in room1 : Room, in room2 : Room) : Door
+    return new Door(room1,room2);

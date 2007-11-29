@@ -1,0 +1,5 @@
+class EnchantedMazeFactory
+!!!129288.cpp!!!	makeRoom(in number : int) : Room
+    return new EnchantedRoom(number);
+!!!129416.cpp!!!	makeDoor(in room1 : Room, in room2 : Room) : Door
+    return new EnchantedDoor(room1,room2);

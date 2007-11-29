@@ -1,0 +1,9 @@
+class EnchantedRoom
+!!!129544.cpp!!!	EnchantedRoom(in number : int)
+    if (sprite){
+        delete(sprite);
+    }
+    SpriteFactory  *spriteFactory = new SpriteFactory(graphicSystem->imageBufferManager->getImageBuffer("tiles"));
+    sprite = spriteFactory->criarSpriteItem(32,32,32,32,1,1);
+
+    delete(spriteFactory);

@@ -1,0 +1,5 @@
+#Archive of Texts
+#English
+#LANG=en_US
+
+message=GoF Prototype - Example with GBF - http://davidferreira-fz.blogspot.com

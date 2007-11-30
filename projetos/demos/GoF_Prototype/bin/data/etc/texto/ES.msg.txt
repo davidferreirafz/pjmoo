@@ -1,0 +1,5 @@
+#Fichero de textos
+#Español
+#LANG=ES
+
+message=GoF Prototype - Ejemplo con GBF - http://davidferreira-fz.blogspot.com

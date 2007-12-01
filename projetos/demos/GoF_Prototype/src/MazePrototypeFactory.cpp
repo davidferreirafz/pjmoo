@@ -42,21 +42,24 @@ MazePrototypeFactory::~MazePrototypeFactory()
         delete(doorType);
     }
 }
-Room * MazePrototypeFactory::makeRoom(int number) const
+Room * MazePrototypeFactory::makeRoom(int number)
 {
-    return roomType->clone();
+    Room * room = roomType->clone();
+    room->initialize(number);
+
+    return room;
 }
-Door * MazePrototypeFactory::makeDoor(Room * room1, Room * room2) const
+Door * MazePrototypeFactory::makeDoor(Room * room1, Room * room2)
 {
     Door * door = doorType->clone();
     door->initialize(room1,room2);
     return door;
 }
-Maze * MazePrototypeFactory::makeMaze() const
+Maze * MazePrototypeFactory::makeMaze()
 {
     return mazeType->clone();
 }
-Wall * MazePrototypeFactory::makeWall() const
+Wall * MazePrototypeFactory::makeWall()
 {
     return wallType->clone();
 }

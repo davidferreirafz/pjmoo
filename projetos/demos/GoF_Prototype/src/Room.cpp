@@ -24,17 +24,39 @@ Room::Room(int number)
 {
     roomNumber = number;
 
-    SpriteFactory  *spriteFactory = new SpriteFactory(graphicSystem->imageBufferManager->getImageBuffer("tiles"));
-    sprite = spriteFactory->criarSpriteItem(32,0,32,32,1,1);
+    sides[North] = NULL;
+    sides[East]  = NULL;
+    sides[South] = NULL;
+    sides[West]  = NULL;
 
-    delete(spriteFactory);
+    load();
 }
-Room::Room(const Room & source)
+Room::Room(const Room & source) : MapSite(source)
 {
-    sides[North] = source.sides[North];
-    sides[East]  = source.sides[East];
-    sides[South] = source.sides[South];
-    sides[West]  = source.sides[West];
+    if (source.sides[North]){
+        sides[North]=source.sides[North]->clone();
+    } else {
+        sides[North]=NULL;
+    }
+    if (source.sides[East]){
+        sides[East]=source.sides[East]->clone();
+    } else {
+        sides[East]=NULL;
+    }
+
+    if (source.sides[South]){
+        sides[South]=source.sides[South]->clone();
+    } else {
+        sides[South]=NULL;
+    }
+
+    if (source.sides[West]){
+        sides[West]=source.sides[West]->clone();
+    } else {
+        sides[West]=NULL;
+    }
+
+    load();
 }
 Room::~Room()
 {
@@ -97,4 +119,19 @@ int Room::getNumber()
 Room * Room::clone() const
 {
     return new Room(*this);
+}
+void Room::initialize(int number)
+{
+    roomNumber=number;
+}
+void Room::load()
+{
+    if (sprite){
+        delete(sprite);
+    }
+
+    SpriteFactory  *spriteFactory = new SpriteFactory(graphicSystem->imageBufferManager->getImageBuffer("tiles"));
+    sprite = spriteFactory->criarSpriteItem(32,0,32,32,1,1);
+
+    delete(spriteFactory);
 }

@@ -47,7 +47,9 @@ class Door : public MapSite
   public:
     void initialize(Room * room1, Room * room2);
 
-    Door *  clone() const;
+    virtual Door * clone() const;
+
+    virtual void load();
 
 };
 #endif

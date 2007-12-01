@@ -27,7 +27,8 @@
 #include "MazeGame.h"
 #include "MazeFactory.h"
 #include "MazePrototypeFactory.h"
-#include "BombedMazeFactory.h"
+
+class BombedWall;
 
 class Test
 {

@@ -1,0 +1,15 @@
+class MapSite
+!!!130008.cpp!!!	MapSite()
+    load();
+!!!129316.cpp!!!	MapSite(in source : MapSite)
+    load();
+!!!130136.cpp!!!	~MapSite()
+    if (sprite){
+       delete(sprite);
+    }
+!!!130264.cpp!!!	draw(in x : int, in y : int) : void
+    if (sprite){
+        sprite->desenhar(x,y);
+    }
+!!!128066.cpp!!!	load() : void
+    sprite=NULL;

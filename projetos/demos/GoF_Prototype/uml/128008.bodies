@@ -1,0 +1,9 @@
+class MazeFactory
+!!!128264.cpp!!!	makeMaze() : Maze
+    return new Maze();
+!!!128392.cpp!!!	makeWall() : Wall
+    return new Wall();
+!!!128520.cpp!!!	makeRoom(in number : int) : Room
+    return new Room(number);
+!!!128648.cpp!!!	makeDoor(in room1 : Room, in room2 : Room) : Door
+    return new Door(room1,room2);

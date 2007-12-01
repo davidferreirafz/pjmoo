@@ -1,0 +1,15 @@
+class BombedWall
+!!!129725.cpp!!!	BombedWall()
+    load();
+!!!131140.cpp!!!	BombedWall(in source : BombedWall)
+    load();
+!!!131268.cpp!!!	clone() : Wall
+    return new BombedWall(*this);
+!!!128578.cpp!!!	load() : void
+    if (sprite){
+        delete(sprite);
+    }
+    SpriteFactory  *spriteFactory = new SpriteFactory(graphicSystem->imageBufferManager->getImageBuffer("tiles"));
+    sprite = spriteFactory->criarSpriteItem(0,64,32,32,1,1);
+
+    delete(spriteFactory);

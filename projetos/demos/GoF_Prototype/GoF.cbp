@@ -6,7 +6,7 @@
 		<Option pch_mode="0" />
 		<Option compiler="gcc" />
 		<Build>
-			<Target title="linux - release">
+			<Target title="linux">
 				<Option output="bin/GoF" prefix_auto="0" extension_auto="0" />
 				<Option working_dir="bin/" />
 				<Option type="0" />
@@ -18,7 +18,6 @@
 					<Add option="-Wall" />
 					<Add option="-pg" />
 					<Add option="-g" />
-					<Add option="-DDEBUG" />
 				</Compiler>
 				<Linker>
 					<Add option="-pg" />
@@ -30,7 +29,7 @@
 					<Add library="SDL" />
 				</Linker>
 			</Target>
-			<Target title="win32 - release">
+			<Target title="win32">
 				<Option output="bin/GoF.exe" prefix_auto="0" extension_auto="0" />
 				<Option working_dir="bin/" />
 				<Option type="0" />

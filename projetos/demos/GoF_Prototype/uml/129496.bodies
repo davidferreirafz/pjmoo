@@ -1,0 +1,85 @@
+class Room
+!!!131416.cpp!!!	Room(in number : int)
+    load();
+
+    roomNumber = number;
+!!!129988.cpp!!!	Room(in source : Room)
+    load();
+
+    roomNumber = source.roomNumber;
+
+    if (source.sides[North]){
+        sides[North]=source.sides[North]->clone();
+    }
+    if (source.sides[East]){
+        sides[East]=source.sides[East]->clone();
+    }
+
+    if (source.sides[South]){
+        sides[South]=source.sides[South]->clone();
+    }
+
+    if (source.sides[West]){
+        sides[West]=source.sides[West]->clone();
+    }
+!!!131544.cpp!!!	~Room()
+    for (int i=0; i<4; i++){
+        if (sides[i]){
+            delete(sides[i]);
+        }
+    }
+!!!131672.cpp!!!	draw(in x : int, in y : int) : void
+    if (sprite){
+        sprite->desenhar(x,y);
+    }
+
+    if (sides[North]){
+        sides[North]->draw(x,y-32);
+    }
+
+    if (sides[East]){
+        sides[East]->draw(x+32,y);
+    }
+
+    if (sides[South]){
+        sides[South]->draw(x,y+32);
+    }
+
+    if (sides[West]){
+        sides[West]->draw(x-32,y);
+    }
+!!!131160.cpp!!!	setSide(in direction : Direction, inout map : MapSite) : void
+    sides[direction]=map;
+!!!131288.cpp!!!	getSide(in direction : Direction) : MapSite
+    return sides[direction];
+!!!129399.cpp!!!	getDirection(in map : MapSite) : Direction
+    Direction direction = INVALID;
+
+    for (int i=0; i<4; i++){
+        if (sides[i]==map){
+            direction = (Direction) i;
+            break;
+        }
+    }
+
+    return direction;
+!!!131800.cpp!!!	getNumber() : int
+    return roomNumber;
+!!!129188.cpp!!!	initialize(in number : int) : void
+    roomNumber=number;
+!!!130116.cpp!!!	clone() : Room
+    return new Room(*this);
+!!!128322.cpp!!!	load() : void
+    if (sprite){
+        delete(sprite);
+    }
+
+    SpriteFactory  *spriteFactory = new SpriteFactory(graphicSystem->imageBufferManager->getImageBuffer("tiles"));
+    sprite = spriteFactory->criarSpriteItem(32,0,32,32,1,1);
+
+    delete(spriteFactory);
+    
+    sides[North] = NULL;
+    sides[East]  = NULL;
+    sides[South] = NULL;
+    sides[West]  = NULL;

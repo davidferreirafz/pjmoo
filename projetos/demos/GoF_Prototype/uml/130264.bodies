@@ -1,0 +1,18 @@
+class Wall
+!!!132056.cpp!!!	Wall()
+    load();
+!!!130500.cpp!!!	Wall(in source : Wall)
+    load();
+!!!132184.cpp!!!	~Wall()
+
+!!!130628.cpp!!!	clone() : Wall
+    return new Wall(*this);
+!!!128450.cpp!!!	load() : void
+    if (sprite){
+        delete(sprite);
+    }
+
+    SpriteFactory  *spriteFactory = new SpriteFactory(graphicSystem->imageBufferManager->getImageBuffer("tiles"));
+    sprite = spriteFactory->criarSpriteItem(0,0,32,32,1,1);
+
+    delete(spriteFactory);

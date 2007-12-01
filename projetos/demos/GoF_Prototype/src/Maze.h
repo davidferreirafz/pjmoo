@@ -41,12 +41,12 @@ class Maze
     virtual Maze * clone() const;
 
 
-  private:
-    Room * rooms[19][14];
-
-
   protected:
     virtual void load();
+
+
+  private:
+    Room * rooms[19][14];
 
 };
 #endif

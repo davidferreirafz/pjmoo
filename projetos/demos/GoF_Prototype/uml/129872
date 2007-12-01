@@ -1,0 +1,741 @@
+format 45
+"GBF" // framework GBF::GBF
+  revision 19
+  modified_by 91 "david"
+  // class settings
+  //class diagram settings
+  draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_infonote default shadow default
+  //use case diagram settings
+  package_name_in_tab default show_context default auto_label_position default draw_all_relations default shadow default
+  //sequence diagram settings
+  show_full_operations_definition default write_horizontally default class_drawing_mode default drawing_language default draw_all_relations default shadow default
+  //collaboration diagram settings
+  show_full_operations_definition default show_hierarchical_rank default write_horizontally default drawing_language default package_name_in_tab default show_context default draw_all_relations default shadow default
+  //object diagram settings
+   write_horizontally default package_name_in_tab default show_context default auto_label_position default draw_all_relations default shadow default
+  //component diagram settings
+  package_name_in_tab default show_context default auto_label_position default draw_all_relations default shadow default
+  draw_component_as_icon default show_component_req_prov default show_component_rea default
+  //deployment diagram settings
+  package_name_in_tab default show_context default write_horizontally default auto_label_position default draw_all_relations default shadow default
+  draw_component_as_icon default show_component_req_prov default show_component_rea default
+  //state diagram settings
+  package_name_in_tab default show_context default auto_label_position default write_trans_label_horizontally default show_trans_definition default draw_all_relations default shadow default
+  show_activities default region_horizontally default drawing_language default
+  //activity diagram settings
+  package_name_in_tab default show_context default show_opaque_action_definition default auto_label_position default write_flow_label_horizontally default draw_all_relations default shadow default
+  show_infonote default drawing_language default
+  
+  cpp_h_dir "/home/desenvolvimento/pjmoo-gbf/trunk/projeto/src/"
+  cpp_src_dir "/home/desenvolvimento/pjmoo-gbf/trunk/projeto/src/"
+  classview 129872 "Classes"
+    //class diagram settings
+    draw_all_relations default hide_attributes default hide_operations default show_members_full_definition default show_members_visibility default show_members_stereotype default show_parameter_dir default show_parameter_name default package_name_in_tab default class_drawing_mode default drawing_language default show_context_mode default auto_label_position default show_infonote default shadow default
+    //collaboration diagram settings
+    show_full_operations_definition default show_hierarchical_rank default write_horizontally default drawing_language default package_name_in_tab default show_context default draw_all_relations default shadow default
+    //object diagram settings
+     write_horizontally default package_name_in_tab default show_context default auto_label_position default draw_all_relations default shadow default
+    //sequence diagram settings
+    show_full_operations_definition default write_horizontally default class_drawing_mode default drawing_language default draw_all_relations default shadow default
+    //state diagram settings
+    package_name_in_tab default show_context default auto_label_position default write_trans_label_horizontally default show_trans_definition default draw_all_relations default shadow default
+    show_activities default region_horizontally default drawing_language default
+    //class settings
+    //activity diagram settings
+    package_name_in_tab default show_context default show_opaque_action_definition default auto_label_position default write_flow_label_horizontally default draw_all_relations default shadow default
+    show_infonote default drawing_language default
+    class 128976 "Ponto"
+      visibility package stereotype "struct"
+      cpp_external cpp_decl "${name}
+#include <GBF/GBF_define.h>
+"
+      java_decl ""
+      php_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      comment "Estrutura para posicionamento na tela"
+      attribute 128848 "x"
+	public explicit_type "int"
+	cpp_decl "    ${comment}${static}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	java_decl ""
+	php_decl ""
+	idl_decl ""
+      end
+
+      attribute 128976 "y"
+	public explicit_type "int"
+	cpp_decl "    ${comment}${static}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	java_decl ""
+	php_decl ""
+	idl_decl ""
+      end
+    end
+
+    class 129104 "Dimensao"
+      visibility package stereotype "struct"
+      cpp_external cpp_decl "${name}
+#include <GBF/GBF_define.h>
+"
+      java_decl ""
+      php_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      comment "Estrutura para representar dimensões"
+      attribute 129104 "w"
+	public explicit_type "int"
+	cpp_decl "    ${comment}${static}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	java_decl ""
+	php_decl ""
+	idl_decl ""
+      end
+
+      attribute 129232 "h"
+	public explicit_type "int"
+	cpp_decl "    ${comment}${static}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	java_decl ""
+	php_decl ""
+	idl_decl ""
+      end
+    end
+
+    class 131792 "PontoVirtual"
+      visibility package stereotype "struct"
+      cpp_external cpp_decl "${name}
+#include <GBF/GBF_define.h>
+"
+      java_decl ""
+      php_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      comment "Estrutura para posicionamento virtual na tela"
+      attribute 132688 "x"
+	public explicit_type "float"
+	cpp_decl "    ${comment}${static}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	java_decl ""
+	php_decl ""
+	idl_decl ""
+      end
+
+      attribute 132816 "y"
+	public explicit_type "float"
+	cpp_decl "    ${comment}${static}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	java_decl ""
+	php_decl ""
+	idl_decl ""
+      end
+    end
+
+    class 129499 "ObjetoBase"
+      visibility package 
+      cpp_external cpp_decl "${name}
+#include <GBF/${name}.h>
+"
+      java_decl ""
+      php_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      operation 130139 "ObjetoBase"
+	public explicit_return_type ""
+	nparams 0
+	cpp_decl "    ${comment}${inline}${name}${(}${)}${volatile}${throw};
+"
+	cpp_def "${comment}${inline}${class}::${name}${(}${)}${throw}{
+${body}}
+"
+	
+	
+	
+      end
+
+      operation 130267 "~ObjetoBase"
+	cpp_virtual public explicit_return_type ""
+	nparams 0
+	cpp_decl "    ${comment}${inline}${virtual}${name}${(}${)}${volatile}${throw};
+"
+	cpp_def "${comment}${inline}${class}::${name}${(}${)}${throw}{
+${body}}
+"
+	
+	
+	
+      end
+
+      operation 130395 "isInstance"
+	stereotype "template"
+	cpp_inline public explicit_return_type "bool"
+	nparams 0
+	cpp_decl "    ${comment}template<class T>
+  ${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract} {
+                if (dynamic_cast<T*>(this)){
+                    return true;
+                } else {
+                    return false;
+                }
+            };
+"
+	
+	
+	
+      end
+
+      operation 130523 "isInstance"
+	stereotype "template"
+	cpp_inline public explicit_return_type "bool"
+	nparams 1
+	  param in name "" explicit_type "T"
+	cpp_decl "    ${comment}template<class T>
+  ${friend}${static}${inline}${virtual}${type} ${name}${(}${t0} ${p0}${)}${const}${volatile}${throw}${abstract} {
+                if (dynamic_cast<T*>(this)){
+                    return true;
+                } else {
+                    return false;
+                }
+            };
+"
+	
+	
+	
+      end
+
+      operation 130651 "isInstance"
+	stereotype "template"
+	cpp_inline public explicit_return_type "bool"
+	nparams 1
+	  param inout name "t" explicit_type "T"
+	cpp_decl "    ${comment}template<class T>
+  ${friend}${static}${inline}${virtual}${type} ${name}${(}${t0} * ${p0}${)}${const}${volatile}${throw}${abstract} {
+                if (dynamic_cast<T*>(this)){
+                    return true;
+                } else {
+                    return false;
+                }
+            };
+"
+	
+	
+	
+      end
+    end
+
+    class 129371 "BaseManager"
+      visibility package 
+      cpp_external cpp_decl "${name}
+#include <GBF/${name}.h>
+"
+      java_decl ""
+      php_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      classrelation 136667 // <generalisation>
+	relation 130779 ---|>
+	  a public
+	    cpp default "${type}"
+	    classrelation_ref 136667 // <generalisation>
+	  b parent class_ref 129499 // ObjetoBase
+      end
+
+      operation 129627 "BaseManager"
+	public explicit_return_type ""
+	nparams 0
+	cpp_decl "    ${comment}${inline}${name}${(}${)}${volatile}${throw};
+"
+	cpp_def "${comment}${inline}${class}::${name}${(}${)}${throw}{
+${body}}
+"
+	
+	
+	
+      end
+
+      operation 129755 "~BaseManager"
+	cpp_virtual public explicit_return_type ""
+	nparams 0
+	cpp_decl "    ${comment}${inline}${virtual}${name}${(}${)}${volatile}${throw};
+"
+	cpp_def "${comment}${inline}${class}::${name}${(}${)}${throw}{
+${body}}
+"
+	
+	
+	
+      end
+    end
+
+    class 129627 "BaseSystem"
+      visibility package 
+      cpp_external cpp_decl "${name}
+#include <GBF/${name}.h>
+"
+      java_decl ""
+      php_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      classrelation 136795 // <generalisation>
+	relation 130907 ---|>
+	  a public
+	    cpp default "${type}"
+	    classrelation_ref 136795 // <generalisation>
+	  b parent class_ref 129499 // ObjetoBase
+      end
+
+      operation 129883 "BaseSystem"
+	public explicit_return_type ""
+	nparams 0
+	cpp_decl "    ${comment}${inline}${name}${(}${)}${volatile}${throw};
+"
+	cpp_def "${comment}${inline}${class}::${name}${(}${)}${throw}{
+${body}}
+"
+	
+	
+	
+      end
+
+      operation 130011 "~BaseSystem"
+	cpp_virtual public explicit_return_type ""
+	nparams 0
+	cpp_decl "    ${comment}${inline}${virtual}${name}${(}${)}${volatile}${throw};
+"
+	cpp_def "${comment}${inline}${class}::${name}${(}${)}${throw}{
+${body}}
+"
+	
+	
+	
+      end
+    end
+
+    class 131536 "Cor"
+      visibility package stereotype "typedef" explicit_base_type "Uint32"
+      cpp_external cpp_decl "${name}
+#include <GBF/GBF_define.h>"
+      java_decl ""
+      php_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      comment "Estrutura para definição de cor"
+    end
+
+    class 131664 "CorPaleta"
+      visibility package stereotype "typedef" explicit_base_type "Uint8"
+      cpp_external cpp_decl "${name}
+#include <GBF/GBF_define.h>"
+      java_decl ""
+      php_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      comment "Estrutura para definição de paleta de cor.
+Obs.: Representa um dos canais de cor (RGB)"
+    end
+
+    class 129232 "GBF"
+      visibility package 
+      cpp_external cpp_decl "${name}
+#include <GBF/${name}.h>
+"
+      java_decl ""
+      php_decl ""
+      idl_decl ""
+      explicit_switch_type ""
+      
+      comment "Descrição: 
+     Classe central do framework
+Motivação:
+     Prover de forma unificada a inicialização e configuração básica do framework
+ "
+      classrelation 129616 // graphicSystemCore (<unidirectional association>)
+	relation 129616 --->
+	  a role_name "graphicSystemCore" public
+	    comment "GraphicSystemCore, núcleo do sistema gráfico"
+	    cpp default "    ${comment}${static}${mutable}${volatile}${const}${type} * ${name}${value};
+"
+	    classrelation_ref 129616 // graphicSystemCore (<unidirectional association>)
+	  b parent class_ref 129360 // GraphicSystemCore
+      end
+
+      classrelation 129744 // inputSystemCore (<unidirectional association>)
+	relation 129744 --->
+	  a role_name "inputSystemCore" multiplicity "1" public
+	    cpp default "    ${comment}${static}${mutable}${volatile}${const}${type} * ${name}${value};
+"
+	    classrelation_ref 129744 // inputSystemCore (<unidirectional association>)
+	  b parent class_ref 129488 // InputSystemCore
+      end
+
+      classrelation 130000 // soundSystemCore (<unidirectional association>)
+	relation 130000 --->
+	  a role_name "soundSystemCore" public
+	    cpp default "    ${comment}${static}${mutable}${volatile}${const}${type} * ${name}${value};
+"
+	    classrelation_ref 130000 // soundSystemCore (<unidirectional association>)
+	  b parent class_ref 129744 // SoundSystemCore
+      end
+
+      classrelation 129872 // writeSystem (<unidirectional association>)
+	relation 129872 --->
+	  a role_name "writeSystem" public
+	    cpp default "    ${comment}${static}${mutable}${volatile}${const}${type} * ${name}${value};
+"
+	    classrelation_ref 129872 // writeSystem (<unidirectional association>)
+	  b parent class_ref 129616 // WriteSystemManager
+      end
+
+      operation 135120 "~GBF"
+	cpp_virtual public explicit_return_type ""
+	nparams 0
+	cpp_decl "    ${comment}${inline}${virtual}${name}${(}${)}${volatile}${throw};
+"
+	cpp_def "${comment}${inline}${class}::${name}${(}${)}${volatile}${throw} 
+{
+${body}}"
+	
+	
+	
+	comment "Destrutor"
+      end
+
+      operation 134992 "GBF"
+	public explicit_return_type ""
+	nparams 0
+	cpp_decl "    ${comment}${inline}${name}${(}${)}${volatile}${throw};
+"
+	cpp_def "${comment}${inline}${class}::${name}${(}${)}${volatile}${throw} 
+{
+${body}}"
+	
+	
+	
+	comment "Construtor"
+      end
+
+      operation 135504 "atualizar"
+	public explicit_return_type "void"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+	
+	comment "Atualiza o Sistema de processamento de eventos (teclado,mouse,joystick),
+desenha na tela o conteúdo do backbuffer
+Obs.: Deve ser usado na interação do loop principal do jogo"
+      end
+
+      operation 136144 "getPath"
+	public explicit_return_type "std::string"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+	
+	comment "Retorna o diretório base da aplicação corrente"
+      end
+
+      operation 135376 "iniciar"
+	public explicit_return_type "void"
+	nparams 4
+	  param in name "width" explicit_type "int"
+	  param in name "height" explicit_type "int"
+	  param in name "bpp_color" explicit_type "int"
+	  param in name "full" explicit_type "bool"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${t0} ${p0}, ${t1} ${p1}, ${t2} ${p2}, ${t3} ${p3}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${t0} ${p0}, ${t1} ${p1}, ${t2} ${p2}, ${t3} ${p3}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+	
+	comment "Inicializa o Sistema, e configura o modo gráfico"
+      end
+
+      operation 136272 "isDefaultPath"
+	public explicit_return_type "bool"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+	
+      end
+
+      operation 135888 "isFPS"
+	public explicit_return_type "bool"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+	
+	comment "Informa se o mostrador de FPS está ativo"
+      end
+
+      operation 135632 "pausar"
+	public explicit_return_type "void"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+	
+	comment "Pausa o Sistema"
+      end
+
+      operation 136400 "setDefaultPath"
+	public explicit_return_type "void"
+	nparams 1
+	  param in name "ativo" explicit_type "bool"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${t0} ${p0}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${t0} ${p0}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+	
+      end
+
+      operation 135760 "setFPS"
+	public explicit_return_type "void"
+	nparams 1
+	  param in name "show" explicit_type "bool"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${t0} ${p0}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${t0} ${p0}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+	
+	comment "Mostra o Contador de FPS"
+      end
+
+      operation 136016 "setPath"
+	public explicit_return_type "void"
+	nparams 1
+	  param inout name "fullPath" explicit_type "char"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${t0} * ${p0}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${t0} * ${p0}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+	
+	comment "Informa o caminho do diretório base da aplicação corrente"
+      end
+
+      operation 135248 "setTitulo"
+	public explicit_return_type "void"
+	nparams 2
+	  param in name "titulo" explicit_type "std::string"
+	  param in name "autor" explicit_type "std::string"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${t0} ${p0}, ${t1} ${p1}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${t0} ${p0}, ${t1} ${p1}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+	
+	comment "Informação sobre o Autor e o Título da Aplicação.
+Obs.: Usado para arquivo de log e título da janela"
+      end
+
+      operation 136784 "carregar"
+	protected explicit_return_type "void"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+	
+	comment "Prepara o Ambiente para ser inicializado "
+      end
+
+      operation 136528 "controleInterno"
+	protected explicit_return_type "void"
+	nparams 0
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+	
+	comment "Controle para ações internas"
+      end
+
+      operation 136656 "setTitulo"
+	protected explicit_return_type "void"
+	nparams 1
+	  param in name "titulo" explicit_type "std::string"
+	cpp_decl "    ${comment}${friend}${static}${inline}${virtual}${type} ${name}${(}${t0} ${p0}${)}${const}${volatile}${throw}${abstract};
+"
+	cpp_def "${comment}${inline}${type} ${class}::${name}${(}${t0} ${p0}${)}${const}${volatile}${throw}${staticnl}
+{
+${body}}"
+	
+	
+	
+	comment "Define o Título para Janela "
+      end
+
+      attribute 128720 "defaultPath"
+	private explicit_type "bool"
+	cpp_decl "    ${comment}${static}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	java_decl ""
+	php_decl ""
+	idl_decl ""
+      end
+
+      attribute 128336 "fps"
+	private explicit_type "bool"
+	cpp_decl "    ${comment}${static}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	java_decl ""
+	php_decl ""
+	idl_decl ""
+      end
+
+      classrelation 130128 // fpsSystem (<unidirectional association>)
+	relation 130128 --->
+	  a role_name "fpsSystem" private
+	    cpp default "    ${comment}${static}${mutable}${volatile}${const}${type} * ${name}${value};
+"
+	    classrelation_ref 130128 // fpsSystem (<unidirectional association>)
+	  b parent class_ref 129872 // TimerSystemFPS
+      end
+
+      attribute 128464 "numscreenshot"
+	private explicit_type "int"
+	cpp_decl "    ${comment}${static}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	java_decl ""
+	php_decl ""
+	idl_decl ""
+      end
+
+      attribute 128592 "pathBase"
+	private explicit_type "std::string"
+	cpp_decl "    ${comment}${static}${mutable}${volatile}${const}${type} ${name}${value};
+"
+	java_decl ""
+	php_decl ""
+	idl_decl ""
+      end
+
+      classrelation 143952 // <dependency>
+	relation 143952 -_->
+	  stereotype "use"
+	  a protected
+	    cpp default "    ${comment}${static}${mutable}${volatile}${const}${type} * ${name}${value};
+"
+	    classrelation_ref 143952 // <dependency>
+	  b parent class_ref 137936 // UtilLog
+      end
+
+      classrelation 144208 // <dependency>
+	relation 144208 -_->
+	  stereotype "use"
+	  a protected
+	    cpp default "    ${comment}${static}${mutable}${volatile}${const}${type} * ${name}${value};
+"
+	    classrelation_ref 144208 // <dependency>
+	  b parent class_ref 132176 // GraphicSystemImageBufferManager
+      end
+
+      classrelation 144336 // <dependency>
+	relation 144336 -_->
+	  stereotype "use"
+	  a protected
+	    cpp default "    ${comment}${static}${mutable}${volatile}${const}${type} * ${name}${value};
+"
+	    classrelation_ref 144336 // <dependency>
+	  b parent class_ref 128720 // FrameLayerManager
+      end
+
+      classrelation 144464 // <dependency>
+	relation 144464 -_->
+	  stereotype "use"
+	  a protected
+	    cpp default "    ${comment}${static}${mutable}${volatile}${const}${type} * ${name}${value};
+"
+	    classrelation_ref 144464 // <dependency>
+	  b parent class_ref 132304 // VideoConfig
+      end
+
+      classrelation 144848 // <dependency>
+	relation 144848 -_->
+	  stereotype "use"
+	  a protected
+	    cpp default "    ${comment}${static}${mutable}${volatile}${const}${type} * ${name}${value};
+"
+	    classrelation_ref 144848 // <dependency>
+	  b parent class_ref 137808 // UtilExtract
+      end
+
+      classrelation 144976 // <dependency>
+	relation 144976 -_->
+	  stereotype "use"
+	  a protected
+	    cpp default "    ${comment}${static}${mutable}${volatile}${const}${type} * ${name}${value};
+"
+	    classrelation_ref 144976 // <dependency>
+	  b parent class_ref 135888 // SoundSystemInterfaceManager
+      end
+
+      classrelation 151760 // <dependency>
+	relation 151760 -_->
+	  stereotype "use"
+	  a package
+	    cpp default "#include in header"
+	    classrelation_ref 151760 // <dependency>
+	  b parent class_ref 138576 // UserInterfaceTexto
+      end
+
+      classrelation 128289 // <dependency>
+	relation 128289 -_->
+	  a default
+	    cpp default "#include in header"
+	    classrelation_ref 128289 // <dependency>
+	  b parent class_ref 129061 // UserInterfaceWindow
+      end
+    end
+  end
+end

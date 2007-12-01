@@ -1,0 +1,33 @@
+class MazePrototypeFactory
+!!!129032.cpp!!!	MazePrototypeFactory(in maze : Maze, in wall : Wall, in room : Room, out door : Door)
+    mazeType = maze;
+    wallType = wall;
+    roomType = room;
+    doorType = door;
+!!!129160.cpp!!!	~MazePrototypeFactory()
+    if (mazeType){
+        delete(mazeType);
+    }
+    if (wallType){
+        delete(wallType);
+    }
+    if (roomType){
+        delete(roomType);
+    }
+    if (doorType){
+        delete(doorType);
+    }
+!!!129288.cpp!!!	makeRoom(in number : int) : Room
+    Room * room = roomType->clone();
+    room->initialize(number);
+
+    return room;
+!!!129416.cpp!!!	makeDoor(in room1 : Room, in room2 : Room) : Door
+    Door * door = doorType->clone();
+    door->initialize(room1,room2);
+
+    return door;
+!!!129220.cpp!!!	makeMaze() : Maze
+    return mazeType->clone();
+!!!129348.cpp!!!	makeWall() : Wall
+    return wallType->clone();

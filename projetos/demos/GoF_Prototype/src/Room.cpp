@@ -5,60 +5,49 @@
 //***************************************************************************
 //    Este programa é software livre; você pode redistribuí-lo e/ou
 //    modificá-lo sob os termos da Licença Pública Geral GNU, conforme
-//    publicada pela Free Software Foundation; tanto a versão 2 da
+//    publicada pela Free Software Foundation; tanto a versão 2 da 
 //    Licença como (a seu critério) qualquer versão mais nova.
 //***************************************************************************
 //    This program is free software; you can redistribute it and/or modify
 //    it under the terms of the GNU General Public License as published by
-//    the Free Software Foundation; either version 2 of the License, or
+//    the Free Software Foundation; either version 2 of the License, or 
 //    (at your option) any later version.
 //
 //    You should have received a copy of the GNU General Public License
 //    along with this program; if not, write to the
-//    Free Software Foundation, Inc.,
+//    Free Software Foundation, Inc.,                                       
 //    59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 //***************************************************************************
 #include "Room.h"
 
-Room::Room(int number)
+Room::Room(int number) 
 {
-    roomNumber = number;
-
-    sides[North] = NULL;
-    sides[East]  = NULL;
-    sides[South] = NULL;
-    sides[West]  = NULL;
-
     load();
+
+    roomNumber = number;
 }
-Room::Room(const Room & source) : MapSite(source)
+Room::Room(const Room & source) : MapSite(source) 
 {
+    load();
+
+    roomNumber = source.roomNumber;
+
     if (source.sides[North]){
         sides[North]=source.sides[North]->clone();
-    } else {
-        sides[North]=NULL;
     }
     if (source.sides[East]){
         sides[East]=source.sides[East]->clone();
-    } else {
-        sides[East]=NULL;
     }
 
     if (source.sides[South]){
         sides[South]=source.sides[South]->clone();
-    } else {
-        sides[South]=NULL;
     }
 
     if (source.sides[West]){
         sides[West]=source.sides[West]->clone();
-    } else {
-        sides[West]=NULL;
     }
-
-    load();
 }
-Room::~Room()
+Room::~Room() 
 {
     for (int i=0; i<4; i++){
         if (sides[i]){
@@ -66,10 +55,10 @@ Room::~Room()
         }
     }
 }
-void Room::enter()
+void Room::enter() 
 {
 }
-void Room::draw(int x, int y)
+void Room::draw(int x, int y) 
 {
     if (sprite){
         sprite->desenhar(x,y);
@@ -91,15 +80,15 @@ void Room::draw(int x, int y)
         sides[West]->draw(x-32,y);
     }
 }
-void Room::setSide(Direction direction, MapSite * map)
+void Room::setSide(Direction direction, MapSite * map) 
 {
     sides[direction]=map;
 }
-MapSite * Room::getSide(Direction direction) const
+MapSite * Room::getSide(Direction direction) const 
 {
     return sides[direction];
 }
-Direction Room::getDirection(MapSite * map)
+Direction Room::getDirection(MapSite * map) 
 {
     Direction direction = INVALID;
 
@@ -112,19 +101,19 @@ Direction Room::getDirection(MapSite * map)
 
     return direction;
 }
-int Room::getNumber()
+int Room::getNumber() 
 {
     return roomNumber;
 }
-Room * Room::clone() const
-{
-    return new Room(*this);
-}
-void Room::initialize(int number)
+void Room::initialize(int number) 
 {
     roomNumber=number;
 }
-void Room::load()
+Room * Room::clone() const 
+{
+    return new Room(*this);
+}
+void Room::load() 
 {
     if (sprite){
         delete(sprite);
@@ -134,4 +123,9 @@ void Room::load()
     sprite = spriteFactory->criarSpriteItem(32,0,32,32,1,1);
 
     delete(spriteFactory);
+    
+    sides[North] = NULL;
+    sides[East]  = NULL;
+    sides[South] = NULL;
+    sides[West]  = NULL;
 }

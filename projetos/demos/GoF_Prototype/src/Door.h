@@ -35,21 +35,21 @@ class Door : public MapSite
 
     virtual void enter();
 
+    virtual Door * clone() const;
+
+    void initialize(Room * room1, Room * room2);
+
     Room * otherSideFrom(Room * theRoom);
+
+
+  protected:
+    virtual void load();
 
 
   private:
     Room * room[2];
 
     bool open;
-
-
-  public:
-    void initialize(Room * room1, Room * room2);
-
-    virtual Door * clone() const;
-
-    virtual void load();
 
 };
 #endif

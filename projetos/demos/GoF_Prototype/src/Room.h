@@ -44,17 +44,15 @@ class Room : public MapSite
 
     int getNumber();
 
+    void initialize(int number);
+
+    virtual Room * clone() const;
+
 
   protected:
     int roomNumber;
 
     MapSite * sides[4];
-
-
-  public:
-    virtual Room * clone() const;
-
-    void initialize(int number);
 
     virtual void load();
 

@@ -5,42 +5,37 @@
 //***************************************************************************
 //    Este programa é software livre; você pode redistribuí-lo e/ou
 //    modificá-lo sob os termos da Licença Pública Geral GNU, conforme
-//    publicada pela Free Software Foundation; tanto a versão 2 da
+//    publicada pela Free Software Foundation; tanto a versão 2 da 
 //    Licença como (a seu critério) qualquer versão mais nova.
 //***************************************************************************
 //    This program is free software; you can redistribute it and/or modify
 //    it under the terms of the GNU General Public License as published by
-//    the Free Software Foundation; either version 2 of the License, or
+//    the Free Software Foundation; either version 2 of the License, or 
 //    (at your option) any later version.
 //
 //    You should have received a copy of the GNU General Public License
 //    along with this program; if not, write to the
-//    Free Software Foundation, Inc.,
+//    Free Software Foundation, Inc.,                                       
 //    59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 //***************************************************************************
 #include "Maze.h"
 
-Maze::Maze()
+Maze::Maze() 
 {
-    for (int x=0; x<19; x++){
-        for (int y=0; y<14; y++){
-            rooms[x][y]=NULL;
-        }
-    }
+    load();
 }
-Maze::Maze(const Maze & source)
+Maze::Maze(const Maze & source) 
 {
+    load();
     for (int x=0; x<19; x++){
         for (int y=0; y<14; y++){
             if ((rooms[x][y]!=NULL)&&(source.rooms[x][y]!=NULL)){
                 rooms[x][y]=source.rooms[x][y]->clone();
-            } else {
-                rooms[x][y]=NULL;
             }
         }
     }
 }
-Maze::~Maze()
+Maze::~Maze() 
 {
     for (int x=0; x<19; x++){
         for (int y=0; y<14; y++){
@@ -50,11 +45,11 @@ Maze::~Maze()
         }
     }
 }
-void Maze::addRoom(Room * room, int column, int line)
+void Maze::addRoom(Room * room, int column, int line) 
 {
     rooms[column][line]=room;
 }
-Room * Maze::roomNo(int number) const
+Room * Maze::roomNo(int number) const 
 {
     Room * room = NULL;
     for (int x=0; x<19; x++){
@@ -67,7 +62,7 @@ Room * Maze::roomNo(int number) const
 
     return room;
 }
-void Maze::draw()
+void Maze::draw() 
 {
     int xVirtual=0;
     int yVirtual=0;
@@ -83,7 +78,15 @@ void Maze::draw()
         }
     }
 }
-Maze * Maze::clone() const
+Maze * Maze::clone() const 
 {
     return new Maze(*this);
+}
+void Maze::load() 
+{
+    for (int x=0; x<19; x++){
+        for (int y=0; y<14; y++){
+            rooms[x][y]=NULL;
+        }
+    }
 }

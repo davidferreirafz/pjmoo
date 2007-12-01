@@ -56,18 +56,10 @@
 			<Add library="SDLmain" />
 			<Add library="SDL" />
 		</Linker>
-		<Unit filename="src/BombedMazeFactory.cpp" />
-		<Unit filename="src/BombedMazeFactory.h" />
 		<Unit filename="src/BombedWall.cpp" />
 		<Unit filename="src/BombedWall.h" />
 		<Unit filename="src/Door.cpp" />
 		<Unit filename="src/Door.h" />
-		<Unit filename="src/EnchantedDoor.cpp" />
-		<Unit filename="src/EnchantedDoor.h" />
-		<Unit filename="src/EnchantedMazeFactory.cpp" />
-		<Unit filename="src/EnchantedMazeFactory.h" />
-		<Unit filename="src/EnchantedRoom.cpp" />
-		<Unit filename="src/EnchantedRoom.h" />
 		<Unit filename="src/MapSite.cpp" />
 		<Unit filename="src/MapSite.h" />
 		<Unit filename="src/Maze.cpp" />
@@ -76,10 +68,10 @@
 		<Unit filename="src/MazeFactory.h" />
 		<Unit filename="src/MazeGame.cpp" />
 		<Unit filename="src/MazeGame.h" />
+		<Unit filename="src/MazePrototypeFactory.cpp" />
+		<Unit filename="src/MazePrototypeFactory.h" />
 		<Unit filename="src/Room.cpp" />
 		<Unit filename="src/Room.h" />
-		<Unit filename="src/RoomWithABomb.cpp" />
-		<Unit filename="src/RoomWithABomb.h" />
 		<Unit filename="src/Wall.cpp" />
 		<Unit filename="src/Wall.h" />
 		<Unit filename="src/main.cpp" />

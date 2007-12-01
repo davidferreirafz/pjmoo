@@ -33,13 +33,13 @@ class MazeFactory
 
     virtual ~MazeFactory();
 
-    virtual Maze * makeMaze();
+    virtual Maze * makeMaze() const;
 
-    virtual Wall * makeWall();
+    virtual Wall * makeWall() const;
 
-    virtual Room * makeRoom(int number);
+    virtual Room * makeRoom(int number) const;
 
-    virtual Door * makeDoor(Room * room1, Room * room2);
+    virtual Door * makeDoor(Room * room1, Room * room2) const;
 
 };
 #endif

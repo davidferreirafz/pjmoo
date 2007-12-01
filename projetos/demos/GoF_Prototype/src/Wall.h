@@ -36,6 +36,8 @@ class Wall : public MapSite
 
     virtual Wall * clone() const;
 
+
+  protected:
     virtual void load();
 
 };

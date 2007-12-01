@@ -22,13 +22,15 @@
 
 Door::Door(Room * room1, Room * room2)
 {
+    load();
+
     room[0]=room1;
     room[1]=room2;
-
-    load();
 }
 Door::Door(const Door & source) : MapSite(source)
 {
+    load();
+
     if (source.room[0]){
         room[0]=source.room[0];
     } else {
@@ -41,7 +43,7 @@ Door::Door(const Door & source) : MapSite(source)
         room[1]=NULL;
     }
 
-    load();
+    open=source.open;
 }
 Door::~Door()
 {
@@ -61,6 +63,15 @@ Door::~Door()
 void Door::enter()
 {
 }
+Door *  Door::clone() const
+{
+    return new Door(*this);
+}
+void Door::initialize(Room * room1, Room * room2)
+{
+    room[0]=room1;
+    room[1]=room2;
+}
 Room * Door::otherSideFrom(Room * theRoom)
 {
     if (theRoom==room[0]){
@@ -70,15 +81,6 @@ Room * Door::otherSideFrom(Room * theRoom)
     } else {
         return NULL;
     }
-}
-void Door::initialize(Room * room1, Room * room2)
-{
-    room[0]=room1;
-    room[1]=room2;
-}
-Door *  Door::clone() const
-{
-    return new Door(*this);
 }
 void Door::load()
 {
@@ -90,4 +92,6 @@ void Door::load()
     sprite = spriteFactory->criarSpriteItem(64,0,32,32,1,1);
 
     delete(spriteFactory);
+
+    open=false;
 }

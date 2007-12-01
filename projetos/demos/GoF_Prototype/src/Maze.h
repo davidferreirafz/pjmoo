@@ -44,5 +44,9 @@ class Maze
   private:
     Room * rooms[19][14];
 
+
+  protected:
+    virtual void load();
+
 };
 #endif

@@ -38,7 +38,7 @@ class Maze
 
     void draw();
 
-    Maze * clone();
+    virtual Maze * clone() const;
 
 
   private:

@@ -19,6 +19,7 @@
 //    59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 //***************************************************************************
 #include "main.h"
+#include "BombedWall.h"
 
 int main(int argc, char * argv[])
 {
@@ -38,9 +39,10 @@ int main(int argc, char * argv[])
 
     MazeGame mazeGame;
 
-    MazePrototypeFactory simple(new Maze(), new Wall(), new Room(0), new Door(NULL,NULL));
+    MazePrototypeFactory simple(new Maze(), new BombedWall(), new Room(0), new Door(NULL,NULL));
 
     Maze * aMaze = mazeGame.create(simple);
+
 
 
     while(true) {

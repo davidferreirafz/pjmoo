@@ -28,13 +28,15 @@ class Wall : public MapSite
   public:
     Wall();
 
+    Wall(const Wall & source);
+
     virtual ~Wall();
 
     virtual void enter();
 
-    Wall(const Wall & source);
+    virtual Wall * clone() const;
 
-    Wall * clone();
+    virtual void load();
 
 };
 #endif

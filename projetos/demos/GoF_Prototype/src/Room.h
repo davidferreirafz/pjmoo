@@ -52,7 +52,11 @@ class Room : public MapSite
 
 
   public:
-    Room * clone() const;
+    virtual Room * clone() const;
+
+    void initialize(int number);
+
+    virtual void load();
 
 };
 #endif

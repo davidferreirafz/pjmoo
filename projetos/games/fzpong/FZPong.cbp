@@ -43,7 +43,6 @@
 					<Add option="-O" />
 					<Add option="-W" />
 					<Add option="-Wall" />
-					<Add option="-DGNU_LINUX" />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
@@ -80,7 +79,6 @@
 					<Add option="-W" />
 					<Add option="-Wall" />
 					<Add option="-g" />
-					<Add option="-DGNU_LINUX" />
 					<Add option="-DDEBUG" />
 				</Compiler>
 				<Linker>

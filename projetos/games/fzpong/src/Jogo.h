@@ -30,6 +30,13 @@
 
 #include <GBF/UserInterfaceMenuItemTexto.h>
 
+#include <GBF/UserInterfaceWindowTitulo.h>
+
+#include <GBF/UserInterfaceWindow.h>
+
+#include <GBF/UserInterfaceMenuItemTexto.h>
+
+#include <GBF/UserInterfaceVisualSolido.h>
 
 class Jogo : public GAT
 {
@@ -82,5 +89,14 @@ class Jogo : public GAT
 
     SpriteItem * david;
 
+    UserInterfaceWindowTitulo * janelaSobre;
+
+    UserInterfaceWindowTitulo * janelaCredito;
+
+    UserInterfaceWindowTitulo * janelaAjuda;
+
+    UserInterfaceWindow * janelaZerado;
+
+    UserInterfaceWindow * janelaGameOver;
 };
 #endif

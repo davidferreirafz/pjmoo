@@ -20,21 +20,21 @@
 // ***************************************************************************/
 #include "Jogador.h"
 
-Jogador::Jogador() 
+Jogador::Jogador()
 {
+    GraphicSystem  *graphicSystem = GraphicSystem::getInstance();
+    SpriteFactory  *spriteFactory = new SpriteFactory(graphicSystem->imageBufferManager->getImageBuffer("personagem"));
 
-    GraphicSystemImageBufferManager *gsImageBufferManager=GraphicSystemImageBufferManager::getInstance();
-    SpriteFactory *spriteFactory = new SpriteFactory(gsImageBufferManager->getImageBuffer("personagem"));
     adicionarSpritePrincipal(spriteFactory->criarSpritePersonagem(0,21,14,80,1,1));
     delete(spriteFactory);
 
 }
-Jogador::~Jogador() 
+Jogador::~Jogador()
 {
 
     //dtor
 }
-void Jogador::acao(InputSystem * input) 
+void Jogador::acao(InputSystem * input)
 {
     if ((input->teclado->isKey(SDLK_UP))||(input->joystick->isAxeUp())){
         subir();
@@ -42,7 +42,7 @@ void Jogador::acao(InputSystem * input)
         descer();
     }
 }
-Ponto Jogador::saque() 
+Ponto Jogador::saque()
 {
     Ponto saque;
 

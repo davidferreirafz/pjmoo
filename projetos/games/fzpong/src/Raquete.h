@@ -26,7 +26,7 @@
 
 #include "Bola.h"
 #include <GBF/PersonagemAbstract.h>
-
+#include <GBF/GraphicSystem.h>
 
 enum Lado {
   //Lado direito da Tela

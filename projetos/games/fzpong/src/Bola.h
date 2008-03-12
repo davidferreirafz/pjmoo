@@ -32,6 +32,7 @@
 
 #include <GBF/SpriteFactory.h>
 
+#include <GBF/GraphicSystem.h>
 
 struct Velocidade
 {

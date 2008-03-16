@@ -34,7 +34,6 @@
 #include "Util.h"
 #include <GBF/GraphicSystemGFX.h>
 
-
 class CPU : public Raquete
 {
   public:
@@ -65,6 +64,5 @@ class CPU : public Raquete
     int raioVisao;
 
     Efeito efeito;
-
 };
 #endif

@@ -36,20 +36,28 @@ tela_ajuda_02=-Setas cima e baixo para mover o
 tela_ajuda_03= bastao.
 tela_ajuda_04=#Regras
 tela_ajuda_05=-Ganha o jogo quem tiver a vantagem
-tela_ajuda_06= de duas partidas.
+tela_ajuda_06= de tres partidas.
 tela_ajuda_07=-Para vencer uma partida, ganha
 tela_ajuda_08= aquele que tiver uma vantagem de
-tela_ajuda_09= cinco pontos. Se pontuacao 
+tela_ajuda_09= cinco pontos. Se a pontuacao 
 tela_ajuda_10= ultrapassar os dez pontos, basta
 tela_ajuda_11= uma diferenca de dois pontos.
 
 #Jogo::jogoGameOver()
-tela_gameover_01=Voce Perdeu!!!
-tela_gameover_02= Continue Tentando :P
+tela_gameover_01= 
+tela_gameover_02=GameOver
+tela_gameover_03= 
+tela_gameover_04=Mais sorte na proxima,
+tela_gameover_05=continue tentando...
 
 #Jogo::jogoZerado()
-tela_zerado_01=Voce Ganhou!!!
-tela_zerado_02= Parabens voce venceu o CPU.
+tela_zerado_01= 
+tela_zerado_02=Voce Ganhou!!!
+tela_zerado_03= 
+tela_zerado_04=Parabens voce
+tela_zerado_05=conseguiu vencer o CPU. 
+tela_zerado_06= 
+tela_zerado_07=Consegue novamente???
 
 #Jogo::menuSobre()
 tela_sobre_01=FZPong [Game - Pong Clone]

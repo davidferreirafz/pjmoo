@@ -21,7 +21,7 @@
 #include "Controle.h"
 #include "Jogador.h"
 
-Controle::Controle() 
+Controle::Controle()
 {
 
     cenario    = FrameLayerManager::getInstance()->getFrameLayer("background");
@@ -33,13 +33,13 @@ Controle::Controle()
     raqueteJogador->setLado(LADO_DIREITO);
     raqueteCPU->setLado(LADO_ESQUERDO);
 }
-Controle::~Controle() 
+Controle::~Controle()
 {
     delete(raqueteJogador);
     delete(raqueteCPU);
 
 }
-void Controle::iniciar() 
+void Controle::iniciar()
 {
     Objeto::setArea(cenario->getArea());
 
@@ -51,17 +51,17 @@ void Controle::iniciar()
 
     placar.iniciar();
 }
-void Controle::iniciarSet() 
+void Controle::iniciarSet()
 {
     placar.novaPartida();
 }
-void Controle::prepararSet() 
+void Controle::prepararSet()
 {
     bola.continuar();
     raqueteJogador->iniciar();
     raqueteCPU->iniciar();
 }
-void Controle::executar(InputSystem * input) 
+void Controle::executar(InputSystem * input)
 {
     bola.acao(NULL);
     raqueteJogador->acao(input);
@@ -74,7 +74,7 @@ void Controle::executar(InputSystem * input)
 
     display();
 }
-bool Controle::isGameOver() 
+bool Controle::isGameOver()
 {
     bool terminou = false;
 
@@ -84,7 +84,7 @@ bool Controle::isGameOver()
 
     return terminou;
 }
-bool Controle::isFinalizado() 
+bool Controle::isFinalizado()
 {
     bool terminou = false;
 
@@ -95,7 +95,7 @@ bool Controle::isFinalizado()
     return terminou;
 }
 //Verifica se o set foi finalizado
-bool Controle::isSetFinalizado() 
+bool Controle::isSetFinalizado()
 {
     bool finalizado = false;
 
@@ -110,11 +110,11 @@ bool Controle::isSetFinalizado()
 
     return finalizado;
 }
-int Controle::getNumeroSet() 
+int Controle::getNumeroSet()
 {
     return placar.getVitoriaCPU()+placar.getVitoriaJogador();
 }
-void Controle::display() 
+void Controle::display()
 {
     cenario->desenhar();
     wsManager->escrever("texto",260,10,"%02d X %02d",placar.getCPU(),placar.getJogador());
@@ -127,7 +127,7 @@ void Controle::display()
     raqueteCPU->desenhar();
 }
 //Ativar demonstração do jogo
-void Controle::ativarDemo(bool ativo) 
+void Controle::ativarDemo(bool ativo)
 {
     if (ativo){
         if (raqueteJogador!=NULL){
@@ -143,7 +143,7 @@ void Controle::ativarDemo(bool ativo)
         raqueteJogador->setLado(LADO_DIREITO);
     }
 }
-void Controle::juiz() 
+void Controle::juiz()
 {
     if (bola.getPosicao().x>=cenario->getArea().right){
         placar.pontuarCPU();
@@ -159,7 +159,7 @@ void Controle::juiz()
         bola.iniciar(raqueteJogador->saque());
     }
 }
-void Controle::setFinalizado() 
+void Controle::setFinalizado()
 {
 }
 //Diferença para o fim da partida
@@ -172,5 +172,5 @@ int Controle::DIFERENCA_FIM_PRORROGACAO =2;
 int Controle::LIMITE_PARA_PRORROGACAO =10;
 
 //Diferença de sets para determinar o ganhador
-int Controle::DIFERENCA_SET_VITORIA =2;
+int Controle::DIFERENCA_SET_VITORIA =3;
 

@@ -27,6 +27,8 @@ Bola::Bola()
     adicionarSpritePrincipal(spriteFactory->criarSpritePersonagem(0,0,20,20,1,1));
     getSpritePrincipal()->animacao.setAutomatico(false);
     getSpritePrincipal()->setQtdDirecoes(2);
+
+    delete(spriteFactory);
 }
 Bola::~Bola()
 {
@@ -35,20 +37,31 @@ Bola::~Bola()
 }
 void Bola::iniciar()
 {
-    velocidadeGradativa.x=8;
-    velocidadeGradativa.y=4;
-    continuar();
     batidaParede=0;
+
+    velocidadeGradativa.x=0;
+    velocidadeGradativa.y=0;
+
+    continuar();
 }
 void Bola::iniciar(Ponto saque)
 {
-    elevarGrauDificuldade();
-    setPosicao(saque.x,saque.y+getDimensao().h/2);
     batidaParede=0;
+    velocidadeGradativa.y=4+rand()%4;
+    velocidadeGradativa.x=4+rand()%4;
+
+    checkarVelocidade();
+
+    setPosicao(saque.x,saque.y+getDimensao().h/2);
 }
 void Bola::continuar()
 {
-    elevarGrauDificuldade();
+    batidaParede=0;
+
+    velocidadeGradativa.y=4+rand()%4;
+    velocidadeGradativa.x=6+rand()%4;
+
+    checkarVelocidade();
 
     if (rand()%10 % 2==0){
         velocidade.x = - velocidade.x;
@@ -83,7 +96,7 @@ void Bola::acao(InputSystem * input)
         getSpritePrincipal()->setDirecao(DR_ESQUERDA);
     }
 
-    if (batidaParede>5){
+    if (batidaParede>4){
         elevarGrauDificuldade();
         batidaParede=0;
     }
@@ -93,24 +106,32 @@ bool Bola::isColisao(PersonagemAbstract * personagem)
     bool colisao=personagem->isColisao(this);
     if (colisao){
         soundSystem->fxManager->playPanEffect("raquete",posicao.x);
+
+
+        int raquete   = personagem->getPosicao().y;
+        int areaBaixo = personagem->getDimensao().h - 20;
+        int areaCima  = 20;
+        int bola      = posicao.y;
+
+        //std::cout << "Bola" << bola << " Parede " << (raquete+areaBaixo) << std::endl;
         //bateu em baixo
-        if (posicao.y>=personagem->getPosicao().y+personagem->getDimensao().h-getDimensao().h){
+        if (bola>=raquete+areaBaixo){
+            //std::cout << "Baixo - v:" << velocidade.y << std::endl;
             corrigirEixoX(personagem);
-            //veio de baixo?
-            if (velocidade.y<0){
-                velocidade.y = - velocidade.y;
-            }
+            velocidade.y = velocidadeGradativa.y;
+            //std::cout << "agora v:" << velocidade.y << std::endl;
         //bateu em cima
-        } else if (posicao.y<=personagem->getPosicao().y+getDimensao().h){
+        } else if (bola<=raquete+areaCima){
+            //std::cout << "Cima - v:" << velocidade.y << std::endl;
             corrigirEixoX(personagem);
-            //veio de cima ?
-            if (velocidade.y>0){
-                velocidade.y = - velocidade.y;
-            }
+            velocidade.y = - velocidadeGradativa.y;
+            //std::cout << "agora v:" << velocidade.y << std::endl;
         //bateu no meio
         } else {
             corrigirEixoX(personagem);
+            velocidade.y=0;
         }
+        batidaParede++;
     }
 
     return colisao;
@@ -138,19 +159,27 @@ void Bola::corrigirEixoX(PersonagemAbstract * personagem)
 }
 void Bola::elevarGrauDificuldade()
 {
-    velocidadeGradativa.y+=2;
-    velocidadeGradativa.x+=1;
+    velocidadeGradativa.y+=1+rand()%3;
+    velocidadeGradativa.x+=1+rand()%2;
 
-    if (velocidadeGradativa.y>=getDimensao().w*0.9){
-        velocidadeGradativa.y=int(getDimensao().w*0.9);
+    checkarVelocidade();
+}
+
+void Bola::checkarVelocidade()
+{
+    int tLargura=int(getDimensao().w*0.9);
+    int tAltura=int(getDimensao().h*0.9);
+
+    if (velocidadeGradativa.y>=tAltura){
+        velocidadeGradativa.y=tAltura;
     }
-    if (velocidadeGradativa.x>=getDimensao().w*0.9){
-       velocidadeGradativa.x=int(getDimensao().w*0.9);
+    if (velocidadeGradativa.x>=tLargura){
+       velocidadeGradativa.x=tLargura;
     }
 
     if (velocidade.y>0){
         velocidade.y=velocidadeGradativa.y;
-    } else {
+    } else if (velocidade.y<0){
         velocidade.y= - velocidadeGradativa.y;
     }
 
@@ -160,3 +189,4 @@ void Bola::elevarGrauDificuldade()
         velocidade.x= - velocidadeGradativa.x;
     }
 }
+

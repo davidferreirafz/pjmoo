@@ -53,6 +53,11 @@ Jogo::~Jogo()
 {
     delete(david);
     delete(controle);
+    delete(janelaSobre);
+    delete(janelaCredito);
+    delete(janelaAjuda);
+    delete(janelaZerado);
+    delete(janelaGameOver);
 }
 //Inicializa os recursos utilizados no jogo.
 //Ex.: Imagens, sons, fontes, configuração do modo gráfico e etc..
@@ -70,6 +75,7 @@ void Jogo::inicializarRecursos()
     //carregando fontes
     frameworkGBF->writeSystem->carregar("menu",frameworkGBF->getPath()+"data//fonte//kiloton.png");
     frameworkGBF->writeSystem->carregar("texto",frameworkGBF->getPath()+"data//fonte//kiloton_18.png");
+    frameworkGBF->writeSystem->carregar("kiloton10",frameworkGBF->getPath()+"data//fonte//kiloton_10.png");
 
 
 //carregando audio - efeitos
@@ -136,7 +142,7 @@ void Jogo::inicializarRecursos()
     janelaAjuda->titulo.setFonte("menu");
     janelaAjuda->titulo.setChaveTexto("titulo_ajuda");
     janelaAjuda->setVisual(uiVisualImagem->clone());
-    janelaAjuda->adicionarBotao(new UserInterfaceBotao("menu","botao_enter",SDLK_RETURN));
+    janelaAjuda->adicionarBotao(new UserInterfaceBotao("kiloton10","botao_enter",SDLK_RETURN));
     janelaAjuda->inicializar();
 
     janelaCredito = new UserInterfaceWindowTitulo();
@@ -147,7 +153,7 @@ void Jogo::inicializarRecursos()
     janelaCredito->titulo.setFonte("menu");
     janelaCredito->titulo.setChaveTexto("titulo_credito");
     janelaCredito->setVisual(uiVisualImagem->clone());
-    janelaCredito->adicionarBotao(new UserInterfaceBotao("menu","botao_enter",SDLK_RETURN));
+    janelaCredito->adicionarBotao(new UserInterfaceBotao("kiloton10","botao_enter",SDLK_RETURN));
     janelaCredito->inicializar();
 
     janelaSobre = new UserInterfaceWindowTitulo();
@@ -158,7 +164,7 @@ void Jogo::inicializarRecursos()
     janelaSobre->titulo.setFonte("menu");
     janelaSobre->titulo.setChaveTexto("titulo_sobre");
     janelaSobre->setVisual(uiVisualImagem->clone());
-    janelaSobre->adicionarBotao(new UserInterfaceBotao("menu","botao_enter",SDLK_RETURN));
+    janelaSobre->adicionarBotao(new UserInterfaceBotao("kiloton10","botao_enter",SDLK_RETURN));
     janelaSobre->inicializar();
 
     janelaGameOver = new UserInterfaceWindow();
@@ -168,6 +174,7 @@ void Jogo::inicializarRecursos()
     janelaGameOver->texto.setChaveTexto("tela_gameover_%02d");
     janelaGameOver->texto.setAlinhamento(TEXTO_CENTRALIZADO);
     janelaGameOver->setVisual(uiVisualImagem->clone());
+    janelaGameOver->adicionarBotao(new UserInterfaceBotao("kiloton10","botao_enter",SDLK_RETURN));
     janelaGameOver->inicializar();
 
     janelaZerado = new UserInterfaceWindow();
@@ -177,6 +184,7 @@ void Jogo::inicializarRecursos()
     janelaZerado->texto.setChaveTexto("tela_zerado_%02d");
     janelaZerado->texto.setAlinhamento(TEXTO_CENTRALIZADO);
     janelaZerado->setVisual(uiVisualImagem->clone());
+    janelaZerado->adicionarBotao(new UserInterfaceBotao("kiloton10","botao_enter",SDLK_RETURN));
     janelaZerado->inicializar();
 
     delete(uiVisualImagem);
@@ -286,7 +294,7 @@ void Jogo::jogoGameOver()
 
     janelaGameOver->executar();
 
-    if (janelaGameOver->confirmarSelecao()==1){
+    if (janelaGameOver->isBotao(UserInterfaceWindow::BOTAO_OK)){
         setMenu();
     }
 }
@@ -296,7 +304,7 @@ void Jogo::jogoZerado()
 
     janelaZerado->executar();
 
-    if (janelaZerado->confirmarSelecao()==1){
+    if (janelaZerado->isBotao(UserInterfaceWindow::BOTAO_OK)){
         setMenu();
     }
 }

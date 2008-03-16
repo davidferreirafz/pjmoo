@@ -67,6 +67,8 @@ class Bola : public Objeto
 
     void elevarGrauDificuldade();
 
+    void checkarVelocidade();
+
     int batidaParede;
 
     Velocidade velocidade;

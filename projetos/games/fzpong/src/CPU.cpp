@@ -90,16 +90,16 @@ void CPU::desenhar()
     gfx->circulo(posicao.x+getDimensao().w/2,posicao.y+getDimensao().h/2,raioVisao);
 
     gfx->setColor(255,0,0);
-    gfx->circulo(posicao.x+getDimensao().w/2,posicao.y+getDimensao().h/2,getDimensao().h*1.4);
+    gfx->circulo(posicao.x+getDimensao().w/2,posicao.y+getDimensao().h/2,int(getDimensao().h*1.4));
 #endif
 }
 void CPU::iniciarVisao()
 {
-    raioVisao=200;
+    raioVisao=340;
 }
 void CPU::aumentarVisao()
 {
-    raioVisao+=20;
+    raioVisao+=40;
 
     if (raioVisao>=getAreaTela().bottom){
         raioVisao=getAreaTela().bottom;
@@ -121,7 +121,6 @@ Decisao CPU::pensar(Area visao, Area areaVisaoBola)
 
 
     if (qx + qy <= qr){
-
         if (qx + qy <= qe){
             switch (efeito){
                 case EFEITO_CIMA:

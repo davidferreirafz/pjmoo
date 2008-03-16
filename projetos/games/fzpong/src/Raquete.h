@@ -73,8 +73,6 @@ class Raquete : public Objeto
 
     Bola getVisaoBola();
 
-    void adaptarVelocidade();
-
 
   private:
     int velocidade;

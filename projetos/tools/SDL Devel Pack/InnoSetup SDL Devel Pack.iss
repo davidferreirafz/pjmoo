@@ -13,7 +13,7 @@ Compression=lzma/ultra
 SolidCompression=true
 ShowLanguageDialog=auto
 WizardImageBackColor=clWhite
-UninstallDisplayIcon={sys}\SDL.ico
+UninstallDisplayIcon={app}\SDL.ico
 VersionInfoVersion=2.0
 VersionInfoCompany=DukItan Software
 OutputDir=C:\Projeto\pjmoo\distro\tools
@@ -32,10 +32,10 @@ AppContact=davidferreira.fz@gmail.com
 DefaultGroupName=SDL Devel Pack
 UsePreviousGroup=false
 UninstallFilesDir={sys}
-DefaultDirName=MinGW
+DefaultDirName={pf}\CodeBlocks\MinGW
 DisableDirPage=false
 WizardSmallImageFile=C:\Projeto\pjmoo\projetos\tools\SDL Devel Pack\ImageSmall.bmp
-AppID={{043F29C5-F3B8-4C77-8BFF-FF9AFA91F03F}
+AppID={{D9B4A371-E271-4007-A74B-9BA74BE39744}
 SetupIconFile=C:\Projeto\pjmoo\projetos\tools\SDL Devel Pack\SDL.ico
 AppendDefaultDirName=false
 CreateAppDir=true
@@ -62,7 +62,12 @@ Source: ..\SDL.ico; DestDir: {app}
 
 [INI]
 Filename: {group}\SDL Devel Pack.url; Section: InternetShortcut; Key: URL; String: http://pjmoo.wiki.sourceforge.net/SDL Devel Pack
+Filename: {group}\SDL Tutorial.url; Section: InternetShortcut; Key: URL; String: http://www.libsdl.org/tutorials.php
+Filename: {group}\SDL API.url; Section: InternetShortcut; Key: URL; String: http://www.libsdl.org/cgi/docwiki.cgi/
+
 [UninstallDelete]
 Type: files; Name: {group}\SDL Devel Pack.url
+Type: files; Name: {group}\SDL API.url
+Type: files; Name: {group}\SDL Tutorial.url
 [Dirs]
 Name: {app}\include\SDL

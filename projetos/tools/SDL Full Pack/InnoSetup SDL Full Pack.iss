@@ -3,31 +3,31 @@
 
 [Setup]
 AppName=SDL Full Pack
-AppVerName=SDL Full Pack 1.5
+AppVerName=SDL Full Pack 2.0
 AppPublisher=DukItan
-AppPublisherURL=http://davidferreira-fz.blogspot.com
-AppSupportURL=http://davidferreira-fz.blogspot.com
-AppUpdatesURL=http://davidferreira-fz.blogspot.com
+AppPublisherURL=http://pjmoo.wiki.sourceforge.net/SDL Full Pack
+AppSupportURL=http://dukitan.wordpress.com
+AppUpdatesURL=http://pjmoo.wiki.sourceforge.net/SDL Full Pack
 LicenseFile=C:\Projeto\pjmoo\projetos\tools\SDL Full Pack\COPYING.txt
 Compression=lzma/ultra
 SolidCompression=true
 ShowLanguageDialog=auto
 WizardImageBackColor=clWhite
-UninstallDisplayIcon=
-VersionInfoVersion=1.5
-VersionInfoCompany=
+UninstallDisplayIcon={sys}\SDL.ico
+VersionInfoVersion=2.0
+VersionInfoCompany=DukItan Software
 OutputDir=C:\Projeto\pjmoo\distro\tools
-OutputBaseFilename=SDL_Full_Pack.1.5
+OutputBaseFilename=SDL_Full_Pack.2.0
 AppCopyright=LGPL
 SourceDir=C:\Projeto\pjmoo\projetos\tools\SDL Full Pack\bin
 WizardImageFile=C:\Projeto\pjmoo\projetos\tools\SDL Full Pack\ImageBanner.bmp
 InternalCompressLevel=ultra
 LanguageDetectionMethod=locale
 DirExistsWarning=no
-VersionInfoDescription=SDL Full Pack 1.5
-VersionInfoTextVersion=Simple DirectMedia Layer
+VersionInfoDescription=SDL Full Pack 2.0
+VersionInfoTextVersion=SDL Full Pack 2.0
 VersionInfoCopyright=LGPL
-AppVersion=1.5
+AppVersion=2.0
 AppContact=davidferreira.fz@gmail.com
 DefaultGroupName=SDL Full Pack
 UsePreviousGroup=false
@@ -36,6 +36,7 @@ DefaultDirName=SDL
 DisableDirPage=true
 WizardSmallImageFile=C:\Projeto\pjmoo\projetos\tools\SDL Full Pack\ImageSmall.bmp
 AppID={{043F29C5-F3B8-4C77-8BFF-FF9AFA91F03F}
+SetupIconFile=C:\Projeto\pjmoo\projetos\tools\SDL Full Pack\SDL.ico
 
 [Tasks]
 
@@ -43,6 +44,7 @@ AppID={{043F29C5-F3B8-4C77-8BFF-FF9AFA91F03F}
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 Source: *.dll; DestDir: {sys}
 Source: ..\SDL-README.txt; DestDir: {sys}; Flags: isreadme
+Source: ..\SDL.ico; DestDir: {sys}
 
 [Icons]
 
@@ -53,6 +55,6 @@ Source: ..\SDL-README.txt; DestDir: {sys}; Flags: isreadme
 [Components]
 
 [INI]
-Filename: {group}\SDL Full Pack.url; Section: InternetShortcut; Key: URL; String: http://pjmoo.wiki.sourceforge.net/SDL+Full+Pack
+Filename: {group}\SDL Full Pack.url; Section: InternetShortcut; Key: URL; String: http://pjmoo.wiki.sourceforge.net/SDL Full Pack
 [UninstallDelete]
 Type: files; Name: {group}\SDL Full Pack.url

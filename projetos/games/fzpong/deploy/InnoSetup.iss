@@ -3,23 +3,23 @@
 
 [Setup]
 AppName=FZPong
-AppVerName=PJMOO :: FZPong
+AppVerName=FZPong
 AppPublisher=DukItan Games
-AppPublisherURL=http://pjmoo.sourceforge.net
+AppPublisherURL=http://pjmoo.wiki.sourceforge.net/FZPong
 AppSupportURL=http://davidferreira-fz.blogspot.com/
-AppUpdatesURL=http://pjmoo.codigolivre.org.br/wiki/index.php/FZPong
-DefaultDirName={pf}\PJMOO\FZPong
-DefaultGroupName=PJMOO\FZPong
+AppUpdatesURL=http://pjmoo.wiki.sourceforge.net/FZPong
+DefaultDirName={pf}\FZPong
+DefaultGroupName=\FZPong
 LicenseFile=C:\Projeto\pjmoo\projetos\games\fzpong\bin\GPL-pt_BR.txt
 Compression=lzma/ultra
 SolidCompression=true
 ShowLanguageDialog=auto
 WizardImageBackColor=clBlack
 UninstallDisplayIcon={app}\fzpong.ico
-VersionInfoVersion=1.5
+VersionInfoVersion=2.0
 VersionInfoCompany=DukItan Games
 OutputDir=C:\Projeto\pjmoo\distro\games
-OutputBaseFilename=FZPong.1.5.install.bin.win32
+OutputBaseFilename=FZPong-2.0-install-win32
 AppCopyright=GPL
 SourceDir=C:\Projeto\pjmoo\projetos\games\fzpong\bin
 WizardImageFile=C:\Projeto\pjmoo\projetos\games\fzpong\deploy\ImageBanner.bmp
@@ -30,8 +30,10 @@ DirExistsWarning=no
 VersionInfoDescription=FZPong, Pong, OpenSource
 VersionInfoTextVersion=Seja Livre! Use tecnologias Livre!
 VersionInfoCopyright=GPL
-AppVersion=1.5
+AppVersion=2.0
 AppContact=davidferreira.fz@gmail.com
+PrivilegesRequired=none
+AppID={{77FF84FD-4F64-40AD-9A38-9F2019BBABDF}
 
 
 [Tasks]
@@ -44,8 +46,8 @@ Source: *; DestDir: {app}; Flags: ignoreversion recursesubdirs; Excludes: *cvs*,
 Source: fzpong.ico; DestDir: {app}; Flags: ignoreversion; Tasks: 
 
 [Icons]
-Name: {group}\FZPong; Filename: {app}\FZPong.exe; IconFilename: {app}\FZPong.ico; IconIndex: 0; Components: ; Tasks: ; Languages: 
-Name: {group}\FZPong - Modo Janela; Filename: {app}\FZPong.exe; IconFilename: {app}\FZPong.ico; Parameters: --window; Comment: Executar em Janela; IconIndex: 0; Components: ; Tasks: ; Languages: 
+Name: {group}\FZPong Fullscreen; Filename: {app}\FZPong.exe; IconFilename: {app}\FZPong.ico; IconIndex: 0; Components: ; Tasks: ; Languages: 
+Name: {group}\FZPong; Filename: {app}\FZPong.exe; IconFilename: {app}\FZPong.ico; Parameters: --window; Comment: Executar em Janela; IconIndex: 0; Components: ; Tasks: ; Languages: 
 Name: {userdesktop}\FZPong; Filename: {app}\FZPong.exe; Tasks: desktopicon; IconFilename: {app}\FZPong.ico; Languages: ; IconIndex: 0; Components: 
 
 
@@ -58,9 +60,11 @@ Filename: {app}\FZPong.exe; Description: {cm:LaunchProgram,FZPong}; Flags: nowai
 [INI]
 Filename: {group}\PJMOO.url; Section: InternetShortcut; Key: URL; String: http://pjmoo.sourceforge.net
 Filename: {group}\FZ Pong.url; Section: InternetShortcut; Key: URL; String: http://pjmoo.wiki.sourceforge.net/FZPong
+Filename: {group}\DukItan Software.url; Section: InternetShortcut; Key: URL; String: http://dukitan.wordpress.com
 [UninstallDelete]
 Type: files; Name: {group}\PJMOO.url
 Type: files; Name: {group}\FZ Pong.url
+Type: files; Name: {group}\DukItan Software.url
 [Languages]
 Name: English; MessagesFile: compiler:Default.isl
 Name: Portugues; MessagesFile: compiler:Languages\BrazilianPortuguese.isl

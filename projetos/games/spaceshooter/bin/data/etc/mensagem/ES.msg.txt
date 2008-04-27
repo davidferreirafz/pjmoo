@@ -1,0 +1,266 @@
+#Fichero de textos
+#Español
+
+#Apresentacao::tela01()
+tela_01_1=SpaceShooter - La Amenaza Final
+tela_01_2=Producido con Tecnología GBF
+tela_01_3=http://pjmoo.codigolivre.org.br
+tela_01_4=OpenSource - Made in Brazil - CE
+
+
+#Apresentacao::tela02()
+tela_02_1=  Una sonda de exploración detecta
+tela_02_2=la presencia de una estraña
+tela_02_3=combinación de D.N.A.
+tela_02_4= 
+tela_02_5= 
+tela_02_6=  Una nave de exploración fue enviada...
+
+
+#Apresentacao::tela03()
+tela_03_1=   He llegada a la base
+tela_03_2=una mensaje, donde los 
+tela_03_3=cientistas alegan tener
+tela_03_4=encontrado una raza
+tela_03_5=cibernética...
+
+
+#Apresentacao::tela04()
+tela_04_1=   Algunos minutos después, la nave envía una
+tela_04_2=mensaje informando que la raza es considerada
+tela_04_3=hostil.
+tela_04_4=   Su única meta es asimilar razas superiores,
+tela_04_5=agregando así más poder a la suya raza.
+tela_04_6= 
+tela_04_7=   Ellos autodenominanse
+tela_04_8=como seres perfectos...
+
+
+#Apresentacao::tela05()
+tela_05_1=   En búsqueda de perfección absoluta quieren
+tela_05_2=absorber todo el poder y conocimiento de los
+tela_05_3=humanos. Quieren entender como estes seres
+tela_05_4=orgánicos transforman sus últimas fuerzas y
+tela_05_5=emociones en acciones
+tela_05_6=extraordinarias.
+
+
+#Apresentacao::tela06()
+tela_06_1=   Para llegar sin resistencia a los seres
+tela_06_2=humanos, los cibernéticos hacen pactos
+tela_06_3=secretos de no agresión con las otras
+tela_06_4=razas de la galaxia.
+tela_06_5= 
+tela_06_6=   Ahora no resta nada
+tela_06_7=a la suya frente que no...
+
+
+#Apresentacao::tela07()
+tela_07_1=   Es tu deber salvar a la tierra de tal amenaza.
+tela_07_2=Recuerdate, ¡estás solo!
+tela_07_3= 
+tela_07_4=   Tú deberás encontrar
+tela_07_5=cápsulas de abastecimiento,
+tela_07_6=allende la mejor nave
+tela_07_7=disponible en la región.
+
+
+#Apresentacao::tela08()
+tela_08_1=   Cuidas de los diversos obstáculos, de las
+tela_08_2=diversas razas que debes encontrar por la frente...
+tela_08_3=   ¡Casi todo está contra ti!
+tela_08_4= 
+tela_08_5=   ¡Reúne tuyas últimas
+tela_08_6=fuerzas y ve a la frontera
+tela_08_7=final eliminar esta
+tela_08_8=amenaza a tu raza!
+
+
+#Apresentacao::tela09()
+tela_09_1=   Aviso Startrek es marca registrada de Paramount Pictures.
+tela_09_2= 
+tela_09_3=   Este juego no reproduce la verdadera historia de StarTrek.
+tela_09_4=   Es sólo un juego clásico de nave, aprovechándose de lo 
+tela_09_5=harto material temático encontrado en la WEB.
+tela_09_6=   En algunos puntos el autor deste juego apoyase en reglas
+tela_09_7=y/o marcos históricos de StarTrek, ¡pero debe estar claro
+tela_09_8=que el autor es apenas uno de los millones de fans desta serie
+tela_09_9=que a más de treinta años conquista públicos de todas las razas
+tela_09_10=en diversos planetas!
+tela_09_11= 
+tela_09_12=   Este juego no tiene cualquier vínculo con StarTrek.
+tela_09_13=   Para conocer realmente el mundo de StarTrek, visite:
+tela_09_14=        http://www.startrek.com
+tela_09_15= 
+tela_09_16=   ¡Este juego es distribuido en GPL! Es OpenSource y puede
+tela_09_17=ser usado como fuente de estudios.
+tela_09_18=   Acerca de lo desenvolvimiento deste juego, visite:
+tela_09_19=        http://pjmoo.codigolivre.org.br
+
+
+
+#Tela::telaVitoria
+tela_vitoria_01=Parabien                
+tela_vitoria_02=                            
+tela_vitoria_03=    ¡Tú conseguiste, superaste tu primero grande
+tela_vitoria_04=desafío!
+tela_vitoria_05=    Está en alerta, este es apenas el inicio de      
+tela_vitoria_06= tujornada.
+tela_vitoria_07= 
+tela_vitoria_08=              Vida Longa y Próspera
+tela_vitoria_09=                  SpaceShooter v1.4
+
+
+#Tela::telaDerrota
+tela_derrota_01=GAME OVER!!!        
+tela_derrota_02= 
+tela_derrota_03=    ¡Tú fallaste!  Tu raza fue exterminada!                
+tela_derrota_04= 
+tela_derrota_05=    Fúgate y salve tu vida.
+
+
+#Controle::telaFaseFinalizada
+fase_finalizada_01=Misión Completada
+
+#Controle::telaPause()
+tela_pause_01=PAUSE
+                        
+
+#Jogo::telaMenu()
+tela_info_1=OpenSource - Made in Brazil - Ceará
+tela_info_2=http://pjmoo.codigolivre.org.br
+tela_info_3=SpaceShooter v1.4
+
+#Jogo::telaSobre              
+tela_sobre_01=    Tú deberás usar toda tu habilidad en el comando de 
+tela_sobre_02=cuatro naves estelares.     
+tela_sobre_03=    Enfrentando asteroides, razas alienigenas y toda 
+tela_sobre_04=suerte de desafios espaciales.  
+tela_sobre_05=    Para cumplir tu misión, atravesarás siete áreas      
+tela_sobre_06=mucho hostis.
+tela_sobre_07= 
+tela_sobre_08=    ¡Lucha por la supervivencia de tu especie!           
+
+#Jogo::telaAjuda
+tela_ajuda_01=#Movimiento:               
+tela_ajuda_02=   + Joystick y Saetas de Dirección
+tela_ajuda_03=                             
+tela_ajuda_04=#Armas:                      
+tela_ajuda_05=   + Phaser                     
+tela_ajuda_06=      CTRL[Izq] & Botón A[Joy] 
+tela_ajuda_07=                             
+tela_ajuda_08=   + Torpedo                    
+tela_ajuda_09=      ALT[Izq] & Botón B[Joy]  
+
+
+#Jogo::telaCredito()
+tela_credito_01=#Desenvolvedor:             
+tela_credito_02=    David de Almeida Ferreira (FZ)
+tela_credito_03=#E-Mail:                    
+tela_credito_04=    davidferreira@uol.com.br  
+tela_credito_05=#Site:                      
+tela_credito_06=    pjmoo.codigolivre.org.br  
+tela_credito_07= 
+tela_credito_08=#Traducción:
+tela_credito_09=    David Gustavo Mazieiro (DGM)
+tela_credito_10=#E-Mail:                    
+tela_credito_11=    dgmdavid@bol.com.br  
+tela_credito_12=#Site:                      
+tela_credito_13=    www.dgmsoft.rg3.net
+
+
+#Jogo::telaTopRecorde
+#Jogo::telaTopRecordeNovo
+tela_top_recorde_1=RECORD
+tela_top_recorde_2=Jugador
+tela_top_recorde_3=Puntuacion
+
+
+#Menu::Menu
+menu_1=RECORD
+menu_2=JUGAR
+menu_3=AYUDA
+menu_4=SOBRE
+menu_5=CREDITO
+menu_6=CONFIG
+menu_7=SALIR
+
+
+
+#DIVERSOS
+
+tela_fase_zona=AREA  :%s
+tela_fase_missao=MISION:%s
+tela_fase_alerta=ALERTA:%s
+
+
+fase_1_zona=Campo de Asteroids
+fase_2_zona=Klingon, Z.A.IK. # 1-2
+fase_3_zona=Romulana,Campus Galeius
+fase_4_zona=Klingon, Z.A.IK. # 2-2
+fase_5_zona=Neutral
+fase_6_zona=Cardassiana
+fase_7_zona=Borg
+
+fase_1_missao=Llegar a Area Klingon
+fase_2_missao=Llegar a Area Romulana
+fase_3_missao=Encontrar la Voyager
+fase_4_missao=Llegar a Area Neutral
+fase_5_missao=Encontrar la Enterprise-E
+fase_6_missao=Entrar en la Area Borg
+fase_7_missao=Destruir el Cubo Base
+
+fase_1_inimigo=Nada en los Sensores
+fase_2_inimigo=Klingon Bird Of Prey
+fase_3_inimigo=Romulan Scout
+fase_4_inimigo=Flota Klingon e Romulana
+fase_5_inimigo=Nada en los Sensores
+fase_6_inimigo=Flota Cardassiana
+fase_7_inimigo=Flota Borg
+
+
+botao_enter=[ENTER]
+
+
+msg_dica=[ Dica ]
+msg_continue_avancado=¡Continúa Avanzando!
+
+
+titulo_sobre=SOBRE
+titulo_ajuda=AYUDA
+titulo_credito=CREDITO
+
+tela_titulo=SPACE SHOOTER
+tela_subtitulo=Amenaza Final
+
+item_arma=ITEM ROJO:TORPEDO
+item_velocidade=ITEM AZUL:VELOCIDAD
+item_escudo=ITEM VERDE:ESCUDO
+
+
+dica_01=#: Phaser: CTRL-Izq(Teclado)
+dica_02=#: Phaser: Botón A(Joystick)
+dica_03=#: Torpedo: ALT-Izq(Teclado)
+dica_04=#: Torpedo: Botón B(Joystick)
+dica_05=#: Observa a los marcadores
+dica_06=#: ¡Economiza los Torpedos!
+dica_07=#: ¡Atención a las minas!
+dica_08=#: ¡Asteroides son más flacos!
+dica_09=#: ¡Acierta todo que pueda!
+dica_10=#: ¡Maniobra con destreza!
+dica_11=#: ¡Escucha los aviso sonoros!
+dica_12=#: ¡Evita colidirse!
+dica_13=#: Salir: ESC(Teclado)
+dica_14=#: ScreenShoot: F12(Teclado)
+dica_15=#: Pausa: P(Teclado)
+dica_16=#: Pausa: Botón C(Joystick)
+dica_17=#: ¡Cuida de la retaguardia!
+dica_18=#: ¡Existen naves camufladas!
+
+top_recorde_aviso_1=Atención:
+top_recorde_aviso_2=    Para publicar el récord en el site, ejecuta el programa:
+top_recorde_aviso_3=            Top10SpaceShooter
+
+menu_idioma_br=Português
+menu_idioma_en=English
+menu_idioma_es=Español

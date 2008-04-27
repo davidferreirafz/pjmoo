@@ -1,0 +1,268 @@
+#Archive of Texts
+#English
+#LANG=en_US
+
+#Apresentacao::tela01()
+tela_01_1=SpaceShooter - The Final Threat
+tela_01_2=Produced with GBF Technology
+tela_01_3=http://pjmoo.codigolivre.org.br
+tela_01_4=OpenSource - Made in Brazil - CE
+
+
+#Apresentacao::tela02()
+tela_02_1=  An exploration probe detected
+tela_02_2=the presence of a strange
+tela_02_3=combination of D.N.A.
+tela_02_4= 
+tela_02_5= 
+tela_02_6=  An exploration ship has been sent...
+
+
+#Apresentacao::tela03()
+tela_03_1=   The fleet base received
+tela_03_2=a message: the 
+tela_03_3=scientists have
+tela_03_4=found a cibernetic
+tela_03_5=race...
+
+
+#Apresentacao::tela04()
+tela_04_1=   Some minutes after, the ship sent a
+tela_04_2=message informing that the race is hostile.
+tela_04_3=
+tela_04_4=   Its objective is to assimilate superior
+tela_04_5=races to increase the power of its race.
+tela_04_6= 
+tela_04_7=   They call themselves
+tela_04_8=as perfect beings...
+
+
+#Apresentacao::tela05()
+tela_05_1=   In a searching for total perfection, 
+tela_05_2=they want to absorb all the power and
+tela_05_3=knowledge of the humans. They want to know
+tela_05_4=how these organic beings change its last forces
+tela_05_5=in extraordinary
+tela_05_6=actions.
+
+
+#Apresentacao::tela06()
+tela_06_1=   The cibernetics are making secret
+tela_06_2=no-aggression pacts with other races
+tela_06_3=of the galaxy to come without resistance
+tela_06_4=to the humans.
+tela_06_5= 
+tela_06_6=   Now, there's nothing
+tela_06_7=ahead but...
+
+
+#Apresentacao::tela07()
+tela_07_1=   It's your duty to save the earth from
+tela_07_2=such threat. You're alone!
+tela_07_3= 
+tela_07_4=   You must find supply
+tela_07_5=capsules and the best
+tela_07_6=available ship of the
+tela_07_7=area, as well.
+
+
+#Apresentacao::tela08()
+tela_08_1=   Take care of the several obstacles and 
+tela_08_2=races that you will find ahead...
+tela_08_3=   Almost everything is against you!
+tela_08_4= 
+tela_08_5=   Gather your last
+tela_08_6=forces and go to the final
+tela_08_7=frontier to destroy
+tela_08_8=this threat!
+
+
+#Apresentacao::tela09()
+tela_09_1=   Startrek is registered trademark of Paramount Pictures.
+tela_09_2= 
+tela_09_3=   This game doesn't reproduce the true history of StarTrek.
+tela_09_4=   It's just a classic scrolling game that uses the 
+tela_09_5=extensive thematic material found on the WEB.
+tela_09_6=   In some points, the author of this game bases himself in
+tela_09_7=some facts of StarTrek, but it must to be clear that the
+tela_09_8=author is just one of the millions of fans of this serie 
+tela_09_9=that conquer more and more fans of all the races in 
+tela_09_10=many planets everyday!
+tela_09_11= 
+tela_09_12=   This game is not endorsed by StarTrek.
+tela_09_13=   If you want to know more about StarTrek, visit:
+tela_09_14=        http://www.startrek.com
+tela_09_15= 
+tela_09_16=   This game is GPL! It's OpenSource and it can be
+tela_09_17=used as a source of study.
+tela_09_18=   About the development of this game, visit:
+tela_09_19=        http://pjmoo.codigolivre.org.br
+
+
+#Tela::telaVitoria
+tela_vitoria_01=Congratulations!
+tela_vitoria_02= 
+tela_vitoria_03=    You win your first great challenge!
+tela_vitoria_04= 
+tela_vitoria_05=    Be alert, it's just the beginning of your      
+tela_vitoria_06=journey.                    
+tela_vitoria_07= 
+tela_vitoria_08=              Long and prosper life
+tela_vitoria_09=                  SpaceShooter v1.4
+
+
+#Tela::telaDerrota
+tela_derrota_01=GAME OVER!!!        
+tela_derrota_02= 
+tela_derrota_03=    You failed!  Your race was destroyed!
+tela_derrota_04= 
+tela_derrota_05=    Flee and save your life.
+
+
+#Controle::telaFaseFinalizada
+fase_finalizada_01=Mission Completed
+
+
+#Controle::telaPause()
+tela_pause_01=PAUSE
+                      
+
+#Jogo::telaMenu()
+tela_info_1=OpenSource - Made in Brazil - Ceará
+tela_info_2=http://pjmoo.codigolivre.org.br
+tela_info_3=SpaceShooter v1.4
+
+
+#Jogo::telaSobre                          
+tela_sobre_01=    You must use all your ability in the command of
+tela_sobre_02=four starships.
+tela_sobre_03=    Confronting asteroids, alien races and all kinds
+tela_sobre_04=of spatial challenges.
+tela_sobre_05=    To accomplish your mission, you must overpass seven      
+tela_sobre_06=hostile zones.
+tela_sobre_07= 
+tela_sobre_08=    Fight for the survival of your race!
+
+#Jogo::telaAjuda
+tela_ajuda_01=#Movement:               
+tela_ajuda_02=   + Joystick and Arrows
+tela_ajuda_03=                             
+tela_ajuda_04=#Weapons:                      
+tela_ajuda_05=   + Phaser                     
+tela_ajuda_06=      Left-CTRL or A Button[Joy] 
+tela_ajuda_07=                             
+tela_ajuda_08=   + Torpedo                    
+tela_ajuda_09=      Left-ALT or B Button[Joy]  
+
+
+#Jogo::telaCredito()
+tela_credito_01=#Developer:             
+tela_credito_02=    David de Almeida Ferreira (FZ)
+tela_credito_03=#E-Mail:                    
+tela_credito_04=    davidferreira@uol.com.br  
+tela_credito_05=#Site:                      
+tela_credito_06=    pjmoo.codigolivre.org.br  
+tela_credito_07= 
+tela_credito_08=#Translation:
+tela_credito_09=    David Gustavo Mazieiro (DGM)
+tela_credito_10=#E-Mail:                    
+tela_credito_11=    dgmdavid@bol.com.br  
+tela_credito_12=#Site:                      
+tela_credito_13=    www.dgmsoft.rg3.net
+
+
+#Jogo::telaTopRecorde
+#Jogo::telaTopRecordeNovo
+tela_top_recorde_1=RECORD
+tela_top_recorde_2=Player
+tela_top_recorde_3=Punctuation
+
+
+#Menu::Menu
+menu_1=RECORDS
+menu_2=PLAY
+menu_3=HELP
+menu_4=ABOUT
+menu_5=CREDITS
+menu_6=SETUP
+menu_7=QUIT
+
+
+#DIVERSOS
+
+tela_fase_zona=ZONE   :%s
+tela_fase_missao=MISSION:%s
+tela_fase_alerta=ALERT  :%s
+
+
+fase_1_zona=Asteroid Fields
+fase_2_zona=Klingon, Z.A.IK. # 1-2
+fase_3_zona=Romulan, Galeius Fields
+fase_4_zona=Klingon, Z.A.IK. # 2-2
+fase_5_zona=Neutral
+fase_6_zona=Cardassiana
+fase_7_zona=Borg
+
+fase_1_missao=To go to Klingon Zone
+fase_2_missao=To go to Romulana Zone
+fase_3_missao=Find the Voyager
+fase_4_missao=To go to Neutral Zone
+fase_5_missao=Find the Enterprise-E
+fase_6_missao=Enter in Borg Zone
+fase_7_missao=Destroy the Cube Base
+
+fase_1_inimigo=Nothing on Sensors
+fase_2_inimigo=Klingon Bird Of Prey
+fase_3_inimigo=Romulan Scout
+fase_4_inimigo=Klingon-Romulan Fleet
+fase_5_inimigo=Nothing on Sensors
+fase_6_inimigo=Cardassian Fleet
+fase_7_inimigo=Borg Fleet
+
+
+botao_enter=[ENTER]
+
+
+msg_dica=[ Tip ]
+msg_continue_avancado=Go ahead!
+
+
+titulo_sobre=ABOUT
+titulo_ajuda=HELP
+titulo_credito=CREDIT
+
+tela_titulo=SPACE SHOOTER
+tela_subtitulo=Final Threat
+
+
+item_arma=RED ITEM:TORPEDO
+item_velocidade=BLUE ITEM:SPEED
+item_escudo=GREEN ITEM:FIELDS
+
+
+dica_01=#: Phaser: Left-CTRL(Keyboard)
+dica_02=#: Phaser: A Button(Joystick)
+dica_03=#: Torpedo: Left-ALT(Keyboard)
+dica_04=#: Torpedo: B Button(Joystick)
+dica_05=#: Watch the markers
+dica_06=#: Save Torpedos!
+dica_07=#: Watch the mines!
+dica_08=#: Asteroids are weaker!
+dica_09=#: Hit all you can!
+dica_10=#: Drive with dexterity!
+dica_11=#: Listen to the sound warnings!
+dica_12=#: Prevent from collisions!
+dica_13=#: Exit: ESC(Keyboard)
+dica_14=#: ScreenShoot: F12(Keyboard)
+dica_15=#: Pause: P(Keyboard)
+dica_16=#: Pause: C Button(Joystick)
+dica_17=#: Watch your back!
+dica_18=#: There are disguised ships!
+
+top_recorde_aviso_1=Attention:
+top_recorde_aviso_2=    To publish your record in the website, run this program:
+top_recorde_aviso_3=            Top10SpaceShooter
+
+menu_idioma_br=Português
+menu_idioma_en=English
+menu_idioma_es=Español

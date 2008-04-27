@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="SpaceShooter" />
+		<Option pch_mode="0" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="linux - release">
+				<Option output="bin/SpaceShooter" prefix_auto="0" extension_auto="0" />
+				<Option working_dir="bin/" />
+				<Option type="0" />
+				<Option compiler="gcc" />
+				<Option projectCompilerOptionsRelation="1" />
+				<Option projectLinkerOptionsRelation="2" />
+				<Option projectResourceIncludeDirsRelation="0" />
+				<Compiler>
+					<Add option="-fexpensive-optimizations" />
+					<Add option="-Os" />
+					<Add option="-W" />
+					<Add option="-Wall" />
+					<Add option="-DGNU_LINUX" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+				</Linker>
+			</Target>
+			<Target title="win32 - release">
+				<Option output="bin/SpaceShooter.exe" prefix_auto="0" extension_auto="0" />
+				<Option working_dir="bin/" />
+				<Option type="0" />
+				<Option compiler="gcc" />
+				<Option projectCompilerOptionsRelation="1" />
+				<Option projectLinkerOptionsRelation="2" />
+				<Option projectResourceIncludeDirsRelation="0" />
+				<Compiler>
+					<Add option="-fexpensive-optimizations" />
+					<Add option="-Os" />
+					<Add option="-W" />
+					<Add option="-Wall" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+					<Add library="mingw32" />
+				</Linker>
+			</Target>
+			<Target title="linux - debug">
+				<Option output="bin/SpaceShooter_DEBUG" prefix_auto="0" extension_auto="0" />
+				<Option working_dir="bin/" />
+				<Option type="0" />
+				<Option compiler="gcc" />
+				<Option parameters="--window" />
+				<Option projectCompilerOptionsRelation="1" />
+				<Option projectLinkerOptionsRelation="2" />
+				<Option projectResourceIncludeDirsRelation="0" />
+				<Compiler>
+					<Add option="-W" />
+					<Add option="-Wall" />
+					<Add option="-pg" />
+					<Add option="-g" />
+					<Add option="-DGNU_LINUX" />
+					<Add option="-DDEBUG" />
+				</Compiler>
+				<Linker>
+					<Add option="-pg" />
+				</Linker>
+			</Target>
+			<Target title="win32 - debug">
+				<Option output="bin/SpaceShooter_DEBUG.exe" prefix_auto="0" extension_auto="0" />
+				<Option working_dir="bin/" />
+				<Option type="0" />
+				<Option compiler="gcc" />
+				<Option parameters="--window" />
+				<Option projectCompilerOptionsRelation="1" />
+				<Option projectLinkerOptionsRelation="2" />
+				<Option projectResourceIncludeDirsRelation="0" />
+				<Compiler>
+					<Add option="-W" />
+					<Add option="-Wall" />
+					<Add option="-pg" />
+					<Add option="-g" />
+					<Add option="-DDEBUG" />
+				</Compiler>
+				<Linker>
+					<Add option="-pg" />
+					<Add option="-pg -lgmon" />
+					<Add library="mingw32" />
+				</Linker>
+			</Target>
+		</Build>
+		<Linker>
+			<Add option="-mwindows" />
+			<Add library="GBF" />
+			<Add library="SDL_mixer" />
+			<Add library="SDL_image" />
+			<Add library="SDLmain" />
+			<Add library="SDL" />
+		</Linker>
+		<Unit filename="src/Apresentacao.cpp" />
+		<Unit filename="src/Apresentacao.h" />
+		<Unit filename="src/Controle.cpp" />
+		<Unit filename="src/Controle.h" />
+		<Unit filename="src/EfeitoExplosao.cpp" />
+		<Unit filename="src/EfeitoExplosao.h" />
+		<Unit filename="src/EfeitoFogosDeArtificio.cpp" />
+		<Unit filename="src/EfeitoFogosDeArtificio.h" />
+		<Unit filename="src/FaseAbstract.cpp" />
+		<Unit filename="src/FaseAbstract.h" />
+		<Unit filename="src/FaseCinco.cpp" />
+		<Unit filename="src/FaseCinco.h" />
+		<Unit filename="src/FaseDois.cpp" />
+		<Unit filename="src/FaseDois.h" />
+		<Unit filename="src/FaseFactory.cpp" />
+		<Unit filename="src/FaseFactory.h" />
+		<Unit filename="src/FaseQuatro.cpp" />
+		<Unit filename="src/FaseQuatro.h" />
+		<Unit filename="src/FaseSeis.cpp" />
+		<Unit filename="src/FaseSeis.h" />
+		<Unit filename="src/FaseSete.cpp" />
+		<Unit filename="src/FaseSete.h" />
+		<Unit filename="src/FaseTres.cpp" />
+		<Unit filename="src/FaseTres.h" />
+		<Unit filename="src/FaseUm.cpp" />
+		<Unit filename="src/FaseUm.h" />
+		<Unit filename="src/InterfaceStatus.cpp" />
+		<Unit filename="src/InterfaceStatus.h" />
+		<Unit filename="src/ItemAbstract.cpp" />
+		<Unit filename="src/ItemAbstract.h" />
+		<Unit filename="src/ItemArma.cpp" />
+		<Unit filename="src/ItemArma.h" />
+		<Unit filename="src/ItemEscudo.cpp" />
+		<Unit filename="src/ItemEscudo.h" />
+		<Unit filename="src/ItemFactory.cpp" />
+		<Unit filename="src/ItemFactory.h" />
+		<Unit filename="src/ItemVelocidade.cpp" />
+		<Unit filename="src/ItemVelocidade.h" />
+		<Unit filename="src/Jogo.cpp" />
+		<Unit filename="src/Jogo.h" />
+		<Unit filename="src/ListItem.cpp" />
+		<Unit filename="src/ListItem.h" />
+		<Unit filename="src/ListSpaceAbstract.cpp" />
+		<Unit filename="src/ListSpaceAbstract.h" />
+		<Unit filename="src/ListSpaceInimigo.cpp" />
+		<Unit filename="src/ListSpaceInimigo.h" />
+		<Unit filename="src/ListSpaceObstaculo.cpp" />
+		<Unit filename="src/ListSpaceObstaculo.h" />
+		<Unit filename="src/ListSpaceObstaculoNeutro.cpp" />
+		<Unit filename="src/ListSpaceObstaculoNeutro.h" />
+		<Unit filename="src/ListTiroAbstract.cpp" />
+		<Unit filename="src/ListTiroAbstract.h" />
+		<Unit filename="src/ListTiroInimigo.cpp" />
+		<Unit filename="src/ListTiroInimigo.h" />
+		<Unit filename="src/ListTiroJogador.cpp" />
+		<Unit filename="src/ListTiroJogador.h" />
+		<Unit filename="src/NaveAbstract.cpp" />
+		<Unit filename="src/NaveAbstract.h" />
+		<Unit filename="src/NaveAliado.cpp" />
+		<Unit filename="src/NaveAliado.h" />
+		<Unit filename="src/NaveAuxiliar.cpp" />
+		<Unit filename="src/NaveAuxiliar.h" />
+		<Unit filename="src/NaveBorg.cpp" />
+		<Unit filename="src/NaveBorg.h" />
+		<Unit filename="src/NaveCardassiana.cpp" />
+		<Unit filename="src/NaveCardassiana.h" />
+		<Unit filename="src/NaveEnterprise.cpp" />
+		<Unit filename="src/NaveEnterprise.h" />
+		<Unit filename="src/NaveEnterpriseE.cpp" />
+		<Unit filename="src/NaveEnterpriseE.h" />
+		<Unit filename="src/NaveFactory.cpp" />
+		<Unit filename="src/NaveFactory.h" />
+		<Unit filename="src/NaveInimigo.cpp" />
+		<Unit filename="src/NaveInimigo.h" />
+		<Unit filename="src/NaveKlingonAttack.cpp" />
+		<Unit filename="src/NaveKlingonAttack.h" />
+		<Unit filename="src/NaveKlingonBirdPrev.cpp" />
+		<Unit filename="src/NaveKlingonBirdPrev.h" />
+		<Unit filename="src/NaveMiniBorg.cpp" />
+		<Unit filename="src/NaveMiniBorg.h" />
+		<Unit filename="src/NaveRomulana.cpp" />
+		<Unit filename="src/NaveRomulana.h" />
+		<Unit filename="src/NaveVoyager.cpp" />
+		<Unit filename="src/NaveVoyager.h" />
+		<Unit filename="src/ObstaculoAbstract.cpp" />
+		<Unit filename="src/ObstaculoAbstract.h" />
+		<Unit filename="src/ObstaculoAsteroid.cpp" />
+		<Unit filename="src/ObstaculoAsteroid.h" />
+		<Unit filename="src/ObstaculoEsfera.cpp" />
+		<Unit filename="src/ObstaculoEsfera.h" />
+		<Unit filename="src/ObstaculoFuracao.cpp" />
+		<Unit filename="src/ObstaculoFuracao.h" />
+		<Unit filename="src/ObstaculoMina.cpp" />
+		<Unit filename="src/ObstaculoMina.h" />
+		<Unit filename="src/PathDown.cpp" />
+		<Unit filename="src/PathDown.h" />
+		<Unit filename="src/PathDownLeft.cpp" />
+		<Unit filename="src/PathDownLeft.h" />
+		<Unit filename="src/PathDownRight.cpp" />
+		<Unit filename="src/PathDownRight.h" />
+		<Unit filename="src/PathFactory.cpp" />
+		<Unit filename="src/PathFactory.h" />
+		<Unit filename="src/PathLeft.cpp" />
+		<Unit filename="src/PathLeft.h" />
+		<Unit filename="src/PathRight.cpp" />
+		<Unit filename="src/PathRight.h" />
+		<Unit filename="src/PathStrategy.cpp" />
+		<Unit filename="src/PathStrategy.h" />
+		<Unit filename="src/PathUp.cpp" />
+		<Unit filename="src/PathUp.h" />
+		<Unit filename="src/PathUpLeft.cpp" />
+		<Unit filename="src/PathUpLeft.h" />
+		<Unit filename="src/PathUpRight.cpp" />
+		<Unit filename="src/PathUpRight.h" />
+		<Unit filename="src/Placar.cpp" />
+		<Unit filename="src/Placar.h" />
+		<Unit filename="src/SpaceObject.cpp" />
+		<Unit filename="src/SpaceObject.h" />
+		<Unit filename="src/SpaceShooter.cpp" />
+		<Unit filename="src/TiroAbstract.cpp" />
+		<Unit filename="src/TiroAbstract.h" />
+		<Unit filename="src/TiroCanhaoBorg.cpp" />
+		<Unit filename="src/TiroCanhaoBorg.h" />
+		<Unit filename="src/TiroPhaserAbstract.cpp" />
+		<Unit filename="src/TiroPhaserAbstract.h" />
+		<Unit filename="src/TiroPhaserBorg.cpp" />
+		<Unit filename="src/TiroPhaserBorg.h" />
+		<Unit filename="src/TiroPhaserFE.cpp" />
+		<Unit filename="src/TiroPhaserFE.h" />
+		<Unit filename="src/TiroPlasmaAbstract.cpp" />
+		<Unit filename="src/TiroPlasmaAbstract.h" />
+		<Unit filename="src/TiroPlasmaFE.cpp" />
+		<Unit filename="src/TiroPlasmaFE.h" />
+		<Unit filename="src/TiroPlasmaKlingon.cpp" />
+		<Unit filename="src/TiroPlasmaKlingon.h" />
+		<Unit filename="src/TiroTorpedoAbstract.cpp" />
+		<Unit filename="src/TiroTorpedoAbstract.h" />
+		<Unit filename="src/TiroTorpedoCardassiano.cpp" />
+		<Unit filename="src/TiroTorpedoCardassiano.h" />
+		<Unit filename="src/TiroTorpedoFE.cpp" />
+		<Unit filename="src/TiroTorpedoFE.h" />
+		<Unit filename="src/TiroTorpedoRomulano.cpp" />
+		<Unit filename="src/TiroTorpedoRomulano.h" />
+		<Unit filename="src/spaceshoot_define.h" />
+		<Extensions>
+			<code_completion />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>

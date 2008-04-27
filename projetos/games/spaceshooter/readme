@@ -1,0 +1,29 @@
+Atenção!
+	Esta versão de SpaceShooter (1.4)
+	deve ser compilada com a GBF versão (0.6.0)
+
+	Para a compilação do SpaceShooter:
+	 *Bibliotecas
+	    SDL
+	    SDL_Mixer
+	    SDL_Image
+	    GBF
+	 *Ferramentas
+	    CodeBlocks (IDE)
+	    GCC ou MinGW
+
+
+Attention!
+	This version of SpaceShooter (1.4)
+	must be compiled with the GBF version (0.6.0)
+
+	For the compilation of SpaceShooter:
+	 *Libraries
+	    SDL
+	    SDL_Mixer
+	    SDL_Image
+	    GBF
+	 *Tools
+	    CodeBlocks (IDE)
+	    GCC or MinGW
+

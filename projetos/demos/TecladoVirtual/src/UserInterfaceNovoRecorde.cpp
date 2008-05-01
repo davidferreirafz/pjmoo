@@ -1,6 +1,8 @@
 
 #include "UserInterfaceNovoRecorde.h"
 
+const int UserInterfaceNovoRecorde::BOTAO_SALVAR=200;
+
 UserInterfaceNovoRecorde::UserInterfaceNovoRecorde()
 {
     //Para não esquecer:
@@ -231,22 +233,36 @@ void UserInterfaceNovoRecorde::setRecorde(TopSystemRecorde recorde)
 
 
 //Gerencia o controle do cursor (navegação) e as opções selecionadas
-bool UserInterfaceNovoRecorde::controle()
+bool UserInterfaceNovoRecorde::isAcao(int tipoAcao)
 {
     bool salva = false;
     tempoNavegacao.processar();
     tempoBlink.processar();
+
     if (tempoNavegacao.isTerminou()){
         navegar();
-        salva = confirmar();
+        if(confirmar()==tipoAcao)
+        {
+            salva=true;
+        }
+
     }
+
     return salva;
+
+/*
+    if (confirmarSelecao()==tipoBotao){
+        return true;
+    } else {
+        return false;
+    }
+*/
 }
 
 //Efetua as ações de acordo com a posição do cursor
-bool UserInterfaceNovoRecorde::confirmar()
+int UserInterfaceNovoRecorde::confirmar()
 {
-    bool salva = false;
+    int opcao = false;
     if ((inputSystem->teclado->isKey(SDLK_RETURN)) || (inputSystem->joystick->isButtonA())){
         if ((tecladoSelecao>=0)&&(tecladoSelecao<totalTeclasTeclado)){
             recorde.nome[nomePosicao]=miniTeclado[tecladoSelecao];
@@ -257,7 +273,7 @@ bool UserInterfaceNovoRecorde::confirmar()
             nomePosicao++;
         } else if (tecladoSelecao==totalTeclasTeclado+2){//controle salvar
             if (recorde.nome[0]!=' '){
-                salva=true;
+                opcao=BOTAO_SALVAR;
             }
         }
         tempoNavegacao.setResetar();
@@ -269,7 +285,7 @@ bool UserInterfaceNovoRecorde::confirmar()
         nomePosicao=9;
     }
 
-    return salva;
+    return opcao;
 }
 //Efetua o controle sobre a navegação do cursor
 void UserInterfaceNovoRecorde::navegar()

@@ -58,6 +58,9 @@ class UserInterfaceNovoRecorde : public UserInterfaceWindow, public GraphicSyste
     Ponto caixaPosicao;
 
   public:
+
+    static const int BOTAO_SALVAR;
+
     //Inicializa as configurações da caixa de texto
     virtual void inicializar();
 
@@ -84,7 +87,7 @@ class UserInterfaceNovoRecorde : public UserInterfaceWindow, public GraphicSyste
 
   protected:
     //Efetua as ações de acordo com a posição do cursor
-    bool confirmar();
+    int confirmar();
 
     //Efetua o controle sobre a navegação do cursor
     void navegar();
@@ -100,7 +103,7 @@ class UserInterfaceNovoRecorde : public UserInterfaceWindow, public GraphicSyste
     void setRecorde(TopSystemRecorde recorde);
 
     //Gerencia o controle do cursor (navegação) e as opções selecionadas
-    bool controle();
+    bool isAcao(int tipoAcao);
 
 };
 #endif

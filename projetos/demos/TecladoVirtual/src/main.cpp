@@ -103,9 +103,14 @@ int main(int argc, char * argv[])
 
         janelaRecordeNovo->executar();
 
-        if (janelaRecordeNovo->controle()){
-//            setTopGaleriaSalvar();
+        //if (janelaRecordeNovo->controle()){
+        if (janelaRecordeNovo->isAcao(UserInterfaceNovoRecorde::BOTAO_SALVAR)){
+            //executa algo
         }
+
+        //if (janelaRecordeNovo->isBotao(UserInterfaceWindow::BOTAO_OK)){
+            //setMenu();
+       // }
 
         //realiza refresh, fps, flip
         frameworkGBF.atualizar();

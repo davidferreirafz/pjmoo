@@ -147,7 +147,6 @@ void UserInterfaceNovoRecorde::inicializar()
     UserInterfaceWindow::inicializar();
 }
 
-////////////////////////////////////////////////
 
 //Define a fonte a ser usada pelo teclado virtual
 void UserInterfaceNovoRecorde::setFonteTeclado(std::string fonte)
@@ -207,31 +206,6 @@ void UserInterfaceNovoRecorde::setRecorde(TopSystemRecorde recorde)
     tempoNavegacao.setResetar();
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 //Gerencia o controle do cursor (navegação) e as opções selecionadas
 bool UserInterfaceNovoRecorde::isAcao(int tipoAcao)
 {
@@ -249,14 +223,6 @@ bool UserInterfaceNovoRecorde::isAcao(int tipoAcao)
     }
 
     return salva;
-
-/*
-    if (confirmarSelecao()==tipoBotao){
-        return true;
-    } else {
-        return false;
-    }
-*/
 }
 
 //Efetua as ações de acordo com a posição do cursor

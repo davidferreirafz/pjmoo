@@ -57,6 +57,12 @@ class UserInterfaceNovoRecorde : public UserInterfaceWindow, public GraphicSyste
 
     Ponto caixaPosicao;
 
+    //Efetua as ações de acordo com a posição do cursor
+    int confirmar();
+
+    //Efetua o controle sobre a navegação do cursor
+    void navegar();
+
   public:
 
     static const int BOTAO_SALVAR;
@@ -85,16 +91,11 @@ class UserInterfaceNovoRecorde : public UserInterfaceWindow, public GraphicSyste
 
 ///////////////////
 
-  protected:
-    //Efetua as ações de acordo com a posição do cursor
-    int confirmar();
-
-    //Efetua o controle sobre a navegação do cursor
-    void navegar();
   private:
     TimerSystemCronometroDecrescente tempoNavegacao;
 
     TimerSystemCronometroCrescente tempoBlink;
+
   public:
     //Retorna o TopSystemRecorde
     TopSystemRecorde getRecorde();

@@ -51,7 +51,7 @@ int main(int argc, char * argv[])
 
     UserInterfaceVisualImagem *uiVisualTransparente = new UserInterfaceVisualImagem();
     uiVisualTransparente->setCorBorda(255,255,0);
-    uiVisualTransparente->setTipoBackground(BAKCGROUND_LINES_BLACK);
+    uiVisualTransparente->setTipoBackground(BACKGROUND_LINES_BLACK);
 
 
 
@@ -67,11 +67,7 @@ int main(int argc, char * argv[])
     janelaRecordeNovo = new UserInterfaceNovoRecorde();
     janelaRecordeNovo->setPosicao(100,100);
     janelaRecordeNovo->setDimensao(500,330);
-//    janelaRecordeNovo->titulo.setFonte("texto");
-//    janelaRecordeNovo->titulo.setChaveTexto("tela_top_recorde_1");
     janelaRecordeNovo->setVisual(uiVisualTransparente->clone());
-
-
     janelaRecordeNovo->setFonteTitulo("recorde");
     janelaRecordeNovo->setFonteLabel("texto");
     janelaRecordeNovo->setFonteCampo("nisemega_extra");
@@ -84,16 +80,6 @@ int main(int argc, char * argv[])
     delete(uiVisualImagem);
     delete(uiVisualTransparente);
 
-
-
-/*
-    uiRecordeNovo = new UserInterfaceRecorde();
-    uiRecordeNovo->setWriteManager(frameworkGBF->writeSystem);
-    uiRecordeNovo->setGFX(frameworkGBF->graphicSystemCore->graphicSystem->gfx);
-    uiRecordeNovo->setFonteLabel("texto");
-    uiRecordeNovo->setFonteTeclado("recorde");
-    uiRecordeNovo->setPosicao(80,130);
-*/
     while(true) {
 
         if (frameworkGBF.inputSystemCore->inputSystem->teclado->isKey(SDLK_ESCAPE)){
@@ -103,14 +89,11 @@ int main(int argc, char * argv[])
 
         janelaRecordeNovo->executar();
 
-        //if (janelaRecordeNovo->controle()){
         if (janelaRecordeNovo->isAcao(UserInterfaceNovoRecorde::BOTAO_SALVAR)){
             //executa algo
+            frameworkGBF.graphicSystemCore->clear();
         }
 
-        //if (janelaRecordeNovo->isBotao(UserInterfaceWindow::BOTAO_OK)){
-            //setMenu();
-       // }
 
         //realiza refresh, fps, flip
         frameworkGBF.atualizar();

@@ -190,7 +190,7 @@ void UserInterfaceNovoRecorde::setFonteControle(std::string fonte)
     fonteControle.dimensao=wsManager->getFonte(fonteControle.nome)->getDimensao();
 
     tamanhoMaiorTeclaControle  = 0;
-    int tmp=0;
+    unsigned int tmp=0;
     for (unsigned int i=0; i<totalTeclasControle;i++){
         tmp = wsManager->getLarguraLinha(fonteControle.nome,tecladoControle[i].c_str());
         if (tmp>tamanhoMaiorTeclaControle){

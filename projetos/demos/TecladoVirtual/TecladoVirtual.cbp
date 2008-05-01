@@ -16,6 +16,7 @@
 				<Compiler>
 					<Add option="-O3" />
 					<Add option="-O" />
+					<Add option="-pedantic" />
 					<Add option="-W" />
 					<Add option="-Wall" />
 				</Compiler>

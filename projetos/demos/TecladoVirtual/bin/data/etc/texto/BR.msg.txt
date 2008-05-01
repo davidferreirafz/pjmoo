@@ -1,0 +1,15 @@
+#Arquivo de Textos
+#Português Brasil
+#LANG=pt_BR
+
+GBF_UIRecorde_title=New Record
+GBF_UIRecorde_button_back=BACK
+GBF_UIRecorde_button_next=NEXT
+GBF_UIRecorde_button_save=SAVE
+
+GBF_UIRecorde_title_player=PLAYER
+GBF_UIRecorde_title_points=POINTS
+
+message=GoF - Exemplo com GBF - http://davidferreira-fz.blogspot.com
+
+

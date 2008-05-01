@@ -14,21 +14,23 @@
 
 #include <GBF/GraphicSystemUtility.h>
 
+
+struct FonteEsp
+{
+    std::string nome;
+    Dimensao dimensao;
+};
+
 class UserInterfaceNovoRecorde : public UserInterfaceWindow, public GraphicSystemUtility
 {
 
   private:
-    std::string fonteTitulo;
-    std::string fonteLabel;
-    std::string fonteCampo;
-    std::string fonteTeclado;
-    std::string fonteControle;
+    FonteEsp fonteTitulo;
+    FonteEsp fonteLabel;
+    FonteEsp fonteCampo;
+    FonteEsp fonteTeclado;
+    FonteEsp fonteControle;
 
-    Dimensao dimensaoFonteTitulo;
-    Dimensao dimensaoFonteLabel;
-    Dimensao dimensaoFonteCampo;
-    Dimensao dimensaoFonteTeclado;
-    Dimensao dimensaoFonteControle;
     Dimensao caixaTeclado;
 
     int totalTeclasTeclado;
@@ -45,9 +47,11 @@ class UserInterfaceNovoRecorde : public UserInterfaceWindow, public GraphicSyste
 
     TopSystemRecorde recorde;
 
+    bool showErro;
+
   protected:
     //Desenha o botão de ação da janela
-    void desenharBotao();
+    void desenharControles();
 
     //Desenha o conteudo da janela
     void desenharConteudo();
@@ -58,7 +62,7 @@ class UserInterfaceNovoRecorde : public UserInterfaceWindow, public GraphicSyste
     Ponto caixaPosicao;
 
     //Efetua as ações de acordo com a posição do cursor
-    int confirmar();
+    int confirmarSelecao();
 
     //Efetua o controle sobre a navegação do cursor
     void navegar();
@@ -92,7 +96,6 @@ class UserInterfaceNovoRecorde : public UserInterfaceWindow, public GraphicSyste
 ///////////////////
 
   private:
-    TimerSystemCronometroDecrescente tempoNavegacao;
 
     TimerSystemCronometroCrescente tempoBlink;
 

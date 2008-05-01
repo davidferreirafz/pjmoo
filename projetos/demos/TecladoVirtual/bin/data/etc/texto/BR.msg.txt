@@ -2,14 +2,16 @@
 #Português Brasil
 #LANG=pt_BR
 
-GBF_UIRecorde_title=New Record
-GBF_UIRecorde_button_back=BACK
-GBF_UIRecorde_button_next=NEXT
-GBF_UIRecorde_button_save=SAVE
+GBF_UIRecorde_title=Novo Recorde
+GBF_UIRecorde_button_back=Voltar
+GBF_UIRecorde_button_next=Próximo
+GBF_UIRecorde_button_save=Salvar
 
-GBF_UIRecorde_title_player=PLAYER
-GBF_UIRecorde_title_points=POINTS
+GBF_UIRecorde_warning=Nome Obrigatório. ESC para cancelar.
 
-message=GoF - Exemplo com GBF - http://davidferreira-fz.blogspot.com
+GBF_UIRecorde_title_player=Jogador
+GBF_UIRecorde_title_points=Pontos
+
+
 
 

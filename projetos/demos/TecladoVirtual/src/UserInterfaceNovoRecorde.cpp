@@ -22,42 +22,44 @@ UserInterfaceNovoRecorde::UserInterfaceNovoRecorde()
     posicao.x      = 0;
     posicao.y      = 0;
 
-    tempoNavegacao.setTempoOriginal(1);
-    tempoNavegacao.setUnidade(TEMPO_CENTESIMO);
-    tempoNavegacao.setResetar();
+    tempoEspera.setTempoOriginal(1);
+    tempoEspera.setUnidade(TEMPO_CENTESIMO);
+    tempoEspera.setResetar();
 
     tempoBlink.setTempoOriginal(0);
     tempoBlink.setUnidade(TEMPO_CENTESIMO);
     tempoBlink.setResetar();
+
+    showErro = false;
 }
 UserInterfaceNovoRecorde::~UserInterfaceNovoRecorde()
 {
 //não implementado
 }
 //Desenha o botão de ação da janela
-void UserInterfaceNovoRecorde::desenharBotao()
+void UserInterfaceNovoRecorde::desenharControles()
 {
     graphicSystem->gfx->setColor(255,255,0);
     int letra=0;
-    int espacoHorizontal = dimensaoFonteTeclado.w + int(dimensaoFonteTeclado.w / 4);
-    int espacoVertical   = dimensaoFonteTeclado.h + int(dimensaoFonteTeclado.h / 4);
+    int espacoHorizontal = fonteTeclado.dimensao.w + int(fonteTeclado.dimensao.w / 4);
+    int espacoVertical   = fonteTeclado.dimensao.h + int(fonteTeclado.dimensao.h / 4);
 
     Ponto tecla;
-    tecla.x=caixaPosicao.x + (dimensaoFonteTeclado.w/4);
+    tecla.x=caixaPosicao.x + (fonteTeclado.dimensao.w/4);
     tecla.y=caixaPosicao.y;
 
     Ponto cursor;
-    cursor.x=caixaPosicao.x + (dimensaoFonteTeclado.w * 0.2);
-    cursor.y=caixaPosicao.y + (dimensaoFonteTeclado.h * 0.1);
+    cursor.x=caixaPosicao.x + (fonteTeclado.dimensao.w * 0.2);
+    cursor.y=caixaPosicao.y + (fonteTeclado.dimensao.h * 0.1);
 
     Dimensao cursorDimensao;
-    cursorDimensao.w=dimensaoFonteTeclado.w;
-    cursorDimensao.h=dimensaoFonteTeclado.h;
+    cursorDimensao.w=fonteTeclado.dimensao.w;
+    cursorDimensao.h=fonteTeclado.dimensao.h;
 
     //Painel do teclado
     for (int l=0;l<5;l++){
         for (int c=0;c<10;c++){
-            wsManager->escrever(fonteTeclado, tecla.x +(espacoHorizontal*c),tecla.y+(espacoVertical*l),"%c",miniTeclado[letra]);
+            wsManager->escrever(fonteTeclado.nome, tecla.x +(espacoHorizontal*c),tecla.y+(espacoVertical*l),"%c",miniTeclado[letra]);
 
             //Desenhando cursor da selecao de tecla
             if ((tecladoSelecao==letra)&&(tempoBlink.getTempo()%2==0)){
@@ -67,25 +69,25 @@ void UserInterfaceNovoRecorde::desenharBotao()
         }
     }
 
-    tecla.x=caixaPosicao.x + (10 * (dimensaoFonteTeclado.w + dimensaoFonteTeclado.w*0.3));
-    tecla.y=caixaPosicao.y + caixaTeclado.h - (totalTeclasControle * dimensaoFonteControle.h);
+    tecla.x=caixaPosicao.x + (10 * (fonteTeclado.dimensao.w + fonteTeclado.dimensao.w*0.3));
+    tecla.y=caixaPosicao.y + caixaTeclado.h - (totalTeclasControle * fonteControle.dimensao.h);
 
     //Painel das teclas de controles
     for (int ic=totalTeclasControle-1;ic>=0;ic--){
-        wsManager->escreverLocalizado(fonteControle, tecla.x,tecla.y+(dimensaoFonteControle.h*ic),tecladoControle[ic].c_str());
+        wsManager->escreverLocalizado(fonteControle.nome, tecla.x,tecla.y+(fonteControle.dimensao.h*ic),tecladoControle[ic].c_str());
     }
 
-    cursor.x=tecla.x - int(dimensaoFonteControle.w*0.25);
+    cursor.x=tecla.x - int(fonteControle.dimensao.w*0.25);
     cursor.y=tecla.y;
 
-    cursorDimensao.w=tamanhoMaiorTeclaControle + (dimensaoFonteControle.w*0.5);
-    cursorDimensao.h=dimensaoFonteControle.h;
+    cursorDimensao.w=tamanhoMaiorTeclaControle + (fonteControle.dimensao.w*0.5);
+    cursorDimensao.h=fonteControle.dimensao.h;
 
     //Desenhando cursor das teclas de controle
     if (tempoBlink.getTempo()%2==0){
         if (tecladoSelecao>=totalTeclasTeclado){
             int t=tecladoSelecao-totalTeclasTeclado;
-            graphicSystem->gfx->retangulo(cursor.x,cursor.y+(dimensaoFonteControle.h*t),cursorDimensao.w,cursorDimensao.h);
+            graphicSystem->gfx->retangulo(cursor.x,cursor.y+(fonteControle.dimensao.h*t),cursorDimensao.w,cursorDimensao.h);
         }
     }
 }
@@ -93,7 +95,7 @@ void UserInterfaceNovoRecorde::desenharBackground()
 {
     UserInterfaceWindow::desenharBackground();
 
-    int auxLargura=caixaTeclado.w+tamanhoMaiorTeclaControle+(dimensaoFonteLabel.w);
+    int auxLargura=caixaTeclado.w+tamanhoMaiorTeclaControle+(fonteLabel.dimensao.w);
 
     graphicSystem->gfx->setColor(0,0,0);
     graphicSystem->gfx->retanguloPreenchido(caixaPosicao.x,caixaPosicao.y,auxLargura,caixaTeclado.h);
@@ -109,35 +111,39 @@ void UserInterfaceNovoRecorde::desenharConteudo()
     int posicaoTextoVertical   = posicao.y;
 
     //escrevendo titulo centralizado
-    int media = wsManager->getLarguraLinha(fonteTitulo,"GBF_UIRecorde_title");
+    int media = wsManager->getLarguraLinha(fonteTitulo.nome,"GBF_UIRecorde_title");
     posicaoTextoHorizontal=int (posicao.x+(dimensao.w/2)-(media/2));
 
-    wsManager->escreverLocalizado(fonteTitulo,posicaoTextoHorizontal,posicaoTextoVertical,"GBF_UIRecorde_title");
+    wsManager->escreverLocalizado(fonteTitulo.nome,posicaoTextoHorizontal,posicaoTextoVertical,"GBF_UIRecorde_title");
 
     //escrevendo label
-    posicaoTextoVertical=posicaoTextoVertical+(dimensaoFonteTitulo.h*1.5);
+    posicaoTextoVertical=posicaoTextoVertical+(fonteTitulo.dimensao.h*1.5);
 
-    int auxPlayerX = posicao.x+dimensaoFonteLabel.w*2;
+    int auxPlayerX = posicao.x+fonteLabel.dimensao.w*2;
 
-    int auxPointsX = wsManager->getLarguraLinha(fonteLabel,"GBF_UIRecorde_title_points");
-    auxPointsX=int (posicao.x+(dimensao.w/2)) + dimensaoFonteLabel.w*2;
+    int auxPointsX = wsManager->getLarguraLinha(fonteLabel.nome,"GBF_UIRecorde_title_points");
+    auxPointsX=int (posicao.x+(dimensao.w/2)) + fonteLabel.dimensao.w*2;
 
-    wsManager->escreverLocalizado(fonteLabel, auxPlayerX,posicaoTextoVertical,"GBF_UIRecorde_title_player");
-    wsManager->escreverLocalizado(fonteLabel, auxPointsX,posicaoTextoVertical,"GBF_UIRecorde_title_points");
+    wsManager->escreverLocalizado(fonteLabel.nome, auxPlayerX,posicaoTextoVertical,"GBF_UIRecorde_title_player");
+    wsManager->escreverLocalizado(fonteLabel.nome, auxPointsX,posicaoTextoVertical,"GBF_UIRecorde_title_points");
 
     //escrevendo campo
-    posicaoTextoVertical=posicaoTextoVertical+(dimensaoFonteLabel.h*1.5);
+    posicaoTextoVertical=posicaoTextoVertical+(fonteLabel.dimensao.h*1.5);
 
-    auxPlayerX-=dimensaoFonteCampo.w;
-    auxPointsX-=dimensaoFonteCampo.w;
+    auxPlayerX-=fonteCampo.dimensao.w;
+    auxPointsX-=fonteCampo.dimensao.w;
 
-    wsManager->escrever(fonteCampo, auxPlayerX, posicaoTextoVertical,"%s"  ,recorde.nome);
-    wsManager->escrever(fonteCampo, auxPointsX, posicaoTextoVertical,"%08d",recorde.pontos);
+    wsManager->escrever(fonteCampo.nome, auxPlayerX, posicaoTextoVertical,"%s"  ,recorde.nome);
+    wsManager->escrever(fonteCampo.nome, auxPointsX, posicaoTextoVertical,"%08d",recorde.pontos);
 
     //desenhando cursor
     if (tempoBlink.getTempo()%2!=0){
         graphicSystem->gfx->setColor(250,250,250);
-        graphicSystem->gfx->retanguloPreenchido(auxPlayerX+(dimensaoFonteCampo.w*nomePosicao),posicaoTextoVertical+dimensaoFonteCampo.h,dimensaoFonteCampo.w,2);
+        graphicSystem->gfx->retanguloPreenchido(auxPlayerX+(fonteCampo.dimensao.w*nomePosicao),posicaoTextoVertical+fonteCampo.dimensao.h,fonteCampo.dimensao.w,2);
+    }
+
+    if (showErro){
+        wsManager->escreverLocalizado(fonteLabel.nome, caixaPosicao.x,caixaPosicao.y+caixaTeclado.h,"GBF_UIRecorde_warning");
     }
 }
 
@@ -151,42 +157,44 @@ void UserInterfaceNovoRecorde::inicializar()
 //Define a fonte a ser usada pelo teclado virtual
 void UserInterfaceNovoRecorde::setFonteTeclado(std::string fonte)
 {
-    fonteTeclado=fonte;
-    dimensaoFonteTeclado=wsManager->getFonte(fonteTeclado)->getDimensao();
+    fonteTeclado.nome=fonte;
+    fonteTeclado.dimensao=wsManager->getFonte(fonteTeclado.nome)->getDimensao();
 
-    caixaTeclado.w=10 * (dimensaoFonteTeclado.w + int(dimensaoFonteTeclado.w/4));
-    caixaTeclado.h=5  * (dimensaoFonteTeclado.h + int(dimensaoFonteTeclado.h/4));
+    caixaTeclado.w=10 * (fonteTeclado.dimensao.w + int(fonteTeclado.dimensao.w/4));
+    caixaTeclado.h=5  * (fonteTeclado.dimensao.h + int(fonteTeclado.dimensao.h/4));
 
-    caixaPosicao.x=posicao.x + (dimensaoFonteTeclado.h*1.50);
-    caixaPosicao.y=posicao.y+dimensao.h-caixaTeclado.h-dimensaoFonteTeclado.h*1.50;
+    caixaPosicao.x=posicao.x + (fonteTeclado.dimensao.h*1.50);
+    caixaPosicao.y=posicao.y+dimensao.h-caixaTeclado.h-fonteTeclado.dimensao.h*1.50;
 }
 
 void UserInterfaceNovoRecorde::setFonteTitulo(std::string fonte)
 {
-    fonteTitulo=fonte;
-    dimensaoFonteTitulo=wsManager->getFonte(fonteTitulo)->getDimensao();
+    fonteTitulo.nome=fonte;
+    fonteTitulo.dimensao=wsManager->getFonte(fonteTitulo.nome)->getDimensao();
 }
 //Define a fonte a ser usada pelo label
 void UserInterfaceNovoRecorde::setFonteLabel(std::string fonte)
 {
-    fonteLabel=fonte;
-    dimensaoFonteLabel=wsManager->getFonte(fonteLabel)->getDimensao();
+    fonteLabel.nome=fonte;
+    fonteLabel.dimensao=wsManager->getFonte(fonteLabel.nome)->getDimensao();
 }
 void UserInterfaceNovoRecorde::setFonteCampo(std::string fonte)
 {
-    fonteCampo=fonte;
-    dimensaoFonteCampo=wsManager->getFonte(fonteCampo)->getDimensao();
+    fonteCampo.nome=fonte;
+    fonteCampo.dimensao=wsManager->getFonte(fonteCampo.nome)->getDimensao();
 }
 //Define a fonte a ser usada pelo label
 void UserInterfaceNovoRecorde::setFonteControle(std::string fonte)
 {
-    fonteControle=fonte;
-    dimensaoFonteControle=wsManager->getFonte(fonteControle)->getDimensao();
+    fonteControle.nome=fonte;
+    fonteControle.dimensao=wsManager->getFonte(fonteControle.nome)->getDimensao();
 
     tamanhoMaiorTeclaControle  = 0;
+    int tmp=0;
     for (unsigned int i=0; i<totalTeclasControle;i++){
-        if (tecladoControle[i].length()>tamanhoMaiorTeclaControle){
-            tamanhoMaiorTeclaControle=wsManager->getLarguraLinha(fonteControle,tecladoControle[i].c_str());
+        tmp = wsManager->getLarguraLinha(fonteControle.nome,tecladoControle[i].c_str());
+        if (tmp>tamanhoMaiorTeclaControle){
+            tamanhoMaiorTeclaControle=tmp;
         }
     }
 }
@@ -203,33 +211,35 @@ void UserInterfaceNovoRecorde::setRecorde(TopSystemRecorde recorde)
     nomePosicao    = 0;
     tecladoSelecao = 0;
     tempoBlink.setResetar();
-    tempoNavegacao.setResetar();
+    tempoEspera.setResetar();
 }
 
 //Gerencia o controle do cursor (navegação) e as opções selecionadas
 bool UserInterfaceNovoRecorde::isAcao(int tipoAcao)
 {
     bool salva = false;
-    tempoNavegacao.processar();
+    tempoEspera.processar();
     tempoBlink.processar();
 
-    if (tempoNavegacao.isTerminou()){
+    if (tempoEspera.isTerminou()){
         navegar();
-        if(confirmar()==tipoAcao)
+        if(confirmarSelecao()==tipoAcao)
         {
             salva=true;
         }
-
     }
 
     return salva;
 }
 
 //Efetua as ações de acordo com a posição do cursor
-int UserInterfaceNovoRecorde::confirmar()
+int UserInterfaceNovoRecorde::confirmarSelecao()
 {
     int opcao = false;
     if ((inputSystem->teclado->isKey(SDLK_RETURN)) || (inputSystem->joystick->isButtonA())){
+
+        showErro=false;
+
         if ((tecladoSelecao>=0)&&(tecladoSelecao<totalTeclasTeclado)){
             recorde.nome[nomePosicao]=miniTeclado[tecladoSelecao];
             nomePosicao++;
@@ -240,9 +250,11 @@ int UserInterfaceNovoRecorde::confirmar()
         } else if (tecladoSelecao==totalTeclasTeclado+2){//controle salvar
             if (recorde.nome[0]!=' '){
                 opcao=BOTAO_SALVAR;
+            } else {
+                showErro=true;
             }
         }
-        tempoNavegacao.setResetar();
+        tempoEspera.setResetar();
     }
 
     if (nomePosicao<0){
@@ -258,24 +270,24 @@ void UserInterfaceNovoRecorde::navegar()
 {
     if ((inputSystem->teclado->isKey(SDLK_LEFT))||(inputSystem->joystick->isAxeLeft())){
             tecladoSelecao--;
-            tempoNavegacao.setResetar();
+            tempoEspera.setResetar();
     } else if ((inputSystem->teclado->isKey(SDLK_RIGHT))||(inputSystem->joystick->isAxeRight())){
             tecladoSelecao++;
-            tempoNavegacao.setResetar();
+            tempoEspera.setResetar();
     } else if ((inputSystem->teclado->isKey(SDLK_DOWN))||(inputSystem->joystick->isAxeDown())){
             if (tecladoSelecao<40){
                 tecladoSelecao+=10;
             } else {//if (tecladoSelecao>=totalTeclasTeclado){
                 tecladoSelecao++;
             }
-            tempoNavegacao.setResetar();
+            tempoEspera.setResetar();
     } else if ((inputSystem->teclado->isKey(SDLK_UP))||(inputSystem->joystick->isAxeUp())){
             if ((tecladoSelecao>=10)&&(tecladoSelecao<totalTeclasTeclado)){
                 tecladoSelecao-=10;
             } else {
                 tecladoSelecao--;
             }
-            tempoNavegacao.setResetar();
+            tempoEspera.setResetar();
     }
 
     if (tecladoSelecao<0){

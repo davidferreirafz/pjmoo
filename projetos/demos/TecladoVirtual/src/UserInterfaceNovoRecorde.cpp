@@ -107,8 +107,6 @@ void UserInterfaceNovoRecorde::desenharBackground()
 //Desenha o conteudo da janela
 void UserInterfaceNovoRecorde::desenharConteudo()
 {
-    int posicaoTextoVertical   = posicao.y;
-
     //escrevendo titulo centralizado
     Ponto titulo;
     int tamanho = wsManager->getLarguraLinha(fonteTitulo.nome,"GBF_UIRecorde_title");
@@ -155,33 +153,11 @@ void UserInterfaceNovoRecorde::desenharConteudo()
     wsManager->escrever(fonteCampo.nome, campoNome.x,  campoNome.y,"%s"  ,recorde.nome);
     wsManager->escrever(fonteCampo.nome, campoPontos.x,campoPontos.y,"%08d",recorde.pontos);
 
-/////////////////
-
-    posicaoTextoVertical=posicaoTextoVertical+(fonteTitulo.dimensao.h*1.5);
-
-    int auxPlayerX = posicao.x+fonteLabel.dimensao.w*2;
-
-    int auxPointsX = wsManager->getLarguraLinha(fonteLabel.nome,"GBF_UIRecorde_title_points");
-    auxPointsX=int (posicao.x+(dimensao.w/2)) + fonteLabel.dimensao.w*2;
-
-
-    //escrevendo campo
-    posicaoTextoVertical=posicaoTextoVertical+(fonteLabel.dimensao.h*1.5);
-
-    auxPlayerX-=fonteCampo.dimensao.w;
-    auxPointsX-=fonteCampo.dimensao.w;
-
-
-
-
-
-
-
-
     //desenhando cursor
     if (tempoBlink.getTempo()%2!=0){
         graphicSystem->gfx->setColor(250,250,250);
-        graphicSystem->gfx->retanguloPreenchido(auxPlayerX+(fonteCampo.dimensao.w*nomePosicao),posicaoTextoVertical+fonteCampo.dimensao.h,fonteCampo.dimensao.w,2);
+        graphicSystem->gfx->retanguloPreenchido(campoNome.x+(fonteCampo.dimensao.w*nomePosicao),
+        campoNome.y+fonteCampo.dimensao.h,fonteCampo.dimensao.w,2);
     }
 
     if (showErro){

@@ -37,11 +37,6 @@ struct FonteDual : public FonteEsp
 };
 
 
-struct Label
-{
-
-};
-
 
 class UserInterfaceNovoRecorde : public UserInterfaceWindow, public GraphicSystemUtility
 {

@@ -58,6 +58,7 @@ int main(int argc, char * argv[])
     TopSystemRecorde recorde;
     recorde.inicializar();
     strcpy(recorde.nome,"          \0");
+    strcpy(recorde.nome,"\0");
     recorde.pontos  = 0;
     recorde.fase    = 0;
 

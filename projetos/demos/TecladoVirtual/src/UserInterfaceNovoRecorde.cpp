@@ -90,17 +90,44 @@ void UserInterfaceNovoRecorde::desenharControles()
             graphicSystem->gfx->retangulo(cursor.x,cursor.y+(fonteControle.dimensao.h*t),cursorDimensao.w,cursorDimensao.h);
         }
     }
+
+
 }
 void UserInterfaceNovoRecorde::desenharBackground()
 {
+    //desenhando a janela
     UserInterfaceWindow::desenharBackground();
 
+    //desenhando caixa do teclado
     int auxLargura=caixaTeclado.w+tamanhoMaiorTeclaControle+(fonteLabel.dimensao.w);
 
     graphicSystem->gfx->setColor(0,0,0);
     graphicSystem->gfx->retanguloPreenchido(caixaPosicao.x,caixaPosicao.y,auxLargura,caixaTeclado.h);
     graphicSystem->gfx->setColor(206,101,99);
     graphicSystem->gfx->retangulo(caixaPosicao.x,caixaPosicao.y,auxLargura,caixaTeclado.h);
+
+
+    //desenhando campo digitacao
+    Dimensao campo;
+    Ponto campoPosicao;
+
+    campo.h=fonteCampo.dimensao.h*1.8;
+    campo.w=dimensao.w;
+    campoPosicao.x=posicao.x+2;
+    campoPosicao.y=fonteCampo.p1.y-(campo.h/2)+(fonteCampo.dimensao.h/2);
+
+    graphicSystem->gfx->setColor(0,0,0);
+    graphicSystem->gfx->retanguloPreenchido(campoPosicao.x,campoPosicao.y,campo.w-4,campo.h);
+    graphicSystem->gfx->setColor(206,101,99);
+    graphicSystem->gfx->retangulo(campoPosicao.x,campoPosicao.y,campo.w-4,campo.h);
+
+
+    //desenhando cursor
+    if (tempoBlink.getTempo()%2!=0){
+        graphicSystem->gfx->setColor(250,250,250);
+        graphicSystem->gfx->retanguloPreenchido(fonteCampo.p1.x+(fonteCampo.dimensao.w*nomePosicao),
+        fonteCampo.p1.y+fonteCampo.dimensao.h,fonteCampo.dimensao.w,2);
+    }
 }
 
 
@@ -108,57 +135,15 @@ void UserInterfaceNovoRecorde::desenharBackground()
 void UserInterfaceNovoRecorde::desenharConteudo()
 {
     //escrevendo titulo centralizado
-    Ponto titulo;
-    int tamanho = wsManager->getLarguraLinha(fonteTitulo.nome,"GBF_UIRecorde_title");
-    titulo.x=posicao.x+(dimensao.w/2)-(tamanho/2);
-    titulo.y=posicao.y;
-
-    wsManager->escreverLocalizado(fonteTitulo.nome,titulo.x,titulo.y,"GBF_UIRecorde_title");
+    wsManager->escreverLocalizado(fonteTitulo.nome,fonteTitulo.posicao.x,fonteTitulo.posicao.y,"GBF_UIRecorde_title");
 
     //escrevendo label (Jogador - Pontos)
-    Ponto labelPlayer;
-    Ponto labelPontos;
-
-    labelPlayer.x=posicao.x+fonteLabel.dimensao.w*2;
-    labelPlayer.y=titulo.y+(fonteTitulo.dimensao.h*1.5);
-    labelPontos.x=(posicao.x+(dimensao.w)/2)+fonteLabel.dimensao.w*2;
-    labelPontos.y=labelPlayer.y;
-
-    wsManager->escreverLocalizado(fonteLabel.nome, labelPlayer.x,labelPlayer.y,"GBF_UIRecorde_title_player");
-    wsManager->escreverLocalizado(fonteLabel.nome, labelPontos.x,labelPontos.y,"GBF_UIRecorde_title_points");
+    wsManager->escreverLocalizado(fonteLabel.nome, fonteLabel.p1.x,fonteLabel.p1.y,"GBF_UIRecorde_title_player");
+    wsManager->escreverLocalizado(fonteLabel.nome, fonteLabel.p2.x,fonteLabel.p2.y,"GBF_UIRecorde_title_points");
 
     //escrevendo campos (Jogador - Pontos)
-    Ponto campoNome;
-    Ponto campoPontos;
-
-    campoNome.x=posicao.x+fonteCampo.dimensao.w;
-    campoNome.y=labelPlayer.y+(fonteCampo.dimensao.h*2.8);
-    campoPontos.x=(posicao.x+(dimensao.w)/2)+fonteCampo.dimensao.w;
-    campoPontos.y=campoNome.y;
-
-
-    Dimensao campo;
-    Ponto campoPosicao;
-
-    campo.h=fonteCampo.dimensao.h*1.8;
-    campo.w=dimensao.w;
-    campoPosicao.x=posicao.x+2;
-    campoPosicao.y=campoNome.y-(campo.h/2)+(fonteCampo.dimensao.h/2);
-
-    graphicSystem->gfx->setColor(0,0,0);
-    graphicSystem->gfx->retanguloPreenchido(campoPosicao.x,campoPosicao.y,campo.w-4,campo.h);
-    graphicSystem->gfx->setColor(206,101,99);
-    graphicSystem->gfx->retangulo(campoPosicao.x,campoPosicao.y,campo.w-4,campo.h);
-
-    wsManager->escrever(fonteCampo.nome, campoNome.x,  campoNome.y,"%s"  ,recorde.nome);
-    wsManager->escrever(fonteCampo.nome, campoPontos.x,campoPontos.y,"%08d",recorde.pontos);
-
-    //desenhando cursor
-    if (tempoBlink.getTempo()%2!=0){
-        graphicSystem->gfx->setColor(250,250,250);
-        graphicSystem->gfx->retanguloPreenchido(campoNome.x+(fonteCampo.dimensao.w*nomePosicao),
-        campoNome.y+fonteCampo.dimensao.h,fonteCampo.dimensao.w,2);
-    }
+    wsManager->escrever(fonteCampo.nome, fonteCampo.p1.x, fonteCampo.p1.y,"%s"  ,recorde.nome);
+    wsManager->escrever(fonteCampo.nome, fonteCampo.p2.x, fonteCampo.p2.y,"%08d",recorde.pontos);
 
     if (showErro){
         wsManager->escreverLocalizado(fonteLabel.nome, caixaPosicao.x,caixaPosicao.y+caixaTeclado.h,"GBF_UIRecorde_warning");
@@ -189,17 +174,31 @@ void UserInterfaceNovoRecorde::setFonteTitulo(std::string fonte)
 {
     fonteTitulo.nome=fonte;
     fonteTitulo.dimensao=wsManager->getFonte(fonteTitulo.nome)->getDimensao();
+
+    int tamanho = wsManager->getLarguraLinha(fonteTitulo.nome,"GBF_UIRecorde_title");
+    fonteTitulo.posicao.x=posicao.x+(dimensao.w/2)-(tamanho/2);
+    fonteTitulo.posicao.y=posicao.y;
 }
 //Define a fonte a ser usada pelo label
 void UserInterfaceNovoRecorde::setFonteLabel(std::string fonte)
 {
     fonteLabel.nome=fonte;
     fonteLabel.dimensao=wsManager->getFonte(fonteLabel.nome)->getDimensao();
+
+    fonteLabel.p1.y=fonteTitulo.posicao.y+(fonteTitulo.dimensao.h*1.5);
+    fonteLabel.p2.y=fonteLabel.p1.y;
+    fonteLabel.p1.x=posicao.x+fonteLabel.dimensao.w*2;
+    fonteLabel.p2.x=(posicao.x+(dimensao.w)/2)+fonteLabel.dimensao.w*2;
 }
 void UserInterfaceNovoRecorde::setFonteCampo(std::string fonte)
 {
     fonteCampo.nome=fonte;
     fonteCampo.dimensao=wsManager->getFonte(fonteCampo.nome)->getDimensao();
+
+    fonteCampo.p1.x=posicao.x+fonteCampo.dimensao.w;
+    fonteCampo.p1.y=fonteLabel.p1.y+(fonteCampo.dimensao.h*2.8);
+    fonteCampo.p2.x=(posicao.x+(dimensao.w)/2)+fonteCampo.dimensao.w;
+    fonteCampo.p2.y=fonteCampo.p1.y;
 }
 //Define a fonte a ser usada pelo label
 void UserInterfaceNovoRecorde::setFonteControle(std::string fonte)

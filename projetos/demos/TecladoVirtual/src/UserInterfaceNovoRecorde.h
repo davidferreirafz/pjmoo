@@ -21,13 +21,35 @@ struct FonteEsp
     Dimensao dimensao;
 };
 
+struct FonteExt : public FonteEsp
+{
+//    std::string nome;
+//    Dimensao dimensao;
+    Ponto posicao;
+};
+
+struct FonteDual : public FonteEsp
+{
+//    std::string nome;
+//    Dimensao dimensao;
+    Ponto p1;
+    Ponto p2;
+};
+
+
+struct Label
+{
+
+};
+
+
 class UserInterfaceNovoRecorde : public UserInterfaceWindow, public GraphicSystemUtility
 {
 
   private:
-    FonteEsp fonteTitulo;
-    FonteEsp fonteLabel;
-    FonteEsp fonteCampo;
+    FonteExt fonteTitulo;
+    FonteDual fonteLabel;
+    FonteDual fonteCampo;
     FonteEsp fonteTeclado;
     FonteEsp fonteControle;
 

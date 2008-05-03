@@ -59,7 +59,7 @@ int main(int argc, char * argv[])
     recorde.inicializar();
     strcpy(recorde.nome,"          \0");
     strcpy(recorde.nome,"\0");
-    recorde.pontos  = 0;
+    recorde.pontos  = 90805041;
     recorde.fase    = 0;
 
 
@@ -101,6 +101,8 @@ int main(int argc, char * argv[])
 
         //realiza refresh, fps, flip
         frameworkGBF.atualizar();
+        frameworkGBF.graphicSystemCore->clear();
+
         frameworkGBF.graphicSystemCore->graphicSystem->gfx->setColor(50,10,100);
         frameworkGBF.graphicSystemCore->graphicSystem->gfx->circuloPreenchido(300,200,200);
 

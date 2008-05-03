@@ -57,12 +57,17 @@
 			<Add library="SDL" />
 		</Linker>
 		<Unit filename="src/UI.h" />
+		<Unit filename="src/UIField.cpp" />
+		<Unit filename="src/UIField.h" />
+		<Unit filename="src/UINumberField.cpp" />
+		<Unit filename="src/UINumberField.cpp.backup" />
+		<Unit filename="src/UINumberField.h" />
 		<Unit filename="src/UITecladoVirtual.cpp" />
 		<Unit filename="src/UITecladoVirtual.h" />
 		<Unit filename="src/UITextField.cpp" />
 		<Unit filename="src/UITextField.h" />
-		<Unit filename="src/UserInterfaceNovoRecorde.cpp" />
-		<Unit filename="src/UserInterfaceNovoRecorde.h" />
+		<Unit filename="src/UIWindowRecorde.cpp" />
+		<Unit filename="src/UIWindowRecorde.h" />
 		<Unit filename="src/main.cpp" />
 		<Unit filename="src/main.h" />
 		<Extensions>

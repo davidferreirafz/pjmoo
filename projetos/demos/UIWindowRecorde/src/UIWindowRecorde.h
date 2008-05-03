@@ -18,17 +18,19 @@
 #include "UI.h"
 #include "UITecladoVirtual.h"
 #include "UITextField.h"
+#include "UINumberField.h"
 
 
-class UIWindowRecorde : public UserInterfaceWindow, public GraphicSystemUtility
+class UIWindowRecorde : public UserInterfaceWindow
 {
 
   private:
     UIFonteExtendida fonteTitulo;
+    UIFonteExtendida fonteAviso;
 
     UITecladoVirtual teclado;
     UITextField textNome;
-    UITextField textPonto;
+    UINumberField textPonto;
 
     int nomePosicao;
 
@@ -37,13 +39,12 @@ class UIWindowRecorde : public UserInterfaceWindow, public GraphicSystemUtility
     bool showErro;
 
   protected:
+    void atualizar();
     //Desenha o botão de ação da janela
-    void desenharControles();
+    void desenharForeground();
 
     //Desenha o conteudo da janela
     void desenharConteudo();
-
-    void desenharBackground();
 
     //Efetua as ações de acordo com a posição do cursor
     int confirmarSelecao();

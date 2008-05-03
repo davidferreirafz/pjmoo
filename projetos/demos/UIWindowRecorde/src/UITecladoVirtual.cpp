@@ -33,18 +33,13 @@ void UITecladoVirtual::setFonteControle(std::string fonte)
     fonteControle.dimensao=wsManager->getFonte(fonteControle.nome)->getDimensao();
 
     tamanhoControle  = 0;
-    unsigned int tmp=0;
-    for (unsigned int i=0; i<getTotalControle();i++){
+    int tmp=0;
+    for (int i=0; i<getTotalControle();i++){
         tmp = wsManager->getLarguraLinha(fonteControle.nome,controle[i].c_str());
         if (tmp>getTamanhoControle()){
             tamanhoControle=tmp;
         }
     }
-}
-void UITecladoVirtual::setPosicao(int x, int y)
-{
-    posicao.x=x;
-    posicao.y=y;
 }
 int UITecladoVirtual::getTotalCaracter()
 {
@@ -75,7 +70,20 @@ Dimensao UITecladoVirtual::getDimensao()
 {
     return dimensao;
 }
+void UITecladoVirtual::atualizar()
+{
+    tempoEspera.processar();
+    tempoBlink.processar();
 
+    if (tempoEspera.isTerminou()){
+        navegar();
+    }
+}
+void UITecladoVirtual::desenhar()
+{
+    desenharBackground();
+    desenharConteudo();
+}
 //Efetua o controle sobre a navegação do cursor
 void UITecladoVirtual::navegar()
 {
@@ -108,20 +116,6 @@ void UITecladoVirtual::navegar()
     }
 }
 
-int UITecladoVirtual::executar()
-{
-    tempoEspera.processar();
-    tempoBlink.processar();
-
-    desenharBackground();
-    desenharControles();
-
-    if (tempoEspera.isTerminou()){
-        navegar();
-    }
-
-    return 0;
-}
 char UITecladoVirtual::getCaracter()
 {
     return caracter[selecao];
@@ -175,7 +169,7 @@ void UITecladoVirtual::desenharBackground()
     }
 }
 
-void UITecladoVirtual::desenharControles()
+void UITecladoVirtual::desenharConteudo()
 {
     graphicSystem->gfx->setColor(255,255,0);
 

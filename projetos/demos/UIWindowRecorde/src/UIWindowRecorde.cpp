@@ -12,10 +12,10 @@ UIWindowRecorde::UIWindowRecorde()
 
     textNome.setLabel("GBF_UIRecorde_title_player");
     textNome.maxLength(10);
+    textNome.showCursor(true);
 
     textPonto.setLabel("GBF_UIRecorde_title_points");
     textPonto.maxLength(8);
-    textPonto.setValue("12344321");
 
     nomePosicao     = 0;
     posicao.x       = 0;
@@ -32,18 +32,12 @@ UIWindowRecorde::~UIWindowRecorde()
 //não implementado
 }
 //Desenha o botão de ação da janela
-void UIWindowRecorde::desenharControles()
+void UIWindowRecorde::desenharForeground()
 {
-    teclado.executar();
-    textNome.executar();
-    textPonto.executar();
+    if (showErro){
+        wsManager->escreverLocalizado(fonteAviso.nome, fonteAviso.posicao.x,fonteAviso.posicao.y,"GBF_UIRecorde_warning");
+    }
 }
-void UIWindowRecorde::desenharBackground()
-{
-    //desenhando a janela
-    UserInterfaceWindow::desenharBackground();
-}
-
 
 //Desenha o conteudo da janela
 void UIWindowRecorde::desenharConteudo()
@@ -51,10 +45,9 @@ void UIWindowRecorde::desenharConteudo()
     //escrevendo titulo centralizado
     wsManager->escreverLocalizado(fonteTitulo.nome,fonteTitulo.posicao.x,fonteTitulo.posicao.y,"GBF_UIRecorde_title");
 
-    textNome.setValue(recorde.nome);
-    if (showErro){
-//        wsManager->escreverLocalizado(fonteLabel.nome, teclado.posicao.x,teclado.posicao.y+teclado.dimensao.h,"GBF_UIRecorde_warning");
-    }
+    teclado.executar();
+    textNome.executar();
+    textPonto.executar();
 }
 
 //Inicializa as configurações da caixa de texto
@@ -69,6 +62,11 @@ void UIWindowRecorde::inicializar()
 
     teclado.setPosicao(pX,pY);
 
+
+    pY=pY+teclado.getDimensao().h;
+    fonteAviso.posicao.x=pX;
+    fonteAviso.posicao.y=pY;
+
     pX=posicao.x+fonteTitulo.dimensao.h;
     pY=posicao.y+(fonteTitulo.dimensao.h*1.5);
 
@@ -77,7 +75,6 @@ void UIWindowRecorde::inicializar()
     pX=posicao.x+dimensao.w - textPonto.getDimensao().w - fonteTitulo.dimensao.h;
 
     textPonto.setPosicao(pX,pY);
-
 }
 void UIWindowRecorde::setFonteTitulo(std::string fonte)
 {
@@ -101,13 +98,16 @@ void UIWindowRecorde::setFonteEdit(std::string fonteLabel, std::string fonteValu
     textPonto.setFonteLabel(fonteLabel);
     textPonto.setFonteCampo(fonteValue);
     textPonto.showCursor(false);
+
+    fonteAviso.nome=fonteLabel;
 }
+void UIWindowRecorde::atualizar()
+{
+    tempoEspera.processar();
 
-
-
-
-
-
+    textNome.setValue(recorde.nome);
+    textPonto.setValue(recorde.pontos);
+}
 //Retorna o TopSystemRecorde
 TopSystemRecorde UIWindowRecorde::getRecorde()
 {
@@ -120,12 +120,10 @@ void UIWindowRecorde::setRecorde(TopSystemRecorde recorde)
     nomePosicao    = 0;
     tempoEspera.setResetar();
 }
-
 //Gerencia o controle do cursor (navegação) e as opções selecionadas
 bool UIWindowRecorde::isAcao(int tipoAcao)
 {
     bool salva = false;
-    tempoEspera.processar();
 
     if (tempoEspera.isTerminou()){
         if(confirmarSelecao()==tipoAcao)
@@ -136,7 +134,6 @@ bool UIWindowRecorde::isAcao(int tipoAcao)
 
     return salva;
 }
-
 //Efetua as ações de acordo com a posição do cursor
 int UIWindowRecorde::confirmarSelecao()
 {

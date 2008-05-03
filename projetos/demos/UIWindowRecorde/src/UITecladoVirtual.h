@@ -12,6 +12,10 @@
 
 class UITecladoVirtual: public UserInterfaceComponente , public InputSystemUtility, public GraphicSystemUtility
 {
+  private:
+    //Efetua o controle sobre a navegação do cursor
+    void navegar();
+
   protected:
     //Armazena a letras do teclado
     char caracter[50];
@@ -25,13 +29,12 @@ class UITecladoVirtual: public UserInterfaceComponente , public InputSystemUtili
 
     int tamanhoControle;
 
-    Ponto posicao;
-    Dimensao dimensao;
-//teste
-    //Efetua o controle sobre a navegação do cursor
-    void navegar();
+
     void desenharBackground();
-    void desenharControles();
+    void desenharConteudo();
+
+    void atualizar();
+    void desenhar();
 
   public:
     UITecladoVirtual();
@@ -43,11 +46,9 @@ class UITecladoVirtual: public UserInterfaceComponente , public InputSystemUtili
     int getTamanhoControle();
     void setCaracter(std::string caracteres);
     void setControle(int index, std::string texto);
-    void setPosicao(int x, int y);
 
     Dimensao getDimensao();
-//teste
-    int executar();
+
     char getCaracter();
     int getIndex();
 

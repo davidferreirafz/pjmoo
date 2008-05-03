@@ -1,5 +1,0 @@
-#Archive of Texts
-#English
-#LANG=en_US
-
-message=GoF - Example with GBF - http://davidferreira-fz.blogspot.com

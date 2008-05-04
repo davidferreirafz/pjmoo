@@ -51,7 +51,7 @@ int main(int argc, char * argv[])
 
 
     UserInterfaceVisualSolido *uiVisualSolido = new UserInterfaceVisualSolido();
-    uiVisualSolido->setCorBorda(230,230,0);
+    uiVisualSolido->setCorBorda(164,164,164);
     uiVisualSolido->setCorFundo(0,0,0);
 
 

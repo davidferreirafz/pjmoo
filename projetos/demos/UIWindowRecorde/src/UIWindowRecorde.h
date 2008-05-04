@@ -38,7 +38,7 @@ class UIWindowRecorde : public UserInterfaceWindow
 
     bool showErro;
 
-    UserInterfaceVisualSolido * visualComponentes;
+    UserInterfaceVisualSolido * uiVisualComponentes;
 
   protected:
     void atualizar();

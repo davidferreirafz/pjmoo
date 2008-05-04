@@ -16,6 +16,7 @@ class UITecladoVirtual: public UserInterfaceComponente , public InputSystemUtili
   private:
     //Efetua o controle sobre a navegação do cursor
     void navegar();
+    RGB corCursor;
 
   protected:
     //Armazena a letras do teclado
@@ -61,6 +62,7 @@ class UITecladoVirtual: public UserInterfaceComponente , public InputSystemUtili
     void setFonteTeclado(std::string fonte);
 
     void setVisual(UserInterfaceVisual * visual);
+    void setCorCursor(const CorPaleta & r, const CorPaleta & g, const CorPaleta & b);
 };
 
 #endif

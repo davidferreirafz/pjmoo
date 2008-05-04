@@ -29,7 +29,7 @@ UIWindowRecorde::UIWindowRecorde()
 }
 UIWindowRecorde::~UIWindowRecorde()
 {
-//não implementado
+    delete(uiVisualComponentes);
 }
 //Desenha o botão de ação da janela
 void UIWindowRecorde::desenharForeground()
@@ -105,10 +105,13 @@ void UIWindowRecorde::setFonteEdit(std::string fonteLabel, std::string fonteValu
 //Estilo Visual a ser Aplicado no Componente
 void UIWindowRecorde::setVisualComponentes(UserInterfaceVisualSolido * visual)
 {
-    visualComponentes=visual;
-    textNome.setVisual(visual);
-    textPonto.setVisual(visual);
-    teclado.setVisual(visual);
+    uiVisualComponentes=visual;
+
+    textNome.setVisual(uiVisualComponentes);
+    textPonto.setVisual(uiVisualComponentes);
+    teclado.setVisual(uiVisualComponentes);
+
+    teclado.setCorCursor(255,255,0);
 }
 void UIWindowRecorde::atualizar()
 {

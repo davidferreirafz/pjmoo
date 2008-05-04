@@ -46,6 +46,12 @@ void UITecladoVirtual::setVisual(UserInterfaceVisual * visual)
 {
     this->visual=visual;
 }
+void UITecladoVirtual::setCorCursor(const CorPaleta & r, const CorPaleta & g, const CorPaleta & b)
+{
+    corCursor.r=r;
+    corCursor.g=g;
+    corCursor.b=b;
+}
 int UITecladoVirtual::getTotalCaracter()
 {
     return strlen(caracter);
@@ -86,13 +92,7 @@ void UITecladoVirtual::atualizar()
 
     if (visual!=NULL){
         Dimensao d  = dimensao;
-
         d.w=dimensao.w+getTamanhoControle()+(fonteTeclado.dimensao.w);
-  //  int auxLargura=dimensao.w+getTamanhoControle()+(fonteTeclado.dimensao.w);
-
-
-//    graphicSystem->gfx->retanguloPreenchido(posicao.x,posicao.y,auxLargura,dimensao.h);
-//    graphicSystem->gfx->retangulo(posicao.x,posicao.y,auxLargura,dimensao.h);
 
         visual->aplicar(posicao,d);
     }
@@ -145,18 +145,9 @@ int UITecladoVirtual::getIndex()
 void UITecladoVirtual::desenharBackground()
 {
     //desenhando caixa do teclado
-/*    int auxLargura=dimensao.w+getTamanhoControle()+(fonteTeclado.dimensao.w);
-
-    graphicSystem->gfx->setColor(0,0,0);
-    graphicSystem->gfx->retanguloPreenchido(posicao.x,posicao.y,auxLargura,dimensao.h);
-    graphicSystem->gfx->setColor(206,101,99);
-    graphicSystem->gfx->retangulo(posicao.x,posicao.y,auxLargura,dimensao.h);
-*/
     if (visual!=NULL){
         visual->desenhar();
     }
-
-    graphicSystem->gfx->setColor(255,255,0);
 
     int letra=0;
 
@@ -175,6 +166,8 @@ void UITecladoVirtual::desenharBackground()
     int espacoHorizontal = fonteTeclado.dimensao.w + int(fonteTeclado.dimensao.w / 4);
     int espacoVertical   = fonteTeclado.dimensao.h + int(fonteTeclado.dimensao.h / 4);
 
+    graphicSystem->gfx->setColor(corCursor.r,corCursor.g,corCursor.b);
+
     //Painel do teclado
     for (int l=0;l<5;l++){
         for (int c=0;c<10;c++){
@@ -191,7 +184,7 @@ void UITecladoVirtual::desenharBackground()
 
 void UITecladoVirtual::desenharConteudo()
 {
-    graphicSystem->gfx->setColor(255,255,0);
+    graphicSystem->gfx->setColor(corCursor.r,corCursor.g,corCursor.b);
 
     Ponto tecla;
     tecla.x=posicao.x + (fonteTeclado.dimensao.w/4);

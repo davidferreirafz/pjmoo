@@ -97,9 +97,18 @@ void UIWindowRecorde::setFonteEdit(std::string fonteLabel, std::string fonteValu
 
     textPonto.setFonteLabel(fonteLabel);
     textPonto.setFonteCampo(fonteValue);
+
     textPonto.showCursor(false);
 
     fonteAviso.nome=fonteLabel;
+}
+//Estilo Visual a ser Aplicado no Componente
+void UIWindowRecorde::setVisualComponentes(UserInterfaceVisualSolido * visual)
+{
+    visualComponentes=visual;
+    textNome.setVisual(visual);
+    textPonto.setVisual(visual);
+    teclado.setVisual(visual);
 }
 void UIWindowRecorde::atualizar()
 {

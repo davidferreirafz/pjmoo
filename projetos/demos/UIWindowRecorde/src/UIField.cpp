@@ -8,6 +8,8 @@ UIField::UIField()
 
     cursor.show=false;
     indice=0;
+
+    visual=NULL;
 }
 
 UIField::~UIField()
@@ -44,18 +46,35 @@ void UIField::setFonteCampo(std::string fonte)
     fonteCampo.nome=fonte;
     fonteCampo.dimensao=wsManager->getFonte(fonteCampo.nome)->getDimensao();
 
-    dimensao.h=fonteCampo.dimensao.h;
-    dimensao.w=length*fonteCampo.dimensao.w;
+    dimensao.w=(length*fonteCampo.dimensao.w)+(fonteCampo.dimensao.w*0.2);
+    dimensao.h=(fonteCampo.dimensao.h)*1.6;
+}
+//Estilo Visual a ser Aplicado no Componente
+void UIField::setVisual(UserInterfaceVisual * visual)
+{
+    this->visual=visual;
 }
 void UIField::atualizar()
 {
     tempoBlink.processar();
 
-    fonteCampo.posicao.x=posicao.x;
-    fonteCampo.posicao.y=posicao.y+(fonteLabel.dimensao.h*1.5);
+    fonteLabel.posicao.x=posicao.x;
+    fonteLabel.posicao.y=posicao.y;
+
+    fonteCampo.posicao.x=posicao.x+(fonteCampo.dimensao.w*0.2);
+    fonteCampo.posicao.y=fonteLabel.posicao.y+(fonteLabel.dimensao.h*1.2)+1;
 
     cursor.posicao.x=fonteCampo.posicao.x + (indice * fonteCampo.dimensao.w);
     cursor.posicao.y=fonteCampo.posicao.y+fonteCampo.dimensao.h;
+
+    if (visual!=NULL){
+        Dimensao d  = dimensao;
+
+        Ponto  p  = posicao;
+               p.y= fonteLabel.posicao.y+(fonteLabel.dimensao.h*1.2)-1;
+
+        visual->aplicar(p,dimensao);
+    }
 }
 void UIField::desenhar()
 {
@@ -67,17 +86,12 @@ void UIField::desenhar()
 }
 void UIField::desenharBackground()
 {
-    //desenhando campo
-    int pY=posicao.y+(fonteLabel.dimensao.h*1.2);
-    int dH=fonteLabel.dimensao.h*1.2;
-
-    graphicSystem->gfx->setColor(0,0,0);
-    graphicSystem->gfx->retanguloPreenchido(posicao.x,pY,dimensao.w,dH);
-    graphicSystem->gfx->setColor(206,101,99);
-    graphicSystem->gfx->retangulo(posicao.x,pY,dimensao.w,dH);
-
     //escrevendo label (Jogador - Pontos)
-    wsManager->escreverLocalizado(fonteLabel.nome, posicao.x,posicao.y,label);
+    wsManager->escreverLocalizado(fonteLabel.nome, fonteLabel.posicao.x, fonteLabel.posicao.y,label);
+
+    if (visual!=NULL){
+        visual->desenhar();
+    }
 }
 void UIField::desenharForeground()
 {

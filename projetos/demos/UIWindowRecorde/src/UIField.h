@@ -4,6 +4,7 @@
 #include <GBF/UserInterfaceComponente.h>
 #include <GBF/GraphicSystemUtility.h>
 #include <GBF/TimerSystemCronometroCrescente.h>
+#include <GBF/UserInterfaceVisual.h>
 
 #include "UI.h"
 
@@ -23,10 +24,11 @@ class UIField: public UserInterfaceComponente , public GraphicSystemUtility
     void maxLength(int length);
     void showCursor(bool show);
     void setCursorPosicao(int posicao);
+    void setVisual(UserInterfaceVisual * visual);
 
   protected:
 
-    UIFonteReferencia fonteLabel;
+    UIFonteExtendida fonteLabel;
     UIFonteExtendida fonteCampo;
 
     UICursor cursor;
@@ -43,6 +45,8 @@ class UIField: public UserInterfaceComponente , public GraphicSystemUtility
     void desenhar();
 
     TimerSystemCronometroCrescente tempoBlink;
+
+    UserInterfaceVisual* visual;
 
   private:
     std::string label;

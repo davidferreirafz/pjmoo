@@ -41,6 +41,11 @@ void UITecladoVirtual::setFonteControle(std::string fonte)
         }
     }
 }
+//Estilo Visual a ser Aplicado no Componente
+void UITecladoVirtual::setVisual(UserInterfaceVisual * visual)
+{
+    this->visual=visual;
+}
 int UITecladoVirtual::getTotalCaracter()
 {
     return strlen(caracter);
@@ -77,6 +82,19 @@ void UITecladoVirtual::atualizar()
 
     if (tempoEspera.isTerminou()){
         navegar();
+    }
+
+    if (visual!=NULL){
+        Dimensao d  = dimensao;
+
+        d.w=dimensao.w+getTamanhoControle()+(fonteTeclado.dimensao.w);
+  //  int auxLargura=dimensao.w+getTamanhoControle()+(fonteTeclado.dimensao.w);
+
+
+//    graphicSystem->gfx->retanguloPreenchido(posicao.x,posicao.y,auxLargura,dimensao.h);
+//    graphicSystem->gfx->retangulo(posicao.x,posicao.y,auxLargura,dimensao.h);
+
+        visual->aplicar(posicao,d);
     }
 }
 void UITecladoVirtual::desenhar()
@@ -127,14 +145,16 @@ int UITecladoVirtual::getIndex()
 void UITecladoVirtual::desenharBackground()
 {
     //desenhando caixa do teclado
-    int auxLargura=dimensao.w+getTamanhoControle()+(fonteTeclado.dimensao.w);
+/*    int auxLargura=dimensao.w+getTamanhoControle()+(fonteTeclado.dimensao.w);
 
     graphicSystem->gfx->setColor(0,0,0);
     graphicSystem->gfx->retanguloPreenchido(posicao.x,posicao.y,auxLargura,dimensao.h);
     graphicSystem->gfx->setColor(206,101,99);
     graphicSystem->gfx->retangulo(posicao.x,posicao.y,auxLargura,dimensao.h);
-
-
+*/
+    if (visual!=NULL){
+        visual->desenhar();
+    }
 
     graphicSystem->gfx->setColor(255,255,0);
 

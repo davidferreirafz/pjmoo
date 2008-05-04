@@ -13,7 +13,7 @@
 #include <string>
 
 #include <GBF/GraphicSystemUtility.h>
-
+#include <GBF/UserInterfaceVisualSolido.h>
 
 #include "UI.h"
 #include "UITecladoVirtual.h"
@@ -38,6 +38,8 @@ class UIWindowRecorde : public UserInterfaceWindow
 
     bool showErro;
 
+    UserInterfaceVisualSolido * visualComponentes;
+
   protected:
     void atualizar();
     //Desenha o botão de ação da janela
@@ -60,6 +62,9 @@ class UIWindowRecorde : public UserInterfaceWindow
     UIWindowRecorde();
     //Destrutor
     ~UIWindowRecorde();
+
+    //Estilo Visual a ser Aplicado no Componente
+    void setVisualComponentes(UserInterfaceVisualSolido * visual);
 
 
     //Define a fonte a ser usada pelo Titulo

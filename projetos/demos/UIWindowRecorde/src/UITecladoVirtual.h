@@ -7,6 +7,7 @@
 #include <GBF/GraphicSystemUtility.h>
 #include <GBF/TimerSystemCronometroDecrescente.h>
 #include <GBF/TimerSystemCronometroCrescente.h>
+#include <GBF/UserInterfaceVisual.h>
 
 #include "UI.h"
 
@@ -29,12 +30,14 @@ class UITecladoVirtual: public UserInterfaceComponente , public InputSystemUtili
 
     int tamanhoControle;
 
+    UserInterfaceVisual* visual;
 
     void desenharBackground();
     void desenharConteudo();
 
     void atualizar();
     void desenhar();
+
 
   public:
     UITecladoVirtual();
@@ -56,6 +59,8 @@ class UITecladoVirtual: public UserInterfaceComponente , public InputSystemUtili
     void setFonteControle(std::string fonte);
     //Define a fonte a ser usada pelo teclado virtual
     void setFonteTeclado(std::string fonte);
+
+    void setVisual(UserInterfaceVisual * visual);
 };
 
 #endif

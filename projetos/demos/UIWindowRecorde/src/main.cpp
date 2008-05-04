@@ -45,14 +45,14 @@ int main(int argc, char * argv[])
     frameworkGBF.writeSystem->uiTexto->detectarIdioma();
 
 
-    UserInterfaceVisualSolido *uiVisualImagem = new UserInterfaceVisualSolido();
-    uiVisualImagem->setCorBorda(255,255,0);
-    uiVisualImagem->setCorFundo(0,0,0);
-
     UserInterfaceVisualImagem *uiVisualTransparente = new UserInterfaceVisualImagem();
     uiVisualTransparente->setCorBorda(255,255,0);
     uiVisualTransparente->setTipoBackground(BACKGROUND_LINES_BLACK);
 
+
+    UserInterfaceVisualSolido *uiVisualSolido = new UserInterfaceVisualSolido();
+    uiVisualSolido->setCorBorda(230,230,0);
+    uiVisualSolido->setCorFundo(0,0,0);
 
 
     TopSystemRecorde recorde;
@@ -69,6 +69,7 @@ int main(int argc, char * argv[])
     janelaRecordeNovo->setPosicao(100,100);
     janelaRecordeNovo->setDimensao(500,330);
     janelaRecordeNovo->setVisual(uiVisualTransparente->clone());
+    janelaRecordeNovo->setVisualComponentes(uiVisualSolido);
     janelaRecordeNovo->setFonteTitulo("recorde");
     janelaRecordeNovo->setFonteEdit("texto","nisemega_extra");
     janelaRecordeNovo->setFonteTecladoVirtual("recorde","texto");
@@ -76,7 +77,7 @@ int main(int argc, char * argv[])
     janelaRecordeNovo->setRecorde(recorde);
     janelaRecordeNovo->inicializar();
 
-    delete(uiVisualImagem);
+    //delete(uiVisualSolido);
     delete(uiVisualTransparente);
 
     while(true) {
@@ -85,12 +86,13 @@ int main(int argc, char * argv[])
             break;
         }
 
-//        frameworkGBF.writeSystem->escrever(WriteSystemManager::defaultFont,10,10,"Demo::UIWindowRecorde - Criando Componentes GUI");
-//        frameworkGBF.writeSystem->escrever(WriteSystemManager::defaultFont,10,30,"PJMOO - Games Multiplataforma");
-//        frameworkGBF.writeSystem->escrever(WriteSystemManager::defaultFont,10,50,"http://davidferreira-fz.blogspot.com");
+        frameworkGBF.writeSystem->escrever(WriteSystemManager::defaultFont,10,10,"Demo::UIWindowRecorde - Criando Componentes GUI");
+        frameworkGBF.writeSystem->escrever(WriteSystemManager::defaultFont,10,30,"PJMOO - Games Multiplataforma");
+        frameworkGBF.writeSystem->escrever(WriteSystemManager::defaultFont,10,50,"http://davidferreira-fz.blogspot.com");
 
-//        frameworkGBF.writeSystem->escrever(WriteSystemManager::defaultFont,190,400,"by: David Ferreira");
-//        frameworkGBF.writeSystem->escrever(WriteSystemManager::defaultFont,190,426,"http://pjmoo.sourceforge.net");
+        frameworkGBF.writeSystem->escrever(WriteSystemManager::defaultFont,190,400,"by: David Ferreira");
+        frameworkGBF.writeSystem->escrever(WriteSystemManager::defaultFont,190,426,"http://pjmoo.sourceforge.net");
+
         janelaRecordeNovo->executar();
 
         if (janelaRecordeNovo->isAcao(UIWindowRecorde::BOTAO_SALVAR)){

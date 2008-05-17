@@ -22,15 +22,15 @@
 #define _UTIL_H
 
 #include <cmath>
-#include <GBF/GraphicSystemImage.h>
+#include <GBF/ImageBase.h>
 
-#include <GBF/GBF_define.h>
+#include <GBF/GBF.h>
 
 
 class Util
 {
   public:
-    static Area converterArea(Dimensao dimensao, Ponto ponto);
+    static GBF::Area converterArea(GBF::Dimensao dimensao, GBF::Ponto ponto);
 
 };
 #endif

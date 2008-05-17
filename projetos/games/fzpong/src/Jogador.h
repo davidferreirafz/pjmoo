@@ -24,7 +24,7 @@
 #include "Raquete.h"
 #include <GBF/InputSystem.h>
 
-#include <GBF/GBF_define.h>
+#include <GBF/GBF.h>
 
 
 class Jogador : public Raquete
@@ -34,9 +34,9 @@ class Jogador : public Raquete
 
     virtual ~Jogador();
 
-    void acao(InputSystem * input);
+    void acao(GBF::Kernel::Input::InputSystem * input);
 
-    Ponto saque();
+    GBF::Ponto saque();
 
 };
 #endif

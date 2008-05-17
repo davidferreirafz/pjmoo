@@ -24,15 +24,15 @@
 #include "Raquete.h"
 #include <GBF/InputSystem.h>
 
-#include <GBF/GBF_define.h>
+#include <GBF/GBF.h>
 
-#include <GBF/PersonagemAbstract.h>
+#include <GBF/Personagem.h>
 
 #include "define.h"
-#include <GBF/GraphicSystemImage.h>
+#include <GBF/ImageBase.h>
 
 #include "Util.h"
-#include <GBF/GraphicSystemGFX.h>
+#include <GBF/GFX.h>
 
 class CPU : public Raquete
 {
@@ -41,11 +41,11 @@ class CPU : public Raquete
 
     virtual ~CPU();
 
-    void acao(InputSystem * input);
+    void acao(GBF::Kernel::Input::InputSystem * input);
 
-    Ponto saque();
+    GBF::Ponto saque();
 
-    bool isColisao(PersonagemAbstract * personagem);
+    bool isColisao(Personagem::Personagem * personagem);
 
     //Inicia raquete
     virtual void iniciar();
@@ -59,7 +59,7 @@ class CPU : public Raquete
 
     void aumentarVisao();
 
-    Decisao pensar(Area visao, Area areaVisaoBola);
+    Decisao pensar(GBF::Area visao, GBF::Area areaVisaoBola);
 
     int raioVisao;
 

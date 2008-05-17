@@ -22,9 +22,9 @@
 #define _PLACAR_H
 
 #include <GBF/SoundSystem.h>
+#include <GBF/SoundSystemUtility.h>
 
-
-class Placar
+class Placar : public GBF::Kernel::Sound::SoundSystemUtility
 {
   public:
     Placar();
@@ -53,7 +53,7 @@ class Placar
 
 
   protected:
-    static SoundSystem * soundSystem;
+//    static GBF::Kernel::Sound::SoundSystem * soundSystem;
 
 
   private:

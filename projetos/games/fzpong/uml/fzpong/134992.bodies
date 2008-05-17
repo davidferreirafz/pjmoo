@@ -1,6 +1,0 @@
-class PersonagemControlado
-!!!165712.cpp!!!	PersonagemControlado()
-
-!!!165840.cpp!!!	~PersonagemControlado()
-
-//	UtilLog::getInstance()->comentario("PersonagemControlado [Removido]");

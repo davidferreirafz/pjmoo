@@ -64,9 +64,5 @@ format 38
 Autor: David de Almeida Ferreira - FZ
 http://davidferreira-fz.blogspot.com
 Fortaleza - Ceará - Brasil"
-  package_ref 128222 // FZPong
 
-  package_ref 128080 // GBF
-
-  package_ref 128208 // Extern
 end

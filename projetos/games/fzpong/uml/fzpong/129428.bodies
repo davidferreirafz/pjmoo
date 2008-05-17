@@ -1,9 +1,0 @@
-class Util
-!!!132116.cpp!!!	converter(in dimensao : Dimensao, in ponto : Ponto) : Area
-    Area area;
-    area.left   = ponto.x;
-    area.top    = ponto.y;
-    area.right  = dimensao.w;
-    area.bottom = dimensao.h;
-
-    return area;

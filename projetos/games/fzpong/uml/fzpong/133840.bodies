@@ -1,7 +1,0 @@
-class ListPersonagemJogadorAbstract
-!!!159824.cpp!!!	~ListPersonagemJogadorAbstract()
-
-//    UtilLog::getInstance()->comentario("Destruindo ListPersonagemAutomaticoAbstract");
-!!!159952.cpp!!!	ListPersonagemJogadorAbstract()
-
-

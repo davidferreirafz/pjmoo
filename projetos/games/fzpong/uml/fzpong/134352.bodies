@@ -1,8 +1,0 @@
-class ParticleSystemEfeitoEsferico
-!!!161872.cpp!!!	ParticleSystemEfeitoEsferico()
-    raio = 20;
-!!!162000.cpp!!!	~ParticleSystemEfeitoEsferico()
-
-
-!!!162128.cpp!!!	setRaio(in raio : int) : void
-    this->raio=raio;

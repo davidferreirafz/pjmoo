@@ -24,8 +24,8 @@
 Controle::Controle()
 {
 
-    cenario    = FrameLayerManager::getInstance()->getFrameLayer("background");
-    wsManager  = WriteSystemManager::getInstance();
+    cenario    = GBF::Grafico::Layer::LayerManager::getInstance()->getFrameLayer("background");
+    wsManager  = GBF::Kernel::Write::WriteManager::getInstance();
 
     raqueteJogador = new Jogador();
     raqueteCPU     = new CPU();
@@ -61,7 +61,7 @@ void Controle::prepararSet()
     raqueteJogador->iniciar();
     raqueteCPU->iniciar();
 }
-void Controle::executar(InputSystem * input)
+void Controle::executar(GBF::Kernel::Input::InputSystem * input)
 {
     bola.acao(NULL);
     raqueteJogador->acao(input);

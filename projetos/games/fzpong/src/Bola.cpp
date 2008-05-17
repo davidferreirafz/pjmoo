@@ -22,13 +22,12 @@
 
 Bola::Bola()
 {
-    GraphicSystem  *graphicSystem = GraphicSystem::getInstance();
-    SpriteFactory  *spriteFactory = new SpriteFactory(graphicSystem->imageBufferManager->getImageBuffer("personagem"));
+    GBF::Kernel::Graphic::GraphicSystem  *graphicSystem = GBF::Kernel::Graphic::GraphicSystem::getInstance();
+    GBF::Grafico::SpriteFactory *spriteFactory = new GBF::Grafico::SpriteFactory(graphicSystem->imageBufferManager->getImageBuffer("personagem"));
+
     adicionarSpritePrincipal(spriteFactory->criarSpritePersonagem(0,0,20,20,1,1));
     getSpritePrincipal()->animacao.setAutomatico(false);
     getSpritePrincipal()->setQtdDirecoes(2);
-
-    delete(spriteFactory);
 }
 Bola::~Bola()
 {
@@ -44,7 +43,7 @@ void Bola::iniciar()
 
     continuar();
 }
-void Bola::iniciar(Ponto saque)
+void Bola::iniciar(GBF::Ponto saque)
 {
     batidaParede=0;
     velocidadeGradativa.y=4+rand()%4;
@@ -73,7 +72,7 @@ void Bola::continuar()
 
     setPosicao((getAreaTela().right/2)-(getDimensao().w/2),getAreaTela().bottom/2-(getDimensao().h/2));
 }
-void Bola::acao(InputSystem * input)
+void Bola::acao(GBF::Kernel::Input::InputSystem * input)
 {
     posicao.x+=int(velocidade.x);
     posicao.y+=int(velocidade.y);
@@ -91,9 +90,9 @@ void Bola::acao(InputSystem * input)
     }
 
     if (posicao.x>=getAreaTela().right/2){
-        getSpritePrincipal()->setDirecao(DR_DIREITA);
+        getSpritePrincipal()->setDirecao(GBF::Grafico::Sprite::DR_DIREITA);
     } else {
-        getSpritePrincipal()->setDirecao(DR_ESQUERDA);
+        getSpritePrincipal()->setDirecao(GBF::Grafico::Sprite::DR_ESQUERDA);
     }
 
     if (batidaParede>4){
@@ -101,7 +100,7 @@ void Bola::acao(InputSystem * input)
         batidaParede=0;
     }
 }
-bool Bola::isColisao(PersonagemAbstract * personagem)
+bool Bola::isColisao(Personagem::Personagem * personagem)
 {
     bool colisao=personagem->isColisao(this);
     if (colisao){
@@ -141,10 +140,10 @@ int Bola::getVelocidade()
     return int(velocidade.x);
 }
 //Corrigir a posição da bola após colidir com uma raquete, evitando que a bola seja desenha dentro/após a raquete
-void Bola::corrigirEixoX(PersonagemAbstract * personagem)
+void Bola::corrigirEixoX(Personagem::Personagem * personagem)
 {
     //Colisão do lado direito da tela
-    if (getSpritePrincipal()->getDirecao()==DR_DIREITA){
+    if (getSpritePrincipal()->getDirecao()==GBF::Grafico::Sprite::DR_DIREITA){
         if (posicao.x+getDimensao().w>=personagem->getPosicao().x){
             posicao.x=personagem->getPosicao().x-getDimensao().w;
             velocidade.x = - velocidade.x;

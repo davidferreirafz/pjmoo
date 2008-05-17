@@ -22,13 +22,13 @@
 #define _BOLA_H
 
 #include "Objeto.h"
-#include <GBF/GBF_define.h>
+#include <GBF/GBF.h>
 
 #include <GBF/InputSystem.h>
 
-#include <GBF/PersonagemAbstract.h>
+#include <GBF/Personagem.h>
 
-#include <GBF/GraphicSystemImageBufferManager.h>
+#include <GBF/ImageBufferManager.h>
 
 #include <GBF/SpriteFactory.h>
 
@@ -50,20 +50,20 @@ class Bola : public Objeto
 
     void iniciar();
 
-    void iniciar(Ponto saque);
+    void iniciar(GBF::Ponto saque);
 
     void continuar();
 
-    void acao(InputSystem * input);
+    void acao(GBF::Kernel::Input::InputSystem * input);
 
-    bool isColisao(PersonagemAbstract * personagem);
+    bool isColisao(Personagem::Personagem * personagem);
 
     int getVelocidade();
 
 
   private:
     //Corrigir a posição da bola após colidir com uma raquete, evitando que a bola seja desenha dentro/após a raquete
-    void corrigirEixoX(PersonagemAbstract * personagem);
+    void corrigirEixoX(Personagem::Personagem * personagem);
 
     void elevarGrauDificuldade();
 

@@ -21,31 +21,31 @@
 #ifndef _OBJETO_H
 #define _OBJETO_H
 
-#include <GBF/GraphicSystemImage.h>
+#include <GBF/ImageBase.h>
 
 #include <GBF/SoundSystem.h>
 
-#include <GBF/PersonagemAutomatico.h>
+#include <GBF/Personagem.h>
+#include <GBF/SoundSystemUtility.h>
 
-
-class Objeto : public PersonagemAutomatico
+class Objeto : public Personagem::Personagem, public GBF::Kernel::Sound::SoundSystemUtility
 {
   public:
     Objeto();
 
     virtual ~Objeto();
 
-    static void setArea(Area area);
+    static void setArea(GBF::Area area);
 
 
   protected:
-    Area getAreaTela();
+    GBF::Area getAreaTela();
 
-    static SoundSystem * soundSystem;
+//    static GBF::Kernel::Sound::SoundSystem * soundSystem;
 
 
   private:
-    static Area areaTela;
+    static GBF::Area areaTela;
 
     int alturaPedra;
 

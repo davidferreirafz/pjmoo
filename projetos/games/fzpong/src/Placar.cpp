@@ -20,27 +20,27 @@
 // ***************************************************************************/
 #include "Placar.h"
 
-Placar::Placar() 
+Placar::Placar()
 {
 
     iniciar();
-	if (!soundSystem){
-		soundSystem = SoundSystem::getInstance();
-	}
+	//if (!soundSystem){
+	//	soundSystem = GBF::Kernel::Sound::SoundSystem::getInstance();
+	//}
 }
-Placar::~Placar() 
+Placar::~Placar()
 {
 
     //dtor
 }
-void Placar::iniciar() 
+void Placar::iniciar()
 {
     jogador=0;
     cpu=0;
     partidaJogador=0;
     partidaCPU=0;
 }
-void Placar::novaPartida() 
+void Placar::novaPartida()
 {
     if (jogador>cpu){
         vitoriaJogador();
@@ -50,39 +50,39 @@ void Placar::novaPartida()
     jogador=0;
     cpu=0;
 }
-void Placar::pontuarJogador() 
+void Placar::pontuarJogador()
 {
     soundSystem->fxManager->playPanEffect("ponto",640);
     jogador++;
 }
-void Placar::pontuarCPU() 
+void Placar::pontuarCPU()
 {
     soundSystem->fxManager->playPanEffect("ponto",0);
     cpu++;
 }
-int Placar::getJogador() 
+int Placar::getJogador()
 {
     return jogador;
 }
-int Placar::getCPU() 
+int Placar::getCPU()
 {
     return cpu;
 }
-void Placar::vitoriaJogador() 
+void Placar::vitoriaJogador()
 {
     partidaJogador++;
 }
-void Placar::vitoriaCPU() 
+void Placar::vitoriaCPU()
 {
     partidaCPU++;
 }
-int Placar::getVitoriaJogador() 
+int Placar::getVitoriaJogador()
 {
     return partidaJogador;
 }
-int Placar::getVitoriaCPU() 
+int Placar::getVitoriaCPU()
 {
     return partidaCPU;
 }
-SoundSystem * Placar::soundSystem =NULL;
+//GBF::Kernel::Sound::SoundSystem * Placar::soundSystem =NULL;
 

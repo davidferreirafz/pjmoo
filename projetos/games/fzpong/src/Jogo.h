@@ -26,19 +26,19 @@
 
 #include <GBF/GAT.h>
 
-#include <GBF/UserInterfaceMenuTextoTransparente.h>
+#include <GBF/UIMenuTransparente.h>
 
-#include <GBF/UserInterfaceMenuItemTexto.h>
+#include <GBF/UIItemTexto.h>
 
-#include <GBF/UserInterfaceWindowTitulo.h>
+#include <GBF/UIWindowTitulo.h>
 
-#include <GBF/UserInterfaceWindow.h>
+#include <GBF/UIWindowDialog.h>
 
-#include <GBF/UserInterfaceMenuItemTexto.h>
 
-#include <GBF/UserInterfaceVisualSolido.h>
 
-class Jogo : public GAT
+#include <GBF/UIVisualSolido.h>
+
+class Jogo : public GAT::GAT
 {
   public:
     int main(int argc, char * argv[]);
@@ -87,16 +87,16 @@ class Jogo : public GAT
 
     Controle * controle;
 
-    SpriteItem * david;
+    GBF::Grafico::Sprite::SpriteItem * david;
 
-    UserInterfaceWindowTitulo * janelaSobre;
+    UserInterface::Window::UIWindowTitulo * janelaSobre;
 
-    UserInterfaceWindowTitulo * janelaCredito;
+    UserInterface::Window::UIWindowTitulo * janelaCredito;
 
-    UserInterfaceWindowTitulo * janelaAjuda;
+    UserInterface::Window::UIWindowTitulo * janelaAjuda;
 
-    UserInterfaceWindow * janelaZerado;
+    UserInterface::Window::UIWindowDialog * janelaZerado;
 
-    UserInterfaceWindow * janelaGameOver;
+    UserInterface::Window::UIWindowDialog * janelaGameOver;
 };
 #endif

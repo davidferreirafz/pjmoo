@@ -22,19 +22,19 @@
 
 int main(int argc, char * argv[])
 {
-    GAT* jogo = NULL;
+    GAT::GAT* jogo = NULL;
     jogo = new Jogo(argc,argv);
 
     try {
         jogo->executar();
     } catch (std::exception& e) {
-        UtilLog::sistema("!!!!!!!!!!");
-        UtilLog::sistema("Exceção: %s",e.what());
-        UtilLog::sistema("!!!!!!!!!!");
+        //UtilLog::sistema("!!!!!!!!!!");
+        //UtilLog::sistema("Exceção: %s",e.what());
+        //UtilLog::sistema("!!!!!!!!!!");
     } catch (...) {
-        UtilLog::sistema("!!!!!!!!!!");
-        UtilLog::sistema("Exceção Desconhecida");
-        UtilLog::sistema("!!!!!!!!!!");
+        //UtilLog::sistema("!!!!!!!!!!");
+        //UtilLog::sistema("Exceção Desconhecida");
+        //UtilLog::sistema("!!!!!!!!!!");
     }
 
     delete(jogo);
@@ -77,7 +77,6 @@ void Jogo::inicializarRecursos()
     frameworkGBF->writeSystem->carregar("texto",frameworkGBF->getPath()+"data//fonte//kiloton_18.png");
     frameworkGBF->writeSystem->carregar("kiloton10",frameworkGBF->getPath()+"data//fonte//kiloton_10.png");
 
-
 //carregando audio - efeitos
     frameworkGBF->soundSystemCore->soundSystem->fxManager->carregar("ponto","data//som//ponto.wav");
     frameworkGBF->soundSystemCore->soundSystem->fxManager->carregar("ping","data//som//ping.wav");
@@ -102,39 +101,40 @@ void Jogo::inicializarRecursos()
 
 
     //Idioma
-    frameworkGBF->writeSystem->uiTexto->setArquivo("msg.txt");
-    frameworkGBF->writeSystem->uiTexto->detectarIdioma();
+    frameworkGBF->writeSystem->idioma->setArquivo("msg.txt");
+    frameworkGBF->writeSystem->idioma->detectarIdioma();
 
-    SpriteFactory * spriteFactory = NULL;
-    spriteFactory = new SpriteFactory(frameworkGBF->graphicSystemCore->graphicSystem->imageBufferManager->getImageBuffer("background"));
+    GBF::Grafico::SpriteFactory * spriteFactory = NULL;
 
-    FrameLayer * background = spriteFactory->criarFrameLayer(0, 0,640,480);
+    spriteFactory = new GBF::Grafico::SpriteFactory(frameworkGBF->graphicSystemCore->graphicSystem->imageBufferManager->getImageBuffer("background"));
+
+    GBF::Grafico::Layer::FrameLayer * background = spriteFactory->criarFrameLayer(0, 0,640,480);
     background->setFrame(0,0,640,480);
     background->setTiles(1,1);
     background->setPixelTile(640,480);
     background->iniciarRandomico(1);
-    FrameLayerManager::getInstance()->adicionar("background",background);
+    GBF::Grafico::Layer::LayerManager::getInstance()->adicionar("background",background);
     delete(spriteFactory);
 
-    spriteFactory = new SpriteFactory(frameworkGBF->graphicSystemCore->graphicSystem->imageBufferManager->getImageBuffer("personagem"));
+    spriteFactory = new GBF::Grafico::SpriteFactory(frameworkGBF->graphicSystemCore->graphicSystem->imageBufferManager->getImageBuffer("personagem"));
     david=spriteFactory->criarSpriteItem(30,21,90,68,1,1);
     delete(spriteFactory);
 
     //Menu
-    uiMenuPrincipal = new UserInterfaceMenuTextoTransparente();
-    uiMenuPrincipal->centralizarTela(640,120,HORIZONTAL);
+    uiMenuPrincipal = new UserInterface::Menu::UIMenuTransparente();
+    uiMenuPrincipal->centralizarTela(640,120,UserInterface::HORIZONTAL);
     uiMenuPrincipal->setEspacoVertical(60);
-    uiMenuPrincipal->adicionar(new UserInterfaceMenuItemTexto("menu_1","menu"));
-    uiMenuPrincipal->adicionar(new UserInterfaceMenuItemTexto("menu_2","menu"));
-    uiMenuPrincipal->adicionar(new UserInterfaceMenuItemTexto("menu_3","menu"));
-    uiMenuPrincipal->adicionar(new UserInterfaceMenuItemTexto("menu_4","menu"));
-    uiMenuPrincipal->adicionar(new UserInterfaceMenuItemTexto("menu_5","menu"));
+    uiMenuPrincipal->adicionar(new UserInterface::Menu::UIItemTexto("menu_1","menu"));
+    uiMenuPrincipal->adicionar(new UserInterface::Menu::UIItemTexto("menu_2","menu"));
+    uiMenuPrincipal->adicionar(new UserInterface::Menu::UIItemTexto("menu_3","menu"));
+    uiMenuPrincipal->adicionar(new UserInterface::Menu::UIItemTexto("menu_4","menu"));
+    uiMenuPrincipal->adicionar(new UserInterface::Menu::UIItemTexto("menu_5","menu"));
 
-    UserInterfaceVisualSolido *uiVisualImagem = new UserInterfaceVisualSolido();
+    UserInterface::Visual::UIVisualSolido *uiVisualImagem = new UserInterface::Visual::UIVisualSolido();
     uiVisualImagem->setCorBorda(255,255,0);
     uiVisualImagem->setCorFundo(0,0,0);
 
-    janelaAjuda = new UserInterfaceWindowTitulo();
+    janelaAjuda = new UserInterface::Window::UIWindowTitulo();
     janelaAjuda->setPosicao(20,40);
     janelaAjuda->setDimensao(598,400);
     janelaAjuda->texto.setFonte("texto");
@@ -142,10 +142,10 @@ void Jogo::inicializarRecursos()
     janelaAjuda->titulo.setFonte("menu");
     janelaAjuda->titulo.setChaveTexto("titulo_ajuda");
     janelaAjuda->setVisual(uiVisualImagem->clone());
-    janelaAjuda->adicionarBotao(new UserInterfaceBotao("kiloton10","botao_enter",SDLK_RETURN));
+    janelaAjuda->adicionarBotao(new UserInterface::Componente::UIBotao("kiloton10","botao_enter",SDLK_RETURN));
     janelaAjuda->inicializar();
 
-    janelaCredito = new UserInterfaceWindowTitulo();
+    janelaCredito = new UserInterface::Window::UIWindowTitulo();
     janelaCredito->setPosicao(20,40);
     janelaCredito->setDimensao(598,400);
     janelaCredito->texto.setFonte("texto");
@@ -153,10 +153,10 @@ void Jogo::inicializarRecursos()
     janelaCredito->titulo.setFonte("menu");
     janelaCredito->titulo.setChaveTexto("titulo_credito");
     janelaCredito->setVisual(uiVisualImagem->clone());
-    janelaCredito->adicionarBotao(new UserInterfaceBotao("kiloton10","botao_enter",SDLK_RETURN));
+    janelaCredito->adicionarBotao(new UserInterface::Componente::UIBotao("kiloton10","botao_enter",SDLK_RETURN));
     janelaCredito->inicializar();
 
-    janelaSobre = new UserInterfaceWindowTitulo();
+    janelaSobre = new UserInterface::Window::UIWindowTitulo();
     janelaSobre->setPosicao(20,40);
     janelaSobre->setDimensao(598,400);
     janelaSobre->texto.setFonte("texto");
@@ -164,27 +164,27 @@ void Jogo::inicializarRecursos()
     janelaSobre->titulo.setFonte("menu");
     janelaSobre->titulo.setChaveTexto("titulo_sobre");
     janelaSobre->setVisual(uiVisualImagem->clone());
-    janelaSobre->adicionarBotao(new UserInterfaceBotao("kiloton10","botao_enter",SDLK_RETURN));
+    janelaSobre->adicionarBotao(new UserInterface::Componente::UIBotao("kiloton10","botao_enter",SDLK_RETURN));
     janelaSobre->inicializar();
 
-    janelaGameOver = new UserInterfaceWindow();
+    janelaGameOver = new UserInterface::Window::UIWindowDialog();
     janelaGameOver->setPosicao(120,140);
     janelaGameOver->setDimensao(400,200);
     janelaGameOver->texto.setFonte("texto");
     janelaGameOver->texto.setChaveTexto("tela_gameover_%02d");
-    janelaGameOver->texto.setAlinhamento(TEXTO_CENTRALIZADO);
+    janelaGameOver->texto.setAlinhamento(UserInterface::Texto::TEXTO_CENTRALIZADO);
     janelaGameOver->setVisual(uiVisualImagem->clone());
-    janelaGameOver->adicionarBotao(new UserInterfaceBotao("kiloton10","botao_enter",SDLK_RETURN));
+    janelaGameOver->adicionarBotao(new UserInterface::Componente::UIBotao("kiloton10","botao_enter",SDLK_RETURN));
     janelaGameOver->inicializar();
 
-    janelaZerado = new UserInterfaceWindow();
+    janelaZerado = new UserInterface::Window::UIWindowDialog();
     janelaZerado->setPosicao(120,140);
     janelaZerado->setDimensao(400,200);
     janelaZerado->texto.setFonte("texto");
     janelaZerado->texto.setChaveTexto("tela_zerado_%02d");
-    janelaZerado->texto.setAlinhamento(TEXTO_CENTRALIZADO);
+    janelaZerado->texto.setAlinhamento(UserInterface::Texto::TEXTO_CENTRALIZADO);
     janelaZerado->setVisual(uiVisualImagem->clone());
-    janelaZerado->adicionarBotao(new UserInterfaceBotao("kiloton10","botao_enter",SDLK_RETURN));
+    janelaZerado->adicionarBotao(new UserInterface::Componente::UIBotao("kiloton10","botao_enter",SDLK_RETURN));
     janelaZerado->inicializar();
 
     delete(uiVisualImagem);
@@ -193,7 +193,7 @@ void Jogo::inicializarRecursos()
 }
 void Jogo::menuPrincipal()
 {
-    FrameLayerManager::getInstance()->getFrameLayer("background")->desenhar();
+    GBF::Grafico::Layer::LayerManager::getInstance()->getFrameLayer("background")->desenhar();
 
     uiMenuPrincipal->executar();
 
@@ -219,23 +219,23 @@ void Jogo::menuPrincipal()
 }
 void Jogo::menuAjuda()
 {
-    FrameLayerManager::getInstance()->getFrameLayer("background")->desenhar();
+    GBF::Grafico::Layer::LayerManager::getInstance()->getFrameLayer("background")->desenhar();
 
     janelaAjuda->executar();
 
-    if (janelaAjuda->isBotao(UserInterfaceWindow::BOTAO_OK)){
+    if (janelaAjuda->isAcao(UserInterface::Window::UIWindowDialog::BOTAO_OK)){
         setMenuPrincipal();
     }
 }
 void Jogo::menuCredito()
 {
-    FrameLayerManager::getInstance()->getFrameLayer("background")->desenhar();
+    GBF::Grafico::Layer::LayerManager::getInstance()->getFrameLayer("background")->desenhar();
 
     janelaCredito->executar();
 
     david->desenhar(280,280);
 
-    if (janelaCredito->isBotao(UserInterfaceWindow::BOTAO_OK)){
+    if (janelaCredito->isAcao(UserInterface::Window::UIWindowDialog::BOTAO_OK)){
         setMenuPrincipal();
     } else {
         if (frameworkGBF->inputSystemCore->inputSystem->teclado->isKey(SDLK_t)){
@@ -248,11 +248,11 @@ void Jogo::menuCredito()
 }
 void Jogo::menuSobre()
 {
-    FrameLayerManager::getInstance()->getFrameLayer("background")->desenhar();
+    GBF::Grafico::Layer::LayerManager::getInstance()->getFrameLayer("background")->desenhar();
 
     janelaSobre->executar();
 
-    if (janelaSobre->isBotao(UserInterfaceWindow::BOTAO_OK)){
+    if (janelaSobre->isAcao(UserInterface::Window::UIWindowDialog::BOTAO_OK)){
         setMenuPrincipal();
     }
 }
@@ -290,21 +290,21 @@ void Jogo::jogoFaseFinalizada()
 }
 void Jogo::jogoGameOver()
 {
-    FrameLayerManager::getInstance()->getFrameLayer("background")->desenhar();
+    GBF::Grafico::Layer::LayerManager::getInstance()->getFrameLayer("background")->desenhar();
 
     janelaGameOver->executar();
 
-    if (janelaGameOver->isBotao(UserInterfaceWindow::BOTAO_OK)){
+    if (janelaGameOver->isAcao(UserInterface::Window::UIWindowDialog::BOTAO_OK)){
         setMenu();
     }
 }
 void Jogo::jogoZerado()
 {
-    FrameLayerManager::getInstance()->getFrameLayer("background")->desenhar();
+    GBF::Grafico::Layer::LayerManager::getInstance()->getFrameLayer("background")->desenhar();
 
     janelaZerado->executar();
 
-    if (janelaZerado->isBotao(UserInterfaceWindow::BOTAO_OK)){
+    if (janelaZerado->isAcao(UserInterface::Window::UIWindowDialog::BOTAO_OK)){
         setMenu();
     }
 }

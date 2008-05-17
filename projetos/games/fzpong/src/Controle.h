@@ -29,9 +29,9 @@
 #include "CPU.h"
 #include <GBF/FrameLayer.h>
 
-#include <GBF/WriteSystemManager.h>
+#include <GBF/WriteManager.h>
 
-#include <GBF/FrameLayerManager.h>
+#include <GBF/LayerManager.h>
 
 
 class Jogador;
@@ -49,7 +49,7 @@ class Controle
 
     void prepararSet();
 
-    void executar(InputSystem * input);
+    void executar(GBF::Kernel::Input::InputSystem * input);
 
     bool isGameOver();
 
@@ -81,9 +81,9 @@ class Controle
 
     CPU * raqueteCPU;
 
-    FrameLayer * cenario;
+    GBF::Grafico::Layer::FrameLayer * cenario;
 
-    WriteSystemManager * wsManager;
+    GBF::Kernel::Write::WriteManager * wsManager;
 
     //Diferença para o fim da partida
     static int DIFERENCA_FIM_PARTIDA;

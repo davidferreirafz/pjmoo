@@ -22,8 +22,9 @@
 
 CPU::CPU()
 {
-    GraphicSystem  *graphicSystem = GraphicSystem::getInstance();
-    SpriteFactory  *spriteFactory = new SpriteFactory(graphicSystem->imageBufferManager->getImageBuffer("personagem"));
+    GBF::Kernel::Graphic::GraphicSystem  *graphicSystem = GBF::Kernel::Graphic::GraphicSystem::getInstance();
+    GBF::Grafico::SpriteFactory *spriteFactory = new GBF::Grafico::SpriteFactory(graphicSystem->imageBufferManager->getImageBuffer("personagem"));
+
     adicionarSpritePrincipal(spriteFactory->criarSpritePersonagem(15,21,14,80,1,1));
     delete(spriteFactory);
 
@@ -34,10 +35,10 @@ CPU::~CPU()
 
     //dtor
 }
-void CPU::acao(InputSystem * input)
+void CPU::acao(GBF::Kernel::Input::InputSystem * input)
 {
-    Area areaVisaoBola = Util::converterArea(getVisaoBola().getDimensao(),getVisaoBola().getPosicao());
-    Area visao         = Util::converterArea(getDimensao(),getPosicao());
+    GBF::Area areaVisaoBola = Util::converterArea(getVisaoBola().getDimensao(),getVisaoBola().getPosicao());
+    GBF::Area visao         = Util::converterArea(getDimensao(),getPosicao());
 
     switch(pensar(visao,areaVisaoBola))
     {
@@ -53,16 +54,16 @@ void CPU::acao(InputSystem * input)
             break;
     }
 }
-Ponto CPU::saque()
+GBF::Ponto CPU::saque()
 {
-    Ponto saque;
+    GBF::Ponto saque;
 
     saque.x=posicao.x+getDimensao().w;
     saque.y=posicao.y+rand()%(getDimensao().h-getVisaoBola().getDimensao().h);
 
     return saque;
 }
-bool CPU::isColisao(PersonagemAbstract * personagem)
+bool CPU::isColisao(Personagem::Personagem * personagem)
 {
     bool retorno = Raquete::isColisao(personagem);
 
@@ -105,7 +106,7 @@ void CPU::aumentarVisao()
         raioVisao=getAreaTela().bottom;
     }
 }
-Decisao CPU::pensar(Area visao, Area areaVisaoBola)
+Decisao CPU::pensar(GBF::Area visao, GBF::Area areaVisaoBola)
 {
     float qx, qy, qr, qe; //para guardar o quadrado de x, y e raio
     Decisao decisao = DECISAO_NADA;

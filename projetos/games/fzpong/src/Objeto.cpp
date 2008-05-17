@@ -20,31 +20,31 @@
 // ***************************************************************************/
 #include "Objeto.h"
 
-Objeto::Objeto() 
+Objeto::Objeto()
 {
 
     alturaPedra=4;
-	if (!soundSystem){
-		soundSystem = SoundSystem::getInstance();
-	}
+	//if (!soundSystem){
+	//	soundSystem = GBF::Kernel::Sound::SoundSystem::getInstance();
+	//}
 }
-Objeto::~Objeto() 
+Objeto::~Objeto()
 {
 
     //dtor
 }
-void Objeto::setArea(Area area)
+void Objeto::setArea(GBF::Area area)
 {
     areaTela=area;
 
     areaTela.top=areaTela.top+4;
     areaTela.bottom=areaTela.bottom-4;
 }
-Area Objeto::getAreaTela() 
+GBF::Area Objeto::getAreaTela()
 {
     return areaTela;
 }
-SoundSystem * Objeto::soundSystem =NULL;
+//GBF::Kernel::Sound::SoundSystem * Objeto::soundSystem =NULL;
 
-Area Objeto::areaTela;
+GBF::Area Objeto::areaTela;
 

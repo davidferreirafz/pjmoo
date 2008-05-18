@@ -81,7 +81,7 @@ class Controle
 
     CPU * raqueteCPU;
 
-    GBF::Grafico::Layer::FrameLayer * cenario;
+    GBF::Imagem::Layer::FrameLayer * cenario;
 
     GBF::Kernel::Write::WriteManager * wsManager;
 

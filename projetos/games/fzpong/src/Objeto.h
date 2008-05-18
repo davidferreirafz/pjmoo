@@ -41,8 +41,6 @@ class Objeto : public Personagem::Personagem, public GBF::Kernel::Sound::SoundSy
   protected:
     GBF::Area getAreaTela();
 
-//    static GBF::Kernel::Sound::SoundSystem * soundSystem;
-
 
   private:
     static GBF::Area areaTela;

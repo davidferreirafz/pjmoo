@@ -22,16 +22,11 @@
 
 Placar::Placar()
 {
-
     iniciar();
-	//if (!soundSystem){
-	//	soundSystem = GBF::Kernel::Sound::SoundSystem::getInstance();
-	//}
 }
 Placar::~Placar()
 {
 
-    //dtor
 }
 void Placar::iniciar()
 {
@@ -84,5 +79,5 @@ int Placar::getVitoriaCPU()
 {
     return partidaCPU;
 }
-//GBF::Kernel::Sound::SoundSystem * Placar::soundSystem =NULL;
+
 

@@ -22,8 +22,7 @@
 
 Bola::Bola()
 {
-    GBF::Kernel::Graphic::GraphicSystem  *graphicSystem = GBF::Kernel::Graphic::GraphicSystem::getInstance();
-    GBF::Grafico::SpriteFactory *spriteFactory = new GBF::Grafico::SpriteFactory(graphicSystem->imageBufferManager->getImageBuffer("personagem"));
+    GBF::Imagem::SpriteFactory *spriteFactory = new GBF::Imagem::SpriteFactory("personagem");
 
     adicionarSpritePrincipal(spriteFactory->criarSpritePersonagem(0,0,20,20,1,1));
     getSpritePrincipal()->animacao.setAutomatico(false);
@@ -90,9 +89,9 @@ void Bola::acao(GBF::Kernel::Input::InputSystem * input)
     }
 
     if (posicao.x>=getAreaTela().right/2){
-        getSpritePrincipal()->setDirecao(GBF::Grafico::Sprite::DR_DIREITA);
+        getSpritePrincipal()->setDirecao(GBF::Imagem::Sprite::DR_DIREITA);
     } else {
-        getSpritePrincipal()->setDirecao(GBF::Grafico::Sprite::DR_ESQUERDA);
+        getSpritePrincipal()->setDirecao(GBF::Imagem::Sprite::DR_ESQUERDA);
     }
 
     if (batidaParede>4){
@@ -143,7 +142,7 @@ int Bola::getVelocidade()
 void Bola::corrigirEixoX(Personagem::Personagem * personagem)
 {
     //Colisão do lado direito da tela
-    if (getSpritePrincipal()->getDirecao()==GBF::Grafico::Sprite::DR_DIREITA){
+    if (getSpritePrincipal()->getDirecao()==GBF::Imagem::Sprite::DR_DIREITA){
         if (posicao.x+getDimensao().w>=personagem->getPosicao().x){
             posicao.x=personagem->getPosicao().x-getDimensao().w;
             velocidade.x = - velocidade.x;

@@ -52,10 +52,6 @@ class Placar : public GBF::Kernel::Sound::SoundSystemUtility
     int getVitoriaCPU();
 
 
-  protected:
-//    static GBF::Kernel::Sound::SoundSystem * soundSystem;
-
-
   private:
     int jogador;
 

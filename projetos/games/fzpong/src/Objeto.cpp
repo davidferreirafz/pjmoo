@@ -22,16 +22,11 @@
 
 Objeto::Objeto()
 {
-
     alturaPedra=4;
-	//if (!soundSystem){
-	//	soundSystem = GBF::Kernel::Sound::SoundSystem::getInstance();
-	//}
 }
 Objeto::~Objeto()
 {
 
-    //dtor
 }
 void Objeto::setArea(GBF::Area area)
 {
@@ -44,7 +39,6 @@ GBF::Area Objeto::getAreaTela()
 {
     return areaTela;
 }
-//GBF::Kernel::Sound::SoundSystem * Objeto::soundSystem =NULL;
 
 GBF::Area Objeto::areaTela;
 

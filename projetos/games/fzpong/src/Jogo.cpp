@@ -104,19 +104,19 @@ void Jogo::inicializarRecursos()
     frameworkGBF->writeSystem->idioma->setArquivo("msg.txt");
     frameworkGBF->writeSystem->idioma->detectarIdioma();
 
-    GBF::Grafico::SpriteFactory * spriteFactory = NULL;
+    GBF::Imagem::SpriteFactory * spriteFactory = NULL;
 
-    spriteFactory = new GBF::Grafico::SpriteFactory(frameworkGBF->graphicSystemCore->graphicSystem->imageBufferManager->getImageBuffer("background"));
+    spriteFactory = new GBF::Imagem::SpriteFactory("background");
 
-    GBF::Grafico::Layer::FrameLayer * background = spriteFactory->criarFrameLayer(0, 0,640,480);
+    GBF::Imagem::Layer::FrameLayer * background = spriteFactory->criarFrameLayer(0, 0,640,480);
     background->setFrame(0,0,640,480);
     background->setTiles(1,1);
     background->setPixelTile(640,480);
     background->iniciarRandomico(1);
-    GBF::Grafico::Layer::LayerManager::getInstance()->adicionar("background",background);
+    GBF::Imagem::Layer::LayerManager::getInstance()->adicionar("background",background);
     delete(spriteFactory);
 
-    spriteFactory = new GBF::Grafico::SpriteFactory(frameworkGBF->graphicSystemCore->graphicSystem->imageBufferManager->getImageBuffer("personagem"));
+    spriteFactory = new GBF::Imagem::SpriteFactory("personagem");
     david=spriteFactory->criarSpriteItem(30,21,90,68,1,1);
     delete(spriteFactory);
 
@@ -193,7 +193,7 @@ void Jogo::inicializarRecursos()
 }
 void Jogo::menuPrincipal()
 {
-    GBF::Grafico::Layer::LayerManager::getInstance()->getFrameLayer("background")->desenhar();
+    GBF::Imagem::Layer::LayerManager::getInstance()->getFrameLayer("background")->desenhar();
 
     uiMenuPrincipal->executar();
 
@@ -219,7 +219,7 @@ void Jogo::menuPrincipal()
 }
 void Jogo::menuAjuda()
 {
-    GBF::Grafico::Layer::LayerManager::getInstance()->getFrameLayer("background")->desenhar();
+    GBF::Imagem::Layer::LayerManager::getInstance()->getFrameLayer("background")->desenhar();
 
     janelaAjuda->executar();
 
@@ -229,7 +229,7 @@ void Jogo::menuAjuda()
 }
 void Jogo::menuCredito()
 {
-    GBF::Grafico::Layer::LayerManager::getInstance()->getFrameLayer("background")->desenhar();
+    GBF::Imagem::Layer::LayerManager::getInstance()->getFrameLayer("background")->desenhar();
 
     janelaCredito->executar();
 
@@ -248,7 +248,7 @@ void Jogo::menuCredito()
 }
 void Jogo::menuSobre()
 {
-    GBF::Grafico::Layer::LayerManager::getInstance()->getFrameLayer("background")->desenhar();
+    GBF::Imagem::Layer::LayerManager::getInstance()->getFrameLayer("background")->desenhar();
 
     janelaSobre->executar();
 
@@ -290,7 +290,7 @@ void Jogo::jogoFaseFinalizada()
 }
 void Jogo::jogoGameOver()
 {
-    GBF::Grafico::Layer::LayerManager::getInstance()->getFrameLayer("background")->desenhar();
+    GBF::Imagem::Layer::LayerManager::getInstance()->getFrameLayer("background")->desenhar();
 
     janelaGameOver->executar();
 
@@ -300,7 +300,7 @@ void Jogo::jogoGameOver()
 }
 void Jogo::jogoZerado()
 {
-    GBF::Grafico::Layer::LayerManager::getInstance()->getFrameLayer("background")->desenhar();
+    GBF::Imagem::Layer::LayerManager::getInstance()->getFrameLayer("background")->desenhar();
 
     janelaZerado->executar();
 

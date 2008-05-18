@@ -22,8 +22,7 @@
 
 CPU::CPU()
 {
-    GBF::Kernel::Graphic::GraphicSystem  *graphicSystem = GBF::Kernel::Graphic::GraphicSystem::getInstance();
-    GBF::Grafico::SpriteFactory *spriteFactory = new GBF::Grafico::SpriteFactory(graphicSystem->imageBufferManager->getImageBuffer("personagem"));
+    GBF::Imagem::SpriteFactory *spriteFactory = new GBF::Imagem::SpriteFactory("personagem");
 
     adicionarSpritePrincipal(spriteFactory->criarSpritePersonagem(15,21,14,80,1,1));
     delete(spriteFactory);

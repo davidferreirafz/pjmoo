@@ -24,7 +24,7 @@
 Controle::Controle()
 {
 
-    cenario    = GBF::Grafico::Layer::LayerManager::getInstance()->getFrameLayer("background");
+    cenario    = GBF::Imagem::Layer::LayerManager::getInstance()->getFrameLayer("background");
     wsManager  = GBF::Kernel::Write::WriteManager::getInstance();
 
     raqueteJogador = new Jogador();

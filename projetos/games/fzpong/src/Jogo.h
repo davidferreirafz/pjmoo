@@ -87,7 +87,7 @@ class Jogo : public GAT::GAT
 
     Controle * controle;
 
-    GBF::Grafico::Sprite::SpriteItem * david;
+    GBF::Imagem::Sprite::SpriteItem * david;
 
     UserInterface::Window::UIWindowTitulo * janelaSobre;
 

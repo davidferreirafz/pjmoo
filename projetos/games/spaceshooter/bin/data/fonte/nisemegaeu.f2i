@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<F2IBuilder>
+  <application>
+    <name>F2IBuilder</name>
+    <version>3.5</version>
+  </application>
+  <project>
+    <useMetrics>false</useMetrics>
+    <useAlpha>true</useAlpha>
+    <showGrid>false</showGrid>
+    <antialias>true</antialias>
+    <imageType>PNG</imageType>
+    <color>
+      <font>-6500658</font>
+      <shadow>-16750849</shadow>
+      <background>-16777216</background>
+    </color>
+    <style>
+      <bold>false</bold>
+    </style>
+    <font>
+      <name>NiseMegaEU</name>
+      <size>10</size>
+    </font>
+    <texture>
+      <size>Auto</size>
+    </texture>
+    <shadow>
+      <vertical>VerticalNone</vertical>
+      <horizontal>HorizontalNone</horizontal>
+    </shadow>
+  </project>
+</F2IBuilder>
+

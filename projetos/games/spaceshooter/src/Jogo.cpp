@@ -394,17 +394,10 @@ void Jogo::inicializarRecursos()
     frameworkGBF->writeSystem->carregar("texto",frameworkGBF->getPath()+"data//fonte//ds9_computer.png");
     frameworkGBF->writeSystem->carregar("recorde",frameworkGBF->getPath()+"data//fonte//recorde.png");
     frameworkGBF->writeSystem->carregar("nisemega_extra",frameworkGBF->getPath()+"data//fonte//nisemegaeu.png");
-
     frameworkGBF->writeSystem->carregar("status",frameworkGBF->getPath()+"data//fonte//nisemega.png");
-//Marcado para Remoção
-//    frameworkGBF->writeSystem->carregar("pumpdemi",frameworkGBF->getPath()+"data//fonte//pumpdemi.png");
 
     frameworkGBF->writeSystem->getFonte("recorde")->setDimensao(24,24);
-    //frameworkGBF->writeSystem->getFonte("nisemega_extra")->setDimensao(15,14);
-
-    //frameworkGBF->writeSystem->getFonte("tech")->setDimensao(18,18);
     frameworkGBF->writeSystem->getFonte("status")->setDimensao(16,16);
-
 
     frameworkGBF->writeSystem->idioma->setArquivo("msg.txt");
     frameworkGBF->writeSystem->idioma->detectarIdioma();

@@ -53,7 +53,7 @@ void FaseDois::iniciar()
     ListSpaceObstaculo::OBSTACULO_MINA     = false;
     ListSpaceObstaculo::OBSTACULO_FURACAO  = false;
 
-    SoundSystem::getInstance()->musicManager->playInfinity("fase");
+    GBF::Kernel::Sound::SoundSystem::getInstance()->musicManager->playInfinity("fase");
 
     nave = NaveFactory::criarNaveAliada(NaveFactory::ENTERPRISE);
 }

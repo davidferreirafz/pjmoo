@@ -17,7 +17,7 @@
 #ifndef _ITEMARMA_H_
 #define _ITEMARMA_H_
 #include "ItemAbstract.h"
-
+#include <GBF/GraphicSystem.h>
 
 class ItemArma : public ItemAbstract
 {
@@ -28,11 +28,11 @@ public:
     EnumItem getTipo();
     /** Retorna mensagem sobre o item*/
     std::string getHelp();
-    
+
 private:
     /** Construtor */
 	ItemArma();
-	
+
 
     friend class ItemFactory;
 };

@@ -28,7 +28,7 @@ class NaveBorg : public NaveInimigo
 public:
 	NaveBorg();
 	virtual ~NaveBorg();
-    void acao(InputSystem* INPUT=NULL);
+    void acao(GBF::Kernel::Input::InputSystem * input=NULL);
     /** Desenha a nave na tela*/
     void desenhar();
 	void choque(int forca);
@@ -39,7 +39,7 @@ protected:
 	void dispararTorpedo();
 
 private:
-    GraphicSystemGFX* gsGFX;
+    GBF::Kernel::Graphic::GFX * gsGFX;
 
 
 };

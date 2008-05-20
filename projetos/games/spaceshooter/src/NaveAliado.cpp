@@ -33,45 +33,45 @@ NaveAliado::~NaveAliado()
 }
 void NaveAliado::selecionarPosicao()
 {
-    Dimensao dimensao = getDimensao();
-    setPosicao((area.right / 2)-(dimensao.w/2),(area.bottom) - dimensao.h); 
+    GBF::Dimensao dimensao = getDimensao();
+    setPosicao((area.right / 2)-(dimensao.w/2),(area.bottom) - dimensao.h);
 }
-void NaveAliado::acao(InputSystem* INPUT)
+void NaveAliado::acao(GBF::Kernel::Input::InputSystem* input)
 {
 	checarArma();
 
-	if ((INPUT->teclado->isKey(SDLK_UP))||(INPUT->joystick->isAxeUp())){
+	if ((input->teclado->isKey(SDLK_UP))||(input->joystick->isAxeUp())){
 		//sprite->setDirecao(DR_CIMA);
-		getSpritePrincipal()->setDirecao(DR_CIMA);
+		getSpritePrincipal()->setDirecao(GBF::Imagem::Sprite::DR_CIMA);
         posicao.y-=getVelocidade();
-    } else if ((INPUT->teclado->isKey(SDLK_DOWN))||(INPUT->joystick->isAxeDown())){
+    } else if ((input->teclado->isKey(SDLK_DOWN))||(input->joystick->isAxeDown())){
 //        sprite->setDirecao(DR_CIMA);
-        getSpritePrincipal()->setDirecao(DR_CIMA);
+        getSpritePrincipal()->setDirecao(GBF::Imagem::Sprite::DR_CIMA);
         posicao.y+=getVelocidade();
-    } 
-    if ((INPUT->teclado->isKey(SDLK_LEFT))||(INPUT->joystick->isAxeLeft())){
+    }
+    if ((input->teclado->isKey(SDLK_LEFT))||(input->joystick->isAxeLeft())){
 //        sprite->setDirecao(DR_ESQUERDA);
-        getSpritePrincipal()->setDirecao(DR_ESQUERDA);
+        getSpritePrincipal()->setDirecao(GBF::Imagem::Sprite::DR_ESQUERDA);
         posicao.x-=getVelocidade();
-    } else if ((INPUT->teclado->isKey(SDLK_RIGHT))||(INPUT->joystick->isAxeRight())){
+    } else if ((input->teclado->isKey(SDLK_RIGHT))||(input->joystick->isAxeRight())){
 //        sprite->setDirecao(DR_DIREITA);
-        getSpritePrincipal()->setDirecao(DR_DIREITA);
+        getSpritePrincipal()->setDirecao(GBF::Imagem::Sprite::DR_DIREITA);
         posicao.x+=getVelocidade();
     }
-     
-    //Verifica Limites de Deslocamento da Nave    
+
+    //Verifica Limites de Deslocamento da Nave
     limite();
-    
+
     //Prepara Arma Phaser
-    if ((((INPUT->teclado->isKey(SDLK_LCTRL))||(INPUT->joystick->isButtonA()))&&(isAtivo()))){
+    if ((((input->teclado->isKey(SDLK_LCTRL))||(input->joystick->isButtonA()))&&(isAtivo()))){
         prepararPhaser();
     }
     //Prepara Arma Torpedo
-    if ((((INPUT->teclado->isKey(SDLK_LALT))||(INPUT->joystick->isButtonB()))&&(isAtivo()))){
+    if ((((input->teclado->isKey(SDLK_LALT))||(input->joystick->isButtonB()))&&(isAtivo()))){
         prepararTorpedo();
-    } else if ((INPUT->teclado->isKey(SDLK_a))||(INPUT->joystick->isButtonC())){
+    } else if ((input->teclado->isKey(SDLK_a))||(input->joystick->isButtonC())){
         aumentarVelocidadeDobra();
-    } else if ((INPUT->teclado->isKey(SDLK_z))||(INPUT->joystick->isButtonD())){
+    } else if ((input->teclado->isKey(SDLK_z))||(input->joystick->isButtonD())){
         reduzirVelocidadeDobra();
     }
 }
@@ -82,20 +82,20 @@ void NaveAliado::desenhar()
 //            sprite_atingido->desenhar(posicao.x,posicao.y);
             getSprite("explosao")->desenhar(posicao.x,posicao.y);
 //            if (sprite_atingido->isAnimacaoFim()){
-            if (getSprite("explosao")->isAnimacaoFim()){
+            if (getSprite("explosao")->animacao.isFim()){
                 atingido=false;
                 setVivo(true);
 //                sprite_atingido->setAnimacaoInicio();
-                getSprite("explosao")->setAnimacaoInicio();
+                getSprite("explosao")->animacao.setInicio();
             }
         } else {
-           PersonagemAbstract::desenhar();
+           Personagem::desenhar();
         }
     }
 }
 void NaveAliado::limite()
-{  
-    Dimensao dimensao = getDimensao();
+{
+    GBF::Dimensao dimensao = getDimensao();
     if (posicao.x<=area.left){
         posicao.x=area.left;
     } else if (posicao.x+dimensao.w>=area.right){
@@ -105,12 +105,12 @@ void NaveAliado::limite()
         posicao.y=area.top;
     } else if (posicao.y+dimensao.h>=area.bottom){
         posicao.y=area.bottom - dimensao.h;
-    }   
+    }
 }
 void NaveAliado::checarArma()
 {
     delay.tiroA--;
-    delay.tiroB--;    
+    delay.tiroB--;
 }
 void NaveAliado::setVivo(bool VALOR)
 {
@@ -130,16 +130,16 @@ void NaveAliado::setVivo(bool VALOR)
 //                sistema.velocidade.eDisponivel = (EnumVelocidadeDobra) velocidade;
             }
         }
-    }  
-    PersonagemAbstract::setVivo(VALOR);
+    }
+    Personagem::setVivo(VALOR);
 }
 void NaveAliado::choque(int forca)
 {
     sistema.escudo.atual-=forca;
-    
+
     if (sistema.escudo.atual<0){
         soundSystem->fxManager->playPanEffect("explosao",posicao.x);
-        setVivo(false);        
+        setVivo(false);
     } else {
         atingido=true;
         contagemChoque++;
@@ -153,7 +153,7 @@ void NaveAliado::choque(int forca)
             sistema.velocidade.eAtual      = (EnumVelocidadeDobra) velocidade;
             sistema.velocidade.eDisponivel = (EnumVelocidadeDobra) velocidade;
         }
-    }    
+    }
 }
 void NaveAliado::prepararTorpedo()
 {
@@ -206,9 +206,9 @@ void NaveAliado::colisao(ListItem* listItem)
 void NaveAliado::aumentarVelocidadeDobra()
 {
     int velocidade = sistema.velocidade.eAtual;
-    
+
     velocidade++;
-    
+
     if (velocidade >= sistema.velocidade.eDisponivel){
         velocidade = sistema.velocidade.eDisponivel;
     }
@@ -217,9 +217,9 @@ void NaveAliado::aumentarVelocidadeDobra()
 void NaveAliado::reduzirVelocidadeDobra()
 {
     int velocidade = sistema.velocidade.eAtual;
-    
+
     velocidade--;
-    
+
     if (velocidade < VELOCIDADE_DOBRA_01){
         velocidade = VELOCIDADE_DOBRA_01;
     }

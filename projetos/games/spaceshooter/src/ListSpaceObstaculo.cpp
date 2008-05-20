@@ -22,7 +22,7 @@ bool ListSpaceObstaculo::OBSTACULO_ESFERA   = false;
 bool ListSpaceObstaculo::OBSTACULO_ASTEROID = false;
 bool ListSpaceObstaculo::OBSTACULO_MINA     = false;
 bool ListSpaceObstaculo::OBSTACULO_FURACAO  = false;
-	
+
 ListSpaceObstaculo::ListSpaceObstaculo()
 {
 	limite=0;
@@ -34,7 +34,7 @@ ListSpaceObstaculo::~ListSpaceObstaculo()
 ListSpaceObstaculo* ListSpaceObstaculo::getInstance()
 {
 	if (instance == NULL){
-		instance = new ListSpaceObstaculo();		
+		instance = new ListSpaceObstaculo();
 	}
 	return instance;
 }
@@ -62,7 +62,7 @@ void ListSpaceObstaculo::criar()
     }
 }
 void ListSpaceObstaculo::adicionar(int quantidade)
-{ 
+{
 	for (int i=0; i<quantidade;i++){
 		criar();
 	}
@@ -71,16 +71,16 @@ void ListSpaceObstaculo::setLimite(int maximo)
 {
 	limite=maximo;
 }
-void ListSpaceObstaculo::acao()
+void ListSpaceObstaculo::acao(GBF::Kernel::Input::InputSystem * input)
 {
-	ListSpaceAbstract::acao();
-   
+	Personagem::ListPersonagem::acao(NULL);
+
 	adicionar(limite-lista.size());
 }
 void ListSpaceObstaculo::colisao(NaveAbstract* nave)
 {
 	ObstaculoAbstract *obstaculo=NULL;
-    
+
     for (int iObstaculo=0; iObstaculo<size(); iObstaculo++){
         obstaculo=(ObstaculoAbstract*)getPersonagem(iObstaculo);
         if ((obstaculo!=NULL)&&(obstaculo->isVivo())){
@@ -89,7 +89,7 @@ void ListSpaceObstaculo::colisao(NaveAbstract* nave)
                     obstaculo->setVivo(false);
 					nave->choque(obstaculo->getDanos());
  					break;
-				}                    
+				}
             }
         }
     }

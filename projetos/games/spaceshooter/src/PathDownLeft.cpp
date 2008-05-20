@@ -24,11 +24,11 @@ PathDownLeft::PathDownLeft()
 PathDownLeft::~PathDownLeft()
 {
 }
-bool PathDownLeft::mover(int velocidade,Ponto *posicao,Dimensao dimensao)
+bool PathDownLeft::mover(int velocidade,GBF::Ponto *posicao,GBF::Dimensao dimensao)
 {
 	posicao->x-=velocidade;
-	posicao->y+=velocidade;	
-	
+	posicao->y+=velocidade;
+
     if ((posicao->y>area.bottom+dimensao.h)||(posicao->x<area.left-dimensao.w)){
 		return true;
 	} else {

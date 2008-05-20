@@ -27,6 +27,7 @@ Placar* Placar::getInstance()
 }
 Placar::Placar()
 {
+    zerarRegistroAtual();
 }
 Placar::~Placar()
 {
@@ -35,17 +36,18 @@ Placar::~Placar()
 void Placar::zerarRegistroAtual()
 {
     strcpy(registroAtual.nome,"          \0");
+    strcpy(registroAtual.nome,"\0");
 
     registroAtual.pontos  = 0;
     registroAtual.fase    = 0;
-    
+
     bonus.arma.quantidade = 0;
     bonus.arma.ativo            = false;
     bonus.escudo.quantidade     = 0;
-    bonus.escudo.ativo          = false;    
+    bonus.escudo.ativo          = false;
     bonus.velocidade.quantidade = 0;
     bonus.velocidade.ativo      = false;
-    
+
 	tempoJogo.inicio  = SDL_GetTicks();
 	tempoJogo.termino = 0;
 }
@@ -53,7 +55,7 @@ void Placar::zerarRegistroAtual()
 void Placar::incrementar()
 {
     registroAtual.pontos++;
-    
+
     contagemBonus();
     lancarBonus();
 }
@@ -67,7 +69,7 @@ void Placar::contagemBonus()
     int qtdEscudo     = getPontos()/250;
     int qtdArma       = getPontos()/600;
     int qtdVelocidade = getPontos()/1000;
-  
+
     if (qtdEscudo>bonus.escudo.quantidade){
         bonus.escudo.quantidade = qtdEscudo;
         bonus.escudo.ativo = true;
@@ -100,17 +102,17 @@ void Placar::lancarBonus()
         bonus.velocidade.ativo=false;
         ListItem::getInstance()->adicionar(ItemFactory::criar(ITEM_VELOCIDADE));
     }
-}    
-TopSystemRecorde Placar::getRecorde()
+}
+RankingSystem::RSRecorde Placar::getRecorde()
 {
-	tempoJogo.termino = SDL_GetTicks();	
-	
+	tempoJogo.termino = SDL_GetTicks();
+
 	Uint32 t= int((tempoJogo.termino - tempoJogo.inicio)/1000);
-	
+
 	registroAtual.tempo=int(t);
-	
+
     return registroAtual;
 }
 
 
-    
+

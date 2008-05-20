@@ -99,18 +99,18 @@ bool Controle::isFaseFinalizada()
 {
     return fase->isTerminou();
 }
-void Controle::jogoExecutando(InputSystem* input)
+void Controle::jogoExecutando(GBF::Kernel::Input::InputSystem * input)
 {
     fase->executar(input);
 }
-TopSystemRecorde Controle::novoRecorde()
+RankingSystem::RSRecorde Controle::novoRecorde()
 {
-    TopSystemRecorde novoRecorde = placar->getRecorde();
+    RankingSystem::RSRecorde novoRecorde = placar->getRecorde();
     novoRecorde.fase=numeroFase;
 
     return novoRecorde;
 }
-Area Controle::getFaseAreaZona()
+GBF::Area Controle::getFaseAreaZona()
 {
     return fase->getAreaZona();
 }

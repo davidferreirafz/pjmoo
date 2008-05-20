@@ -18,9 +18,8 @@
 
 NaveAuxiliar::NaveAuxiliar()
 {
-    GraphicSystemImageBufferManager *gsImageBufferManager=GraphicSystemImageBufferManager::getInstance();
+    GBF::Imagem::SpriteFactory  *spriteFactory = new GBF::Imagem::SpriteFactory("personagem");
 
-    SpriteFactory * spriteFactory   = new SpriteFactory(gsImageBufferManager->getImageBuffer("personagem"));
     adicionarSpritePrincipal(spriteFactory->criarSpritePersonagem(298,171,20,27,3,6));
 //    sprite_atingido=spriteFactory->criarSpritePersonagem(359,171,20,27,3,6);
     adicionarSprite(spriteFactory->criarSpritePersonagem(359,171,20,27,3,6),"explosao");

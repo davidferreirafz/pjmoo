@@ -31,9 +31,9 @@ public:
 protected:
     void dispararPhaser();
     void dispararTorpedo();
-    
+
 private:
-    void posicionar(int x, int y, DIRECAO direcaoOriginal);
+    void posicionar(int x, int y, GBF::Imagem::Sprite::Direcao direcaoOriginal);
 
     friend class NaveBorg;
 };

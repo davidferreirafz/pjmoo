@@ -22,10 +22,10 @@ PathDown::PathDown()
 PathDown::~PathDown()
 {
 }
-bool PathDown::mover(int velocidade,Ponto *posicao,Dimensao dimensao)
+bool PathDown::mover(int velocidade,GBF::Ponto *posicao,GBF::Dimensao dimensao)
 {
 	posicao->y+=velocidade;
-    if (posicao->y>area.bottom+dimensao.h){ 
+    if (posicao->y>area.bottom+dimensao.h){
 		return true;
 	} else {
 		return false;

@@ -17,13 +17,18 @@
 #ifndef _JOGO_H_
 #define _JOGO_H_
 
-#include <GBF/FrameLayerManager.h>
+#include <GBF/LayerManager.h>
 #include <GBF/GAT.h>
-#include <GBF/TimerSystemCronometroCrescente.h>
-#include <GBF/UserInterfaceMenuAbstract.h>
-#include <GBF/UserInterfaceMenuTexto.h>
-#include <GBF/UserInterfaceMenuItemTexto.h>
-
+#include <GBF/CronometroCrescente.h>
+#include <GBF/UIMenuAbstract.h>
+#include <GBF/UIMenu.h>
+#include <GBF/UIItemTexto.h>
+#include <GBF/UIWindowTitulo.h>
+#include <GBF/UIVisualSolido.h>
+#include <GBF/UIVisualImagem.h>
+#include <GBF/UIMenuTransparente.h>
+#include <GBF/UIWindowRecorde.h>
+#include <GBF/UIWindowDialog.h>
 #include "Controle.h"
 #include "Apresentacao.h"
 
@@ -34,9 +39,10 @@
 
 
 
-class Jogo : public GAT
+class Jogo : public GAT::GAT
 {
 public:
+    int main(int argc, char * argv[]);
     /** Destrutor */
 	virtual ~Jogo();
 	/** Construtor */
@@ -80,21 +86,30 @@ protected:
 private:
     Controle controle;
     Apresentacao *videoApresentacao;
-    SpriteItem* iconeGlobal;
-    SpriteItem* iconeLocal;
-    SpriteItem* banner;
+    GBF::Imagem::Sprite::SpriteItem* iconeGlobal;
+    GBF::Imagem::Sprite::SpriteItem* iconeLocal;
+    GBF::Imagem::Sprite::SpriteItem* banner;
 
-    UserInterfaceMenuAbstract *uiMenuIdioma;
+    UserInterface::Menu::UIMenu *uiMenuIdioma;
 
-	TimerSystemCronometroCrescente tempoBlink;
+	GBF::Kernel::Timer::CronometroCrescente tempoBlink;
 
-
-    void desenharGUI();
     bool desenharBotaoEnter();
+
     void showAvisoRecorde();
     void showInfo();
     void showTitulo();
-    void showSubTitulo();
+
+    UserInterface::Window::UIWindowTitulo * janelaSobre;
+
+    UserInterface::Window::UIWindowTitulo * janelaCredito;
+
+    UserInterface::Window::UIWindowTitulo * janelaAjuda;
+
+    UserInterface::Window::UIWindowTitulo * janelaRecorde;
+    UserInterface::Window::UIWindowRecorde * janelaRecordeNovo;
+
+    UserInterface::Window::UIWindowTitulo * janela;
 };
 
 #endif

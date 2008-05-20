@@ -17,8 +17,8 @@
 #ifndef _LISTTIROJOGADOR_H
 #define _LISTTIROJOGADOR_H
 
-#include <GBF/ParticleSystemEfeitoEsferico.h>
-#include <GBF/ParticleSystemManager.h>
+#include <GBF/PSEfeitoEsferico.h>
+#include <GBF/PSManager.h>
 
 #include "ListTiroAbstract.h"
 #include "SpaceObject.h"
@@ -33,9 +33,9 @@ public:
     /** Retorna a instancia da classe*/
     static ListTiroJogador* getInstance();
     /** Verifica colisão de uma lista com outra lista de objetos (SOBREESCRITO)*/
-    void colisao(ListPersonagemAbstract* objeto);
+    void colisao(Personagem::ListPersonagem* objeto);
     /** Verifica colisão de uma lista com apenas um objeto (SOBREESCRITO)*/
-    void colisao(PersonagemAbstract* objeto);
+    void colisao(Personagem::Personagem* objeto);
 
 protected:
     /** Construtor */
@@ -43,7 +43,7 @@ protected:
 	/** Instancia da classe (SINGLETON)*/
     static ListTiroJogador* instance;
     /** Referencia ao gerenciador de particulas*/
-    static ParticleSystemManager* particleManager;
+    static ParticleSystem::PSManager* particleManager;
 
 private:
     /** Referencia ao objeto singleton Placar */

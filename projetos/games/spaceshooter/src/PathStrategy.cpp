@@ -19,7 +19,7 @@
 // class constructor
 PathStrategy::PathStrategy()
 {
-	area=FrameLayerManager::getInstance()->getFrameLayer("tiles")->getArea();
+	area=GBF::Imagem::Layer::LayerManager::getInstance()->getFrameLayer("tiles")->getArea();
 }
 PathStrategy::~PathStrategy()
 {

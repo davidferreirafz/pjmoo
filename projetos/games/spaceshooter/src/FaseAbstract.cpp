@@ -21,11 +21,10 @@ Sistema FaseAbstract::sistemaNaveBackup;
 
 FaseAbstract::FaseAbstract()
 {
-    GSIBManager     = GraphicSystemImageBufferManager::getInstance();
-    particleManager = ParticleSystemManager::getInstance();
+    particleManager = ParticleSystem::PSManager::getInstance();
     particleManager->limpar();
 
-    SpriteFactory * spriteFactory = new SpriteFactory(GSIBManager->getImageBuffer("tiles"));
+    GBF::Imagem::SpriteFactory  *spriteFactory = new GBF::Imagem::SpriteFactory("tiles");
 
     tiles   = spriteFactory->criarFrameLayer(0, 319,  32, 32);
     moldura = spriteFactory->criarFrameLayer(0, 352, 160,160);
@@ -56,7 +55,7 @@ FaseAbstract::FaseAbstract()
     nave         = NULL;
 
 
-	soundSystem = SoundSystem::getInstance();
+	soundSystem = GBF::Kernel::Sound::SoundSystem::getInstance();
 	status->inicializar();
 }
 FaseAbstract::~FaseAbstract()
@@ -95,8 +94,8 @@ void FaseAbstract::definir()
 }
 void FaseAbstract::armazenar()
 {
-    FrameLayerManager::getInstance()->adicionar("tiles",tiles);
-    FrameLayerManager::getInstance()->adicionar("moldura",moldura);
+    GBF::Imagem::Layer::LayerManager::getInstance()->adicionar("tiles",tiles);
+    GBF::Imagem::Layer::LayerManager::getInstance()->adicionar("moldura",moldura);
     SpaceObject::setArea(tiles->getArea());
 }
 void FaseAbstract::carregar()
@@ -113,7 +112,7 @@ bool FaseAbstract::isPerdeu()
         return false;
     }
 }
-void FaseAbstract::executar(InputSystem *input)
+void FaseAbstract::executar(GBF::Kernel::Input::InputSystem * input)
 {
     desenharCenario();
 
@@ -124,11 +123,11 @@ void FaseAbstract::executar(InputSystem *input)
     ListTiroInimigo    *listTiroInimigo    = ListTiroInimigo::getInstance();
     ListItem           *listItem           = ListItem::getInstance();
 
-    listSpaceInimigo->acao();
-    listSpaceObstaculo->acao();
-    listTiroJogador->acao();
-    listTiroInimigo->acao();
-    listItem->acao();
+    listSpaceInimigo->acao(NULL);
+    listSpaceObstaculo->acao(NULL);
+    listTiroJogador->acao(NULL);
+    listTiroInimigo->acao(NULL);
+    listItem->acao(NULL);
     //ListSpaceObstaculoNeutro::getInstance()->acao();
 
     //Só realiza operações com a nave caso ela ainda esteja 'ativa'
@@ -151,11 +150,12 @@ void FaseAbstract::executar(InputSystem *input)
     }
 
     //Alguns procedimentos realizados para se desenhar
-    listTiroInimigo->executar();
-    listTiroJogador->executar();
-    listSpaceObstaculo->executar();
-    listSpaceInimigo->executar();
-    listItem->executar();
+    //trocando o metodo de executar para desenhar
+    listTiroInimigo->desenhar();
+    listTiroJogador->desenhar();
+    listSpaceObstaculo->desenhar();
+    listSpaceInimigo->desenhar();
+    listItem->desenhar();
 
     particleManager->executar();
     particleManager->desenhar();
@@ -181,7 +181,7 @@ std::string FaseAbstract::getInimigo()
 {
     return inimigo;
 }
-Area  FaseAbstract::getAreaZona()
+GBF::Area  FaseAbstract::getAreaZona()
 {
     return areaZona;
 }

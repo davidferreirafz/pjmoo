@@ -23,7 +23,7 @@ PathRight::PathRight()
 PathRight::~PathRight()
 {
 }
-bool PathRight::mover(int velocidade,Ponto *posicao,Dimensao dimensao)
+bool PathRight::mover(int velocidade,GBF::Ponto *posicao,GBF::Dimensao dimensao)
 {
 	posicao->x+=velocidade;
 

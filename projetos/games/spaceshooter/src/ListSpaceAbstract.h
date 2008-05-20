@@ -17,23 +17,22 @@
 #ifndef _LISTSPACEABSCTRACT_H
 #define _LISTSPACEABSCTRACT_H
 
-#include <GBF/ListPersonagemAutomaticoAbstract.h>
+#include <GBF/ListPersonagem.h>
 
 
-
-class ListSpaceAbstract : public ListPersonagemAutomaticoAbstract
+class ListSpaceAbstract : public Personagem::ListPersonagem
 {
 public:
     /** Construtor */
     ListSpaceAbstract();
     /** Destrutor */
     virtual ~ListSpaceAbstract();
-    /** Remove mortos e desenha os ativos */
-	virtual void executar();
-
+    //Desenha objetos que estao no container
+    virtual void desenhar();
 protected:
+
     /** Remove personagens não ativo(mortos) */
-	void removerMorto();
+	void remover();
 
 
 private:

@@ -19,7 +19,7 @@
 
 
 ListTiroInimigo* NaveInimigo::listTiro=NULL;
-ParticleSystemManager* NaveInimigo::particleManager=NULL;
+ParticleSystem::PSManager* NaveInimigo::particleManager=NULL;
 void NaveInimigo::setListTiro(ListTiroInimigo* list)
 {
     listTiro=list;
@@ -29,7 +29,7 @@ NaveInimigo::NaveInimigo()
     path = NULL;
 
     if (particleManager==NULL){
-        particleManager = ParticleSystemManager::getInstance();
+        particleManager = ParticleSystem::PSManager::getInstance();
     }
 }
 NaveInimigo::~NaveInimigo()
@@ -41,7 +41,7 @@ NaveInimigo::~NaveInimigo()
         delete(path);
     }
 }
-void NaveInimigo::acao(InputSystem* INPUT)
+void NaveInimigo::acao(GBF::Kernel::Input::InputSystem* INPUT)
 {
     if (isAtivo()){
     	checarArma();
@@ -60,7 +60,7 @@ void NaveInimigo::acao(InputSystem* INPUT)
 void NaveInimigo::desenhar()
 {
     if (isVivo()){
-        PersonagemAbstract::desenhar();
+        Personagem::desenhar();
     }
 }
 void NaveInimigo::checarArma()
@@ -78,13 +78,13 @@ void NaveInimigo::setVivo(bool VALOR)
 
             //cria particulas da explosao da nave
 //            Dimensao dimensaoSprite = sprite->getTamanho();
-            Dimensao dimensaoSprite = getDimensao();
-            Ponto pontoExplosao;
+            GBF::Dimensao dimensaoSprite = getDimensao();
+            GBF::Ponto pontoExplosao;
 
             pontoExplosao.x = posicao.x + (dimensaoSprite.w/2);
             pontoExplosao.y = posicao.y + (dimensaoSprite.h/2);
 
-            ParticleSystemEfeitoEsferico* explosao = new EfeitoExplosao();
+            ParticleSystem::PSEfeitoEsferico* explosao = new EfeitoExplosao();
             explosao->setRaio(dimensaoSprite.w*2);
             explosao->setQuantidade(int(int(dimensaoSprite.w*dimensaoSprite.h)/10));
             explosao->criar(pontoExplosao.x,pontoExplosao.y);
@@ -94,7 +94,7 @@ void NaveInimigo::setVivo(bool VALOR)
             VALOR=true;
         }
     }
-    PersonagemAbstract::setVivo(VALOR);
+    Personagem::setVivo(VALOR);
 }
 void NaveInimigo::choque(int forca)
 {
@@ -122,49 +122,49 @@ void NaveInimigo::prepararPhaser()
 void NaveInimigo::selecionarPosicao()
 {
 //    DIRECAO dir = DIRECAO(rand()%sprite->getQtdDirecoes());
-    DIRECAO dir = DIRECAO(rand()%getSpritePrincipal()->getQtdDirecoes());
+    GBF::Imagem::Sprite::Direcao dir = GBF::Imagem::Sprite::Direcao(rand()%getSpritePrincipal()->getQtdDirecoes());
 //    sprite->setDirecao(dir);
     getSpritePrincipal()->setDirecao(dir);
-    Dimensao dimensao = getDimensao();
+    GBF::Dimensao dimensao = getDimensao();
     int x=0,y=0;
 
     switch(dir){
-        case DR_CIMA:
+        case GBF::Imagem::Sprite::DR_CIMA:
             x=area.left+(rand()%(area.right-area.left))-dimensao.w;
             y=area.bottom;
             break;
 
-        case DR_DIREITA:
+        case GBF::Imagem::Sprite::DR_DIREITA:
             x=area.left-dimensao.w;
             y=(rand()%(area.top-area.bottom))-dimensao.h;
             break;
 
-        case DR_BAIXO:
+        case GBF::Imagem::Sprite::DR_BAIXO:
             x=(rand()%(area.right-area.left))-dimensao.w;
             y=area.top-dimensao.h;
             break;
 
-        case DR_ESQUERDA:
+        case GBF::Imagem::Sprite::DR_ESQUERDA:
             x=area.right;
             y=area.top+(rand()%(area.top-area.bottom))+dimensao.h;
             break;
 
-        case DR_CIMADIREITA:
+        case GBF::Imagem::Sprite::DR_CIMADIREITA:
             x=area.left-dimensao.w;
             y=area.bottom;
             break;
 
-        case DR_BAIXODIREITA:
+        case GBF::Imagem::Sprite::DR_BAIXODIREITA:
             x=area.left-dimensao.w;
             y=area.top-dimensao.h;
             break;
 
-    	case DR_CIMAESQUERDA:
+    	case GBF::Imagem::Sprite::DR_CIMAESQUERDA:
             x=area.right;
             y=area.bottom;
             break;
 
-    	case DR_BAIXOESQUERDA:
+    	case GBF::Imagem::Sprite::DR_BAIXOESQUERDA:
             x=area.right;
             y=area.top-dimensao.h;
             break;
@@ -175,37 +175,37 @@ void NaveInimigo::selecionarPosicao()
 void NaveInimigo::caminho()
 {
 //    DIRECAO dir = DIRECAO(rand()%sprite->getQtdDirecoes());
-    DIRECAO dir = DIRECAO(rand()%getSpritePrincipal()->getQtdDirecoes());
+    GBF::Imagem::Sprite::Direcao dir = GBF::Imagem::Sprite::Direcao(rand()%getSpritePrincipal()->getQtdDirecoes());
 //    sprite->setDirecao(dir);
     getSpritePrincipal()->setDirecao(dir);
     caminho(dir);
 }
-void NaveInimigo::caminho(DIRECAO dir)
+void NaveInimigo::caminho(GBF::Imagem::Sprite::Direcao direcao)
 {
 	PathStrategy *newPath = NULL;
-    switch(dir){
-        case DR_CIMA:
+    switch(direcao){
+        case GBF::Imagem::Sprite::DR_CIMA:
                 newPath = PathFactory::criar(PATH_UP);
             break;
-        case DR_DIREITA:
+        case GBF::Imagem::Sprite::DR_DIREITA:
                 newPath = PathFactory::criar(PATH_RIGHT);
             break;
-        case DR_BAIXO:
+        case GBF::Imagem::Sprite::DR_BAIXO:
                 newPath = PathFactory::criar(PATH_DOWN);
             break;
-        case DR_ESQUERDA:
+        case GBF::Imagem::Sprite::DR_ESQUERDA:
                 newPath = PathFactory::criar(PATH_LEFT);
             break;
-        case DR_CIMADIREITA:
+        case GBF::Imagem::Sprite::DR_CIMADIREITA:
                 newPath = PathFactory::criar(PATH_UP_RIGHT);
             break;
-        case DR_BAIXODIREITA:
+        case GBF::Imagem::Sprite::DR_BAIXODIREITA:
                 newPath = PathFactory::criar(PATH_DOWN_RIGHT);
             break;
-        case DR_BAIXOESQUERDA:
+        case GBF::Imagem::Sprite::DR_BAIXOESQUERDA:
                 newPath = PathFactory::criar(PATH_DOWN_LEFT);
             break;
-        case DR_CIMAESQUERDA:
+        case GBF::Imagem::Sprite::DR_CIMAESQUERDA:
                 newPath = PathFactory::criar(PATH_UP_LEFT);
             break;
     }
@@ -217,7 +217,7 @@ void NaveInimigo::caminho(DIRECAO dir)
     }
     path = newPath;
     newPath = NULL;
-    this->direcao = dir;
+    this->direcao = direcao;
 }
 int NaveInimigo::tipoClasse()
 {

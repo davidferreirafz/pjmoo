@@ -17,8 +17,8 @@
 #ifndef _PATHSTRATEGY_H
 #define _PATHSTRATEGY_H
 
-#include <GBF/GBF_define.h>
-#include <GBF/FrameLayerManager.h>
+#include <GBF/GBF.h>
+#include <GBF/LayerManager.h>
 
 class PathStrategy
 {
@@ -30,11 +30,11 @@ public:
 
 	/** Implementa o algoritmo de movimentação.
     OBs.: Retorna verdadeiro se atingiu o limite de movimentação */
-	virtual bool mover(int velocidade,Ponto *posicao,Dimensao dimensao)=0;	
-		
+	virtual bool mover(int velocidade, GBF::Ponto *posicao, GBF::Dimensao dimensao)=0;
+
 protected:
-	Area area;
-	
+	GBF::Area area;
+
 };
 
 #endif

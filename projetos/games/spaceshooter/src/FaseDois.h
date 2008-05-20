@@ -21,6 +21,7 @@
 #include "FaseAbstract.h"
 #include "ListSpaceInimigo.h"
 #include "NaveKlingonBirdPrev.h"
+#include <GBF/Personagem.h>
 
 class FaseDois : public FaseAbstract
 {
@@ -42,7 +43,7 @@ protected:
     void condicaoUnicaUltimoQuadro();
 
 private:
-    TypeDelay delay;
+    Personagem::TypeDelay delay;
 };
 
 #endif

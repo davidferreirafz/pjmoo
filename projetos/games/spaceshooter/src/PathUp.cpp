@@ -22,10 +22,10 @@ PathUp::PathUp()
 PathUp::~PathUp()
 {
 }
-bool PathUp::mover(int velocidade,Ponto *posicao,Dimensao dimensao)
+bool PathUp::mover(int velocidade,GBF::Ponto *posicao,GBF::Dimensao dimensao)
 {
 	posicao->y-=velocidade;
-	
+
     if (posicao->y<area.top-dimensao.h){
 		return true;
 	} else {

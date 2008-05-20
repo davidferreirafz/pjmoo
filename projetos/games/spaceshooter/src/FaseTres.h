@@ -22,27 +22,28 @@
 #include "ListSpaceObstaculo.h"
 #include "ListSpaceInimigo.h"
 #include "NaveRomulana.h"
+#include <GBF/Personagem.h>
 
 class FaseTres : public FaseAbstract
 {
 public:
     /** Construtor */
-	FaseTres();    
+	FaseTres();
 	/** Destrutor */
 	virtual ~FaseTres();
-	
+
 	bool isTerminou();
 	void iniciar();
 	void configurar();
     std::string getMissaoCompleta();
-		
+
 protected:
     /** Condição executada durante toda a fase */
     void condicaoNavegandoFase();
     /** Condição executada apenas na ultima tela*/
     void condicaoUnicaUltimoQuadro();
 private:
-    TypeDelay delay;
+    Personagem::TypeDelay delay;
 
 };
 

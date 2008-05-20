@@ -47,14 +47,14 @@ void FaseTres::configurar()
 void FaseTres::iniciar()
 {
     tiles->camera.setBottom();
-    ListSpaceObstaculo::getInstance()->setLimite(12);
+    ListSpaceObstaculo::getInstance()->setLimite(10);
 
     ListSpaceObstaculo::OBSTACULO_ESFERA   = true;
     ListSpaceObstaculo::OBSTACULO_ASTEROID = true;
     ListSpaceObstaculo::OBSTACULO_MINA     = false;
     ListSpaceObstaculo::OBSTACULO_FURACAO  = false;
 
-    SoundSystem::getInstance()->musicManager->playInfinity("fase");
+    GBF::Kernel::Sound::SoundSystem::getInstance()->musicManager->playInfinity("fase");
 
     nave = NaveFactory::criarNaveAliada(NaveFactory::ENTERPRISE);
 }

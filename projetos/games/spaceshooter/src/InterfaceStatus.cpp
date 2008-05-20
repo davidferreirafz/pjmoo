@@ -27,9 +27,7 @@ InterfaceStatus* InterfaceStatus::getInstance()
 }
 InterfaceStatus::InterfaceStatus()
 {
-    GraphicSystemImageBufferManager *gsImageBufferManager=GraphicSystemImageBufferManager::getInstance();
-
-    SpriteFactory * spriteFactory = new SpriteFactory(gsImageBufferManager->getImageBuffer("tiles"));
+    GBF::Imagem::SpriteFactory  *spriteFactory = new GBF::Imagem::SpriteFactory("tiles");
 
     warpBarra    = spriteFactory->criarSpriteItem(97,87,5,13,1,1);
     escudoBarra  = spriteFactory->criarSpriteItem(103,87,1,13,1,1);
@@ -37,23 +35,23 @@ InterfaceStatus::InterfaceStatus()
 
     delete (spriteFactory);
 
-    wsManager    = WriteSystemManager::getInstance();
-    soundSystem  = SoundSystem::getInstance();
+    wsManager    = GBF::Kernel::Write::WriteManager::getInstance();
+    soundSystem  = GBF::Kernel::Sound::SoundSystem::getInstance();
 
     inicializar();
 }
 InterfaceStatus::~InterfaceStatus()
 {
-    delete (warpBarra);
-    delete (escudoBarra);
-    delete (torpedoBarra);
+    delete(warpBarra);
+    delete(escudoBarra);
+    delete(torpedoBarra);
 
     //UtilLog::getInstance()->inicializando("Removendo InterfaceStatus(Singleton)");
 }
 void InterfaceStatus::inicializar()
 {
     tempo.setTempoOriginal(0);
-    tempo.setUnidade(TEMPO_CENTESIMO);
+    tempo.setUnidade(GBF::Kernel::Timer::TEMPO_SEGUNDO);
     tempo.setResetar();
 
     mostraTorpedo = true;

@@ -17,8 +17,8 @@
 #ifndef _FASEUM_H
 #define _FASEUM_H
 
-#include <GBF/WriteSystemManager.h>
-#include <GBF/TimerSystemCronometroCrescente.h>
+#include <GBF/WriteManager.h>
+#include <GBF/CronometroCrescente.h>
 
 #include "FaseAbstract.h"
 #include "ListSpaceObstaculo.h"
@@ -45,8 +45,8 @@ protected:
     std::string getMissaoCompleta();
 
 private:
-    WriteSystemManager *wsManager;
-    TimerSystemCronometroCrescente tempoDica;
+    GBF::Kernel::Write::WriteManager *wsManager;
+    GBF::Kernel::Timer::CronometroCrescente tempoDica;
     int dicaSelecao;
 };
 

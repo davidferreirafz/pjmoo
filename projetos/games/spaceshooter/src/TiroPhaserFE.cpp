@@ -18,7 +18,7 @@
 
 TiroPhaserFE::TiroPhaserFE(int X, int Y,PhaserPE tiro)
 {
-    SpriteFactory * spriteFactory   = new SpriteFactory(gsImageBufferManager->getImageBuffer("armas"));
+    GBF::Imagem::SpriteFactory  *spriteFactory = new GBF::Imagem::SpriteFactory("armas");
     if (adicionarSpritePrincipal(spriteFactory->criarSpritePersonagem(0,49,2,8,3,6))){
         setPosicao(X,Y);
         setTiro(tiro);

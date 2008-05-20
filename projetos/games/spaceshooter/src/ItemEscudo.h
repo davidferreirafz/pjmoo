@@ -17,7 +17,7 @@
 #ifndef _ITEMESCUDO_H_
 #define _ITEMESCUDO_H_
 #include "ItemAbstract.h"
-
+#include <GBF/GraphicSystem.h>
 
 class ItemEscudo : public ItemAbstract
 {
@@ -28,7 +28,7 @@ public:
     EnumItem getTipo();
     /** Retorna mensagem sobre o item*/
     std::string getHelp();
-    
+
 private:
     /** Construtor */
 	ItemEscudo();

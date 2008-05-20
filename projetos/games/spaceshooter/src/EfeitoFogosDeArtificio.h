@@ -16,11 +16,11 @@
  ***************************************************************************/
 #ifndef _EFEITOFOGOSDEARTIFICIO_H_
 #define _EFEITOFOGOSDEARTIFICIO_H_
-#include <GBF/ParticleSystemEfeitoEsferico.h>
+#include <GBF/PSEfeitoEsferico.h>
 
 #include <cmath>
 
-class EfeitoFogosDeArtificio : public ParticleSystemEfeitoEsferico
+class EfeitoFogosDeArtificio : public ParticleSystem::PSEfeitoEsferico
 {
 public:
 	void criar(int x, int y);

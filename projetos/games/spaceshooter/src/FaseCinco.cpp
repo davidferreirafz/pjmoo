@@ -47,7 +47,7 @@ void FaseCinco::configurar()
 void FaseCinco::iniciar()
 {
     tiles->camera.setBottom();
-    ListSpaceObstaculo::getInstance()->setLimite(20);
+    ListSpaceObstaculo::getInstance()->setLimite(12);
 
     ListSpaceObstaculo::OBSTACULO_ESFERA   = true;
     ListSpaceObstaculo::OBSTACULO_ASTEROID = true;

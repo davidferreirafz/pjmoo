@@ -23,9 +23,7 @@ void ObstaculoAbstract::setVelocidadeBase(int velocidadeBase)
 }
 ObstaculoAbstract::ObstaculoAbstract()
 {
-    GraphicSystemImageBufferManager *gsImageBufferManager=GraphicSystemImageBufferManager::getInstance();
-
-    SpriteFactory * spriteFactory   = new SpriteFactory(gsImageBufferManager->getImageBuffer("personagem"));
+GBF::Imagem::SpriteFactory  *spriteFactory = new GBF::Imagem::SpriteFactory("personagem");
     adicionarSprite(spriteFactory->criarSpritePersonagem(0,0,48,48,6,2),"explosao");
     delete (spriteFactory);
 
@@ -54,14 +52,14 @@ int ObstaculoAbstract::getDanos()
 }
 void ObstaculoAbstract::selecionarPosicao()
 {
-    Dimensao dimensao = getDimensao();
+    GBF::Dimensao dimensao = getDimensao();
     setPosicao(area.left+(rand()%(area.right-area.left)),area.top-dimensao.h);
 }
 void ObstaculoAbstract::setVivo(bool VALOR)
 {
     if (VALOR==false){
-        SoundSystem::getInstance()->fxManager->playPanEffect("explosao",posicao.x);
-        PersonagemAbstract::setVivo(VALOR);
+        GBF::Kernel::Sound::SoundSystem::getInstance()->fxManager->playPanEffect("explosao",posicao.x);
+        Personagem::setVivo(VALOR);
     }
 }
 void ObstaculoAbstract::choque(int forca)
@@ -76,13 +74,13 @@ void ObstaculoAbstract::desenhar()
 {
     //se vivo desenha, sprite normal
     if (isVivo()){
-        PersonagemAbstract::desenhar();
+        Personagem::desenhar();
     //se morreu desenha animacao de explosao
-    } else if (getSprite("explosao")->isAnimacaoFim()==false){
+    } else if (getSprite("explosao")->animacao.isFim()==false){
         getSprite("explosao")->desenhar(posicao.x,posicao.y);
     }
 }
-void ObstaculoAbstract::acao(InputSystem* INPUT)
+void ObstaculoAbstract::acao(GBF::Kernel::Input::InputSystem * INPUT)
 {
     if (isAtivo()){
         if (isVivo()){
@@ -90,7 +88,7 @@ void ObstaculoAbstract::acao(InputSystem* INPUT)
                 setAtivo(false);
             }
         } else {
-            if (getSprite("explosao")->isAnimacaoFim()){
+            if (getSprite("explosao")->animacao.isFim()){
                 setAtivo(false);
             }
         }

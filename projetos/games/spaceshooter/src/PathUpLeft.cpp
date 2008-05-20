@@ -24,11 +24,11 @@ PathUpLeft::PathUpLeft()
 PathUpLeft::~PathUpLeft()
 {
 }
-bool PathUpLeft::mover(int velocidade,Ponto *posicao,Dimensao dimensao)
+bool PathUpLeft::mover(int velocidade,GBF::Ponto *posicao,GBF::Dimensao dimensao)
 {
 	posicao->x-=velocidade;
-	posicao->y-=velocidade;	
-	
+	posicao->y-=velocidade;
+
     if ((posicao->y<area.top-dimensao.h)||(posicao->x<area.left-dimensao.w)){
 		return true;
 	} else {

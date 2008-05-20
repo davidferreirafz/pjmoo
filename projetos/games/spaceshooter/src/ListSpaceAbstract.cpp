@@ -22,19 +22,21 @@ ListSpaceAbstract::ListSpaceAbstract()
 ListSpaceAbstract::~ListSpaceAbstract()
 {
 }
-//Remove mortos e desenha os ativos
-void ListSpaceAbstract::executar()
+void ListSpaceAbstract::desenhar()
 {
-	removerMorto();
-	desenhar();
+    if (!lista.empty()){
+        remover();
+        ListPersonagem::desenhar();
+    }
 }
-void ListSpaceAbstract::removerMorto()
+//Remove mortos
+void ListSpaceAbstract::remover()
 {
 	for (int i=lista.size()-1; i>=0; i--){
 		if (lista[i]!=NULL){
 			if (lista[i]->isAtivo()==false){
 				delete lista[i];
-				lista[i]=NULL;                 
+				lista[i]=NULL;
 				lista.erase(lista.begin()+i);
 			}
 		}

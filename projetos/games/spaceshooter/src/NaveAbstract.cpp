@@ -17,12 +17,12 @@
 #include "NaveAbstract.h"
 
 
-SoundSystem* NaveAbstract::soundSystem=NULL;
+GBF::Kernel::Sound::SoundSystem * NaveAbstract::soundSystem=NULL;
 int NaveAbstract::velocidadeBase=0;
 void NaveAbstract::setVelocidadeBase(int velocidadeBase)
 {
     NaveAbstract::velocidadeBase=velocidadeBase;
-}	
+}
 NaveAbstract::NaveAbstract()
 {
     espera.tiroA = 30;
@@ -39,11 +39,11 @@ NaveAbstract::NaveAbstract()
 
     sistema.velocidade.eMaxima  = VELOCIDADE_DOBRA_01;
     sistema.velocidade.eAtual   = VELOCIDADE_DOBRA_01;
-    
+
     sistema.velocidade.eDisponivel = sistema.velocidade.eAtual;
 
 	if (!soundSystem){
-		soundSystem = SoundSystem::getInstance();    
+		soundSystem = GBF::Kernel::Sound::SoundSystem::getInstance();
 	}
 }
 NaveAbstract::~NaveAbstract()
@@ -89,7 +89,7 @@ void NaveAbstract::setSistema(Sistema sistema)
     if (this->sistema.velocidade.eDisponivel<sistema.velocidade.eDisponivel){
         this->sistema.velocidade.eDisponivel=sistema.velocidade.eDisponivel;
         this->sistema.velocidade.eAtual=sistema.velocidade.eAtual;
-    }        
+    }
 }
 
 

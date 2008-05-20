@@ -18,9 +18,7 @@
 
 ItemEscudo::ItemEscudo()
 {
-    GraphicSystemImageBufferManager *gsImageBufferManager=GraphicSystemImageBufferManager::getInstance();
-
-    SpriteFactory * spriteFactory   = new SpriteFactory(gsImageBufferManager->getImageBuffer("tiles"));
+    GBF::Imagem::SpriteFactory  *spriteFactory = new GBF::Imagem::SpriteFactory("tiles");
     adicionarSpritePrincipal(spriteFactory->criarSpritePersonagem(129,294,32,24,4,8));
     delete (spriteFactory);
 

@@ -18,7 +18,7 @@
 
 TiroTorpedoRomulano::TiroTorpedoRomulano(int X, int Y,TorpedoRomulano tiro)
 {
-    SpriteFactory * spriteFactory   = new SpriteFactory(gsImageBufferManager->getImageBuffer("armas"));
+    GBF::Imagem::SpriteFactory  *spriteFactory = new GBF::Imagem::SpriteFactory("armas");
     if (adicionarSpritePrincipal(spriteFactory->criarSpritePersonagem(29,34,14,14,2,4))){
         setPosicao(X,Y);
         setTiro(tiro);

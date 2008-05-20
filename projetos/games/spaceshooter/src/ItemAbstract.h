@@ -18,7 +18,7 @@
 #define _ITEMABSTRACT_H_
 
 #include <GBF/SpriteFactory.h>
-#include <GBF/GraphicSystemImageBufferManager.h>
+#include <GBF/ImageBufferManager.h>
 
 #include "SpaceObject.h"
 #include "PathFactory.h"
@@ -43,7 +43,7 @@ public:
     /** Retorna mensagem sobre o item*/
     virtual std::string getHelp()=0;
     int getBonus();
-    virtual void acao(InputSystem* INPUT=NULL);
+    virtual void acao(GBF::Kernel::Input::InputSystem * INPUT=NULL);
 
 protected:
 	int bonus;

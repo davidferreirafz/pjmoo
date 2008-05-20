@@ -16,7 +16,7 @@
 ***************************************************************************/
 #ifndef _CONTROLE_H_
 #define _CONTROLE_H_
-#include <GBF/UtilLog.h>
+#include <GBF/Log.h>
 
 #include "ListSpaceInimigo.h"
 #include "ListSpaceObstaculo.h"
@@ -34,15 +34,14 @@ public:
     Controle();
     /** Destrutor*/
     virtual ~Controle();
-    TopSystemRecorde novoRecorde();
-
+    RankingSystem::RSRecorde novoRecorde();
     void novoJogo();
     bool carregarFase();
-    void jogoExecutando(InputSystem* input);
+    void jogoExecutando(GBF::Kernel::Input::InputSystem * input);
     void faseFinalizada();
     bool isGameOver();
     bool isFaseFinalizada();
-    Area getFaseAreaZona();
+    GBF::Area getFaseAreaZona();
     void inicializarFase();
     const char* getZona();
     const char* getMissao();

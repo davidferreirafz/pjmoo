@@ -17,8 +17,8 @@
 #include "SpaceObject.h"
 
 
-Area SpaceObject::area;
-void SpaceObject::setArea(Area area)
+GBF::Area SpaceObject::area;
+void SpaceObject::setArea(GBF::Area area)
 {
     SpaceObject::area = area;
 }

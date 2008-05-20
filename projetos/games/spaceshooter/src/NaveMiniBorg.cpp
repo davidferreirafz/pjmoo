@@ -18,9 +18,7 @@
 
 NaveMiniBorg::NaveMiniBorg()
 {
-    GraphicSystemImageBufferManager *gsImageBufferManager=GraphicSystemImageBufferManager::getInstance();
-
-    SpriteFactory * spriteFactory   = new SpriteFactory(gsImageBufferManager->getImageBuffer("personagem"));
+    GBF::Imagem::SpriteFactory  *spriteFactory = new GBF::Imagem::SpriteFactory("personagem");
     adicionarSpritePrincipal(spriteFactory->criarSpritePersonagem(0,438,42,42,8,2));
     delete (spriteFactory);
 
@@ -39,14 +37,14 @@ NaveMiniBorg::NaveMiniBorg()
     sistema.velocidade.eAtual  = VELOCIDADE_DOBRA_03;
 
 
-    posicionar(rand()%(area.right-area.left-42),0,DR_BAIXO);
+    posicionar(rand()%(area.right-area.left-42),0,GBF::Imagem::Sprite::DR_BAIXO);
 }
 NaveMiniBorg::~NaveMiniBorg()
 {
     //desalocação na classe base
     //UtilLog::getInstance()->status("[NaveMiniBorg]");
 }
-void NaveMiniBorg::posicionar(int x, int y, DIRECAO direcaoOriginal)
+void NaveMiniBorg::posicionar(int x, int y, GBF::Imagem::Sprite::Direcao direcaoOriginal)
 {
     setPosicao(x,y);
     caminho(direcaoOriginal);

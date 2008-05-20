@@ -18,9 +18,7 @@
 
 NaveVoyager::NaveVoyager()
 {
-    GraphicSystemImageBufferManager *gsImageBufferManager=GraphicSystemImageBufferManager::getInstance();
-
-    SpriteFactory * spriteFactory   = new SpriteFactory(gsImageBufferManager->getImageBuffer("personagem"));
+    GBF::Imagem::SpriteFactory  *spriteFactory = new GBF::Imagem::SpriteFactory("personagem");
     adicionarSpritePrincipal(spriteFactory->criarSpritePersonagem(289,0,24,60,3,6));
 //    sprite_atingido=spriteFactory->criarSpritePersonagem(362,0,24,60,3,6);
     adicionarSprite(spriteFactory->criarSpritePersonagem(362,0,24,60,3,6),"explosao");

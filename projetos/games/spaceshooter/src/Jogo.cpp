@@ -16,10 +16,31 @@
  ***************************************************************************/
 #include "Jogo.h"
 
+int main(int argc, char * argv[])
+{
+    GAT::GAT* jogo = NULL;
+    jogo = new Jogo(argc,argv);
+
+    try {
+        jogo->executar();
+    } catch (std::exception& e) {
+       // UtilLog::sistema("!!!!!!!!!!");
+        //UtilLog::sistema("Exceção: %s",e.what());
+        //UtilLog::sistema("!!!!!!!!!!");
+    } catch (...) {
+        //UtilLog::sistema("!!!!!!!!!!");
+        //UtilLog::sistema("Exceção Desconhecida");
+        //UtilLog::sistema("!!!!!!!!!!");
+    }
+
+    delete(jogo);
+
+    return 0;
+}
 Jogo::Jogo(int argc, char* argv[]):GAT(argc,argv)
 {
     tempoBlink.setTempoOriginal(0);
-    tempoBlink.setUnidade(TEMPO_CENTESIMO);
+    tempoBlink.setUnidade(GBF::Kernel::Timer::TEMPO_DECIMO);
 }
 Jogo::~Jogo()
 {
@@ -38,24 +59,39 @@ Jogo::~Jogo()
     if (uiMenuIdioma){
         delete(uiMenuIdioma);
     }
+    if (janelaSobre){
+        delete(janelaSobre);
+    }
+    if (janelaCredito){
+        delete(janelaCredito);
+    }
+    if (janelaAjuda){
+        delete(janelaAjuda);
+    }
+    if (janelaRecorde){
+        delete(janelaRecorde);
+    }
+    if (janelaRecordeNovo){
+        delete(janelaRecordeNovo);
+    }
 }
 void Jogo::apresentacao()
 {
     videoApresentacao->executar();
-    if ((frameworkGBF->inputSystem->teclado->isKey(SDLK_RETURN))
-        || (frameworkGBF->inputSystem->joystick->isButtonA())){
+    if ((frameworkGBF->inputSystemCore->inputSystem->teclado->isKey(SDLK_RETURN))
+        || (frameworkGBF->inputSystemCore->inputSystem->joystick->isButtonA())){
             setMenu();
     }
 }
 void Jogo::gatilhoMenuPrincipal()
 {
-    frameworkGBF->soundSystem->musicManager->playInfinity("fundo_menu");
+    frameworkGBF->soundSystemCore->soundSystem->musicManager->playInfinity("fundo_menu");
 }
 void Jogo::menuPrincipal()
 {
-    FrameLayerManager::getInstance()->getFrameLayer("console")->desenhar();
+    GBF::Imagem::Layer::LayerManager::getInstance()->getFrameLayer("console")->desenhar();
+
     showTitulo();
-    showSubTitulo();
     showInfo();
 
     if (uiMenuPrincipal->executar()){
@@ -94,83 +130,12 @@ void Jogo::menuPrincipal()
 //  GATMaquinaEstadoMenu
 //
 ////////////////////////////////////////////////
-void Jogo::menuSobre()
-{
-    char textoFormatado[30];
-    FrameLayerManager::getInstance()->getFrameLayer("console")->desenhar();
 
-    desenharGUI();
-    showTitulo();
-
-    for (int i=0; i<8;i++){
-        sprintf(textoFormatado,"tela_sobre_%02d",(1)+i);
-        frameworkGBF->writeSystem->escreverLocalizado("texto",70,80+(20*i),textoFormatado);
-    }
-    frameworkGBF->writeSystem->escreverLocalizado("tech", 252, 50,"titulo_sobre");
-
-    banner->desenhar(90,390);
-
-
-    if (desenharBotaoEnter()){
-        if ((frameworkGBF->inputSystem->teclado->isKey(SDLK_RETURN))
-            || (frameworkGBF->inputSystem->joystick->isButtonA())){
-                setMenuPrincipal();
-        }
-    }
-}
-void Jogo::menuAjuda()
-{
-    char textoFormatado[30];
-    FrameLayerManager::getInstance()->getFrameLayer("console")->desenhar();
-
-    desenharGUI();
-    showTitulo();
-
-    for (int i=0; i<9;i++){
-        sprintf(textoFormatado,"tela_ajuda_%02d",(1)+i);
-        frameworkGBF->writeSystem->escreverLocalizado("texto",70,80+(20*i),textoFormatado);
-    }
-
-    frameworkGBF->writeSystem->escreverLocalizado("tech", 252, 50,"titulo_ajuda");
-
-    banner->desenhar(90,390);
-
-    if (desenharBotaoEnter()){
-        if ((frameworkGBF->inputSystem->teclado->isKey(SDLK_RETURN))
-            || (frameworkGBF->inputSystem->joystick->isButtonA())){
-                setMenuPrincipal();
-        }
-    }
-}
-void Jogo::menuCredito()
-{
-    char textoFormatado[30];
-    FrameLayerManager::getInstance()->getFrameLayer("console")->desenhar();
-
-    desenharGUI();
-    showTitulo();
-
-    for (int i=0; i<13;i++){
-        sprintf(textoFormatado,"tela_credito_%02d",(1)+i);
-        frameworkGBF->writeSystem->escreverLocalizado("texto",70,80+(20*i),textoFormatado);
-    }
-
-    frameworkGBF->writeSystem->escreverLocalizado("tech", 226, 50,"titulo_credito");
-
-    banner->desenhar(90,390);
-
-    if (desenharBotaoEnter()){
-        if ((frameworkGBF->inputSystem->teclado->isKey(SDLK_RETURN))||
-            (frameworkGBF->inputSystem->joystick->isButtonA())){
-                setMenuPrincipal();
-        }
-    }
-}
 void Jogo::menuConfiguracao()
 {
-    FrameLayerManager::getInstance()->getFrameLayer("console")->desenhar();
+    GBF::Imagem::Layer::LayerManager::getInstance()->getFrameLayer("console")->desenhar();
+
     showTitulo();
-    showSubTitulo();
     showInfo();
 
     uiMenuIdioma->executar();
@@ -178,15 +143,15 @@ void Jogo::menuConfiguracao()
     switch(uiMenuIdioma->confirmarSelecao())
     {
         case 0:
-                frameworkGBF->writeSystem->uiTexto->setIdioma("en");
+                frameworkGBF->writeSystem->idioma->setIdioma("en");
                 setMenuPrincipal();
             break;
         case 1:
-                frameworkGBF->writeSystem->uiTexto->setIdioma("br");
+                frameworkGBF->writeSystem->idioma->setIdioma("br");
                 setMenuPrincipal();
             break;
         case 2:
-                frameworkGBF->writeSystem->uiTexto->setIdioma("es");
+                frameworkGBF->writeSystem->idioma->setIdioma("es");
                 setMenuPrincipal();
             break;
     }
@@ -197,21 +162,18 @@ void Jogo::menuConfiguracao()
 ////////////////////////////////////////////////
 bool Jogo::gatilhoTopGaleriaExibir()
 {
-    return tsGaleria->carregar();
+    return recordeManager->carregar();
 }
 void Jogo::topGaleriaExibir()
 {
-    TopSystemRecorde recorde;
+    RankingSystem::RSRecorde recorde;
 
-    FrameLayerManager::getInstance()->getFrameLayer("console")->desenhar();
+    GBF::Imagem::Layer::LayerManager::getInstance()->getFrameLayer("console")->desenhar();
 
-    frameworkGBF->graphicSystem->gsGFX->setColor(0,0,0);
-    frameworkGBF->graphicSystem->gsGFX->retanguloPreenchido(53,50,529,284);
-    frameworkGBF->graphicSystem->gsGFX->setColor(206,101,99);
-    frameworkGBF->graphicSystem->gsGFX->retangulo(53,50,529,284);
+    janelaRecorde->executar();
 
     for (int i=0; i<10;i++){
-		recorde=tsGaleria->getRecorde(i);
+		recorde=recordeManager->getRecorde(i);
 
         if (recorde.tipo[0]=='G'){
             iconeGlobal->desenhar(60,72+(26*i));
@@ -219,31 +181,28 @@ void Jogo::topGaleriaExibir()
             iconeLocal->desenhar(60,72+(26*i));
         }
 
-        frameworkGBF->writeSystem->escrever("recorde",  90, 70+(26*i),"%s",recorde.nome);
-        frameworkGBF->writeSystem->escrever("recorde", 340, 70+(26*i),"%08d",recorde.pontos);
+        frameworkGBF->writeSystem->escrever("recorde",  90, 62+(26*i),"%s",recorde.nome);
+        frameworkGBF->writeSystem->escrever("recorde", 340, 62+(26*i),"%08d",recorde.pontos);
     }
 
-    frameworkGBF->writeSystem->escreverLocalizado("recorde", 226, 20,"tela_top_recorde_1");
-    frameworkGBF->writeSystem->escreverLocalizado("tech", 90,45,"tela_top_recorde_2");
-    frameworkGBF->writeSystem->escreverLocalizado("tech",340,45,"tela_top_recorde_3");
+    frameworkGBF->writeSystem->escreverLocalizado("nisemega_extra", 90,56,"tela_top_recorde_2");
+    frameworkGBF->writeSystem->escreverLocalizado("nisemega_extra",340,56,"tela_top_recorde_3");
 
     showAvisoRecorde();
 
-    if (desenharBotaoEnter()){
-        if ((frameworkGBF->inputSystem->teclado->isKey(SDLK_RETURN))
-            || (frameworkGBF->inputSystem->joystick->isButtonA())){
-                setMenu();
-        }
+    if (janelaRecorde->isAcao(UserInterface::Window::UIWindowDialog::BOTAO_OK)){
+        setMenu();
     }
 }
 bool Jogo::gatilhoTopGaleriaNovo()
 {
     bool continua = false;
 
-    TopSystemRecorde recorde = controle.novoRecorde();
-    if (!tsGaleria->pesquisar(recorde)){
-        if(recorde.pontos>tsGaleria->getRecorde(9).pontos){
-            uiRecordeNovo->setRecorde(recorde);
+    RankingSystem::RSRecorde recorde = controle.novoRecorde();
+
+    if (!recordeManager->pesquisar(recorde)){
+        if(recorde.pontos>recordeManager->getRecorde(9).pontos){
+            janelaRecordeNovo->setRecorde(recorde);
             continua=true;
         }
     }
@@ -255,24 +214,19 @@ bool Jogo::gatilhoTopGaleriaNovo()
 }
 void Jogo::topGaleriaNovo()
 {
-    FrameLayerManager::getInstance()->getFrameLayer("console")->desenhar();
+    GBF::Imagem::Layer::LayerManager::getInstance()->getFrameLayer("console")->desenhar();
 
-    frameworkGBF->writeSystem->escreverLocalizado("recorde", 226,20,"tela_top_recorde_1");
-    frameworkGBF->writeSystem->escreverLocalizado("tech",    100,60,"tela_top_recorde_2");
-    frameworkGBF->writeSystem->escreverLocalizado("tech",    350,60,"tela_top_recorde_3");
+    janelaRecordeNovo->executar();
 
-    showAvisoRecorde();
-
-    uiRecordeNovo->desenhar();
-    if (uiRecordeNovo->controle()){
+    if (janelaRecordeNovo->isAcao(UserInterface::Window::UIWindowRecorde::BOTAO_SALVAR)){
         setTopGaleriaSalvar();
     }
 }
 void Jogo::topGaleriaSalvar() {
 
-    if ((tsGaleria)&&(uiRecordeNovo)){
-         if (tsGaleria->adicionar(uiRecordeNovo->getRecorde())){
-            tsGaleria->salvar();
+    if ((recordeManager)&&(uiRecordeNovo)){
+         if (recordeManager->adicionar(uiRecordeNovo->getRecorde())){
+            recordeManager->salvar();
          }
     }
     setTopGaleriaExibir();
@@ -291,14 +245,14 @@ void Jogo::jogoExecutando()
     } else if (controle.isFaseFinalizada()){
         setJogoFaseFinalizada();
     } else {
-        controle.jogoExecutando(frameworkGBF->inputSystem);
-        if ((frameworkGBF->inputSystem->teclado->isKey(SDLK_p))||
-            (frameworkGBF->inputSystem->joystick->isButtonC())){
+        controle.jogoExecutando(frameworkGBF->inputSystemCore->inputSystem);
+        if ((frameworkGBF->inputSystemCore->inputSystem->teclado->isKey(SDLK_p))||
+            (frameworkGBF->inputSystemCore->inputSystem->joystick->isButtonC())){
                 setJogoPause();
         }
         #ifdef DEBUG
         //Codigo utilizado para avança uma fase
-        else if (frameworkGBF->inputSystem->teclado->isKey(SDLK_n)){
+        else if (frameworkGBF->inputSystemCore->inputSystem->teclado->isKey(SDLK_n)){
                 setJogoFaseCarregar();
         }
         #endif
@@ -307,7 +261,7 @@ void Jogo::jogoExecutando()
 /** Novo Jogo */
 void Jogo::jogoNovo()
 {
-    frameworkGBF->soundSystem->musicManager->stop("fundo_menu");
+    frameworkGBF->soundSystemCore->soundSystem->musicManager->stop("fundo_menu");
     controle.novoJogo();
     setJogoFaseCarregar();
 }
@@ -327,26 +281,26 @@ void Jogo::jogoFaseCarregar()
 {
     tempoBlink.processar();
 
-    Area area = controle.getFaseAreaZona();
+    GBF::Area area = controle.getFaseAreaZona();
 
-    FrameLayerManager::getInstance()->getFrameLayer("console")->desenhar();
-    FrameLayerManager::getInstance()->getFrameLayer("mapa")->desenhar();
+    GBF::Imagem::Layer::LayerManager::getInstance()->getFrameLayer("console")->desenhar();
+    GBF::Imagem::Layer::LayerManager::getInstance()->getFrameLayer("mapa")->desenhar();
 
-    frameworkGBF->writeSystem->escreverLocalizadoSubChave("tech" ,60,394,"tela_fase_zona",controle.getZona());
-    frameworkGBF->writeSystem->escreverLocalizadoSubChave("tech" ,60,420,"tela_fase_missao",controle.getMissao());
-    frameworkGBF->writeSystem->escreverLocalizadoSubChave("tech" ,60,446,"tela_fase_alerta",controle.getInimigo());
+    frameworkGBF->writeSystem->escreverLocalizadoSubChave("texto" ,60,394,"tela_fase_zona",controle.getZona());
+    frameworkGBF->writeSystem->escreverLocalizadoSubChave("texto" ,60,420,"tela_fase_missao",controle.getMissao());
+    frameworkGBF->writeSystem->escreverLocalizadoSubChave("texto" ,60,446,"tela_fase_alerta",controle.getInimigo());
 
     if (tempoBlink.getTempo()%2==0){
-        frameworkGBF->graphicSystem->gsGFX->setColor(0,128,0);
+        frameworkGBF->graphicSystemCore->graphicSystem->gfx->setColor(0,128,0);
     } else {
-        frameworkGBF->graphicSystem->gsGFX->setColor(0,255,0);
+        frameworkGBF->graphicSystemCore->graphicSystem->gfx->setColor(0,255,0);
     }
 
-    frameworkGBF->graphicSystem->gsGFX->retangulo(area.left,area.top,area.right,area.bottom);
+    frameworkGBF->graphicSystemCore->graphicSystem->gfx->retangulo(area.left,area.top,area.right,area.bottom);
 
     if (desenharBotaoEnter()){
-        if ((frameworkGBF->inputSystem->teclado->isKey(SDLK_RETURN))
-            || (frameworkGBF->inputSystem->joystick->isButtonA())){
+        if ((frameworkGBF->inputSystemCore->inputSystem->teclado->isKey(SDLK_RETURN))
+            || (frameworkGBF->inputSystemCore->inputSystem->joystick->isButtonA())){
                 controle.inicializarFase();
                 setJogoExecutando();
         }
@@ -355,20 +309,16 @@ void Jogo::jogoFaseCarregar()
 }
 void Jogo::jogoPause()
 {
-    FrameLayerManager::getInstance()->getFrameLayer("console")->desenhar();
+    GBF::Imagem::Layer::LayerManager::getInstance()->getFrameLayer("console")->desenhar();
 
-    desenharGUI();
-    showTitulo();
+    janela->titulo.setChaveTexto("titulo_pause");
+    janela->texto.setChaveTexto("tela_pause_%02d");
+    janela->executar();
 
     banner->desenhar(90,390);
 
-    frameworkGBF->writeSystem->escreverLocalizado("tech",230,60,"tela_pause_01");
-
-    if (desenharBotaoEnter()){
-        if ((frameworkGBF->inputSystem->teclado->isKey(SDLK_RETURN))
-            || (frameworkGBF->inputSystem->joystick->isButtonA())){
-               setJogoExecutando();
-        }
+    if (janela->isAcao(UserInterface::Window::UIWindowDialog::BOTAO_OK)){
+        setJogoExecutando();
     }
 }
 bool Jogo::gatilhoJogoFaseFinalizada()
@@ -379,64 +329,40 @@ bool Jogo::gatilhoJogoFaseFinalizada()
 }
 void Jogo::jogoFaseFinalizada()
 {
-    char textoFormatado[30];
-    FrameLayerManager::getInstance()->getFrameLayer("console")->desenhar();
+    GBF::Imagem::Layer::LayerManager::getInstance()->getFrameLayer("console")->desenhar();
 
-    desenharGUI();
-    showTitulo();
+    janela->titulo.setChaveTexto("titulo_fase_finalizada");
+    janela->texto.setChaveTexto("fase_finalizada_%02d");
+    janela->executar();
 
-    for (int i=0; i<1;i++){
-        sprintf(textoFormatado,"fase_finalizada_%02d",(1)+i);
-        frameworkGBF->writeSystem->escreverLocalizado("texto",230,60+(18*i),textoFormatado);
-    }
-
-    if (desenharBotaoEnter()){
-        if ((frameworkGBF->inputSystem->teclado->isKey(SDLK_RETURN))
-            || (frameworkGBF->inputSystem->joystick->isButtonA())){
-                setJogoFaseCarregar();
-        }
+    if (janela->isAcao(UserInterface::Window::UIWindowDialog::BOTAO_OK)){
+        setJogoFaseCarregar();
     }
 }
 void Jogo::jogoGameOver()
 {
-    char textoFormatado[30];
-    FrameLayerManager::getInstance()->getFrameLayer("console")->desenhar();
+    GBF::Imagem::Layer::LayerManager::getInstance()->getFrameLayer("console")->desenhar();
 
-    desenharGUI();
-    showTitulo();
+    janela->titulo.setChaveTexto("titulo_gameover");
+    janela->texto.setChaveTexto("tela_derrota_%02d");
+    janela->executar();
 
-    for (int i=0; i<5;i++){
-        sprintf(textoFormatado,"tela_derrota_%02d",(1)+i);
-        frameworkGBF->writeSystem->escreverLocalizado("texto",100,80+(18*i),textoFormatado);
-    }
-
-    if (desenharBotaoEnter()){
-        if ((frameworkGBF->inputSystem->teclado->isKey(SDLK_RETURN))
-            || (frameworkGBF->inputSystem->joystick->isButtonA())){
-                setTopGaleria();
-                setTopGaleriaNovo();
-        }
+    if (janela->isAcao(UserInterface::Window::UIWindowDialog::BOTAO_OK)){
+        setTopGaleria();
+        setTopGaleriaNovo();
     }
 }
 void Jogo::jogoZerado()
 {
-    char textoFormatado[30];
-    FrameLayerManager::getInstance()->getFrameLayer("console")->desenhar();
+    GBF::Imagem::Layer::LayerManager::getInstance()->getFrameLayer("console")->desenhar();
 
-    desenharGUI();
-    showTitulo();
+    janela->titulo.setChaveTexto("titulo_vitoria");
+    janela->texto.setChaveTexto("tela_vitoria_%02d");
+    janela->executar();
 
-    for (int i=0; i<9;i++){
-        sprintf(textoFormatado,"tela_vitoria_%02d",(1)+i);
-        frameworkGBF->writeSystem->escreverLocalizado("texto",100,80+(18*i),textoFormatado);
-    }
-
-    if (desenharBotaoEnter()){
-        if ((frameworkGBF->inputSystem->teclado->isKey(SDLK_RETURN))
-            || (frameworkGBF->inputSystem->joystick->isButtonA())){
-                setTopGaleria();
-                setTopGaleriaNovo();
-        }
+    if (janela->isAcao(UserInterface::Window::UIWindowDialog::BOTAO_OK)){
+        setTopGaleria();
+        setTopGaleriaNovo();
     }
 }
 
@@ -444,138 +370,198 @@ void Jogo::jogoZerado()
 /** Carregar arquivos de recursos */
 void Jogo::inicializarRecursos()
 {
-    frameworkGBF->setTitulo("GBF :: SpaceShooter : Trek's","David de Almeida Ferreira");
+    frameworkGBF->setTitulo("GBF :: SpaceShooter : Trek's","DukItan Software");
     frameworkGBF->iniciar(640,480,16,isFullScreen());
     //Ativando GRAB_ON para evitar mudança de tela durante o jogo no Gnome (Desktop para o GNU/Linux)
-    frameworkGBF->inputSystem->setControleExclusivo(SDL_GRAB_ON);
+    frameworkGBF->inputSystemCore->setControleExclusivo(SDL_GRAB_ON);
     //frameworkGBF->inputSystem->setControleExclusivo(SDL_GRAB_OFF);
 
-    tsGaleria->setArquivo("data//etc//toprecord.top");
-    tsGaleria->setAssinatura(ASSINATURA_JOGO_NOME,ASSINATURA_JOGO_SIGLA,ASSINATURA_JOGO_VERSAO);
+    recordeManager->setArquivo("data//etc//toprecord.top");
+    recordeManager->setAssinatura(ASSINATURA_JOGO_NOME,ASSINATURA_JOGO_SIGLA,ASSINATURA_JOGO_VERSAO);
 
 
 //carregando imagens
-    GraphicSystemImageBufferManager *GSIBManager = GraphicSystemImageBufferManager::getInstance();
-    GSIBManager->carregar("personagem","data//imagem//spaceshooter_personagem.png");
-    GSIBManager->carregar("tiles","data//imagem//spaceshooter_tiles.png");
-    GSIBManager->carregar("armas","data//imagem//spaceshooter_armas.png");
-    GSIBManager->carregar("console","data//imagem//spaceshooter_console.png");
-    GSIBManager->carregar("mapa","data//imagem//spaceshooter_mapa.png");
-    GSIBManager->carregar("startrek","data//imagem//startrek.jpg");
-    GSIBManager->carregar("abertura","data//imagem//spaceshooter_abertura.png");
+    frameworkGBF->graphicSystemCore->graphicSystem->imageBufferManager->carregar("personagem","data//imagem//spaceshooter_personagem.png");
+    frameworkGBF->graphicSystemCore->graphicSystem->imageBufferManager->carregar("tiles","data//imagem//spaceshooter_tiles.png");
+    frameworkGBF->graphicSystemCore->graphicSystem->imageBufferManager->carregar("armas","data//imagem//spaceshooter_armas.png");
+    frameworkGBF->graphicSystemCore->graphicSystem->imageBufferManager->carregar("console","data//imagem//spaceshooter_console.png");
+    frameworkGBF->graphicSystemCore->graphicSystem->imageBufferManager->carregar("mapa","data//imagem//spaceshooter_mapa.png");
+    frameworkGBF->graphicSystemCore->graphicSystem->imageBufferManager->carregar("startrek","data//imagem//startrek.jpg");
+    frameworkGBF->graphicSystemCore->graphicSystem->imageBufferManager->carregar("abertura","data//imagem//spaceshooter_abertura.png");
 
-    frameworkGBF->writeSystem->carregar("recorde",frameworkGBF->getPath()+"data//kernel//fonte//recorde.png");
-    frameworkGBF->writeSystem->carregar("tech",frameworkGBF->getPath()+"data//kernel//fonte//nisemega.png");
-    frameworkGBF->writeSystem->carregar("status",frameworkGBF->getPath()+"data//kernel//fonte//nisemega.png");
-    frameworkGBF->writeSystem->carregar("texto",frameworkGBF->getPath()+"data//kernel//fonte//texto_arial.png");
 
-    frameworkGBF->writeSystem->getFonte("tech")->setDimensao(18,18);
-    frameworkGBF->writeSystem->getFonte("status")->setDimensao(16,16);
+    frameworkGBF->writeSystem->carregar("nisemegaeu",frameworkGBF->getPath()+"data//fonte//nisemegaeu.png");
+    frameworkGBF->writeSystem->carregar("texto",frameworkGBF->getPath()+"data//fonte//ds9_computer.png");
+    frameworkGBF->writeSystem->carregar("recorde",frameworkGBF->getPath()+"data//fonte//recorde.png");
+    frameworkGBF->writeSystem->carregar("nisemega_extra",frameworkGBF->getPath()+"data//fonte//nisemegaeu.png");
+
+    frameworkGBF->writeSystem->carregar("status",frameworkGBF->getPath()+"data//fonte//nisemega.png");
+//Marcado para Remoção
+//    frameworkGBF->writeSystem->carregar("pumpdemi",frameworkGBF->getPath()+"data//fonte//pumpdemi.png");
+
     frameworkGBF->writeSystem->getFonte("recorde")->setDimensao(24,24);
-    //frameworkGBF->writeSystem->getFonte("texto")->setDimensao(16,16);
+    //frameworkGBF->writeSystem->getFonte("nisemega_extra")->setDimensao(15,14);
 
-    frameworkGBF->writeSystem->uiTexto->setArquivo("msg.txt");
-    frameworkGBF->writeSystem->uiTexto->detectarIdioma();
+    //frameworkGBF->writeSystem->getFonte("tech")->setDimensao(18,18);
+    frameworkGBF->writeSystem->getFonte("status")->setDimensao(16,16);
+
+
+    frameworkGBF->writeSystem->idioma->setArquivo("msg.txt");
+    frameworkGBF->writeSystem->idioma->detectarIdioma();
 
 //carregando audio - efeitos
-    frameworkGBF->soundSystem->fxManager->carregar("tiro","data//som//laser.wav");
-    frameworkGBF->soundSystem->fxManager->carregar("explosao","data//som//explosao.wav");
-    frameworkGBF->soundSystem->fxManager->carregar("alerta","data//som//redalert.ogg");
-    frameworkGBF->soundSystem->musicManager->carregar("fundo_menu","data//som//01-wheremyheart.ogg");
+    frameworkGBF->soundSystemCore->soundSystem->fxManager->carregar("tiro","data//som//laser.wav");
+    frameworkGBF->soundSystemCore->soundSystem->fxManager->carregar("explosao","data//som//explosao.wav");
+    frameworkGBF->soundSystemCore->soundSystem->fxManager->carregar("alerta","data//som//redalert.ogg");
+    frameworkGBF->soundSystemCore->soundSystem->musicManager->carregar("fundo_menu","data//som//01-wheremyheart.ogg");
 
 //Configura volume dos efeitos
-    frameworkGBF->soundSystem->fxManager->setVolume("tiro",20);
-    frameworkGBF->soundSystem->fxManager->setVolume("explosao",40);
-    frameworkGBF->soundSystem->fxManager->setVolume("alerta",30);
-    frameworkGBF->soundSystem->fxManager->setLimite(0,480);
+    frameworkGBF->soundSystemCore->soundSystem->fxManager->setVolume("tiro",20);
+    frameworkGBF->soundSystemCore->soundSystem->fxManager->setVolume("explosao",40);
+    frameworkGBF->soundSystemCore->soundSystem->fxManager->setVolume("alerta",30);
+    frameworkGBF->soundSystemCore->soundSystem->fxManager->setLimite(0,480);
+
 //toca musica de fundo
-    frameworkGBF->soundSystem->musicManager->playInfinity("fundo_menu");
+    frameworkGBF->soundSystemCore->soundSystem->musicManager->playInfinity("fundo_menu");
 
-    SpriteFactory * spriteFactory = NULL;
+    GBF::Imagem::SpriteFactory * spriteFactory = NULL;
 
-    spriteFactory = new SpriteFactory(GSIBManager->getImageBuffer("console"));
-    FrameLayer * console = spriteFactory->criarFrameLayer(0, 0,640,480);
+    spriteFactory = new GBF::Imagem::SpriteFactory("console");
+    GBF::Imagem::Layer::FrameLayer * console = spriteFactory->criarFrameLayer(0, 0,640,480);
     console->setFrame(0,0,640,480);
     console->setTiles(1,1);
     console->setPixelTile(640,480);
     console->iniciarRandomico(1);
-    FrameLayerManager::getInstance()->adicionar("console",console);
+    GBF::Imagem::Layer::LayerManager::getInstance()->adicionar("console",console);
     delete(spriteFactory);
 
-    spriteFactory = new SpriteFactory(GSIBManager->getImageBuffer("mapa"));
-    FrameLayer * mapa = spriteFactory->criarFrameLayer(0, 0,530,333);
+    spriteFactory = new GBF::Imagem::SpriteFactory("mapa");
+    GBF::Imagem::Layer::FrameLayer * mapa = spriteFactory->criarFrameLayer(0, 0,530,333);
     mapa->setFrame(53,18,530,333);
     mapa->setTiles(1,1);
     mapa->setPixelTile(530,333);
     mapa->iniciarRandomico(1);
-    FrameLayerManager::getInstance()->adicionar("mapa",mapa);
+    GBF::Imagem::Layer::LayerManager::getInstance()->adicionar("mapa",mapa);
     delete(spriteFactory);
 
-    spriteFactory = new SpriteFactory(GSIBManager->getImageBuffer("startrek"));
-    FrameLayer * startrek = spriteFactory->criarFrameLayer(0, 0,640,480);
+    spriteFactory = new GBF::Imagem::SpriteFactory("startrek");
+    GBF::Imagem::Layer::FrameLayer * startrek = spriteFactory->criarFrameLayer(0, 0,640,480);
     startrek->setFrame(0,0,640,480);
     startrek->setTiles(1,1);
     startrek->setPixelTile(640,480);
     startrek->iniciarRandomico(1);
-    FrameLayerManager::getInstance()->adicionar("startrek",startrek);
+    GBF::Imagem::Layer::LayerManager::getInstance()->adicionar("startrek",startrek);
     delete(spriteFactory);
 
     videoApresentacao = new Apresentacao();
 
-    uiMenuPrincipal = new UserInterfaceMenuTexto(frameworkGBF->inputSystem);
-    uiMenuPrincipal->centralizarTela(640,90,HORIZONTAL);
+    //Menu
+    uiMenuPrincipal = new UserInterface::Menu::UIMenu();
+    uiMenuPrincipal->centralizarTela(640,90,UserInterface::HORIZONTAL);
     uiMenuPrincipal->setEspacoVertical(30);
     uiMenuPrincipal->setCorFundo(0,0,0);
     uiMenuPrincipal->setCorBorda(206,101,99);
-    uiMenuPrincipal->adicionar(new UserInterfaceMenuItemTexto("menu_1","tech"));
-    uiMenuPrincipal->adicionar(new UserInterfaceMenuItemTexto("menu_2","tech"));
-    uiMenuPrincipal->adicionar(new UserInterfaceMenuItemTexto("menu_3","tech"));
-    uiMenuPrincipal->adicionar(new UserInterfaceMenuItemTexto("menu_4","tech"));
-    uiMenuPrincipal->adicionar(new UserInterfaceMenuItemTexto("menu_5","tech"));
-    uiMenuPrincipal->adicionar(new UserInterfaceMenuItemTexto("menu_6","tech"));
-    uiMenuPrincipal->adicionar(new UserInterfaceMenuItemTexto("menu_7","tech"));
+    uiMenuPrincipal->adicionar(new UserInterface::Menu::UIItemTexto("menu_1","nisemegaeu"));
+    uiMenuPrincipal->adicionar(new UserInterface::Menu::UIItemTexto("menu_2","nisemegaeu"));
+    uiMenuPrincipal->adicionar(new UserInterface::Menu::UIItemTexto("menu_3","nisemegaeu"));
+    uiMenuPrincipal->adicionar(new UserInterface::Menu::UIItemTexto("menu_4","nisemegaeu"));
+    uiMenuPrincipal->adicionar(new UserInterface::Menu::UIItemTexto("menu_5","nisemegaeu"));
+    uiMenuPrincipal->adicionar(new UserInterface::Menu::UIItemTexto("menu_6","nisemegaeu"));
+    uiMenuPrincipal->adicionar(new UserInterface::Menu::UIItemTexto("menu_7","nisemegaeu"));
 
-    uiMenuIdioma = new UserInterfaceMenuTexto(frameworkGBF->inputSystem);
-    uiMenuIdioma->centralizarTela(640,480,CENTRO);
+    uiMenuIdioma = new UserInterface::Menu::UIMenu();
+    uiMenuIdioma->centralizarTela(640,480,UserInterface::CENTRO);
     uiMenuIdioma->setEspacoVertical(30);
     uiMenuIdioma->setCorFundo(0,0,0);
     uiMenuIdioma->setCorBorda(206,101,99);
-    uiMenuIdioma->adicionar(new UserInterfaceMenuItemTexto("menu_idioma_en","tech"));
-    uiMenuIdioma->adicionar(new UserInterfaceMenuItemTexto("menu_idioma_br","tech"));
-    uiMenuIdioma->adicionar(new UserInterfaceMenuItemTexto("menu_idioma_es","tech"));
+    uiMenuIdioma->adicionar(new UserInterface::Menu::UIItemTexto("menu_idioma_en","nisemegaeu"));
+    uiMenuIdioma->adicionar(new UserInterface::Menu::UIItemTexto("menu_idioma_br","nisemegaeu"));
+    uiMenuIdioma->adicionar(new UserInterface::Menu::UIItemTexto("menu_idioma_es","nisemegaeu"));
 
-    spriteFactory = new SpriteFactory(GSIBManager->getImageBuffer("tiles"));
+    spriteFactory = new GBF::Imagem::SpriteFactory("tiles");
     iconeGlobal   = spriteFactory->criarSpriteItem(304,46,24,24,1,1);
     iconeLocal    = spriteFactory->criarSpriteItem(329,46,24,24,1,1);
     banner        = spriteFactory->criarSpriteItem(0,160,512,89,1,1);
 
     delete(spriteFactory);
 
-    uiRecordeNovo = new UserInterfaceRecorde();
-    uiRecordeNovo->setInput(frameworkGBF->inputSystem);
-    uiRecordeNovo->setWriteManager(frameworkGBF->writeSystem);
-    uiRecordeNovo->setGFX(frameworkGBF->graphicSystem->gsGFX);
-    uiRecordeNovo->setFonteLabel("tech");
-    uiRecordeNovo->setFonteTeclado("recorde");
-    uiRecordeNovo->setPosicao(80,130);
-}
-void Jogo::desenharGUI()
-{
-    frameworkGBF->graphicSystem->gsGFX->setColor(0,0,0);
-    frameworkGBF->graphicSystem->gsGFX->retanguloPreenchido(53,50,529,290);
-    frameworkGBF->graphicSystem->gsGFX->setColor(206,101,99);
-    frameworkGBF->graphicSystem->gsGFX->retangulo(53,50,529,290);
-}
-bool Jogo::desenharBotaoEnter()
-{
-    bool desenhe = isTempoEspera();
 
-    if (desenhe){
-        frameworkGBF->graphicSystem->gsGFX->setColor(0,0,0);
-        frameworkGBF->graphicSystem->gsGFX->retanguloPreenchido(504,369,115,14);
-        frameworkGBF->writeSystem->escreverLocalizado("tech",500,360,"botao_enter");
-    }
-    return desenhe;
+    UserInterface::Visual::UIVisualSolido *uiVisualSolido = new UserInterface::Visual::UIVisualSolido();
+    uiVisualSolido->setCorBorda(255,255,0);
+    uiVisualSolido->setCorFundo(0,0,0);
+
+    UserInterface::Visual::UIVisualImagem *uiVisualTransparente = new UserInterface::Visual::UIVisualImagem();
+    uiVisualTransparente->setCorBorda(255,255,0);
+    uiVisualTransparente->setTipoBackground(UserInterface::Visual::BACKGROUND_LINES_BLACK);
+
+    janelaAjuda = new UserInterface::Window::UIWindowTitulo();
+    janelaAjuda->setPosicao(53,19);
+    janelaAjuda->setDimensao(529,327);
+    janelaAjuda->texto.setFonte("texto");
+    janelaAjuda->texto.setChaveTexto("tela_ajuda_%02d");
+    janelaAjuda->titulo.setFonte("recorde");
+    janelaAjuda->titulo.setChaveTexto("titulo_ajuda");
+    janelaAjuda->setVisual(uiVisualSolido->clone());
+    janelaAjuda->adicionarBotao(new UserInterface::Componente::UIBotao("nisemega_extra","botao_enter",SDLK_RETURN));
+    janelaAjuda->inicializar();
+
+    janelaCredito = new UserInterface::Window::UIWindowTitulo();
+    janelaCredito->setPosicao(53,19);
+    janelaCredito->setDimensao(529,327);
+    janelaCredito->texto.setFonte("texto");
+    janelaCredito->texto.setChaveTexto("tela_credito_%02d");
+    janelaCredito->titulo.setFonte("recorde");
+    janelaCredito->titulo.setChaveTexto("titulo_credito");
+    janelaCredito->setVisual(uiVisualSolido->clone());
+    janelaCredito->adicionarBotao(new UserInterface::Componente::UIBotao("nisemega_extra","botao_enter",SDLK_RETURN));
+    janelaCredito->inicializar();
+
+    janelaSobre = new UserInterface::Window::UIWindowTitulo();
+    janelaSobre->setPosicao(53,19);
+    janelaSobre->setDimensao(529,327);
+    janelaSobre->texto.setFonte("texto");
+    janelaSobre->texto.setChaveTexto("tela_sobre_%02d");
+    janelaSobre->titulo.setFonte("recorde");
+    janelaSobre->titulo.setChaveTexto("titulo_sobre");
+    janelaSobre->setVisual(uiVisualSolido->clone());
+    janelaSobre->adicionarBotao(new UserInterface::Componente::UIBotao("nisemega_extra","botao_enter",SDLK_RETURN));
+    janelaSobre->inicializar();
+
+    janelaRecorde = new UserInterface::Window::UIWindowTitulo();
+    janelaRecorde->setPosicao(53,19);
+    janelaRecorde->setDimensao(529,327);
+    janelaRecorde->titulo.setFonte("recorde");
+    janelaRecorde->titulo.setChaveTexto("tela_top_recorde_1");
+    janelaRecorde->setVisual(uiVisualTransparente->clone());
+    janelaRecorde->adicionarBotao(new UserInterface::Componente::UIBotao("nisemega_extra","botao_enter",SDLK_RETURN));
+    janelaRecorde->inicializar();
+
+    janela = new UserInterface::Window::UIWindowTitulo();
+    janela->setPosicao(53,90);
+    janela->setDimensao(529,230);
+    janela->titulo.setFonte("recorde");
+    janela->titulo.setChaveTexto("titulo_pause");
+    janela->texto.setFonte("texto");
+    janela->texto.setChaveTexto("tela_ajuda_%02d");
+    janela->texto.setAlinhamento(UserInterface::Texto::TEXTO_CENTRALIZADO);
+    janela->setVisual(uiVisualTransparente->clone());
+    janela->adicionarBotao(new UserInterface::Componente::UIBotao("nisemega_extra","botao_enter",SDLK_RETURN));
+    janela->inicializar();
+
+    janelaRecordeNovo = new UserInterface::Window::UIWindowRecorde();
+    janelaRecordeNovo->setPosicao(70,80);
+    janelaRecordeNovo->setDimensao(480,260);
+    janelaRecordeNovo->setVisual(uiVisualTransparente->clone());
+    janelaRecordeNovo->setVisualComponentes(uiVisualSolido);//Clonar para usar
+    janelaRecordeNovo->setFonteTitulo("recorde");
+    janelaRecordeNovo->setFonteEdit("texto","nisemega_extra");
+    janelaRecordeNovo->setFonteTecladoVirtual("recorde","texto");
+
+    //janelaRecordeNovo->setRecorde(recorde);
+    janelaRecordeNovo->inicializar();
+
+    delete(uiVisualTransparente);
+//    delete(uiVisualSolido);
 }
 void Jogo::showAvisoRecorde()
 {
@@ -589,17 +575,56 @@ void Jogo::showAvisoRecorde()
 void Jogo::showInfo()
 {
     frameworkGBF->writeSystem->escreverLocalizado("texto",180,390,"tela_info_1");
-    frameworkGBF->writeSystem->escreverLocalizado("texto",206,420,"tela_info_2");
-    frameworkGBF->writeSystem->escreverLocalizado("texto",246,450,"tela_info_3");
+    frameworkGBF->writeSystem->escreverLocalizado("texto",180,420,"tela_info_2");
+    frameworkGBF->writeSystem->escreverLocalizado("texto",180,450,"tela_info_3");
 }
 void Jogo::showTitulo()
 {
-    frameworkGBF->writeSystem->escreverLocalizado("recorde",160,20,"tela_titulo");
-}
-void Jogo::showSubTitulo()
-{
     frameworkGBF->writeSystem->escreverLocalizado("texto",270,50,"tela_subtitulo");
 }
+void Jogo::menuAjuda()
+{
+    GBF::Imagem::Layer::LayerManager::getInstance()->getFrameLayer("console")->desenhar();
 
+    janelaAjuda->executar();
+    banner->desenhar(90,390);
 
+    if (janelaAjuda->isAcao(UserInterface::Window::UIWindowDialog::BOTAO_OK)){
+        setMenuPrincipal();
+    }
+}
+void Jogo::menuCredito()
+{
+    GBF::Imagem::Layer::LayerManager::getInstance()->getFrameLayer("console")->desenhar();
+
+    janelaCredito->executar();
+    banner->desenhar(90,390);
+
+    if (janelaCredito->isAcao(UserInterface::Window::UIWindowDialog::BOTAO_OK)){
+        setMenuPrincipal();
+    }
+}
+void Jogo::menuSobre()
+{
+    GBF::Imagem::Layer::LayerManager::getInstance()->getFrameLayer("console")->desenhar();
+
+    janelaSobre->executar();
+    banner->desenhar(90,390);
+
+    if (janelaSobre->isAcao(UserInterface::Window::UIWindowDialog::BOTAO_OK)){
+        setMenuPrincipal();
+    }
+}
+
+bool Jogo::desenharBotaoEnter()
+{
+    bool desenhe = isTempoEspera();
+
+    if (desenhe){
+        frameworkGBF->graphicSystemCore->graphicSystem->gfx->setColor(0,0,0);
+        frameworkGBF->graphicSystemCore->graphicSystem->gfx->retanguloPreenchido(504,369,100,14);
+        frameworkGBF->writeSystem->escreverLocalizado("nisemega_extra",500,372,"botao_enter");
+    }
+    return desenhe;
+}
 

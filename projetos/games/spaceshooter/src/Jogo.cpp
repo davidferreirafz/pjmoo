@@ -374,7 +374,6 @@ void Jogo::inicializarRecursos()
     frameworkGBF->iniciar(640,480,16,isFullScreen());
     //Ativando GRAB_ON para evitar mudança de tela durante o jogo no Gnome (Desktop para o GNU/Linux)
     frameworkGBF->inputSystemCore->setControleExclusivo(SDL_GRAB_ON);
-    //frameworkGBF->inputSystem->setControleExclusivo(SDL_GRAB_OFF);
 
     recordeManager->setArquivo("data//etc//toprecord.top");
     recordeManager->setAssinatura(ASSINATURA_JOGO_NOME,ASSINATURA_JOGO_SIGLA,ASSINATURA_JOGO_VERSAO);
@@ -550,7 +549,6 @@ void Jogo::inicializarRecursos()
     janelaRecordeNovo->setFonteEdit("texto","nisemega_extra");
     janelaRecordeNovo->setFonteTecladoVirtual("recorde","texto");
 
-    //janelaRecordeNovo->setRecorde(recorde);
     janelaRecordeNovo->inicializar();
 
     delete(uiVisualTransparente);

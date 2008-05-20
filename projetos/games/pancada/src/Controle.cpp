@@ -1,35 +1,35 @@
 //***************************************************************************
 //  Pancada <Game - Boxing Style>
 //  Copyright (C) 2007 by David Ferreira - FZ
-//  davidferreira.fz@gmail.com - http://pjmoo.sourceforge.net 
+//  davidferreira.fz@gmail.com - http://pjmoo.sourceforge.net
 //***************************************************************************
 //    Este programa é software livre; você pode redistribuí-lo e/ou
 //    modificá-lo sob os termos da Licença Pública Geral GNU, conforme
-//    publicada pela Free Software Foundation; tanto a versão 2 da 
+//    publicada pela Free Software Foundation; tanto a versão 2 da
 //    Licença como (a seu critério) qualquer versão mais nova.
 //***************************************************************************
 //    This program is free software; you can redistribute it and/or modify
 //    it under the terms of the GNU General Public License as published by
-//    the Free Software Foundation; either version 2 of the License, or 
+//    the Free Software Foundation; either version 2 of the License, or
 //    (at your option) any later version.
 //
 //    You should have received a copy of the GNU General Public License
 //    along with this program; if not, write to the
-//    Free Software Foundation, Inc.,                                       
+//    Free Software Foundation, Inc.,
 //    59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 //***************************************************************************
 #include "Controle.h"
 
 //Construtor
-Controle::Controle() 
+Controle::Controle()
 {
     fase = NULL;
     tempoEspera.setTempoOriginal(4);
-    tempoEspera.setUnidade(TEMPO_SEGUNDO);
+    tempoEspera.setUnidade(GBF::Kernel::Timer::TEMPO_SEGUNDO);
     iniciar();
 }
 //Destrutor
-Controle::~Controle() 
+Controle::~Controle()
 {
     if (fase){
         delete(fase);
@@ -39,12 +39,12 @@ Controle::~Controle()
         delete(fight);
     }
 }
-void Controle::iniciar() 
+void Controle::iniciar()
 {
     faseNumero=0;
     tempoEspera.setResetar();
 }
-bool Controle::carregarFase() 
+bool Controle::carregarFase()
 {
     bool maisFase = FaseFactory::isProximaFase(faseNumero);
 
@@ -57,7 +57,7 @@ bool Controle::carregarFase()
 
     return maisFase;
 }
-void Controle::mudarFase() 
+void Controle::mudarFase()
 {
     FaseAbstract* novaFase = FaseFactory::criarFase(faseNumero);
     if (novaFase!=NULL){
@@ -70,7 +70,7 @@ void Controle::mudarFase()
         fase->iniciar();
     }
 }
-bool Controle::isGameOver() 
+bool Controle::isGameOver()
 {
     if ((fase!=NULL)&&(fase->isGameOver())){
         return true;
@@ -78,7 +78,7 @@ bool Controle::isGameOver()
         return false;
     }
 }
-bool Controle::isFaseFinalizada() 
+bool Controle::isFaseFinalizada()
 {
     if ((fase!=NULL)&&(fase->isFaseFinalizada())){
         return true;
@@ -86,12 +86,15 @@ bool Controle::isFaseFinalizada()
         return false;
     }
 }
-void Controle::executar(InputSystem * input) 
+void Controle::executar(GBF::Kernel::Input::InputSystem * input)
 {
     if (!tempoEspera.isTerminou()){
+
         tempoEspera.processar();
         fase->desenhar();
-        WriteSystemManager::getInstance()->escrever("menu",220,170,"ROUND %02d",fase->getRound());
+
+        GBF::Kernel::Write::WriteManager::getInstance()->escrever("menu",220,170,"ROUND %02d",fase->getRound());
+
         if (tempoEspera.getTempo()<=2){
             fight->desenhar(94,200);
         }
@@ -104,19 +107,19 @@ void Controle::executar(InputSystem * input)
     } else if (fase->isNocaute()){
         fase->desenhar();
         for (int i=100;i<430;i+=30){
-            WriteSystemManager::getInstance()->escrever("menu",200,i,"NOCAUTE");
+            GBF::Kernel::Write::WriteManager::getInstance()->escrever("menu",200,i,"NOCAUTE");
         }
     } else {
         fase->executar(input);
         fase->desenhar();
     }
 }
-void Controle::desenhar() 
+void Controle::desenhar()
 {
     fase->desenhar();
 }
-void Controle::carregar() 
+void Controle::carregar()
 {
-    SpriteFactory *spriteFactory = new SpriteFactory(GraphicSystem::getInstance()->imageBufferManager->getImageBuffer("personagem"));
+    GBF::Imagem::SpriteFactory *spriteFactory = new GBF::Imagem::SpriteFactory("personagem");
     fight = spriteFactory->criarSpriteItem(0,316,453,82,1,1);
 }

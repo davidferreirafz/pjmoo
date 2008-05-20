@@ -1,21 +1,21 @@
 //***************************************************************************
 //  Pancada <Game - Boxing Style>
 //  Copyright (C) 2007 by David Ferreira - FZ
-//  davidferreira.fz@gmail.com - http://pjmoo.sourceforge.net 
+//  davidferreira.fz@gmail.com - http://pjmoo.sourceforge.net
 //***************************************************************************
 //    Este programa é software livre; você pode redistribuí-lo e/ou
 //    modificá-lo sob os termos da Licença Pública Geral GNU, conforme
-//    publicada pela Free Software Foundation; tanto a versão 2 da 
+//    publicada pela Free Software Foundation; tanto a versão 2 da
 //    Licença como (a seu critério) qualquer versão mais nova.
 //***************************************************************************
 //    This program is free software; you can redistribute it and/or modify
 //    it under the terms of the GNU General Public License as published by
-//    the Free Software Foundation; either version 2 of the License, or 
+//    the Free Software Foundation; either version 2 of the License, or
 //    (at your option) any later version.
 //
 //    You should have received a copy of the GNU General Public License
 //    along with this program; if not, write to the
-//    Free Software Foundation, Inc.,                                       
+//    Free Software Foundation, Inc.,
 //    59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 //***************************************************************************
 #ifndef _JOGO_H
@@ -24,18 +24,18 @@
 #include "Controle.h"
 #include <GBF/GAT.h>
 
-#include <GBF/UserInterfaceWindowTitulo.h>
+#include <GBF/UIWindowTitulo.h>
 
-#include <GBF/UserInterfaceWindow.h>
+#include <GBF/UIWindow.h>
 
-#include <GBF/UserInterfaceMenuTextoTransparente.h>
+#include <GBF/UIMenuTransparente.h>
 
-#include <GBF/UserInterfaceMenuItemTexto.h>
+#include <GBF/UIItemTexto.h>
 
-#include <GBF/UserInterfaceVisualImagem.h>
+#include <GBF/UIVisualImagem.h>
 
 
-class Jogo : public GAT
+class Jogo : public GAT::GAT
 {
   public:
     int main(int argc, char * argv[]);
@@ -84,17 +84,17 @@ class Jogo : public GAT
 
 
   protected:
-    UserInterfaceWindowTitulo * janelaSobre;
+    UserInterface::Window::UIWindowTitulo * janelaSobre;
 
-    UserInterfaceWindowTitulo * janelaCredito;
+    UserInterface::Window::UIWindowTitulo * janelaCredito;
 
-    UserInterfaceWindowTitulo * janelaAjuda;
+    UserInterface::Window::UIWindowTitulo * janelaAjuda;
 
-    UserInterfaceWindow * janelaZerado;
+    UserInterface::Window::UIWindowDialog * janelaZerado;
 
-    UserInterfaceWindow * janelaGameOver;
+    UserInterface::Window::UIWindowDialog * janelaGameOver;
 
-    UserInterfaceWindow * janelaFaseFinalizada;
+    UserInterface::Window::UIWindowDialog * janelaFaseFinalizada;
 
 };
 #endif

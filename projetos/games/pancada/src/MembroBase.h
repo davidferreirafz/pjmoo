@@ -4,9 +4,9 @@
 
 #include <GBF/SpritePersonagem.h>
 
-#include <GBF/GraphicSystemImage.h>
+#include <GBF/ImageBase.h>
 
-#include <GBF/GBF_define.h>
+#include <GBF/GBF.h>
 
 
 class MembroBase
@@ -20,21 +20,21 @@ class MembroBase
 
     void setBaixo();
 
-    void setSprite(SpritePersonagem * sprite);
+    void setSprite(GBF::Imagem::Sprite::SpritePersonagem * sprite);
 
     virtual void setPosicao(int x, int y) = 0;
 
-    Area getArea();
+    GBF::Area getArea();
 
-    Ponto getPosicao();
+    GBF::Ponto getPosicao();
 
     virtual void desenhar();
 
 
   protected:
-    Ponto posicao;
+    GBF::Ponto posicao;
 
-    SpritePersonagem * sprite;
+    GBF::Imagem::Sprite::SpritePersonagem * sprite;
 
 };
 #endif

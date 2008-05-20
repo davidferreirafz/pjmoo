@@ -2,7 +2,7 @@
 #ifndef _PLACAR_H
 #define _PLACAR_H
 
-#include <GBF/TimerSystemCronometroDecrescente.h>
+#include <GBF/CronometroDecrescente.h>
 
 
 struct ContagemPontos
@@ -22,7 +22,7 @@ struct ContagemRound
 class Placar
 {
   private:
-    TimerSystemCronometroDecrescente cronometroRound;
+    GBF::Kernel::Timer::CronometroDecrescente cronometroRound;
 
     ContagemPontos pontos;
 

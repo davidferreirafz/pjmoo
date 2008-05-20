@@ -1,40 +1,40 @@
 //***************************************************************************
 //  Pancada <Game - Boxing Style>
 //  Copyright (C) 2007 by David Ferreira - FZ
-//  davidferreira.fz@gmail.com - http://pjmoo.sourceforge.net 
+//  davidferreira.fz@gmail.com - http://pjmoo.sourceforge.net
 //***************************************************************************
 //    Este programa é software livre; você pode redistribuí-lo e/ou
 //    modificá-lo sob os termos da Licença Pública Geral GNU, conforme
-//    publicada pela Free Software Foundation; tanto a versão 2 da 
+//    publicada pela Free Software Foundation; tanto a versão 2 da
 //    Licença como (a seu critério) qualquer versão mais nova.
 //***************************************************************************
 //    This program is free software; you can redistribute it and/or modify
 //    it under the terms of the GNU General Public License as published by
-//    the Free Software Foundation; either version 2 of the License, or 
+//    the Free Software Foundation; either version 2 of the License, or
 //    (at your option) any later version.
 //
 //    You should have received a copy of the GNU General Public License
 //    along with this program; if not, write to the
-//    Free Software Foundation, Inc.,                                       
+//    Free Software Foundation, Inc.,
 //    59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 //***************************************************************************
 #include "Jogo.h"
 
-int main(int argc, char * argv[]) 
+int main(int argc, char * argv[])
 {
-    GAT* jogo = NULL;
+    GAT::GAT * jogo = NULL;
     jogo = new Jogo(argc,argv);
 
     try {
         jogo->executar();
     } catch (std::exception& e) {
-        UtilLog::sistema("!!!!!!!!!!");
-        UtilLog::sistema("Exceção: %s",e.what());
-        UtilLog::sistema("!!!!!!!!!!");
+        //UtilLog::sistema("!!!!!!!!!!");
+        //UtilLog::sistema("Exceção: %s",e.what());
+        //UtilLog::sistema("!!!!!!!!!!");
     } catch (...) {
-        UtilLog::sistema("!!!!!!!!!!");
-        UtilLog::sistema("Exceção Desconhecida");
-        UtilLog::sistema("!!!!!!!!!!");
+        //UtilLog::sistema("!!!!!!!!!!");
+        //UtilLog::sistema("Exceção Desconhecida");
+        //UtilLog::sistema("!!!!!!!!!!");
     }
 
     delete(jogo);
@@ -65,14 +65,14 @@ Jogo::~Jogo(){
 
 //Inicializa os recursos utilizados no jogo.
 //Ex.: Imagens, sons, fontes, configuração do modo gráfico e etc..
-void Jogo::inicializarRecursos() 
+void Jogo::inicializarRecursos()
 {
 //configurando modo de vídeo
     frameworkGBF->setTitulo("Pancada","David de Almeida Ferreira");
     frameworkGBF->iniciar(640,480,16,isFullScreen());
     frameworkGBF->inputSystemCore->setControleExclusivo(SDL_GRAB_OFF);
+
     //carregando imagens
-//    GraphicSystemImageBufferManager *GSIBManager = GraphicSystemImageBufferManager::getInstance();
     frameworkGBF->graphicSystemCore->graphicSystem->imageBufferManager->carregar("personagem","data//imagem//pancada_personagem.png");
     frameworkGBF->graphicSystemCore->graphicSystem->imageBufferManager->carregar("background","data//imagem//pancada_console.png");
     frameworkGBF->graphicSystemCore->graphicSystem->imageBufferManager->carregar("interface","data//imagem//pancada_interface.png");
@@ -87,47 +87,47 @@ void Jogo::inicializarRecursos()
 //carregando audio - efeitos
 //Configura volume dos efeitos
 
-
     //Idioma
-    frameworkGBF->writeSystem->uiTexto->setArquivo("msg.txt");
-    frameworkGBF->writeSystem->uiTexto->detectarIdioma();
+    frameworkGBF->writeSystem->idioma->setArquivo("msg.txt");
+    frameworkGBF->writeSystem->idioma->detectarIdioma();
 
 //Layers
-    SpriteFactory * spriteFactory = NULL;
+    GBF::Imagem::SpriteFactory * spriteFactory = NULL;
 
-    spriteFactory = new SpriteFactory(frameworkGBF->graphicSystemCore->graphicSystem->imageBufferManager->getImageBuffer("status"));
-    FrameLayer * status = spriteFactory->criarFrameLayer(0, 0,96,480);
+    spriteFactory = new GBF::Imagem::SpriteFactory("status");
+
+    GBF::Imagem::Layer::FrameLayer * status = spriteFactory->criarFrameLayer(0, 0,96,480);
     status->setFrame(544,0,96,480);
     status->setTiles(1,1);
     status->setPixelTile(96,480);
     status->iniciarRandomico(1);
-    FrameLayerManager::getInstance()->adicionar("status",status);
+    GBF::Imagem::Layer::LayerManager::getInstance()->adicionar("status",status);
     delete(spriteFactory);
 
-    spriteFactory = new SpriteFactory(frameworkGBF->graphicSystemCore->graphicSystem->imageBufferManager->getImageBuffer("background"));
-    FrameLayer * console = spriteFactory->criarFrameLayer(0, 0,64,480);
+    spriteFactory = new GBF::Imagem::SpriteFactory("background");
+    GBF::Imagem::Layer::FrameLayer * console = spriteFactory->criarFrameLayer(0, 0,64,480);
     console->setFrame(0,0,640,480);
     console->setTiles(10,1);
     console->setPixelTile(64,480);
     console->iniciarOrdenado(10);
-    FrameLayerManager::getInstance()->adicionar("background",console);
+    GBF::Imagem::Layer::LayerManager::getInstance()->adicionar("background",console);
     delete(spriteFactory);
 
     //Menu
-    uiMenuPrincipal = new UserInterfaceMenuTextoTransparente();
-    uiMenuPrincipal->centralizarTela(640,120,HORIZONTAL);
+    uiMenuPrincipal = new UserInterface::Menu::UIMenuTransparente();
+    uiMenuPrincipal->centralizarTela(640,120,UserInterface::HORIZONTAL);
     uiMenuPrincipal->setEspacoVertical(60);
-    uiMenuPrincipal->adicionar(new UserInterfaceMenuItemTexto("menu_1","menu"));
-    uiMenuPrincipal->adicionar(new UserInterfaceMenuItemTexto("menu_2","menu"));
-    uiMenuPrincipal->adicionar(new UserInterfaceMenuItemTexto("menu_3","menu"));
-    uiMenuPrincipal->adicionar(new UserInterfaceMenuItemTexto("menu_4","menu"));
-    uiMenuPrincipal->adicionar(new UserInterfaceMenuItemTexto("menu_5","menu"));
+    uiMenuPrincipal->adicionar(new UserInterface::Menu::UIItemTexto("menu_1","menu"));
+    uiMenuPrincipal->adicionar(new UserInterface::Menu::UIItemTexto("menu_2","menu"));
+    uiMenuPrincipal->adicionar(new UserInterface::Menu::UIItemTexto("menu_3","menu"));
+    uiMenuPrincipal->adicionar(new UserInterface::Menu::UIItemTexto("menu_4","menu"));
+    uiMenuPrincipal->adicionar(new UserInterface::Menu::UIItemTexto("menu_5","menu"));
 
-    UserInterfaceVisualImagem *uiVisualImagem = new UserInterfaceVisualImagem();
+    UserInterface::Visual::UIVisualImagem *uiVisualImagem = new UserInterface::Visual::UIVisualImagem();
     uiVisualImagem->setCorBorda(255,0,0);
-    uiVisualImagem->setTipoBackground(BACKGROUND_LINES);
+    uiVisualImagem->setTipoBackground(UserInterface::Visual::BACKGROUND_LINES);
 
-    janelaCredito = new UserInterfaceWindowTitulo();
+    janelaCredito = new UserInterface::Window::UIWindowTitulo();
     janelaCredito->setPosicao(40,50);
     janelaCredito->setDimensao(560,400);
     janelaCredito->texto.setFonte("texto");
@@ -135,10 +135,10 @@ void Jogo::inicializarRecursos()
     janelaCredito->titulo.setFonte("menu");
     janelaCredito->titulo.setChaveTexto("titulo_credito");
     janelaCredito->setVisual(uiVisualImagem->clone());
-    janelaCredito->adicionarBotao(new UserInterfaceBotao("menu","botao_enter",SDLK_RETURN));
+    janelaCredito->adicionarBotao(new UserInterface::Componente::UIBotao("menu","botao_enter",SDLK_RETURN));
     janelaCredito->inicializar();
 
-    janelaSobre = new UserInterfaceWindowTitulo();
+    janelaSobre = new UserInterface::Window::UIWindowTitulo();
     janelaSobre->setPosicao(40,50);
     janelaSobre->setDimensao(560,400);
     janelaSobre->texto.setFonte("texto");
@@ -146,38 +146,38 @@ void Jogo::inicializarRecursos()
     janelaSobre->titulo.setFonte("menu");
     janelaSobre->titulo.setChaveTexto("titulo_sobre");
     janelaSobre->setVisual(uiVisualImagem->clone());
-    janelaSobre->adicionarBotao(new UserInterfaceBotao("menu","botao_enter",SDLK_RETURN));
+    janelaSobre->adicionarBotao(new UserInterface::Componente::UIBotao("menu","botao_enter",SDLK_RETURN));
     janelaSobre->inicializar();
 
-    janelaFaseFinalizada = new UserInterfaceWindow();
+    janelaFaseFinalizada = new UserInterface::Window::UIWindowDialog();
     janelaFaseFinalizada->setPosicao(120,140);
     janelaFaseFinalizada->setDimensao(400,200);
     janelaFaseFinalizada->texto.setFonte("texto");
     janelaFaseFinalizada->texto.setChaveTexto("tela_fasefinalizada_%02d");
-    janelaFaseFinalizada->texto.setAlinhamento(TEXTO_CENTRALIZADO);
+    janelaFaseFinalizada->texto.setAlinhamento(UserInterface::Texto::TEXTO_CENTRALIZADO);
     janelaFaseFinalizada->setVisual(uiVisualImagem->clone());
     janelaFaseFinalizada->inicializar();
 
-    janelaGameOver = new UserInterfaceWindow();
+    janelaGameOver = new UserInterface::Window::UIWindowDialog();
     janelaGameOver->setPosicao(120,140);
     janelaGameOver->setDimensao(400,200);
     janelaGameOver->texto.setFonte("texto");
     janelaGameOver->texto.setChaveTexto("tela_gameover_%02d");
-    janelaGameOver->texto.setAlinhamento(TEXTO_CENTRALIZADO);
+    janelaGameOver->texto.setAlinhamento(UserInterface::Texto::TEXTO_CENTRALIZADO);
     janelaGameOver->setVisual(uiVisualImagem->clone());
     janelaGameOver->inicializar();
 
-    janelaZerado = new UserInterfaceWindow();
+    janelaZerado = new UserInterface::Window::UIWindowDialog();
     janelaZerado->setPosicao(120,140);
     janelaZerado->setDimensao(400,200);
     janelaZerado->texto.setFonte("texto");
     janelaZerado->texto.setChaveTexto("tela_zerado_%02d");
-    janelaZerado->texto.setAlinhamento(TEXTO_CENTRALIZADO);
+    janelaZerado->texto.setAlinhamento(UserInterface::Texto::TEXTO_CENTRALIZADO);
     janelaZerado->setVisual(uiVisualImagem->clone());
     janelaZerado->inicializar();
 
 
-    janelaAjuda = new UserInterfaceWindowTitulo();
+    janelaAjuda = new UserInterface::Window::UIWindowTitulo();
     janelaAjuda->setPosicao(40,50);
     janelaAjuda->setDimensao(560,400);
     janelaAjuda->texto.setFonte("texto");
@@ -185,17 +185,19 @@ void Jogo::inicializarRecursos()
     janelaAjuda->titulo.setFonte("menu");
     janelaAjuda->titulo.setChaveTexto("titulo_ajuda");
     janelaAjuda->setVisual(uiVisualImagem->clone());
-    janelaAjuda->adicionarBotao(new UserInterfaceBotao("menu","botao_enter",SDLK_RETURN));
+    janelaAjuda->adicionarBotao(new UserInterface::Componente::UIBotao("menu","botao_enter",SDLK_RETURN));
     janelaAjuda->inicializar();
 
     delete(uiVisualImagem);
 
 
     controle.carregar();
+
+    //frameworkGBF->inputSystemCore->isInstance<Jogo>();
 }
-void Jogo::menuPrincipal() 
+void Jogo::menuPrincipal()
 {
-    FrameLayerManager::getInstance()->getFrameLayer("background")->desenhar();
+    GBF::Imagem::Layer::LayerManager::getInstance()->getFrameLayer("background")->desenhar();
 
     uiMenuPrincipal->executar();
 
@@ -218,43 +220,43 @@ void Jogo::menuPrincipal()
             break;
     }
 }
-void Jogo::menuAjuda() 
+void Jogo::menuAjuda()
 {
-    FrameLayerManager::getInstance()->getFrameLayer("background")->desenhar();
+    GBF::Imagem::Layer::LayerManager::getInstance()->getFrameLayer("background")->desenhar();
 
     janelaAjuda->executar();
 
-    if (janelaAjuda->isBotao(UserInterfaceWindow::BOTAO_OK)){
+    if (janelaAjuda->isAcao(UserInterface::Window::UIWindowDialog::BOTAO_OK)){
         setMenuPrincipal();
     }
 }
-void Jogo::menuCredito() 
+void Jogo::menuCredito()
 {
-    FrameLayerManager::getInstance()->getFrameLayer("background")->desenhar();
+    GBF::Imagem::Layer::LayerManager::getInstance()->getFrameLayer("background")->desenhar();
 
     janelaCredito->executar();
 
-    if (janelaCredito->isBotao(UserInterfaceWindow::BOTAO_OK)){
+    if (janelaCredito->isAcao(UserInterface::Window::UIWindowDialog::BOTAO_OK)){
         setMenuPrincipal();
     }
 }
-void Jogo::menuSobre() 
+void Jogo::menuSobre()
 {
-    FrameLayerManager::getInstance()->getFrameLayer("background")->desenhar();
+    GBF::Imagem::Layer::LayerManager::getInstance()->getFrameLayer("background")->desenhar();
 
     janelaSobre->executar();
 
-    if (janelaSobre->isBotao(UserInterfaceWindow::BOTAO_OK)){
+    if (janelaSobre->isAcao(UserInterface::Window::UIWindowDialog::BOTAO_OK)){
         setMenuPrincipal();
     }
 }
-void Jogo::jogoNovo() 
+void Jogo::jogoNovo()
 {
     frameworkGBF->soundSystemCore->soundSystem->musicManager->playInfinity("musica");
     controle.iniciar();
     setJogoFaseCarregar();
 }
-void Jogo::jogoExecutando() 
+void Jogo::jogoExecutando()
 {
     if (controle.isGameOver()){
         setJogoGameOver();
@@ -274,45 +276,45 @@ void Jogo::jogoExecutando()
         #endif
     }
 }
-void Jogo::jogoPause() 
+void Jogo::jogoPause()
 {
     setMenu();
 }
-void Jogo::jogoFaseCarregar() 
+void Jogo::jogoFaseCarregar()
 {
     setJogoExecutando();
 }
-void Jogo::jogoFaseFinalizada() 
+void Jogo::jogoFaseFinalizada()
 {
     controle.desenhar();
 
     janelaFaseFinalizada->executar();
 
-    if (janelaFaseFinalizada->confirmarSelecao()==1){
+    if (janelaFaseFinalizada->isAcao(UserInterface::Window::UIWindowDialog::BOTAO_OK)){
         setJogoFaseCarregar();
     }
 }
-void Jogo::jogoGameOver() 
+void Jogo::jogoGameOver()
 {
-    FrameLayerManager::getInstance()->getFrameLayer("background")->desenhar();
+    GBF::Imagem::Layer::LayerManager::getInstance()->getFrameLayer("background")->desenhar();
 
     janelaGameOver->executar();
 
-    if (janelaGameOver->confirmarSelecao()==1){
+    if (janelaGameOver->isAcao(UserInterface::Window::UIWindowDialog::BOTAO_OK)){
         setMenu();
     }
 }
-void Jogo::jogoZerado() 
+void Jogo::jogoZerado()
 {
-    FrameLayerManager::getInstance()->getFrameLayer("background")->desenhar();
+    GBF::Imagem::Layer::LayerManager::getInstance()->getFrameLayer("background")->desenhar();
 
     janelaZerado->executar();
 
-    if (janelaZerado->confirmarSelecao()==1){
+    if (janelaZerado->isAcao(UserInterface::Window::UIWindowDialog::BOTAO_OK)){
         setMenu();
     }
 }
-bool Jogo::gatilhoJogoFaseCarregar() 
+bool Jogo::gatilhoJogoFaseCarregar()
 {
     bool continua = controle.carregarFase();
 
@@ -323,7 +325,7 @@ bool Jogo::gatilhoJogoFaseCarregar()
 
     return continua;
 }
-void Jogo::gatilhoMenuPrincipal() 
+void Jogo::gatilhoMenuPrincipal()
 {
     frameworkGBF->soundSystemCore->soundSystem->musicManager->playInfinity("menu");
 }

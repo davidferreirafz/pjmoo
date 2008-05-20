@@ -29,10 +29,10 @@ public:
     /** Retorna a instancia da classe*/
     static ListTiroInimigo* getInstance();
     /** Verifica colisão de uma lista com outra lista de objetos (SOBREESCRITO)*/
-    void colisao(ListPersonagemAbstract* objeto); 
+    void colisao(Personagem::ListPersonagem* objeto);
     /** Verifica colisão de uma lista com apenas um objeto (SOBREESCRITO)*/
-    void colisao(PersonagemAbstract* objeto);
-    
+    void colisao(Personagem::Personagem* objeto);
+
 protected:
     /** Construtor */
     ListTiroInimigo();

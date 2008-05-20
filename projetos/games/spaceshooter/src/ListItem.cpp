@@ -29,7 +29,7 @@ ListItem::~ListItem()
 }
 ListItem::ListItem()
 {
-    wsManager = WriteSystemManager::getInstance();
+    wsManager = GBF::Kernel::Write::WriteManager::getInstance();
 }
 void ListItem::adicionar(ItemAbstract* item)
 {
@@ -43,7 +43,7 @@ ItemAbstract* ListItem::getItem(int indice)
 }
 void ListItem::desenhar()
 {
-    ListPersonagemAbstract::desenhar();
+    ListSpaceAbstract::desenhar();
 
     if (lista.size()>0){
         for (unsigned int i=0;i<lista.size();i++){

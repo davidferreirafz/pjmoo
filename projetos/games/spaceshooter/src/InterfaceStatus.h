@@ -18,11 +18,12 @@
 #define _INTERFACESTATUS_H_
 
 #include <GBF/SpritePersonagem.h>
-#include <GBF/GraphicSystemImageBufferManager.h>
+#include <GBF/ImageBufferManager.h>
 #include <GBF/SpriteFactory.h>
-#include <GBF/WriteSystemManager.h>
-#include <GBF/TimerSystemCronometroCrescente.h>
+#include <GBF/WriteManager.h>
+#include <GBF/CronometroCrescente.h>
 #include <GBF/SoundSystem.h>
+#include <GBF/GraphicSystem.h>
 
 class InterfaceStatus
 {
@@ -39,14 +40,15 @@ public:
 
 protected:
 //Atributos
-    SpriteItem* warpBarra;
-    SpriteItem* escudoBarra;
-    SpriteItem* torpedoBarra;
-    TimerSystemCronometroCrescente tempo;
+    GBF::Imagem::Sprite::SpriteItem * warpBarra;
+    GBF::Imagem::Sprite::SpriteItem * escudoBarra;
+    GBF::Imagem::Sprite::SpriteItem * torpedoBarra;
+
+    GBF::Kernel::Timer::CronometroCrescente tempo;
 
 	/** Instancia da classe (SINGLETON)*/
 	static InterfaceStatus* instance;
-    WriteSystemManager* wsManager;
+    GBF::Kernel::Write::WriteManager * wsManager;
 
 
 private:
@@ -54,7 +56,7 @@ private:
 	InterfaceStatus();
 	bool mostraEscudo;
 	bool mostraTorpedo;
-   	SoundSystem* soundSystem;
+	GBF::Kernel::Sound::SoundSystem::SoundSystem * soundSystem;
 
 };
 

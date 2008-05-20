@@ -17,9 +17,10 @@
 #ifndef _NAVEABSTRACT_H
 #define _NAVEABSTRACT_H
 
-#include <GBF/GBF_define.h>
-#include <GBF/FrameLayerManager.h>
+#include <GBF/GBF.h>
+#include <GBF/LayerManager.h>
 #include <GBF/SoundSystem.h>
+#include <GBF/Personagem.h>
 
 #include "TiroAbstract.h"
 #include "SpaceObject.h"
@@ -93,10 +94,11 @@ protected:
     virtual void prepararTorpedo()=0;
     virtual void selecionarPosicao()=0;
 
-    TypeDelay espera;
-//////
+    ::Personagem::TypeDelay espera;
+
     Sistema sistema;
-	static SoundSystem* soundSystem;
+	static GBF::Kernel::Sound::SoundSystem * soundSystem;
+
 private:
 	static int velocidadeBase;
 

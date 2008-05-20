@@ -29,7 +29,7 @@ ItemAbstract::~ItemAbstract()
         path = NULL;
     }
 }
-void ItemAbstract::acao(InputSystem* INPUT)
+void ItemAbstract::acao(GBF::Kernel::Input::InputSystem * INPUT)
 {
     if (isAtivo()){
         if (isVivo()){
@@ -43,7 +43,7 @@ void ItemAbstract::acao(InputSystem* INPUT)
 }
 void ItemAbstract::selecionarPosicao()
 {
-    Dimensao dimensao = getDimensao();
+    GBF::Dimensao dimensao = getDimensao();
     setPosicao(area.left+(rand()%((area.right-dimensao.w)-area.left)),area.top-dimensao.h);
 }
 int ItemAbstract::getBonus()

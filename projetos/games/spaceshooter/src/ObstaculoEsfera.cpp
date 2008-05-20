@@ -19,9 +19,7 @@
 
 ObstaculoEsfera::ObstaculoEsfera()
 {
-    GraphicSystemImageBufferManager *gsImageBufferManager=GraphicSystemImageBufferManager::getInstance();
-
-    SpriteFactory * spriteFactory   = new SpriteFactory(gsImageBufferManager->getImageBuffer("personagem"));
+GBF::Imagem::SpriteFactory  *spriteFactory = new GBF::Imagem::SpriteFactory("personagem");
     adicionarSpritePrincipal(spriteFactory->criarSpritePersonagem(0,481,34,33,4,40));
     delete (spriteFactory);
 

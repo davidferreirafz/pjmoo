@@ -18,9 +18,7 @@
 
 NaveCardassiana::NaveCardassiana()
 {
-    GraphicSystemImageBufferManager *gsImageBufferManager=GraphicSystemImageBufferManager::getInstance();
-
-    SpriteFactory * spriteFactory   = new SpriteFactory(gsImageBufferManager->getImageBuffer("personagem"));
+    GBF::Imagem::SpriteFactory  *spriteFactory = new GBF::Imagem::SpriteFactory("personagem");
     adicionarSpritePrincipal(spriteFactory->criarSpritePersonagem(137,481,40,40,1,2));
     delete (spriteFactory);
 
@@ -57,16 +55,16 @@ void NaveCardassiana::dispararTorpedo()
     //Adiciona ao Pool
 //    switch(sprite->getDirecao()){
     switch(getSpritePrincipal()->getDirecao()){
-        case DR_CIMA:
+        case GBF::Imagem::Sprite::DR_CIMA:
                 listTiro->adicionar(new TiroTorpedoCardassiano(posicao.x+13,posicao.y,TiroTorpedoCardassiano::UP));
             break;
-        case DR_DIREITA:
+        case GBF::Imagem::Sprite::DR_DIREITA:
                 listTiro->adicionar(new TiroTorpedoCardassiano(posicao.x+36,posicao.y+12,TiroTorpedoCardassiano::RIGHT));
             break;
-        case DR_BAIXO:
+        case GBF::Imagem::Sprite::DR_BAIXO:
                 listTiro->adicionar(new TiroTorpedoCardassiano(posicao.x+13,posicao.y+39,TiroTorpedoCardassiano::DOWN));
             break;
-        case DR_ESQUERDA:
+        case GBF::Imagem::Sprite::DR_ESQUERDA:
                 listTiro->adicionar(new TiroTorpedoCardassiano(posicao.x,posicao.y+12,TiroTorpedoCardassiano::LEFT));
             break;
         default:

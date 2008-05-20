@@ -18,7 +18,7 @@
 
 TiroCanhaoBorg::TiroCanhaoBorg(int X, int Y)
 {
-    SpriteFactory * spriteFactory   = new SpriteFactory(gsImageBufferManager->getImageBuffer("armas"));
+    GBF::Imagem::SpriteFactory  *spriteFactory = new GBF::Imagem::SpriteFactory("armas");
     if (adicionarSpritePrincipal(spriteFactory->criarSpritePersonagem(0,96,20,20,4,8))){
         setPosicao(X,Y);
         path = new PathDown();

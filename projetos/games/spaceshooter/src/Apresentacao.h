@@ -17,14 +17,15 @@
 #ifndef _APRESENTACAO_H_
 #define _APRESENTACAO_H_
 
-#include <GBF/WriteSystemManager.h>
-#include <GBF/WriteSystemFontDefault.h>
-#include <GBF/FrameLayerManager.h>
-#include <GBF/TimerSystemCronometroDecrescente.h>
-#include <GBF/GraphicSystemGFX.h>
-#include <GBF/GraphicSystemImageBufferManager.h>
+#include <GBF/WriteManager.h>
+#include <GBF/LayerManager.h>
+#include <GBF/CronometroDecrescente.h>
+#include <GBF/GraphicSystem.h>
+#include <GBF/GFX.h>
+#include <GBF/ImageBufferManager.h>
 #include <GBF/SpriteFactory.h>
-
+#include <GBF/UIWindowDialog.h>
+#include <GBF/UIVisualSolido.h>
 
 // Classe para criação da apresentação inicial do jogo
 class Apresentacao
@@ -48,22 +49,33 @@ public:
 	void reset();
 
 
-protected:
-    WriteSystemManager* wsManager;
-    FrameLayerManager*  flManager;
-    GraphicSystemGFX*   gsGFX;
-    int numeroTela;
-    TimerSystemCronometroDecrescente tempo;
 
-    SpriteItem* zangoesBorg;
-    SpriteItem* terra;
-    SpriteItem* babyBorg;
-    SpriteItem* logoInimigos;
-    SpriteItem* naveDefiant;
-    SpriteItem* naveEsquemas;
-    SpriteItem* batalha;
-    SpriteItem* naveBorg;
-    SpriteItem* david;
+protected:
+
+
+    GBF::Kernel::Write::WriteManager * wsManager;
+    GBF::Imagem::Layer::LayerManager * flManager;
+    GBF::Kernel::Graphic::GFX *   gsGFX;
+
+    GBF::Kernel::Timer::CronometroDecrescente tempo;
+
+    UserInterface::Window::UIWindowDialog* janela;
+    UserInterface::Window::UIWindowDialog* janelaCopyright;
+
+private:
+    int numeroTela;
+
+    GBF::Imagem::Sprite::SpriteItem* zangoesBorg;
+    GBF::Imagem::Sprite::SpriteItem* terra;
+    GBF::Imagem::Sprite::SpriteItem* babyBorg;
+    GBF::Imagem::Sprite::SpriteItem* logoInimigos;
+    GBF::Imagem::Sprite::SpriteItem* naveDefiant;
+    GBF::Imagem::Sprite::SpriteItem* naveEsquemas;
+    GBF::Imagem::Sprite::SpriteItem* batalha;
+    GBF::Imagem::Sprite::SpriteItem* naveBorg;
+    GBF::Imagem::Sprite::SpriteItem* david;
+
+
 };
 
 #endif

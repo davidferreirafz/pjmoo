@@ -23,6 +23,7 @@
 #include "NaveRomulana.h"
 #include "NaveKlingonBirdPrev.h"
 #include "NaveKlingonAttack.h"
+#include <GBF/Personagem.h>
 
 class FaseQuatro : public FaseAbstract
 {
@@ -30,13 +31,13 @@ public:
 	/** Construtor */
 	FaseQuatro();
     /** Destrutor */
-	virtual ~FaseQuatro();	
+	virtual ~FaseQuatro();
 	void iniciar();
 	void configurar();
     /** Informa se passou de fase*/
     bool isTerminou();
     std::string getMissaoCompleta();
-    
+
 protected:
     /** Condição executada durante toda a fase */
     void condicaoNavegandoFase();
@@ -44,7 +45,7 @@ protected:
     void condicaoUnicaUltimoQuadro();
 
 private:
-	TypeDelay delay;    
+    Personagem::TypeDelay delay;
 };
 
 #endif

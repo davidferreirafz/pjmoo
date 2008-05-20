@@ -18,7 +18,7 @@
 
 TiroPlasmaKlingon::TiroPlasmaKlingon(int X, int Y,PlasmaKlingon tiro)
 {
-    SpriteFactory * spriteFactory   = new SpriteFactory(gsImageBufferManager->getImageBuffer("armas"));
+    GBF::Imagem::SpriteFactory  *spriteFactory = new GBF::Imagem::SpriteFactory("armas");
     if (adicionarSpritePrincipal(spriteFactory->criarSpritePersonagem(0,58,5,5,2,4))){
         setPosicao(X,Y);
         setTiro(tiro);

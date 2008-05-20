@@ -23,6 +23,7 @@
 #include "ListSpaceInimigo.h"
 #include "NaveBorg.h"
 #include "ObstaculoEsfera.h"
+#include <GBF/Personagem.h>
 
 class FaseSete : public FaseAbstract
 {
@@ -44,7 +45,7 @@ protected:
     void condicaoUnicaUltimoQuadro();
 
 private:
-	TypeDelay delay;
+    Personagem::TypeDelay delay;
 	bool matouChefe;
 };
 

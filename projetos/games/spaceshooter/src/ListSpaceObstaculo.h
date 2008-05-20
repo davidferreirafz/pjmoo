@@ -17,7 +17,7 @@
 #ifndef _LISTSPACEOBSTACULO_H
 #define _LISTSPACEOBSTACULO_H
 
-#include <GBF/UtilLog.h>
+#include <GBF/Log.h>
 
 #include "ListSpaceAbstract.h"
 #include "ObstaculoAbstract.h"
@@ -38,20 +38,20 @@ public:
 	static bool OBSTACULO_MINA;
 	static bool OBSTACULO_FURACAO;
 
-	
+
     /** Destrutor */
     virtual ~ListSpaceObstaculo();
     /** Instancia*/
     static ListSpaceObstaculo* getInstance();
-    
+
     void adicionar(int quantidade);
     void setLimite(int maximo);
-    void acao();
-    
-    void criar();   
-    
+    void acao(GBF::Kernel::Input::InputSystem * input);
+
+    void criar();
+
     void colisao(NaveAbstract* nave);
-    
+
 protected:
     static ListSpaceObstaculo* instance;
     int limite;

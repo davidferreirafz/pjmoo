@@ -17,11 +17,11 @@
 #ifndef _OBSTACULOABSTRACT_H
 #define _OBSTACULOABSTRACT_H
 
-#include <GBF/GraphicSystemImageBufferManager.h>
+#include <GBF/ImageBufferManager.h>
 #include <GBF/SpriteFactory.h>
-#include <GBF/PersonagemAutomatico.h>
+#include <GBF/Personagem.h>
 #include <GBF/SoundSystem.h>
-
+#include <GBF/GraphicSystem.h>
 #include "spaceshoot_define.h"
 #include "PathFactory.h"
 #include "SpaceObject.h"
@@ -37,7 +37,7 @@ public:
 	static void setVelocidadeBase(int velocidadeBase);
     void setVivo(bool VALOR);
     void desenhar();
-    void acao(InputSystem* INPUT=NULL);
+    void acao(GBF::Kernel::Input::InputSystem * INPUT=NULL);
     int getResistencia();
     int getDanos();
     void choque(int forca);

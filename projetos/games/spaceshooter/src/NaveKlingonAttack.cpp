@@ -19,9 +19,7 @@
 bool NaveKlingonAttack::cantando=false;
 NaveKlingonAttack::NaveKlingonAttack()
 {
-    GraphicSystemImageBufferManager *gsImageBufferManager=GraphicSystemImageBufferManager::getInstance();
-
-    SpriteFactory * spriteFactory   = new SpriteFactory(gsImageBufferManager->getImageBuffer("personagem"));
+    GBF::Imagem::SpriteFactory  *spriteFactory = new GBF::Imagem::SpriteFactory("personagem");
     adicionarSpritePrincipal(spriteFactory->criarSpritePersonagem(0,199,55,55,1,2));
     delete (spriteFactory);
 

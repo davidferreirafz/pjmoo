@@ -18,9 +18,7 @@
 
 NaveKlingonBirdPrev::NaveKlingonBirdPrev()
 {
-    GraphicSystemImageBufferManager *gsImageBufferManager=GraphicSystemImageBufferManager::getInstance();
-
-    SpriteFactory * spriteFactory   = new SpriteFactory(gsImageBufferManager->getImageBuffer("personagem"));
+    GBF::Imagem::SpriteFactory  *spriteFactory = new GBF::Imagem::SpriteFactory("personagem");
     adicionarSpritePrincipal(spriteFactory->criarSpritePersonagem(221,255,55,55,1,2));
     delete (spriteFactory);
 
@@ -54,16 +52,16 @@ void NaveKlingonBirdPrev::dispararPhaser()
     //Adiciona ao Pool
 //    switch(sprite->getDirecao()){
     switch(getSpritePrincipal()->getDirecao()){
-        case DR_CIMA:
+        case GBF::Imagem::Sprite::DR_CIMA:
                 listTiro->adicionar(new TiroPlasmaKlingon(posicao.x+26,posicao.y+2,TiroPlasmaKlingon::UP));
             break;
-        case DR_DIREITA:
+        case GBF::Imagem::Sprite::DR_DIREITA:
                 listTiro->adicionar(new TiroPlasmaKlingon(posicao.x+50,posicao.y+26,TiroPlasmaKlingon::RIGHT));
             break;
-        case DR_BAIXO:
+        case GBF::Imagem::Sprite::DR_BAIXO:
                 listTiro->adicionar(new TiroPlasmaKlingon(posicao.x+26,posicao.y+50,TiroPlasmaKlingon::DOWN));
             break;
-        case DR_ESQUERDA:
+        case GBF::Imagem::Sprite::DR_ESQUERDA:
                 listTiro->adicionar(new TiroPlasmaKlingon(posicao.x+2,posicao.y+26,TiroPlasmaKlingon::LEFT));
             break;
         default:

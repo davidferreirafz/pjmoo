@@ -22,12 +22,12 @@
 #include "ListSpaceObstaculoNeutro.h"
 #include "ListSpaceInimigo.h"
 #include "NaveCardassiana.h"
-
+#include <GBF/Personagem.h>
 
 class FaseSeis : public FaseAbstract
 {
 private:
-	TypeDelay delay;
+    Personagem::TypeDelay delay;
 
 public:
     /** Construtor */
@@ -35,13 +35,13 @@ public:
     /** Destrutor */
     virtual ~FaseSeis();
 
-    void iniciar();   
+    void iniciar();
     void configurar();
     /** Informa se passou de fase*/
     bool isTerminou();
     std::string getMissaoCompleta();
-    
-protected:	
+
+protected:
     /** Condição executada durante toda a fase */
     void condicaoNavegandoFase();
     /** Condição executada apenas na ultima tela*/

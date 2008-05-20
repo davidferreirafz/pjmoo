@@ -18,7 +18,7 @@
 
 TiroPhaserBorg::TiroPhaserBorg(int X, int Y,PhaserBorg tiro)
 {
-    SpriteFactory * spriteFactory   = new SpriteFactory(gsImageBufferManager->getImageBuffer("armas"));
+    GBF::Imagem::SpriteFactory  *spriteFactory = new GBF::Imagem::SpriteFactory("armas");
     if (adicionarSpritePrincipal(spriteFactory->criarSpritePersonagem(58,34,14,14,2,2))){
         setPosicao(X,Y);
         setTiro(tiro);

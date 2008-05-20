@@ -17,7 +17,7 @@
 #ifndef _LISTITEM_H_
 #define _LISTITEM_H_
 
-#include <GBF/WriteSystemManager.h>
+#include <GBF/WriteManager.h>
 
 #include "ListItem.h"
 #include "ListSpaceAbstract.h"
@@ -27,19 +27,23 @@ class ListItem : public ListSpaceAbstract
 {
 public:
 	virtual ~ListItem();
-	
+
 	static ListItem* getInstance();
 
-	void adicionar(ItemAbstract* item);	
+	void adicionar(ItemAbstract* item);
     ItemAbstract* getItem(int indice);
-    
+
+    //tem que implementar acao
+    //virtual void acao(InputSystemCore * input) = 0;
+	void desenhar();
+
 protected:
-    WriteSystemManager *wsManager;
+    GBF::Kernel::Write::WriteManager *wsManager;
 	ListItem();
 	static ListItem* instance;
-	void desenhar();
-	
+
+
 };
 
-#endif 
+#endif
 

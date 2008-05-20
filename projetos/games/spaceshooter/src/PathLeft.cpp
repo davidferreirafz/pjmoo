@@ -24,10 +24,10 @@ PathLeft::PathLeft()
 PathLeft::~PathLeft()
 {
 }
-bool PathLeft::mover(int velocidade,Ponto *posicao,Dimensao dimensao)
+bool PathLeft::mover(int velocidade,GBF::Ponto *posicao,GBF::Dimensao dimensao)
 {
 	posicao->x-=velocidade;
-	
+
     if (posicao->x<area.left-dimensao.w){
 		return true;
 	} else {

@@ -17,7 +17,7 @@
 #ifndef _ITEMVELOCIDADE_H_
 #define _ITEMVELOCIDADE_H_
 #include "ItemAbstract.h"
-
+#include <GBF/GraphicSystem.h>
 
 class ItemVelocidade : public ItemAbstract
 {
@@ -28,11 +28,11 @@ public:
     EnumItem getTipo();
     /** Retorna mensagem sobre o item*/
     std::string getHelp();
-    
+
 private:
     /** Construtor */
 	ItemVelocidade();
-	
+
 
     friend class ItemFactory;
 };

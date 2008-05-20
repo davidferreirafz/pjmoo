@@ -33,7 +33,7 @@ ListTiroInimigo* ListTiroInimigo::getInstance()
 		return instance;
 }
 /** Verifica colisão de uma lista com outra lista de objetos (SOBREESCRITO)*/
-void ListTiroInimigo::colisao(ListPersonagemAbstract* lista)
+void ListTiroInimigo::colisao(Personagem::ListPersonagem* lista)
 {
 	TiroAbstract *tiro=NULL;
     SpaceObject  *alvo=NULL;
@@ -54,7 +54,7 @@ void ListTiroInimigo::colisao(ListPersonagemAbstract* lista)
         }
     }
 }
-void ListTiroInimigo::colisao(PersonagemAbstract* objeto)
+void ListTiroInimigo::colisao(Personagem::Personagem * objeto)
 {
 	TiroAbstract    *tiro=NULL;
     SpaceObject     *alvo=NULL;

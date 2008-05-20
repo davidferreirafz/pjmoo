@@ -17,11 +17,11 @@
 #include "ListTiroJogador.h"
 
 ListTiroJogador* ListTiroJogador::instance=NULL;
-ParticleSystemManager* ListTiroJogador::particleManager = NULL;
+ParticleSystem::PSManager * ListTiroJogador::particleManager = NULL;
 ListTiroJogador::ListTiroJogador()
 {
     placar = Placar::getInstance();
-    particleManager = ParticleSystemManager::getInstance();
+    particleManager = ParticleSystem::PSManager::getInstance();
 }
 ListTiroJogador::~ListTiroJogador()
 {
@@ -31,12 +31,12 @@ ListTiroJogador::~ListTiroJogador()
 ListTiroJogador* ListTiroJogador::getInstance()
 {
 		if (instance == NULL){
-			instance = new ListTiroJogador();		
+			instance = new ListTiroJogador();
 		}
 		return instance;
 }
 /** Verifica colisão de uma lista com outra lista de objetos (SOBREESCRITO)*/
-void ListTiroJogador::colisao(ListPersonagemAbstract* lista)
+void ListTiroJogador::colisao(Personagem::ListPersonagem * lista)
 {
 	TiroAbstract *tiro=NULL;
     SpaceObject  *alvo=NULL;
@@ -51,34 +51,33 @@ void ListTiroJogador::colisao(ListPersonagemAbstract* lista)
 						tiro->setAtivo(false);
 						alvo->choque(tiro->getPotencia());
                         placar->incrementar();
-                        //remover depois, ver uma forma para identificar o objeto que foi 
+                        //remover depois, ver uma forma para identificar o objeto que foi
                         //atingido e passar os pontos de colisao
                         //forma provisoria
                         if (alvo->tipoClasse(11)){
-                            ParticleSystemEfeitoEsferico* efeito  = new EfeitoExplosao();
+                            ParticleSystem::PSEfeitoEsferico* efeito  = new EfeitoExplosao();
                             efeito->setQuantidade(150);
                             efeito->setRaio(50);
-                            Ponto ponto = tiro->getPosicao();
+                            GBF::Ponto ponto = tiro->getPosicao();
                             efeito->criar(ponto.x,ponto.y);
                             particleManager->adicionar(efeito);
                         }
 
-                        //
 						break;
-					}                    
+					}
                 }
             }
         }
     }
 }
 /** Verifica colisão de uma lista com apenas um objeto (SOBREESCRITO)*/
-void ListTiroJogador::colisao(PersonagemAbstract* objeto)
+void ListTiroJogador::colisao(Personagem::Personagem * objeto)
 {
 	TiroAbstract    *tiro=NULL;
     SpaceObject     *alvo=NULL;
 
     alvo=(SpaceObject*)objeto;
-    
+
     for (int iTiro=0; iTiro<size(); iTiro++){
         tiro=(TiroAbstract*)getPersonagem(iTiro);
         if (tiro!=NULL){
@@ -88,7 +87,7 @@ void ListTiroJogador::colisao(PersonagemAbstract* objeto)
 					alvo->choque(tiro->getPotencia());
                     placar->incrementar();
 					break;
-				}                    
+				}
             }
         }
     }

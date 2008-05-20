@@ -24,11 +24,11 @@ PathDownRight::PathDownRight()
 PathDownRight::~PathDownRight()
 {
 }
-bool PathDownRight::mover(int velocidade,Ponto *posicao,Dimensao dimensao)
+bool PathDownRight::mover(int velocidade,GBF::Ponto *posicao,GBF::Dimensao dimensao)
 {
 	posicao->x+=velocidade;
-	posicao->y+=velocidade;	
-	
+	posicao->y+=velocidade;
+
     if ((posicao->y>area.bottom+dimensao.h)||(posicao->x>area.right+dimensao.w)){
 		return true;
 	} else {

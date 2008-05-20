@@ -17,7 +17,7 @@
 #ifndef _LISTSPACEINIMIGO_H
 #define _LISTSPACEINIMIGO_H
 
-#include <GBF/UtilLog.h>
+#include <GBF/Log.h>
 
 
 #include "NaveInimigo.h"
@@ -36,9 +36,9 @@ class ListSpaceInimigo : public ListSpaceAbstract
 public:
     /** Destrutor */
     virtual ~ListSpaceInimigo();
-    static ListSpaceInimigo* getInstance();   
+    static ListSpaceInimigo* getInstance();
     void colisao(SpaceObject* alvo);
-    
+
 protected:
     static ListSpaceInimigo* instance;
     int limite;

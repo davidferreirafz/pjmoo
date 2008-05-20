@@ -23,11 +23,11 @@ PathUpRight::PathUpRight()
 PathUpRight::~PathUpRight()
 {
 }
-bool PathUpRight::mover(int velocidade,Ponto *posicao,Dimensao dimensao)
+bool PathUpRight::mover(int velocidade,GBF::Ponto *posicao,GBF::Dimensao dimensao)
 {
 	posicao->x+=velocidade;
-	posicao->y-=velocidade;	
-	
+	posicao->y-=velocidade;
+
     if ((posicao->x>area.right+dimensao.w)||(posicao->y<area.top-dimensao.h)){
 		return true;
 	} else {

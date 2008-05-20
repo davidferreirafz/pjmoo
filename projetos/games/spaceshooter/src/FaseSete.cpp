@@ -40,6 +40,7 @@ FaseSete::~FaseSete()
     soundSystem->musicManager->apagar("chefe");
     soundSystem->musicManager->stop("final");
     soundSystem->musicManager->apagar("final");
+    GBF::Kernel::Graphic::GraphicSystem::getInstance()->imageBufferManager->apagar("personagem_borg");
 }
 void FaseSete::configurar()
 {
@@ -48,7 +49,8 @@ void FaseSete::configurar()
     tiles->setPixelTile(32,32);
     tiles->iniciarRandomico(8);
 
-    GraphicSystemImageBufferManager::getInstance()->carregar("personagem_borg","data//imagem//spaceshooter_borg.png");
+    GBF::Kernel::Graphic::GraphicSystem  *graphicSystem = GBF::Kernel::Graphic::GraphicSystem::getInstance();
+    graphicSystem->imageBufferManager->carregar("personagem_borg","data//imagem//spaceshooter_borg.png");
 
     soundSystem->musicManager->carregar("fase","data//som//007.ogg");
     soundSystem->musicManager->carregar("chefe","data//som//007-01.ogg");
@@ -98,7 +100,7 @@ bool FaseSete::isTerminou()
 		} else {
 			//criação do efeito de fogos de artificio
             if (particleManager->size()<4) {
-                ParticleSystemEfeitoEsferico* efeito  = new EfeitoFogosDeArtificio();
+                ParticleSystem::PSEfeitoEsferico* efeito  = new EfeitoFogosDeArtificio();
                 efeito->setQuantidade(200);
                 efeito->setRaio(400);
                 efeito->criar(rand()%480,rand()%480);

@@ -17,20 +17,20 @@
 #ifndef _SPACEOBJECT_H_
 #define _SPACEOBJECT_H_
 
-#include <GBF/GBF_define.h>
-#include <GBF/PersonagemAutomatico.h>
+#include <GBF/GBF.h>
+#include <GBF/Personagem.h>
 
-class SpaceObject: public PersonagemAutomatico
+class SpaceObject: public Personagem::Personagem
 {
 protected:
-	static Area area;
-	
+	static GBF::Area area;
+
 public:
-	static void setArea(Area area);
+	static void setArea(GBF::Area area);
 	virtual void choque(int forca) = 0;
 	virtual int tipoClasse();
 	virtual bool tipoClasse(int tipo);
-	
+
 };
 
 #endif

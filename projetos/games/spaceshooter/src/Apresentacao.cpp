@@ -18,15 +18,18 @@
 
 Apresentacao::Apresentacao()
 {
-    wsManager  = WriteSystemManager::getInstance();
-    flManager  = FrameLayerManager::getInstance();
-    gsGFX      = GraphicSystemGFX::getInstance();
+    wsManager  = GBF::Kernel::Write::WriteManager::getInstance();
+    flManager  = GBF::Imagem::Layer::LayerManager::getInstance();
+    gsGFX      = GBF::Kernel::Graphic::GraphicSystem::getInstance()->gfx;
+
     numeroTela = 1;
+
     tempo.setTempoOriginal(6);
-    tempo.setUnidade(TEMPO_SEGUNDO);
+    tempo.setUnidade(GBF::Kernel::Timer::TEMPO_SEGUNDO);
     tempo.setResetar();
 
-    SpriteFactory * spriteFactory = new SpriteFactory(GraphicSystemImageBufferManager::getInstance()->getImageBuffer("abertura"));
+//    GraphicSystem  *graphicSystem = GraphicSystem::getInstance();
+    GBF::Imagem::SpriteFactory  *spriteFactory = new GBF::Imagem::SpriteFactory("abertura");
 
     zangoesBorg  = spriteFactory->criarSpriteItem(139,0,140,80,1,1);
     terra        = spriteFactory->criarSpriteItem(280,0,142,141,1,1);
@@ -39,19 +42,43 @@ Apresentacao::Apresentacao()
     david        = spriteFactory->criarSpriteItem(298,142,40,63,1,1);
 
     delete(spriteFactory);
+
+    UserInterface::Visual::UIVisualSolido *uiVisual = new UserInterface::Visual::UIVisualSolido();
+    uiVisual->setCorBorda(255,255,0);
+    uiVisual->setCorFundo(0,0,0);
+
+    janela = new UserInterface::Window::UIWindowDialog();
+    janela->setPosicao(5,90);
+    janela->setDimensao(630,300);
+    janela->texto.setFonte("texto");
+    janela->texto.setChaveTexto("tela_ajuda_%02d");
+    janela->setVisual(uiVisual->clone());
+    janela->inicializar();
+
+    janelaCopyright = new UserInterface::Window::UIWindowDialog();
+    janelaCopyright->setPosicao(40,10);
+    janelaCopyright->setDimensao(560,440);
+    janelaCopyright->texto.setFonte("texto");
+    janelaCopyright->texto.setChaveTexto("tela_09_%d");
+    janelaCopyright->setVisual(uiVisual->clone());
+    janelaCopyright->inicializar();
+
+    delete(uiVisual);
 }
 
 Apresentacao::~Apresentacao()
 {
-    delete (zangoesBorg);
-    delete (terra);
-    delete (babyBorg);
-    delete (logoInimigos);
-    delete (naveDefiant);
-    delete (naveEsquemas);
-    delete (batalha);
-    delete (naveBorg);
-    delete (david);
+    delete(zangoesBorg);
+    delete(terra);
+    delete(babyBorg);
+    delete(logoInimigos);
+    delete(naveDefiant);
+    delete(naveEsquemas);
+    delete(batalha);
+    delete(naveBorg);
+    delete(david);
+    delete(janela);
+    delete(janelaCopyright);
 }
 
 bool Apresentacao::executar()
@@ -132,129 +159,85 @@ void Apresentacao::tela01()
 {
     flManager->getFrameLayer("startrek")->desenhar();
 
-    wsManager->escreverLocalizado(WriteSystemFontDefault::pumpdemi,150,200,"tela_01_1");
-    wsManager->escreverLocalizado(WriteSystemFontDefault::console, 380,410,"tela_01_2");
-    wsManager->escreverLocalizado(WriteSystemFontDefault::console, 382,430,"tela_01_3");
-    wsManager->escreverLocalizado(WriteSystemFontDefault::console, 382,450,"tela_01_4");
+    wsManager->escreverLocalizado("texto",270,160,"tela_01_1");
+
+    wsManager->escreverLocalizado("texto",320,410,"tela_01_2");
+    wsManager->escreverLocalizado("texto",320,430,"tela_01_3");
+    wsManager->escreverLocalizado("texto",320,450,"tela_01_4");
 }
 void Apresentacao::tela02()
 {
-    char textoFormatado[30];
     flManager->getFrameLayer("startrek")->desenhar();
 
-    gsGFX->setColor(0,0,0);
-    gsGFX->retanguloPreenchido(0,90,640,290);
+    janela->texto.setChaveTexto("tela_02_%d");
+    janela->executar();
 
-    for (int i=0; i<6;i++){
-        sprintf(textoFormatado,"tela_02_%d",(1)+i);
-        wsManager->escreverLocalizado(WriteSystemFontDefault::pumpdemi,100,100+(30*i),textoFormatado);
-    }
     babyBorg->desenhar(440,140);
     naveDefiant->desenhar(150,280);
 }
 void Apresentacao::tela03()
 {
-    char textoFormatado[30];
     flManager->getFrameLayer("startrek")->desenhar();
 
-    gsGFX->setColor(0,0,0);
-    gsGFX->retanguloPreenchido(0,90,640,300);
+    janela->texto.setChaveTexto("tela_03_%d");
+    janela->executar();
 
-    for (int i=0; i<5;i++){
-        sprintf(textoFormatado,"tela_03_%d",(1)+i);
-        wsManager->escreverLocalizado(WriteSystemFontDefault::pumpdemi,120,100+(30*i),textoFormatado);
-    }
     terra->desenhar(420,100);
     naveBorg->desenhar(180,260);
 
 }
 void Apresentacao::tela04()
 {
-    char textoFormatado[30];
-     flManager->getFrameLayer("startrek")->desenhar();
+    flManager->getFrameLayer("startrek")->desenhar();
 
-    gsGFX->setColor(0,0,0);
-    gsGFX->retanguloPreenchido(0,90,640,300);
+    janela->texto.setChaveTexto("tela_04_%d");
+    janela->executar();
 
-    for (int i=0; i<8;i++){
-        sprintf(textoFormatado,"tela_04_%d",(1)+i);
-        wsManager->escreverLocalizado(WriteSystemFontDefault::pumpdemi,60,100+(30*i),textoFormatado);
-    }
     zangoesBorg->desenhar(400,280);
 }
 void Apresentacao::tela05()
 {
-    char textoFormatado[30];
     flManager->getFrameLayer("startrek")->desenhar();
 
-    gsGFX->setColor(0,0,0);
-    gsGFX->retanguloPreenchido(0,90,640,290);
-
-    for (int i=0; i<6;i++){
-        sprintf(textoFormatado,"tela_05_%d",(1)+i);
-        wsManager->escreverLocalizado(WriteSystemFontDefault::pumpdemi,60,100+(30*i),textoFormatado);
-    }
+    janela->texto.setChaveTexto("tela_05_%d");
+    janela->executar();
 
     terra->desenhar(350,230);
 }
 void Apresentacao::tela06()
 {
-    char textoFormatado[30];
     flManager->getFrameLayer("startrek")->desenhar();
 
-    gsGFX->setColor(0,0,0);
-    gsGFX->retanguloPreenchido(0,90,640,290);
-
-    for (int i=0; i<7;i++){
-        sprintf(textoFormatado,"tela_06_%d",(1)+i);
-        wsManager->escreverLocalizado(WriteSystemFontDefault::pumpdemi,80,100+(30*i),textoFormatado);
-    }
+    janela->texto.setChaveTexto("tela_06_%d");
+    janela->executar();
 
     logoInimigos->desenhar(360,190);
 }
 void Apresentacao::tela07()
 {
-    char textoFormatado[30];
     flManager->getFrameLayer("startrek")->desenhar();
 
-    gsGFX->setColor(0,0,0);
-    gsGFX->retanguloPreenchido(0,90,640,290);
-
-    for (int i=0; i<7;i++){
-        sprintf(textoFormatado,"tela_07_%d",(1)+i);
-        wsManager->escreverLocalizado(WriteSystemFontDefault::pumpdemi,30,100+(30*i),textoFormatado);
-    }
+    janela->texto.setChaveTexto("tela_07_%d");
+    janela->executar();
 
     naveEsquemas->desenhar(380,180);
 }
 void Apresentacao::tela08()
 {
-    char textoFormatado[30];
     flManager->getFrameLayer("startrek")->desenhar();
 
-    gsGFX->setColor(0,0,0);
-    gsGFX->retanguloPreenchido(0,90,640,290);
+    janela->texto.setChaveTexto("tela_08_%d");
+    janela->executar();
 
-    for (int i=0; i<8;i++){
-        sprintf(textoFormatado,"tela_08_%d",(1)+i);
-        wsManager->escreverLocalizado(WriteSystemFontDefault::pumpdemi,30,100+(30*i),textoFormatado);
-    }
     batalha->desenhar(320,200);
 }
 void Apresentacao::tela09()
 {
-    char textoFormatado[30];
     flManager->getFrameLayer("startrek")->desenhar();
 
-    gsGFX->setColor(0,0,0);
-    gsGFX->retanguloPreenchido(0,70,640,400);
+    janelaCopyright->executar();
 
-    for (int i=0; i<19;i++){
-        sprintf(textoFormatado,"tela_09_%d",(1)+i);
-        wsManager->escreverLocalizado(WriteSystemFontDefault::console,90,76+(20*i),textoFormatado);
-    }
-
-    david->desenhar(580,400);
+    david->desenhar(540,380);
 }
 
 

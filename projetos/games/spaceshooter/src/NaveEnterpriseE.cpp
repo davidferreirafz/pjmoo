@@ -18,9 +18,7 @@
 
 NaveEnterpriseE::NaveEnterpriseE()
 {
-    GraphicSystemImageBufferManager *gsImageBufferManager=GraphicSystemImageBufferManager::getInstance();
-
-    SpriteFactory * spriteFactory   = new SpriteFactory(gsImageBufferManager->getImageBuffer("personagem"));
+    GBF::Imagem::SpriteFactory  *spriteFactory = new GBF::Imagem::SpriteFactory("personagem");
     adicionarSpritePrincipal(spriteFactory->criarSpritePersonagem(129,82,20,56,3,3));
     adicionarSprite(spriteFactory->criarSpritePersonagem(190,82,20,56,6,3),"explosao");
 

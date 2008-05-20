@@ -17,10 +17,11 @@
 #ifndef _TIROABSTRACT_H
 #define _TIROABSTRACT_H
 
-#include <GBF/GraphicSystemImageBufferManager.h>
-#include <GBF/FrameLayerManager.h>
+#include <GBF/ImageBufferManager.h>
+#include <GBF/LayerManager.h>
+#include <GBF/GraphicSystem.h>
 #include <GBF/SpriteFactory.h>
-#include <GBF/PersonagemAutomatico.h>
+#include <GBF/Personagem.h>
 #include "PathStrategy.h"
 
 /** Potencia dos Tiros */
@@ -41,13 +42,13 @@ enum EnumTiroVelocidade
     VELOCIDADE_TORPEDO = 8
 };
 
-class TiroAbstract : public PersonagemAutomatico
+class TiroAbstract : public Personagem::Personagem
 {
 public:
 	//TiroAbstract(int X, int Y);
 	TiroAbstract();
 	virtual ~TiroAbstract();
-	virtual  void acao(InputSystem* INPUT=NULL);
+	virtual  void acao(GBF::Kernel::Input::InputSystem* INPUT=NULL);
     int getPotencia();
 protected:
 
@@ -56,7 +57,7 @@ protected:
 
 	PathStrategy *path;
 
-    static GraphicSystemImageBufferManager *gsImageBufferManager;
+    static GBF::Kernel::Graphic::ImageBufferManager *gsImageBufferManager;
 private:
 
 };

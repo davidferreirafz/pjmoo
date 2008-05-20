@@ -32,25 +32,25 @@ public:
     NaveAliado();
     virtual ~NaveAliado();
 	static void setListTiro(ListTiroJogador* list);
-	
-    void acao(InputSystem* INPUT=NULL);
+
+    void acao(GBF::Kernel::Input::InputSystem * input=NULL);
     void desenhar();
     void setVivo(bool VALOR);
     void colisao(ListItem* listItem);
 	void choque(int forca);
 protected:
 	static ListTiroJogador* listTiro;
-	
+
     void limite();
     void checarArma();
     virtual void prepararPhaser();
-    virtual void prepararTorpedo(); 
+    virtual void prepararTorpedo();
     void selecionarPosicao();
 
 private:
     bool atingido;
     int contagemChoque;
-    
+
     void aumentarVelocidadeDobra();
     void reduzirVelocidadeDobra();
 };

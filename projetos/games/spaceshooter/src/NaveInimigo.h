@@ -18,7 +18,7 @@
 #define _NAVEINIMIGO_H
 
 
-#include <GBF/ParticleSystemManager.h>
+#include <GBF/PSManager.h>
 
 #include "NaveAbstract.h"
 #include "PathFactory.h"
@@ -34,7 +34,7 @@ public:
     NaveInimigo();
     /** Destrutor */
     virtual ~NaveInimigo();
-    virtual void acao(InputSystem* INPUT=NULL);
+    virtual void acao(GBF::Kernel::Input::InputSystem * INPUT=NULL);
     /** Desenha a nave na tela*/
     virtual void desenhar();
     /** Seta se a nave esta viva(ou seja, se não foi destruida) */
@@ -49,7 +49,7 @@ protected:
 	/** Objeto que move a nave*/
 	PathStrategy *path;
 	/** Direção para onde a nave esta indo*/
-    DIRECAO direcao;
+    GBF::Imagem::Sprite::Direcao direcao;
     /** Checa Status das armas*/
     void checarArma();
     /** Efetua verificação para disparar Phaser*/
@@ -61,9 +61,9 @@ protected:
     /** Muda caminho para um randomico */
     void caminho();
     /** Muda caminho para uma determinada direção */
-    void caminho(DIRECAO dir);
+    void caminho(GBF::Imagem::Sprite::Direcao direcao);
     /** Referencia ao gerenciador de particulas*/
-    static ParticleSystemManager* particleManager;
+    static ParticleSystem::PSManager * particleManager;
 private:
 
 };

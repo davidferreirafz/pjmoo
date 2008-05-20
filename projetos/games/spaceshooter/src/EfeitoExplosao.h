@@ -16,11 +16,11 @@
  ***************************************************************************/
 #ifndef _EFEITOEXPLOSAO_H_
 #define _EFEITOEXPLOSAO_H_
-#include <GBF/ParticleSystemEfeitoEsferico.h>
+#include <GBF/PSEfeitoEsferico.h>
 
 #include <cmath>
 
-class EfeitoExplosao : public ParticleSystemEfeitoEsferico
+class EfeitoExplosao : public ParticleSystem::PSEfeitoEsferico
 {
 public:
 	void criar(int x, int y);

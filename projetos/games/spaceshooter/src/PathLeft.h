@@ -29,7 +29,7 @@ public:
 
 	/** Implementa o algoritmo de movimentação.
     OBs.: Retorna verdadeiro se atingiu o limite de movimentação */
-	bool mover(int velocidade,Ponto *posicao,Dimensao dimensao);	
+	bool mover(int velocidade,GBF::Ponto *posicao,GBF::Dimensao dimensao);
 };
 
-#endif 
+#endif

@@ -20,14 +20,13 @@
 #include <string>
 
 #include <GBF/FrameLayer.h>
-#include <GBF/FrameLayerManager.h>
+#include <GBF/LayerManager.h>
 #include <GBF/SpriteFactory.h>
-#include <GBF/GraphicSystemImageBufferManager.h>
+#include <GBF/ImageBufferManager.h>
 #include <GBF/InputSystem.h>
 #include <GBF/SoundSystem.h>
-#include <GBF/WriteSystemManager.h>
-#include <GBF/WriteSystemFontDefault.h>
-#include <GBF/ParticleSystemManager.h>
+#include <GBF/WriteManager.h>
+#include <GBF/PSManager.h>
 
 #include "ListSpaceInimigo.h"
 #include "ListSpaceObstaculo.h"
@@ -59,12 +58,12 @@ public:
     virtual bool isTerminou()=0;
     bool isPerdeu();
 
-    void executar(InputSystem *input);
+    void executar(GBF::Kernel::Input::InputSystem * input);
 
     std::string getZona();
     std::string getMissao();
     std::string getInimigo();
-    Area  getAreaZona();
+    GBF::Area  getAreaZona();
     ArsenalStatus getArsenalStatus();
     void restaurarNave();
     void checkRestaurar();
@@ -73,21 +72,21 @@ public:
 
 protected:
 //Atributos
-    GraphicSystemImageBufferManager *GSIBManager;
+    GBF::Kernel::Graphic::ImageBufferManager *GSIBManager;
 	NaveAliado *nave;
-    FrameLayer *moldura;
-   	FrameLayer *tiles;
+    GBF::Imagem::Layer::FrameLayer *moldura;
+   	GBF::Imagem::Layer::FrameLayer *tiles;
     std::string zona;
     std::string missao;
     std::string inimigo;
     bool ultimoQuadro;
-    Area areaZona;
+    GBF::Area areaZona;
     /** Referencia ao objeto singleton Placar */
-    Placar *placar;
+    Placar * placar;
     /** Referencia ao objeto singleton InterfaceStatus */
-    InterfaceStatus *status;
-   	SoundSystem* soundSystem;
-    ParticleSystemManager* particleManager;
+    InterfaceStatus * status;
+   	GBF::Kernel::Sound::SoundSystem * soundSystem;
+    ParticleSystem::PSManager * particleManager;
 //Metodos
     /** Configura a fase */
     virtual void configurar()=0;

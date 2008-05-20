@@ -19,8 +19,8 @@
 
 #include <string>
 
-#include <GBF/UtilLog.h>
-#include <GBF/TopSystemRecorde.h>
+#include <GBF/Log.h>
+#include <GBF/RSRecorde.h>
 
 
 #include "ListItem.h"
@@ -46,7 +46,7 @@ struct Tempo
 };
 
 class Placar
-{  
+{
 public:
     /** Destrutor */
 	virtual ~Placar();
@@ -58,11 +58,11 @@ public:
 	void incrementar();
     /** Retorna o valor da pontuação atual*/
     unsigned int getPontos();
-    TopSystemRecorde getRecorde();
+    RankingSystem::RSRecorde getRecorde();
 	/** Adiciona bonus em pontos*/
     void adicionarBonus(int pontos);
-    
-    
+
+
 private:
 //Atributos
 	Tempo tempoJogo;
@@ -75,7 +75,7 @@ private:
 	Placar();
 	/** Informações do jogo atual*/
 	//PlacarRegistro registroAtual;
-	TopSystemRecorde registroAtual;
+	RankingSystem::RSRecorde registroAtual;
 	/** Verifica se deve lançar um novo item de bonus*/
     void contagemBonus();
     /** Lança bonus no jogo */

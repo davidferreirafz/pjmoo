@@ -28,10 +28,10 @@ FaseUm::FaseUm()
     areaZona.bottom =  22;
     areaZona.right  = 518;
 
-    wsManager = WriteSystemManager::getInstance();
+    wsManager = GBF::Kernel::Write::WriteManager::getInstance();
 
 	tempoDica.setTempoOriginal(0);
-	tempoDica.setUnidade(TEMPO_MEIO);
+	tempoDica.setUnidade(GBF::Kernel::Timer::TEMPO_SEGUNDO);
     tempoDica.setResetar();
 
     dicaSelecao=1;
@@ -54,7 +54,7 @@ void FaseUm::configurar()
 void FaseUm::iniciar()
 {
     tiles->camera.setBottom();
-    ListSpaceObstaculo::getInstance()->setLimite(20);
+    ListSpaceObstaculo::getInstance()->setLimite(12);
 
     ListSpaceObstaculo::OBSTACULO_ESFERA   = false;
     ListSpaceObstaculo::OBSTACULO_ASTEROID = true;

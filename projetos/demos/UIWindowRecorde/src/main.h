@@ -22,9 +22,10 @@
 #define _MAIN_H
 
 #include <GBF/GBF.h>
-#include <GBF/UserInterfaceWindowTitulo.h>
-#include <GBF/UserInterfaceVisualImagem.h>
-#include <GBF/UserInterfaceVisualSolido.h>
+#include <GBF/GBFramework.h>
+#include <GBF/UIWindowTitulo.h>
+#include <GBF/UIVisualImagem.h>
+#include <GBF/UIVisualSolido.h>
 
 #include "UIWindowRecorde.h"
 

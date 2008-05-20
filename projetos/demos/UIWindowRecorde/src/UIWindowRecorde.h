@@ -2,18 +2,18 @@
 #ifndef _USERINTERFACENOVORECORDE_H
 #define _USERINTERFACENOVORECORDE_H
 
-#include <GBF/UserInterfaceWindow.h>
+#include <GBF/UIWindow.h>
 
-#include <GBF/TopSystemRecorde.h>
-#include <GBF/WriteSystemManager.h>
-#include <GBF/GraphicSystemGFX.h>
-#include <GBF/TimerSystemCronometroDecrescente.h>
-#include <GBF/TimerSystemCronometroCrescente.h>
-#include <GBF/GBF_define.h>
+#include <GBF/RSRecorde.h>
+#include <GBF/WriteManager.h>
+#include <GBF/GFX.h>
+#include <GBF/CronometroDecrescente.h>
+#include <GBF/CronometroCrescente.h>
+#include <GBF/GBF.h>
 #include <string>
 
 #include <GBF/GraphicSystemUtility.h>
-#include <GBF/UserInterfaceVisualSolido.h>
+#include <GBF/UIVisualSolido.h>
 
 #include "UI.h"
 #include "UITecladoVirtual.h"
@@ -21,7 +21,7 @@
 #include "UINumberField.h"
 
 
-class UIWindowRecorde : public UserInterfaceWindow
+class UIWindowRecorde : public UserInterface::Window::UIWindow
 {
 
   private:
@@ -34,11 +34,11 @@ class UIWindowRecorde : public UserInterfaceWindow
 
     int nomePosicao;
 
-    TopSystemRecorde recorde;
+    RankingSystem::RSRecorde recorde;
 
     bool showErro;
 
-    UserInterfaceVisualSolido * uiVisualComponentes;
+    UserInterface::Visual::UIVisualSolido * uiVisualComponentes;
 
   protected:
     void atualizar();
@@ -64,7 +64,7 @@ class UIWindowRecorde : public UserInterfaceWindow
     ~UIWindowRecorde();
 
     //Estilo Visual a ser Aplicado no Componente
-    void setVisualComponentes(UserInterfaceVisualSolido * visual);
+    void setVisualComponentes(UserInterface::Visual::UIVisualSolido * visual);
 
 
     //Define a fonte a ser usada pelo Titulo
@@ -76,10 +76,10 @@ class UIWindowRecorde : public UserInterfaceWindow
 
   public:
     //Retorna o TopSystemRecorde
-    TopSystemRecorde getRecorde();
+    RankingSystem::RSRecorde getRecorde();
 
     //Atribui um TopSystemRecorde para complementar os dados
-    void setRecorde(TopSystemRecorde recorde);
+    void setRecorde(RankingSystem::RSRecorde recorde);
 
     //Gerencia o controle do cursor (navegação) e as opções selecionadas
     bool isAcao(int tipoAcao);

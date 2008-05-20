@@ -1,9 +1,9 @@
 #ifndef UITEXTFIELD_H
 #define UITEXTFIELD_H
 
-#include <GBF/UserInterfaceComponente.h>
+#include <GBF/UIComponente.h>
 #include <GBF/GraphicSystemUtility.h>
-#include <GBF/TimerSystemCronometroCrescente.h>
+#include <GBF/CronometroCrescente.h>
 
 #include "UIField.h"
 #include "UI.h"

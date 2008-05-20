@@ -22,7 +22,7 @@ UIWindowRecorde::UIWindowRecorde()
     posicao.y       = 0;
 
     tempoEspera.setTempoOriginal(1);
-    tempoEspera.setUnidade(TEMPO_CENTESIMO);
+    tempoEspera.setUnidade(GBF::Kernel::Timer::TEMPO_DECIMO);
     tempoEspera.setResetar();
 
     showErro = false;
@@ -53,9 +53,9 @@ void UIWindowRecorde::desenharConteudo()
 //Inicializa as configurações da caixa de texto
 void UIWindowRecorde::inicializar()
 {
-    UserInterfaceWindow::inicializar();
+    UserInterface::Window::UIWindow::inicializar();
 
-    Dimensao d = teclado.getDimensao();
+    GBF::Dimensao d = teclado.getDimensao();
 
     int pX=(posicao.x+dimensao.w)/2-(d.w/2);
     int pY=(posicao.y+dimensao.h)/2;
@@ -103,7 +103,7 @@ void UIWindowRecorde::setFonteEdit(std::string fonteLabel, std::string fonteValu
     fonteAviso.nome=fonteLabel;
 }
 //Estilo Visual a ser Aplicado no Componente
-void UIWindowRecorde::setVisualComponentes(UserInterfaceVisualSolido * visual)
+void UIWindowRecorde::setVisualComponentes(UserInterface::Visual::UIVisualSolido * visual)
 {
     uiVisualComponentes=visual;
 
@@ -121,12 +121,12 @@ void UIWindowRecorde::atualizar()
     textPonto.setValue(recorde.pontos);
 }
 //Retorna o TopSystemRecorde
-TopSystemRecorde UIWindowRecorde::getRecorde()
+RankingSystem::RSRecorde UIWindowRecorde::getRecorde()
 {
     return recorde;
 }
 //Atribui um TopSystemRecorde para complementar os dados
-void UIWindowRecorde::setRecorde(TopSystemRecorde recorde)
+void UIWindowRecorde::setRecorde(RankingSystem::RSRecorde recorde)
 {
     this->recorde  = recorde;
     nomePosicao    = 0;

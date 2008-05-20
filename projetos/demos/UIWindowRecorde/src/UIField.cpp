@@ -3,7 +3,7 @@
 UIField::UIField()
 {
     tempoBlink.setTempoOriginal(0);
-    tempoBlink.setUnidade(TEMPO_CENTESIMO);
+    tempoBlink.setUnidade(GBF::Kernel::Timer::TEMPO_DECIMO);
     tempoBlink.setResetar();
 
     cursor.show=false;
@@ -50,7 +50,7 @@ void UIField::setFonteCampo(std::string fonte)
     dimensao.h=(fonteCampo.dimensao.h)*1.6;
 }
 //Estilo Visual a ser Aplicado no Componente
-void UIField::setVisual(UserInterfaceVisual * visual)
+void UIField::setVisual(UserInterface::Visual::UIVisual * visual)
 {
     this->visual=visual;
 }
@@ -68,9 +68,9 @@ void UIField::atualizar()
     cursor.posicao.y=fonteCampo.posicao.y+fonteCampo.dimensao.h;
 
     if (visual!=NULL){
-        Dimensao d  = dimensao;
+        GBF::Dimensao d  = dimensao;
 
-        Ponto  p  = posicao;
+        GBF::Ponto  p  = posicao;
                p.y= fonteLabel.posicao.y+(fonteLabel.dimensao.h*1.2)-1;
 
         visual->aplicar(p,dimensao);

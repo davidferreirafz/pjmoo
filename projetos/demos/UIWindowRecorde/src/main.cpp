@@ -23,7 +23,7 @@
 
 int main(int argc, char * argv[])
 {
-    GBF frameworkGBF;
+    GBF::GBFramework frameworkGBF;
 
     frameworkGBF.setPath(argv[0]);
     frameworkGBF.setTitulo("UIWindowRecorde","David Ferreira");
@@ -41,21 +41,21 @@ int main(int argc, char * argv[])
 
 
 //configurando suporte a idiomas
-    frameworkGBF.writeSystem->uiTexto->setArquivo("msg.txt");
-    frameworkGBF.writeSystem->uiTexto->detectarIdioma();
+    frameworkGBF.writeSystem->idioma->setArquivo("msg.txt");
+    frameworkGBF.writeSystem->idioma->detectarIdioma();
 
 
-    UserInterfaceVisualImagem *uiVisualTransparente = new UserInterfaceVisualImagem();
+    UserInterface::Visual::UIVisualImagem *uiVisualTransparente = new UserInterface::Visual::UIVisualImagem();
     uiVisualTransparente->setCorBorda(255,255,0);
-    uiVisualTransparente->setTipoBackground(BACKGROUND_LINES_BLACK);
+    uiVisualTransparente->setTipoBackground(UserInterface::Visual::BACKGROUND_LINES_BLACK);
 
 
-    UserInterfaceVisualSolido *uiVisualSolido = new UserInterfaceVisualSolido();
+    UserInterface::Visual::UIVisualSolido *uiVisualSolido = new UserInterface::Visual::UIVisualSolido();
     uiVisualSolido->setCorBorda(164,164,164);
     uiVisualSolido->setCorFundo(0,0,0);
 
 
-    TopSystemRecorde recorde;
+    RankingSystem::RSRecorde recorde;
     recorde.inicializar();
     strcpy(recorde.nome,"          \0");
     strcpy(recorde.nome,"\0");
@@ -86,12 +86,12 @@ int main(int argc, char * argv[])
             break;
         }
 
-        frameworkGBF.writeSystem->escrever(WriteSystemManager::defaultFont,10,10,"Demo::UIWindowRecorde - Criando Componentes GUI");
-        frameworkGBF.writeSystem->escrever(WriteSystemManager::defaultFont,10,30,"PJMOO - Games Multiplataforma");
-        frameworkGBF.writeSystem->escrever(WriteSystemManager::defaultFont,10,50,"http://davidferreira-fz.blogspot.com");
+        frameworkGBF.writeSystem->escrever(GBF::Kernel::Write::WriteManager::defaultFont,10,10,"Demo::UIWindowRecorde - Criando Componentes GUI");
+        frameworkGBF.writeSystem->escrever(GBF::Kernel::Write::WriteManager::defaultFont,10,30,"PJMOO - Games Multiplataforma");
+        frameworkGBF.writeSystem->escrever(GBF::Kernel::Write::WriteManager::defaultFont,10,50,"http://davidferreira-fz.blogspot.com");
 
-        frameworkGBF.writeSystem->escrever(WriteSystemManager::defaultFont,190,400,"by: David Ferreira");
-        frameworkGBF.writeSystem->escrever(WriteSystemManager::defaultFont,190,426,"http://pjmoo.sourceforge.net");
+        frameworkGBF.writeSystem->escrever(GBF::Kernel::Write::WriteManager::defaultFont,190,400,"by: David Ferreira");
+        frameworkGBF.writeSystem->escrever(GBF::Kernel::Write::WriteManager::defaultFont,190,426,"http://pjmoo.sourceforge.net");
 
         janelaRecordeNovo->executar();
 

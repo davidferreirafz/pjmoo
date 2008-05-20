@@ -6,6 +6,8 @@
 #include "Define.h"
 #include <GBF/InputSystem.h>
 
+#include <GBF/ImageBase.h>
+
 
 class LutadorPC : public LutadorAbstract
 {
@@ -14,7 +16,11 @@ class LutadorPC : public LutadorAbstract
 
     virtual ~LutadorPC();
 
-    virtual void acao(InputSystem * input);
+    virtual void acao(GBF::Kernel::Input::InputSystem * input);
+
+
+  protected:
+    virtual void visao(const GBF::Area & adversario);
 
 };
 #endif

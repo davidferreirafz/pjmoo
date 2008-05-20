@@ -1,21 +1,21 @@
 //***************************************************************************
 //  Pancada <Game - Boxing Style>
 //  Copyright (C) 2007 by David Ferreira - FZ
-//  davidferreira.fz@gmail.com - http://pjmoo.sourceforge.net 
+//  davidferreira.fz@gmail.com - http://pjmoo.sourceforge.net
 //***************************************************************************
 //    Este programa é software livre; você pode redistribuí-lo e/ou
 //    modificá-lo sob os termos da Licença Pública Geral GNU, conforme
-//    publicada pela Free Software Foundation; tanto a versão 2 da 
+//    publicada pela Free Software Foundation; tanto a versão 2 da
 //    Licença como (a seu critério) qualquer versão mais nova.
 //***************************************************************************
 //    This program is free software; you can redistribute it and/or modify
 //    it under the terms of the GNU General Public License as published by
-//    the Free Software Foundation; either version 2 of the License, or 
+//    the Free Software Foundation; either version 2 of the License, or
 //    (at your option) any later version.
 //
 //    You should have received a copy of the GNU General Public License
 //    along with this program; if not, write to the
-//    Free Software Foundation, Inc.,                                       
+//    Free Software Foundation, Inc.,
 //    59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 //***************************************************************************
 #ifndef _FASEABSTRACT_H
@@ -31,20 +31,21 @@
 
 #include <GBF/FrameLayer.h>
 
-#include <GBF/WriteSystemManager.h>
+#include <GBF/WriteManager.h>
 
-#include <GBF/TimerSystemCronometroDecrescente.h>
+#include <GBF/CronometroDecrescente.h>
 
-#include <GBF/ParticleSystemManager.h>
+#include <GBF/PSManager.h>
 
-#include <GBF/FrameLayerManager.h>
+#include <GBF/LayerManager.h>
 
 #include "LutadorPlayer.h"
 #include "LutadorPC.h"
 #include <GBF/SoundSystem.h>
+#include <GBF/SoundSystemUtility.h>
 
 
-class FaseAbstract
+class FaseAbstract : public GBF::Kernel::Sound::SoundSystemUtility
 {
   protected:
     LutadorAbstract * lutadorPC;
@@ -91,7 +92,7 @@ class FaseAbstract
 
     int getRound();
 
-    void executar(InputSystem * input);
+    void executar(GBF::Kernel::Input::InputSystem * input);
 
     void primeiroRound();
 
@@ -101,13 +102,13 @@ class FaseAbstract
 
 
   protected:
-    FrameLayer * ringue;
+    GBF::Imagem::Layer::FrameLayer * ringue;
 
-    static WriteSystemManager * wsManager;
+    static GBF::Kernel::Write::WriteManager * wsManager;
 
-    TimerSystemCronometroDecrescente cronometroAuxiliar;
+    GBF::Kernel::Timer::CronometroDecrescente cronometroAuxiliar;
 
-    static ParticleSystemManager * particleManager;
+    static ParticleSystem::PSManager * particleManager;
 
 };
 #endif

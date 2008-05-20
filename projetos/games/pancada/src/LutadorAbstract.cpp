@@ -4,9 +4,9 @@
 //Construtor
 
 //Construtor
-LutadorAbstract::LutadorAbstract(){
-    GraphicSystem  *graphicSystem = GraphicSystem::getInstance();
-    SpriteFactory  *spriteFactory = new SpriteFactory(graphicSystem->imageBufferManager->getImageBuffer("personagem"));
+LutadorAbstract::LutadorAbstract()
+{
+    GBF::Imagem::SpriteFactory  *spriteFactory = new GBF::Imagem::SpriteFactory("personagem");
 
     adicionarSpritePrincipal(spriteFactory->criarSpritePersonagem(0,0,153,76,2,8));
     delete(spriteFactory);
@@ -21,7 +21,7 @@ LutadorAbstract::LutadorAbstract(){
     energia = 100;
 
     if (particleManager==NULL){
-        particleManager = ParticleSystemManager::getInstance();
+        particleManager = ParticleSystem::PSManager::getInstance();
     }
 
     resetar();
@@ -42,8 +42,7 @@ LutadorAbstract::~LutadorAbstract(){
 	}
 }
 
-void LutadorAbstract::setRingue(Area ringue)
-
+void LutadorAbstract::setRingue(GBF::Area ringue)
 {
     ringue.left   +=10;
 	ringue.top    +=20;
@@ -52,7 +51,7 @@ void LutadorAbstract::setRingue(Area ringue)
 
     LutadorAbstract::ringue=ringue;
 }
-void LutadorAbstract::iniciar(int x, int y) 
+void LutadorAbstract::iniciar(int x, int y)
 {
     resetar();
 
@@ -67,10 +66,10 @@ void LutadorAbstract::iniciar(int x, int y)
 //Desenha na tela
 
 //Desenha na tela
-void LutadorAbstract::desenhar() 
+void LutadorAbstract::desenhar()
 {
     checklimites();
-    PersonagemControlado::desenhar();
+    Personagem::desenhar();
 	cabeca->desenhar();
 	luvaesquerda->desenhar();
 	luvadireita->desenhar();
@@ -78,49 +77,49 @@ void LutadorAbstract::desenhar()
 //O lutador está na olhando pra cima
 
 //O lutador está na olhando pra cima
-void LutadorAbstract::olharCima() 
+void LutadorAbstract::olharCima()
 {
 	cabeca->setCima();
 	luvaesquerda->setCima();
 	luvadireita->setCima();
-    getSpritePrincipal()->setDirecao(DR_CIMA);
+    getSpritePrincipal()->setDirecao(GBF::Imagem::Sprite::DR_CIMA);
 }
 //O lutador está na olhando pra baixo
 
 //O lutador está na olhando pra baixo
-void LutadorAbstract::olharBaixo() 
+void LutadorAbstract::olharBaixo()
 {
 	cabeca->setBaixo();
 	luvaesquerda->setBaixo();
 	luvadireita->setBaixo();
-    getSpritePrincipal()->setDirecao(DR_BAIXO);
+    getSpritePrincipal()->setDirecao(GBF::Imagem::Sprite::DR_BAIXO);
 }
-Ponto LutadorAbstract::getPosicao() 
+GBF::Ponto LutadorAbstract::getPosicao()
 {
 	return posicao;
 }
-void LutadorAbstract::setPosicao(int x, int y) 
+void LutadorAbstract::setPosicao(int x, int y)
 {
-    PersonagemAbstract::setPosicao(x,y);
+    Personagem::setPosicao(x,y);
 	luvaesquerda->setPosicao(x,y);
 	luvadireita->setPosicao(x,y);
 	cabeca->setPosicao(x,y);
 }
-Area LutadorAbstract::getArea() 
+GBF::Area LutadorAbstract::getArea()
 {
-    Area area;
+    GBF::Area area;
 
     area.top=posicao.y;
     area.left=posicao.x;
 
-    Dimensao d = getDimensao();
+    GBF::Dimensao d = getDimensao();
 
     area.bottom=d.h;
     area.right=d.w;
 
     return area;
 }
-bool LutadorAbstract::socouAdversario(LutadorAbstract * adversario) 
+bool LutadorAbstract::socouAdversario(LutadorAbstract * adversario)
 {
 	bool retorno =  false;
 
@@ -131,9 +130,9 @@ bool LutadorAbstract::socouAdversario(LutadorAbstract * adversario)
 	}
 
 	if (retorno){
-        Ponto posicao = getPosicao();
+        GBF::Ponto posicao = getPosicao();
 
-		if (getSpritePrincipal()->getDirecao()==DR_CIMA){
+		if (getSpritePrincipal()->getDirecao()==GBF::Imagem::Sprite::DR_CIMA){
 			posicao.y+=8;
 		}else {
 			posicao.y-=8;
@@ -146,63 +145,69 @@ bool LutadorAbstract::socouAdversario(LutadorAbstract * adversario)
 
 	return retorno;
 }
-bool LutadorAbstract::levouSoco(LuvaAbstract * luva) 
+bool LutadorAbstract::levouSoco(LuvaAbstract * luva)
 {
-	bool levou = false;
+    bool levou = false;
 
-	if (delay.acao<=0){
-		delay.acao=2;
+    if (delay.acao<=0){
+        delay.acao=2;
 
-		levou=cabeca->isColisao(luva->getArea());
+        levou=cabeca->isColisao(luva->getArea());
 
-		if (levou){
-			Ponto pntCabeca = cabeca->getPosicao();
-			Ponto posicao = getPosicao();
-
-			SpriteDirecao olhando = getSpritePrincipal()->getDirecao();
+        if (levou){
+            GBF::Ponto pntCabeca = cabeca->getPosicao();
+            GBF::Imagem::Sprite::Direcao olhando = getSpritePrincipal()->getDirecao();
 
             pntCabeca.x+=22;
 
-			if (olhando!=DR_CIMA){
-				pntCabeca.y+=53;
-				posicao.y-=20;
-			} else {
-				posicao.y+=20;
-			}
-
-            if (luva->isLuvaEsquerda()){
-                posicao.x-=20;
+            if (olhando!=GBF::Imagem::Sprite::DR_CIMA){
+                pntCabeca.y+=53;
+                andarCima(8);
             } else {
-                posicao.x+=20;
+                andarBaixo(8);
             }
 
-			energia--;
-			setPosicao(posicao.x,posicao.y);
+            int analiseRingue = int(ringue.right*0.3);
+
+            if (posicao.x<analiseRingue){
+                andarDireita(6);
+            } else if (posicao.x>(ringue.right-analiseRingue)){
+                andarEsquerda(6);
+            } else {
+                if (rand()%2==0){
+                    andarDireita(6);
+                } else {
+                    andarEsquerda(6);
+                }
+            }
+
+            energia--;
 
             EfeitoSangue *sangue = new EfeitoSangue();
             sangue->criar(pntCabeca.x,pntCabeca.y);
 
             particleManager->adicionar(sangue);
-		}
-	} else {
+        }
+    } else {
         delay.acao--;
-	}
+    }
 
-	return levou;
+    return levou;
 }
-void LutadorAbstract::mover(InputSystem * input, LutadorAbstract * adversario) 
+void LutadorAbstract::mover(GBF::Kernel::Input::InputSystem * input, LutadorAbstract * adversario)
 {
     if (!isNocaute()){
-        Ponto pAnterior = getPosicao();
+        GBF::Ponto pAnterior = getPosicao();
 
         acao(input);
         checklimites();
         if (choqueAdversario(adversario->getArea())){
             setPosicao(pAnterior.x,pAnterior.y);
         }
+        visao(adversario->getArea());
     }
 }
-bool LutadorAbstract::isNocaute() 
+bool LutadorAbstract::isNocaute()
 {
     bool caiu = false;
 
@@ -215,17 +220,17 @@ bool LutadorAbstract::isNocaute()
 //Retorna a energia vital do lutador
 
 //Retorna a energia vital do lutador
-int LutadorAbstract::getEnergia() 
+int LutadorAbstract::getEnergia()
 {
     return energia;
 }
-ParticleSystemManager * LutadorAbstract::particleManager =NULL;
+ParticleSystem::PSManager * LutadorAbstract::particleManager =NULL;
 
-Area LutadorAbstract::ringue;
+GBF::Area LutadorAbstract::ringue;
 
-bool LutadorAbstract::choqueAdversario(Area aCorpoAdversario) 
+bool LutadorAbstract::choqueAdversario(GBF::Area aCorpoAdversario)
 {
-	Area aCorpoLcl  = getArea();
+	GBF::Area aCorpoLcl  = getArea();
 
 	if ((aCorpoLcl.left + aCorpoLcl.right  >= aCorpoAdversario.left)&&
 		(aCorpoLcl.left                    <= aCorpoAdversario.left + aCorpoAdversario.right)&&
@@ -239,17 +244,17 @@ bool LutadorAbstract::choqueAdversario(Area aCorpoAdversario)
 //checka com limites do ringue
 
 //checka com limites do ringue
-void LutadorAbstract::checklimites() 
+void LutadorAbstract::checklimites()
 {
-	Ponto posicao     = getPosicao();
-	Dimensao dimensao = getDimensao();
+	GBF::Ponto posicao     = getPosicao();
+	GBF::Dimensao dimensao = getDimensao();
 
     if (posicao.x-22<=ringue.left){
         posicao.x=ringue.left+22;
     } else if (posicao.x+dimensao.w+22>=(ringue.right)){
         posicao.x=(ringue.right) - dimensao.w-22;
     }
-	if (getSpritePrincipal()->getDirecao()==DR_CIMA){
+	if (getSpritePrincipal()->getDirecao()==GBF::Imagem::Sprite::DR_CIMA){
 	    if (posicao.y-32<=ringue.top){
 	        posicao.y=ringue.top+32;
 	    } else if (posicao.y+dimensao.h-32>=(ringue.bottom)){
@@ -265,7 +270,7 @@ void LutadorAbstract::checklimites()
 
 	setPosicao(posicao.x,posicao.y);
 }
-void LutadorAbstract::resetar() 
+void LutadorAbstract::resetar()
 {
 	delay.acao  = 0;
 	delay.tiroA = 0;
@@ -273,4 +278,82 @@ void LutadorAbstract::resetar()
 
     luvaesquerda->setSoco(false);
     luvadireita->setSoco(false);
+}
+//Anda para Baixo(Tela)
+void LutadorAbstract::andarBaixo()
+{
+    posicao.y+=3;
+}
+//Anda para Cima(Tela)
+void LutadorAbstract::andarCima()
+{
+    posicao.y-=3;
+}
+//Anda para Esquerda(Tela)
+void LutadorAbstract::andarEsquerda()
+{
+    posicao.x-=3;
+}
+//Anda para Direita(Tela)
+void LutadorAbstract::andarDireita()
+{
+    posicao.x+=3;
+}
+//Realiza o soco
+void LutadorAbstract::socarDireita(bool soca)
+{
+    if ((delay.tiroB<=0)&&(soca)){
+        luvadireita->setSoco(true);
+        delay.tiroB=10;
+    } else {
+        delay.tiroB--;
+        if (delay.tiroB<=2){
+            luvadireita->setSoco(false);
+        }
+    }
+}
+//Realiza o soco
+void LutadorAbstract::socarEsquerda(bool soca)
+{
+    if ((delay.tiroA<=0)&&(soca)){
+        luvaesquerda->setSoco(true);
+        delay.tiroA=10;
+    } else {
+        delay.tiroA--;
+        if (delay.tiroA<=2){
+            luvaesquerda->setSoco(false);
+        }
+    }
+}
+//Anda para Cima(Tela)
+void LutadorAbstract::andarCima(int passos)
+{
+    for (int i=0; i<passos; i++){
+        andarCima();
+    }
+}
+//Anda para Cima(Tela)
+void LutadorAbstract::andarBaixo(int passos)
+{
+    for (int i=0; i<passos; i++){
+        andarBaixo();
+    }
+}
+//Anda para Cima(Tela)
+void LutadorAbstract::andarDireita(int passos)
+{
+    for (int i=0; i<passos; i++){
+        andarDireita();
+    }
+}
+//Anda para Cima(Tela)
+void LutadorAbstract::andarEsquerda(int passos)
+{
+    for (int i=0; i<passos; i++){
+        andarEsquerda();
+    }
+}
+void LutadorAbstract::visao(const GBF::Area & adversario)
+{
+    (void)adversario;
 }

@@ -1,21 +1,21 @@
 //***************************************************************************
 //  Pancada <Game - Boxing Style>
 //  Copyright (C) 2007 by David Ferreira - FZ
-//  davidferreira.fz@gmail.com - http://pjmoo.sourceforge.net 
+//  davidferreira.fz@gmail.com - http://pjmoo.sourceforge.net
 //***************************************************************************
 //    Este programa é software livre; você pode redistribuí-lo e/ou
 //    modificá-lo sob os termos da Licença Pública Geral GNU, conforme
-//    publicada pela Free Software Foundation; tanto a versão 2 da 
+//    publicada pela Free Software Foundation; tanto a versão 2 da
 //    Licença como (a seu critério) qualquer versão mais nova.
 //***************************************************************************
 //    This program is free software; you can redistribute it and/or modify
 //    it under the terms of the GNU General Public License as published by
-//    the Free Software Foundation; either version 2 of the License, or 
+//    the Free Software Foundation; either version 2 of the License, or
 //    (at your option) any later version.
 //
 //    You should have received a copy of the GNU General Public License
 //    along with this program; if not, write to the
-//    Free Software Foundation, Inc.,                                       
+//    Free Software Foundation, Inc.,
 //    59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 //***************************************************************************
 #include "FaseAbstract.h"
@@ -24,10 +24,10 @@
 // so para virar de costas corretamente
 
 // so para virar de costas corretamente
-void FaseAbstract::ordenacao() 
+void FaseAbstract::ordenacao()
 {
-	Ponto pc     = lutadorPC->getPosicao();
-	Ponto player = lutadorPlayer->getPosicao();
+	GBF::Ponto pc     = lutadorPC->getPosicao();
+	GBF::Ponto player = lutadorPlayer->getPosicao();
 
 	if (player.y <= pc.y){
 		lutadorPlayer->olharBaixo();
@@ -40,23 +40,24 @@ void FaseAbstract::ordenacao()
 //Destrutor
 
 //Destrutor
-FaseAbstract::FaseAbstract(){
+FaseAbstract::FaseAbstract()
+{
     //informa tempo por round
     cronometroAuxiliar.setTempoOriginal(6);
 
     lutadorPlayer = NULL;
     lutadorPC     = NULL;
-    ringue        = FrameLayerManager::getInstance()->getFrameLayer("background");
+    ringue        = GBF::Imagem::Layer::LayerManager::getInstance()->getFrameLayer("background");
 
     if (wsManager==NULL){
-        wsManager = WriteSystemManager::getInstance();
+        wsManager = GBF::Kernel::Write::WriteManager::getInstance();
     }
 
     if (particleManager==NULL){
-        particleManager = ParticleSystemManager::getInstance();
+        particleManager = ParticleSystem::PSManager::getInstance();
     }
 
-    Area areaRingue;
+    GBF::Area areaRingue;
     areaRingue.top    =  34;
     areaRingue.bottom = 469;
     areaRingue.left   =  28;
@@ -70,7 +71,8 @@ FaseAbstract::FaseAbstract(){
 //Construtor
 
 //Construtor
-FaseAbstract::~FaseAbstract(){
+FaseAbstract::~FaseAbstract()
+{
     if (lutadorPlayer){
     	delete(lutadorPlayer);
     }
@@ -82,7 +84,7 @@ FaseAbstract::~FaseAbstract(){
     }
 }
 
-bool FaseAbstract::isGameOver() 
+bool FaseAbstract::isGameOver()
 {
     bool perdeu = false;
 
@@ -93,7 +95,7 @@ bool FaseAbstract::isGameOver()
 
     return perdeu;
 }
-bool FaseAbstract::isFaseFinalizada() 
+bool FaseAbstract::isFaseFinalizada()
 {
     bool finalizou = false;
 
@@ -104,7 +106,7 @@ bool FaseAbstract::isFaseFinalizada()
 
     return finalizou;
 }
-bool FaseAbstract::isFimRound() 
+bool FaseAbstract::isFimRound()
 {
     if (placar.isTempoTerminou()){
         return true;
@@ -112,7 +114,7 @@ bool FaseAbstract::isFimRound()
         return false;
     }
 }
-bool FaseAbstract::isNocaute() 
+bool FaseAbstract::isNocaute()
 {
     bool nocaute = false;
 
@@ -123,7 +125,7 @@ bool FaseAbstract::isNocaute()
 
     return nocaute;
 }
-bool FaseAbstract::isProximoRound() 
+bool FaseAbstract::isProximoRound()
 {
     bool proximo = true;
 
@@ -136,16 +138,16 @@ bool FaseAbstract::isProximoRound()
 
     return proximo;
 }
-void FaseAbstract::proximoRound() 
+void FaseAbstract::proximoRound()
 {
     round.proximo();
     placar.iniciarRound();
 }
-int FaseAbstract::getRound() 
+int FaseAbstract::getRound()
 {
 	return int(round.get());
 }
-void FaseAbstract::executar(InputSystem * input) 
+void FaseAbstract::executar(GBF::Kernel::Input::InputSystem * input)
 {
     //Movimenta os lutadores
 	lutadorPlayer->mover(input,lutadorPC);
@@ -164,13 +166,13 @@ void FaseAbstract::executar(InputSystem * input)
     placar.processarTempo();
     particleManager->executar();
 }
-void FaseAbstract::primeiroRound() 
+void FaseAbstract::primeiroRound()
 {
     round.setPrimeiro();
     placar.iniciar();
     cronometroAuxiliar.setResetar();
 }
-void FaseAbstract::desenhar() 
+void FaseAbstract::desenhar()
 {
     ringue->desenhar();
 
@@ -185,11 +187,11 @@ void FaseAbstract::desenhar()
     statusPC.desenhar(placar.getPontosPC(),placar.getRoundsPC(),lutadorPC->getEnergia());
     statusTempo.desenhar(placar.getRoundTempo());
 }
-void FaseAbstract::setTotalRound(int total) 
+void FaseAbstract::setTotalRound(int total)
 {
     round.setMaximo(total);
 }
-WriteSystemManager * FaseAbstract::wsManager;
+GBF::Kernel::Write::WriteManager * FaseAbstract::wsManager;
 
-ParticleSystemManager * FaseAbstract::particleManager;
+ParticleSystem::PSManager * FaseAbstract::particleManager;
 

@@ -2,9 +2,9 @@
 #ifndef _LUTADORABSTRACT_H
 #define _LUTADORABSTRACT_H
 
-#include <GBF/GraphicSystemImage.h>
+#include <GBF/ImageBase.h>
 
-#include <GBF/GBF_define.h>
+#include <GBF/GBF.h>
 
 #include "LuvaAbstract.h"
 #include <GBF/InputSystem.h>
@@ -12,15 +12,15 @@
 #include "Cabeca.h"
 #include "LuvaDireita.h"
 #include "LuvaEsquerda.h"
-#include <GBF/ParticleSystemManager.h>
+#include <GBF/PSManager.h>
 
-#include <GBF/PersonagemControlado.h>
+#include <GBF/Personagem.h>
 
 #include "EfeitoSangue.h"
 #include "CabecaFactory.h"
 #include "Define.h"
 
-class LutadorAbstract : public PersonagemControlado
+class LutadorAbstract : public Personagem::Personagem
 {
   public:
     //Construtor
@@ -29,7 +29,7 @@ class LutadorAbstract : public PersonagemControlado
     //Destrutor
     virtual ~LutadorAbstract();
 
-    static void setRingue(Area ringue);
+    static void setRingue(GBF::Area ringue);
 
     void iniciar(int x, int y);
 
@@ -42,17 +42,17 @@ class LutadorAbstract : public PersonagemControlado
     //O lutador está na olhando pra baixo
     void olharBaixo();
 
-    Ponto getPosicao();
+    GBF::Ponto getPosicao();
 
     virtual void setPosicao(int x, int y);
 
-    Area getArea();
+    GBF::Area getArea();
 
     bool socouAdversario(LutadorAbstract * adversario);
 
     bool levouSoco(LuvaAbstract * luva);
 
-    void mover(InputSystem * input, LutadorAbstract * adversario);
+    void mover(GBF::Kernel::Input::InputSystem * input, LutadorAbstract * adversario);
 
     bool isNocaute();
 
@@ -63,17 +63,17 @@ class LutadorAbstract : public PersonagemControlado
   protected:
     Cabeca * cabeca;
 
-    Dimensao dimensao;
+    GBF::Dimensao dimensao;
 
     LuvaDireita * luvadireita;
 
     LuvaEsquerda * luvaesquerda;
 
-    static ParticleSystemManager * particleManager;
+    static ParticleSystem::PSManager * particleManager;
 
-    static Area ringue;
+    static GBF::Area ringue;
 
-    bool choqueAdversario(Area aCorpoAdversario);
+    bool choqueAdversario(GBF::Area aCorpoAdversario);
 
     //checka com limites do ringue
     void checklimites();
@@ -83,6 +83,46 @@ class LutadorAbstract : public PersonagemControlado
     int energia;
 
     void resetar();
+
+
+  protected:
+    //Anda para Baixo(Tela)
+    void andarBaixo();
+
+    //Anda para Cima(Tela)
+    void andarCima();
+
+    //Anda para Esquerda(Tela)
+    void andarEsquerda();
+
+    //Anda para Direita(Tela)
+    void andarDireita();
+
+
+  public:
+    //Realiza o soco
+    void socarDireita(bool soca);
+
+    //Realiza o soco
+    void socarEsquerda(bool soca);
+
+
+  private:
+    //Anda para Cima(Tela)
+    void andarCima(int passos);
+
+    //Anda para Cima(Tela)
+    void andarBaixo(int passos);
+
+    //Anda para Cima(Tela)
+    void andarDireita(int passos);
+
+    //Anda para Cima(Tela)
+    void andarEsquerda(int passos);
+
+
+  protected:
+    virtual void visao(const GBF::Area & adversario);
 
 };
 #endif

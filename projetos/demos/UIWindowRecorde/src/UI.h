@@ -1,25 +1,25 @@
 #ifndef TECLADO_DEFINE_INCLUDED
 #define TECLADO_DEFINE_INCLUDED
 
-#include <GBF/GBF_define.h>
+#include <GBF/GBF.h>
 
 #include <string>
 
 struct UIFonteReferencia
 {
     std::string nome;
-    Dimensao dimensao;
+    GBF::Dimensao dimensao;
 };
 
 struct UIFonteExtendida : public UIFonteReferencia
 {
-    Ponto posicao;
+    GBF::Ponto posicao;
 };
 
 struct UICursor
 {
     bool show;
-    Ponto posicao;
+    GBF::Ponto posicao;
 };
 
 

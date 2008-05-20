@@ -1,14 +1,14 @@
 #ifndef UIFIELD_H
 #define UIFIELD_H
 
-#include <GBF/UserInterfaceComponente.h>
+#include <GBF/UIComponente.h>
 #include <GBF/GraphicSystemUtility.h>
-#include <GBF/TimerSystemCronometroCrescente.h>
-#include <GBF/UserInterfaceVisual.h>
+#include <GBF/CronometroCrescente.h>
+#include <GBF/UIVisual.h>
 
 #include "UI.h"
 
-class UIField: public UserInterfaceComponente , public GraphicSystemUtility
+class UIField: public UserInterface::UIComponente , public GBF::Kernel::Graphic::GraphicSystemUtility
 {
   public:
     UIField();
@@ -24,7 +24,7 @@ class UIField: public UserInterfaceComponente , public GraphicSystemUtility
     void maxLength(int length);
     void showCursor(bool show);
     void setCursorPosicao(int posicao);
-    void setVisual(UserInterfaceVisual * visual);
+    void setVisual(UserInterface::Visual::UIVisual * visual);
 
   protected:
 
@@ -44,9 +44,9 @@ class UIField: public UserInterfaceComponente , public GraphicSystemUtility
     void atualizar();
     void desenhar();
 
-    TimerSystemCronometroCrescente tempoBlink;
+    GBF::Kernel::Timer::CronometroCrescente tempoBlink;
 
-    UserInterfaceVisual* visual;
+    UserInterface::Visual::UIVisual * visual;
 
   private:
     std::string label;

@@ -69,7 +69,7 @@ void Jogo::inicializarRecursos()
 {
 //configurando modo de vídeo
     frameworkGBF->setTitulo("Pancada","David de Almeida Ferreira");
-    frameworkGBF->iniciar(640,480,16,isFullScreen());
+    frameworkGBF->iniciar(640,480,16,isFullScreen(),GBF::Kernel::FPS::FPS_LIMITADO);
     frameworkGBF->inputSystemCore->setControleExclusivo(SDL_GRAB_OFF);
 
     //carregando imagens
@@ -79,10 +79,10 @@ void Jogo::inicializarRecursos()
 
 
     //carregando fontes
-    frameworkGBF->writeSystem->carregar("texto",frameworkGBF->getPath()+"data//fonte//texto.png");
-    frameworkGBF->writeSystem->carregar("menu",frameworkGBF->getPath()+"data//fonte//army.png");
-    frameworkGBF->writeSystem->carregar("kiloton16",frameworkGBF->getPath()+"data//fonte//kiloton_16.png");
-    frameworkGBF->writeSystem->carregar("kiloton24",frameworkGBF->getPath()+"data//fonte//kiloton_24.png");
+    frameworkGBF->writeSystem->carregar("texto","data//fonte//texto.png");
+    frameworkGBF->writeSystem->carregar("menu","data//fonte//army.png");
+    frameworkGBF->writeSystem->carregar("kiloton16","data//fonte//kiloton_16.png");
+    frameworkGBF->writeSystem->carregar("kiloton24","data//fonte//kiloton_24.png");
 
 //carregando audio - efeitos
 //Configura volume dos efeitos

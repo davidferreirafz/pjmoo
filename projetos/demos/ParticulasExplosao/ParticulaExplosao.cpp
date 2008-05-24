@@ -5,6 +5,7 @@
 #include <stdlib.h>
 #include <SDL/SDL.h>
 #include <GBF/GBF.h>
+#include <GBF/GBFramework.h>
 #include "SystemColor.h"
 
 #define NUMERO 200
@@ -15,12 +16,12 @@ int raioOrigemY = 0;
 
 struct Particula
 {
-    PontoVirtual posicao;
-    PontoVirtual velocidade;
-    PontoVirtual posicaoAntiga;
+    GBF::PontoVirtual posicao;
+    GBF::PontoVirtual velocidade;
+    GBF::PontoVirtual posicaoAntiga;
     int energia;
     bool ativa;
-    HSV cor; 
+    HSV cor;
 };
 
 Particula sistema[NUMERO];
@@ -35,22 +36,22 @@ void criarEfeito(int origemX, int origemY)
 
     for (int i=0; i<NUMERO; i++){
         velocidade = ((float)(rand()%9000)/1000);
-        angulo     = ((float)(rand()%6280)/1000);        
+        angulo     = ((float)(rand()%6280)/1000);
         sistema[i].posicao.x    = raioOrigemX;
         sistema[i].posicao.y    = raioOrigemY;
         sistema[i].velocidade.x = velocidade * cos(angulo);
         sistema[i].velocidade.y = velocidade * sin(angulo);
-        sistema[i].energia      = rand()%(raioAlcance*2);  
+        sistema[i].energia      = rand()%(raioAlcance*2);
         sistema[i].ativa        = true;
         sistema[i].cor.h = 60;
         sistema[i].cor.s = 1.0;
         sistema[i].cor.v = 1.0;
-    }   
+    }
 }
 void atualizarEfeito()
 {
     float qx, qy, qr;
-    qr = std::pow(float(raioAlcance), 2); //quadrado da soma dos raios    
+    qr = pow(float(raioAlcance), 2); //quadrado da soma dos raios
 
     for (int i=0; i<NUMERO; i++){
         if (sistema[i].ativa){
@@ -58,8 +59,8 @@ void atualizarEfeito()
             sistema[i].posicao.y  += sistema[i].velocidade.y;
             sistema[i].energia--;
 
-            qx = std::pow(float(raioOrigemX-sistema[i].posicao.x), 2); //quadrado da distância em x
-            qy = std::pow(float(raioOrigemY-sistema[i].posicao.y), 2); //quadrado da distância em y
+            qx = pow(float(raioOrigemX-sistema[i].posicao.x), 2); //quadrado da distância em x
+            qy = pow(float(raioOrigemY-sistema[i].posicao.y), 2); //quadrado da distância em y
 
             if ((sistema[i].energia<0)||(qx + qy >= qr)){
                 sistema[i].ativa = false;
@@ -78,18 +79,18 @@ void atualizarEfeito()
 }
 void desenharEfeito()
 {
-    static GraphicSystem* graphicSystem = GraphicSystem::getInstance();    
+    static GBF::Kernel::Graphic::GraphicSystem * graphicSystem = GBF::Kernel::Graphic::GraphicSystem::getInstance();
 
-    graphicSystem->gsGFX->setColor(255,255,255);
-    graphicSystem->gsScreen->travar();
+    graphicSystem->gfx->setColor(255,255,255);
+    graphicSystem->gfx->travar();
     for (int i=0; i<NUMERO; i++){
         if (sistema[i].ativa){
 			RGB tcor = SystemColor::forRGB(sistema[i].cor);
-            graphicSystem->gsGFX->setColor(tcor.r,tcor.g,tcor.b);
-            graphicSystem->gsGFX->putPixel(int(sistema[i].posicao.x),int(sistema[i].posicao.y));
+            graphicSystem->gfx->setColor(tcor.r,tcor.g,tcor.b);
+            graphicSystem->gfx->putPixel(int(sistema[i].posicao.x),int(sistema[i].posicao.y));
         }
     }
-    graphicSystem->gsScreen->destravar();    
+    graphicSystem->gfx->destravar();
 }
 
 bool isTerminouEfeito()
@@ -107,31 +108,31 @@ bool isTerminouEfeito()
 // Entry point
 int main(int argc, char *argv[])
 {
-	GBF *frameworkGBF = new GBF();   
-	
+	GBF::GBFramework * frameworkGBF = new GBF::GBFramework();
+
     frameworkGBF->setPath(argv[0]);
     frameworkGBF->setTitulo("GBF :: Particula Explosao","David de Almeida Ferreira");
-    frameworkGBF->iniciar(640,480,16,false);
-    frameworkGBF->inputSystem->setControleExclusivo(SDL_GRAB_OFF);
-    
-	while(true) {
-		if (frameworkGBF->inputSystem->teclado->isKey(SDLK_ESCAPE)){
-			break;
-		}       
+    frameworkGBF->iniciar(640,480,16,false,GBF::Kernel::FPS::FPS_LIMITADO);
+    frameworkGBF->inputSystemCore->setControleExclusivo(SDL_GRAB_OFF);
 
-		if ((frameworkGBF->inputSystem->teclado->isKey(SDLK_p))&&(isTerminouEfeito())){
+	while(true) {
+		if (frameworkGBF->inputSystemCore->inputSystem->teclado->isKey(SDLK_ESCAPE)){
+			break;
+		}
+
+		if ((frameworkGBF->inputSystemCore->inputSystem->teclado->isKey(SDLK_RETURN))&&(isTerminouEfeito())){
 			criarEfeito(320,240);
-		}		
+		}
 
         desenharEfeito();
-        atualizarEfeito();        
+        atualizarEfeito();
 		frameworkGBF->atualizar();
-		frameworkGBF->graphicSystem->clear();
+		frameworkGBF->graphicSystemCore->clear();
 	}
-	
+
     if (frameworkGBF){
         delete(frameworkGBF);
-    }   
-    	
-	return 0;  
+    }
+
+	return 0;
 }

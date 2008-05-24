@@ -65,17 +65,18 @@ void Jogo::inicializarRecursos()
 {
 //configurando modo de vídeo
     frameworkGBF->setTitulo("FZPong","David de Almeida Ferreira");
-    frameworkGBF->iniciar(640,480,16,isFullScreen());
+    frameworkGBF->iniciar(640,480,16,isFullScreen(),GBF::Kernel::FPS::FPS_LIMITADO);
     frameworkGBF->inputSystemCore->setControleExclusivo(SDL_GRAB_OFF);
+    frameworkGBF->setFPS(false);
 
     //carregando imagens
     frameworkGBF->graphicSystemCore->graphicSystem->imageBufferManager->carregar("personagem","data//imagem//sprites.png");
     frameworkGBF->graphicSystemCore->graphicSystem->imageBufferManager->carregar("background","data//imagem//background.png");
 
     //carregando fontes
-    frameworkGBF->writeSystem->carregar("menu",frameworkGBF->getPath()+"data//fonte//kiloton.png");
-    frameworkGBF->writeSystem->carregar("texto",frameworkGBF->getPath()+"data//fonte//kiloton_18.png");
-    frameworkGBF->writeSystem->carregar("kiloton10",frameworkGBF->getPath()+"data//fonte//kiloton_10.png");
+    frameworkGBF->writeSystem->carregar("menu","data//fonte//kiloton.png");
+    frameworkGBF->writeSystem->carregar("texto","data//fonte//kiloton_18.png");
+    frameworkGBF->writeSystem->carregar("kiloton10","data//fonte//kiloton_10.png");
 
 //carregando audio - efeitos
     frameworkGBF->soundSystemCore->soundSystem->fxManager->carregar("ponto","data//som//ponto.wav");

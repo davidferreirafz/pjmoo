@@ -84,7 +84,7 @@ void CPU::desenhar()
     Raquete::desenhar();
 
 #ifdef DEBUG
-    GraphicSystemGFX *gfx = GraphicSystem::getInstance()->gfx;
+    GBF::Kernel::Graphic::GFX *gfx = GBF::Kernel::Graphic::GraphicSystem::getInstance()->gfx;
 
     gfx->setColor(255,255,255);
     gfx->circulo(posicao.x+getDimensao().w/2,posicao.y+getDimensao().h/2,raioVisao);

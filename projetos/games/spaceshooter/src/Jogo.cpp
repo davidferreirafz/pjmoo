@@ -71,9 +71,6 @@ Jogo::~Jogo()
     if (janelaRecorde){
         delete(janelaRecorde);
     }
-    if (janelaRecordeNovo){
-        delete(janelaRecordeNovo);
-    }
 }
 void Jogo::apresentacao()
 {
@@ -188,8 +185,6 @@ void Jogo::topGaleriaExibir()
     frameworkGBF->writeSystem->escreverLocalizado("nisemega_extra", 90,56,"tela_top_recorde_2");
     frameworkGBF->writeSystem->escreverLocalizado("nisemega_extra",340,56,"tela_top_recorde_3");
 
-    showAvisoRecorde();
-
     if (janelaRecorde->isAcao(UserInterface::Window::UIWindowDialog::BOTAO_OK)){
         setMenu();
     }
@@ -202,7 +197,7 @@ bool Jogo::gatilhoTopGaleriaNovo()
 
     if (!recordeManager->pesquisar(recorde)){
         if(recorde.pontos>recordeManager->getRecorde(9).pontos){
-            janelaRecordeNovo->setRecorde(recorde);
+            uiRecordeNovo->setRecorde(recorde);
             continua=true;
         }
     }
@@ -216,18 +211,18 @@ void Jogo::topGaleriaNovo()
 {
     GBF::Imagem::Layer::LayerManager::getInstance()->getFrameLayer("console")->desenhar();
 
-    janelaRecordeNovo->executar();
+    uiRecordeNovo->executar();
 
-    if (janelaRecordeNovo->isAcao(UserInterface::Window::UIWindowRecorde::BOTAO_SALVAR)){
+    if (uiRecordeNovo->isAcao(UserInterface::Window::UIWindowRecorde::BOTAO_SALVAR)){
         setTopGaleriaSalvar();
     }
 }
-void Jogo::topGaleriaSalvar() {
-
+void Jogo::topGaleriaSalvar()
+{
     if ((recordeManager)&&(uiRecordeNovo)){
-         if (recordeManager->adicionar(uiRecordeNovo->getRecorde())){
+        if (recordeManager->adicionar(uiRecordeNovo->getRecorde())){
             recordeManager->salvar();
-         }
+        }
     }
     setTopGaleriaExibir();
 }
@@ -371,8 +366,9 @@ void Jogo::jogoZerado()
 void Jogo::inicializarRecursos()
 {
     frameworkGBF->setTitulo("GBF :: SpaceShooter : Trek's","DukItan Software");
-    frameworkGBF->iniciar(640,480,16,isFullScreen());
-    //Ativando GRAB_ON para evitar mudança de tela durante o jogo no Gnome (Desktop para o GNU/Linux)
+    frameworkGBF->iniciar(640,480,16,isFullScreen(),GBF::Kernel::FPS::FPS_LIMITADO);
+    //Ativando GRAB_ON para evitar mudança de tela durante o
+    // jogo no Gnome (Desktop para o GNU/Linux)
     frameworkGBF->inputSystemCore->setControleExclusivo(SDL_GRAB_ON);
 
     recordeManager->setArquivo("data//etc//toprecord.top");
@@ -389,11 +385,11 @@ void Jogo::inicializarRecursos()
     frameworkGBF->graphicSystemCore->graphicSystem->imageBufferManager->carregar("abertura","data//imagem//spaceshooter_abertura.png");
 
 
-    frameworkGBF->writeSystem->carregar("nisemegaeu",frameworkGBF->getPath()+"data//fonte//nisemegaeu.png");
-    frameworkGBF->writeSystem->carregar("texto",frameworkGBF->getPath()+"data//fonte//ds9_computer.png");
-    frameworkGBF->writeSystem->carregar("recorde",frameworkGBF->getPath()+"data//fonte//recorde.png");
-    frameworkGBF->writeSystem->carregar("nisemega_extra",frameworkGBF->getPath()+"data//fonte//nisemegaeu.png");
-    frameworkGBF->writeSystem->carregar("status",frameworkGBF->getPath()+"data//fonte//nisemega.png");
+    frameworkGBF->writeSystem->carregar("nisemegaeu","data//fonte//nisemegaeu.png");
+    frameworkGBF->writeSystem->carregar("texto","data//fonte//ds9_computer.png");
+    frameworkGBF->writeSystem->carregar("recorde","data//fonte//recorde.png");
+    frameworkGBF->writeSystem->carregar("nisemega_extra","data//fonte//nisemegaeu.png");
+    frameworkGBF->writeSystem->carregar("status","data//fonte//nisemega.png");
 
     frameworkGBF->writeSystem->getFonte("recorde")->setDimensao(24,24);
     frameworkGBF->writeSystem->getFonte("status")->setDimensao(16,16);
@@ -524,7 +520,7 @@ void Jogo::inicializarRecursos()
     janelaRecorde->setDimensao(529,327);
     janelaRecorde->titulo.setFonte("recorde");
     janelaRecorde->titulo.setChaveTexto("tela_top_recorde_1");
-    janelaRecorde->setVisual(uiVisualTransparente->clone());
+    janelaRecorde->setVisual(uiVisualSolido->clone());
     janelaRecorde->adicionarBotao(new UserInterface::Componente::UIBotao("nisemega_extra","botao_enter",SDLK_RETURN));
     janelaRecorde->inicializar();
 
@@ -540,28 +536,18 @@ void Jogo::inicializarRecursos()
     janela->adicionarBotao(new UserInterface::Componente::UIBotao("nisemega_extra","botao_enter",SDLK_RETURN));
     janela->inicializar();
 
-    janelaRecordeNovo = new UserInterface::Window::UIWindowRecorde();
-    janelaRecordeNovo->setPosicao(70,80);
-    janelaRecordeNovo->setDimensao(480,260);
-    janelaRecordeNovo->setVisual(uiVisualTransparente->clone());
-    janelaRecordeNovo->setVisualComponentes(uiVisualSolido);//Clonar para usar
-    janelaRecordeNovo->setFonteTitulo("recorde");
-    janelaRecordeNovo->setFonteEdit("texto","nisemega_extra");
-    janelaRecordeNovo->setFonteTecladoVirtual("recorde","texto");
-
-    janelaRecordeNovo->inicializar();
+    uiRecordeNovo = new UserInterface::Window::UIWindowRecorde();
+    uiRecordeNovo->setPosicao(70,80);
+    uiRecordeNovo->setDimensao(480,260);
+    uiRecordeNovo->setVisual(uiVisualTransparente->clone());
+    uiRecordeNovo->setVisualComponentes(uiVisualSolido);//Clonar para usar
+    uiRecordeNovo->setFonteTitulo("recorde");
+    uiRecordeNovo->setFonteEdit("texto","nisemega_extra");
+    uiRecordeNovo->setFonteTecladoVirtual("recorde","texto");
+    uiRecordeNovo->inicializar();
 
     delete(uiVisualTransparente);
 //    delete(uiVisualSolido);
-}
-void Jogo::showAvisoRecorde()
-{
-    char textoFormatado[30];
-
-    for (int i=0; i<3;i++){
-        sprintf(textoFormatado,"top_recorde_aviso_%d",(1)+i);
-        frameworkGBF->writeSystem->escreverLocalizado("texto",60,390+(18*i),textoFormatado);
-    }
 }
 void Jogo::showInfo()
 {
@@ -613,7 +599,7 @@ bool Jogo::desenharBotaoEnter()
 
     if (desenhe){
         frameworkGBF->graphicSystemCore->graphicSystem->gfx->setColor(0,0,0);
-        frameworkGBF->graphicSystemCore->graphicSystem->gfx->retanguloPreenchido(504,369,100,14);
+        frameworkGBF->graphicSystemCore->graphicSystem->gfx->retanguloPreenchido(504,369,136,14);
         frameworkGBF->writeSystem->escreverLocalizado("nisemega_extra",500,372,"botao_enter");
     }
     return desenhe;

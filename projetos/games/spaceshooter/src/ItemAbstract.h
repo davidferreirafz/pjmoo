@@ -43,7 +43,7 @@ public:
     /** Retorna mensagem sobre o item*/
     virtual std::string getHelp()=0;
     int getBonus();
-    virtual void acao(GBF::Kernel::Input::InputSystem * INPUT=NULL);
+    virtual void acao(GBF::Kernel::Input::InputSystem * input=NULL);
 
 protected:
 	int bonus;

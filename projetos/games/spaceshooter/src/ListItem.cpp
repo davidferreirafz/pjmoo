@@ -48,7 +48,7 @@ void ListItem::desenhar()
     if (lista.size()>0){
         for (unsigned int i=0;i<lista.size();i++){
             ItemAbstract* item=(ItemAbstract*)lista[i];
-            wsManager->escreverLocalizado("tech",10,10+(i*20),item->getHelp().c_str());
+            wsManager->escreverLocalizado("texto",10,10+(i*20),item->getHelp().c_str());
         }
 
     }

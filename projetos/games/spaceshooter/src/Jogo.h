@@ -96,7 +96,6 @@ private:
 
     bool desenharBotaoEnter();
 
-    void showAvisoRecorde();
     void showInfo();
     void showTitulo();
 
@@ -107,7 +106,6 @@ private:
     UserInterface::Window::UIWindowTitulo * janelaAjuda;
 
     UserInterface::Window::UIWindowTitulo * janelaRecorde;
-    UserInterface::Window::UIWindowRecorde * janelaRecordeNovo;
 
     UserInterface::Window::UIWindowTitulo * janela;
 };

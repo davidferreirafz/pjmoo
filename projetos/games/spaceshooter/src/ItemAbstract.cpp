@@ -29,7 +29,7 @@ ItemAbstract::~ItemAbstract()
         path = NULL;
     }
 }
-void ItemAbstract::acao(GBF::Kernel::Input::InputSystem * INPUT)
+void ItemAbstract::acao(GBF::Kernel::Input::InputSystem * input)
 {
     if (isAtivo()){
         if (isVivo()){

@@ -2,10 +2,20 @@
 #English
 #LANG=en_US
 
+GBF_UIRecorde_title=New Record
+GBF_UIRecorde_button_back=Back
+GBF_UIRecorde_button_next=Next
+GBF_UIRecorde_button_save=Save
+
+GBF_UIRecorde_warning=Name Required. ESC to cancel.
+
+GBF_UIRecorde_title_player=Player
+GBF_UIRecorde_title_points=Points
+
 #Apresentacao::tela01()
 tela_01_1=SpaceShooter - The Final Threat
 tela_01_2=Produced with GBF Technology
-tela_01_3=http://pjmoo.codigolivre.org.br
+tela_01_3=http://pjmoo.wiki.sourceforge.net
 tela_01_4=OpenSource - Made in Brazil - CE
 
 
@@ -124,13 +134,13 @@ fase_finalizada_01=Mission Completed
 
 
 #Controle::telaPause()
-tela_pause_01=PAUSE
-                      
+tela_pause_01=Visit project site
+tela_pause_02=http://pjmoo.wiki.sourceforge.net/SpaceShooter
 
 #Jogo::telaMenu()
 tela_info_1=OpenSource - Made in Brazil - Ceará
-tela_info_2=http://pjmoo.codigolivre.org.br
-tela_info_3=SpaceShooter v1.4
+tela_info_2=http://pjmoo.wiki.sourceforge.net
+tela_info_3=SpaceShooter v2.0
 
 
 #Jogo::telaSobre                          
@@ -144,16 +154,16 @@ tela_sobre_07=
 tela_sobre_08=    Fight for the survival of your race!
 
 #Jogo::telaAjuda
-tela_ajuda_01=#Movement:               
-tela_ajuda_02=   + Joystick and Arrows
-tela_ajuda_03=                             
-tela_ajuda_04=#Weapons:                      
-tela_ajuda_05=   + Phaser                     
-tela_ajuda_06=      Left-CTRL or A Button[Joy] 
-tela_ajuda_07=                             
-tela_ajuda_08=   + Torpedo                    
-tela_ajuda_09=      Left-ALT or B Button[Joy]  
-
+tela_ajuda_01=# Movement:
+tela_ajuda_02=   Joystick and Arrows
+tela_ajuda_03= 
+tela_ajuda_04=# Weapons - Phaser
+tela_ajuda_05=    Keyboard: CTRL[Left]
+tela_ajuda_06=    Joystick: Button A
+tela_ajuda_07= 
+tela_ajuda_08=# Weapons - Torpedo
+tela_ajuda_09=    Keyboard: ALT[Left]
+tela_ajuda_10=    Joystick: Button B
 
 #Jogo::telaCredito()
 tela_credito_01=#Developer:             
@@ -167,15 +177,13 @@ tela_credito_08=#Translation:
 tela_credito_09=    David Gustavo Mazieiro (DGM)
 tela_credito_10=#E-Mail:                    
 tela_credito_11=    dgmdavid@bol.com.br  
-tela_credito_12=#Site:                      
-tela_credito_13=    www.dgmsoft.rg3.net
 
 
 #Jogo::telaTopRecorde
 #Jogo::telaTopRecordeNovo
 tela_top_recorde_1=RECORD
 tela_top_recorde_2=Player
-tela_top_recorde_3=Punctuation
+tela_top_recorde_3=Points
 
 
 #Menu::Menu

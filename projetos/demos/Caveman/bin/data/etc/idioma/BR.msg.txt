@@ -1,0 +1,17 @@
+#Arquivo de Textos
+#Português Brasil
+#LANG=pt_BR
+
+GBF_UIRecorde_title=Novo Recorde
+GBF_UIRecorde_button_back=Voltar
+GBF_UIRecorde_button_next=Próximo
+GBF_UIRecorde_button_save=Salvar
+
+GBF_UIRecorde_warning=Nome Obrigatório. ESC para cancelar.
+
+GBF_UIRecorde_title_player=Jogador
+GBF_UIRecorde_title_points=Pontos
+
+
+
+

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="Caveman" />
+		<Option pch_mode="0" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="linux - debug">
+				<Option output="bin/Caveman" prefix_auto="0" extension_auto="0" />
+				<Option working_dir="bin/" />
+				<Option type="0" />
+				<Option compiler="gcc" />
+				<Option projectLinkerOptionsRelation="1" />
+				<Option projectResourceIncludeDirsRelation="0" />
+				<Compiler>
+					<Add option="-W" />
+					<Add option="-Wall" />
+					<Add option="-pg" />
+					<Add option="-g" />
+				</Compiler>
+				<Linker>
+					<Add option="-pg" />
+					<Add option="-mwindows" />
+					<Add library="GBF" />
+					<Add library="SDL_mixer" />
+					<Add library="SDL_image" />
+					<Add library="SDLmain" />
+					<Add library="SDL" />
+				</Linker>
+			</Target>
+			<Target title="win32 - debug">
+				<Option output="bin/Caveman.exe" prefix_auto="0" extension_auto="0" />
+				<Option working_dir="bin/" />
+				<Option type="0" />
+				<Option compiler="gcc" />
+				<Option projectResourceIncludeDirsRelation="1" />
+				<Compiler>
+					<Add option="-fexpensive-optimizations" />
+					<Add option="-Os" />
+					<Add option="-W" />
+					<Add option="-Wall" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+				</Linker>
+			</Target>
+		</Build>
+		<Linker>
+			<Add option="-mwindows" />
+			<Add library="GBF" />
+			<Add library="mingw32" />
+			<Add library="SDL_Mixer" />
+			<Add library="SDL_Image" />
+			<Add library="SDLmain" />
+			<Add library="SDL" />
+		</Linker>
+		<Unit filename="src/Caveman.cpp" />
+		<Unit filename="src/Caveman.h" />
+		<Unit filename="src/Colisao.cpp" />
+		<Unit filename="src/Colisao.h" />
+		<Unit filename="src/main.cpp" />
+		<Unit filename="src/main.h" />
+		<Extensions>
+			<code_completion />
+			<debugger />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>

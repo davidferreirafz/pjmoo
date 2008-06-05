@@ -16,7 +16,7 @@ bool Colisao::box(Regiao a, Regiao b)
 
 
 
-void Colisao::cenario(Personagem::Personagem * personagem, GBF::Imagem::Layer::FrameLayer * layer)
+void Colisao::cenario(Caveman * personagem, GBF::Imagem::Layer::FrameLayer * layer)
 {
     GBF::Dimensao tile; tile.w = 32; tile.h = 32;
     GBF::Dimensao tela; tela.w = 20; tela.h = 15;
@@ -42,7 +42,7 @@ void Colisao::cenario(Personagem::Personagem * personagem, GBF::Imagem::Layer::F
     if ((celulaInicial.x >=0)&&(celulaInicial.y >=0)&&(celulaFinal.x<tela.w)&&(celulaFinal.y<tela.h)){
 
         for (int coluna = celulaInicial.x; coluna <=celulaFinal.x; coluna++){
-            std::cout << "---" << std::endl;
+
             for (int linha = celulaInicial.y; linha <= celulaFinal.y; linha++){
                 //std::cout << " X:" << iX << " Y:" << iY;
                 indice = (coluna < tela.w) ? coluna : coluna - tela.w;
@@ -58,26 +58,27 @@ void Colisao::cenario(Personagem::Personagem * personagem, GBF::Imagem::Layer::F
                         if ((regiao.posicao.y+regiao.dimensao.h >= regiaoTile.posicao.y)&&
                             //evitar subir em bricks maior que a cintura do personagem
                             (regiao.posicao.y+(regiao.dimensao.h/2)<=regiaoTile.posicao.y)){
-                            std::cout << " Colisao - chao";
+                            //std::cout << " Colisao - chao";
                             regiao.posicao.y=regiaoTile.posicao.y-regiao.dimensao.h;
+                            personagem->setParouCair();
                         } else
                         //colisao com o teto
                         if ((regiao.posicao.y<=regiaoTile.posicao.y+regiaoTile.dimensao.h)&&
                             //evitar descer dos bricks
                             (regiao.posicao.y>=regiaoTile.posicao.y+(regiaoTile.dimensao.h/2))){
-                            std::cout << " Colisao - teto";
+                            //std::cout << " Colisao - teto";
                             regiao.posicao.y=regiaoTile.posicao.y+regiaoTile.dimensao.h;
                         } else
                         //colisao esquerda
                         if ((regiao.posicao.x<=regiaoTile.posicao.x+regiaoTile.dimensao.w)&&
                             (regiao.posicao.x>=regiaoTile.posicao.x+(regiaoTile.dimensao.w/2))){
-                            std::cout << " Colisao - esquerda";
+                            //std::cout << " Colisao - esquerda";
                             regiao.posicao.x=regiaoTile.posicao.x+regiaoTile.dimensao.w;
                         } else
                         //colisao direita
                         if ((regiao.posicao.x+regiao.dimensao.w>=regiaoTile.posicao.x)&&
                             (regiao.posicao.x+regiao.dimensao.w<=regiaoTile.posicao.x+(regiaoTile.dimensao.w/2))){
-                            std::cout << " Colisao - direita";
+                            //std::cout << " Colisao - direita";
                             regiao.posicao.x=regiaoTile.posicao.x-regiao.dimensao.w;
                         }
                     }

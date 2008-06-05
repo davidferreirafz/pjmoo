@@ -53,11 +53,12 @@ void Colisao::cenario(Caveman * personagem, GBF::Imagem::Layer::FrameLayer * lay
                     regiaoTile.posicao.y = linha * tile.h;
 
                     if (box(regiaoTile,regiao)){
-                        //std::cout << "Colisao:" << indice;
+                        //std::cout << " Colisao:" << indice << std::endl;
                         //colisao com o chao
                         if ((regiao.posicao.y+regiao.dimensao.h >= regiaoTile.posicao.y)&&
                             //evitar subir em bricks maior que a cintura do personagem
-                            (regiao.posicao.y+(regiao.dimensao.h/2)<=regiaoTile.posicao.y)){
+                            (regiao.posicao.y+(regiao.dimensao.h/2)<=regiaoTile.posicao.y+(regiaoTile.dimensao.h/2))
+                            ){
                             //std::cout << " Colisao - chao";
                             regiao.posicao.y=regiaoTile.posicao.y-regiao.dimensao.h;
                             personagem->setParouCair();

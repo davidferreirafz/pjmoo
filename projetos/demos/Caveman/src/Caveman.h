@@ -14,15 +14,11 @@ class Caveman : public Personagem::Personagem
 {
   public:
     Caveman();
-
     virtual ~Caveman();
 
     virtual void acao(GBF::Kernel::Input::InputSystem * input);
-    void setQueda(bool valor);
-
     void setParouCair();
 
-    void colisao(GBF::Imagem::Layer::FrameLayer * layer);
   private:
     bool pulando;
 	int aceleracao;

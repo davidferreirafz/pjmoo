@@ -23,7 +23,7 @@ class Colisao
   public:
     static bool box(Regiao a, Regiao b);
 
-    static void cenario(Personagem::Personagem * personagem,GBF::Imagem::Layer::FrameLayer * layer);
+    static void cenario(Caveman * personagem,GBF::Imagem::Layer::FrameLayer * layer);
 };
 
 

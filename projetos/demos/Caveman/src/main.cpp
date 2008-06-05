@@ -41,7 +41,7 @@ int main(int argc, char * argv[])
     int mapa[300]={
      0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
      0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-     0,0,0,0,0,0,1,2,0,0,1,2,0,0,1,2,0,0,0,0,
+     1,2,0,0,1,2,0,0,0,1,2,0,0,0,0,1,2,0,0,0,
      0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
      0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
      0,0,1,3,3,2,0,0,0,0,0,0,1,3,2,0,1,2,0,0,
@@ -82,7 +82,7 @@ int main(int argc, char * argv[])
 
         tiles->desenhar();
 
-        frameworkGBF.writeSystem->escrever(GBF::Kernel::Write::WriteManager::defaultFont,10,10,"Demo::Personagem");
+        frameworkGBF.writeSystem->escrever(GBF::Kernel::Write::WriteManager::defaultFont,10,10,"Demo::Caveman");
         frameworkGBF.writeSystem->escrever(GBF::Kernel::Write::WriteManager::defaultFont,10,30,"PJMOO - Games Multiplataforma");
         frameworkGBF.writeSystem->escrever(GBF::Kernel::Write::WriteManager::defaultFont,10,50,"http://davidferreira-fz.blogspot.com");
 

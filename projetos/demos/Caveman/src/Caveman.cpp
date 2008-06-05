@@ -13,7 +13,7 @@ Caveman::Caveman()
     delete(spriteFactory);
 
     pulando = false;
-    aceleracao = 4;
+    aceleracao = 5;
     saltoVelocidade.y = 0;
     deslocamento = 0;
 }
@@ -31,49 +31,34 @@ void Caveman::acao(GBF::Kernel::Input::InputSystem * input)
     }
 
     if ((input->teclado->isKey(SDLK_UP)&&(pulando==false))){
-        //saltoVelocidade.y=30;
-        //pulando = true;
-        //deslocamento=0;
-        posicao.y-=4;
-    } else if (input->teclado->isKey(SDLK_DOWN)){
-        posicao.y+=4;
-    }
-
-    /*if (pulando){
-        if (saltoVelocidade.y>-40){
-            saltoVelocidade.y -= aceleracao;
-            posicao.y -= saltoVelocidade.y;
-        }
-  //      }
-    }*/
-
-    /*if (posicao.y >= 384){
-        saltoVelocidade.y=0;
-        pulando = false;
-        deslocamento=0;
-    }*/
-}
-void Caveman::colisao(GBF::Imagem::Layer::FrameLayer * layer)
-{
-
-
-}
-
-void Caveman::setQueda(bool caindo)
-{
-    if (caindo){
         saltoVelocidade.y=30;
         pulando = true;
-        deslocamento=4;
-    } else {
-        saltoVelocidade.y=0;
-        pulando = false;
         deslocamento=0;
+        //posicao.y-=4;
+    } else if (input->teclado->isKey(SDLK_DOWN)){
+        //posicao.y+=4;
     }
+
+    //aumentar velocidade da queda do pulo
+    //quando o personagem cai do brick a velocidade está boa, mas quando ele pula, fica
+    //planando.
+    if (pulando){
+        if (saltoVelocidade.y>=0){
+            saltoVelocidade.y -= aceleracao;
+        }
+        posicao.y -= saltoVelocidade.y;
+    } else {
+        posicao.y += 10;
+    }
+
+
 }
+
 void Caveman::setParouCair()
 {
     pulando = false;
+    deslocamento = 0;
+    saltoVelocidade.y=0;
 }
 
 

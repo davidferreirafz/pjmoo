@@ -21,6 +21,7 @@ class Caveman : public Personagem::Personagem
 
   private:
     bool pulando;
+
 	int aceleracao;
 	int deslocamento;
 	GBF::Ponto saltoVelocidade;

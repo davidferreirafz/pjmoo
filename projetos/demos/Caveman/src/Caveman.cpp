@@ -46,6 +46,7 @@ void Caveman::acao(GBF::Kernel::Input::InputSystem * input)
         if (saltoVelocidade.y>=0){
             saltoVelocidade.y -= aceleracao;
         }
+
         posicao.y -= saltoVelocidade.y;
     } else {
         posicao.y += 10;

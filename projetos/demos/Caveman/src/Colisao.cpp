@@ -57,7 +57,7 @@ void Colisao::cenario(Caveman * personagem, GBF::Imagem::Layer::FrameLayer * lay
                         //colisao com o chao
                         if ((regiao.posicao.y+regiao.dimensao.h >= regiaoTile.posicao.y)&&
                             //evitar subir em bricks maior que a cintura do personagem
-                            (regiao.posicao.y+(regiao.dimensao.h/2)<=regiaoTile.posicao.y+(regiaoTile.dimensao.h/2))
+                            (regiao.posicao.y+(regiao.dimensao.h*0.5)<=regiaoTile.posicao.y+(regiaoTile.dimensao.h*0.5))
                             ){
                             //std::cout << " Colisao - chao";
                             regiao.posicao.y=regiaoTile.posicao.y-regiao.dimensao.h;
@@ -65,20 +65,20 @@ void Colisao::cenario(Caveman * personagem, GBF::Imagem::Layer::FrameLayer * lay
                         } else
                         //colisao com o teto
                         if ((regiao.posicao.y<=regiaoTile.posicao.y+regiaoTile.dimensao.h)&&
-                            //evitar descer dos bricks
-                            (regiao.posicao.y>=regiaoTile.posicao.y+(regiaoTile.dimensao.h/2))){
+                            //evitar descer dos bricks - verificar
+                            (regiao.posicao.y>=regiaoTile.posicao.y+(regiaoTile.dimensao.h*0.5))){
                             //std::cout << " Colisao - teto";
                             regiao.posicao.y=regiaoTile.posicao.y+regiaoTile.dimensao.h;
                         } else
                         //colisao esquerda
                         if ((regiao.posicao.x<=regiaoTile.posicao.x+regiaoTile.dimensao.w)&&
-                            (regiao.posicao.x>=regiaoTile.posicao.x+(regiaoTile.dimensao.w/2))){
+                            (regiao.posicao.x>=regiaoTile.posicao.x+(regiaoTile.dimensao.w*0.5))){
                             //std::cout << " Colisao - esquerda";
                             regiao.posicao.x=regiaoTile.posicao.x+regiaoTile.dimensao.w;
                         } else
                         //colisao direita
                         if ((regiao.posicao.x+regiao.dimensao.w>=regiaoTile.posicao.x)&&
-                            (regiao.posicao.x+regiao.dimensao.w<=regiaoTile.posicao.x+(regiaoTile.dimensao.w/2))){
+                            (regiao.posicao.x+regiao.dimensao.w<=regiaoTile.posicao.x+(regiaoTile.dimensao.w*0.5))){
                             //std::cout << " Colisao - direita";
                             regiao.posicao.x=regiaoTile.posicao.x-regiao.dimensao.w;
                         }

@@ -28,7 +28,7 @@
 #include <GBF/UIVisualSolido.h>
 
 #include "Caveman.h"
-#include "Colisao.h"
+#include "Cenario.h"
 
 class Test
 {

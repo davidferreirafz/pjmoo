@@ -43,11 +43,16 @@ void Caveman::acao(GBF::Kernel::Input::InputSystem * input)
     //quando o personagem cai do brick a velocidade está boa, mas quando ele pula, fica
     //planando.
     if (pulando){
+        //std::cout << " iniciou y:"  << posicao.y;
         if (saltoVelocidade.y>=0){
             saltoVelocidade.y -= aceleracao;
         }
 
         posicao.y -= saltoVelocidade.y;
+        //std::cout << " salto: "<< saltoVelocidade.y;
+
+        //std::cout << " pulou y:"  << posicao.y <<std::endl;
+
     } else {
         posicao.y += 10;
     }

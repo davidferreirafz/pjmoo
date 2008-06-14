@@ -1,16 +1,17 @@
 
-#ifndef _KANGOO_H
-#define _KANGOO_H
+#ifndef _CAVEMAN_H
+#define _CAVEMAN_H
 
-#include <GBF/Personagem.h>
+
 
 #include <GBF/InputSystem.h>
 
 #include <GBF/SpriteFactory.h>
 #include <GBF/FrameLayer.h>
+#include "PersonagemAdventure.h"
 
 //Personagem do Jogo
-class Caveman : public Personagem::Personagem
+class Caveman : public PersonagemAdventure
 {
   public:
     Caveman();

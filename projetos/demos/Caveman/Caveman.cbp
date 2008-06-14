@@ -57,8 +57,12 @@
 		</Linker>
 		<Unit filename="src/Caveman.cpp" />
 		<Unit filename="src/Caveman.h" />
+		<Unit filename="src/Cenario.cpp" />
+		<Unit filename="src/Cenario.h" />
 		<Unit filename="src/Colisao.cpp" />
 		<Unit filename="src/Colisao.h" />
+		<Unit filename="src/PersonagemAdventure.cpp" />
+		<Unit filename="src/PersonagemAdventure.h" />
 		<Unit filename="src/main.cpp" />
 		<Unit filename="src/main.h" />
 		<Extensions>

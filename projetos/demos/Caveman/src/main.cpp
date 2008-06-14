@@ -38,41 +38,11 @@ int main(int argc, char * argv[])
     frameworkGBF.writeSystem->idioma->setArquivo("msg.txt");
     frameworkGBF.writeSystem->idioma->detectarIdioma();
 
-    int mapa[300]={
-     0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-     0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-     1,2,0,0,1,2,0,0,0,1,2,0,0,0,0,1,2,0,0,0,
-     0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-     0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-     0,0,1,3,3,2,0,0,0,0,0,0,1,3,2,0,1,2,0,0,
-     0,1,6,6,6,6,2,0,0,0,0,0,0,0,0,0,0,0,0,0,
-     0,3,6,6,6,6,6,0,0,0,0,0,0,0,0,0,0,0,0,0,
-     4,5,4,4,3,4,3,3,2,0,0,0,0,0,0,0,0,0,0,0,
-     0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-     0,0,0,0,0,0,0,0,0,0,0,1,4,5,2,0,0,0,1,3,
-     0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,3,5,
-     0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,4,3,5,
-     0,0,0,5,0,0,0,0,0,0,0,0,0,0,0,1,3,4,3,3,
-     5,3,4,5,3,3,4,3,3,5,3,4,4,5,3,5,3,4,5,3
-    };
-
-
-    GBF::Imagem::SpriteFactory * spriteFactory = NULL;
-    spriteFactory = new GBF::Imagem::SpriteFactory("tiles");
-    GBF::Imagem::Layer::FrameLayer * tiles = spriteFactory->criarFrameLayer(0, 0,32,32);
-    tiles->setFrame(0,0,640,480);
-    tiles->setTiles(20,15);
-    tiles->setPixelTile(32,32);
-    tiles->carregarMemoria(mapa);
-
-    //GBF::Imagem::Layer::LayerManager::getInstance()->adicionar("tiles",tiles);
-    delete(spriteFactory);
-
 
     Caveman * personagem = new Caveman();
+    Cenario * cenario = new Cenario();
 
-
-    personagem->setPosicao(10,384);
+    personagem->setPosicao(32,384);
 
     while(true) {
 
@@ -80,20 +50,14 @@ int main(int argc, char * argv[])
             break;
         }
 
-        tiles->desenhar();
+        cenario->desenhar();
 
-        frameworkGBF.writeSystem->escrever(GBF::Kernel::Write::WriteManager::defaultFont,10,10,"Demo::Caveman");
-        frameworkGBF.writeSystem->escrever(GBF::Kernel::Write::WriteManager::defaultFont,10,30,"PJMOO - Games Multiplataforma");
-        frameworkGBF.writeSystem->escrever(GBF::Kernel::Write::WriteManager::defaultFont,10,50,"http://davidferreira-fz.blogspot.com");
-
-        frameworkGBF.writeSystem->escrever(GBF::Kernel::Write::WriteManager::defaultFont,340,30,"by: David Ferreira");
-        frameworkGBF.writeSystem->escrever(GBF::Kernel::Write::WriteManager::defaultFont,340,50,"http://pjmoo.sourceforge.net");
+        frameworkGBF.writeSystem->escrever(GBF::Kernel::Write::WriteManager::defaultFont,10,0,"Demo::Caveman - PJMOO - Games Multiplataforma - http://pjmoo.sourceforge.net");
+        frameworkGBF.writeSystem->escrever(GBF::Kernel::Write::WriteManager::defaultFont,6,450,"by: David Ferreira - http://davidferreira-fz.blogspot.com");
 
         personagem->acao(frameworkGBF.inputSystemCore->inputSystem);
 
-        Colisao::cenario(personagem,tiles);
-
-
+        cenario->executar(personagem);
 
         personagem->desenhar();
 
@@ -105,6 +69,7 @@ int main(int argc, char * argv[])
     }
 
     delete(personagem);
+    //delete(cenario);
 
     return 0;
 }

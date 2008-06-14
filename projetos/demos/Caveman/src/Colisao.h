@@ -7,7 +7,7 @@
 #include <GBF/FrameLayer.h>
 
 
-#include "Caveman.h"
+#include "PersonagemAdventure.h"
 
 struct Regiao
 {
@@ -23,7 +23,11 @@ class Colisao
   public:
     static bool box(Regiao a, Regiao b);
 
-    static void cenario(Caveman * personagem,GBF::Imagem::Layer::FrameLayer * layer);
+    static void cenario(PersonagemAdventure * personagem,GBF::Imagem::Layer::FrameLayer * layer);
+
+  protected:
+    static GBF::Ponto calcularInicio(Regiao regiao,GBF::Dimensao tile);
+    static GBF::Ponto calcularFim(Regiao regiao,GBF::Dimensao tile);
 };
 
 

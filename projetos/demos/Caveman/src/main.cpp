@@ -69,7 +69,7 @@ int main(int argc, char * argv[])
     }
 
     delete(personagem);
-    //delete(cenario);
+    delete(cenario);
 
     return 0;
 }

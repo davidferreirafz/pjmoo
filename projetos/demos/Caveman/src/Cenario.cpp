@@ -2,7 +2,7 @@
 
 Cenario::Cenario()
 {
-    static int mapa[300]={
+    int mapa[300]={
      6,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,6,
      6,1,3,2,0,0,0,1,2,0,3,0,0,0,1,2,0,0,0,6,
      6,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,2,0,0,6,
@@ -25,7 +25,7 @@ Cenario::Cenario()
     1 - solido - colisao
     2 - escada
 */
-    static int mapaColisao[300]={
+    int mapaColisao[300]={
      1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
      1,1,1,1,0,0,0,1,1,0,1,0,0,0,1,1,0,0,0,1,
      1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,1,
@@ -53,12 +53,13 @@ Cenario::Cenario()
     layer->carregarMapaMemoria(mapa);
     layer->carregarColisaoMemoria(mapaColisao);
 
+
     delete(spriteFactory);
 }
 
 Cenario::~Cenario()
 {
-    delete[] mapaColisao;
+    delete(layer);
 }
 
 void Cenario::carregarColisaoMemoria(int * vetor)

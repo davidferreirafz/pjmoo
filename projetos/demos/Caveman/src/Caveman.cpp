@@ -35,6 +35,7 @@ void Caveman::acao(GBF::Kernel::Input::InputSystem * input)
         pulando = true;
         deslocamento=0;
         //posicao.y-=4;
+        inicioSalto = posicao;
     } else if (input->teclado->isKey(SDLK_DOWN)){
         //posicao.y+=4;
     }
@@ -46,6 +47,9 @@ void Caveman::acao(GBF::Kernel::Input::InputSystem * input)
         //std::cout << " iniciou y:"  << posicao.y;
         if (saltoVelocidade.y>=0){
             saltoVelocidade.y -= aceleracao;
+        } else
+        if (posicao.y>=inicioSalto.y+(getDimensao().h*0.6)){
+            saltoVelocidade.y = -10;
         }
 
         posicao.y -= saltoVelocidade.y;

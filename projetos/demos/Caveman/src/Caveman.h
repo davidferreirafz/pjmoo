@@ -26,6 +26,7 @@ class Caveman : public PersonagemAdventure
 	int aceleracao;
 	int deslocamento;
 	GBF::Ponto saltoVelocidade;
+	GBF::Ponto inicioSalto;
 
 
 };

@@ -28,7 +28,6 @@ Apresentacao::Apresentacao()
     tempo.setUnidade(GBF::Kernel::Timer::TEMPO_SEGUNDO);
     tempo.setResetar();
 
-//    GraphicSystem  *graphicSystem = GraphicSystem::getInstance();
     GBF::Imagem::SpriteFactory  *spriteFactory = new GBF::Imagem::SpriteFactory("abertura");
 
     zangoesBorg  = spriteFactory->criarSpriteItem(139,0,140,80,1,1);

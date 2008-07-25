@@ -33,7 +33,7 @@ int main(int argc, char* argv[])
 
     frameworkGBF->setPath(argv[0]);
     frameworkGBF->setTitulo("GBF::Teste Scrolling","David Ferreira");
-    frameworkGBF->iniciar(640,480,16,false,GBF::Kernel::FPS::FPS_CONTADOR);
+    frameworkGBF->iniciar(640,480,16,true,GBF::Kernel::FPS::FPS_CONTADOR);
     //Ativando GRAB_ON para evitar mudança de tela durante o
     // jogo no Gnome (Desktop para o GNU/Linux)
     frameworkGBF->inputSystemCore->setControleExclusivo(SDL_GRAB_OFF);
@@ -67,7 +67,7 @@ int main(int argc, char* argv[])
 		tiles->desenhar();
         tiles->camera.show();
 
-        /*if (descer){
+        if (descer){
 			tiles->camera.runDown(1);
 			if (tiles->camera.isBottom()){
 			    descer=false;
@@ -77,7 +77,7 @@ int main(int argc, char* argv[])
 			if (tiles->camera.isTop()){
 			    descer=true;
             }
-        }*/
+        }
         ponto=tiles->camera.getPosicao();
 
 		frameworkGBF->writeSystem->escrever(GBF::Kernel::Write::WriteManager::defaultFont,0,100,"x:%d y:%d",ponto.x,ponto.y);

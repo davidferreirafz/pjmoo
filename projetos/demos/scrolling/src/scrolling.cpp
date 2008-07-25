@@ -20,8 +20,7 @@
 /*****************************************************************/
 /* Declaração - Includes                                         */
 /*****************************************************************/
-#include <GBF/GBF.h>
-#include <GBF/GraphicSystemImageBufferManager.h>
+#include <GBF/GBFramework.h>
 #include <GBF/SpriteFactory.h>
 #include <vector>
 #include <iostream>
@@ -30,35 +29,37 @@
 int main(int argc, char* argv[])
 {
 
-	GBF *frameworkGBF = new GBF();
+	GBF::GBFramework *frameworkGBF = new GBF::GBFramework();
 
     frameworkGBF->setPath(argv[0]);
     frameworkGBF->setTitulo("GBF::Teste Scrolling","David Ferreira");
-    frameworkGBF->iniciar(640,480,32,false);
-    frameworkGBF->inputSystem->setControleExclusivo(SDL_GRAB_OFF);
-
+    frameworkGBF->iniciar(640,480,16,false,GBF::Kernel::FPS::FPS_CONTADOR);
+    //Ativando GRAB_ON para evitar mudança de tela durante o
+    // jogo no Gnome (Desktop para o GNU/Linux)
+    frameworkGBF->inputSystemCore->setControleExclusivo(SDL_GRAB_OFF);
+    frameworkGBF->setFPS(true);
 
 //carregando imagens
-    GraphicSystemImageBufferManager *GSIBManager = GraphicSystemImageBufferManager::getInstance();
-    GSIBManager->carregar("tiles","//data//imagem//tilemap_01.png");
+    frameworkGBF->graphicSystemCore->graphicSystem->imageBufferManager->carregar("tiles","data//imagem//tilemap_01.png");
 
-    SpriteFactory * spriteFactory = new SpriteFactory(GSIBManager->getImageBuffer("tiles"));
 
-    FrameLayer *tiles = spriteFactory->criarFrameLayer(0,0,32,32);
+    GBF::Imagem::SpriteFactory * spriteFactory = NULL;
 
-    delete (spriteFactory);
-
+    spriteFactory = new GBF::Imagem::SpriteFactory("tiles");
+    GBF::Imagem::Layer::FrameLayer * tiles = spriteFactory->criarFrameLayer(0, 0,32,32);
     tiles->setFrame(0,0,640,480);
     tiles->setTiles(20,30);
     tiles->setPixelTile(32,32);
     tiles->iniciarOrdenado(4);
     tiles->camera.setBottom();
-    Ponto ponto;
+    delete(spriteFactory);
+
+    GBF::Ponto ponto;
 
     bool descer = tiles->camera.isTop();
 
 	while(true) {
-		if (frameworkGBF->inputSystem->teclado->isKey(SDLK_ESCAPE)){
+		if (frameworkGBF->inputSystemCore->inputSystem->teclado->isKey(SDLK_ESCAPE)){
 			break;
 		}
 
@@ -66,7 +67,7 @@ int main(int argc, char* argv[])
 		tiles->desenhar();
         tiles->camera.show();
 
-        if (descer){
+        /*if (descer){
 			tiles->camera.runDown(1);
 			if (tiles->camera.isBottom()){
 			    descer=false;
@@ -76,16 +77,16 @@ int main(int argc, char* argv[])
 			if (tiles->camera.isTop()){
 			    descer=true;
             }
-        }
+        }*/
         ponto=tiles->camera.getPosicao();
 
-		frameworkGBF->writeSystem->escrever(WriteSystemFontDefault::pumpdemi,0,0,"x:%d y:%d",ponto.x,ponto.y);
+		frameworkGBF->writeSystem->escrever(GBF::Kernel::Write::WriteManager::defaultFont,0,100,"x:%d y:%d",ponto.x,ponto.y);
 
 		//realiza refresh, fps, flip
 		frameworkGBF->atualizar();
 	}
     if (frameworkGBF){
-        delete(tiles);
+//        delete(tiles);
         delete(frameworkGBF);
     }
 	return 0;

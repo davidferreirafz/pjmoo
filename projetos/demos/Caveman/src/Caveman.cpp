@@ -7,8 +7,9 @@ Caveman::Caveman()
 {
     GBF::Imagem::SpriteFactory *spriteFactory = new GBF::Imagem::SpriteFactory("personagem");
 
-    adicionarSpritePrincipal(spriteFactory->criarSpritePersonagem(0,0,40,64,4,10));
+    adicionarSpritePrincipal(spriteFactory->criarSpritePersonagem(0,0,40,64,4,4));
     getSpritePrincipal()->setQtdDirecoes(2);
+    getSpritePrincipal()->animacao.setAutomatico(false);
 
     delete(spriteFactory);
 

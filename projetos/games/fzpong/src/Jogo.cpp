@@ -28,10 +28,12 @@ int main(int argc, char * argv[])
     try {
         jogo->executar();
     } catch (std::exception& e) {
+        std::cout << "Exception: " << e.what();
         //UtilLog::sistema("!!!!!!!!!!");
         //UtilLog::sistema("Exceção: %s",e.what());
         //UtilLog::sistema("!!!!!!!!!!");
     } catch (...) {
+        std::cout << "Exception: ";
         //UtilLog::sistema("!!!!!!!!!!");
         //UtilLog::sistema("Exceção Desconhecida");
         //UtilLog::sistema("!!!!!!!!!!");

@@ -9,7 +9,8 @@ class PersonagemAdventure : public Personagem::Personagem
     PersonagemAdventure();
     virtual ~PersonagemAdventure();
 
-    virtual void setParouCair() = 0;
+    virtual void setPisouChao() = 0;
+    virtual void setBateuCabeca() = 0;
  protected:
  private:
 };

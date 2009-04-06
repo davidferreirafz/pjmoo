@@ -10,10 +10,12 @@ Caveman::Caveman()
     adicionarSpritePrincipal(spriteFactory->criarSpritePersonagem(0,0,40,64,4,4));
     getSpritePrincipal()->setQtdDirecoes(2);
     getSpritePrincipal()->animacao.setAutomatico(false);
+    getSpritePrincipal()->setDirecao(GBF::Imagem::Sprite::DR_DIREITA);
 
     delete(spriteFactory);
 
     pulando = false;
+    caindo = true;
     aceleracao = 5;
     saltoVelocidade.y = 0;
     deslocamento = 0;
@@ -31,46 +33,47 @@ void Caveman::acao(GBF::Kernel::Input::InputSystem * input)
         posicao.x-=4+deslocamento;
     }
 
-    if ((input->teclado->isKey(SDLK_UP)&&(pulando==false))){
+    if ((input->teclado->isKey(SDLK_UP)&&(!pulando)&&(!caindo))){
         saltoVelocidade.y=30;
         pulando = true;
         deslocamento=0;
-        //posicao.y-=4;
         inicioSalto = posicao;
     } else if (input->teclado->isKey(SDLK_DOWN)){
-        //posicao.y+=4;
-    }
 
-    //aumentar velocidade da queda do pulo
-    //quando o personagem cai do brick a velocidade está boa, mas quando ele pula, fica
-    //planando.
+    }
+    //std::cout << " velocidade.y:" << saltoVelocidade.y << " posicao.y:" << posicao.y <<std::endl;
+
     if (pulando){
-        //std::cout << " iniciou y:"  << posicao.y;
         if (saltoVelocidade.y>=0){
             saltoVelocidade.y -= aceleracao;
-        } else
+
+        }
         if (posicao.y>=inicioSalto.y+(getDimensao().h*0.6)){
-            saltoVelocidade.y = -10;
+            saltoVelocidade.y = -aceleracao;
+            caindo = true;
+            pulando = false;
         }
 
         posicao.y -= saltoVelocidade.y;
-        //std::cout << " salto: "<< saltoVelocidade.y;
-
-        //std::cout << " pulou y:"  << posicao.y <<std::endl;
-
     } else {
-        posicao.y += 10;
+        posicao.y += aceleracao*1.5;
     }
-
-
+    caindo=true;
 }
 
-void Caveman::setParouCair()
+void Caveman::setPisouChao()
 {
     pulando = false;
+    caindo = false;
     deslocamento = 0;
     saltoVelocidade.y=0;
+    getSpritePrincipal()->animacao.setAutomatico(false);
 }
 
+void Caveman::setBateuCabeca(){
+    pulando = false;
+    caindo = true;
+    getSpritePrincipal()->animacao.setAutomatico(true);
+}
 
 

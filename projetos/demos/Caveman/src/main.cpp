@@ -42,7 +42,7 @@ int main(int argc, char * argv[])
     Caveman * personagem = new Caveman();
     Cenario * cenario = new Cenario();
 
-    personagem->setPosicao(32,384);
+    personagem->setPosicao(32,0);//384);
 
     while(true) {
 

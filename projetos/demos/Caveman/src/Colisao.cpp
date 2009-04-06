@@ -69,6 +69,7 @@ void Colisao::cenario(PersonagemAdventure * personagem, GBF::Imagem::Layer::Fram
                             //(regiao.posicao.y>=regiaoTile.posicao.y+(regiaoTile.dimensao.h*0.5))){
                                 //std::cout << " Colisao- TET: " << indice;
                                 regiao.posicao.y=regiaoTile.posicao.y+regiaoTile.dimensao.h;
+                                personagem->setBateuCabeca();
                             }
                         } else if ((linha==celulaFinal.y)&&(coluna==int(xm/32))){
                             if ((regiao.posicao.y+regiao.dimensao.h >= regiaoTile.posicao.y)&&
@@ -77,7 +78,7 @@ void Colisao::cenario(PersonagemAdventure * personagem, GBF::Imagem::Layer::Fram
                                 ){
                                 //std::cout << " Colisao- CHA: " << indice;
                                 regiao.posicao.y=regiaoTile.posicao.y-regiao.dimensao.h;
-                                personagem->setParouCair();
+                                personagem->setPisouChao();
                             }
                         } else if(linha==celulaFinal.y-1){
                             if ((regiao.posicao.x<=regiaoTile.posicao.x+regiaoTile.dimensao.w)&&

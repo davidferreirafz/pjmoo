@@ -18,15 +18,18 @@ class Caveman : public PersonagemAdventure
     virtual ~Caveman();
 
     virtual void acao(GBF::Kernel::Input::InputSystem * input);
-    void setParouCair();
-
+    void setPisouChao();
+    void setBateuCabeca();
   private:
     bool pulando;
+    bool caindo;
+
 
 	int aceleracao;
 	int deslocamento;
 	GBF::Ponto saltoVelocidade;
 	GBF::Ponto inicioSalto;
+
 
 
 };

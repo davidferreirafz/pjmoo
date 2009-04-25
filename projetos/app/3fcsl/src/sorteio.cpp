@@ -1,6 +1,6 @@
 /***************************************************************************
- *   Copyright (C) 2005-2006 by David Ferreira                             *
- *   davidferreira@uol.com.br - http://pjmoo.codigolivre.org.br            *
+ *   Copyright (C) 2005-2009 by David Ferreira                             *
+ *   davidferreira@uol.com.br - http://pjmoo.sourceforge.net               *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
@@ -20,10 +20,8 @@
 /*****************************************************************/
 /* Declaração - Includes                                         */
 /*****************************************************************/
-#include <GBF/GBF.h>
-#include <GBF/GraphicSystemImageBufferManager.h>
+#include <GBF/GBFramework.h>
 #include <GBF/SpriteFactory.h>
-#include <GBF/PersonagemAutomatico.h>
 #include <vector>
 #include <iostream>
 
@@ -36,55 +34,55 @@
 /*****************************************************************************/
 int main(int argc, char* argv[])
 {
-    int totalParticipantes = 60 ;
+    int totalParticipantes = 30;
 
     if ((argc>1)&&(strcmp(argv[1], "--total")==0)){
         totalParticipantes=atoi(argv[2]);
     }
 
-	GBF *frameworkGBF = new GBF();
+    GBF::GBFramework frameworkGBF;
 
-	Ponto ponto;
+	GBF::Ponto ponto;
 	bool mover = false;
 
 	ponto.x=550;
 	ponto.y=600;
 
-    frameworkGBF->setPath(argv[0]);
-    frameworkGBF->setTitulo("GBF :: Sorteio - III FCSL","David Ferreira");
-    frameworkGBF->iniciar(640,480,16,false);
-    frameworkGBF->inputSystemCore->setControleExclusivo(SDL_GRAB_OFF);
+    frameworkGBF.setPath(argv[0]);
+    frameworkGBF.setTitulo("GBF :: Sorteio - III FCSL","David Ferreira");
+    frameworkGBF.iniciar(640,480,16,false,GBF::Kernel::FPS::FPS_LIMITADO);
+    frameworkGBF.inputSystemCore->setControleExclusivo(SDL_GRAB_OFF);
 
 
-    frameworkGBF->writeSystem->carregar("bfa",frameworkGBF->getPath()+"//data//fonte//bfa.png");
-    frameworkGBF->writeSystem->carregar("arial",frameworkGBF->getPath()+"//data//fonte//arial.png");
-    frameworkGBF->writeSystem->carregar("console",frameworkGBF->getPath()+"//data//fonte//console.png");
+    frameworkGBF.writeSystem->carregar("bfa","//data//fonte//bfa.png");
+    frameworkGBF.writeSystem->carregar("arial","//data//fonte//arial.png");
+    frameworkGBF.writeSystem->carregar("console","//data//fonte//console.png");
 
 //carregando imagens
-    frameworkGBF->graphicSystemCore->graphicSystem->imageBufferManager->carregar("figuras","//data//imagem//figuras.png");
-    frameworkGBF->graphicSystemCore->graphicSystem->imageBufferManager->carregar("logo","//data//imagem//logo.png");
+    frameworkGBF.graphicSystemCore->graphicSystem->imageBufferManager->carregar("figuras","//data//imagem//figuras.png");
+    frameworkGBF.graphicSystemCore->graphicSystem->imageBufferManager->carregar("logo","//data//imagem//logo.png");
 
-    SpriteFactory *spriteFactory = new SpriteFactory(frameworkGBF->graphicSystemCore->graphicSystem->imageBufferManager->getImageBuffer("figuras"));
+    GBF::Imagem::SpriteFactory *spriteFactory = new GBF::Imagem::SpriteFactory("figuras");
 
-    SpritePersonagem *superTux = spriteFactory->criarSpritePersonagem(0,0,300,276,0,0);
-    SpriteItem       *tux      = spriteFactory->criarSpriteItem(300,0,200,196,2,20);
-    FrameLayer       *tiles    = spriteFactory->criarFrameLayer(0,276,32,32);
+    GBF::Imagem::Sprite::SpritePersonagem *superTux = spriteFactory->criarSpritePersonagem(0,0,300,276,0,0);
+    GBF::Imagem::Sprite::SpriteItem       *tux      = spriteFactory->criarSpriteItem(300,0,200,196,2,20);
+    GBF::Imagem::Layer::FrameLayer        *tiles    = spriteFactory->criarFrameLayer(0,276,32,32);
 
-    SpriteItem *onda[3];
+    GBF::Imagem::Sprite::SpriteItem *onda[3];
     onda[0] = spriteFactory->criarSpriteItem(539,267,40,40,4,20);
     onda[1] = spriteFactory->criarSpriteItem(539,267,40,40,4,20);
     onda[2] = spriteFactory->criarSpriteItem(539,267,40,40,4,20);
     delete (spriteFactory);
 
-    spriteFactory = new SpriteFactory(frameworkGBF->graphicSystemCore->graphicSystem->imageBufferManager->getImageBuffer("logo"));
-    SpriteItem *logo  = spriteFactory->criarSpriteItem(0,0,640,288,0,0);
+    spriteFactory = new GBF::Imagem::SpriteFactory("logo");
+
+    GBF::Imagem::Sprite::SpriteItem *logo  = spriteFactory->criarSpriteItem(0,0,640,288,0,0);
     delete (spriteFactory);
 
     tiles->setFrame(0,288,640,192);
     tiles->setTiles(32,32);
     tiles->setPixelTile(20,6);
     tiles->iniciarRandomico(1);
-    FrameLayerManager::getInstance()->adicionar("tiles",tiles);
 
     tux->animacao.setAutomatico(true);
     onda[0]->animacao.setAutomatico(true);
@@ -95,18 +93,18 @@ int main(int argc, char* argv[])
 	bool ativo = false;
 
 	while(true) {
-		if (frameworkGBF->inputSystemCore->inputSystem->teclado->isKey(SDLK_ESCAPE)){
+		if (frameworkGBF.inputSystemCore->inputSystem->teclado->isKey(SDLK_ESCAPE)){
 			break;
 		}
 		//Inicia a rolagem de numeros
-		if (frameworkGBF->inputSystemCore->inputSystem->teclado->isKey(SDLK_SPACE)){
+		if (frameworkGBF.inputSystemCore->inputSystem->teclado->isKey(SDLK_SPACE)){
 			ativo = true;
 			mover = false;
             ponto.x = 350;
             ponto.y = 600;
 		}
 		//Para a rolagem revelando o numero sorteado
-		if (frameworkGBF->inputSystemCore->inputSystem->teclado->isKey(SDLK_RETURN)){
+		if (frameworkGBF.inputSystemCore->inputSystem->teclado->isKey(SDLK_RETURN)){
 			mover = true;
 		}
 		//Gera numero para sorterio
@@ -133,29 +131,28 @@ int main(int argc, char* argv[])
             }
         }
 
-	    frameworkGBF->writeSystem->escrever("console",5,450,"Use a [spacebar] para iniciar e [enter] para selecionar.");
+	    frameworkGBF.writeSystem->escrever("console",5,450,"Use a [spacebar] para iniciar e [enter] para selecionar.");
 
-        frameworkGBF->writeSystem->escrever("bfa",300,300,"%03d",numero);
+        frameworkGBF.writeSystem->escrever("bfa",300,300,"%03d",numero);
 
 		//se sorteio rolando, exibe a msg abaixo
 		if (ativo){
-		    frameworkGBF->writeSystem->escrever("arial",310,340,"Sorteando...");
+		    frameworkGBF.writeSystem->escrever("arial",310,340,"Sorteando...");
 		} else if (numero>0){
-			frameworkGBF->writeSystem->escrever("arial",310,340,"Sorteado!!!");
+			frameworkGBF.writeSystem->escrever("arial",310,340,"Sorteado!!!");
 		}
 
         superTux->desenhar(ponto.x,ponto.y);
 		//realiza refresh, fps, flip
-		frameworkGBF->atualizar();
+		frameworkGBF.atualizar();
 	}
 
-    if (frameworkGBF){
-        delete(logo);
-        delete(superTux);
-        delete(tux);
-        delete(onda[0]);        delete(onda[1]);        delete(onda[2]);
-        delete(frameworkGBF);
-    }
+    delete(logo);
+    delete(superTux);
+    delete(tux);
+    delete(tiles);
+    delete(onda[0]);    delete(onda[1]);    delete(onda[2]);
+
 	return 0;
 }
 

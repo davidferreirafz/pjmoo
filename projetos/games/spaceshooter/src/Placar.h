@@ -19,7 +19,6 @@
 
 #include <string>
 
-#include <GBF/Log.h>
 #include <GBF/RSRecorde.h>
 
 

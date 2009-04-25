@@ -17,7 +17,7 @@
 #ifndef _LISTSPACEINIMIGO_H
 #define _LISTSPACEINIMIGO_H
 
-#include <GBF/Log.h>
+
 
 
 #include "NaveInimigo.h"

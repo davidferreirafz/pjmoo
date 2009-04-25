@@ -53,7 +53,7 @@ int main(int argc, char * argv[])
         cenario->desenhar();
 
         frameworkGBF.writeSystem->escrever(GBF::Kernel::Write::WriteManager::defaultFont,10,0,"Demo::Caveman - PJMOO - Games Multiplataforma - http://pjmoo.sourceforge.net");
-        frameworkGBF.writeSystem->escrever(GBF::Kernel::Write::WriteManager::defaultFont,6,450,"by: David Ferreira - http://davidferreira-fz.blogspot.com");
+        frameworkGBF.writeSystem->escrever(GBF::Kernel::Write::WriteManager::defaultFont,6,450,"by: David Ferreira - http://www.davidferreira.com.br");
 
         personagem->acao(frameworkGBF.inputSystemCore->inputSystem);
 

@@ -2,6 +2,21 @@
 #include "Colisao.h"
 
 
+bool Colisao::brick(int indice)
+{
+    switch (indice) {
+        case 1:
+        case 2:
+        case 3:
+        case 4:
+        case 6:
+        case 7:
+            return true;
+        default:
+            return false;
+    }
+}
+
 bool Colisao::box(Regiao a, Regiao b)
 {
     if ((a.posicao.x + a.dimensao.w >= b.posicao.x)&&
@@ -52,7 +67,8 @@ void Colisao::cenario(PersonagemAdventure * personagem, GBF::Imagem::Layer::Fram
 
                 //std::cout << " | " <<indice;
 
-                if (layer->getTipoImagem(indice)>0){
+                //if (layer->getTipoImagem(indice)>0){
+                if (brick(layer->getTipoImagem(indice))){
                     regiaoTile.posicao.x = coluna * tile.w;
                     regiaoTile.posicao.y = linha * tile.h;
 
@@ -91,16 +107,17 @@ void Colisao::cenario(PersonagemAdventure * personagem, GBF::Imagem::Layer::Fram
                                 (regiao.posicao.x+regiao.dimensao.w<=regiaoTile.posicao.x+(regiaoTile.dimensao.w*0.5))){
                                     //std::cout << " Colisao- DIR: " << indice;
                                     regiao.posicao.x=regiaoTile.posicao.x-regiao.dimensao.w;
-                                /*int tipo=layer->getTipoColisao(indice);
-                                if (tipo==2){
-                                    //regiao.posicao.x=regiaoTile.posicao.x-regiao.dimensao.w;
+                                    //////////////////
+                                int tipo=layer->getTipoColisao(indice);
+                                if ((tipo==4)&&(personagem->isDireita())){
+                                    regiao.posicao.x=regiaoTile.posicao.x-regiao.dimensao.w;
                                     //std::cout << " Colisao Tipo: " << tipo;
                                 //efeito de subir as escadas se o bick for de um tipo especifico
-                                    //regiao.posicao.x=regiaoTile.posicao.x-(regiaoTile.dimensao.w*0.8);
-                                    //regiao.posicao.y=regiaoTile.posicao.y-regiao.dimensao.h;
-                                } else {
-                                    regiao.posicao.x=regiaoTile.posicao.x-regiao.dimensao.w;
-                                }*/
+                                    regiao.posicao.x=regiaoTile.posicao.x-(regiaoTile.dimensao.w*0.6);
+                                    regiao.posicao.y=regiaoTile.posicao.y-regiao.dimensao.h;
+                               // } else {
+                                 //   regiao.posicao.x=regiaoTile.posicao.x-regiao.dimensao.w;
+                                }
 
                             }
                         }

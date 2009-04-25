@@ -16,7 +16,6 @@
 ***************************************************************************/
 #ifndef _CONTROLE_H_
 #define _CONTROLE_H_
-#include <GBF/Log.h>
 
 #include "ListSpaceInimigo.h"
 #include "ListSpaceObstaculo.h"

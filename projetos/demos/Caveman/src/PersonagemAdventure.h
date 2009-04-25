@@ -11,6 +11,8 @@ class PersonagemAdventure : public Personagem::Personagem
 
     virtual void setPisouChao() = 0;
     virtual void setBateuCabeca() = 0;
+    bool isDireita();
+    bool isEsquerda();
  protected:
  private:
 };

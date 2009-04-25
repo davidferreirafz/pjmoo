@@ -28,6 +28,7 @@ class Colisao
   protected:
     static GBF::Ponto calcularInicio(Regiao regiao,GBF::Dimensao tile);
     static GBF::Ponto calcularFim(Regiao regiao,GBF::Dimensao tile);
+    static bool brick(int indice);
 };
 
 

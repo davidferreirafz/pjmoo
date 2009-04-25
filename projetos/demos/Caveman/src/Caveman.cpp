@@ -49,7 +49,7 @@ void Caveman::acao(GBF::Kernel::Input::InputSystem * input)
 
         }
         if (posicao.y>=inicioSalto.y+(getDimensao().h*0.6)){
-            saltoVelocidade.y = -aceleracao;
+            saltoVelocidade.y = - aceleracao;
             caindo = true;
             pulando = false;
         }

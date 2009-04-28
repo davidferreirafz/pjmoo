@@ -40,6 +40,11 @@ Jogador::Jogador()
     getSprite("caindo")->animacao.setAutomatico(false);
     delete(spriteFactory);
 
+    spriteFactory = new GBF::Imagem::SpriteFactory("personagem_impulso");
+    adicionarSprite(spriteFactory->criarSpritePersonagem(0,0,65,75,2,4),"impulso");
+    getSprite("impulso")->animacao.setAutomatico(false);
+    delete(spriteFactory);
+
     setPosicao(100,114);
 
     estado=PARADO;
@@ -54,54 +59,92 @@ Jogador::~Jogador()
 }
 void Jogador::acao(GBF::Kernel::Input::InputSystem * input)
 {
-        //estado=PARADO;
-    if (input->teclado->isKey(SDLK_RIGHT)){
-        if (input->teclado->isKey(SDLK_LSHIFT)){
+    if ((estado==PULANDO)||(estado==CAINDO)){
+        if (input->teclado->isKey(SDLK_RIGHT)){
             posicao.x+=10;
-            estado=AVANCO;
-        } else {
-            posicao.x+=1;
-            estado=ANDANDO;
-        }
-        getSprite(getAliasSprite())->animacao.processarManual();
-
-    } else if (input->teclado->isKey(SDLK_LEFT)){
-        if (input->teclado->isKey(SDLK_LSHIFT)){
+        } else if ((input->teclado->isKey(SDLK_LEFT))){
             posicao.x-=10;
-            estado=RECUO;
-        } else {
-            posicao.x-=1;
-            estado=ANDANDO;
-        }
-        getSprite(getAliasSprite())->animacao.processarManual();
-    }
 
-    if ((estado!=PULANDO)&&(estado!=CAINDO)){
-        if (input->teclado->isKey(SDLK_c)){
-            estado=PULANDO;
-            getSprite("pulando")->animacao.setInicio();
-            delay.acao=6;
-            alturaPulo.corrente=alturaPulo.a;
-        } else if (input->teclado->isKey(SDLK_x)){
-            estado=PULANDO;
-            getSprite("pulando")->animacao.setInicio();
-            delay.acao=10;
-            alturaPulo.corrente=alturaPulo.b;
-        } else if (input->teclado->isKey(SDLK_z)){
-            estado=PULANDO;
-            getSprite("pulando")->animacao.setInicio();
-            delay.acao=12;
-            alturaPulo.corrente=alturaPulo.c;
+            if ((posicao.x<=20)&&(estado!=CAINDO)){
+                estado=IMPULSO;
+                getSprite("impulso")->animacao.setInicio();
+            }
         }
-    } else  if(input->teclado->isKey(SDLK_m)){
-        estado=MORRENDO;
-        vivo=false;
-        getSprite("morrendo")->animacao.setInicio();
-    } else if(input->teclado->isKey(SDLK_r)){
+        if (estado==PULANDO){
+            if (!getSprite(getAliasSprite())->animacao.isFim()){
+                getSprite(getAliasSprite())->animacao.processarManual();
+            }
+            if (posicao.y>=alturaPulo.corrente){
+                posicao.y-=10;
+            } else {
+                delay.acao--;
+                if (delay.acao<=0) {
+                    estado=CAINDO;
+                    getSprite("caindo")->animacao.setInicio();
+                }
+            }
+        } else if (estado==CAINDO){
+            if (posicao.y<110){
+                posicao.y+=6;
+                if (!getSprite(getAliasSprite())->animacao.isFim()){
+                    getSprite(getAliasSprite())->animacao.processarManual();
+                }
+            } else {
+                estado=PARADO;
+            }
+        }
+    } else if (estado==IMPULSO){
+            if (posicao.x<100){
+                posicao.x+=4;
+                posicao.y-=4;
+                if (!getSprite(getAliasSprite())->animacao.isFim()){
+                    getSprite(getAliasSprite())->animacao.processarManual();
+                }
+            } else {
+                estado=CAINDO;
+            }
+    } else {
         estado=PARADO;
-        vivo=true;
-    }
+        if (input->teclado->isKey(SDLK_RIGHT)){
+            if (input->teclado->isKey(SDLK_LSHIFT)){
+                posicao.x+=10;
+                estado=AVANCO;
+            } else {
+                posicao.x+=1;
+                estado=ANDANDO;
+            }
+            getSprite(getAliasSprite())->animacao.processarManual();
 
+        } else if (input->teclado->isKey(SDLK_LEFT)){
+            if (input->teclado->isKey(SDLK_LSHIFT)){
+                posicao.x-=10;
+                estado=RECUO;
+            } else {
+                posicao.x-=1;
+                estado=ANDANDO;
+            }
+            getSprite(getAliasSprite())->animacao.processarManual();
+        }
+
+        if ((estado!=PULANDO)&&(estado!=CAINDO)){
+            if (input->teclado->isKey(SDLK_c)){
+                estado=PULANDO;
+                getSprite("pulando")->animacao.setInicio();
+                delay.acao=6;
+                alturaPulo.corrente=alturaPulo.a;
+            } else if (input->teclado->isKey(SDLK_x)){
+                estado=PULANDO;
+                getSprite("pulando")->animacao.setInicio();
+                delay.acao=10;
+                alturaPulo.corrente=alturaPulo.b;
+            } else if (input->teclado->isKey(SDLK_z)){
+                estado=PULANDO;
+                getSprite("pulando")->animacao.setInicio();
+                delay.acao=12;
+                alturaPulo.corrente=alturaPulo.c;
+            }
+        }
+    }
 
     if (posicao.x<20){
         posicao.x=20;
@@ -111,30 +154,17 @@ void Jogador::acao(GBF::Kernel::Input::InputSystem * input)
             posicao.x=304-20-d;
         }
     }
+    if (posicao.y<=30){
+        posicao.y=30;
+    }
 
-    if (estado==PULANDO){
-        if (!getSprite(getAliasSprite())->animacao.isFim()){
-            getSprite(getAliasSprite())->animacao.processarManual();
-        }
-        if (posicao.y>=alturaPulo.corrente){
-            posicao.y-=10;
-        } else {
-            delay.acao--;
-            if (delay.acao<=0) {
-                estado=CAINDO;
-                getSprite("caindo")->animacao.setInicio();
-            }
-        }
-
-    } else if (estado==CAINDO){
-        if (posicao.y<110){
-            posicao.y+=6;
-        if (!getSprite(getAliasSprite())->animacao.isFim()){
-            getSprite(getAliasSprite())->animacao.processarManual();
-        }
-        } else {
-            estado=PARADO;
-        }
+    if (input->teclado->isKey(SDLK_m)){
+        estado=MORRENDO;
+        vivo=false;
+        getSprite("morrendo")->animacao.setInicio();
+    } else if(input->teclado->isKey(SDLK_r)){
+        estado=PARADO;
+        vivo=true;
     }
 }
 
@@ -174,6 +204,9 @@ std::string Jogador::getAliasSprite(){
             break;
         case CAINDO:
                 aliasSprite="caindo";
+            break;
+        case IMPULSO:
+                aliasSprite="impulso";
             break;
         case PARADO:
         default:

@@ -34,6 +34,7 @@ int main(int argc, char* argv[])
     frameworkGBF.graphicSystemCore->graphicSystem->imageBufferManager->carregar("personagem_morrendo","//data//imagem//personagem_morrendo.png");
     frameworkGBF.graphicSystemCore->graphicSystem->imageBufferManager->carregar("personagem_pulando","//data//imagem//personagem_pulando.png");
     frameworkGBF.graphicSystemCore->graphicSystem->imageBufferManager->carregar("personagem_caindo","//data//imagem//personagem_caindo.png");
+    frameworkGBF.graphicSystemCore->graphicSystem->imageBufferManager->carregar("personagem_impulso","//data//imagem//personagem_impulso.png");
 
     frameworkGBF.graphicSystemCore->graphicSystem->imageBufferManager->carregar("bala","//data//imagem//bala.png");
     frameworkGBF.graphicSystemCore->graphicSystem->imageBufferManager->carregar("fumaca","//data//imagem//fumaca.png");

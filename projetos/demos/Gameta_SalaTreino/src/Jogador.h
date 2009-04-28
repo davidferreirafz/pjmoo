@@ -18,7 +18,8 @@ enum Estado{
     AVANCO,
     MORRENDO,
     PULANDO,
-    CAINDO
+    CAINDO,
+    IMPULSO
 };
 
 struct Altura{

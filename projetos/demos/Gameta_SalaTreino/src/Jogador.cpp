@@ -49,10 +49,10 @@ Jogador::Jogador()
 
     estado=PARADO;
     delay.acao=6;
-    alturaPulo.a=64;
-    alturaPulo.b=90;
-    alturaPulo.c=122;
-    alturaPulo.corrente=alturaPulo.a;
+    alturaPulo.super  = 64;
+    alturaPulo.normal = 90;
+    alturaPulo.fraco  =122;
+    alturaPulo.corrente=alturaPulo.normal;
 }
 Jogador::~Jogador()
 {
@@ -94,15 +94,15 @@ void Jogador::acao(GBF::Kernel::Input::InputSystem * input)
             getSprite(getAliasSprite())->animacao.processarManual();
         }
 
-        if ((estado!=PULANDO)&&(estado!=CAINDO)){
-            if (input->teclado->isKey(SDLK_c)){
-                onPular(SUPER);
-            } else if (input->teclado->isKey(SDLK_x)){
-                onPular(NORMAL);
-            } else if (input->teclado->isKey(SDLK_z)){
-                onPular(FRACO);
-            }
+//        if ((estado!=PULANDO)&&(estado!=CAINDO)){
+        if (input->teclado->isKey(SDLK_c)){
+            onPular(SUPER);
+        } else if (input->teclado->isKey(SDLK_x)){
+            onPular(NORMAL);
+        } else if (input->teclado->isKey(SDLK_z)){
+            onPular(FRACO);
         }
+//        }
     }
 
     if (posicao.x<20){
@@ -155,23 +155,26 @@ GBF::Ponto Jogador::ajustar()
 
 void Jogador::onPular(TipoPulo tipo)
 {
-    estado=PULANDO;
-    getSprite("pulando")->animacao.setInicio();
+    if ((estado!=PULANDO)&&(estado!=CAINDO)) {
 
-    switch (tipo){
-        case FRACO:
-                delay.acao=12;
-                alturaPulo.corrente=alturaPulo.c;
-            break;
-        case SUPER:
-                delay.acao=6;
-                alturaPulo.corrente=alturaPulo.a;
-            break;
-        case NORMAL:
-        default:
-                delay.acao=10;
-                alturaPulo.corrente=alturaPulo.b;
-            break;
+        estado=PULANDO;
+        getSprite("pulando")->animacao.setInicio();
+
+        switch (tipo){
+            case FRACO:
+                    delay.acao=12;
+                    alturaPulo.corrente=alturaPulo.fraco;
+                break;
+            case SUPER:
+                    delay.acao=6;
+                    alturaPulo.corrente=alturaPulo.super;
+                break;
+            case NORMAL:
+            default:
+                    delay.acao=10;
+                    alturaPulo.corrente=alturaPulo.normal;
+                break;
+        }
     }
 }
 

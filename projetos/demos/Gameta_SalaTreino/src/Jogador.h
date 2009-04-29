@@ -29,6 +29,12 @@ struct Altura{
     int corrente;
 };
 
+enum TipoPulo
+{
+    FRACO,
+    NORMAL,
+    SUPER
+};
 //Personagem do Jogo
 class Jogador : public Personagem::Personagem
 {
@@ -44,5 +50,15 @@ class Jogador : public Personagem::Personagem
     std::string getAliasSprite();
 	Altura alturaPulo;
 
+    GBF::Ponto ajustar();
+    void onPular(TipoPulo tipo);
+    void acaoPular();
+    void onMorrer();
+    void acaoCair();
+    void onImpulso();
+    void acaoImpulso();
+    void acaoCorrer();
+    void acaoAndar(int passo);
+    void acaoRecuar();
 };
 #endif

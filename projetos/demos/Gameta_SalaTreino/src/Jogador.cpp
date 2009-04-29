@@ -64,84 +64,43 @@ void Jogador::acao(GBF::Kernel::Input::InputSystem * input)
             posicao.x+=10;
         } else if ((input->teclado->isKey(SDLK_LEFT))){
             posicao.x-=10;
-
             if ((posicao.x<=20)&&(estado!=CAINDO)){
-                estado=IMPULSO;
-                getSprite("impulso")->animacao.setInicio();
+                onImpulso();
             }
         }
         if (estado==PULANDO){
-            if (!getSprite(getAliasSprite())->animacao.isFim()){
-                getSprite(getAliasSprite())->animacao.processarManual();
-            }
-            if (posicao.y>=alturaPulo.corrente){
-                posicao.y-=10;
-            } else {
-                delay.acao--;
-                if (delay.acao<=0) {
-                    estado=CAINDO;
-                    getSprite("caindo")->animacao.setInicio();
-                }
-            }
+            acaoPular();
         } else if (estado==CAINDO){
-            if (posicao.y<110){
-                posicao.y+=6;
-                if (!getSprite(getAliasSprite())->animacao.isFim()){
-                    getSprite(getAliasSprite())->animacao.processarManual();
-                }
-            } else {
-                estado=PARADO;
-            }
+            acaoCair();
         }
     } else if (estado==IMPULSO){
-            if (posicao.x<100){
-                posicao.x+=4;
-                posicao.y-=4;
-                if (!getSprite(getAliasSprite())->animacao.isFim()){
-                    getSprite(getAliasSprite())->animacao.processarManual();
-                }
-            } else {
-                estado=CAINDO;
-            }
-    } else {
+            acaoImpulso();
+    } else if(vivo){
         estado=PARADO;
         if (input->teclado->isKey(SDLK_RIGHT)){
             if (input->teclado->isKey(SDLK_LSHIFT)){
-                posicao.x+=10;
-                estado=AVANCO;
+                acaoCorrer();
             } else {
-                posicao.x+=1;
-                estado=ANDANDO;
+                acaoAndar(1);
             }
             getSprite(getAliasSprite())->animacao.processarManual();
 
         } else if (input->teclado->isKey(SDLK_LEFT)){
             if (input->teclado->isKey(SDLK_LSHIFT)){
-                posicao.x-=10;
-                estado=RECUO;
+                acaoRecuar();
             } else {
-                posicao.x-=1;
-                estado=ANDANDO;
+                acaoAndar(-1);
             }
             getSprite(getAliasSprite())->animacao.processarManual();
         }
 
         if ((estado!=PULANDO)&&(estado!=CAINDO)){
             if (input->teclado->isKey(SDLK_c)){
-                estado=PULANDO;
-                getSprite("pulando")->animacao.setInicio();
-                delay.acao=6;
-                alturaPulo.corrente=alturaPulo.a;
+                onPular(SUPER);
             } else if (input->teclado->isKey(SDLK_x)){
-                estado=PULANDO;
-                getSprite("pulando")->animacao.setInicio();
-                delay.acao=10;
-                alturaPulo.corrente=alturaPulo.b;
+                onPular(NORMAL);
             } else if (input->teclado->isKey(SDLK_z)){
-                estado=PULANDO;
-                getSprite("pulando")->animacao.setInicio();
-                delay.acao=12;
-                alturaPulo.corrente=alturaPulo.c;
+                onPular(FRACO);
             }
         }
     }
@@ -159,9 +118,7 @@ void Jogador::acao(GBF::Kernel::Input::InputSystem * input)
     }
 
     if (input->teclado->isKey(SDLK_m)){
-        estado=MORRENDO;
-        vivo=false;
-        getSprite("morrendo")->animacao.setInicio();
+        onMorrer();
     } else if(input->teclado->isKey(SDLK_r)){
         estado=PARADO;
         vivo=true;
@@ -170,17 +127,125 @@ void Jogador::acao(GBF::Kernel::Input::InputSystem * input)
 
 void Jogador::desenhar()
 {
-    if (vivo){
-        getSprite(getAliasSprite())->desenhar(posicao.x,posicao.y);
-    } else {
+    GBF::Ponto ponto = ajustar();
+
+    if (!vivo){
         if(!getSprite("morrendo")->animacao.isFim()){
             getSprite("morrendo")->animacao.processarManual();
         }
-        getSprite("morrendo")->desenhar(posicao.x,posicao.y+20);
+    }
+
+    getSprite(getAliasSprite())->desenhar(ponto.x,ponto.y);
+}
+
+GBF::Ponto Jogador::ajustar()
+{
+    GBF::Ponto ponto;
+
+    switch (estado){
+        case MORRENDO:  ponto.x=posicao.x;     ponto.y=posicao.y+20;  break;
+        case PULANDO :  ponto.x=posicao.x-20;  ponto.y=posicao.y;     break;
+        case CAINDO  :  ponto.x=posicao.x-20;  ponto.y=posicao.y;     break;
+        case AVANCO  :  ponto.x=posicao.x;     ponto.y=posicao.y+16;  break;
+        default:        ponto.x=posicao.x;     ponto.y=posicao.y;     break;
+    }
+
+    return ponto;
+}
+
+void Jogador::onPular(TipoPulo tipo)
+{
+    estado=PULANDO;
+    getSprite("pulando")->animacao.setInicio();
+
+    switch (tipo){
+        case FRACO:
+                delay.acao=12;
+                alturaPulo.corrente=alturaPulo.c;
+            break;
+        case SUPER:
+                delay.acao=6;
+                alturaPulo.corrente=alturaPulo.a;
+            break;
+        case NORMAL:
+        default:
+                delay.acao=10;
+                alturaPulo.corrente=alturaPulo.b;
+            break;
     }
 }
 
+void Jogador::acaoPular()
+{
+    if (!getSprite(getAliasSprite())->animacao.isFim()){
+        getSprite(getAliasSprite())->animacao.processarManual();
+    }
+    if (posicao.y>=alturaPulo.corrente){
+        posicao.y-=10;
+    } else {
+        delay.acao--;
+        if (delay.acao<=0) {
+            estado=CAINDO;
+            getSprite("caindo")->animacao.setInicio();
+        }
+    }
+}
 
+void Jogador::onMorrer()
+{
+    estado=MORRENDO;
+    vivo=false;
+    getSprite("morrendo")->animacao.setInicio();
+}
+
+void Jogador::acaoCair()
+{
+    if (posicao.y<110){
+        posicao.y+=6;
+        if (!getSprite(getAliasSprite())->animacao.isFim()){
+            getSprite(getAliasSprite())->animacao.processarManual();
+        }
+    } else {
+        estado=PARADO;
+    }
+}
+
+void Jogador::onImpulso()
+{
+    estado=IMPULSO;
+    getSprite("impulso")->animacao.setInicio();
+    getSprite("caindo")->animacao.setInicio();
+}
+void Jogador::acaoImpulso()
+{
+    if (posicao.x<100){
+        posicao.x+=4;
+        posicao.y-=4;
+        if (!getSprite(getAliasSprite())->animacao.isFim()){
+            getSprite(getAliasSprite())->animacao.processarManual();
+        }
+    } else {
+        estado=CAINDO;
+    }
+}
+
+void Jogador::acaoCorrer()
+{
+    posicao.x+=10;
+    estado=AVANCO;
+}
+
+void Jogador::acaoAndar(int passo)
+{
+    posicao.x+=passo;
+    estado=ANDANDO;
+}
+
+void Jogador::acaoRecuar()
+{
+    posicao.x-=10;
+    estado=RECUO;
+}
 std::string Jogador::getAliasSprite(){
 
     std::string aliasSprite;

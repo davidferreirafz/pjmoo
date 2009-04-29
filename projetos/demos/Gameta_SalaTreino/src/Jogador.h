@@ -22,10 +22,10 @@ enum Estado{
     IMPULSO
 };
 
-struct Altura{
-    int a;
-    int b;
-    int c;
+struct AlturaPulo{
+    int super;
+    int normal;
+    int fraco;
     int corrente;
 };
 
@@ -48,7 +48,7 @@ class Jogador : public Personagem::Personagem
 
     Estado estado;
     std::string getAliasSprite();
-	Altura alturaPulo;
+	AlturaPulo alturaPulo;
 
     GBF::Ponto ajustar();
     void onPular(TipoPulo tipo);

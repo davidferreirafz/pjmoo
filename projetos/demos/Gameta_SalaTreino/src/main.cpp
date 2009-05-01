@@ -9,7 +9,7 @@
 #include "Jogador.h"
 #include "Canhao.h"
 
-#define TOTAL_CANHAO 4
+#define TOTAL_CANHAO 1
 
 /**********************************************************************/
 /* AeroTarget - Cap01 - Código do Artigo Desenvolvimento de Jogos     */
@@ -27,14 +27,14 @@ int main(int argc, char* argv[])
 //carregando imagens
     frameworkGBF.graphicSystemCore->graphicSystem->imageBufferManager->carregar("background","//data//imagem//background.png");
     frameworkGBF.graphicSystemCore->graphicSystem->imageBufferManager->carregar("foreground","//data//imagem//foreground.png");
-    frameworkGBF.graphicSystemCore->graphicSystem->imageBufferManager->carregar("personagem_parado","//data//imagem//personagem_parado.png");
-    frameworkGBF.graphicSystemCore->graphicSystem->imageBufferManager->carregar("personagem_andando","//data//imagem//personagem_andando.png");
+    frameworkGBF.graphicSystemCore->graphicSystem->imageBufferManager->carregar("personagem_parado",  "//data//imagem//personagem_parado.png");
+    frameworkGBF.graphicSystemCore->graphicSystem->imageBufferManager->carregar("personagem_andando", "//data//imagem//personagem_andando.png");
     frameworkGBF.graphicSystemCore->graphicSystem->imageBufferManager->carregar("personagem_recuando","//data//imagem//personagem_recuando.png");
-    frameworkGBF.graphicSystemCore->graphicSystem->imageBufferManager->carregar("personagem_avancando","//data//imagem//personagem_avancando.png");
+    frameworkGBF.graphicSystemCore->graphicSystem->imageBufferManager->carregar("personagem_correndo","//data//imagem//personagem_correndo.png");
     frameworkGBF.graphicSystemCore->graphicSystem->imageBufferManager->carregar("personagem_morrendo","//data//imagem//personagem_morrendo.png");
-    frameworkGBF.graphicSystemCore->graphicSystem->imageBufferManager->carregar("personagem_pulando","//data//imagem//personagem_pulando.png");
-    frameworkGBF.graphicSystemCore->graphicSystem->imageBufferManager->carregar("personagem_caindo","//data//imagem//personagem_caindo.png");
-    frameworkGBF.graphicSystemCore->graphicSystem->imageBufferManager->carregar("personagem_impulso","//data//imagem//personagem_impulso.png");
+    frameworkGBF.graphicSystemCore->graphicSystem->imageBufferManager->carregar("personagem_pulando", "//data//imagem//personagem_pulando.png");
+    frameworkGBF.graphicSystemCore->graphicSystem->imageBufferManager->carregar("personagem_caindo",  "//data//imagem//personagem_caindo.png");
+    frameworkGBF.graphicSystemCore->graphicSystem->imageBufferManager->carregar("personagem_impulsionando","//data//imagem//personagem_impulsionando.png");
 
     frameworkGBF.graphicSystemCore->graphicSystem->imageBufferManager->carregar("bala","//data//imagem//bala.png");
     frameworkGBF.graphicSystemCore->graphicSystem->imageBufferManager->carregar("fumaca","//data//imagem//fumaca.png");
@@ -78,6 +78,18 @@ int main(int argc, char* argv[])
             canhao[i]->acao();
         }
         jogador->acao(frameworkGBF.inputSystemCore->inputSystem);
+
+        for (int i=0; i<TOTAL_CANHAO; i++){
+            /*if(canhao[i]->isColisao(jogador->getAreaColisao())){
+                jogador->setBateu();
+                break;
+            }*/
+            if (jogador->colidiu(canhao[i]->getAreaColisao())){
+                jogador->setBateu();
+                break;
+            }
+
+        }
 
         background->desenhar();
         jogador->desenhar();

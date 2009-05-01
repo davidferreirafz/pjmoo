@@ -1,6 +1,6 @@
 
-#ifndef _CAVEMAN_H
-#define _CAVEMAN_H
+#ifndef _JOGADOR_H
+#define _JOGADOR_H
 
 
 
@@ -9,56 +9,26 @@
 #include <GBF/SpriteFactory.h>
 #include <GBF/FrameLayer.h>
 #include <GBF/CronometroDecrescente.h>
-#include <GBF/Personagem.h>
+#include "Lutador.h"
 
-enum Estado{
-    PARADO,
-    ANDANDO,
-    RECUO,
-    AVANCO,
-    MORRENDO,
-    PULANDO,
-    CAINDO,
-    IMPULSO
-};
 
-struct AlturaPulo{
-    int super;
-    int normal;
-    int fraco;
-    int corrente;
-};
 
-enum TipoPulo
-{
-    FRACO,
-    NORMAL,
-    SUPER
-};
+
 //Personagem do Jogo
-class Jogador : public Personagem::Personagem
+class Jogador : public Lutador
 {
   public:
     Jogador();
     virtual ~Jogador();
-
-    virtual void acao(GBF::Kernel::Input::InputSystem * input);
     void desenhar();
+    Regiao getAreaColisao();
+    bool colidiu(Regiao b);
   private:
-
-    Estado estado;
-    std::string getAliasSprite();
-	AlturaPulo alturaPulo;
-
     GBF::Ponto ajustar();
-    void onPular(TipoPulo tipo);
-    void acaoPular();
-    void onMorrer();
-    void acaoCair();
-    void onImpulso();
-    void acaoImpulso();
-    void acaoCorrer();
-    void acaoAndar(int passo);
-    void acaoRecuar();
+
+  protected:
+    virtual void limites();
+    virtual std::string getSpriteNome(Estado estado);
+
 };
 #endif

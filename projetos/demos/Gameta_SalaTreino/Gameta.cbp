@@ -59,6 +59,8 @@
 		<Unit filename="src/Canhao.h" />
 		<Unit filename="src/Jogador.cpp" />
 		<Unit filename="src/Jogador.h" />
+		<Unit filename="src/Lutador.cpp" />
+		<Unit filename="src/Lutador.h" />
 		<Unit filename="src/main.cpp" />
 		<Extensions>
 			<code_completion />

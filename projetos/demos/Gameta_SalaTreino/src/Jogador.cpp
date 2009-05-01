@@ -20,9 +20,9 @@ Jogador::Jogador()
     getSprite("recuando")->animacao.setAutomatico(false);
     delete(spriteFactory);
 
-    spriteFactory = new GBF::Imagem::SpriteFactory("personagem_avancando");
-    adicionarSprite(spriteFactory->criarSpritePersonagem(0,0,84,86,4,2),"avancando");
-    getSprite("avancando")->animacao.setAutomatico(false);
+    spriteFactory = new GBF::Imagem::SpriteFactory("personagem_correndo");
+    adicionarSprite(spriteFactory->criarSpritePersonagem(0,0,84,86,4,2),"correndo");
+    getSprite("correndo")->animacao.setAutomatico(false);
     delete(spriteFactory);
 
     spriteFactory = new GBF::Imagem::SpriteFactory("personagem_morrendo");
@@ -40,14 +40,14 @@ Jogador::Jogador()
     getSprite("caindo")->animacao.setAutomatico(false);
     delete(spriteFactory);
 
-    spriteFactory = new GBF::Imagem::SpriteFactory("personagem_impulso");
-    adicionarSprite(spriteFactory->criarSpritePersonagem(0,0,65,75,2,4),"impulso");
-    getSprite("impulso")->animacao.setAutomatico(false);
+    spriteFactory = new GBF::Imagem::SpriteFactory("personagem_impulsionando");
+    adicionarSprite(spriteFactory->criarSpritePersonagem(0,0,65,75,2,4),"impulsionando");
+    getSprite("impulsionando")->animacao.setAutomatico(false);
     delete(spriteFactory);
 
     setPosicao(100,114);
 
-    estado=PARADO;
+    setEstado(PARADO);
     delay.acao=6;
     alturaPulo.super  = 64;
     alturaPulo.normal = 90;
@@ -57,58 +57,12 @@ Jogador::Jogador()
 Jogador::~Jogador()
 {
 }
-void Jogador::acao(GBF::Kernel::Input::InputSystem * input)
+void Jogador::limites()
 {
-    if ((estado==PULANDO)||(estado==CAINDO)){
-        if (input->teclado->isKey(SDLK_RIGHT)){
-            posicao.x+=10;
-        } else if ((input->teclado->isKey(SDLK_LEFT))){
-            posicao.x-=10;
-            if ((posicao.x<=20)&&(estado!=CAINDO)){
-                onImpulso();
-            }
-        }
-        if (estado==PULANDO){
-            acaoPular();
-        } else if (estado==CAINDO){
-            acaoCair();
-        }
-    } else if (estado==IMPULSO){
-            acaoImpulso();
-    } else if(vivo){
-        estado=PARADO;
-        if (input->teclado->isKey(SDLK_RIGHT)){
-            if (input->teclado->isKey(SDLK_LSHIFT)){
-                acaoCorrer();
-            } else {
-                acaoAndar(1);
-            }
-            getSprite(getAliasSprite())->animacao.processarManual();
-
-        } else if (input->teclado->isKey(SDLK_LEFT)){
-            if (input->teclado->isKey(SDLK_LSHIFT)){
-                acaoRecuar();
-            } else {
-                acaoAndar(-1);
-            }
-            getSprite(getAliasSprite())->animacao.processarManual();
-        }
-
-//        if ((estado!=PULANDO)&&(estado!=CAINDO)){
-        if (input->teclado->isKey(SDLK_c)){
-            onPular(SUPER);
-        } else if (input->teclado->isKey(SDLK_x)){
-            onPular(NORMAL);
-        } else if (input->teclado->isKey(SDLK_z)){
-            onPular(FRACO);
-        }
-//        }
-    }
-
     if (posicao.x<20){
         posicao.x=20;
     } else {
-        int d = getSprite(getAliasSprite())->getTamanho().w;
+        int d = getSprite(Lutador::getSpriteNome())->getTamanho().w;
         if (posicao.x>304-20-d){
             posicao.x=304-20-d;
         }
@@ -117,25 +71,30 @@ void Jogador::acao(GBF::Kernel::Input::InputSystem * input)
         posicao.y=30;
     }
 
-    if (input->teclado->isKey(SDLK_m)){
+   /* if (input->teclado->isKey(SDLK_m)){
         onMorrer();
     } else if(input->teclado->isKey(SDLK_r)){
         estado=PARADO;
         vivo=true;
-    }
+    }*/
 }
 
 void Jogador::desenhar()
 {
     GBF::Ponto ponto = ajustar();
 
-    if (!vivo){
+    /*if (!vivo){
         if(!getSprite("morrendo")->animacao.isFim()){
             getSprite("morrendo")->animacao.processarManual();
         }
-    }
+    }*/
 
-    getSprite(getAliasSprite())->desenhar(ponto.x,ponto.y);
+    getSprite(Lutador::getSpriteNome())->desenhar(ponto.x,ponto.y);
+
+    Regiao r= getAreaColisao();
+
+    gsGFX->setColor(255,178,0);
+    gsGFX->retangulo(posicao.x,posicao.y,r.dimensao.w,r.dimensao.h);
 }
 
 GBF::Ponto Jogador::ajustar()
@@ -146,123 +105,29 @@ GBF::Ponto Jogador::ajustar()
         case MORRENDO:  ponto.x=posicao.x;     ponto.y=posicao.y+20;  break;
         case PULANDO :  ponto.x=posicao.x-20;  ponto.y=posicao.y;     break;
         case CAINDO  :  ponto.x=posicao.x-20;  ponto.y=posicao.y;     break;
-        case AVANCO  :  ponto.x=posicao.x;     ponto.y=posicao.y+16;  break;
+        case CORRENDO:  ponto.x=posicao.x;     ponto.y=posicao.y+16;  break;
+        case RECUANDO:  ponto.x=posicao.x;     ponto.y=posicao.y+10;  break;
         default:        ponto.x=posicao.x;     ponto.y=posicao.y;     break;
     }
 
     return ponto;
 }
 
-void Jogador::onPular(TipoPulo tipo)
+std::string Jogador::getSpriteNome(Estado estado)
 {
-    if ((estado!=PULANDO)&&(estado!=CAINDO)) {
-
-        estado=PULANDO;
-        getSprite("pulando")->animacao.setInicio();
-
-        switch (tipo){
-            case FRACO:
-                    delay.acao=12;
-                    alturaPulo.corrente=alturaPulo.fraco;
-                break;
-            case SUPER:
-                    delay.acao=6;
-                    alturaPulo.corrente=alturaPulo.super;
-                break;
-            case NORMAL:
-            default:
-                    delay.acao=10;
-                    alturaPulo.corrente=alturaPulo.normal;
-                break;
-        }
-    }
-}
-
-void Jogador::acaoPular()
-{
-    if (!getSprite(getAliasSprite())->animacao.isFim()){
-        getSprite(getAliasSprite())->animacao.processarManual();
-    }
-    if (posicao.y>=alturaPulo.corrente){
-        posicao.y-=10;
-    } else {
-        delay.acao--;
-        if (delay.acao<=0) {
-            estado=CAINDO;
-            getSprite("caindo")->animacao.setInicio();
-        }
-    }
-}
-
-void Jogador::onMorrer()
-{
-    estado=MORRENDO;
-    vivo=false;
-    getSprite("morrendo")->animacao.setInicio();
-}
-
-void Jogador::acaoCair()
-{
-    if (posicao.y<110){
-        posicao.y+=6;
-        if (!getSprite(getAliasSprite())->animacao.isFim()){
-            getSprite(getAliasSprite())->animacao.processarManual();
-        }
-    } else {
-        estado=PARADO;
-    }
-}
-
-void Jogador::onImpulso()
-{
-    estado=IMPULSO;
-    getSprite("impulso")->animacao.setInicio();
-    getSprite("caindo")->animacao.setInicio();
-}
-void Jogador::acaoImpulso()
-{
-    if (posicao.x<100){
-        posicao.x+=4;
-        posicao.y-=4;
-        if (!getSprite(getAliasSprite())->animacao.isFim()){
-            getSprite(getAliasSprite())->animacao.processarManual();
-        }
-    } else {
-        estado=CAINDO;
-    }
-}
-
-void Jogador::acaoCorrer()
-{
-    posicao.x+=10;
-    estado=AVANCO;
-}
-
-void Jogador::acaoAndar(int passo)
-{
-    posicao.x+=passo;
-    estado=ANDANDO;
-}
-
-void Jogador::acaoRecuar()
-{
-    posicao.x-=10;
-    estado=RECUO;
-}
-std::string Jogador::getAliasSprite(){
-
     std::string aliasSprite;
 
     switch (estado)
     {
-        case ANDANDO:
+        case ANDANDO_FRENTE:
+        case ANDANDO_TRAS:
                 aliasSprite="andando";
             break;
-        case RECUO:
+        case RECUANDO:
                 aliasSprite="recuando";
             break;
-        case AVANCO:
-                aliasSprite="avancando";
+        case CORRENDO:
+                aliasSprite="correndo";
             break;
         case MORRENDO:
                 aliasSprite="morrendo";
@@ -273,8 +138,8 @@ std::string Jogador::getAliasSprite(){
         case CAINDO:
                 aliasSprite="caindo";
             break;
-        case IMPULSO:
-                aliasSprite="impulso";
+        case IMPULSIONANDO:
+                aliasSprite="impulsionando";
             break;
         case PARADO:
         default:
@@ -283,5 +148,63 @@ std::string Jogador::getAliasSprite(){
     }
 
     return aliasSprite;
+}
+Regiao Jogador::getAreaColisao()
+{
+    Regiao regiao;
+
+    switch (estado)
+    {
+        case ANDANDO_FRENTE:
+        case ANDANDO_TRAS:
+                regiao.posicao.x=10;    regiao.posicao.y=2;
+                regiao.dimensao.w=28;   regiao.dimensao.h=94;
+            break;
+        case RECUANDO:
+                regiao.posicao.x=2;     regiao.posicao.y=15;
+                regiao.dimensao.w=44;   regiao.dimensao.h=70;
+            break;
+        case CORRENDO:
+                regiao.posicao.x=28;    regiao.posicao.y=20;
+                regiao.dimensao.w=52;   regiao.dimensao.h=52;
+            break;
+        case MORRENDO:
+                regiao.posicao.x=20;    regiao.posicao.y=45;
+                regiao.dimensao.w=70;   regiao.dimensao.h=25;
+            break;
+        case PULANDO:
+                regiao.posicao.x=18;    regiao.posicao.y=6;
+                regiao.dimensao.w=32;   regiao.dimensao.h=52;
+            break;
+        case CAINDO:
+                regiao.posicao.x=28;    regiao.posicao.y=14;
+                regiao.dimensao.w=24;   regiao.dimensao.h=78;
+            break;
+        case IMPULSIONANDO:
+                regiao.posicao.x=10;    regiao.posicao.y=10;
+                regiao.dimensao.w=46;   regiao.dimensao.h=52;
+            break;
+        case PARADO:
+        default:
+                regiao.posicao.x=10;   regiao.posicao.y=2;
+                regiao.dimensao.w=22;  regiao.dimensao.h=94;
+            break;
+    }
+
+    ////////////
+    regiao.posicao.x=posicao.x+regiao.posicao.x;
+    regiao.posicao.y=posicao.y+regiao.posicao.y;
+
+    return regiao;
+}
+
+bool Jogador::colidiu(Regiao b)
+{
+    bool resultado = false;
+    if (estado!=MORRENDO){
+        resultado=InterfaceObjeto::colidiu(b);
+    }
+
+    return resultado;
 }
 

@@ -8,9 +8,9 @@
 #include <GBF/GBFramework.h>
 #include "SystemColor.h"
 
-#define NUMERO 200
+#define NUMERO 2000
 
-int raioAlcance = 50;
+int raioAlcance = 200;
 int raioOrigemX = 0;
 int raioOrigemY = 0;
 

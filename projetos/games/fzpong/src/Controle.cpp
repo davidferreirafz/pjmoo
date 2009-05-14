@@ -122,6 +122,10 @@ void Controle::display()
     wsManager->escrever("texto" ,20,10,"%02d",placar.getVitoriaCPU());
     wsManager->escrever("texto",590,10,"%02d",placar.getVitoriaJogador());
 
+#ifdef DEBUG
+    wsManager->escrever(GBF::Kernel::Write::WriteManager::defaultFont,340,430,"DEBUG: Versão compilada para debug");
+#endif
+
     bola.desenhar();
     raqueteJogador->desenhar();
     raqueteCPU->desenhar();

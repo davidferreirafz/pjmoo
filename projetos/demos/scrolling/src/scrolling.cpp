@@ -33,7 +33,7 @@ int main(int argc, char* argv[])
 
     frameworkGBF->setPath(argv[0]);
     frameworkGBF->setTitulo("GBF::Teste Scrolling","David Ferreira");
-    frameworkGBF->iniciar(640,480,16,true,GBF::Kernel::FPS::FPS_CONTADOR);
+    frameworkGBF->iniciar(640,480,16,false,GBF::Kernel::FPS::FPS_CONTADOR);
     //Ativando GRAB_ON para evitar mudança de tela durante o
     // jogo no Gnome (Desktop para o GNU/Linux)
     frameworkGBF->inputSystemCore->setControleExclusivo(SDL_GRAB_OFF);
@@ -48,10 +48,27 @@ int main(int argc, char* argv[])
     spriteFactory = new GBF::Imagem::SpriteFactory("tiles");
     GBF::Imagem::Layer::FrameLayer * tiles = spriteFactory->criarFrameLayer(0, 0,32,32);
     tiles->setFrame(0,0,640,480);
-    tiles->setTiles(20,30);
+    tiles->setTiles(20,180);
     tiles->setPixelTile(32,32);
     tiles->iniciarOrdenado(4);
     tiles->camera.setBottom();
+
+    GBF::Imagem::Layer::FrameLayer * miniTiles = spriteFactory->criarFrameLayer(0, 0,32,32);
+    miniTiles->setFrame(0,0,320,320);
+    miniTiles->setTiles(10,10);
+    miniTiles->setPixelTile(32,32);
+    miniTiles->iniciarOrdenado(1);
+    miniTiles->camera.setBottom();
+
+
+    GBF::Imagem::Layer::FrameLayer * miniTiles2 = spriteFactory->criarFrameLayer(0, 0,32,32);
+    miniTiles2->setFrame(400,0,128,480);
+    miniTiles2->setTiles(4,15);
+    miniTiles2->setPixelTile(32,32);
+    miniTiles2->iniciarRandomico(4);
+    miniTiles2->camera.setTop();
+
+
     delete(spriteFactory);
 
     GBF::Ponto ponto;
@@ -65,6 +82,8 @@ int main(int argc, char* argv[])
 
 		//desenha a tela de fundo
 		tiles->desenhar();
+		miniTiles->desenhar();
+		miniTiles2->desenhar();
         tiles->camera.show();
 
         if (descer){
@@ -86,7 +105,7 @@ int main(int argc, char* argv[])
 		frameworkGBF->atualizar();
 	}
     if (frameworkGBF){
-//        delete(tiles);
+        delete(tiles);
         delete(frameworkGBF);
     }
 	return 0;

@@ -41,20 +41,16 @@ void NaveAliado::acao(GBF::Kernel::Input::InputSystem* input)
 	checarArma();
 
 	if ((input->teclado->isKey(SDLK_UP))||(input->joystick->isAxeUp())){
-		//sprite->setDirecao(DR_CIMA);
 		getSpritePrincipal()->setDirecao(GBF::Imagem::Sprite::DR_CIMA);
         posicao.y-=getVelocidade();
     } else if ((input->teclado->isKey(SDLK_DOWN))||(input->joystick->isAxeDown())){
-//        sprite->setDirecao(DR_CIMA);
         getSpritePrincipal()->setDirecao(GBF::Imagem::Sprite::DR_CIMA);
         posicao.y+=getVelocidade();
     }
     if ((input->teclado->isKey(SDLK_LEFT))||(input->joystick->isAxeLeft())){
-//        sprite->setDirecao(DR_ESQUERDA);
         getSpritePrincipal()->setDirecao(GBF::Imagem::Sprite::DR_ESQUERDA);
         posicao.x-=getVelocidade();
     } else if ((input->teclado->isKey(SDLK_RIGHT))||(input->joystick->isAxeRight())){
-//        sprite->setDirecao(DR_DIREITA);
         getSpritePrincipal()->setDirecao(GBF::Imagem::Sprite::DR_DIREITA);
         posicao.x+=getVelocidade();
     }
@@ -79,13 +75,10 @@ void NaveAliado::desenhar()
 {
     if (isAtivo()){
         if (atingido){
-//            sprite_atingido->desenhar(posicao.x,posicao.y);
             getSprite("explosao")->desenhar(posicao.x,posicao.y);
-//            if (sprite_atingido->isAnimacaoFim()){
             if (getSprite("explosao")->animacao.isFim()){
                 atingido=false;
                 setVivo(true);
-//                sprite_atingido->setAnimacaoInicio();
                 getSprite("explosao")->animacao.setInicio();
             }
         } else {
@@ -106,11 +99,6 @@ void NaveAliado::limite()
     } else if (posicao.y+dimensao.h>=area.bottom){
         posicao.y=area.bottom - dimensao.h;
     }
-}
-void NaveAliado::checarArma()
-{
-    delay.tiroA--;
-    delay.tiroB--;
 }
 void NaveAliado::setVivo(bool VALOR)
 {
@@ -155,20 +143,7 @@ void NaveAliado::choque(int forca)
         }
     }
 }
-void NaveAliado::prepararTorpedo()
-{
-    if (delay.tiroB<=0){
-        dispararTorpedo();
-        delay.tiroB=espera.tiroB;
-    }
-}
-void NaveAliado::prepararPhaser()
-{
-    if (delay.tiroA<=0){
-        dispararPhaser();
-        delay.tiroA=espera.tiroA;
-    }
-}
+
 void NaveAliado::colisao(ListItem* listItem)
 {
 	ItemAbstract *item = NULL;

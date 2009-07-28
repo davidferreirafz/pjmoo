@@ -19,7 +19,7 @@
 ObstaculoAsteroid::ObstaculoAsteroid()
 {
 GBF::Imagem::SpriteFactory  *spriteFactory = new GBF::Imagem::SpriteFactory("personagem");
-    adicionarSpritePrincipal(spriteFactory->criarSpritePersonagem(0,82,32,32,4,8));
+    adicionarSpritePrincipal(spriteFactory->criarSpritePersonagem(0,82,32,32,4,4));
     delete (spriteFactory);
 
     velocidade  = OBSTACULO_ASTEROID_MIN + (rand()%OBSTACULO_ASTEROID_MAX);

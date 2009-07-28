@@ -31,13 +31,16 @@ NaveEnterpriseE::NaveEnterpriseE()
 
     sistema.arma.phaser   = 0;
     sistema.arma.plasma   = 0;
-    sistema.arma.torpedo  = 200;
+    sistema.arma.torpedo  = 100;
     sistema.escudo.atual  = 80;
     sistema.escudo.maximo = 150;
     sistema.velocidade.eMaxima = VELOCIDADE_DOBRA_09;
     sistema.velocidade.eAtual  = VELOCIDADE_DOBRA_03;
     sistema.velocidade.eDisponivel = sistema.velocidade.eAtual;
     selecionarPosicao();
+
+    setRecarregarPhaser(6);
+    setRecarregarTorpedo(5);
 }
 NaveEnterpriseE::~NaveEnterpriseE()
 {

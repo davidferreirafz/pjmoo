@@ -369,20 +369,23 @@ void Jogo::inicializarRecursos()
     frameworkGBF->iniciar(640,480,16,isFullScreen(),GBF::Kernel::FPS::FPS_LIMITADO);
     //Ativando GRAB_ON para evitar mudança de tela durante o
     // jogo no Gnome (Desktop para o GNU/Linux)
-    frameworkGBF->inputSystemCore->setControleExclusivo(SDL_GRAB_ON);
+    frameworkGBF->inputSystemCore->setControleExclusivo(SDL_GRAB_OFF);
 
+    frameworkGBF->setFPS(true);
     recordeManager->setArquivo("data//etc//toprecord.top");
     recordeManager->setAssinatura(ASSINATURA_JOGO_NOME,ASSINATURA_JOGO_SIGLA,ASSINATURA_JOGO_VERSAO);
 
 
 //carregando imagens
     frameworkGBF->graphicSystemCore->graphicSystem->imageBufferManager->carregar("personagem","data//imagem//spaceshooter_personagem.png");
-    frameworkGBF->graphicSystemCore->graphicSystem->imageBufferManager->carregar("tiles","data//imagem//spaceshooter_tiles.png");
+    frameworkGBF->graphicSystemCore->graphicSystem->imageBufferManager->carregar("tilemap","data//imagem//tilemap_01.png");
+    frameworkGBF->graphicSystemCore->graphicSystem->imageBufferManager->carregar("painel","data//imagem//tile_painel.png");
     frameworkGBF->graphicSystemCore->graphicSystem->imageBufferManager->carregar("armas","data//imagem//spaceshooter_armas.png");
     frameworkGBF->graphicSystemCore->graphicSystem->imageBufferManager->carregar("console","data//imagem//spaceshooter_console.png");
     frameworkGBF->graphicSystemCore->graphicSystem->imageBufferManager->carregar("mapa","data//imagem//spaceshooter_mapa.png");
     frameworkGBF->graphicSystemCore->graphicSystem->imageBufferManager->carregar("startrek","data//imagem//startrek.jpg");
     frameworkGBF->graphicSystemCore->graphicSystem->imageBufferManager->carregar("abertura","data//imagem//spaceshooter_abertura.png");
+    frameworkGBF->graphicSystemCore->graphicSystem->imageBufferManager->carregar("tiles","data//imagem//spaceshooter_tiles.png");
 
 
     frameworkGBF->writeSystem->carregar("nisemegaeu","data//fonte//nisemegaeu.png");
@@ -467,9 +470,9 @@ void Jogo::inicializarRecursos()
     uiMenuIdioma->adicionar(new UserInterface::Menu::UIItemTexto("menu_idioma_es","nisemegaeu"));
 
     spriteFactory = new GBF::Imagem::SpriteFactory("tiles");
-    iconeGlobal   = spriteFactory->criarSpriteItem(304,46,24,24,1,1);
-    iconeLocal    = spriteFactory->criarSpriteItem(329,46,24,24,1,1);
-    banner        = spriteFactory->criarSpriteItem(0,160,512,89,1,1);
+    iconeGlobal   = spriteFactory->criarSpriteItem(12,34,24,24,1,1);
+    iconeLocal    = spriteFactory->criarSpriteItem(37,34,24,24,1,1);
+    banner        = spriteFactory->criarSpriteItem( 0,59,512,89,1,1);
 
     delete(spriteFactory);
 

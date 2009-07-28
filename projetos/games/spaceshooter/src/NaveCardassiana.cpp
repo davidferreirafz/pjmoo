@@ -22,11 +22,9 @@ NaveCardassiana::NaveCardassiana()
     adicionarSpritePrincipal(spriteFactory->criarSpritePersonagem(137,481,40,40,1,2));
     delete (spriteFactory);
 
-//    sprite->setQtdDirecoes(4);
     getSpritePrincipal()->setQtdDirecoes(4);
 
     selecionarPosicao();
-//    caminho(sprite->getDirecao());
     caminho(getSpritePrincipal()->getDirecao());
 
     //usado para mudar ou nao direcao da nave
@@ -41,6 +39,9 @@ NaveCardassiana::NaveCardassiana()
     sistema.escudo.maximo = 20;
     sistema.velocidade.eMaxima = VELOCIDADE_DOBRA_05;
     sistema.velocidade.eAtual  = VELOCIDADE_DOBRA_04;
+
+    setRecarregarPhaser(0);
+    setRecarregarTorpedo(5);
 }
 NaveCardassiana::~NaveCardassiana()
 {
@@ -53,7 +54,6 @@ void NaveCardassiana::dispararPhaser()
 void NaveCardassiana::dispararTorpedo()
 {
     //Adiciona ao Pool
-//    switch(sprite->getDirecao()){
     switch(getSpritePrincipal()->getDirecao()){
         case GBF::Imagem::Sprite::DR_CIMA:
                 listTiro->adicionar(new TiroTorpedoCardassiano(posicao.x+13,posicao.y,TiroTorpedoCardassiano::UP));

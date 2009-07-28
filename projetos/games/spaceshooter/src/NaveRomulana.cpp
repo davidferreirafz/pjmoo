@@ -22,11 +22,9 @@ NaveRomulana::NaveRomulana()
     adicionarSpritePrincipal(spriteFactory->criarSpritePersonagem(0,367,39,39,2,50));
     delete (spriteFactory);
 
-//    sprite->setQtdDirecoes(4);
     getSpritePrincipal()->setQtdDirecoes(4);
 
     selecionarPosicao();
-//    caminho(sprite->getDirecao());
     caminho(getSpritePrincipal()->getDirecao());
 
     //usado para mudar ou nao direcao da nave
@@ -41,6 +39,9 @@ NaveRomulana::NaveRomulana()
     sistema.escudo.maximo = 30;
     sistema.velocidade.eMaxima = VELOCIDADE_DOBRA_04;
     sistema.velocidade.eAtual  = VELOCIDADE_DOBRA_03;
+
+    setRecarregarPhaser(4);
+    setRecarregarTorpedo(0);
 }
 NaveRomulana::~NaveRomulana()
 {
@@ -50,7 +51,6 @@ NaveRomulana::~NaveRomulana()
 void NaveRomulana::dispararPhaser()
 {
     //Adiciona ao Pool
-//    switch(sprite->getDirecao()){
     switch(getSpritePrincipal()->getDirecao()){
         case GBF::Imagem::Sprite::DR_CIMA:
                 listTiro->adicionar(new TiroTorpedoRomulano(posicao.x+13,posicao.y,TiroTorpedoRomulano::UP));

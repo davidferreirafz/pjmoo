@@ -27,6 +27,7 @@
 #include <GBF/SoundSystem.h>
 #include <GBF/WriteManager.h>
 #include <GBF/PSManager.h>
+#include <GBF/SoundSystemUtility.h>
 
 #include "ListSpaceInimigo.h"
 #include "ListSpaceObstaculo.h"
@@ -46,7 +47,7 @@ struct ArsenalStatus
 	int velocidade;
 };
 
-class FaseAbstract
+class FaseAbstract : public GBF::Kernel::Sound::SoundSystemUtility
 {
 public:
     FaseAbstract();
@@ -55,7 +56,8 @@ public:
     void carregar();
     /** Inicia a fase */
     virtual void iniciar()=0;
-    virtual bool isTerminou()=0;
+    /** Informa se passou de fase*/
+    virtual bool isTerminou();
     bool isPerdeu();
 
     void executar(GBF::Kernel::Input::InputSystem * input);
@@ -69,13 +71,13 @@ public:
     void checkRestaurar();
 
 
-
 protected:
-//Atributos
-    GBF::Kernel::Graphic::ImageBufferManager *GSIBManager;
 	NaveAliado *nave;
-    GBF::Imagem::Layer::FrameLayer *moldura;
-   	GBF::Imagem::Layer::FrameLayer *tiles;
+   	GBF::Imagem::Layer::FrameLayer *tileSpace;
+    static GBF::Imagem::Layer::FrameLayer *tileStatus;
+  	static GBF::Imagem::Layer::FrameLayer *tileMensagem;
+    static GBF::Kernel::Write::WriteManager *writeManager;
+    static ParticleSystem::PSManager *particleManager;
     std::string zona;
     std::string missao;
     std::string inimigo;
@@ -85,9 +87,8 @@ protected:
     Placar * placar;
     /** Referencia ao objeto singleton InterfaceStatus */
     InterfaceStatus * status;
-   	GBF::Kernel::Sound::SoundSystem * soundSystem;
-    ParticleSystem::PSManager * particleManager;
-//Metodos
+
+
     /** Configura a fase */
     virtual void configurar()=0;
     /** Condição executada durante toda a fase */
@@ -96,6 +97,9 @@ protected:
     virtual void condicaoUnicaUltimoQuadro()=0;
     virtual void ganchoUltimoQuadro();
     virtual std::string getMissaoCompleta()=0;
+    virtual void hookMensagens();
+    virtual void hookMensagemFinal();
+
 
 private:
     bool restaurar;
@@ -106,6 +110,15 @@ private:
     void desenharCenario();
     /** Desenha o Painel com indicadores de Status*/
     void desenharPainel();
+    /** Desenha as mensagens no painel*/
+    void exibirMensagem();
+
+    //Ação Principal - movimentação
+    ListSpaceInimigo   *listSpaceInimigo;
+    ListSpaceObstaculo *listSpaceObstaculo;
+    ListTiroJogador    *listTiroJogador;
+    ListTiroInimigo    *listTiroInimigo;
+    ListItem           *listItem;
 };
 
 #endif

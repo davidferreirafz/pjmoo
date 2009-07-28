@@ -35,7 +35,7 @@ public:
     virtual void setVivo(bool VALOR);
 
 protected:
-	void dispararPhaser();
+    void dispararPhaser();
 	void dispararTorpedo();
 
 private:

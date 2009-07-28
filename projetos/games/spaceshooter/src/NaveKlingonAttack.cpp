@@ -23,10 +23,8 @@ NaveKlingonAttack::NaveKlingonAttack()
     adicionarSpritePrincipal(spriteFactory->criarSpritePersonagem(0,199,55,55,1,2));
     delete (spriteFactory);
 
-//    sprite->setQtdDirecoes(8);
     getSpritePrincipal()->setQtdDirecoes(8);
     selecionarPosicao();
-//    caminho(sprite->getDirecao());
     caminho(getSpritePrincipal()->getDirecao());
 
     espera.tiroA=16;
@@ -46,6 +44,9 @@ NaveKlingonAttack::NaveKlingonAttack()
     	soundSystem->fxManager->playPanEffect("klingonmsg",posicao.x);
     	cantando=true;
     }
+
+    setRecarregarPhaser(7);
+    setRecarregarTorpedo(0);
 }
 NaveKlingonAttack::~NaveKlingonAttack()
 {

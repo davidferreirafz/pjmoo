@@ -22,34 +22,36 @@ NaveBorg::NaveBorg()
     adicionarSpritePrincipal(spriteFactory->criarSpritePersonagem(0,0,136,123,7,2));
     delete (spriteFactory);
 
-//    sprite->setQtdDirecoes(1);
     getSpritePrincipal()->setQtdDirecoes(1);
 
     GBF::Dimensao dimensao = getDimensao();
     setPosicao((area.right / 2)-(dimensao.w/2),area.top);
     caminho(GBF::Imagem::Sprite::DR_DIREITA);
 
-    espera.tiroA=50;
+    espera.tiroA=40;
     espera.tiroB=10;
 
     sistema.arma.phaser   = 1000;
     sistema.arma.plasma   = 0;
     sistema.arma.torpedo  = 1000;
-    sistema.escudo.atual  = 1600;
-    sistema.escudo.maximo = 1600;
+    sistema.escudo.atual  = 1000;
+    sistema.escudo.maximo = 1000;
     sistema.velocidade.eMaxima = VELOCIDADE_DOBRA_07;
     sistema.velocidade.eAtual  = VELOCIDADE_DOBRA_04;
 
     gsGFX = GBF::Kernel::Graphic::GraphicSystem::getInstance()->gfx;
     //explosao->setRaio(500);
    	//explosao->setQuantidade(1000);
+
+    setRecarregarPhaser(10);
+    setRecarregarTorpedo(8);
 }
 NaveBorg::~NaveBorg()
 {
     //desalocação na classe base
     //UtilLog::getInstance()->status("[NaveMiniBorg]");
 }
-void NaveBorg::acao(GBF::Kernel::Input::InputSystem* INPUT)
+void NaveBorg::acao(GBF::Kernel::Input::InputSystem* input)
 {
     if (isAtivo()){
     	checarArma();
@@ -124,7 +126,6 @@ void NaveBorg::setVivo(bool VALOR)
             soundSystem->fxManager->playPanEffect("explosao",posicao.x);
 
             //cria particulas da explosao da nave
-//            Dimensao dimensaoSprite = sprite->getTamanho();
             GBF::Dimensao dimensaoSprite = getDimensao();
             GBF::Ponto pontoExplosao;
 

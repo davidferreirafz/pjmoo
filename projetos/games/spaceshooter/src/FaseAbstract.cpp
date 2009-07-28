@@ -18,18 +18,51 @@
 #include "NaveAliado.h"
 
 Sistema FaseAbstract::sistemaNaveBackup;
+GBF::Imagem::Layer::FrameLayer   * FaseAbstract::tileStatus      = NULL;
+GBF::Imagem::Layer::FrameLayer   * FaseAbstract::tileMensagem    = NULL;
+GBF::Kernel::Write::WriteManager * FaseAbstract::writeManager    = NULL;
+ParticleSystem::PSManager        * FaseAbstract::particleManager = NULL;
 
 FaseAbstract::FaseAbstract()
 {
-    particleManager = ParticleSystem::PSManager::getInstance();
+    GBF::Imagem::SpriteFactory  * spriteFactory = NULL;
+
+    if (tileStatus==NULL){
+        spriteFactory = new GBF::Imagem::SpriteFactory("painel");
+        tileStatus    = spriteFactory->criarFrameLayer(0, 0, 160, 480);
+
+        delete(spriteFactory);
+
+        tileStatus->setFrame(480,0,160,480);
+        tileStatus->setTiles(1,1);
+        tileStatus->setPixelTile(160,480);
+        tileStatus->iniciarCom(0);
+    }
+
+    spriteFactory = new GBF::Imagem::SpriteFactory("tilemap");
+
+    tileSpace = spriteFactory->criarFrameLayer(0, 0, 32, 32);
+
+    if (tileMensagem==NULL){
+        tileMensagem = spriteFactory->criarFrameLayer(0, 0, 32, 32);
+
+        tileMensagem->setFrame(0,448,480,32);
+        tileMensagem->setTiles(15,1);
+        tileMensagem->setPixelTile(32,32);
+        tileMensagem->iniciarCom(12);
+    }
+
+    delete(spriteFactory);
+
+
+    if (writeManager==NULL) {
+        writeManager = GBF::Kernel::Write::WriteManager::getInstance();
+    }
+
+    if (particleManager==NULL){
+        particleManager = ParticleSystem::PSManager::getInstance();
+    }
     particleManager->limpar();
-
-    GBF::Imagem::SpriteFactory  *spriteFactory = new GBF::Imagem::SpriteFactory("tiles");
-
-    tiles   = spriteFactory->criarFrameLayer(0, 319,  32, 32);
-    moldura = spriteFactory->criarFrameLayer(0, 352, 160,160);
-
-    delete (spriteFactory);
 
     zona    = ">Desconhecida>";
     missao  = ">Desconhecida>";
@@ -54,8 +87,6 @@ FaseAbstract::FaseAbstract()
     restaurar    = false;
     nave         = NULL;
 
-
-	soundSystem = GBF::Kernel::Sound::SoundSystem::getInstance();
 	status->inicializar();
 }
 FaseAbstract::~FaseAbstract()
@@ -72,7 +103,16 @@ FaseAbstract::~FaseAbstract()
     //Como são Singletons não devem ser deletados por essa classe
     placar      = NULL;
     status      = NULL;
-    soundSystem = NULL;
+
+    listSpaceInimigo   = NULL;
+    listSpaceObstaculo = NULL;
+    listTiroJogador    = NULL;
+    listTiroInimigo    = NULL;
+    listItem           = NULL;
+
+    if (tileSpace!=NULL){
+        delete(tileSpace);
+    }
 }
 void FaseAbstract::restaurarNave()
 {
@@ -87,22 +127,37 @@ void FaseAbstract::checkRestaurar()
 }
 void FaseAbstract::definir()
 {
-    moldura->setFrame(480,0,160,480);
-    moldura->setTiles(1,3);
-    moldura->setPixelTile(160,160);
-    moldura->iniciarOrdenado(3);
+    /*tileStatus->setFrame(480,0,160,480);
+    tileStatus->setTiles(1,1);
+    tileStatus->setPixelTile(160,480);
+    tileStatus->iniciarCom(0);*/
+
+    /*tileMensagem->setFrame(0,448,480,32);
+    tileMensagem->setTiles(15,1);
+    tileMensagem->setPixelTile(32,32);
+    tileMensagem->iniciarCom(12);*/
 }
 void FaseAbstract::armazenar()
 {
-    GBF::Imagem::Layer::LayerManager::getInstance()->adicionar("tiles",tiles);
-    GBF::Imagem::Layer::LayerManager::getInstance()->adicionar("moldura",moldura);
-    SpaceObject::setArea(tiles->getArea());
+    //GBF::Imagem::Layer::LayerManager::getInstance()->adicionar("tileSpace",tileSpace);
+    GBF::Imagem::Layer::LayerManager::getInstance()->adicionar("tileStatus",tileStatus);
+    GBF::Imagem::Layer::LayerManager::getInstance()->adicionar("tileMensagem",tileMensagem);
+
+
+    SpaceObject::setArea(tileSpace->getArea());
+    PathStrategy::setArea(tileSpace->getArea());
 }
 void FaseAbstract::carregar()
 {
     definir();
     configurar();
     armazenar();
+
+    listSpaceInimigo   = ListSpaceInimigo::getInstance();
+    listSpaceObstaculo = ListSpaceObstaculo::getInstance();
+    listTiroJogador    = ListTiroJogador::getInstance();
+    listTiroInimigo    = ListTiroInimigo::getInstance();
+    listItem           = ListItem::getInstance();
 }
 bool FaseAbstract::isPerdeu()
 {
@@ -117,12 +172,6 @@ void FaseAbstract::executar(GBF::Kernel::Input::InputSystem * input)
     desenharCenario();
 
     //Ação Principal - movimentação
-    ListSpaceInimigo   *listSpaceInimigo   = ListSpaceInimigo::getInstance();
-    ListSpaceObstaculo *listSpaceObstaculo = ListSpaceObstaculo::getInstance();
-    ListTiroJogador    *listTiroJogador    = ListTiroJogador::getInstance();
-    ListTiroInimigo    *listTiroInimigo    = ListTiroInimigo::getInstance();
-    ListItem           *listItem           = ListItem::getInstance();
-
     listSpaceInimigo->acao(NULL);
     listSpaceObstaculo->acao(NULL);
     listTiroJogador->acao(NULL);
@@ -147,6 +196,9 @@ void FaseAbstract::executar(GBF::Kernel::Input::InputSystem * input)
         listSpaceInimigo->colisao(nave);
         ObstaculoAbstract::setVelocidadeBase(nave->getVelocidade());
         nave->colisao(ListItem::getInstance());
+
+        //NOTA 25/07/2008 : processamento das listas consome muito processamento, ver
+        //como otimizar
     }
 
     //Alguns procedimentos realizados para se desenhar
@@ -199,11 +251,11 @@ ArsenalStatus FaseAbstract::getArsenalStatus()
 //ligado diretamente com velocidade da nave
 void FaseAbstract::desenharCenario()
 {
-    tiles->camera.runUp(nave->getVelocidade());
-    tiles->desenhar();
+    tileSpace->camera.runUp(nave->getVelocidade()*0.5);
+    tileSpace->desenhar();
 
     if (ultimoQuadro==false){
-        if (tiles->camera.isTop()){
+        if (tileSpace->camera.isTop()){
             ultimoQuadro=true;
             condicaoUnicaUltimoQuadro();
         } else {
@@ -216,12 +268,37 @@ void FaseAbstract::desenharCenario()
 void FaseAbstract::ganchoUltimoQuadro()
 {
 }
+void FaseAbstract::hookMensagens()
+{
+}
+void FaseAbstract::hookMensagemFinal()
+{
+    writeManager->escreverLocalizado("texto",0,458,"msg_continue_avancado");
+}
+void FaseAbstract::exibirMensagem()
+{
+    if (!ultimoQuadro){
+        hookMensagens();
+    } else {
+        hookMensagemFinal();
+    }
+}
 void FaseAbstract::desenharPainel()
 {
-	moldura->desenhar();
-    status->desenharStatus(nave->getVelocidade(),nave->getEscudo(),nave->getTorpedo());
-    status->desenharInformacoes(placar->getPontos(),tiles->getTotalScrollVertical(),tiles->getDistanciaScrollVertical());
-}
+	tileStatus->desenhar();
+    status->desenharStatus(nave->getVelocidade(),nave->getEscudo(),nave->getTorpedo(),nave->isPhaserRecarregar(),nave->isTorpedoRecarregar());
+    status->desenharInformacoes(placar->getPontos(),0,0);
 
+    tileMensagem->desenhar();
+    exibirMensagem();
+}
+bool FaseAbstract::isTerminou()
+{
+    if ((tileSpace->camera.isTop())&&(nave->getPosicao().y==0)){
+        return true;
+    } else {
+        return false;
+    }
+}
 
 

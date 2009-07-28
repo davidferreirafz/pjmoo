@@ -19,7 +19,7 @@
 ItemArma::ItemArma()
 {
     GBF::Imagem::SpriteFactory  *spriteFactory = new GBF::Imagem::SpriteFactory("tiles");
-    adicionarSpritePrincipal(spriteFactory->criarSpritePersonagem(0,294,32,24,4,8));
+    adicionarSpritePrincipal(spriteFactory->criarSpritePersonagem(0,9,32,24,4,8));
     delete (spriteFactory);
 
     velocidade = 2;

@@ -35,8 +35,6 @@ public:
 	FaseCinco();
 	void iniciar();
 	void configurar();
-    /** Informa se passou de fase*/
-    bool isTerminou();
     std::string getMissaoCompleta();
 
 protected:

@@ -45,10 +45,9 @@ enum EnumTiroVelocidade
 class TiroAbstract : public Personagem::Personagem
 {
 public:
-	//TiroAbstract(int X, int Y);
 	TiroAbstract();
 	virtual ~TiroAbstract();
-	virtual  void acao(GBF::Kernel::Input::InputSystem* INPUT=NULL);
+	virtual  void acao(GBF::Kernel::Input::InputSystem* input=NULL);
     int getPotencia();
 protected:
 
@@ -56,8 +55,6 @@ protected:
 	EnumTiroVelocidade velocidade;
 
 	PathStrategy *path;
-
-    static GBF::Kernel::Graphic::ImageBufferManager *gsImageBufferManager;
 private:
 
 };

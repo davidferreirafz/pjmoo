@@ -16,10 +16,15 @@
  ***************************************************************************/
 #include "PathStrategy.h"
 
+GBF::Area PathStrategy::area;
+void PathStrategy::setArea(GBF::Area area)
+{
+    PathStrategy::area = area;
+}
 // class constructor
 PathStrategy::PathStrategy()
 {
-	area=GBF::Imagem::Layer::LayerManager::getInstance()->getFrameLayer("tiles")->getArea();
+	//area=GBF::Imagem::Layer::LayerManager::getInstance()->getFrameLayer("tileSpace")->getArea();
 }
 PathStrategy::~PathStrategy()
 {

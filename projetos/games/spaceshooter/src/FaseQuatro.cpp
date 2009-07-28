@@ -38,10 +38,10 @@ FaseQuatro::~FaseQuatro()
 }
 void FaseQuatro::configurar()
 {
-    tiles->setFrame(0,0,480,480);
-    tiles->setTiles(15,400);
-    tiles->setPixelTile(32,32);
-    tiles->iniciarRandomico(6);
+    tileSpace->setFrame(0,0,480,448);
+    tileSpace->setTiles(15,168);
+    tileSpace->setPixelTile(32,32);
+    tileSpace->iniciarRandomico(6);
 
     soundSystem->musicManager->carregar("fase","data//som//004.ogg");
     soundSystem->fxManager->carregar("klingonmsg","data//som//klingonmsg.ogg");
@@ -49,7 +49,7 @@ void FaseQuatro::configurar()
 }
 void FaseQuatro::iniciar()
 {
-    tiles->camera.setBottom();
+    tileSpace->camera.setBottom();
     ListSpaceObstaculo::getInstance()->setLimite(8);
 
     ListSpaceObstaculo::OBSTACULO_ESFERA   = false;
@@ -101,14 +101,6 @@ void FaseQuatro::condicaoUnicaUltimoQuadro()
     ListSpaceObstaculo::OBSTACULO_ASTEROID = false;
     ListSpaceObstaculo::OBSTACULO_MINA     = false;
     ListSpaceObstaculo::OBSTACULO_FURACAO  = false;
-}
-bool FaseQuatro::isTerminou()
-{
-    if ((tiles->camera.isTop())&&(nave->getPosicao().y==0)){
-        return true;
-    } else {
-        return false;
-    }
 }
 std::string FaseQuatro::getMissaoCompleta()
 {

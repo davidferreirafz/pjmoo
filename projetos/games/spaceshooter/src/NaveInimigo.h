@@ -50,12 +50,6 @@ protected:
 	PathStrategy *path;
 	/** Direção para onde a nave esta indo*/
     GBF::Imagem::Sprite::Direcao direcao;
-    /** Checa Status das armas*/
-    void checarArma();
-    /** Efetua verificação para disparar Phaser*/
-    virtual void prepararPhaser();
-    /** Efetua verificação para disparar Torpedo*/
-    virtual void prepararTorpedo();
     /** Seleciona posicao inicial da nave*/
     void selecionarPosicao();
     /** Muda caminho para um randomico */

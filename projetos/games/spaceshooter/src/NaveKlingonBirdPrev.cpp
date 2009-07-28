@@ -22,10 +22,8 @@ NaveKlingonBirdPrev::NaveKlingonBirdPrev()
     adicionarSpritePrincipal(spriteFactory->criarSpritePersonagem(221,255,55,55,1,2));
     delete (spriteFactory);
 
-//    sprite->setQtdDirecoes(4);
     getSpritePrincipal()->setQtdDirecoes(4);
     selecionarPosicao();
-//    caminho(sprite->getDirecao());
     caminho(getSpritePrincipal()->getDirecao());
 
     espera.tiroA=8;
@@ -41,6 +39,8 @@ NaveKlingonBirdPrev::NaveKlingonBirdPrev()
     sistema.velocidade.eMaxima = VELOCIDADE_DOBRA_04;
     sistema.velocidade.eAtual  = VELOCIDADE_DOBRA_03;
 
+    setRecarregarPhaser(4);
+    setRecarregarTorpedo(0);
 }
 NaveKlingonBirdPrev::~NaveKlingonBirdPrev()
 {
@@ -50,7 +50,6 @@ NaveKlingonBirdPrev::~NaveKlingonBirdPrev()
 void NaveKlingonBirdPrev::dispararPhaser()
 {
     //Adiciona ao Pool
-//    switch(sprite->getDirecao()){
     switch(getSpritePrincipal()->getDirecao()){
         case GBF::Imagem::Sprite::DR_CIMA:
                 listTiro->adicionar(new TiroPlasmaKlingon(posicao.x+26,posicao.y+2,TiroPlasmaKlingon::UP));

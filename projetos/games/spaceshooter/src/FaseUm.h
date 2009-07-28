@@ -17,7 +17,6 @@
 #ifndef _FASEUM_H
 #define _FASEUM_H
 
-#include <GBF/WriteManager.h>
 #include <GBF/CronometroCrescente.h>
 
 #include "FaseAbstract.h"
@@ -33,8 +32,6 @@ public:
     virtual ~FaseUm();
     void configurar();
     void iniciar();
-    /** Informa se passou de fase*/
-    bool isTerminou();
 
 protected:
     /** Condição executada durante toda a fase */
@@ -43,9 +40,9 @@ protected:
     void condicaoUnicaUltimoQuadro();
     void ganchoUltimoQuadro();
     std::string getMissaoCompleta();
+    void hookMensagens();
 
 private:
-    GBF::Kernel::Write::WriteManager *wsManager;
     GBF::Kernel::Timer::CronometroCrescente tempoDica;
     int dicaSelecao;
 };

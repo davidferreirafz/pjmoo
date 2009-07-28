@@ -32,7 +32,7 @@ public:
 protected:
     void dispararPhaser();
     void dispararTorpedo();
-    
+
 private:
 
 };

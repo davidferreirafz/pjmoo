@@ -33,7 +33,7 @@ public:
     /** Retorna a instancia da classe*/
 	static InterfaceStatus* getInstance();
     /** Desenha interface e Status*/
-    void desenharStatus(int totalWarp, int totalEscudo, int totalTorpedo);
+    void desenharStatus(int totalWarp, int totalEscudo, int totalTorpedo, bool phaserRecarregando, bool torpedoRecarregando);
     void desenharInformacoes(int pontos, int total, int distanciaRestante);
     /** Inicializa informações internar */
     void inicializar();
@@ -43,6 +43,8 @@ protected:
     GBF::Imagem::Sprite::SpriteItem * warpBarra;
     GBF::Imagem::Sprite::SpriteItem * escudoBarra;
     GBF::Imagem::Sprite::SpriteItem * torpedoBarra;
+    GBF::Imagem::Sprite::SpriteItem * phaserLED;
+    GBF::Imagem::Sprite::SpriteItem * torpedoLED;
 
     GBF::Kernel::Timer::CronometroCrescente tempo;
 

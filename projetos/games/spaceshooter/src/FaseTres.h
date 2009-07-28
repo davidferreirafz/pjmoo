@@ -31,8 +31,6 @@ public:
 	FaseTres();
 	/** Destrutor */
 	virtual ~FaseTres();
-
-	bool isTerminou();
 	void iniciar();
 	void configurar();
     std::string getMissaoCompleta();

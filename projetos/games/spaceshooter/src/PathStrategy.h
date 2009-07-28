@@ -20,6 +20,7 @@
 #include <GBF/GBF.h>
 #include <GBF/LayerManager.h>
 
+
 class PathStrategy
 {
 public:
@@ -31,10 +32,9 @@ public:
 	/** Implementa o algoritmo de movimentação.
     OBs.: Retorna verdadeiro se atingiu o limite de movimentação */
 	virtual bool mover(int velocidade, GBF::Ponto *posicao, GBF::Dimensao dimensao)=0;
-
+	static void setArea(GBF::Area area);
 protected:
-	GBF::Area area;
-
+	static GBF::Area area;
 };
 
 #endif

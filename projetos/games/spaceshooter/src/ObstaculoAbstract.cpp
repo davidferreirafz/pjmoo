@@ -53,7 +53,7 @@ int ObstaculoAbstract::getDanos()
 void ObstaculoAbstract::selecionarPosicao()
 {
     GBF::Dimensao dimensao = getDimensao();
-    setPosicao(area.left+(rand()%(area.right-area.left)),area.top-dimensao.h);
+    setPosicao(area.left+(rand()%((area.right-dimensao.w)-area.left)),area.top-dimensao.h);
 }
 void ObstaculoAbstract::setVivo(bool VALOR)
 {

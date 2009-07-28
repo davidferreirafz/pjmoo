@@ -112,15 +112,15 @@ tela_09_18=        http://pjmoo.sourceforge.net
 
 
 #Tela::telaVitoria
-tela_vitoria_01=Parabéns                
-tela_vitoria_02=                            
+tela_vitoria_01=Parabéns
+tela_vitoria_02= 
 tela_vitoria_03=    Você conseguiu, superou seu primeiro grande
 tela_vitoria_04=desafio!
 tela_vitoria_05=    Esteja em alerta, este é apenas o início de
-tela_vitoria_06=sua jornada.                    
+tela_vitoria_06=sua jornada
 tela_vitoria_07= 
 tela_vitoria_08=              Vida Longa e Próspera
-tela_vitoria_09=                  SpaceShooter v1.4
+tela_vitoria_09=                  SpaceShooter v2.0
 
 
 #Tela::telaDerrota
@@ -181,7 +181,6 @@ tela_credito_09=    David Gustavo Mazieiro (DGM)
 tela_credito_10=# E-Mail:
 tela_credito_11=    dgmdavid@bol.com.br
 
-  
 
 
 #Jogo::telaTopRecorde
@@ -251,34 +250,28 @@ titulo_fase_finalizada=MISSAO COMPLETA
 
 tela_subtitulo=Ameaça Final
 
-
 item_arma=ITEM VERMELHO:TORPEDO
 item_velocidade=ITEM AZUL:VELOCIDADE 
 item_escudo=ITEM VERDE:ESCUDO
 
-
-dica_01=#: Phaser: CTRL-Esq(Teclado)
-dica_02=#: Phaser: Botão A(Joystick)
-dica_03=#: Torpedo: ALT-Esq(Teclado)
-dica_04=#: Torpedo: Botão B(Joystick)
-dica_05=#: Observe os marcadores
-dica_06=#: Economize os Torpedos!
-dica_07=#: Cuidado com as minas!
-dica_08=#: Asteroides são mais fracos!
-dica_09=#: Acerte tudo que puder!
-dica_10=#: Manobre com destreza!
-dica_11=#: Escute os avisos sonoros!
-dica_12=#: Evite colisões!
-dica_13=#: Sair: ESC(Teclado)
-dica_14=#: ScreenShoot: F12(Teclado)
-dica_15=#: Pausar: P(Teclado)
-dica_16=#: Pausar: Botão C(Joystick)
-dica_17=#: Cuidado com a retaguarda!
-dica_18=#: Existem naves camufladas!
-
-top_recorde_aviso_1=Atenção:
-top_recorde_aviso_2=    Para publicar o recorde no site execute o programa:
-top_recorde_aviso_3=            Top10SpaceShooter
+dica_01=Phaser: CTRL-Esq(Teclado)
+dica_02=Phaser: Botão A(Joystick)
+dica_03=Torpedo: ALT-Esq(Teclado)
+dica_04=Torpedo: Botão B(Joystick)
+dica_05=Observe os marcadores
+dica_06=Economize os Torpedos!
+dica_07=Cuidado com as minas!
+dica_08=Asteroides são mais fracos!
+dica_09=Acerte tudo que puder!
+dica_10=Manobre com destreza!
+dica_11=Escute os avisos sonoros!
+dica_12=Evite colisões!
+dica_13=Sair: ESC(Teclado)
+dica_14=ScreenShoot: F12(Teclado)
+dica_15=Pausar: P(Teclado)
+dica_16=Pausar: Botão C(Joystick)
+dica_17=Cuidado com a retaguarda!
+dica_18=Existem naves camufladas!
 
 menu_idioma_br=Português
 menu_idioma_en=English

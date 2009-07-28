@@ -20,27 +20,28 @@ NaveVoyager::NaveVoyager()
 {
     GBF::Imagem::SpriteFactory  *spriteFactory = new GBF::Imagem::SpriteFactory("personagem");
     adicionarSpritePrincipal(spriteFactory->criarSpritePersonagem(289,0,24,60,3,6));
-//    sprite_atingido=spriteFactory->criarSpritePersonagem(362,0,24,60,3,6);
     adicionarSprite(spriteFactory->criarSpritePersonagem(362,0,24,60,3,6),"explosao");
 
     delete (spriteFactory);
 
-//    sprite->setQtdDirecoes(1);
     getSpritePrincipal()->setQtdDirecoes(1);
-//    sprite_atingido->setAutomatico(true);
 
-    espera.tiroA = 4;
-    espera.tiroB = 10;
+
+    espera.tiroA =  4;
+    espera.tiroB = 15;
 
     sistema.arma.phaser   = 0;
     sistema.arma.plasma   = 0;
-    sistema.arma.torpedo  = 150;
+    sistema.arma.torpedo  = 80;
     sistema.escudo.atual  = 80;
     sistema.escudo.maximo = 100;
     sistema.velocidade.eMaxima = VELOCIDADE_DOBRA_08;
     sistema.velocidade.eAtual  = VELOCIDADE_DOBRA_03;
     sistema.velocidade.eDisponivel = sistema.velocidade.eAtual;
     selecionarPosicao();
+
+    setRecarregarPhaser(6);
+    setRecarregarTorpedo(10);
 }
 NaveVoyager::~NaveVoyager()
 {

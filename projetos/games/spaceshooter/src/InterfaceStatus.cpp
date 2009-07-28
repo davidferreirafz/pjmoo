@@ -29,9 +29,14 @@ InterfaceStatus::InterfaceStatus()
 {
     GBF::Imagem::SpriteFactory  *spriteFactory = new GBF::Imagem::SpriteFactory("tiles");
 
-    warpBarra    = spriteFactory->criarSpriteItem(97,87,5,13,1,1);
-    escudoBarra  = spriteFactory->criarSpriteItem(103,87,1,13,1,1);
-    torpedoBarra = spriteFactory->criarSpriteItem(105,87,1,13,1,1);
+    warpBarra    = spriteFactory->criarSpriteItem(0,34, 5,13,1,1);
+    escudoBarra  = spriteFactory->criarSpriteItem(6,34, 1,13,1,1);
+    torpedoBarra = spriteFactory->criarSpriteItem(8,34, 1,13,1,1);
+    phaserLED    = spriteFactory->criarSpriteItem(0, 0,71, 8,3,4);
+    torpedoLED   = spriteFactory->criarSpriteItem(0, 0,71, 8,3,4);
+
+    phaserLED->animacao.setAutomatico(true);
+    torpedoLED->animacao.setAutomatico(true);
 
     delete (spriteFactory);
 
@@ -45,6 +50,8 @@ InterfaceStatus::~InterfaceStatus()
     delete(warpBarra);
     delete(escudoBarra);
     delete(torpedoBarra);
+    delete(phaserLED);
+    delete(torpedoLED);
 
     //UtilLog::getInstance()->inicializando("Removendo InterfaceStatus(Singleton)");
 }
@@ -57,7 +64,7 @@ void InterfaceStatus::inicializar()
     mostraTorpedo = true;
     mostraEscudo  = true;
 }
-void InterfaceStatus::desenharStatus(int totalWarp, int totalEscudo, int totalTorpedo)
+void InterfaceStatus::desenharStatus(int totalWarp, int totalEscudo, int totalTorpedo, bool phaserRecarregando, bool torpedoRecarregando)
 {
     tempo.processar();
 
@@ -85,29 +92,39 @@ void InterfaceStatus::desenharStatus(int totalWarp, int totalEscudo, int totalTo
 
 //Desenho Itens
     for (int iw=0;((iw<totalWarp)&&(iw<13));iw++){
-        warpBarra->desenhar(568+(5*iw),223);
+        warpBarra->desenhar(565+(5*iw),230);
     }
-    wsManager->escrever("status",514,214,"%03i",totalWarp);
+    wsManager->escrever("status",512,221,"%03i",totalWarp);
 
 	if (mostraEscudo){
 	    for (int ie=0;((ie<totalEscudo)&&(ie<65));ie++){
-	       escudoBarra->desenhar(568+(1*ie),263);
+	       escudoBarra->desenhar(565+(1*ie),275);
 	    }
 	}
-    wsManager->escrever("status",514,254,"%03i",totalEscudo);
+    wsManager->escrever("status",512,266,"%03i",totalEscudo);
 
     if (mostraTorpedo){
 	    for (int it=0;((it<totalTorpedo)&&(it<65));it++){
-	       torpedoBarra->desenhar(568+(1*it),303);
+	       torpedoBarra->desenhar(565+(1*it),320);
 	    }
 	}
-    wsManager->escrever("status",514,294,"%03i",totalTorpedo);
+
+    wsManager->escrever("status",512,311,"%03i",totalTorpedo);
+
+    if ((torpedoRecarregando)&&(totalTorpedo>0)){
+        torpedoLED->desenhar(517,337);
+    }
+
+    if (phaserRecarregando){
+        phaserLED->desenhar(517,395);
+    }
+
 }
 void InterfaceStatus::desenharInformacoes(int pontos, int total, int distanciaRestante)
 {
     wsManager->escrever("status",508,118,"%08i",pontos);
-    wsManager->escrever("status",552,395,"%05i",total);
-    wsManager->escrever("status",552,425,"%05i",distanciaRestante);
+    //wsManager->escrever("status",552,395,"%05i",total);
+    //wsManager->escrever("status",552,425,"%05i",distanciaRestante);
 }
 
 

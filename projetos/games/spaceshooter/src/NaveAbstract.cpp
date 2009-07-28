@@ -17,7 +17,7 @@
 #include "NaveAbstract.h"
 
 
-GBF::Kernel::Sound::SoundSystem * NaveAbstract::soundSystem=NULL;
+//GBF::Kernel::Sound::SoundSystem * NaveAbstract::soundSystem=NULL;
 int NaveAbstract::velocidadeBase=0;
 void NaveAbstract::setVelocidadeBase(int velocidadeBase)
 {
@@ -25,6 +25,9 @@ void NaveAbstract::setVelocidadeBase(int velocidadeBase)
 }
 NaveAbstract::NaveAbstract()
 {
+    quantidadeDisparosPhaser  = 0;
+	quantidadeDisparosTorpedo = 0;
+
     espera.tiroA = 30;
     espera.tiroB = 30;
     espera.tiroC = 30;
@@ -42,9 +45,9 @@ NaveAbstract::NaveAbstract()
 
     sistema.velocidade.eDisponivel = sistema.velocidade.eAtual;
 
-	if (!soundSystem){
+/*	if (!soundSystem){
 		soundSystem = GBF::Kernel::Sound::SoundSystem::getInstance();
-	}
+	}*/
 }
 NaveAbstract::~NaveAbstract()
 {
@@ -91,7 +94,63 @@ void NaveAbstract::setSistema(Sistema sistema)
         this->sistema.velocidade.eAtual=sistema.velocidade.eAtual;
     }
 }
+void NaveAbstract::setRecarregarPhaser(int quantidadeDisparos)
+{
+    recarregarPhaser=quantidadeDisparos;
+}
+void NaveAbstract::setRecarregarTorpedo(int quantidadeDisparos)
+{
+    recarregarTorpedo=quantidadeDisparos;
+}
+void NaveAbstract::prepararTorpedo()
+{
+    if (delay.tiroB<=0){
+        if (quantidadeDisparosTorpedo<recarregarTorpedo){
+            dispararTorpedo();
+            delay.tiroB=espera.tiroB;
+            quantidadeDisparosTorpedo++;
+        }
+    }
+}
+void NaveAbstract::prepararPhaser()
+{
+    if (delay.tiroA<=0){
+        if (quantidadeDisparosPhaser<recarregarPhaser){
+            dispararPhaser();
+            delay.tiroA=espera.tiroA;
+            quantidadeDisparosPhaser++;
+        }
+    }
+}
+void NaveAbstract::checarArma()
+{
+    delay.tiroA--;
+    delay.tiroB--;
 
+    if (quantidadeDisparosPhaser>=recarregarPhaser){
+        quantidadeDisparosPhaser=0;
+        delay.tiroA=(espera.tiroA*5);
+    }
 
-
+    if (quantidadeDisparosTorpedo>=recarregarTorpedo){
+        quantidadeDisparosTorpedo=0;
+        delay.tiroB=(espera.tiroB*10);
+    }
+}
+bool NaveAbstract::isPhaserRecarregar()
+{
+    if ((quantidadeDisparosPhaser==0)&&(delay.tiroA>0)){
+        return true;
+    } else {
+        return false;
+    }
+}
+bool NaveAbstract::isTorpedoRecarregar()
+{
+    if ((quantidadeDisparosTorpedo==0)&&(delay.tiroB>0)){
+        return true;
+    } else {
+        return false;
+    }
+}
 

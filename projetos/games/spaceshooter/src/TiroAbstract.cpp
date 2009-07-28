@@ -16,7 +16,7 @@
  ***************************************************************************/
 #include "TiroAbstract.h"
 
-GBF::Kernel::Graphic::ImageBufferManager * TiroAbstract::gsImageBufferManager = NULL;
+//GBF::Kernel::Graphic::ImageBufferManager * TiroAbstract::gsImageBufferManager = NULL;
 TiroAbstract::TiroAbstract()
 {
 	//Potencia do Tiro, deve ser configurada em classes herdeiras
@@ -24,9 +24,9 @@ TiroAbstract::TiroAbstract()
 	//Velocidade do Tiro, deve ser configurada em classes herdeiras
 	velocidade = VELOCIDADE_NULL;
 
-	if (gsImageBufferManager==NULL){
+	/*if (gsImageBufferManager==NULL){
 	    gsImageBufferManager = GBF::Kernel::Graphic::GraphicSystem::getInstance()->imageBufferManager;
-    }
+    }*/
 }
 TiroAbstract::~TiroAbstract()
 {
@@ -38,7 +38,7 @@ int TiroAbstract::getPotencia()
 {
     return potencia;
 }
-void TiroAbstract::acao(GBF::Kernel::Input::InputSystem* INPUT)
+void TiroAbstract::acao(GBF::Kernel::Input::InputSystem* input)
 {
     if (isAtivo()){
         if (isVivo()){

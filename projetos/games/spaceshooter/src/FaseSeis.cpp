@@ -36,17 +36,17 @@ FaseSeis::~FaseSeis()
 }
 void FaseSeis::configurar()
 {
-    tiles->setFrame(0,0,480,480);
-    tiles->setTiles(15,380);
-    tiles->setPixelTile(32,32);
-    tiles->iniciarRandomico(10);
+    tileSpace->setFrame(0,0,480,448);
+    tileSpace->setTiles(15,159);
+    tileSpace->setPixelTile(32,32);
+    tileSpace->iniciarRandomico(10);
 
     soundSystem->musicManager->carregar("fase","data//som//006.ogg");
 }
 void FaseSeis::iniciar()
 {
-    tiles->camera.setBottom();
-    ListSpaceObstaculo::getInstance()->setLimite(10);
+    tileSpace->camera.setBottom();
+    ListSpaceObstaculo::getInstance()->setLimite(8);
 
     ListSpaceObstaculo::OBSTACULO_ESFERA   = true;
     ListSpaceObstaculo::OBSTACULO_ASTEROID = false;
@@ -94,14 +94,6 @@ void FaseSeis::condicaoUnicaUltimoQuadro()
     ListSpaceObstaculo::OBSTACULO_ASTEROID = false;
     ListSpaceObstaculo::OBSTACULO_MINA     = false;
     ListSpaceObstaculo::OBSTACULO_FURACAO  = false;
-}
-bool FaseSeis::isTerminou()
-{
-    if ((tiles->camera.isTop())&&(nave->getPosicao().y==0)){
-        return true;
-    } else {
-        return false;
-    }
 }
 std::string FaseSeis::getMissaoCompleta()
 {

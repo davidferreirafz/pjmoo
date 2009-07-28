@@ -28,8 +28,6 @@ FaseUm::FaseUm()
     areaZona.bottom =  22;
     areaZona.right  = 518;
 
-    wsManager = GBF::Kernel::Write::WriteManager::getInstance();
-
 	tempoDica.setTempoOriginal(0);
 	tempoDica.setUnidade(GBF::Kernel::Timer::TEMPO_SEGUNDO);
     tempoDica.setResetar();
@@ -43,18 +41,18 @@ FaseUm::~FaseUm()
 }
 void FaseUm::configurar()
 {
-    tiles->setFrame(0,0,480,480);
-    tiles->setTiles(15,180);
-    tiles->setPixelTile(32,32);
-    tiles->iniciarRandomico(4);
-    //tiles->iniciarArquivo(getPath()+"//data//mapa//tiles.fl");
+    tileSpace->setFrame(0,0,480,448);
+    tileSpace->setPixelTile(32,32);
+    tileSpace->setTiles(15,78);
+    tileSpace->iniciarRandomico(4);
 
     soundSystem->musicManager->carregar("fase","data//som//001.ogg");
 }
 void FaseUm::iniciar()
 {
-    tiles->camera.setBottom();
-    ListSpaceObstaculo::getInstance()->setLimite(12);
+    tileSpace->camera.setBottom();
+
+    ListSpaceObstaculo::getInstance()->setLimite(20);
 
     ListSpaceObstaculo::OBSTACULO_ESFERA   = false;
     ListSpaceObstaculo::OBSTACULO_ASTEROID = true;
@@ -74,6 +72,9 @@ void FaseUm::condicaoUnicaUltimoQuadro()
 }
 void FaseUm::condicaoNavegandoFase()
 {
+}
+void FaseUm::hookMensagens()
+{
     char textoFormatado[30];
     tempoDica.processar();
 
@@ -87,20 +88,10 @@ void FaseUm::condicaoNavegandoFase()
 
     sprintf(textoFormatado,"dica_%02d",dicaSelecao);
 
-    wsManager->escreverLocalizado("texto", 0,440,"msg_dica");
-    wsManager->escreverLocalizado("texto",16,460,textoFormatado);
+    writeManager->escreverLocalizado("texto",0,458,textoFormatado);
 }
 void FaseUm::ganchoUltimoQuadro()
 {
-    wsManager->escreverLocalizado("texto",100,460,"msg_continue_avancado");
-}
-bool FaseUm::isTerminou()
-{
-    if ((tiles->camera.isTop())&&(nave->getPosicao().y==0)){
-        return true;
-    } else {
-        return false;
-    }
 }
 std::string FaseUm::getMissaoCompleta()
 {

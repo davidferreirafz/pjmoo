@@ -34,9 +34,6 @@ NaveInimigo::NaveInimigo()
 }
 NaveInimigo::~NaveInimigo()
 {
-//	sprite=NULL;
-//	sprite_atingido=NULL;
-
     if (path!=NULL){
         delete(path);
     }
@@ -63,11 +60,6 @@ void NaveInimigo::desenhar()
         Personagem::desenhar();
     }
 }
-void NaveInimigo::checarArma()
-{
-    delay.tiroA--;
-    delay.tiroB--;
-}
 void NaveInimigo::setVivo(bool VALOR)
 {
     if (VALOR==false){
@@ -77,7 +69,6 @@ void NaveInimigo::setVivo(bool VALOR)
             soundSystem->fxManager->playPanEffect("explosao",posicao.x);
 
             //cria particulas da explosao da nave
-//            Dimensao dimensaoSprite = sprite->getTamanho();
             GBF::Dimensao dimensaoSprite = getDimensao();
             GBF::Ponto pontoExplosao;
 
@@ -105,25 +96,9 @@ void NaveInimigo::choque(int forca)
         setVivo(false);
     }
 }
-void NaveInimigo::prepararTorpedo()
-{
-    if (delay.tiroB<=0){
-        dispararTorpedo();
-        delay.tiroB=espera.tiroB;
-    }
-}
-void NaveInimigo::prepararPhaser()
-{
-    if (delay.tiroA<=0){
-        dispararPhaser();
-        delay.tiroA=espera.tiroA;
-    }
-}
 void NaveInimigo::selecionarPosicao()
 {
-//    DIRECAO dir = DIRECAO(rand()%sprite->getQtdDirecoes());
     GBF::Imagem::Sprite::Direcao dir = GBF::Imagem::Sprite::Direcao(rand()%getSpritePrincipal()->getQtdDirecoes());
-//    sprite->setDirecao(dir);
     getSpritePrincipal()->setDirecao(dir);
     GBF::Dimensao dimensao = getDimensao();
     int x=0,y=0;
@@ -174,9 +149,7 @@ void NaveInimigo::selecionarPosicao()
 }
 void NaveInimigo::caminho()
 {
-//    DIRECAO dir = DIRECAO(rand()%sprite->getQtdDirecoes());
     GBF::Imagem::Sprite::Direcao dir = GBF::Imagem::Sprite::Direcao(rand()%getSpritePrincipal()->getQtdDirecoes());
-//    sprite->setDirecao(dir);
     getSpritePrincipal()->setDirecao(dir);
     caminho(dir);
 }

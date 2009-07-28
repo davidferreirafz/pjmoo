@@ -27,11 +27,11 @@ public:
     /** Destrutor */
 	virtual ~ListTiroAbstract();
 	//TODO: rever necessidade/uso do adicionar, visto que vem na herança de ListPersonagemAbstract
-	void adicionar(TiroAbstract* tiro);	
-	
+	virtual void adicionar(TiroAbstract* tiro);
+
 protected:
     /** Construtor */
-	ListTiroAbstract();	
+	ListTiroAbstract();
 
 };
 

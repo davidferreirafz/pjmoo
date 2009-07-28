@@ -22,7 +22,6 @@ NaveMiniBorg::NaveMiniBorg()
     adicionarSpritePrincipal(spriteFactory->criarSpritePersonagem(0,438,42,42,8,2));
     delete (spriteFactory);
 
-//    sprite->setQtdDirecoes(1);
     getSpritePrincipal()->setQtdDirecoes(1);
 
     espera.tiroA=5;
@@ -36,6 +35,8 @@ NaveMiniBorg::NaveMiniBorg()
     sistema.velocidade.eMaxima = VELOCIDADE_DOBRA_04;
     sistema.velocidade.eAtual  = VELOCIDADE_DOBRA_03;
 
+    setRecarregarPhaser(8);
+    setRecarregarTorpedo(0);
 
     posicionar(rand()%(area.right-area.left-42),0,GBF::Imagem::Sprite::DR_BAIXO);
 }

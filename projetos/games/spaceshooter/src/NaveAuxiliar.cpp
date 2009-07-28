@@ -21,17 +21,16 @@ NaveAuxiliar::NaveAuxiliar()
     GBF::Imagem::SpriteFactory  *spriteFactory = new GBF::Imagem::SpriteFactory("personagem");
 
     adicionarSpritePrincipal(spriteFactory->criarSpritePersonagem(298,171,20,27,3,6));
-//    sprite_atingido=spriteFactory->criarSpritePersonagem(359,171,20,27,3,6);
     adicionarSprite(spriteFactory->criarSpritePersonagem(359,171,20,27,3,6),"explosao");
 
     delete (spriteFactory);
 
-    //sprite->setQtdDirecoes(1);
+
     getSpritePrincipal()->setQtdDirecoes(1);
 //    sprite_atingido->setAutomatico(true);
 
     espera.tiroA = 4;
-    espera.tiroB = 10;
+    espera.tiroB = 5;
 
     sistema.arma.phaser   = 0;
     sistema.arma.plasma   = 0;
@@ -42,6 +41,8 @@ NaveAuxiliar::NaveAuxiliar()
     sistema.velocidade.eAtual  = VELOCIDADE_DOBRA_03;
     sistema.velocidade.eDisponivel = sistema.velocidade.eAtual;
     selecionarPosicao();
+    setRecarregarPhaser(10);
+    setRecarregarTorpedo(1);
 }
 NaveAuxiliar::~NaveAuxiliar()
 {
@@ -49,10 +50,10 @@ NaveAuxiliar::~NaveAuxiliar()
 }
 void NaveAuxiliar::dispararPhaser()
 {
-	//Adiciona ao Pool
-	listTiro->adicionar(new TiroPhaserFE(posicao.x+9,posicao.y-4,TiroPhaserFE::UP));
-	//Efeito Sonoro
-	soundSystem->fxManager->playPanEffect("tiro",posicao.x);
+    //Adiciona ao Pool
+    listTiro->adicionar(new TiroPhaserFE(posicao.x+9,posicao.y-4,TiroPhaserFE::UP));
+    //Efeito Sonoro
+    soundSystem->fxManager->playPanEffect("tiro",posicao.x);
 }
 void NaveAuxiliar::dispararTorpedo()
 {
@@ -62,7 +63,7 @@ void NaveAuxiliar::dispararTorpedo()
         listTiro->adicionar(new TiroTorpedoFE(posicao.x-5 ,posicao.y+5 ,TiroTorpedoFE::UP));
         listTiro->adicionar(new TiroTorpedoFE(posicao.x+11,posicao.y+5 ,TiroTorpedoFE::UP));
         //Efeito Sonoro
-		soundSystem->fxManager->playPanEffect("tiro",posicao.x);
+        soundSystem->fxManager->playPanEffect("tiro",posicao.x);
     }
 }
 

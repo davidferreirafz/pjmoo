@@ -17,6 +17,7 @@
 #ifndef _LISTSPACEOBSTACULO_H
 #define _LISTSPACEOBSTACULO_H
 
+
 #include "ListSpaceAbstract.h"
 #include "ObstaculoAbstract.h"
 #include "ObstaculoMina.h"

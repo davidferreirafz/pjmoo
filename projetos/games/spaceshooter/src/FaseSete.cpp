@@ -44,10 +44,10 @@ FaseSete::~FaseSete()
 }
 void FaseSete::configurar()
 {
-    tiles->setFrame(0,0,480,480);
-    tiles->setTiles(15,120);
-    tiles->setPixelTile(32,32);
-    tiles->iniciarRandomico(8);
+    tileSpace->setFrame(0,0,480,448);
+    tileSpace->setTiles(15,60);
+    tileSpace->setPixelTile(32,32);
+    tileSpace->iniciarRandomico(8);
 
     GBF::Kernel::Graphic::GraphicSystem  *graphicSystem = GBF::Kernel::Graphic::GraphicSystem::getInstance();
     graphicSystem->imageBufferManager->carregar("personagem_borg","data//imagem//spaceshooter_borg.png");
@@ -60,7 +60,7 @@ void FaseSete::configurar()
 }
 void FaseSete::iniciar()
 {
-    tiles->camera.setBottom();
+    tileSpace->camera.setBottom();
     ListSpaceObstaculo::getInstance()->setLimite(10);
 
     ListSpaceObstaculo::OBSTACULO_ESFERA   = true;
@@ -94,7 +94,7 @@ bool FaseSete::isTerminou()
 {
 	bool terminou = false;
 
-	if ((tiles->camera.isTop())&&(ListSpaceInimigo::getInstance()->size()==0)){
+	if ((tileSpace->camera.isTop())&&(ListSpaceInimigo::getInstance()->size()==0)){
 		if (nave->getPosicao().y==0){
             terminou=true;
 		} else {
@@ -112,6 +112,12 @@ bool FaseSete::isTerminou()
 		}
 	}
 	return terminou;
+}
+void FaseSete::hookMensagemFinal()
+{
+    if (matouChefe){
+        writeManager->escreverLocalizado("texto",0,458,"msg_continue_avancado");
+    }
 }
 std::string FaseSete::getMissaoCompleta()
 {

@@ -21,6 +21,7 @@
 #include <GBF/LayerManager.h>
 #include <GBF/SoundSystem.h>
 #include <GBF/Personagem.h>
+#include <GBF/SoundSystemUtility.h>
 
 #include "TiroAbstract.h"
 #include "SpaceObject.h"
@@ -66,7 +67,7 @@ struct Sistema
 
 };
 
-class NaveAbstract : public SpaceObject
+class NaveAbstract : public SpaceObject, public GBF::Kernel::Sound::SoundSystemUtility
 {
 public:
     NaveAbstract();
@@ -78,7 +79,8 @@ public:
     int getPlasma();
     /** Retorna a velocidade atual*/
     int getVelocidade();
-
+    bool isPhaserRecarregar();
+    bool isTorpedoRecarregar();
 
 	static void setVelocidadeBase(int velocidadeBase);
 
@@ -87,20 +89,29 @@ public:
 
 protected:
     int getVelocidadeBase();
-    virtual void checarArma()=0;
+    /** Checa Status das armas*/
+    void checarArma();
     virtual void dispararPhaser()=0;
     virtual void dispararTorpedo()=0;
-    virtual void prepararPhaser()=0;
-    virtual void prepararTorpedo()=0;
+    /** Efetua verificação para disparar Phaser*/
+    void prepararPhaser();
+    /** Efetua verificação para disparar Torpedo*/
+    void prepararTorpedo();
     virtual void selecionarPosicao()=0;
+    void setRecarregarPhaser(int quantidadeDisparos);
+    void setRecarregarTorpedo(int quantidadeDisparos);
 
     ::Personagem::TypeDelay espera;
 
     Sistema sistema;
-	static GBF::Kernel::Sound::SoundSystem * soundSystem;
+//	static GBF::Kernel::Sound::SoundSystem * soundSystem;
 
 private:
 	static int velocidadeBase;
+	int recarregarPhaser;
+	int recarregarTorpedo;
+	int quantidadeDisparosPhaser;
+	int quantidadeDisparosTorpedo;
 
 };
 

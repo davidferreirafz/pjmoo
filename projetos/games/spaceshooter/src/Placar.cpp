@@ -66,9 +66,9 @@ unsigned int Placar::getPontos()
 }
 void Placar::contagemBonus()
 {
-    int qtdEscudo     = getPontos()/250;
-    int qtdArma       = getPontos()/600;
-    int qtdVelocidade = getPontos()/1000;
+    int qtdEscudo     = getPontos()/450;
+    int qtdArma       = getPontos()/650;
+    int qtdVelocidade = getPontos()/850;
 
     if (qtdEscudo>bonus.escudo.quantidade){
         bonus.escudo.quantidade = qtdEscudo;

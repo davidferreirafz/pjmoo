@@ -43,6 +43,7 @@ protected:
     void condicaoNavegandoFase();
     /** Condição executada apenas na ultima tela*/
     void condicaoUnicaUltimoQuadro();
+    void hookMensagemFinal();
 
 private:
     Personagem::TypeDelay delay;

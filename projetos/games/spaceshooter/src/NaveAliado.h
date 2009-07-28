@@ -42,9 +42,6 @@ protected:
 	static ListTiroJogador* listTiro;
 
     void limite();
-    void checarArma();
-    virtual void prepararPhaser();
-    virtual void prepararTorpedo();
     void selecionarPosicao();
 
 private:

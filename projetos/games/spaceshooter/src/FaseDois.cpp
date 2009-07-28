@@ -36,17 +36,17 @@ FaseDois::~FaseDois()
 }
 void FaseDois::configurar()
 {
-    tiles->setFrame(0,0,480,480);
-    tiles->setTiles(15,400);
-    tiles->setPixelTile(32,32);
-    tiles->iniciarRandomico(3);
+    tileSpace->setFrame(0,0,480,448);
+    tileSpace->setTiles(15,168);
+    tileSpace->setPixelTile(32,32);
+    tileSpace->iniciarRandomico(3);
 
     soundSystem->musicManager->carregar("fase","data//som//002.ogg");
 }
 void FaseDois::iniciar()
 {
-    tiles->camera.setBottom();
-    ListSpaceObstaculo::getInstance()->setLimite(12);
+    tileSpace->camera.setBottom();
+    ListSpaceObstaculo::getInstance()->setLimite(10);
 
     ListSpaceObstaculo::OBSTACULO_ESFERA   = true;
     ListSpaceObstaculo::OBSTACULO_ASTEROID = false;
@@ -61,11 +61,14 @@ void FaseDois::condicaoNavegandoFase()
 {
     delay.acao--;
     if (delay.acao<=0){
-        ListSpaceInimigo::getInstance()->adicionar(new NaveKlingonBirdPrev());
-        ListSpaceInimigo::getInstance()->adicionar(new NaveKlingonBirdPrev());
+
+        ListSpaceInimigo *lista = ListSpaceInimigo::getInstance();
+
+        lista->adicionar(new NaveKlingonBirdPrev());
+        lista->adicionar(new NaveKlingonBirdPrev());
         if (rand()%2==1){
-            ListSpaceInimigo::getInstance()->adicionar(new NaveKlingonBirdPrev());
-            ListSpaceInimigo::getInstance()->adicionar(new NaveKlingonBirdPrev());
+            lista->adicionar(new NaveKlingonBirdPrev());
+            lista->adicionar(new NaveKlingonBirdPrev());
         }
         delay.acao=330;
     }
@@ -75,14 +78,6 @@ void FaseDois::condicaoUnicaUltimoQuadro()
 //Condição realizada apenas 1 vez, logo ao se chegar no ultimo quadro
 //Ideal para gatilhos/triggers
     ListSpaceObstaculo::OBSTACULO_ESFERA = false;
-}
-bool FaseDois::isTerminou()
-{
-    if ((tiles->camera.isTop())&&(nave->getPosicao().y==0)){
-        return true;
-    } else {
-        return false;
-    }
 }
 std::string FaseDois::getMissaoCompleta()
 {

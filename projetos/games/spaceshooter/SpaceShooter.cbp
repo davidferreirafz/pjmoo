@@ -5,13 +5,14 @@
 		<Option title="SpaceShooter" />
 		<Option pch_mode="0" />
 		<Option compiler="gcc" />
-		<Option virtualFolders="Naves/;Item/;Efeito/;Fase/;List/;Obstaculo/;Path/;" />
+		<Option virtualFolders="Naves/;Item/;Efeito/;Fase/;List/;Obstaculo/;Path/;Tiro/;Naves/Aliado/;Naves/Inimigo/;" />
 		<Build>
 			<Target title="linux - release">
 				<Option output="bin/SpaceShooter" prefix_auto="0" extension_auto="0" />
 				<Option working_dir="bin/" />
 				<Option type="0" />
 				<Option compiler="gcc" />
+				<Option parameters="--window" />
 				<Option projectCompilerOptionsRelation="1" />
 				<Option projectLinkerOptionsRelation="2" />
 				<Option projectResourceIncludeDirsRelation="0" />
@@ -55,16 +56,13 @@
 				<Option projectLinkerOptionsRelation="2" />
 				<Option projectResourceIncludeDirsRelation="0" />
 				<Compiler>
+					<Add option="-march=i486" />
 					<Add option="-W" />
 					<Add option="-Wall" />
-					<Add option="-pg" />
 					<Add option="-g" />
 					<Add option="-DGNU_LINUX" />
 					<Add option="-DDEBUG" />
 				</Compiler>
-				<Linker>
-					<Add option="-pg" />
-				</Linker>
 			</Target>
 			<Target title="win32 - debug">
 				<Option output="bin/SpaceShooter_DEBUG.exe" prefix_auto="0" extension_auto="0" />
@@ -262,34 +260,34 @@
 			<Option virtualFolder="Naves/" />
 		</Unit>
 		<Unit filename="src/NaveAuxiliar.cpp">
-			<Option virtualFolder="Naves/" />
+			<Option virtualFolder="Naves/Aliado/" />
 		</Unit>
 		<Unit filename="src/NaveAuxiliar.h">
-			<Option virtualFolder="Naves/" />
+			<Option virtualFolder="Naves/Aliado/" />
 		</Unit>
 		<Unit filename="src/NaveBorg.cpp">
-			<Option virtualFolder="Naves/" />
+			<Option virtualFolder="Naves/Inimigo/" />
 		</Unit>
 		<Unit filename="src/NaveBorg.h">
-			<Option virtualFolder="Naves/" />
+			<Option virtualFolder="Naves/Inimigo/" />
 		</Unit>
 		<Unit filename="src/NaveCardassiana.cpp">
-			<Option virtualFolder="Naves/" />
+			<Option virtualFolder="Naves/Inimigo/" />
 		</Unit>
 		<Unit filename="src/NaveCardassiana.h">
-			<Option virtualFolder="Naves/" />
+			<Option virtualFolder="Naves/Inimigo/" />
 		</Unit>
 		<Unit filename="src/NaveEnterprise.cpp">
-			<Option virtualFolder="Naves/" />
+			<Option virtualFolder="Naves/Aliado/" />
 		</Unit>
 		<Unit filename="src/NaveEnterprise.h">
-			<Option virtualFolder="Naves/" />
+			<Option virtualFolder="Naves/Aliado/" />
 		</Unit>
 		<Unit filename="src/NaveEnterpriseE.cpp">
-			<Option virtualFolder="Naves/" />
+			<Option virtualFolder="Naves/Aliado/" />
 		</Unit>
 		<Unit filename="src/NaveEnterpriseE.h">
-			<Option virtualFolder="Naves/" />
+			<Option virtualFolder="Naves/Aliado/" />
 		</Unit>
 		<Unit filename="src/NaveFactory.cpp">
 			<Option virtualFolder="Naves/" />
@@ -304,34 +302,34 @@
 			<Option virtualFolder="Naves/" />
 		</Unit>
 		<Unit filename="src/NaveKlingonAttack.cpp">
-			<Option virtualFolder="Naves/" />
+			<Option virtualFolder="Naves/Inimigo/" />
 		</Unit>
 		<Unit filename="src/NaveKlingonAttack.h">
-			<Option virtualFolder="Naves/" />
+			<Option virtualFolder="Naves/Inimigo/" />
 		</Unit>
 		<Unit filename="src/NaveKlingonBirdPrev.cpp">
-			<Option virtualFolder="Naves/" />
+			<Option virtualFolder="Naves/Inimigo/" />
 		</Unit>
 		<Unit filename="src/NaveKlingonBirdPrev.h">
-			<Option virtualFolder="Naves/" />
+			<Option virtualFolder="Naves/Inimigo/" />
 		</Unit>
 		<Unit filename="src/NaveMiniBorg.cpp">
-			<Option virtualFolder="Naves/" />
+			<Option virtualFolder="Naves/Inimigo/" />
 		</Unit>
 		<Unit filename="src/NaveMiniBorg.h">
-			<Option virtualFolder="Naves/" />
+			<Option virtualFolder="Naves/Inimigo/" />
 		</Unit>
 		<Unit filename="src/NaveRomulana.cpp">
-			<Option virtualFolder="Naves/" />
+			<Option virtualFolder="Naves/Inimigo/" />
 		</Unit>
 		<Unit filename="src/NaveRomulana.h">
-			<Option virtualFolder="Naves/" />
+			<Option virtualFolder="Naves/Inimigo/" />
 		</Unit>
 		<Unit filename="src/NaveVoyager.cpp">
-			<Option virtualFolder="Naves/" />
+			<Option virtualFolder="Naves/Aliado/" />
 		</Unit>
 		<Unit filename="src/NaveVoyager.h">
-			<Option virtualFolder="Naves/" />
+			<Option virtualFolder="Naves/Aliado/" />
 		</Unit>
 		<Unit filename="src/ObstaculoAbstract.cpp">
 			<Option virtualFolder="Obstaculo/" />
@@ -427,30 +425,78 @@
 		<Unit filename="src/Placar.h" />
 		<Unit filename="src/SpaceObject.cpp" />
 		<Unit filename="src/SpaceObject.h" />
-		<Unit filename="src/TiroAbstract.cpp" />
-		<Unit filename="src/TiroAbstract.h" />
-		<Unit filename="src/TiroCanhaoBorg.cpp" />
-		<Unit filename="src/TiroCanhaoBorg.h" />
-		<Unit filename="src/TiroPhaserAbstract.cpp" />
-		<Unit filename="src/TiroPhaserAbstract.h" />
-		<Unit filename="src/TiroPhaserBorg.cpp" />
-		<Unit filename="src/TiroPhaserBorg.h" />
-		<Unit filename="src/TiroPhaserFE.cpp" />
-		<Unit filename="src/TiroPhaserFE.h" />
-		<Unit filename="src/TiroPlasmaAbstract.cpp" />
-		<Unit filename="src/TiroPlasmaAbstract.h" />
-		<Unit filename="src/TiroPlasmaFE.cpp" />
-		<Unit filename="src/TiroPlasmaFE.h" />
-		<Unit filename="src/TiroPlasmaKlingon.cpp" />
-		<Unit filename="src/TiroPlasmaKlingon.h" />
-		<Unit filename="src/TiroTorpedoAbstract.cpp" />
-		<Unit filename="src/TiroTorpedoAbstract.h" />
-		<Unit filename="src/TiroTorpedoCardassiano.cpp" />
-		<Unit filename="src/TiroTorpedoCardassiano.h" />
-		<Unit filename="src/TiroTorpedoFE.cpp" />
-		<Unit filename="src/TiroTorpedoFE.h" />
-		<Unit filename="src/TiroTorpedoRomulano.cpp" />
-		<Unit filename="src/TiroTorpedoRomulano.h" />
+		<Unit filename="src/TiroAbstract.cpp">
+			<Option virtualFolder="Tiro/" />
+		</Unit>
+		<Unit filename="src/TiroAbstract.h">
+			<Option virtualFolder="Tiro/" />
+		</Unit>
+		<Unit filename="src/TiroCanhaoBorg.cpp">
+			<Option virtualFolder="Tiro/" />
+		</Unit>
+		<Unit filename="src/TiroCanhaoBorg.h">
+			<Option virtualFolder="Tiro/" />
+		</Unit>
+		<Unit filename="src/TiroPhaserAbstract.cpp">
+			<Option virtualFolder="Tiro/" />
+		</Unit>
+		<Unit filename="src/TiroPhaserAbstract.h">
+			<Option virtualFolder="Tiro/" />
+		</Unit>
+		<Unit filename="src/TiroPhaserBorg.cpp">
+			<Option virtualFolder="Tiro/" />
+		</Unit>
+		<Unit filename="src/TiroPhaserBorg.h">
+			<Option virtualFolder="Tiro/" />
+		</Unit>
+		<Unit filename="src/TiroPhaserFE.cpp">
+			<Option virtualFolder="Tiro/" />
+		</Unit>
+		<Unit filename="src/TiroPhaserFE.h">
+			<Option virtualFolder="Tiro/" />
+		</Unit>
+		<Unit filename="src/TiroPlasmaAbstract.cpp">
+			<Option virtualFolder="Tiro/" />
+		</Unit>
+		<Unit filename="src/TiroPlasmaAbstract.h">
+			<Option virtualFolder="Tiro/" />
+		</Unit>
+		<Unit filename="src/TiroPlasmaFE.cpp">
+			<Option virtualFolder="Tiro/" />
+		</Unit>
+		<Unit filename="src/TiroPlasmaFE.h">
+			<Option virtualFolder="Tiro/" />
+		</Unit>
+		<Unit filename="src/TiroPlasmaKlingon.cpp">
+			<Option virtualFolder="Tiro/" />
+		</Unit>
+		<Unit filename="src/TiroPlasmaKlingon.h">
+			<Option virtualFolder="Tiro/" />
+		</Unit>
+		<Unit filename="src/TiroTorpedoAbstract.cpp">
+			<Option virtualFolder="Tiro/" />
+		</Unit>
+		<Unit filename="src/TiroTorpedoAbstract.h">
+			<Option virtualFolder="Tiro/" />
+		</Unit>
+		<Unit filename="src/TiroTorpedoCardassiano.cpp">
+			<Option virtualFolder="Tiro/" />
+		</Unit>
+		<Unit filename="src/TiroTorpedoCardassiano.h">
+			<Option virtualFolder="Tiro/" />
+		</Unit>
+		<Unit filename="src/TiroTorpedoFE.cpp">
+			<Option virtualFolder="Tiro/" />
+		</Unit>
+		<Unit filename="src/TiroTorpedoFE.h">
+			<Option virtualFolder="Tiro/" />
+		</Unit>
+		<Unit filename="src/TiroTorpedoRomulano.cpp">
+			<Option virtualFolder="Tiro/" />
+		</Unit>
+		<Unit filename="src/TiroTorpedoRomulano.h">
+			<Option virtualFolder="Tiro/" />
+		</Unit>
 		<Unit filename="src/spaceshoot_define.h" />
 		<Extensions>
 			<code_completion />

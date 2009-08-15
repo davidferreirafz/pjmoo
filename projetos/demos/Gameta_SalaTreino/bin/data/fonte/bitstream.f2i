@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<F2IBuilder>
+  <application>
+    <name>F2IBuilder</name>
+    <version>3.9</version>
+  </application>
+  <project>
+    <useMetrics>true</useMetrics>
+    <useAlpha>true</useAlpha>
+    <showGrid>false</showGrid>
+    <antialias>true</antialias>
+    <imageType>PNG</imageType>
+    <color>
+      <font>-16724992</font>
+      <shadow>-12566464</shadow>
+      <background>-16777216</background>
+    </color>
+    <style>
+      <bold>true</bold>
+    </style>
+    <font>
+      <name>Bitstream Charter</name>
+      <size>10</size>
+      <positionWidth>0</positionWidth>
+      <positionHeight>0</positionHeight>
+      <metricLesser>0</metricLesser>
+      <metricBigger>10</metricBigger>
+    </font>
+    <texture>
+      <size>Auto</size>
+    </texture>
+    <shadow>
+      <vertical>VerticalNone</vertical>
+      <horizontal>HorizontalNone</horizontal>
+    </shadow>
+  </project>
+</F2IBuilder>
+

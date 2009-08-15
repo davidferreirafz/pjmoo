@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<F2IBuilder>
+  <application>
+    <name>F2IBuilder</name>
+    <version>3.9</version>
+  </application>
+  <project>
+    <useMetrics>true</useMetrics>
+    <useAlpha>true</useAlpha>
+    <showGrid>false</showGrid>
+    <antialias>true</antialias>
+    <imageType>PNG</imageType>
+    <color>
+      <font>-65536</font>
+      <shadow>-13312</shadow>
+      <background>-16777216</background>
+    </color>
+    <style>
+      <bold>false</bold>
+    </style>
+    <font>
+      <name>Impact</name>
+      <size>16</size>
+      <positionWidth>2</positionWidth>
+      <positionHeight>1</positionHeight>
+      <metricLesser>2</metricLesser>
+      <metricBigger>16</metricBigger>
+    </font>
+    <texture>
+      <size>Auto</size>
+    </texture>
+    <shadow>
+      <vertical>VerticalDown</vertical>
+      <horizontal>HorizontalNone</horizontal>
+    </shadow>
+  </project>
+</F2IBuilder>
+

@@ -33,7 +33,7 @@ int main(int argc, char* argv[])
 
     frameworkGBF->setPath(argv[0]);
     frameworkGBF->setTitulo("GBF::Teste Scrolling","David Ferreira");
-    frameworkGBF->iniciar(640,480,16,false,GBF::Kernel::FPS::FPS_CONTADOR);
+    frameworkGBF->iniciar(640,480,16,false,GBF::Kernel::FPS::FPS_LIMITADO);
     //Ativando GRAB_ON para evitar mudança de tela durante o
     // jogo no Gnome (Desktop para o GNU/Linux)
     frameworkGBF->inputSystemCore->setControleExclusivo(SDL_GRAB_OFF);

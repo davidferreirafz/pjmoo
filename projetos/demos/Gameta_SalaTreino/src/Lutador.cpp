@@ -3,6 +3,7 @@
 Lutador::Lutador()
 {
     //ctor
+    aceleracao=10.0f;
 }
 
 Lutador::~Lutador()
@@ -11,7 +12,12 @@ Lutador::~Lutador()
 }
 void Lutador::setBateu()
 {
-    setEstado(MORRENDO);
+    vida--;
+    if (vida<=0) {
+       setEstado(MORRENDO);
+       vida=0;
+    }
+
 }
 
 void Lutador::acao(GBF::Kernel::Input::InputSystem * input)
@@ -41,6 +47,10 @@ void Lutador::acao(GBF::Kernel::Input::InputSystem * input)
 
         case CAINDO:
             doCaindo();
+        break;
+
+        case ATERRISANDO:
+            doAterrisando();
         break;
 
         case IMPULSIONANDO:
@@ -74,7 +84,7 @@ void Lutador::doPulando()
     }
 
     if (posicao.y>=alturaPulo.corrente){
-        posicao.y-=10;
+        posicao.y-=6;//10;
     } else {
         delay.acao--;
         if (delay.acao<=0) {
@@ -85,9 +95,14 @@ void Lutador::doPulando()
 
     if (pulo!=FRACO){
         if (input->teclado->isKey(SDLK_RIGHT)){
-            posicao.x+=10;
+            //posicao.x+=10;
+            //posicao.x+= std::pow((posicao.y/3),(1.0/3.0));
+            //posicao.x+= std::pow(posicao.y,1.0/3.0);
+            //posicao.x+=posicao.y-17;
+            posicao.x+=std::pow(posicao.y,1.0/3.0);
         } else if ((input->teclado->isKey(SDLK_LEFT))){
-            posicao.x-=10;
+            posicao.x-=std::pow(posicao.y,1.0/3.0);
+            //posicao.x-= std::pow((posicao.y/3),(1.0/3.0));
         }
     }
 
@@ -150,13 +165,23 @@ void Lutador::doRecuando()
 
 void Lutador::doCaindo()
 {
-    if (posicao.y<110){
-        posicao.y+=6;
+    if (posicao.y<104){
+        posicao.y+=aceleracao;
         if (!getSprite(getSpriteNome())->animacao.isFim()){
             getSprite(getSpriteNome())->animacao.processarManual();
         }
+        aceleracao+=1.5;
     } else {
+        ifAterrisando();
+    }
+}
+
+void Lutador::doAterrisando()
+{
+    if (getSprite(getSpriteNome())->animacao.isFim()){
         setEstado(PARADO);
+    } else {
+        getSprite(getSpriteNome())->animacao.processarManual();
     }
 }
 
@@ -179,6 +204,8 @@ void Lutador::doMorrendo()
 {
     if (!getSprite(getSpriteNome(MORRENDO))->animacao.isFim()){
         getSprite(getSpriteNome(MORRENDO))->animacao.processarManual();
+    } else {
+        ativo = false;
     }
 }
 
@@ -238,6 +265,7 @@ void Lutador::ifPulando()
                     delay.acao=12;
                     alturaPulo.corrente=alturaPulo.fraco;
                     pulo=FRACO;
+                    aceleracao=8.0f;
                 }
             break;
         case CORRENDO:
@@ -247,6 +275,7 @@ void Lutador::ifPulando()
                     delay.acao=6;
                     alturaPulo.corrente=alturaPulo.super;
                     pulo=SUPER;
+                    aceleracao=12.0f;
                 }
             break;
         case ANDANDO_FRENTE:
@@ -257,6 +286,7 @@ void Lutador::ifPulando()
                     delay.acao=10;
                     alturaPulo.corrente=alturaPulo.normal;
                     pulo=NORMAL;
+                    aceleracao=10.0f;
                 }
             break;
     }
@@ -267,9 +297,19 @@ void Lutador::ifCaindo()
         setEstado(CAINDO);
     }
 }
+void Lutador::ifAterrisando()
+{
+    posicao.y=114;
+    getSprite(getSpriteNome(ATERRISANDO))->animacao.setInicio();
+    setEstado(ATERRISANDO);
+}
 
 std::string Lutador::getSpriteNome()
 {
     return getSpriteNome(estado);
 }
 
+int Lutador::getVida()
+{
+    return vida;
+}

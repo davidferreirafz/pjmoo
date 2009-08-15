@@ -15,6 +15,11 @@ class Canhao : public InterfaceObjeto
         void desenhar();
         void acao();
         Regiao getAreaColisao();
+        void desativarBala();
+        bool isBala();
+        bool isAtivo();
+        void setAtivar(bool ativo);
+        void setNivel(int nivel);
     protected:
         GBF::Imagem::Sprite::SpriteItem * fumaca;
         GBF::Imagem::Sprite::SpriteItem * bala;
@@ -22,6 +27,9 @@ class Canhao : public InterfaceObjeto
         GBF::Ponto posicaoBala;
     private:
         GBF::Kernel::Timer::CronometroDecrescente tempo;
+        bool ativo;
+        bool balaAtiva;
+        int velocidade;
 };
 
 #endif // CANHAO_H

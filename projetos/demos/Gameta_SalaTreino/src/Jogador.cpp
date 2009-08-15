@@ -36,8 +36,11 @@ Jogador::Jogador()
     delete(spriteFactory);
 
     spriteFactory = new GBF::Imagem::SpriteFactory("personagem_caindo");
-    adicionarSprite(spriteFactory->criarSpritePersonagem(0,0,80,105,3,1),"caindo");
+    adicionarSprite(spriteFactory->criarSpritePersonagem(0,0,80,105,2,1),"caindo");
     getSprite("caindo")->animacao.setAutomatico(false);
+
+    adicionarSprite(spriteFactory->criarSpritePersonagem(160,0,80,105,1,2),"aterrisando");
+    getSprite("aterrisando")->animacao.setAutomatico(false);
     delete(spriteFactory);
 
     spriteFactory = new GBF::Imagem::SpriteFactory("personagem_impulsionando");
@@ -56,6 +59,13 @@ Jogador::Jogador()
 }
 Jogador::~Jogador()
 {
+}
+void Jogador::inicializar()
+{
+    setEstado(PARADO);
+    vida=1;
+    ativo=true;
+
 }
 void Jogador::limites()
 {
@@ -88,13 +98,30 @@ void Jogador::desenhar()
             getSprite("morrendo")->animacao.processarManual();
         }
     }*/
-
+    switch (estado){
+case CORRENDO:
+    getSprite(Lutador::getSpriteNome())->desenhar(ponto.x-10,ponto.y);
+    getSprite(Lutador::getSpriteNome())->desenhar(ponto.x-5,ponto.y);
+   getSprite(Lutador::getSpriteNome())->desenhar(ponto.x,ponto.y);     break;
+case RECUANDO:
+    getSprite(Lutador::getSpriteNome())->desenhar(ponto.x+10,ponto.y);
+    getSprite(Lutador::getSpriteNome())->desenhar(ponto.x+5,ponto.y);
+   getSprite(Lutador::getSpriteNome())->desenhar(ponto.x,ponto.y);     break;
+default:
     getSprite(Lutador::getSpriteNome())->desenhar(ponto.x,ponto.y);
+break;
+    }
 
+#ifdef DEBUG
     Regiao r= getAreaColisao();
 
     gsGFX->setColor(255,178,0);
-    gsGFX->retangulo(posicao.x,posicao.y,r.dimensao.w,r.dimensao.h);
+    gsGFX->retangulo(r.posicao.x,r.posicao.y,r.dimensao.w,r.dimensao.h);
+
+    GBF::Dimensao d = getSprite(Lutador::getSpriteNome())->getTamanho();
+    gsGFX->setColor(0,255,0);
+    gsGFX->retangulo(ponto.x,ponto.y,d.w,d.h);
+#endif
 }
 
 GBF::Ponto Jogador::ajustar()
@@ -102,12 +129,13 @@ GBF::Ponto Jogador::ajustar()
     GBF::Ponto ponto;
 
     switch (estado){
-        case MORRENDO:  ponto.x=posicao.x;     ponto.y=posicao.y+20;  break;
-        case PULANDO :  ponto.x=posicao.x-20;  ponto.y=posicao.y;     break;
-        case CAINDO  :  ponto.x=posicao.x-20;  ponto.y=posicao.y;     break;
-        case CORRENDO:  ponto.x=posicao.x;     ponto.y=posicao.y+16;  break;
-        case RECUANDO:  ponto.x=posicao.x;     ponto.y=posicao.y+10;  break;
-        default:        ponto.x=posicao.x;     ponto.y=posicao.y;     break;
+        case MORRENDO   :  ponto.x=posicao.x;     ponto.y=posicao.y+20;  break;
+        case PULANDO    :  ponto.x=posicao.x-10;  ponto.y=posicao.y;     break;
+        case CAINDO     :  ponto.x=posicao.x-20;  ponto.y=posicao.y;     break;
+        case ATERRISANDO:  ponto.x=posicao.x-26;  ponto.y=posicao.y-8;   break;
+        case CORRENDO   :  ponto.x=posicao.x;     ponto.y=posicao.y+16;  break;
+        case RECUANDO   :  ponto.x=posicao.x;     ponto.y=posicao.y+10;  break;
+        default:           ponto.x=posicao.x;     ponto.y=posicao.y;     break;
     }
 
     return ponto;
@@ -137,6 +165,9 @@ std::string Jogador::getSpriteNome(Estado estado)
             break;
         case CAINDO:
                 aliasSprite="caindo";
+            break;
+        case ATERRISANDO:
+                aliasSprite="aterrisando";
             break;
         case IMPULSIONANDO:
                 aliasSprite="impulsionando";
@@ -180,6 +211,10 @@ Regiao Jogador::getAreaColisao()
                 regiao.posicao.x=28;    regiao.posicao.y=14;
                 regiao.dimensao.w=24;   regiao.dimensao.h=78;
             break;
+        case ATERRISANDO:
+                regiao.posicao.x=30;    regiao.posicao.y=45;
+                regiao.dimensao.w=30;   regiao.dimensao.h=55;
+            break;
         case IMPULSIONANDO:
                 regiao.posicao.x=10;    regiao.posicao.y=10;
                 regiao.dimensao.w=46;   regiao.dimensao.h=52;
@@ -192,8 +227,10 @@ Regiao Jogador::getAreaColisao()
     }
 
     ////////////
-    regiao.posicao.x=posicao.x+regiao.posicao.x;
-    regiao.posicao.y=posicao.y+regiao.posicao.y;
+    GBF::Ponto p=ajustar();
+
+    regiao.posicao.x=p.x+regiao.posicao.x;
+    regiao.posicao.y=p.y+regiao.posicao.y;
 
     return regiao;
 }
@@ -201,6 +238,7 @@ Regiao Jogador::getAreaColisao()
 bool Jogador::colidiu(Regiao b)
 {
     bool resultado = false;
+
     if (estado!=MORRENDO){
         resultado=InterfaceObjeto::colidiu(b);
     }

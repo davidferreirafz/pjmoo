@@ -9,7 +9,7 @@
 #include "Jogador.h"
 #include "Canhao.h"
 
-#define TOTAL_CANHAO 1
+#define TOTAL_CANHAO 4
 
 /**********************************************************************/
 /* AeroTarget - Cap01 - Código do Artigo Desenvolvimento de Jogos     */
@@ -68,27 +68,42 @@ int main(int argc, char* argv[])
 
 	while (true) {
 		if (frameworkGBF.inputSystemCore->inputSystem->teclado->isKey(SDLK_ESCAPE)){
-			break;
+            break;
 		}
 
+		if (frameworkGBF.inputSystemCore->inputSystem->teclado->isKey(SDLK_1)){
+			canhao[0]->ativar();
+		}
+		if (frameworkGBF.inputSystemCore->inputSystem->teclado->isKey(SDLK_2)){
+			canhao[1]->ativar();
+		}
+		if (frameworkGBF.inputSystemCore->inputSystem->teclado->isKey(SDLK_3)){
+			canhao[2]->ativar();
+		}
+		if (frameworkGBF.inputSystemCore->inputSystem->teclado->isKey(SDLK_4)){
+			canhao[3]->ativar();
+		}
+		if (frameworkGBF.inputSystemCore->inputSystem->teclado->isKey(SDLK_DELETE)){
+            for (int i=0; i<TOTAL_CANHAO; i++){
+                canhao[i]->desativar();
+            }
+		}
 
         frameworkGBF.writeSystem->escrever(GBF::Kernel::Write::WriteManager::defaultFont,10,460,"Gameta - Desafio");
 
         for (int i=0; i<TOTAL_CANHAO; i++){
-            canhao[i]->acao();
+            if(canhao[i]->isAtivo()){
+                canhao[i]->acao();
+            }
         }
         jogador->acao(frameworkGBF.inputSystemCore->inputSystem);
 
         for (int i=0; i<TOTAL_CANHAO; i++){
-            /*if(canhao[i]->isColisao(jogador->getAreaColisao())){
+            if ((canhao[i]->isBala())&&(jogador->colidiu(canhao[i]->getAreaColisao()))){
                 jogador->setBateu();
-                break;
-            }*/
-            if (jogador->colidiu(canhao[i]->getAreaColisao())){
-                jogador->setBateu();
+                canhao[i]->desativarBala();
                 break;
             }
-
         }
 
         background->desenhar();
@@ -96,6 +111,11 @@ int main(int argc, char* argv[])
         for (int i=0; i<TOTAL_CANHAO; i++){
             canhao[i]->desenhar();
         }
+
+        int barra = 10 * jogador->getVida();
+        frameworkGBF.graphicSystemCore->graphicSystem->gfx->setColor(255,255,0);
+        frameworkGBF.graphicSystemCore->graphicSystem->gfx->retanguloPreenchido(16,5,barra,7);
+
         foreground->desenhar();
 		//realiza refresh, fps, flip
 		frameworkGBF.atualizar();

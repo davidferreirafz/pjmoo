@@ -21,14 +21,23 @@ Canhao::Canhao(int x, int y)
 
     bala->setPosicao(posicaoBala);
     fumaca->setPosicao(x,y);
-    tempo.setTempoOriginal(2+(2*rand()%10));
+    tempo.setTempoOriginal(2+(2*rand()%5));
     tempo.setUnidade(GBF::Kernel::Timer::TEMPO_SEGUNDO);
     tempo.setResetar();
+
+    balaAtiva=false;
+    ativo=false;
+
 }
 Canhao::~Canhao()
 {
    delete(fumaca);
    delete(bala);
+}
+void Canhao::setNivel(int nivel)
+{
+    tempo.setTempoOriginal(1 + (5 - nivel));
+    velocidade = 10 + (2*nivel);
 }
 void Canhao::acao()
 {
@@ -41,6 +50,7 @@ void Canhao::acao()
             posicaoBala.y=posicao.y+1;
             fumaca->animacao.setInicio();
             tempo.setResetar();
+            balaAtiva=true;
         }
     }
 }
@@ -52,10 +62,12 @@ void Canhao::desenhar()
             fumaca->desenhar(posicao.x-30,posicao.y-20);
         }
 
+#ifdef DEBUG
         Regiao r= getAreaColisao();
 
         gsGFX->setColor(255,0,0);
         gsGFX->retangulo(r.posicao.x,r.posicao.y,r.dimensao.w,r.dimensao.h);
+#endif
     }
 }
 Regiao Canhao::getAreaColisao()
@@ -71,3 +83,23 @@ Regiao Canhao::getAreaColisao()
 
     return regiao;
 }
+void Canhao::desativarBala()
+{
+    balaAtiva=false;
+}
+bool Canhao::isBala()
+{
+    return balaAtiva;
+}
+bool Canhao::isAtivo()
+{
+    return ativo;
+}
+void Canhao::setAtivar(bool ativo)
+{
+    this->ativo=ativo;
+    if (!ativo){
+        tempo.setResetar();
+    }
+}
+

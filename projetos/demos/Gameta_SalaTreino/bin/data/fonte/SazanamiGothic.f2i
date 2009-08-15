@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<F2IBuilder>
+  <application>
+    <name>F2IBuilder</name>
+    <version>3.8</version>
+  </application>
+  <project>
+    <useMetrics>true</useMetrics>
+    <useAlpha>true</useAlpha>
+    <showGrid>false</showGrid>
+    <antialias>true</antialias>
+    <imageType>PNG</imageType>
+    <color>
+      <font>-6710785</font>
+      <shadow>-16777216</shadow>
+      <background>-16777216</background>
+    </color>
+    <style>
+      <bold>false</bold>
+    </style>
+    <font>
+      <name>Sazanami Gothic</name>
+      <size>16</size>
+      <positionWidth>0</positionWidth>
+      <positionHeight>0</positionHeight>
+    </font>
+    <texture>
+      <size>Auto</size>
+    </texture>
+    <shadow>
+      <vertical>VerticalDown</vertical>
+      <horizontal>HorizontalNone</horizontal>
+    </shadow>
+  </project>
+</F2IBuilder>
+

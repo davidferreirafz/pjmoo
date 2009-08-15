@@ -1,0 +1,83 @@
+#Text File
+#English
+#LANG=en_US
+
+GBF_UIRecorde_title=New Record
+GBF_UIRecorde_button_back=Back
+GBF_UIRecorde_button_next=Next
+GBF_UIRecorde_button_save=Save
+
+GBF_UIRecorde_warning=Name Required. ESC to cancel.
+
+GBF_UIRecorde_title_player=Player
+GBF_UIRecorde_title_points=Points
+
+
+#Menu::Menu
+menu_1=ABOUT
+menu_2=PLAY
+menu_3=CREDIT
+menu_4=HELP
+menu_5=EXIT
+
+#Telas
+fase_carregar=Starting
+
+#Titulos
+titulo_sobre=About
+titulo_credito=Credit
+titulo_ajuda=Help
+titulo_gameover=GameOver
+titulo_zerado=Winner
+
+#Botoes
+botao_enter=Press [ENTER]
+
+#Jogo::menuSobre()
+tela_credito_01=#Developer:
+tela_credito_02=  David de Almeida Ferreira (FZ)
+tela_credito_03=#E-Mail:
+tela_credito_04=  davidferreira.fz@gmail.com
+tela_credito_05=#Site:
+tela_credito_06=  http://dukitan.wordpress.com
+
+#Jogo::menuAjuda()
+tela_ajuda_01=#Controller
+tela_ajuda_02=-Arrows up and down to move
+tela_ajuda_03= the racket.
+tela_ajuda_04=#Rules
+tela_ajuda_05=-Win the game who has the
+tela_ajuda_06= advantage of three matches.
+tela_ajuda_07=-A match is won by an advantage
+tela_ajuda_08= of five points. If passing of
+tela_ajuda_09= the ten points, just an advantage
+tela_ajuda_10= of two points.
+
+#Jogo::jogoGameOver()
+tela_gameover_01= 
+tela_gameover_02=GameOver
+tela_gameover_03= 
+tela_gameover_04=Good Luck.
+tela_gameover_05=Try again...
+
+#Jogo::jogoZerado()
+tela_zerado_01= 
+tela_zerado_02=Winner!!!
+tela_zerado_03= 
+tela_zerado_04=You won the CPU.
+tela_zerado_05= 
+tela_zerado_06=You will again???
+
+#Jogo::menuSobre()
+tela_sobre_01=FZPong [Game - Pong Clone]
+tela_sobre_02=Copyright (C) 2007-2008 
+tela_sobre_03= by David Ferreira
+tela_sobre_04= 
+tela_sobre_05=This program is free software;
+tela_sobre_06=you can redistribute it and/or
+tela_sobre_07=modify it under the terms of the
+tela_sobre_08=GNU General Public License as
+tela_sobre_09=published by the Free Software
+tela_sobre_10=Foundation; either version 2
+tela_sobre_11=of the License or any later
+tela_sobre_12=version.

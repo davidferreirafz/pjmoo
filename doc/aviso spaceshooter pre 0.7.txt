@@ -1,0 +1,58 @@
+Atenção esta versão é a ultima antes da liberação oficial do SpaceShooter 0.7
+a qual deve ser simultanea para Linux e Windows, prevista para o dia 07 de Setembro de 2005
+
+Agora ja é possivel desfrutar o jogo em 3 fases remodeladas, a primeira fase ganhou um toque
+de tutorial, onde durante a fase é passado algumas dicas importantes para todo o jogo.
+
+Foi adicionando um programa chamado "Top10SpaceShooter" o qual sincroniza os recordes locais
+com o sistema de recordes globais, e que pode ser visualizado em:
+http://pjmoo.codigolivre.org.br/software/top/spaceshooter/galeria.php
+
+
+Agora com o sistema de instalação serão criados os icons principais do jogo na area de trabalho
+e mais alguns itens no menu iniciar >> PJMOO >> SpaceShooter.
+
+
+Para poder ajudar a validade esta versão do SpaceShooter você pode fazer o donwload em:
+http://pjmoo.codigolivre.org.br/software/top/spaceshooter/restrita/SpaceShooter.0.7.bin.win32_DISTRIBUICAO_RESTRITA.exe
+Lembro que esta versão não deve ser divulgada, pois não é oficial e apenas é para Windows
+
+Obs.: Antes do lancamento do dia 07 o site ganhará algumas informações adicionais sobre o jogo.
+
+Obs2.: Gostaria de pedir que você publique seu recorde, como sabe agora temos uma galeria online, e a possibilidade de baixar pros jogos locais, para isso basta executar o programa,  "Top10SpaceShooter" ou ir no atalho "SpaceShooter - Atualizar Top Recorde"
+
+Contato: davidferreira.fz@gmail.com
+
+
+-- 
+# David de A. Ferreira
+# ICQ: 21877381
+# MSN: davidaf@uol.com.br
+=====================================================
+# DAF Software
+#     http://davidferreira.sites.uol.com.br
+=====================================================
+# Unidev - Portal sobre Desenvolvimento de Jogos
+#     http://www.unidev.com.br
+=====================================================
+# PJMOO - Projetando Jogos Multiplataforma com Orientação  a Objetos
+#     http://codigolivre.org.br/projects/pjmoo/
+=====================================================
+
+******************************************************************
+
+SpaceShooter, é um jogo clássico no estilo shoot'up, tendo como base a temática de Star Trek.
+Para enfretar tudo isso, o jogador contará com 04 naves estelares,
+ onde cada uma está melhor adaptada..."
+Site: (versões para  Linux e Windows)
+http://pjmoo.codigolivre.org.br/site/spaceshooter/index.html
+
+
+----
+
+
+SpaceShooter, é um jogo clássico no estilo shoot'up, tendo como base a temática de Star Trek.
+SpaceShooter, is a classic game in the style shoot'up, having as base the thematic of Star Trek.
+
+Site: (versions for Linux e Windows)
+http://pjmoo.codigolivre.org.br/site/spaceshooter/index.html

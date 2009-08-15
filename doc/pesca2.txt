@@ -1,0 +1,23 @@
+peixes -> N. Illusion \t
+
+
+
+
+fazer com scroll de 6 telas
+colocar uns 40 objetos pra pescar, incluir colisao no fundo 
+ia pros peixes:
+  vontade de fisgar
+  forca da linha(experiencia do pescador)
+  
+obstaculos e cenario
+  pedras
+  plantas
+  outros animais
+
+
+
+
+To procurando artistas 2d/3d para um remake rapido.
+O jogo em questao é o pesca 2, remake do pesca, que ta disponivel em http://www.davidferreira.kit.net/projetos/jogos/pesca/index.html , se interessar é só enviar email para
+davidferreira@uol.com.br é um jogo bem simples (deve levar somente 2 semanas no máximo)
+

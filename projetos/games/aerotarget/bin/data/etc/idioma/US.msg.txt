@@ -1,0 +1,15 @@
+#Text File
+#English
+#LANG=en_US
+
+GBF_UIRecorde_title=New Record
+GBF_UIRecorde_button_back=Back
+GBF_UIRecorde_button_next=Next
+GBF_UIRecorde_button_save=Save
+
+GBF_UIRecorde_warning=Name Required. ESC to cancel.
+
+GBF_UIRecorde_title_player=Player
+GBF_UIRecorde_title_points=Points
+
+

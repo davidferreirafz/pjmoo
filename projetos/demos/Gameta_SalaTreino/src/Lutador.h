@@ -3,6 +3,7 @@
 
 #include <GBF/Personagem.h>
 #include "InterfaceObjeto.h"
+#include <cmath>
 
 enum Estado{
     PARADO,
@@ -13,6 +14,7 @@ enum Estado{
     PULANDO,
     CAINDO,
     IMPULSIONANDO,
+    ATERRISANDO,
     MORRENDO
 };
 
@@ -39,10 +41,12 @@ class Lutador: public Personagem::Personagem, public InterfaceObjeto
         virtual ~Lutador();
         virtual void acao(GBF::Kernel::Input::InputSystem * input);
         void setBateu();
+        int getVida();
     protected:
         void doRecuando();
         void doCorrendo();
         void doCaindo();
+        void doAterrisando();
         void doAndandoFrente();
         void doAndandoTras();
         void doImpulsionando();
@@ -59,6 +63,7 @@ class Lutador: public Personagem::Personagem, public InterfaceObjeto
         void ifMorrendo();
         void ifPulando();
         void ifCaindo();
+        void ifAterrisando();
 
         virtual std::string getSpriteNome();
         virtual std::string getSpriteNome(Estado estado)=0;
@@ -68,6 +73,8 @@ class Lutador: public Personagem::Personagem, public InterfaceObjeto
         AlturaPulo alturaPulo;
         Estado estado;
         Pulo pulo;
+        int vida;
+        float aceleracao;
     private:
         GBF::Kernel::Input::InputSystem * input;
 };

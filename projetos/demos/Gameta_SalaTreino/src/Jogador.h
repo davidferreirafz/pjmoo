@@ -23,6 +23,7 @@ class Jogador : public Lutador
     void desenhar();
     Regiao getAreaColisao();
     bool colidiu(Regiao b);
+    void inicializar();
   private:
     GBF::Ponto ajustar();
 

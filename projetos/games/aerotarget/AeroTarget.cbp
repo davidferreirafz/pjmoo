@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="AeroTarget" />
+		<Option pch_mode="0" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="linux">
+				<Option output="bin/AeroTarget" prefix_auto="0" extension_auto="0" />
+				<Option working_dir="bin/" />
+				<Option type="0" />
+				<Option compiler="gcc" />
+				<Option projectCompilerOptionsRelation="1" />
+				<Option projectResourceIncludeDirsRelation="0" />
+				<Compiler>
+					<Add option="-fexpensive-optimizations" />
+					<Add option="-Os" />
+					<Add option="-W" />
+					<Add option="-Wall" />
+					<Add option="-DGNU_LINUX" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+				</Linker>
+			</Target>
+			<Target title="windows">
+				<Option output="bin/AeroTarget.exe" prefix_auto="0" extension_auto="0" />
+				<Option working_dir="bin/" />
+				<Option type="0" />
+				<Option compiler="gcc" />
+				<Option projectLinkerOptionsRelation="2" />
+				<Option projectResourceIncludeDirsRelation="0" />
+				<Linker>
+					<Add option="-pg -lgmon" />
+					<Add library="mingw32" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-Wall" />
+			<Add option="-pg" />
+			<Add option="-g" />
+		</Compiler>
+		<Linker>
+			<Add option="-pg" />
+			<Add library="SDLmain" />
+			<Add library="SDL" />
+			<Add library="SDL_image" />
+			<Add library="SDL_mixer" />
+			<Add library="GBF" />
+		</Linker>
+		<Unit filename="src/Inimigo.cpp" />
+		<Unit filename="src/Inimigo.h" />
+		<Unit filename="src/Jogador.cpp" />
+		<Unit filename="src/Jogador.h" />
+		<Unit filename="src/cap_01.cpp" />
+		<Extensions>
+			<code_completion />
+			<debugger />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>

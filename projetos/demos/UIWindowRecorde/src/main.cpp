@@ -27,15 +27,15 @@ int main(int argc, char * argv[])
 
     frameworkGBF.setPath(argv[0]);
     frameworkGBF.setTitulo("UIWindowRecorde","David Ferreira");
-    frameworkGBF.iniciar(640,480,16,false);
+    frameworkGBF.iniciar(640,480,16,false,GBF::Kernel::FPS::FPS_LIMITADO);
 
 //carregando imagens
     frameworkGBF.graphicSystemCore->graphicSystem->imageBufferManager->carregar("tiles","//data//imagem//tiles.png");
 
-    frameworkGBF.writeSystem->carregar("nisemegaeu",frameworkGBF.getPath()+"data//fonte//nisemegaeu.png");
-    frameworkGBF.writeSystem->carregar("texto",frameworkGBF.getPath()+"data//fonte//ds9_computer.png");
-    frameworkGBF.writeSystem->carregar("recorde",frameworkGBF.getPath()+"data//fonte//recorde.png");
-    frameworkGBF.writeSystem->carregar("nisemega_extra",frameworkGBF.getPath()+"data//fonte//nisemegaeu.png");
+    frameworkGBF.writeSystem->carregar("nisemegaeu","//data//fonte//nisemegaeu.png");
+    frameworkGBF.writeSystem->carregar("texto","//data//fonte//ds9_computer.png");
+    frameworkGBF.writeSystem->carregar("recorde","//data//fonte//recorde.png");
+    frameworkGBF.writeSystem->carregar("nisemega_extra","//data//fonte//nisemegaeu.png");
 
     frameworkGBF.writeSystem->getFonte("recorde")->setDimensao(24,24);
 

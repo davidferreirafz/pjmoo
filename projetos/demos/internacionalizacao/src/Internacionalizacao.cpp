@@ -20,8 +20,8 @@
 /***************************************************************************/
 /* Declaração - Includes                                                   */
 /***************************************************************************/
-#include <GBF/GBF.h>
-#include <GBF/GraphicSystemImageBufferManager.h>
+#include <GBF/GBFramework.h>
+#include <GBF/ImageBufferManager.h>
 #include <GBF/SpriteFactory.h>
 #include <vector>
 #include <iostream>
@@ -48,7 +48,8 @@ int TextoTraducao::size()
 }
 std::string TextoTraducao::getProximoTexto()
 {
-    if (it==NULL){
+   // if (it==NULL){
+   if (it.isEmpty()){
         it=texto.begin();
     } else {
         it++;
@@ -98,7 +99,7 @@ void TextoTraducao::processar(char * info)
 int main(int argc, char* argv[])
 {
 
-	GBF *frameworkGBF = new GBF();
+	GBFramework *frameworkGBF = new GBF();
 
     frameworkGBF->setPath(argv[0]);
     frameworkGBF->setTitulo("GBF::Teste Scrolling","David Ferreira");

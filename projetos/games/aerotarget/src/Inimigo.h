@@ -1,16 +1,16 @@
 #ifndef INIMIGO_H
 #define INIMIGO_H
 
-#include <GBF/Personagem.h>
+#include <GBF/Character.h>
 #include <GBF/SpriteFactory.h>
 #include <GBF/InputSystem.h>
 
-class Inimigo : public Personagem::Personagem
+class Inimigo : public Character::Character
 {
     public:
         Inimigo();
         virtual ~Inimigo();
-        void acao(GBF::Kernel::Input::InputSystem * input);
+        void update(GBF::Kernel::Input::InputSystem * input);
     protected:
     private:
         void iniciar();

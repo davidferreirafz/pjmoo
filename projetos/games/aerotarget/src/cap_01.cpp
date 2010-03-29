@@ -20,12 +20,12 @@ int main(int argc, char* argv[])
     GBF::GBFramework frameworkGBF;
 
     frameworkGBF.setPath(argv[0]);
-    frameworkGBF.setTitulo("AeroTarget - Cap 01","GBFramework & Revista Espitiro Livre");
-    frameworkGBF.iniciar(640,480,16,false,GBF::Kernel::FPS::FPS_LIMITADO);
+    frameworkGBF.setTitle("AeroTarget - Cap 01","GBFramework & Revista Espitiro Livre");
+    frameworkGBF.start(640,480,16,false,GBF::Kernel::FPS::FPS_30);
     frameworkGBF.inputSystemCore->setControleExclusivo(SDL_GRAB_OFF);
 
 //carregando imagens
-    frameworkGBF.graphicSystemCore->graphicSystem->imageBufferManager->carregar("sprites","//data//imagem//sprites.png");
+    frameworkGBF.graphicSystemCore->graphicSystem->imageBufferManager->loadFromFile("sprites","//data//imagem//sprites.png");
 
     Jogador * aviao = new Jogador();
     Inimigo * inimigo[TOTAL_INIMIGO];
@@ -36,26 +36,26 @@ int main(int argc, char* argv[])
 
 
 	while (true) {
-		if (frameworkGBF.inputSystemCore->inputSystem->teclado->isKey(SDLK_ESCAPE)){
+		if (frameworkGBF.inputSystemCore->inputSystem->keyboard->isKey(SDLK_ESCAPE)){
 			break;
 		}
 
         for (int i=0; i<TOTAL_INIMIGO; i++){
-            inimigo[i]->acao(NULL);
+            inimigo[i]->update(NULL);
         }
 
-        aviao->acao(frameworkGBF.inputSystemCore->inputSystem);
+        aviao->update(frameworkGBF.inputSystemCore->inputSystem);
 
         for (int i=0; i<TOTAL_INIMIGO; i++){
-            inimigo[i]->desenhar();
+            inimigo[i]->draw();
         }
 
-        aviao->desenhar();
+        aviao->draw();
 
-        frameworkGBF.writeSystem->escrever(GBF::Kernel::Write::WriteManager::defaultFont,10,460,"AeroTarget - Cap01 : GBFramework & Revista Espírito Livre");
+        frameworkGBF.writeSystem->write(GBF::Kernel::Write::WriteManager::defaultFont,10,460,"AeroTarget - Cap01 : GBFramework & Revista Espírito Livre");
 
 		//realiza refresh, fps, flip
-		frameworkGBF.atualizar();
+		frameworkGBF.update();
 		frameworkGBF.graphicSystemCore->clear();
 	}
 

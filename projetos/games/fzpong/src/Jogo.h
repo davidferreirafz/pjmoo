@@ -26,33 +26,33 @@
 
 #include <GBF/GAT.h>
 
-#include <GBF/UIMenuTransparente.h>
+#include <GBF/UIMenuSimple.h>
 
-#include <GBF/UIItemTexto.h>
+#include <GBF/UIItemText.h>
 
-#include <GBF/UIWindowTitulo.h>
+#include <GBF/UIWindowTitle.h>
 
 #include <GBF/UIWindowDialog.h>
 
 
 
-#include <GBF/UIVisualSolido.h>
+#include <GBF/UIBackgroundColor.h>
 
 class Jogo : public GAT::GAT
 {
   public:
     int main(int argc, char * argv[]);
 
-    //Construtor
+    /** Construtor */
     Jogo(int argc, char * argv[]);
 
-    //Destrutor
+    /** Destrutor */
     virtual ~Jogo();
 
 
   protected:
-    //Inicializa os recursos utilizados no jogo.
-    //Ex.: Imagens, sons, fontes, configuração do modo gráfico e etc..
+    /** Inicializa os recursos utilizados no jogo.
+    Ex.: Imagens, sons, fontes, configuração do modo gráfico e etc.. */
     void inicializarRecursos();
 
     void menuPrincipal();
@@ -87,13 +87,13 @@ class Jogo : public GAT::GAT
 
     Controle * controle;
 
-    GBF::Imagem::Sprite::SpriteItem * david;
+    GBF::Image::Sprite::SpriteItem * david;
 
-    UserInterface::Window::UIWindowTitulo * janelaSobre;
+    UserInterface::Window::UIWindowTitle * janelaSobre;
 
-    UserInterface::Window::UIWindowTitulo * janelaCredito;
+    UserInterface::Window::UIWindowTitle * janelaCredito;
 
-    UserInterface::Window::UIWindowTitulo * janelaAjuda;
+    UserInterface::Window::UIWindowTitle * janelaAjuda;
 
     UserInterface::Window::UIWindowDialog * janelaZerado;
 

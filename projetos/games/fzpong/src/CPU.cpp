@@ -22,9 +22,9 @@
 
 CPU::CPU()
 {
-    GBF::Imagem::SpriteFactory *spriteFactory = new GBF::Imagem::SpriteFactory("personagem");
+    GBF::Image::SpriteFactory *spriteFactory = new GBF::Image::SpriteFactory("personagem");
 
-    adicionarSpritePrincipal(spriteFactory->criarSpritePersonagem(15,21,14,80,1,1));
+    addMainSprite(spriteFactory->createSpriteCharacter(15,21,14,80,1,1));
     delete(spriteFactory);
 
     iniciarVisao();
@@ -34,10 +34,10 @@ CPU::~CPU()
 
     //dtor
 }
-void CPU::acao(GBF::Kernel::Input::InputSystem * input)
+void CPU::update(GBF::Kernel::Input::InputSystem * input)
 {
-    GBF::Area areaVisaoBola = Util::converterArea(getVisaoBola().getDimensao(),getVisaoBola().getPosicao());
-    GBF::Area visao         = Util::converterArea(getDimensao(),getPosicao());
+    GBF::Area areaVisaoBola = Util::converterArea(getVisaoBola().getDimension(),getVisaoBola().getPoint());
+    GBF::Area visao         = Util::converterArea(getDimension(),getPoint());
 
     switch(pensar(visao,areaVisaoBola))
     {
@@ -53,16 +53,16 @@ void CPU::acao(GBF::Kernel::Input::InputSystem * input)
             break;
     }
 }
-GBF::Ponto CPU::saque()
+GBF::Point CPU::saque()
 {
-    GBF::Ponto saque;
+    GBF::Point saque;
 
-    saque.x=posicao.x+getDimensao().w;
-    saque.y=posicao.y+rand()%(getDimensao().h-getVisaoBola().getDimensao().h);
+    saque.x=point.x+getDimension().w;
+    saque.y=point.y+rand()%(getDimension().h-getVisaoBola().getDimension().h);
 
     return saque;
 }
-bool CPU::isColisao(Personagem::Personagem * personagem)
+bool CPU::isColisao(Character::Character * personagem)
 {
     bool retorno = Raquete::isColisao(personagem);
 
@@ -79,18 +79,18 @@ void CPU::iniciar()
     aumentarVisao();
 }
 //Desenha o sprite principal do personagem
-void CPU::desenhar()
+void CPU::draw()
 {
-    Raquete::desenhar();
+    Raquete::draw();
 
 #ifdef DEBUG
     GBF::Kernel::Graphic::GFX *gfx = GBF::Kernel::Graphic::GraphicSystem::getInstance()->gfx;
 
     gfx->setColor(255,255,255);
-    gfx->circulo(posicao.x+getDimensao().w/2,posicao.y+getDimensao().h/2,raioVisao);
+    gfx->circulo(point.x+getDimension().w/2,point.y+getDimension().h/2,raioVisao);
 
     gfx->setColor(255,0,0);
-    gfx->circulo(posicao.x+getDimensao().w/2,posicao.y+getDimensao().h/2,int(getDimensao().h*1.4));
+    gfx->circulo(point.x+getDimension().w/2,point.y+getDimension().h/2,int(getDimension().h*1.4));
 #endif
 }
 void CPU::iniciarVisao()

@@ -22,9 +22,9 @@
 
 Jogador::Jogador()
 {
-    GBF::Imagem::SpriteFactory *spriteFactory = new GBF::Imagem::SpriteFactory("personagem");
+    GBF::Image::SpriteFactory *spriteFactory = new GBF::Image::SpriteFactory("personagem");
 
-    adicionarSpritePrincipal(spriteFactory->criarSpritePersonagem(0,21,14,80,1,1));
+    addMainSprite(spriteFactory->createSpriteCharacter(0,21,14,80,1,1));
     delete(spriteFactory);
 
 }
@@ -33,20 +33,20 @@ Jogador::~Jogador()
 
     //dtor
 }
-void Jogador::acao(GBF::Kernel::Input::InputSystem * input)
+void Jogador::update(GBF::Kernel::Input::InputSystem * input)
 {
-    if ((input->teclado->isKey(SDLK_UP))||(input->joystick->isAxeUp())){
+    if ((input->keyboard->isKey(SDLK_UP))||(input->joystick->isAxeUp())){
         subir();
-    } else if ((input->teclado->isKey(SDLK_DOWN))||(input->joystick->isAxeDown())){
+    } else if ((input->keyboard->isKey(SDLK_DOWN))||(input->joystick->isAxeDown())){
         descer();
     }
 }
-GBF::Ponto Jogador::saque()
+GBF::Point Jogador::saque()
 {
-    GBF::Ponto saque;
+    GBF::Point saque;
 
-    saque.x=posicao.x-getVisaoBola().getDimensao().w;
-    saque.y=posicao.y+rand()%(getDimensao().h-getVisaoBola().getDimensao().h);
+    saque.x=point.x-getVisaoBola().getDimension().w;
+    saque.y=point.y+rand()%(getDimension().h-getVisaoBola().getDimension().h);
 
     return saque;
 }

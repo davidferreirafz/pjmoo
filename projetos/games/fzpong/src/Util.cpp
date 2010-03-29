@@ -20,7 +20,7 @@
 // ***************************************************************************/
 #include "Util.h"
 
-GBF::Area Util::converterArea(GBF::Dimensao dimensao, GBF::Ponto ponto)
+GBF::Area Util::converterArea(GBF::Dimension dimensao, GBF::Point ponto)
 {
     GBF::Area area;
     area.left   = ponto.x;

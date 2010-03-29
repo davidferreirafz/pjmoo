@@ -30,7 +30,7 @@
 class Util
 {
   public:
-    static GBF::Area converterArea(GBF::Dimensao dimensao, GBF::Ponto ponto);
+    static GBF::Area converterArea(GBF::Dimension dimensao, GBF::Point ponto);
 
 };
 #endif

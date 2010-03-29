@@ -24,7 +24,7 @@
 Controle::Controle()
 {
 
-    cenario    = GBF::Imagem::Layer::LayerManager::getInstance()->getFrameLayer("background");
+    cenario    = GBF::Image::Layer::LayerManager::getInstance()->getFrameLayer("background");
     wsManager  = GBF::Kernel::Write::WriteManager::getInstance();
 
     raqueteJogador = new Jogador();
@@ -63,9 +63,9 @@ void Controle::prepararSet()
 }
 void Controle::executar(GBF::Kernel::Input::InputSystem * input)
 {
-    bola.acao(NULL);
-    raqueteJogador->acao(input);
-    raqueteCPU->acao(NULL);
+    bola.update(NULL);
+    raqueteJogador->update(input);
+    raqueteCPU->update(NULL);
 
     bola.isColisao(raqueteJogador);
     bola.isColisao(raqueteCPU);
@@ -116,19 +116,23 @@ int Controle::getNumeroSet()
 }
 void Controle::display()
 {
-    cenario->desenhar();
-    wsManager->escrever("texto",260,10,"%02d X %02d",placar.getCPU(),placar.getJogador());
-
-    wsManager->escrever("texto" ,20,10,"%02d",placar.getVitoriaCPU());
-    wsManager->escrever("texto",590,10,"%02d",placar.getVitoriaJogador());
+    cenario->draw();
+    wsManager->write("texto",260,10,"%02d X %02d",placar.getCPU(),placar.getJogador());
+    wsManager->write("texto" ,20,10,"%02d",placar.getVitoriaCPU());
+    wsManager->write("texto",590,10,"%02d",placar.getVitoriaJogador());
+    wsManager->write("texto",560,456,"v%d.%d",AutoVersion::MAJOR,AutoVersion::MINOR);
 
 #ifdef DEBUG
-    wsManager->escrever(GBF::Kernel::Write::WriteManager::defaultFont,340,430,"DEBUG: Versão compilada para debug");
+    wsManager->write(GBF::Kernel::Write::WriteManager::defaultFont,260,400,"DEBUG Version");
+    wsManager->write(GBF::Kernel::Write::WriteManager::defaultFont,260,420,"Build: %s (%s)",AutoVersion::FULLVERSION_STRING,AutoVersion::STATUS);
+    wsManager->write(GBF::Kernel::Write::WriteManager::defaultFont,260,440,"SVN Revision: %s ",AutoVersion::SVN_REVISION);
+    wsManager->write(GBF::Kernel::Write::WriteManager::defaultFont,260,460,"SVN Date: %s",AutoVersion::SVN_DATE);
 #endif
 
-    bola.desenhar();
-    raqueteJogador->desenhar();
-    raqueteCPU->desenhar();
+
+    bola.draw();
+    raqueteJogador->draw();
+    raqueteCPU->draw();
 }
 //Ativar demonstração do jogo
 void Controle::ativarDemo(bool ativo)
@@ -149,13 +153,13 @@ void Controle::ativarDemo(bool ativo)
 }
 void Controle::juiz()
 {
-    if (bola.getPosicao().x>=cenario->getArea().right){
+    if (bola.getPoint().x>=cenario->getArea().right){
         placar.pontuarCPU();
         raqueteCPU->preparar();
         raqueteJogador->preparar();
 
         bola.iniciar(raqueteCPU->saque());
-    } else  if (bola.getPosicao().x+bola.getDimensao().w<=cenario->getArea().left){
+    } else  if (bola.getPoint().x+bola.getDimension().w<=cenario->getArea().left){
         placar.pontuarJogador();
         raqueteJogador->preparar();
         raqueteCPU->preparar();

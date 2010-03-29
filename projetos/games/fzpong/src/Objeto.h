@@ -25,10 +25,10 @@
 
 #include <GBF/SoundSystem.h>
 
-#include <GBF/Personagem.h>
+#include <GBF/Character.h>
 #include <GBF/SoundSystemUtility.h>
 
-class Objeto : public Personagem::Personagem, public GBF::Kernel::Sound::SoundSystemUtility
+class Objeto : public Character::Character, public GBF::Kernel::Sound::SoundSystemUtility
 {
   public:
     Objeto();

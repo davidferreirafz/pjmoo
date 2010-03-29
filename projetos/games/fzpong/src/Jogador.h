@@ -34,9 +34,9 @@ class Jogador : public Raquete
 
     virtual ~Jogador();
 
-    void acao(GBF::Kernel::Input::InputSystem * input);
+    void update(GBF::Kernel::Input::InputSystem * input);
 
-    GBF::Ponto saque();
+    GBF::Point saque();
 
 };
 #endif

@@ -30,26 +30,26 @@ CabecaFactory::~CabecaFactory(){
 
 Cabeca * CabecaFactory::criar(TipoLutador tipo)
 {
-    GBF::Imagem::SpriteFactory * spriteFactory = new GBF::Imagem::SpriteFactory("personagem");
-    GBF::Imagem::Sprite::SpritePersonagem * sprite = NULL;
+    GBF::Image::SpriteFactory * spriteFactory = new GBF::Image::SpriteFactory("personagem");
+    GBF::Image::Sprite::SpriteCharacter * sprite = NULL;
 
 	switch (tipo)
 	{
 		case Skar:
-                sprite=spriteFactory->criarSpritePersonagem(237,231,59,76,2,10);
+                sprite=spriteFactory->createSpriteCharacter(237,231,59,76,2,10);
 			break;
 		case Cobra:
-				sprite=spriteFactory->criarSpritePersonagem(237,154,59,76,2,10);
+				sprite=spriteFactory->createSpriteCharacter(237,154,59,76,2,10);
 			break;
 		case Punk:
-				sprite=spriteFactory->criarSpritePersonagem(237,77,59,76,2,10);
+				sprite=spriteFactory->createSpriteCharacter(237,77,59,76,2,10);
 			break;
 		case Mascarado:
-				sprite=spriteFactory->criarSpritePersonagem(0,154,59,76,2,10);
+				sprite=spriteFactory->createSpriteCharacter(0,154,59,76,2,10);
 			break;
 		case FZ:
 		default:
-				sprite=spriteFactory->criarSpritePersonagem(0,77,59,76,2,10);
+				sprite=spriteFactory->createSpriteCharacter(0,77,59,76,2,10);
 			break;
 	}
 

@@ -13,7 +13,7 @@ class LutadorPlayer : public LutadorAbstract
 
     virtual ~LutadorPlayer();
 
-    virtual void acao(GBF::Kernel::Input::InputSystem * input);
+    virtual void update(GBF::Kernel::Input::InputSystem * input);
 
 };
 #endif

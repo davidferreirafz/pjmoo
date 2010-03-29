@@ -24,8 +24,8 @@
 Controle::Controle()
 {
     fase = NULL;
-    tempoEspera.setTempoOriginal(4);
-    tempoEspera.setUnidade(GBF::Kernel::Timer::TEMPO_SEGUNDO);
+    tempoEspera.setInitialTime(4);
+    tempoEspera.setUnit(GBF::Kernel::Timer::TIME_SECOND_ONE);
     iniciar();
 }
 //Destrutor
@@ -42,7 +42,7 @@ Controle::~Controle()
 void Controle::iniciar()
 {
     faseNumero=0;
-    tempoEspera.setResetar();
+    tempoEspera.setReset();
 }
 bool Controle::carregarFase()
 {
@@ -88,26 +88,26 @@ bool Controle::isFaseFinalizada()
 }
 void Controle::executar(GBF::Kernel::Input::InputSystem * input)
 {
-    if (!tempoEspera.isTerminou()){
+    if (!tempoEspera.isFinish()){
 
-        tempoEspera.processar();
+        tempoEspera.update();
         fase->desenhar();
 
-        GBF::Kernel::Write::WriteManager::getInstance()->escrever("menu",220,170,"ROUND %02d",fase->getRound());
+        GBF::Kernel::Write::WriteManager::getInstance()->write("menu",220,170,"ROUND %02d",fase->getRound());
 
-        if (tempoEspera.getTempo()<=2){
-            fight->desenhar(94,200);
+        if (tempoEspera.getTime()<=2){
+            fight->draw(94,200);
         }
     } else if (fase->isFimRound()){
         if (fase->isProximoRound()){
             fase->iniciar();
             fase->proximoRound();
-            tempoEspera.setResetar();
+            tempoEspera.setReset();
         }
     } else if (fase->isNocaute()){
         fase->desenhar();
         for (int i=100;i<430;i+=30){
-            GBF::Kernel::Write::WriteManager::getInstance()->escrever("menu",200,i,"NOCAUTE");
+            GBF::Kernel::Write::WriteManager::getInstance()->write("menu",200,i,"NOCAUTE");
         }
     } else {
         fase->executar(input);
@@ -120,6 +120,6 @@ void Controle::desenhar()
 }
 void Controle::carregar()
 {
-    GBF::Imagem::SpriteFactory *spriteFactory = new GBF::Imagem::SpriteFactory("personagem");
-    fight = spriteFactory->criarSpriteItem(0,316,453,82,1,1);
+    GBF::Image::SpriteFactory *spriteFactory = new GBF::Image::SpriteFactory("personagem");
+    fight = spriteFactory->createSpriteItem(0,316,453,82,1,1);
 }

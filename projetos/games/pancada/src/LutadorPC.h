@@ -16,7 +16,7 @@ class LutadorPC : public LutadorAbstract
 
     virtual ~LutadorPC();
 
-    virtual void acao(GBF::Kernel::Input::InputSystem * input);
+    virtual void update(GBF::Kernel::Input::InputSystem * input);
 
 
   protected:

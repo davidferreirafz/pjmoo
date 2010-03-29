@@ -6,9 +6,9 @@
 //Construtor
 LuvaAbstract::LuvaAbstract()
 {
-    GBF::Imagem::SpriteFactory  *spriteFactory = new GBF::Imagem::SpriteFactory("personagem");
+    GBF::Image::SpriteFactory  *spriteFactory = new GBF::Image::SpriteFactory("personagem");
 
-    sprite=spriteFactory->criarSpritePersonagem(0,231,76,84,1,1);
+    sprite=spriteFactory->createSpriteCharacter(0,231,76,84,1,1);
     sprite->setQtdDirecoes(2);
 
 	delete(spriteFactory);

@@ -22,9 +22,9 @@
 
 StatusTempo::StatusTempo()
 {
-    GBF::Imagem::SpriteFactory  *spriteFactory = new GBF::Imagem::SpriteFactory("interface");
+    GBF::Image::SpriteFactory  *spriteFactory = new GBF::Image::SpriteFactory("interface");
 
-    painel = spriteFactory->criarSpriteItem(0,265,92,40,1,1);
+    painel = spriteFactory->createSpriteItem(0,265,92,40,1,1);
 
     delete(spriteFactory);
 }
@@ -35,6 +35,6 @@ StatusTempo::~StatusTempo()
 }
 void StatusTempo::desenhar(int tempo)
 {
-    painel->desenhar(274,0);
-    wsManager->escrever("kiloton24",298,11,"%02d",tempo);
+    painel->draw(274,0);
+    wsManager->write("kiloton24",298,11,"%02d",tempo);
 }

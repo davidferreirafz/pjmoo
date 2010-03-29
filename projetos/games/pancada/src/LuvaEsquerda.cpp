@@ -16,7 +16,7 @@ void LuvaEsquerda::setPosicao(int x, int y)
 	posicao.x=x-32;
 	posicao.y=y;
 
-	if (sprite->getDirecao()==GBF::Imagem::Sprite::DR_CIMA){
+	if (sprite->getDirection()==GBF::Image::Sprite::DR_CIMA){
 	  	if (isSoco()){
 			posicao.y-=68;
 		} else {

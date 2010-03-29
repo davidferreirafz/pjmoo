@@ -28,17 +28,17 @@ EfeitoSangue::EfeitoSangue(){
 
 }
 
-void EfeitoSangue::executar()
+void EfeitoSangue::execute()
 {
 
 }
-void EfeitoSangue::criar(int x, int y)
+void EfeitoSangue::create(int x, int y)
 {
-    GBF::Imagem::SpriteFactory *spriteFactory = new GBF::Imagem::SpriteFactory("personagem");
+    GBF::Image::SpriteFactory *spriteFactory = new GBF::Image::SpriteFactory("personagem");
 
-    GBF::Imagem::Sprite::SpritePersonagem *sprite=spriteFactory->criarSpritePersonagem(474,77,22,23,6,2);
-	sprite->animacao.setAutomatico(true);
-    sprite->setPosicao(x,y);
+    GBF::Image::Sprite::SpriteCharacter *sprite=spriteFactory->createSpriteCharacter(474,77,22,23,6,2);
+	sprite->animation.setAutomatic(true);
+    sprite->setPoint(x,y);
 
     lista.push_back(sprite);
 

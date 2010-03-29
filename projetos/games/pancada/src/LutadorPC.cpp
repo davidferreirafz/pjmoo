@@ -11,7 +11,7 @@ LutadorPC::~LutadorPC()
 {
 
 }
-void LutadorPC::acao(GBF::Kernel::Input::InputSystem * input)
+void LutadorPC::update(GBF::Kernel::Input::InputSystem * input)
 {
     //Movimentação
     (void)input;

@@ -18,20 +18,20 @@ MembroBase::~MembroBase()
 
 void MembroBase::setCima()
 {
-	sprite->setDirecao(GBF::Imagem::Sprite::DR_CIMA);
+	sprite->setDirection(GBF::Image::Sprite::DR_CIMA);
 }
 void MembroBase::setBaixo()
 {
-	sprite->setDirecao(GBF::Imagem::Sprite::DR_BAIXO);
+	sprite->setDirection(GBF::Image::Sprite::DR_BAIXO);
 }
-void MembroBase::setSprite(GBF::Imagem::Sprite::SpritePersonagem * sprite)
+void MembroBase::setSprite(GBF::Image::Sprite::SpriteCharacter * sprite)
 {
     this->sprite=sprite;
 }
 GBF::Area MembroBase::getArea()
 {
 	GBF::Area a;
-	GBF::Dimensao d = sprite->getTamanho();
+	GBF::Dimension d = sprite->getTamanho();
 
 	a.right  = d.w;
 	a.bottom = d.h;
@@ -40,11 +40,11 @@ GBF::Area MembroBase::getArea()
 
 	return a;
 }
-GBF::Ponto MembroBase::getPosicao()
+GBF::Point MembroBase::getPosicao()
 {
 	return posicao;
 }
 void MembroBase::desenhar()
 {
-	sprite->desenhar(posicao.x,posicao.y);
+	sprite->draw(posicao.x,posicao.y);
 }

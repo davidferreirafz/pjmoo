@@ -24,15 +24,15 @@
 #include "Controle.h"
 #include <GBF/GAT.h>
 
-#include <GBF/UIWindowTitulo.h>
+#include <GBF/UIWindowTitle.h>
 
 #include <GBF/UIWindow.h>
 
-#include <GBF/UIMenuTransparente.h>
+#include <GBF/UIMenuSimple.h>
 
-#include <GBF/UIItemTexto.h>
+#include <GBF/UIItemText.h>
 
-#include <GBF/UIVisualImagem.h>
+#include <GBF/UIBackgroundImage.h>
 
 
 class Jogo : public GAT::GAT
@@ -84,11 +84,11 @@ class Jogo : public GAT::GAT
 
 
   protected:
-    UserInterface::Window::UIWindowTitulo * janelaSobre;
+    UserInterface::Window::UIWindowTitle * janelaSobre;
 
-    UserInterface::Window::UIWindowTitulo * janelaCredito;
+    UserInterface::Window::UIWindowTitle * janelaCredito;
 
-    UserInterface::Window::UIWindowTitulo * janelaAjuda;
+    UserInterface::Window::UIWindowTitle * janelaAjuda;
 
     UserInterface::Window::UIWindowDialog * janelaZerado;
 

@@ -23,9 +23,9 @@
 //Construtor
 StatusPlayer::StatusPlayer()
 {
-    GBF::Imagem::SpriteFactory  *spriteFactory = new GBF::Imagem::SpriteFactory("interface");
+    GBF::Image::SpriteFactory  *spriteFactory = new GBF::Image::SpriteFactory("interface");
 
-    painel = spriteFactory->criarSpriteItem(0,0,45,264,1,1);
+    painel = spriteFactory->createSpriteItem(0,0,45,264,1,1);
 
     delete(spriteFactory);
 
@@ -39,16 +39,16 @@ StatusPlayer::~StatusPlayer()
 //Desenha a barra de informações do jogador
 void StatusPlayer::desenhar(int pontos, int round, int energia)
 {
-    painel->desenhar(0,0);
-    icone->desenhar(7,8);
-    pontuacao->desenhar(45,0);
+    painel->draw(0,0);
+    icone->draw(7,8);
+    pontuacao->draw(45,0);
 
     int barraEnergia=int((energia*83)/100);
 
     for (int se=0;se<barraEnergia;se++){
-        statusEnergia->desenhar(7,253-(2*se));
+        statusEnergia->draw(7,253-(2*se));
     }
 
-    wsManager->escrever("kiloton16",52,18,"%03d",pontos);
-    wsManager->escrever("kiloton16",6,64, "%02d",round);
+    wsManager->write("kiloton16",52,18,"%03d",pontos);
+    wsManager->write("kiloton16",6,64, "%02d",round);
 }

@@ -34,9 +34,9 @@ class EfeitoSangue : public ParticleSystem::PSSprite
 
     EfeitoSangue();
 
-    void executar();
+    void execute();
 
-    void criar(int x, int y);
+    void create(int x, int y);
 
 };
 #endif

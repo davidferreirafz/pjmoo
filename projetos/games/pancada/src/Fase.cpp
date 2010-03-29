@@ -44,5 +44,5 @@ void Fase::iniciar()
     lutadorPlayer->iniciar(243,404);
 
 //    cronometroRound.setResetar();
-    cronometroAuxiliar.setResetar();
+    cronometroAuxiliar.setReset();
 }

@@ -23,16 +23,16 @@
 //Construtor
 StatusLutador::StatusLutador()
 {
-    GBF::Imagem::SpriteFactory  *spriteFactory = new GBF::Imagem::SpriteFactory("interface");
+    GBF::Image::SpriteFactory  *spriteFactory = new GBF::Image::SpriteFactory("interface");
 
-    pontuacao     = spriteFactory->criarSpriteItem( 0,306,62,44,1,1);
-    statusEnergia = spriteFactory->criarSpriteItem(63,306,12, 2,1,1);
+    pontuacao     = spriteFactory->createSpriteItem( 0,306,62,44,1,1);
+    statusEnergia = spriteFactory->createSpriteItem(63,306,12, 2,1,1);
 
     delete(spriteFactory);
 
-    spriteFactory = new GBF::Imagem::SpriteFactory("personagem");
+    spriteFactory = new GBF::Image::SpriteFactory("personagem");
 
-    icone = spriteFactory->criarSpriteItem(454,361,30,37,5,1);
+    icone = spriteFactory->createSpriteItem(454,361,30,37,5,1);
 
     delete(spriteFactory);
 }

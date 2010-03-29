@@ -39,7 +39,7 @@ class Status
 
 
   protected:
-    GBF::Imagem::Sprite::SpriteItem * painel;
+    GBF::Image::Sprite::SpriteItem * painel;
 
     static GBF::Kernel::Write::WriteManager * wsManager;
 

@@ -25,7 +25,7 @@
 
 #include <GBF/SpriteItem.h>
 
-#include <GBF/CronometroDecrescente.h>
+#include <GBF/TimerRegressive.h>
 
 #include "FaseAbstract.h"
 #include "FaseFactory.h"
@@ -57,9 +57,9 @@ class Controle
 
 
   protected:
-    GBF::Imagem::Sprite::SpriteItem * fight;
+    GBF::Image::Sprite::SpriteItem * fight;
 
-    GBF::Kernel::Timer::CronometroDecrescente tempoEspera;
+    GBF::Kernel::Timer::TimerRegressive tempoEspera;
 
 
   private:

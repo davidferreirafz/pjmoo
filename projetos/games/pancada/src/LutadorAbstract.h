@@ -14,13 +14,13 @@
 #include "LuvaEsquerda.h"
 #include <GBF/PSManager.h>
 
-#include <GBF/Personagem.h>
+#include <GBF/Character.h>
 
 #include "EfeitoSangue.h"
 #include "CabecaFactory.h"
 #include "Define.h"
 
-class LutadorAbstract : public Personagem::Personagem
+class LutadorAbstract : public Character::Character
 {
   public:
     //Construtor
@@ -34,7 +34,7 @@ class LutadorAbstract : public Personagem::Personagem
     void iniciar(int x, int y);
 
     //Desenha na tela
-    virtual void desenhar();
+    virtual void draw();
 
     //O lutador está na olhando pra cima
     void olharCima();
@@ -42,7 +42,7 @@ class LutadorAbstract : public Personagem::Personagem
     //O lutador está na olhando pra baixo
     void olharBaixo();
 
-    GBF::Ponto getPosicao();
+    GBF::Point getPosicao();
 
     virtual void setPosicao(int x, int y);
 
@@ -63,7 +63,7 @@ class LutadorAbstract : public Personagem::Personagem
   protected:
     Cabeca * cabeca;
 
-    GBF::Dimensao dimensao;
+    GBF::Dimension dimensao;
 
     LuvaDireita * luvadireita;
 

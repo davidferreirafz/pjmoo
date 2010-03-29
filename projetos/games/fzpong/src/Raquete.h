@@ -25,7 +25,7 @@
 #include <GBF/GBF.h>
 
 #include "Bola.h"
-#include <GBF/Personagem.h>
+#include <GBF/Character.h>
 #include <GBF/GraphicSystem.h>
 
 enum Lado {
@@ -49,13 +49,13 @@ class Raquete : public Objeto
     //Posiciona Raquete
     void preparar();
 
-    virtual GBF::Ponto saque() = 0;
+    virtual GBF::Point saque() = 0;
 
     static void setBola(Bola * bola);
 
     void setLado(Lado valor);
 
-    virtual bool isColisao(Personagem::Personagem * personagem);
+    virtual bool isColisao(Character::Character * personagem);
 
 
   protected:

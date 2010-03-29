@@ -22,11 +22,11 @@
 
 Bola::Bola()
 {
-    GBF::Imagem::SpriteFactory *spriteFactory = new GBF::Imagem::SpriteFactory("personagem");
+    GBF::Image::SpriteFactory *spriteFactory = new GBF::Image::SpriteFactory("personagem");
 
-    adicionarSpritePrincipal(spriteFactory->criarSpritePersonagem(0,0,20,20,1,1));
-    getSpritePrincipal()->animacao.setAutomatico(false);
-    getSpritePrincipal()->setQtdDirecoes(2);
+    addMainSprite(spriteFactory->createSpriteCharacter(0,0,20,20,1,1));
+    getMainSprite()->animation.setAutomatic(false);
+    getMainSprite()->setQtdDirecoes(2);
 }
 Bola::~Bola()
 {
@@ -42,7 +42,7 @@ void Bola::iniciar()
 
     continuar();
 }
-void Bola::iniciar(GBF::Ponto saque)
+void Bola::iniciar(GBF::Point saque)
 {
     batidaParede=0;
     velocidadeGradativa.y=4+rand()%4;
@@ -50,7 +50,7 @@ void Bola::iniciar(GBF::Ponto saque)
 
     checkarVelocidade();
 
-    setPosicao(saque.x,saque.y+getDimensao().h/2);
+    setPoint(saque.x,saque.y+getDimension().h/2);
 }
 void Bola::continuar()
 {
@@ -69,29 +69,29 @@ void Bola::continuar()
         velocidade.y = - velocidade.y;
     }
 
-    setPosicao((getAreaTela().right/2)-(getDimensao().w/2),getAreaTela().bottom/2-(getDimensao().h/2));
+    setPoint((getAreaTela().right/2)-(getDimension().w/2),getAreaTela().bottom/2-(getDimension().h/2));
 }
-void Bola::acao(GBF::Kernel::Input::InputSystem * input)
+void Bola::update(GBF::Kernel::Input::InputSystem * input)
 {
-    posicao.x+=int(velocidade.x);
-    posicao.y+=int(velocidade.y);
+    point.x+=int(velocidade.x);
+    point.y+=int(velocidade.y);
 
-    if (posicao.y+getDimensao().h>=getAreaTela().bottom){
+    if (point.y+getDimension().h>=getAreaTela().bottom){
         velocidade.y = - velocidade.y;
-        posicao.y=getAreaTela().bottom-getDimensao().h;
-        soundSystem->fxManager->playPanEffect("ping",posicao.x);
+        point.y=getAreaTela().bottom-getDimension().h;
+        soundSystem->fxManager->playPanEffect("ping",point.x);
         batidaParede++;
-    } else if (posicao.y<=getAreaTela().top){
+    } else if (point.y<=getAreaTela().top){
         velocidade.y = - velocidade.y;
-        posicao.y=getAreaTela().top;
-        soundSystem->fxManager->playPanEffect("ping",posicao.x);
+        point.y=getAreaTela().top;
+        soundSystem->fxManager->playPanEffect("ping",point.x);
         batidaParede++;
     }
 
-    if (posicao.x>=getAreaTela().right/2){
-        getSpritePrincipal()->setDirecao(GBF::Imagem::Sprite::DR_DIREITA);
+    if (point.x>=getAreaTela().right/2){
+        getMainSprite()->setDirection(GBF::Image::Sprite::DR_DIREITA);
     } else {
-        getSpritePrincipal()->setDirecao(GBF::Imagem::Sprite::DR_ESQUERDA);
+        getMainSprite()->setDirection(GBF::Image::Sprite::DR_ESQUERDA);
     }
 
     if (batidaParede>4){
@@ -99,17 +99,17 @@ void Bola::acao(GBF::Kernel::Input::InputSystem * input)
         batidaParede=0;
     }
 }
-bool Bola::isColisao(Personagem::Personagem * personagem)
+bool Bola::isColisao(Character::Character * personagem)
 {
-    bool colisao=personagem->isColisao(this);
+    bool colisao=personagem->isCollision(this);
     if (colisao){
-        soundSystem->fxManager->playPanEffect("raquete",posicao.x);
+        soundSystem->fxManager->playPanEffect("raquete",point.x);
 
 
-        int raquete   = personagem->getPosicao().y;
-        int areaBaixo = personagem->getDimensao().h - 20;
+        int raquete   = personagem->getPoint().y;
+        int areaBaixo = personagem->getDimension().h - 20;
         int areaCima  = 20;
-        int bola      = posicao.y;
+        int bola      = point.y;
 
         //std::cout << "Bola" << bola << " Parede " << (raquete+areaBaixo) << std::endl;
         //bateu em baixo
@@ -139,18 +139,18 @@ int Bola::getVelocidade()
     return int(velocidade.x);
 }
 //Corrigir a posição da bola após colidir com uma raquete, evitando que a bola seja desenha dentro/após a raquete
-void Bola::corrigirEixoX(Personagem::Personagem * personagem)
+void Bola::corrigirEixoX(Character::Character * personagem)
 {
     //Colisão do lado direito da tela
-    if (getSpritePrincipal()->getDirecao()==GBF::Imagem::Sprite::DR_DIREITA){
-        if (posicao.x+getDimensao().w>=personagem->getPosicao().x){
-            posicao.x=personagem->getPosicao().x-getDimensao().w;
+    if (getMainSprite()->getDirection()==GBF::Image::Sprite::DR_DIREITA){
+        if (point.x+getDimension().w>=personagem->getPoint().x){
+            point.x=personagem->getPoint().x-getDimension().w;
             velocidade.x = - velocidade.x;
         }
     //Colisão do lado esquerdo da tela
     } else {
-        if (posicao.x<=personagem->getPosicao().x+personagem->getDimensao().w){
-            posicao.x=personagem->getPosicao().x+personagem->getDimensao().w;
+        if (point.x<=personagem->getPoint().x+personagem->getDimension().w){
+            point.x=personagem->getPoint().x+personagem->getDimension().w;
             velocidade.x = - velocidade.x;
         }
     }
@@ -165,8 +165,8 @@ void Bola::elevarGrauDificuldade()
 
 void Bola::checkarVelocidade()
 {
-    int tLargura=int(getDimensao().w*0.9);
-    int tAltura=int(getDimensao().h*0.9);
+    int tLargura=int(getDimension().w*0.9);
+    int tAltura=int(getDimension().h*0.9);
 
     if (velocidadeGradativa.y>=tAltura){
         velocidadeGradativa.y=tAltura;

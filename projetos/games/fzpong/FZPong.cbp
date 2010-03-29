@@ -5,11 +5,11 @@
 		<Option title="FZPong" />
 		<Option pch_mode="0" />
 		<Option compiler="gcc" />
-		<Option virtualFolders="src\;" />
+		<Option virtualFolders="src/;" />
 		<Build>
 			<Target title="win32 - release">
-				<Option output="bin\FZPong.exe" prefix_auto="0" extension_auto="0" />
-				<Option working_dir="bin\" />
+				<Option output="bin/FZPong.exe" prefix_auto="0" extension_auto="0" />
+				<Option working_dir="bin/" />
 				<Option type="0" />
 				<Option compiler="gcc" />
 				<Option projectLinkerOptionsRelation="1" />
@@ -35,8 +35,8 @@
 				</Linker>
 			</Target>
 			<Target title="linux - release">
-				<Option output="bin\FZPong" prefix_auto="0" extension_auto="0" />
-				<Option working_dir="bin\" />
+				<Option output="bin/FZPong" prefix_auto="0" extension_auto="0" />
+				<Option working_dir="bin/" />
 				<Option type="0" />
 				<Option compiler="gcc" />
 				<Option parameters="--window" />
@@ -63,8 +63,8 @@
 				</Linker>
 			</Target>
 			<Target title="win32 - debug">
-				<Option output="bin\FZPong_DEBUG.exe" prefix_auto="0" extension_auto="0" />
-				<Option working_dir="bin\" />
+				<Option output="bin/FZPong_DEBUG.exe" prefix_auto="0" extension_auto="0" />
+				<Option working_dir="bin/" />
 				<Option type="0" />
 				<Option compiler="gcc" />
 				<Option projectLinkerOptionsRelation="1" />
@@ -85,8 +85,8 @@
 				</Linker>
 			</Target>
 			<Target title="linux - debug">
-				<Option output="bin\FZPong_DEBUG" prefix_auto="0" extension_auto="0" />
-				<Option working_dir="bin\" />
+				<Option output="bin/FZPong_DEBUG" prefix_auto="0" extension_auto="0" />
+				<Option working_dir="bin/" />
 				<Option type="0" />
 				<Option compiler="gcc" />
 				<Option parameters="--window" />
@@ -110,30 +110,45 @@
 				</Linker>
 			</Target>
 		</Build>
-		<Unit filename="src\Bola.cpp" />
-		<Unit filename="src\Bola.h" />
-		<Unit filename="src\CPU.cpp" />
-		<Unit filename="src\CPU.h" />
-		<Unit filename="src\Controle.cpp" />
-		<Unit filename="src\Controle.h" />
-		<Unit filename="src\Jogador.cpp" />
-		<Unit filename="src\Jogador.h" />
-		<Unit filename="src\Jogo.cpp" />
-		<Unit filename="src\Jogo.h" />
-		<Unit filename="src\Objeto.cpp" />
-		<Unit filename="src\Objeto.h" />
-		<Unit filename="src\Placar.cpp" />
-		<Unit filename="src\Placar.h" />
-		<Unit filename="src\Raquete.cpp" />
-		<Unit filename="src\Raquete.h" />
-		<Unit filename="src\Util.cpp">
-			<Option virtualFolder="src\" />
+		<Unit filename="src/Bola.cpp" />
+		<Unit filename="src/Bola.h" />
+		<Unit filename="src/CPU.cpp" />
+		<Unit filename="src/CPU.h" />
+		<Unit filename="src/Controle.cpp" />
+		<Unit filename="src/Controle.h" />
+		<Unit filename="src/Jogador.cpp" />
+		<Unit filename="src/Jogador.h" />
+		<Unit filename="src/Jogo.cpp" />
+		<Unit filename="src/Jogo.h" />
+		<Unit filename="src/Objeto.cpp" />
+		<Unit filename="src/Objeto.h" />
+		<Unit filename="src/Placar.cpp" />
+		<Unit filename="src/Placar.h" />
+		<Unit filename="src/Raquete.cpp" />
+		<Unit filename="src/Raquete.h" />
+		<Unit filename="src/Util.cpp">
+			<Option virtualFolder="src/" />
 		</Unit>
-		<Unit filename="src\Util.h" />
-		<Unit filename="src\define.h" />
+		<Unit filename="src/Util.h" />
+		<Unit filename="src/define.h" />
+		<Unit filename="version.h">
+			<Option target="linux - release" />
+		</Unit>
+		<Unit filename="version.h">
+			<Option target="win32 - debug" />
+		</Unit>
+		<Unit filename="version.h">
+			<Option target="linux - debug" />
+		</Unit>
 		<Extensions>
 			<code_completion />
 			<debugger />
+			<AutoVersioning>
+				<Scheme minor_max="10" build_max="0" rev_max="0" rev_rand_max="10" build_times_to_increment_minor="100" />
+				<Settings autoincrement="1" date_declarations="0" do_auto_increment="1" ask_to_increment="0" language="C++" svn="1" svn_directory="/home/desenvolvimento/pjmoo/projetos/games/fzpong/src/.svn" header_path="src/Version.h" />
+				<Changes_Log show_changes_editor="0" app_title="released version %M.%m.%b of %p" changeslog_path="ChangesLog.txt" />
+			</AutoVersioning>
+			<envvars />
 		</Extensions>
 	</Project>
 </CodeBlocks_project_file>

@@ -26,7 +26,7 @@
 
 #include <GBF/InputSystem.h>
 
-#include <GBF/Personagem.h>
+#include <GBF/Character.h>
 
 #include <GBF/ImageBufferManager.h>
 
@@ -50,20 +50,20 @@ class Bola : public Objeto
 
     void iniciar();
 
-    void iniciar(GBF::Ponto saque);
+    void iniciar(GBF::Point saque);
 
     void continuar();
 
-    void acao(GBF::Kernel::Input::InputSystem * input);
+    void update(GBF::Kernel::Input::InputSystem * input);
 
-    bool isColisao(Personagem::Personagem * personagem);
+    bool isColisao(Character::Character * personagem);
 
     int getVelocidade();
 
 
   private:
     //Corrigir a posição da bola após colidir com uma raquete, evitando que a bola seja desenha dentro/após a raquete
-    void corrigirEixoX(Personagem::Personagem * personagem);
+    void corrigirEixoX(Character::Character * personagem);
 
     void elevarGrauDificuldade();
 

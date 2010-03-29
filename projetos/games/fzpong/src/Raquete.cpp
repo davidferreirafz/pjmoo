@@ -39,10 +39,10 @@ void Raquete::preparar()
 {
     //Se for do lado direito da tela
     if (lado==LADO_DIREITO){
-        setPosicao(getAreaTela().right-getDimensao().w,(getAreaTela().bottom/2)-(getDimensao().h/2));
+        setPoint(getAreaTela().right-getDimension().w,(getAreaTela().bottom/2)-(getDimension().h/2));
     //Se for do lado esquerdo da tela
     } else {
-        setPosicao(0,(getAreaTela().bottom/2)-(getDimensao().h/2));
+        setPoint(0,(getAreaTela().bottom/2)-(getDimension().h/2));
     }
 }
 void Raquete::setBola(Bola * bola)
@@ -53,24 +53,24 @@ void Raquete::setLado(Lado valor)
 {
     lado=valor;
 }
-bool Raquete::isColisao(Personagem::Personagem * personagem)
+bool Raquete::isColisao(Character::Character * personagem)
 {
     bool retorno = false;
 
 //Se raquete no lado direito da tela
     if (lado==LADO_DIREITO){
-        if ((posicao.x + getDimensao().w >= personagem->getPosicao().x) &&
-            (posicao.x <= personagem->getPosicao().x + personagem->getDimensao().w) &&
-            (posicao.y + getDimensao().h >= personagem->getPosicao().y) &&
-            (posicao.y <= personagem->getPosicao().y + personagem->getDimensao().h)){
+        if ((point.x + getDimension().w >= personagem->getPoint().x) &&
+            (point.x <= personagem->getPoint().x + personagem->getDimension().w) &&
+            (point.y + getDimension().h >= personagem->getPoint().y) &&
+            (point.y <= personagem->getPoint().y + personagem->getDimension().h)){
                 retorno = true;
         }
 //Se raquete no lado esquerdo da tela
     } else {
-        if ((posicao.x + getDimensao().w >= personagem->getPosicao().x) &&
-            (posicao.x <= personagem->getPosicao().x + personagem->getDimensao().w) &&
-            (posicao.y + getDimensao().h >= personagem->getPosicao().y) &&
-            (posicao.y <= personagem->getPosicao().y + personagem->getDimensao().h)){
+        if ((point.x + getDimension().w >= personagem->getPoint().x) &&
+            (point.x <= personagem->getPoint().x + personagem->getDimension().w) &&
+            (point.y + getDimension().h >= personagem->getPoint().y) &&
+            (point.y <= personagem->getPoint().y + personagem->getDimension().h)){
                 retorno = true;
         }
     }
@@ -87,24 +87,24 @@ void Raquete::setVelocidade(int valor)
 }
 void Raquete::subir()
 {
-    posicao.y-=getVelocidade();
+    point.y-=getVelocidade();
 
-    if (posicao.y<=getAreaTela().top){
-        posicao.y=getAreaTela().top;
+    if (point.y<=getAreaTela().top){
+        point.y=getAreaTela().top;
     }
 }
 void Raquete::descer()
 {
-    posicao.y+=getVelocidade();
-    if (posicao.y+getDimensao().h>=getAreaTela().bottom){
-        posicao.y=getAreaTela().bottom-getDimensao().h;
+    point.y+=getVelocidade();
+    if (point.y+getDimension().h>=getAreaTela().bottom){
+        point.y=getAreaTela().bottom-getDimension().h;
     }
 }
 bool Raquete::isBateuParede()
 {
     bool bateu = false;
 
-    if ((posicao.y+getDimensao().h>=getAreaTela().bottom)||(posicao.y<=getAreaTela().top)){
+    if ((point.y+getDimension().h>=getAreaTela().bottom)||(point.y<=getAreaTela().top)){
         bateu=true;
     }
 

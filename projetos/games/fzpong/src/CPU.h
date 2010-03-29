@@ -26,7 +26,7 @@
 
 #include <GBF/GBF.h>
 
-#include <GBF/Personagem.h>
+#include <GBF/Character.h>
 
 #include "define.h"
 #include <GBF/ImageBase.h>
@@ -41,17 +41,17 @@ class CPU : public Raquete
 
     virtual ~CPU();
 
-    void acao(GBF::Kernel::Input::InputSystem * input);
+    void update(GBF::Kernel::Input::InputSystem * input);
 
-    GBF::Ponto saque();
+    GBF::Point saque();
 
-    bool isColisao(Personagem::Personagem * personagem);
+    bool isColisao(Character::Character * personagem);
 
     //Inicia raquete
     virtual void iniciar();
 
     //Desenha o sprite principal do personagem
-    virtual void desenhar();
+    virtual void draw();
 
 
   private:

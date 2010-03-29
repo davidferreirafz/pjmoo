@@ -27,6 +27,7 @@
 #include "Bola.h"
 #include "Raquete.h"
 #include "CPU.h"
+#include "Version.h"
 #include <GBF/FrameLayer.h>
 
 #include <GBF/WriteManager.h>
@@ -81,7 +82,7 @@ class Controle
 
     CPU * raqueteCPU;
 
-    GBF::Imagem::Layer::FrameLayer * cenario;
+    GBF::Image::Layer::FrameLayer * cenario;
 
     GBF::Kernel::Write::WriteManager * wsManager;
 

@@ -33,7 +33,7 @@
 
 #include <GBF/WriteManager.h>
 
-#include <GBF/CronometroDecrescente.h>
+#include <GBF/TimerRegressive.h>
 
 #include <GBF/PSManager.h>
 
@@ -102,11 +102,11 @@ class FaseAbstract : public GBF::Kernel::Sound::SoundSystemUtility
 
 
   protected:
-    GBF::Imagem::Layer::FrameLayer * ringue;
+    GBF::Image::Layer::FrameLayer * ringue;
 
     static GBF::Kernel::Write::WriteManager * wsManager;
 
-    GBF::Kernel::Timer::CronometroDecrescente cronometroAuxiliar;
+    GBF::Kernel::Timer::TimerRegressive cronometroAuxiliar;
 
     static ParticleSystem::PSManager * particleManager;
 

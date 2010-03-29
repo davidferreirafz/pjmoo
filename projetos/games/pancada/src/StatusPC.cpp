@@ -23,9 +23,9 @@
 //Construtor
 StatusPC::StatusPC()
 {
-    GBF::Imagem::SpriteFactory  *spriteFactory = new GBF::Imagem::SpriteFactory("interface");
+    GBF::Image::SpriteFactory  *spriteFactory = new GBF::Image::SpriteFactory("interface");
 
-    painel = spriteFactory->criarSpriteItem(45,0,45,264,1,1);
+    painel = spriteFactory->createSpriteItem(45,0,45,264,1,1);
 
     delete(spriteFactory);
 }
@@ -38,16 +38,16 @@ StatusPC::~StatusPC()
 //Desenha a barra de informações do PC
 void StatusPC::desenhar(int pontos, int round, int energia)
 {
-    painel->desenhar(595,0);
-    icone->desenhar(603,8);
-    pontuacao->desenhar(534,0);
+    painel->draw(595,0);
+    icone->draw(603,8);
+    pontuacao->draw(534,0);
 
     int barraEnergia=int((energia*83)/100);
 
     for (int se=0;se<barraEnergia;se++){
-        statusEnergia->desenhar(621,253-(2*se));
+        statusEnergia->draw(621,253-(2*se));
     }
 
-    wsManager->escrever("kiloton16",541,18,"%03d",pontos);
-    wsManager->escrever("kiloton16",602,64,"%02d",round);
+    wsManager->write("kiloton16",541,18,"%03d",pontos);
+    wsManager->write("kiloton16",602,64,"%02d",round);
 }

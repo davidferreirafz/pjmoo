@@ -26,8 +26,8 @@
 // so para virar de costas corretamente
 void FaseAbstract::ordenacao()
 {
-	GBF::Ponto pc     = lutadorPC->getPosicao();
-	GBF::Ponto player = lutadorPlayer->getPosicao();
+	GBF::Point pc     = lutadorPC->getPosicao();
+	GBF::Point player = lutadorPlayer->getPosicao();
 
 	if (player.y <= pc.y){
 		lutadorPlayer->olharBaixo();
@@ -43,11 +43,11 @@ void FaseAbstract::ordenacao()
 FaseAbstract::FaseAbstract()
 {
     //informa tempo por round
-    cronometroAuxiliar.setTempoOriginal(6);
+    cronometroAuxiliar.setInitialTime(6);
 
     lutadorPlayer = NULL;
     lutadorPC     = NULL;
-    ringue        = GBF::Imagem::Layer::LayerManager::getInstance()->getFrameLayer("background");
+    ringue        = GBF::Image::Layer::LayerManager::getInstance()->getFrameLayer("background");
 
     if (wsManager==NULL){
         wsManager = GBF::Kernel::Write::WriteManager::getInstance();
@@ -88,7 +88,7 @@ bool FaseAbstract::isGameOver()
 {
     bool perdeu = false;
 
-    if (((lutadorPlayer->isNocaute())&&(cronometroAuxiliar.isTerminou())) ||
+    if (((lutadorPlayer->isNocaute())&&(cronometroAuxiliar.isFinish())) ||
        ((round.isUltimo()) && (placar.isTempoTerminou()) && (placar.isPCGanhou()))){
         perdeu = true;
     }
@@ -99,7 +99,7 @@ bool FaseAbstract::isFaseFinalizada()
 {
     bool finalizou = false;
 
-    if (((lutadorPC->isNocaute())&&(cronometroAuxiliar.isTerminou())) ||
+    if (((lutadorPC->isNocaute())&&(cronometroAuxiliar.isFinish())) ||
        ((round.isUltimo()) && (placar.isTempoTerminou()) && (placar.isPlayerGanhou()))){
         finalizou = true;
     }
@@ -120,7 +120,7 @@ bool FaseAbstract::isNocaute()
 
     if ((lutadorPlayer->isNocaute())||(lutadorPC->isNocaute())){
         nocaute = true;
-        cronometroAuxiliar.processar();
+        cronometroAuxiliar.update();
     }
 
     return nocaute;
@@ -164,24 +164,24 @@ void FaseAbstract::executar(GBF::Kernel::Input::InputSystem * input)
 	}
     //executa o cronometro
     placar.processarTempo();
-    particleManager->executar();
+    particleManager->update();
 }
 void FaseAbstract::primeiroRound()
 {
     round.setPrimeiro();
     placar.iniciar();
-    cronometroAuxiliar.setResetar();
+    cronometroAuxiliar.setReset();
 }
 void FaseAbstract::desenhar()
 {
-    ringue->desenhar();
+    ringue->draw();
 
     //desenha lutadores
-    lutadorPlayer->desenhar();
-    lutadorPC->desenhar();
+    lutadorPlayer->draw();
+    lutadorPC->draw();
 
     //desenha efeitos especiais
-    particleManager->desenhar();
+    particleManager->draw();
 
     statusPlayer.desenhar(placar.getPontosPlayer(),placar.getRoundsPlayer(),lutadorPlayer->getEnergia());
     statusPC.desenhar(placar.getPontosPC(),placar.getRoundsPC(),lutadorPC->getEnergia());

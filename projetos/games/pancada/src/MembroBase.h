@@ -2,7 +2,7 @@
 #ifndef _MEMBROBASE_H
 #define _MEMBROBASE_H
 
-#include <GBF/SpritePersonagem.h>
+#include <GBF/SpriteCharacter.h>
 
 #include <GBF/ImageBase.h>
 
@@ -20,21 +20,21 @@ class MembroBase
 
     void setBaixo();
 
-    void setSprite(GBF::Imagem::Sprite::SpritePersonagem * sprite);
+    void setSprite(GBF::Image::Sprite::SpriteCharacter * sprite);
 
     virtual void setPosicao(int x, int y) = 0;
 
     GBF::Area getArea();
 
-    GBF::Ponto getPosicao();
+    GBF::Point getPosicao();
 
     virtual void desenhar();
 
 
   protected:
-    GBF::Ponto posicao;
+    GBF::Point posicao;
 
-    GBF::Imagem::Sprite::SpritePersonagem * sprite;
+    GBF::Image::Sprite::SpriteCharacter * sprite;
 
 };
 #endif

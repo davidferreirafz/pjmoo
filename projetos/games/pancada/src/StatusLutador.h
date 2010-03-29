@@ -39,11 +39,11 @@ class StatusLutador : public Status
 
 
   protected:
-    GBF::Imagem::Sprite::SpriteItem * statusEnergia;
+    GBF::Image::Sprite::SpriteItem * statusEnergia;
 
-    GBF::Imagem::Sprite::SpriteItem * pontuacao;
+    GBF::Image::Sprite::SpriteItem * pontuacao;
 
-    GBF::Imagem::Sprite::SpriteItem * icone;
+    GBF::Image::Sprite::SpriteItem * icone;
 
 
   public:

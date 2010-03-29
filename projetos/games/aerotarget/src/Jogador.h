@@ -1,17 +1,17 @@
 #ifndef JOGADOR_H
 #define JOGADOR_H
 
-#include <GBF/Personagem.h>
+#include <GBF/Character.h>
 #include <GBF/SpriteFactory.h>
 #include <GBF/InputSystem.h>
 
-class Jogador : public Personagem::Personagem
+class Jogador : public Character::Character
 {
     public:
         Jogador();
         virtual ~Jogador();
 
-        void acao(GBF::Kernel::Input::InputSystem * input);
+        void update(GBF::Kernel::Input::InputSystem * input);
     protected:
     private:
 };

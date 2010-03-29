@@ -2,15 +2,15 @@
 
 Jogador::Jogador()
 {
-    GBF::Imagem::SpriteFactory *spriteFactory = new GBF::Imagem::SpriteFactory("sprites");
+    GBF::Image::SpriteFactory *spriteFactory = new GBF::Image::SpriteFactory("sprites");
 
-    adicionarSpritePrincipal(spriteFactory->criarSpritePersonagem(0,0,59,43,3,6));
-    getSpritePrincipal()->setQtdDirecoes(1);
-    getSpritePrincipal()->animacao.setAutomatico(true);
+    addMainSprite(spriteFactory->createSpriteCharacter(0,0,59,43,3,6));
+    getMainSprite()->setQtdDirecoes(1);
+    getMainSprite()->animation.setAutomatic(true);
 
     delete (spriteFactory);
 
-    setPosicao(320,400);
+    setPoint(320,400);
 }
 
 Jogador::~Jogador()
@@ -18,11 +18,11 @@ Jogador::~Jogador()
     //dtor
 }
 
-void Jogador::acao(GBF::Kernel::Input::InputSystem * input)
+void Jogador::update(GBF::Kernel::Input::InputSystem * input)
 {
-    if (input->teclado->isKey(SDLK_RIGHT)){
-        posicao.x+=4;
-    } else if (input->teclado->isKey(SDLK_LEFT)){
-        posicao.x-=4;
+    if (input->keyboard->isKey(SDLK_RIGHT)){
+        point.x+=4;
+    } else if (input->keyboard->isKey(SDLK_LEFT)){
+        point.x-=4;
     }
 }

@@ -2,11 +2,11 @@
 
 Inimigo::Inimigo()
 {
-    GBF::Imagem::SpriteFactory *spriteFactory = new GBF::Imagem::SpriteFactory("sprites");
+    GBF::Image::SpriteFactory *spriteFactory = new GBF::Image::SpriteFactory("sprites");
 
-    adicionarSpritePrincipal(spriteFactory->criarSpritePersonagem(0,77,32,32,3,6));
-    getSpritePrincipal()->setQtdDirecoes(1);
-    getSpritePrincipal()->animacao.setAutomatico(true);
+    addMainSprite(spriteFactory->createSpriteCharacter(0,77,32,32,3,6));
+    getMainSprite()->setQtdDirecoes(1);
+    getMainSprite()->animation.setAutomatic(true);
 
     delete (spriteFactory);
 
@@ -17,24 +17,24 @@ Inimigo::~Inimigo()
 {
 }
 
-void Inimigo::acao(GBF::Kernel::Input::InputSystem * input)
+void Inimigo::update(GBF::Kernel::Input::InputSystem * input)
 {
-    posicao.y+=velocidade;
+    point.y+=velocidade;
 
-    if (posicao.y>640){
+    if (point.y>640){
         iniciar();
     }
 }
 
 void Inimigo::iniciar()
 {
-    GBF::Dimensao d = getDimensao();
+    GBF::Dimension d = getDimension();
 
-    GBF::Ponto p;
+    GBF::Point p;
     p.y= 0 - d.h;
     p.x= rand() % (640 - d.w);
 
-    setPosicao(p);
+    setPoint(p);
 
     velocidade=2+rand()%5;
 }

@@ -2,16 +2,6 @@
 #Português Brasil
 #LANG=pt_BR
 
-GBF_UIRecorde_title=Novo Recorde
-GBF_UIRecorde_button_back=Voltar
-GBF_UIRecorde_button_next=Próximo
-GBF_UIRecorde_button_save=Salvar
-
-GBF_UIRecorde_warning=Nome Obrigatório. ESC para cancelar.
-
-GBF_UIRecorde_title_player=Jogador
-GBF_UIRecorde_title_points=Pontos
-
 #Menu::Menu
 menu_1=SOBRE
 menu_2=JOGAR
@@ -42,43 +32,49 @@ tela_credito_06=  http://dukitan.wordpress.com
 
 #Jogo::menuAjuda()
 tela_ajuda_01=#Movimentacao
-tela_ajuda_02=-Setas cima e baixo para mover o 
+tela_ajuda_02=-Setas cima e baixo para mover o
 tela_ajuda_03= bastao.
 tela_ajuda_04=#Regras
 tela_ajuda_05=-Ganha o jogo quem tiver a vantagem
 tela_ajuda_06= de tres partidas.
 tela_ajuda_07=-Para vencer uma partida, ganha
 tela_ajuda_08= aquele que tiver uma vantagem de
-tela_ajuda_09= cinco pontos. Se a pontuacao 
+tela_ajuda_09= cinco pontos. Se a pontuacao
 tela_ajuda_10= ultrapassar os dez pontos, basta
 tela_ajuda_11= uma diferenca de dois pontos.
 
 #Jogo::jogoGameOver()
-tela_gameover_01= 
+tela_gameover_01=
 tela_gameover_02=GameOver
-tela_gameover_03= 
+tela_gameover_03=
 tela_gameover_04=Mais sorte na proxima,
 tela_gameover_05=continue tentando...
 
 #Jogo::jogoZerado()
-tela_zerado_01= 
+tela_zerado_01=
 tela_zerado_02=Voce Ganhou!!!
-tela_zerado_03= 
+tela_zerado_03=
 tela_zerado_04=Parabens voce
-tela_zerado_05=conseguiu vencer o CPU. 
-tela_zerado_06= 
+tela_zerado_05=conseguiu vencer o CPU.
+tela_zerado_06=
 tela_zerado_07=Consegue novamente???
 
 #Jogo::menuSobre()
 tela_sobre_01=FZPong [Game - Pong Clone]
-tela_sobre_02=Copyright (C) 2007-2008 
+tela_sobre_02=Copyright (C) 2007-2008
 tela_sobre_03= by David Ferreira
-tela_sobre_04= 
+tela_sobre_04=
 tela_sobre_05=Este programa eh software livre;
-tela_sobre_06=voce pode redistribui-lo ou 
+tela_sobre_06=voce pode redistribui-lo ou
 tela_sobre_07=modifica-lo sob os termos da
 tela_sobre_08=Licenca Publica Geral GNU, conforme
-tela_sobre_09=publicada pela Free  Software 
+tela_sobre_09=publicada pela Free  Software
 tela_sobre_10=Foundation; tanto a versao 2 da
-tela_sobre_11=Licenca como qualquer versao 
+tela_sobre_11=Licenca como qualquer versao
 tela_sobre_12=mais nova.
+
+
+#tela_sobre_01=FZPong [Game - Pong Clone]
+#tela_sobre_02=Copyright (C) 2007-2008
+#tela_sobre_03= by David Ferreira
+#tela_sobre_04=Este programa eh software livre; voce pode redistribui-lo ou modifica-lo sob os termos da tela_sobre_08=Licenca Publica Geral GNU, conforme publicada pela Free Software Foundation; tanto a versao 2 da Licenca como qualquer versao mais nova.

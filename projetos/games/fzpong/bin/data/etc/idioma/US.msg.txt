@@ -39,7 +39,7 @@ tela_credito_02=  David de Almeida Ferreira (FZ)
 tela_credito_03=#E-Mail:
 tela_credito_04=  davidferreira.fz@gmail.com
 tela_credito_05=#Site:
-tela_credito_06=  http://dukitan.wordpress.com
+tela_credito_06=  http://www.dukitan.com
 
 #Jogo::menuAjuda()
 tela_ajuda_01=#Controller
@@ -54,25 +54,25 @@ tela_ajuda_09= the ten points, just an advantage
 tela_ajuda_10= of two points.
 
 #Jogo::jogoGameOver()
-tela_gameover_01= 
+tela_gameover_01=
 tela_gameover_02=GameOver
-tela_gameover_03= 
+tela_gameover_03=
 tela_gameover_04=Good Luck.
 tela_gameover_05=Try again...
 
 #Jogo::jogoZerado()
-tela_zerado_01= 
+tela_zerado_01=
 tela_zerado_02=Winner!!!
-tela_zerado_03= 
+tela_zerado_03=
 tela_zerado_04=You won the CPU.
-tela_zerado_05= 
+tela_zerado_05=
 tela_zerado_06=You will again???
 
 #Jogo::menuSobre()
 tela_sobre_01=FZPong [Game - Pong Clone]
-tela_sobre_02=Copyright (C) 2007-2008 
+tela_sobre_02=Copyright (C) 2007-2009
 tela_sobre_03= by David Ferreira
-tela_sobre_04= 
+tela_sobre_04=
 tela_sobre_05=This program is free software;
 tela_sobre_06=you can redistribute it and/or
 tela_sobre_07=modify it under the terms of the

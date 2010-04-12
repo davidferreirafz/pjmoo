@@ -1,23 +1,18 @@
-///***************************************************************************
-// *   FZPong <Game - Pong Clone>                                            *
-// *   Copyright (C) 2007 by David Ferreira - FZ                             *
-// *   davidferreira.fz@gmail.com - http://pjmoo.sourceforge.net             *
-// ***************************************************************************
-// *   Este programa é software livre; você pode redistribuí-lo e/ou         *
-// *   modificá-lo sob os termos da Licença Pública Geral GNU, conforme      *
-// *   publicada pela Free Software Foundation; tanto a versão 2 da          *
-// *   Licença como (a seu critério) qualquer versão mais nova.              *
-// ***************************************************************************
-// *   This program is free software; you can redistribute it and/or modify  *
-// *   it under the terms of the GNU General Public License as published by  *
-// *   the Free Software Foundation; either version 2 of the License, or     *
-// *   (at your option) any later version.                                   *
-// *                                                                         *
-// *   You should have received a copy of the GNU General Public License     *
-// *   along with this program; if not, write to the                         *
-// *   Free Software Foundation, Inc.,                                       *
-// *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
-// ***************************************************************************/
+/*
+ *   FZPong <Game - Pong Clone>                                            *
+ *   Copyright (C) 2007-2010 by David Ferreira - FZ                        *
+ *   davidferreira.fz@gmail.com - http://portal.dukitan.com/fzpong         *
+ ***************************************************************************
+ *   Este programa é software livre; você pode redistribuí-lo e/ou         *
+ *   modificá-lo sob os termos da Licença Pública Geral GNU, conforme      *
+ *   publicada pela Free Software Foundation; tanto a versão 2 da          *
+ *   Licença como (a seu critério) qualquer versão mais nova.              *
+ ***************************************************************************
+ *   This program is free software; you can redistribute it and/or modify  *
+ *   it under the terms of the GNU General Public License as published by  *
+ *   the Free Software Foundation; either version 2 of the License, or     *
+ *   (at your option) any later version.                                   *
+ ***************************************************************************/
 #ifndef _JOGO_H
 #define _JOGO_H
 
@@ -51,35 +46,34 @@ class Jogo : public GAT::GAT
 
 
   protected:
-    /** Inicializa os recursos utilizados no jogo.
-    Ex.: Imagens, sons, fontes, configuração do modo gráfico e etc.. */
-    void inicializarRecursos();
 
-    void menuPrincipal();
+    void loadResources();
 
-    void menuAjuda();
+    void screenMain();
 
-    void menuCredito();
+    void screenHelp();
 
-    void menuSobre();
+    void screenCredit();
 
-    void jogoNovo();
+    void screenAbout();
 
-    void jogoExecutando();
+    void actionNewGame();
 
-    void jogoPause();
+    void screenGameFinish();
 
-    void jogoFaseCarregar();
+    void screenGameOver();
 
-    void jogoFaseFinalizada();
+    void screenFinishStage();
 
-    void jogoGameOver();
+    void screenLoadStage();
 
-    void jogoZerado();
+    void screenGamePause();
 
-    bool gatilhoJogoFaseCarregar();
+    void actionOnGame();
 
-    void gatilhoMenuPrincipal();
+    bool triggerLoadStage();
+
+    void triggerMain();
 
 
   private:

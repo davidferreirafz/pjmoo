@@ -62,9 +62,9 @@ GBF::Point CPU::saque()
 
     return saque;
 }
-bool CPU::isColisao(Character::Character * personagem)
+bool CPU::isCollision(Character * personagem)
 {
-    bool retorno = Raquete::isColisao(personagem);
+    bool retorno = Raquete::isCollision(personagem);
 
     if (retorno){
         efeito = Efeito(rand()%3);
@@ -87,10 +87,10 @@ void CPU::draw()
     GBF::Kernel::Graphic::GFX *gfx = GBF::Kernel::Graphic::GraphicSystem::getInstance()->gfx;
 
     gfx->setColor(255,255,255);
-    gfx->circulo(point.x+getDimension().w/2,point.y+getDimension().h/2,raioVisao);
+    gfx->circle(point.x+getDimension().w/2,point.y+getDimension().h/2,raioVisao);
 
     gfx->setColor(255,0,0);
-    gfx->circulo(point.x+getDimension().w/2,point.y+getDimension().h/2,int(getDimension().h*1.4));
+    gfx->circle(point.x+getDimension().w/2,point.y+getDimension().h/2,int(getDimension().h*1.4));
 #endif
 }
 void CPU::iniciarVisao()

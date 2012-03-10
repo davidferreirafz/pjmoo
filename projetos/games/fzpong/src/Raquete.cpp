@@ -53,7 +53,7 @@ void Raquete::setLado(Lado valor)
 {
     lado=valor;
 }
-bool Raquete::isColisao(Character::Character * personagem)
+bool Raquete::isCollision(Character * personagem)
 {
     bool retorno = false;
 

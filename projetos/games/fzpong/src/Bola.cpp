@@ -99,7 +99,7 @@ void Bola::update(GBF::Kernel::Input::InputSystem * input)
         batidaParede=0;
     }
 }
-bool Bola::isColisao(Character::Character * personagem)
+bool Bola::isCollision(Character * personagem)
 {
     bool colisao=personagem->isCollision(this);
     if (colisao){
@@ -139,7 +139,7 @@ int Bola::getVelocidade()
     return int(velocidade.x);
 }
 //Corrigir a posição da bola após colidir com uma raquete, evitando que a bola seja desenha dentro/após a raquete
-void Bola::corrigirEixoX(Character::Character * personagem)
+void Bola::corrigirEixoX(Character * personagem)
 {
     //Colisão do lado direito da tela
     if (getMainSprite()->getDirection()==GBF::Image::Sprite::DR_DIREITA){

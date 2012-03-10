@@ -56,14 +56,14 @@ class Bola : public Objeto
 
     void update(GBF::Kernel::Input::InputSystem * input);
 
-    bool isColisao(Character::Character * personagem);
+    bool isCollision(Character * personagem);
 
     int getVelocidade();
 
 
   private:
     //Corrigir a posição da bola após colidir com uma raquete, evitando que a bola seja desenha dentro/após a raquete
-    void corrigirEixoX(Character::Character * personagem);
+    void corrigirEixoX(Character * personagem);
 
     void elevarGrauDificuldade();
 

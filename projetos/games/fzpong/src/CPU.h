@@ -45,7 +45,7 @@ class CPU : public Raquete
 
     GBF::Point saque();
 
-    bool isColisao(Character::Character * personagem);
+    bool isCollision(Character * personagem);
 
     //Inicia raquete
     virtual void iniciar();

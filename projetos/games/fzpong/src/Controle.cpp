@@ -67,8 +67,8 @@ void Controle::executar(GBF::Kernel::Input::InputSystem * input)
     raqueteJogador->update(input);
     raqueteCPU->update(NULL);
 
-    bola.isColisao(raqueteJogador);
-    bola.isColisao(raqueteCPU);
+    bola.isCollision(raqueteJogador);
+    bola.isCollision(raqueteCPU);
 
     juiz();
 

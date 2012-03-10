@@ -55,7 +55,7 @@ class Raquete : public Objeto
 
     void setLado(Lado valor);
 
-    virtual bool isColisao(Character::Character * personagem);
+    virtual bool isCollision(Character * personagem);
 
 
   protected:

@@ -1,0 +1,7 @@
+<map id="G" name="G">
+<area shape="rect" id="node3" href="GBFramework.tagfile$a00001.html#a33ff1281f29d68e84467d1d13d7c05d4" title="Character::Character::addMainSprite" alt="" coords="227,5,483,35"/>
+<area shape="rect" id="node5" href="GBFramework.tagfile$a00029.html#a59a93b24903684fab2dc4c293f4b981e" title="GBF::Image::SpriteFactory::createSpriteCharacter" alt="" coords="187,59,523,88"/>
+<area shape="rect" id="node7" href="GBFramework.tagfile$a00001.html#aeea07b58e56b01829f14036a2a81736d" title="Character::Character::getMainSprite" alt="" coords="228,112,481,141"/>
+<area shape="rect" id="node9" href="GBFramework.tagfile$a00023.html#a59d814f7711ad57b489aa2784cf91706" title="GBF::Image::Sprite::Animation::setAutomatic" alt="" coords="201,165,508,195"/>
+<area shape="rect" id="node11" href="GBFramework.tagfile$a00027.html#a82ecb077c5b7558351cbb984906fa894" title="GBF::Image::Sprite::SpriteCharacter::setQtdDirecoes" alt="" coords="176,219,533,248"/>
+</map>

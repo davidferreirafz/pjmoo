@@ -2,104 +2,119 @@
 
 Controle::Controle()
 {
-    nivel = 4;
+    level = 1;
+    cronometro.setUnit(GBF::Kernel::Timer::TIME_SECOND_ONE);
 
     jogador = new Jogador();
-    for (int i=0; i<TOTAL_CANHAO; i++){
-        canhao[i]=new Canhao(276,36+((2+i)*30));
 
-
-        canhao[i]->setNivel(nivel);
+    for (int i = 0; i < TOTAL_CANHAO; i++){
+        canhao[i] = new Canhao(276, 36 + ((2 + i)*30));
+        canhao[i]->setNivel(level);
     }
-    background     = GBF::Imagem::Layer::LayerManager::getInstance()->getFrameLayer("background");
-    foreground = GBF::Imagem::Layer::LayerManager::getInstance()->getFrameLayer("foreground");
-    cronometro.setUnidade(GBF::Kernel::Timer::TEMPO_SEGUNDO);
 
-    writeManager = GBF::Kernel::Write::WriteManager::getInstance();
+    background = GBF::Image::Layer::LayerManager::getInstance()->getFrameLayer("background");
+    foreground = GBF::Image::Layer::LayerManager::getInstance()->getFrameLayer("foreground");
+
+    writeManager  = GBF::Kernel::Write::WriteManager::getInstance();
     graphicSystem = GBF::Kernel::Graphic::GraphicSystem::getInstance();
-
-
 }
 
 Controle::~Controle()
 {
     delete(jogador);
-    for (int i=0; i<TOTAL_CANHAO; i++){
+
+    for (int i = 0; i < TOTAL_CANHAO; i++){
         delete(canhao[i]);
     }
 }
 
 void Controle::iniciar()
 {
-    cronometro.setResetar();
+    cronometro.setReset();
     jogador->inicializar();
-
 }
 
 void Controle::executar(GBF::Kernel::Input::InputSystem * input)
 {
-        cronometro.processar();
+    cronometro.update();
 
-        int tempo = cronometro.getTempo();
-        int segundos = (tempo % 60);
-        int minutos = (tempo / 60);
+    int tempo = cronometro.getTime();
+    int segundos = (tempo % 60);
+    int minutos = (tempo / 60);
 
-        dificuldade(minutos,segundos);
+    dificuldade(tempo);
 
-        for (int i=0; i<TOTAL_CANHAO; i++){
-            if(canhao[i]->isAtivo()){
-                canhao[i]->acao();
-            }
+    for (int i = 0; i < TOTAL_CANHAO; i++){
+        if (canhao[i]->isAtivo()){
+            canhao[i]->update();
         }
-        jogador->acao(input);
+    }
+    jogador->update(input);
 
 
-        for (int i=0; i<TOTAL_CANHAO; i++){
-            if ((canhao[i]->isBala())&&(jogador->colidiu(canhao[i]->getAreaColisao()))){
-                jogador->setBateu();
-                canhao[i]->desativarBala();
-                break;
-            }
+    for (int i = 0; i < TOTAL_CANHAO; i++){
+        if ((canhao[i]->isBala()) && (jogador->colidiu(canhao[i]->getAreaColisao()))){
+            jogador->setBateu();
+            canhao[i]->desativarBala();
+            break;
         }
+    }
 
-        background->desenhar();
+    background->draw();
 
-        for (int i=0; i<TOTAL_CANHAO; i++){
-            canhao[i]->desenhar();
-        }
+    for (int i = 0; i < TOTAL_CANHAO; i++){
+        canhao[i]->draw();
+    }
 
-        jogador->desenhar();
-
-        foreground->desenhar();
-
-
+    jogador->draw();
+    foreground->draw();
 
 
+    writeManager->write("default", 130, 0, "TEMPO %02d:%02d  LEVEL %02d", minutos, segundos, level);
+    int barra =  10 * jogador->getVida();
+    graphicSystem->gfx->setColor(255, 255, 0);
+    graphicSystem->gfx->rectangleFill(16, 5, barra, 7);
 
-        writeManager->escrever("default",200,0,"TEMPO: %02d:%02d",minutos,segundos);
-        int barra =  10 * jogador->getVida();
-        graphicSystem->gfx->setColor(255,255,0);
-        graphicSystem->gfx->retanguloPreenchido(16,5,barra,7);
-        writeManager->escrever("default",20,0,"LIFE: %02d",jogador->getVida());
+#ifdef DEBUG
+    writeManager->write("default", 0, 12, "LIFE: %02d", jogador->getVida());
+#endif
 }
 
-void Controle::dificuldade(int minutos, int segundos)
+void Controle::dificuldade(int tempo)
 {
-    if (segundos==0){
-
-        switch(minutos){
-            case  0: ativarCanhao( true, false, false, false); break;
-            case  1: ativarCanhao(false,  true, false, false); break;
-            case  2: ativarCanhao(false, false,  true, false); break;
-            case  3: ativarCanhao( true, false, false,  true); break;
-            case  4: ativarCanhao(false, false,  true,  true); break;
-            case  5: ativarCanhao( true,  true, false, false); break;
-            case  8: ativarCanhao(false,  true,  true, false); break;
-            case  9: ativarCanhao( true,  true,  true, false); break;
-            case 10: ativarCanhao( true, false,  true, false); break;
-            case 12: ativarCanhao( true, false,  true,  true); break;
-        }
-
+    if (tempo < 20){
+        ativarCanhao(true, false, false, false);
+        level = 1;
+    } else if (tempo < 30){
+        ativarCanhao(false, true, false, false);
+        level = 2;
+    } else if (tempo < 50){
+        ativarCanhao(false, false, true, false);
+        level = 3;
+    } else if (tempo < 70){
+        ativarCanhao(false, false, false, true);
+        level = 4;
+    } else if (tempo < 90){
+        ativarCanhao(false, false, true, true);
+        level = 5;
+    } else if (tempo < 120){
+        ativarCanhao(true, true, false, false);
+        level = 6;
+    } else if (tempo < 150){
+        ativarCanhao(false, true, true, false);
+        level = 7;
+    } else if (tempo < 180){
+        ativarCanhao(true, true, true, false);
+        level = 8;
+    } else if (tempo < 200){
+        ativarCanhao(true, false, true, false);
+        level = 9;
+    } else if (tempo < 240){
+        ativarCanhao(true, false, true, true);
+        level = 10;
+    } else {
+        ativarCanhao(true, true , true , true);
+        level = 100;
     }
 }
 
@@ -113,7 +128,7 @@ void Controle::ativarCanhao(bool um, bool dois, bool tres, bool quatro)
 
 bool Controle::isGameOver()
 {
-    if (!jogador->isAtivo()){
+    if (!jogador->isActive()){
         return true;
     } else {
         return false;

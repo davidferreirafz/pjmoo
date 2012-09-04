@@ -1,0 +1,59 @@
+# depslib dependency file v1.0
+1295054824 source:/home/desenvolvimento/pjmoo/projetos/demos/Gameta_SalaTreino/src/Canhao.cpp
+	"Canhao.h"
+
+1295018366 /home/desenvolvimento/pjmoo/projetos/demos/Gameta_SalaTreino/src/Canhao.h
+	<GBF/SpriteItem.h>
+	<GBF/SpriteFactory.h>
+	<GBF/TimerRegressive.h>
+	"InterfaceObjeto.h"
+
+1272066761 /home/desenvolvimento/pjmoo/projetos/demos/Gameta_SalaTreino/src/InterfaceObjeto.h
+	<GBF/GBFramework.h>
+
+1295054526 source:/home/desenvolvimento/pjmoo/projetos/demos/Gameta_SalaTreino/src/Controle.cpp
+	"Controle.h"
+
+1295054527 /home/desenvolvimento/pjmoo/projetos/demos/Gameta_SalaTreino/src/Controle.h
+	<GBF/InputSystem.h>
+	<GBF/TimerProgressive.h>
+	<GBF/WriteManager.h>
+	<GBF/GraphicSystem.h>
+	"Jogador.h"
+	"Canhao.h"
+
+1272157589 /home/desenvolvimento/pjmoo/projetos/demos/Gameta_SalaTreino/src/Jogador.h
+	<GBF/InputSystem.h>
+	<GBF/SpriteFactory.h>
+	<GBF/FrameLayer.h>
+	<GBF/TimerRegressive.h>
+	"Lutador.h"
+
+1272157589 /home/desenvolvimento/pjmoo/projetos/demos/Gameta_SalaTreino/src/Lutador.h
+	<GBF/Character.h>
+	"InterfaceObjeto.h"
+	<cmath>
+
+1272066603 source:/home/desenvolvimento/pjmoo/projetos/demos/Gameta_SalaTreino/src/InterfaceObjeto.cpp
+	"InterfaceObjeto.h"
+
+1272157688 source:/home/desenvolvimento/pjmoo/projetos/demos/Gameta_SalaTreino/src/Jogador.cpp
+	"Jogador.h"
+
+1272157654 source:/home/desenvolvimento/pjmoo/projetos/demos/Gameta_SalaTreino/src/Lutador.cpp
+	"Lutador.h"
+
+1272132615 source:/home/desenvolvimento/pjmoo/projetos/demos/Gameta_SalaTreino/src/Jogo.cpp
+	"Jogo.h"
+
+1271984840 /home/desenvolvimento/pjmoo/projetos/demos/Gameta_SalaTreino/src/Jogo.h
+	"Controle.h"
+	<GBF/SpriteItem.h>
+	<GBF/SpriteFactory.h>
+	<GBF/GAT.h>
+	<GBF/UIMenuSimple.h>
+	<GBF/UIItemText.h>
+	<GBF/UIWindowTitle.h>
+	<GBF/UIWindowDialog.h>
+	<GBF/UIBackgroundColor.h>
+

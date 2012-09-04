@@ -1,0 +1,25 @@
+# depslib dependency file v1.0
+1269038603 source:/home/desenvolvimento/pjmoo/projetos/games/aerotarget/src/Inimigo.cpp
+	"Inimigo.h"
+
+1269038603 /home/desenvolvimento/pjmoo/projetos/games/aerotarget/src/Inimigo.h
+	<GBF/Character.h>
+	<GBF/SpriteFactory.h>
+	<GBF/InputSystem.h>
+
+1269038586 source:/home/desenvolvimento/pjmoo/projetos/games/aerotarget/src/Jogador.cpp
+	"Jogador.h"
+
+1269038579 /home/desenvolvimento/pjmoo/projetos/games/aerotarget/src/Jogador.h
+	<GBF/Character.h>
+	<GBF/SpriteFactory.h>
+	<GBF/InputSystem.h>
+
+1269038645 source:/home/desenvolvimento/pjmoo/projetos/games/aerotarget/src/cap_01.cpp
+	<GBF/GBFramework.h>
+	<GBF/SpriteFactory.h>
+	<vector>
+	<iostream>
+	"Inimigo.h"
+	"Jogador.h"
+

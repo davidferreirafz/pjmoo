@@ -1,11 +1,12 @@
 #ifndef LUTADOR_H
 #define LUTADOR_H
 
-#include <GBF/Personagem.h>
+#include <GBF/Character.h>
 #include "InterfaceObjeto.h"
 #include <cmath>
 
-enum Estado{
+enum Estado
+{
     PARADO,
     ANDANDO_FRENTE,
     ANDANDO_TRAS,
@@ -25,7 +26,8 @@ enum Pulo
     SUPER
 };
 
-struct AlturaPulo{
+struct AlturaPulo
+{
     int super;
     int normal;
     int fraco;
@@ -34,14 +36,15 @@ struct AlturaPulo{
 
 
 
-class Lutador: public Personagem::Personagem, public InterfaceObjeto
+class Lutador: public Character::Character, public InterfaceObjeto
 {
     public:
         Lutador();
         virtual ~Lutador();
-        virtual void acao(GBF::Kernel::Input::InputSystem * input);
+        virtual void update(GBF::Kernel::Input::InputSystem * input);
         void setBateu();
         int getVida();
+
     protected:
         void doRecuando();
         void doCorrendo();
@@ -53,7 +56,7 @@ class Lutador: public Personagem::Personagem, public InterfaceObjeto
         void doPulando();
         void doParado();
         void doMorrendo();
-        virtual void limites()=0;
+        virtual void limites() = 0;
 
         void ifRecuando();
         void ifCorrendo();
@@ -66,7 +69,7 @@ class Lutador: public Personagem::Personagem, public InterfaceObjeto
         void ifAterrisando();
 
         virtual std::string getSpriteNome();
-        virtual std::string getSpriteNome(Estado estado)=0;
+        virtual std::string getSpriteNome(Estado estado) = 0;
 
         void setEstado(Estado estado);
 
@@ -75,6 +78,8 @@ class Lutador: public Personagem::Personagem, public InterfaceObjeto
         Pulo pulo;
         int vida;
         float aceleracao;
+        int piscante;
+
     private:
         GBF::Kernel::Input::InputSystem * input;
 };

@@ -1,23 +1,18 @@
-///***************************************************************************
-// *   FZPong <Game - Pong Clone>                                            *
-// *   Copyright (C) 2007 by David Ferreira - FZ                             *
-// *   davidferreira.fz@gmail.com - http://pjmoo.sourceforge.net             *
-// ***************************************************************************
-// *   Este programa é software livre; você pode redistribuí-lo e/ou         *
-// *   modificá-lo sob os termos da Licença Pública Geral GNU, conforme      *
-// *   publicada pela Free Software Foundation; tanto a versão 2 da          *
-// *   Licença como (a seu critério) qualquer versão mais nova.              *
-// ***************************************************************************
-// *   This program is free software; you can redistribute it and/or modify  *
-// *   it under the terms of the GNU General Public License as published by  *
-// *   the Free Software Foundation; either version 2 of the License, or     *
-// *   (at your option) any later version.                                   *
-// *                                                                         *
-// *   You should have received a copy of the GNU General Public License     *
-// *   along with this program; if not, write to the                         *
-// *   Free Software Foundation, Inc.,                                       *
-// *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
-// ***************************************************************************/
+/*
+ *   Gameta <Game - Demo Tech>                                             *
+ *   Copyright (C) 2007-2010 by David Ferreira - FZ                        *
+ *   davidferreira.fz@gmail.com - http://portal.dukitan.com/fzpong         *
+ ***************************************************************************
+ *   Este programa é software livre; você pode redistribuí-lo e/ou         *
+ *   modificá-lo sob os termos da Licençaa Pública Geral GNU, conforme     *
+ *   publicada pela Free Software Foundation; tanto a versão 2 da          *
+ *   Licençaa como (a seu critério) qualquer versão mais nova.             *
+ ***************************************************************************
+ *   This program is free software; you can redistribute it and/or modify  *
+ *   it under the terms of the GNU General Public License as published by  *
+ *   the Free Software Foundation; either version 2 of the License, or     *
+ *   (at your option) any later version.                                   *
+ ***************************************************************************/
 #ifndef _JOGO_H
 #define _JOGO_H
 
@@ -27,90 +22,78 @@
 
 #include <GBF/GAT.h>
 
-#include <GBF/UIMenuTransparente.h>
+#include <GBF/UIMenuSimple.h>
 
-#include <GBF/UIItemTexto.h>
+#include <GBF/UIItemText.h>
 
-#include <GBF/UIWindowTitulo.h>
+#include <GBF/UIWindowTitle.h>
 
 #include <GBF/UIWindowDialog.h>
 
 
 
-#include <GBF/UIVisualSolido.h>
-
-//#include <smpeg/smpeg.h>
-#include <smpeg/smpeg.h>
+#include <GBF/UIBackgroundColor.h>
 
 SDL_Surface * pScreen;
-
-//void updateMPEGFrame(SDL_Surface * buffer, Sint32 x, Sint32 y, Uint32 w, Uint32 h);
 
 
 class Jogo : public GAT::GAT
 {
-  public:
-    int main(int argc, char * argv[]);
+    public:
+        int main(int argc, char * argv[]);
 
-    //Construtor
-    Jogo(int argc, char * argv[]);
+        //Construtor
+        Jogo(int argc, char * argv[]);
 
-    //Destrutor
-    virtual ~Jogo();
-
-
-  protected:
-    //Inicializa os recursos utilizados no jogo.
-    //Ex.: Imagens, sons, fontes, configuração do modo gráfico e etc..
-    void inicializarRecursos();
-
-    void menuPrincipal();
-
-    void menuAjuda();
-
-    void menuCredito();
-
-    void menuSobre();
-
-    void jogoNovo();
-
-    void jogoExecutando();
-
-    void jogoPause();
-
-    void jogoFaseCarregar();
-
-    void jogoFaseFinalizada();
-
-    void jogoGameOver();
-
-    void jogoZerado();
-
-    bool gatilhoJogoFaseCarregar();
-
-    void gatilhoMenuPrincipal();
+        //Destrutor
+        virtual ~Jogo();
 
 
-  private:
-    bool desenharBotaoEnter();
+    protected:
+        //Inicializa os recursos utilizados no jogo.
+        //Ex.: Imagens, sons, fontes, configuração do modo gráfico e etc..
+        void loadResources();
 
-    Controle * controle;
+        void screenMain();
 
-    UserInterface::Window::UIWindowTitulo * janelaSobre;
+        void screenHelp();
 
-    UserInterface::Window::UIWindowTitulo * janelaCredito;
+        void screenCredit();
 
-    UserInterface::Window::UIWindowTitulo * janelaAjuda;
+        void screenAbout();
 
-    UserInterface::Window::UIWindowDialog * janelaZerado;
+        void actionNewGame();
 
-    UserInterface::Window::UIWindowDialog * janelaGameOver;
+        void actionOnGame();
 
-    SMPEG *mpeg;
-    SMPEG_Info videoInfo;
+        void screenGamePause();
 
-   SDL_Surface * sVideo;
+        void screenLoadStage();
 
-    void apresentacao();
+        void screenFinishStage();
+
+        void screenGameOver();
+
+        void screenGameFinish();
+
+        bool triggerLoadStage();
+
+        void triggerMain();
+
+
+    private:
+
+        Controle * controle;
+
+        UserInterface::Window::UIWindowTitle * janelaSobre;
+
+        UserInterface::Window::UIWindowTitle * janelaCredito;
+
+        UserInterface::Window::UIWindowTitle * janelaAjuda;
+
+        UserInterface::Window::UIWindowDialog * janelaZerado;
+
+        UserInterface::Window::UIWindowDialog * janelaGameOver;
+
 };
 #endif

@@ -1,0 +1,99 @@
+<?xml version='1.0' encoding='ISO-8859-1' standalone='yes' ?>
+<tagfile>
+  <compound kind="file">
+    <name>cap_01.cpp</name>
+    <path>/home/desenvolvimento/pjmoo/projetos/games/aerotarget/src/</path>
+    <filename>a00003</filename>
+    <includes id="a00003" name="cap_01.cpp" local="yes" imported="no">Inimigo.h</includes>
+    <member kind="define">
+      <type>#define</type>
+      <name>TOTAL_INIMIGO</name>
+      <anchorfile>a00003.html</anchorfile>
+      <anchor>a84bb7ac840fa0751b9789e8409727d11</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="function">
+      <type>int</type>
+      <name>main</name>
+      <anchorfile>a00003.html</anchorfile>
+      <anchor>a0ddf1224851353fc92bfbff6f499fa97</anchor>
+      <arglist>(int argc, char *argv[])</arglist>
+    </member>
+  </compound>
+  <compound kind="file">
+    <name>Inimigo.cpp</name>
+    <path>/home/desenvolvimento/pjmoo/projetos/games/aerotarget/src/</path>
+    <filename>a00004</filename>
+    <includes id="a00005" name="Inimigo.h" local="yes" imported="no">Inimigo.h</includes>
+  </compound>
+  <compound kind="file">
+    <name>Inimigo.h</name>
+    <path>/home/desenvolvimento/pjmoo/projetos/games/aerotarget/src/</path>
+    <filename>a00005</filename>
+    <class kind="class">Inimigo</class>
+  </compound>
+  <compound kind="file">
+    <name>Jogador.cpp</name>
+    <path>/home/desenvolvimento/pjmoo/projetos/games/aerotarget/src/</path>
+    <filename>a00006</filename>
+    <includes id="a00007" name="Jogador.h" local="yes" imported="no">Jogador.h</includes>
+  </compound>
+  <compound kind="file">
+    <name>Jogador.h</name>
+    <path>/home/desenvolvimento/pjmoo/projetos/games/aerotarget/src/</path>
+    <filename>a00007</filename>
+    <class kind="class">Jogador</class>
+  </compound>
+  <compound kind="class">
+    <name>Inimigo</name>
+    <filename>a00001.html</filename>
+    <base>Character::Character</base>
+    <member kind="function">
+      <type></type>
+      <name>Inimigo</name>
+      <anchorfile>a00001.html</anchorfile>
+      <anchor>a54ac675bbfa1a3bec5d07fadee09c3f0</anchor>
+      <arglist>()</arglist>
+    </member>
+    <member kind="function" virtualness="virtual">
+      <type>virtual</type>
+      <name>~Inimigo</name>
+      <anchorfile>a00001.html</anchorfile>
+      <anchor>a7bca5d4fc1e8424669ca4a28f8767726</anchor>
+      <arglist>()</arglist>
+    </member>
+    <member kind="function">
+      <type>void</type>
+      <name>update</name>
+      <anchorfile>a00001.html</anchorfile>
+      <anchor>a0e142c651fcc401936ed219b2967ca49</anchor>
+      <arglist>(GBF::Kernel::Input::InputSystem *input)</arglist>
+    </member>
+  </compound>
+  <compound kind="class">
+    <name>Jogador</name>
+    <filename>a00002.html</filename>
+    <base>Character::Character</base>
+    <member kind="function">
+      <type></type>
+      <name>Jogador</name>
+      <anchorfile>a00002.html</anchorfile>
+      <anchor>a94a4939138ce04d2f3ceb68257517ac1</anchor>
+      <arglist>()</arglist>
+    </member>
+    <member kind="function" virtualness="virtual">
+      <type>virtual</type>
+      <name>~Jogador</name>
+      <anchorfile>a00002.html</anchorfile>
+      <anchor>a3e62c32199fc9cfbcf22cf83f9008be6</anchor>
+      <arglist>()</arglist>
+    </member>
+    <member kind="function">
+      <type>void</type>
+      <name>update</name>
+      <anchorfile>a00002.html</anchorfile>
+      <anchor>affbed7204c461483cfd969dafebfcb0b</anchor>
+      <arglist>(GBF::Kernel::Input::InputSystem *input)</arglist>
+    </member>
+  </compound>
+</tagfile>

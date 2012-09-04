@@ -2,17 +2,18 @@
 
 Lutador::Lutador()
 {
-    //ctor
     aceleracao=10.0f;
+    piscante = 0;
 }
 
 Lutador::~Lutador()
 {
-    //dtor
 }
+
 void Lutador::setBateu()
 {
     vida--;
+    piscante=20;
     if (vida<=0) {
        setEstado(MORRENDO);
        vida=0;
@@ -20,7 +21,7 @@ void Lutador::setBateu()
 
 }
 
-void Lutador::acao(GBF::Kernel::Input::InputSystem * input)
+void Lutador::update(GBF::Kernel::Input::InputSystem * input)
 {
     this->input=input;
     switch(estado){
@@ -70,38 +71,38 @@ void Lutador::acao(GBF::Kernel::Input::InputSystem * input)
     limites();
 }
 
-
 void Lutador::doParado()
 {
     ifPulando();
     ifAndandoFrente();
     ifAndandoTras();
 }
+
 void Lutador::doPulando()
 {
-    if (!getSprite(getSpriteNome())->animacao.isFim()){
-        getSprite(getSpriteNome())->animacao.processarManual();
+    if (!getSprite(getSpriteNome())->animation.isEnd()){
+        getSprite(getSpriteNome())->animation.processManual();
     }
 
-    if (posicao.y>=alturaPulo.corrente){
-        posicao.y-=6;//10;
+    if (point.y>=alturaPulo.corrente){
+        point.y-=6;//10;
     } else {
-        delay.acao--;
-        if (delay.acao<=0) {
+        delay.action--;
+        if (delay.action<=0) {
             setEstado(CAINDO);
-            getSprite(getSpriteNome(CAINDO))->animacao.setInicio();
+            getSprite(getSpriteNome(CAINDO))->animation.setBegin();
         }
     }
 
     if (pulo!=FRACO){
-        if (input->teclado->isKey(SDLK_RIGHT)){
+        if (input->keyboard->isKey(SDLK_RIGHT)){
             //posicao.x+=10;
             //posicao.x+= std::pow((posicao.y/3),(1.0/3.0));
             //posicao.x+= std::pow(posicao.y,1.0/3.0);
             //posicao.x+=posicao.y-17;
-            posicao.x+=std::pow(posicao.y,1.0/3.0);
-        } else if ((input->teclado->isKey(SDLK_LEFT))){
-            posicao.x-=std::pow(posicao.y,1.0/3.0);
+            point.x+=std::pow(point.y,1.0/3.0);
+        } else if ((input->keyboard->isKey(SDLK_LEFT))){
+            point.x-=std::pow(point.y,1.0/3.0);
             //posicao.x-= std::pow((posicao.y/3),(1.0/3.0));
         }
     }
@@ -109,10 +110,11 @@ void Lutador::doPulando()
     ifCaindo();
     ifImpulsionando();
 }
+
 void Lutador::doAndandoFrente()
 {
-    posicao.x+=1;
-    getSprite(getSpriteNome())->animacao.processarManual();
+    point.x+=1;
+    getSprite(getSpriteNome())->animation.processManual();
 
     setEstado(PARADO);
 
@@ -124,8 +126,8 @@ void Lutador::doAndandoFrente()
 
 void Lutador::doAndandoTras()
 {
-    posicao.x-=1;
-    getSprite(getSpriteNome())->animacao.processarManual();
+    point.x-=1;
+    getSprite(getSpriteNome())->animation.processManual();
 
     setEstado(PARADO);
 
@@ -137,12 +139,12 @@ void Lutador::doAndandoTras()
 
 void Lutador::doCorrendo()
 {
-    posicao.x+=10;
+    point.x+=10;
 
-    if (getSprite(getSpriteNome())->animacao.isFim()){
+    if (getSprite(getSpriteNome())->animation.isEnd()){
         setEstado(PARADO);
     } else {
-        getSprite(getSpriteNome())->animacao.processarManual();
+        getSprite(getSpriteNome())->animation.processManual();
     }
 
     ifPulando();
@@ -151,12 +153,12 @@ void Lutador::doCorrendo()
 
 void Lutador::doRecuando()
 {
-    posicao.x-=10;
+    point.x-=10;
 
-    if (getSprite(getSpriteNome())->animacao.isFim()){
+    if (getSprite(getSpriteNome())->animation.isEnd()){
         setEstado(PARADO);
     } else {
-        getSprite(getSpriteNome())->animacao.processarManual();
+        getSprite(getSpriteNome())->animation.processManual();
     }
 
     ifPulando();
@@ -165,10 +167,10 @@ void Lutador::doRecuando()
 
 void Lutador::doCaindo()
 {
-    if (posicao.y<104){
-        posicao.y+=aceleracao;
-        if (!getSprite(getSpriteNome())->animacao.isFim()){
-            getSprite(getSpriteNome())->animacao.processarManual();
+    if (point.y<104){
+        point.y+=aceleracao;
+        if (!getSprite(getSpriteNome())->animation.isEnd()){
+            getSprite(getSpriteNome())->animation.processManual();
         }
         aceleracao+=1.5;
     } else {
@@ -178,21 +180,21 @@ void Lutador::doCaindo()
 
 void Lutador::doAterrisando()
 {
-    if (getSprite(getSpriteNome())->animacao.isFim()){
+    if (getSprite(getSpriteNome())->animation.isEnd()){
         setEstado(PARADO);
     } else {
-        getSprite(getSpriteNome())->animacao.processarManual();
+        getSprite(getSpriteNome())->animation.processManual();
     }
 }
 
 void Lutador::doImpulsionando()
 {
-    if (posicao.x<80){
-        posicao.x+=4;
-        posicao.y-=4;
+    if (point.x<80){
+        point.x+=4;
+        point.y-=4;
 
-        if (!getSprite(getSpriteNome())->animacao.isFim()){
-            getSprite(getSpriteNome())->animacao.processarManual();
+        if (!getSprite(getSpriteNome())->animation.isEnd()){
+            getSprite(getSpriteNome())->animation.processManual();
         }
 
     } else {
@@ -202,10 +204,10 @@ void Lutador::doImpulsionando()
 
 void Lutador::doMorrendo()
 {
-    if (!getSprite(getSpriteNome(MORRENDO))->animacao.isFim()){
-        getSprite(getSpriteNome(MORRENDO))->animacao.processarManual();
+    if (!getSprite(getSpriteNome(MORRENDO))->animation.isEnd()){
+        getSprite(getSpriteNome(MORRENDO))->animation.processManual();
     } else {
-        ativo = false;
+        active = false;
     }
 }
 
@@ -216,53 +218,59 @@ void Lutador::setEstado(Estado estado)
 
 void Lutador::ifAndandoFrente()
 {
-    if (input->teclado->isKey(SDLK_RIGHT)){
+    if (input->keyboard->isKey(SDLK_RIGHT)){
         setEstado(ANDANDO_FRENTE);
     }
 }
+
 void Lutador::ifAndandoTras()
 {
-    if (input->teclado->isKey(SDLK_LEFT)){
+    if (input->keyboard->isKey(SDLK_LEFT)){
         setEstado(ANDANDO_TRAS);
     }
 }
+
 void Lutador::ifCorrendo()
 {
-    if ((input->teclado->isKey(SDLK_LSHIFT)) && (input->teclado->isKey(SDLK_RIGHT))){
+    if ((input->keyboard->isKey(SDLK_LSHIFT)) && (input->keyboard->isKey(SDLK_RIGHT))){
         setEstado(CORRENDO);
-        getSprite(getSpriteNome(CORRENDO))->animacao.setInicio();
+        getSprite(getSpriteNome(CORRENDO))->animation.setBegin();
     }
 }
+
 void Lutador::ifRecuando()
 {
-    if ((input->teclado->isKey(SDLK_LSHIFT)) && (input->teclado->isKey(SDLK_LEFT))){
+    if ((input->keyboard->isKey(SDLK_LSHIFT)) && (input->keyboard->isKey(SDLK_LEFT))){
         setEstado(RECUANDO);
-        getSprite(getSpriteNome(RECUANDO))->animacao.setInicio();
+        getSprite(getSpriteNome(RECUANDO))->animation.setBegin();
     }
 }
+
 void Lutador::ifImpulsionando()
 {
-    if ((input->teclado->isKey(SDLK_LEFT))&&(posicao.x<=20)){
+    if ((input->keyboard->isKey(SDLK_LEFT))&&(point.x<=20)){
         setEstado(IMPULSIONANDO);
-        getSprite(getSpriteNome(IMPULSIONANDO))->animacao.setInicio();
-        getSprite(getSpriteNome(CAINDO))->animacao.setInicio();
+        getSprite(getSpriteNome(IMPULSIONANDO))->animation.setBegin();
+        getSprite(getSpriteNome(CAINDO))->animation.setBegin();
     }
 }
+
 void Lutador::ifMorrendo()
 {//Refinar codigo do estado
     setEstado(MORRENDO);
-    vivo=false;
-    getSprite(getSpriteNome(MORRENDO))->animacao.setInicio();
+    life=false;
+    getSprite(getSpriteNome(MORRENDO))->animation.setBegin();
 }
+
 void Lutador::ifPulando()
 {
-    getSprite(getSpriteNome(PULANDO))->animacao.setInicio();
+    getSprite(getSpriteNome(PULANDO))->animation.setBegin();
 
     switch (estado){
         case PARADO:
-                if (input->teclado->isKey(SDLK_UP)){
+                if (input->keyboard->isKey(SDLK_UP)){
                     setEstado(PULANDO);
-                    delay.acao=12;
+                    delay.action=12;
                     alturaPulo.corrente=alturaPulo.fraco;
                     pulo=FRACO;
                     aceleracao=8.0f;
@@ -270,9 +278,9 @@ void Lutador::ifPulando()
             break;
         case CORRENDO:
         case RECUANDO:
-                if (input->teclado->isKey(SDLK_UP)){
+                if (input->keyboard->isKey(SDLK_UP)){
                     setEstado(PULANDO);
-                    delay.acao=6;
+                    delay.action=6;
                     alturaPulo.corrente=alturaPulo.super;
                     pulo=SUPER;
                     aceleracao=12.0f;
@@ -281,9 +289,9 @@ void Lutador::ifPulando()
         case ANDANDO_FRENTE:
         case ANDANDO_TRAS:
         default:
-                if (input->teclado->isKey(SDLK_UP)){
+                if (input->keyboard->isKey(SDLK_UP)){
                     setEstado(PULANDO);
-                    delay.acao=10;
+                    delay.action=10;
                     alturaPulo.corrente=alturaPulo.normal;
                     pulo=NORMAL;
                     aceleracao=10.0f;
@@ -291,16 +299,18 @@ void Lutador::ifPulando()
             break;
     }
 }
+
 void Lutador::ifCaindo()
 {
-    if (input->teclado->isKey(SDLK_DOWN)){
+    if (input->keyboard->isKey(SDLK_DOWN)){
         setEstado(CAINDO);
     }
 }
+
 void Lutador::ifAterrisando()
 {
-    posicao.y=114;
-    getSprite(getSpriteNome(ATERRISANDO))->animacao.setInicio();
+    point.y=114;
+    getSprite(getSpriteNome(ATERRISANDO))->animation.setBegin();
     setEstado(ATERRISANDO);
 }
 

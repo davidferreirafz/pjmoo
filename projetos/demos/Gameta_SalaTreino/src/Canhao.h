@@ -3,7 +3,7 @@
 
 #include <GBF/SpriteItem.h>
 #include <GBF/SpriteFactory.h>
-#include <GBF/CronometroDecrescente.h>
+#include <GBF/TimerRegressive.h>
 
 #include "InterfaceObjeto.h"
 
@@ -12,24 +12,29 @@ class Canhao : public InterfaceObjeto
     public:
         Canhao(int x, int y);
         virtual ~Canhao();
-        void desenhar();
-        void acao();
-        Regiao getAreaColisao();
+        void draw();
+        void update();
+        GBF::Area getAreaColisao();
         void desativarBala();
         bool isBala();
         bool isAtivo();
         void setAtivar(bool ativo);
         void setNivel(int nivel);
+
     protected:
-        GBF::Imagem::Sprite::SpriteItem * fumaca;
-        GBF::Imagem::Sprite::SpriteItem * bala;
-        GBF::Ponto posicao;
-        GBF::Ponto posicaoBala;
+        GBF::Image::Sprite::SpriteItem * fumaca;
+        GBF::Image::Sprite::SpriteItem * bala;
+        GBF::Point posicao;
+        GBF::Point posicaoBala;
+
     private:
-        GBF::Kernel::Timer::CronometroDecrescente tempo;
+        GBF::Kernel::Timer::TimerRegressive tempo;
         bool ativo;
         bool balaAtiva;
         int velocidade;
+        bool ultimoDisparo;
+
+        void inicializar();
 };
 
 #endif // CANHAO_H

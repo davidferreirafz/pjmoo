@@ -1,32 +1,27 @@
-///***************************************************************************
-// *   FZPong <Game - Pong Clone>                                            *
-// *   Copyright (C) 2009 by David Ferreira - FZ                             *
-// *   davidferreira.fz@gmail.com - http://pjmoo.sourceforge.net             *
-// ***************************************************************************
-// *   Este programa é software livre; você pode redistribuí-lo e/ou         *
-// *   modificá-lo sob os termos da Licença Pública Geral GNU, conforme      *
-// *   publicada pela Free Software Foundation; tanto a versão 2 da          *
-// *   Licença como (a seu critério) qualquer versão mais nova.              *
-// ***************************************************************************
-// *   This program is free software; you can redistribute it and/or modify  *
-// *   it under the terms of the GNU General Public License as published by  *
-// *   the Free Software Foundation; either version 2 of the License, or     *
-// *   (at your option) any later version.                                   *
-// *                                                                         *
-// *   You should have received a copy of the GNU General Public License     *
-// *   along with this program; if not, write to the                         *
-// *   Free Software Foundation, Inc.,                                       *
-// *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
-// ***************************************************************************/
+/*
+ *   Gameta <Game - Demo Tech>                                             *
+ *   Copyright (C) 2007-2010 by David Ferreira - FZ                        *
+ *   davidferreira.fz@gmail.com - http://portal.dukitan.com/fzpong         *
+ ***************************************************************************
+ *   Este programa Ã© software livre; vocÃª pode redistribuÃ­-lo e/ou         *
+ *   modificÃ¡-lo sob os termos da LicenÃ§aa PÃºblica Geral GNU, conforme     *
+ *   publicada pela Free Software Foundation; tanto a versÃ£o 2 da          *
+ *   LicenÃ§aa como (a seu critÃ©rio) qualquer versÃ£o mais nova.             *
+ ***************************************************************************
+ *   This program is free software; you can redistribute it and/or modify  *
+ *   it under the terms of the GNU General Public License as published by  *
+ *   the Free Software Foundation; either version 2 of the License, or     *
+ *   (at your option) any later version.                                   *
+ ***************************************************************************/
 #include "Jogo.h"
 
 int main(int argc, char * argv[])
 {
     GAT::GAT* jogo = NULL;
-    jogo = new Jogo(argc,argv);
+    jogo = new Jogo(argc, argv);
 
     try {
-        jogo->executar();
+        jogo->execute();
     } catch (std::exception& e) {
         std::cout << "Exception: " << e.what();
     } catch (...) {
@@ -38,19 +33,12 @@ int main(int argc, char * argv[])
     return 0;
 }
 //Construtor
-
-//Construtor
-Jogo::Jogo(int argc, char * argv[]):GAT(argc,argv)
+Jogo::Jogo(int argc, char * argv[]): GAT(argc, argv)
 {
 }
-
 //Destrutor
 Jogo::~Jogo()
 {
-    Mix_HookMusic(NULL, NULL);
-    SMPEG_stop(mpeg);
-    SMPEG_delete(mpeg);
-
     delete(controle);
     delete(janelaSobre);
     delete(janelaCredito);
@@ -58,34 +46,33 @@ Jogo::~Jogo()
     delete(janelaZerado);
     delete(janelaGameOver);
 }
-//Inicializa os recursos utilizados no jogo.
-//Ex.: Imagens, sons, fontes, configuração do modo gráfico e etc..
-void Jogo::inicializarRecursos()
+
+void Jogo::loadResources()
 {
-//configurando modo de vídeo
-    frameworkGBF->setTitulo("Sala Treino","Gameta & DukItan");
-    frameworkGBF->iniciar(304,224,16,false,GBF::Kernel::FPS::FPS_LIMITADO);
+    //configurando modo de vÃ­deo
+    frameworkGBF->setTitle("Sala Treino", "Gameta & DukItan");
+    frameworkGBF->start(304, 224, 16, false, GBF::Kernel::FPS::FPS_30);
     frameworkGBF->inputSystemCore->setControleExclusivo(SDL_GRAB_OFF);
     frameworkGBF->setFPS(false);
 
     //carregando imagens
-    frameworkGBF->graphicSystemCore->graphicSystem->imageBufferManager->carregar("background","//data//imagem//background.png");
-    frameworkGBF->graphicSystemCore->graphicSystem->imageBufferManager->carregar("foreground","//data//imagem//foreground.png");
-    frameworkGBF->graphicSystemCore->graphicSystem->imageBufferManager->carregar("personagem_parado",  "//data//imagem//personagem_parado.png");
-    frameworkGBF->graphicSystemCore->graphicSystem->imageBufferManager->carregar("personagem_andando", "//data//imagem//personagem_andando.png");
-    frameworkGBF->graphicSystemCore->graphicSystem->imageBufferManager->carregar("personagem_recuando","//data//imagem//personagem_recuando.png");
-    frameworkGBF->graphicSystemCore->graphicSystem->imageBufferManager->carregar("personagem_correndo","//data//imagem//personagem_correndo.png");
-    frameworkGBF->graphicSystemCore->graphicSystem->imageBufferManager->carregar("personagem_morrendo","//data//imagem//personagem_morrendo.png");
-    frameworkGBF->graphicSystemCore->graphicSystem->imageBufferManager->carregar("personagem_pulando", "//data//imagem//personagem_pulando.png");
-    frameworkGBF->graphicSystemCore->graphicSystem->imageBufferManager->carregar("personagem_caindo",  "//data//imagem//personagem_caindo.png");
-    frameworkGBF->graphicSystemCore->graphicSystem->imageBufferManager->carregar("personagem_impulsionando","//data//imagem//personagem_impulsionando.png");
+    frameworkGBF->graphicSystemCore->graphicSystem->imageBufferManager->loadFromFile("background", "//data//imagem//background.png");
+    frameworkGBF->graphicSystemCore->graphicSystem->imageBufferManager->loadFromFile("foreground", "//data//imagem//foreground.png");
+    frameworkGBF->graphicSystemCore->graphicSystem->imageBufferManager->loadFromFile("personagem_parado",  "//data//imagem//personagem_parado.png");
+    frameworkGBF->graphicSystemCore->graphicSystem->imageBufferManager->loadFromFile("personagem_andando", "//data//imagem//personagem_andando.png");
+    frameworkGBF->graphicSystemCore->graphicSystem->imageBufferManager->loadFromFile("personagem_recuando", "//data//imagem//personagem_recuando.png");
+    frameworkGBF->graphicSystemCore->graphicSystem->imageBufferManager->loadFromFile("personagem_correndo", "//data//imagem//personagem_correndo.png");
+    frameworkGBF->graphicSystemCore->graphicSystem->imageBufferManager->loadFromFile("personagem_morrendo", "//data//imagem//personagem_morrendo.png");
+    frameworkGBF->graphicSystemCore->graphicSystem->imageBufferManager->loadFromFile("personagem_pulando", "//data//imagem//personagem_pulando.png");
+    frameworkGBF->graphicSystemCore->graphicSystem->imageBufferManager->loadFromFile("personagem_caindo",  "//data//imagem//personagem_caindo.png");
+    frameworkGBF->graphicSystemCore->graphicSystem->imageBufferManager->loadFromFile("personagem_impulsionando", "//data//imagem//personagem_impulsionando.png");
 
-    frameworkGBF->graphicSystemCore->graphicSystem->imageBufferManager->carregar("bala","//data//imagem//bala.png");
-    frameworkGBF->graphicSystemCore->graphicSystem->imageBufferManager->carregar("fumaca","//data//imagem//fumaca.png");
+    frameworkGBF->graphicSystemCore->graphicSystem->imageBufferManager->loadFromFile("bala", "//data//imagem//bala.png");
+    frameworkGBF->graphicSystemCore->graphicSystem->imageBufferManager->loadFromFile("fumaca", "//data//imagem//fumaca.png");
 
     //carregando fontes
-    frameworkGBF->writeSystem->carregar("menu","data//fonte//Impact.png");
-    frameworkGBF->writeSystem->carregar("controle","data//fonte//bitstream.png");
+    frameworkGBF->writeSystem->loadFromFile("menu", "data//fonte//Impact.png");
+    frameworkGBF->writeSystem->loadFromFile("controle", "data//fonte//bitstream.png");
 
 
 //carregando audio - efeitos
@@ -100,310 +87,243 @@ void Jogo::inicializarRecursos()
 
 
     //Idioma
-    frameworkGBF->writeSystem->idioma->setArquivo("msg.txt");
-    frameworkGBF->writeSystem->idioma->detectarIdioma();
+    frameworkGBF->writeSystem->language->setFileName("msg.txt");
+    frameworkGBF->writeSystem->language->autodetect();
 
-    GBF::Imagem::SpriteFactory * spriteFactory = NULL;
-    spriteFactory = new GBF::Imagem::SpriteFactory("background");
+    GBF::Image::SpriteFactory * spriteFactory = NULL;
+    spriteFactory = new GBF::Image::SpriteFactory("background");
 
-    GBF::Imagem::Layer::FrameLayer * background = spriteFactory->criarFrameLayer(0, 0,304,224);
-    background->setFrame(0,0,304,224);
-    background->setTiles(1,1);
-    background->setPixelTile(304,224);
+    GBF::Image::Layer::FrameLayer * background = spriteFactory->createFrameLayer(0, 0, 304, 224);
+    background->setFrame(0, 0, 304, 224);
+    background->setTiles(1, 1);
+    background->setPixelTile(304, 224);
     background->iniciarCom(0);
-    GBF::Imagem::Layer::LayerManager::getInstance()->adicionar("background",background);
+    GBF::Image::Layer::LayerManager::getInstance()->add("background", background);
     delete(spriteFactory);
 
-    spriteFactory = new GBF::Imagem::SpriteFactory("foreground");
-    GBF::Imagem::Layer::FrameLayer * foreground = spriteFactory->criarFrameLayer(0, 0,304,224);
-    foreground->setFrame(0,0,304,224);
-    foreground->setTiles(1,1);
-    foreground->setPixelTile(304,224);
+    spriteFactory = new GBF::Image::SpriteFactory("foreground");
+    GBF::Image::Layer::FrameLayer * foreground = spriteFactory->createFrameLayer(0, 0, 304, 224);
+    foreground->setFrame(0, 0, 304, 224);
+    foreground->setTiles(1, 1);
+    foreground->setPixelTile(304, 224);
     foreground->iniciarCom(0);
-    GBF::Imagem::Layer::LayerManager::getInstance()->adicionar("foreground",foreground);
+    GBF::Image::Layer::LayerManager::getInstance()->add("foreground", foreground);
     delete(spriteFactory);
 
     //Menu
-    uiMenuPrincipal = new UserInterface::Menu::UIMenu();
-    uiMenuPrincipal->setCorBorda(255,255,0);
-    uiMenuPrincipal->setCorFundo(0,0,0);
-    uiMenuPrincipal->centralizarTela(304,224,UserInterface::CENTRO);
-    uiMenuPrincipal->setEspacoVertical(20);
-    uiMenuPrincipal->adicionar(new UserInterface::Menu::UIItemTexto("menu_1","menu"));
-    uiMenuPrincipal->adicionar(new UserInterface::Menu::UIItemTexto("menu_2","menu"));
-    uiMenuPrincipal->adicionar(new UserInterface::Menu::UIItemTexto("menu_3","menu"));
-    uiMenuPrincipal->adicionar(new UserInterface::Menu::UIItemTexto("menu_4","menu"));
-    uiMenuPrincipal->adicionar(new UserInterface::Menu::UIItemTexto("menu_5","menu"));
+    uiMenuPrincipal = new UserInterface::Menu::UIMenuSolid();
+    uiMenuPrincipal->setBorderColor(255, 255, 0);
+    uiMenuPrincipal->setBackgroundColor(0, 0, 0);
+    uiMenuPrincipal->center(304, 224, UserInterface::CENTRO);
+    uiMenuPrincipal->setVerticalSpace(20);
+    uiMenuPrincipal->add(new UserInterface::Menu::UIItemText("menu_1", "menu"));
+    uiMenuPrincipal->add(new UserInterface::Menu::UIItemText("menu_2", "menu"));
+    uiMenuPrincipal->add(new UserInterface::Menu::UIItemText("menu_3", "menu"));
+    uiMenuPrincipal->add(new UserInterface::Menu::UIItemText("menu_4", "menu"));
+    uiMenuPrincipal->add(new UserInterface::Menu::UIItemText("menu_5", "menu"));
 
-    UserInterface::Visual::UIVisualSolido *uiVisualImagem = new UserInterface::Visual::UIVisualSolido();
-    uiVisualImagem->setCorBorda(255,255,0);
-    uiVisualImagem->setCorFundo(0,0,0);
+    UserInterface::Look::UIBackgroundColor *uiVisualImagem = new UserInterface::Look::UIBackgroundColor();
+    uiVisualImagem->setBorderColor(255, 255, 0);
+    uiVisualImagem->setColor(0, 0, 0);
 
-    janelaAjuda = new UserInterface::Window::UIWindowTitulo();
-    janelaAjuda->setPosicao(10,16);
-    janelaAjuda->setDimensao(280,200);
-    janelaAjuda->texto.setFonte("texto");
-    janelaAjuda->texto.setChaveTexto("tela_ajuda_%02d");
-    janelaAjuda->titulo.setFonte("menu");
-    janelaAjuda->titulo.setChaveTexto("titulo_ajuda");
-    janelaAjuda->setVisual(uiVisualImagem->clone());
-    janelaAjuda->adicionarBotao(new UserInterface::Componente::UIBotao("controle","botao_enter",SDLK_RETURN));
-    janelaAjuda->inicializar();
+    janelaAjuda = new UserInterface::Window::UIWindowTitle();
+    janelaAjuda->setPoint(10, 16);
+    janelaAjuda->setDimension(280, 200);
+    janelaAjuda->text.setFont("texto");
+    janelaAjuda->text.setKeyText("tela_ajuda_%02d");
+    janelaAjuda->title.setFont("menu");
+    janelaAjuda->title.setKeyText("titulo_ajuda");
+    janelaAjuda->setBackground(uiVisualImagem->clone());
+    janelaAjuda->addButton(new UserInterface::Component::UIButton("controle", "botao_enter", SDLK_RETURN));
+    janelaAjuda->initialize();
 
-    janelaCredito = new UserInterface::Window::UIWindowTitulo();
-    janelaCredito->setPosicao(10,16);
-    janelaCredito->setDimensao(280,200);
-    janelaCredito->texto.setFonte("texto");
-    janelaCredito->texto.setChaveTexto("tela_credito_%02d");
-    janelaCredito->titulo.setFonte("menu");
-    janelaCredito->titulo.setChaveTexto("titulo_credito");
-    janelaCredito->setVisual(uiVisualImagem->clone());
-    janelaCredito->adicionarBotao(new UserInterface::Componente::UIBotao("controle","botao_enter",SDLK_RETURN));
-    janelaCredito->inicializar();
+    janelaCredito = new UserInterface::Window::UIWindowTitle();
+    janelaCredito->setPoint(10, 16);
+    janelaCredito->setDimension(280, 200);
+    janelaCredito->text.setFont("texto");
+    janelaCredito->text.setKeyText("tela_credito_%02d");
+    janelaCredito->title.setFont("menu");
+    janelaCredito->title.setKeyText("titulo_credito");
+    janelaCredito->setBackground(uiVisualImagem->clone());
+    janelaCredito->addButton(new UserInterface::Component::UIButton("controle", "botao_enter", SDLK_RETURN));
+    janelaCredito->initialize();
 
-    janelaSobre = new UserInterface::Window::UIWindowTitulo();
-    janelaSobre->setPosicao(10,16);
-    janelaSobre->setDimensao(280,200);
-    janelaSobre->texto.setFonte("texto");
-    janelaSobre->texto.setChaveTexto("tela_sobre_%02d");
-    janelaSobre->texto.setAlinhamento(UserInterface::Texto::TEXTO_NORMAL);
-    janelaSobre->titulo.setFonte("menu");
-    janelaSobre->titulo.setChaveTexto("titulo_sobre");
-    janelaSobre->setVisual(uiVisualImagem->clone());
-    janelaSobre->adicionarBotao(new UserInterface::Componente::UIBotao("controle","botao_enter",SDLK_RETURN));
-    janelaSobre->inicializar();
+    janelaSobre = new UserInterface::Window::UIWindowTitle();
+    janelaSobre->setPoint(10, 16);
+    janelaSobre->setDimension(280, 200);
+    janelaSobre->text.setFont("texto");
+    janelaSobre->text.setKeyText("tela_sobre_%02d");
+    janelaSobre->text.setAlignment(UserInterface::Text::TEXT_NORMAL);
+    janelaSobre->title.setFont("menu");
+    janelaSobre->title.setKeyText("titulo_sobre");
+    janelaSobre->setBackground(uiVisualImagem->clone());
+    janelaSobre->addButton(new UserInterface::Component::UIButton("controle", "botao_enter", SDLK_RETURN));
+    janelaSobre->initialize();
 
     janelaGameOver = new UserInterface::Window::UIWindowDialog();
-    janelaGameOver->setPosicao(50,60);
-    janelaGameOver->setDimensao(200,100);
-    janelaGameOver->texto.setFonte("texto");
-    janelaGameOver->texto.setChaveTexto("tela_gameover_%02d");
-   // janelaGameOver->texto.setAlinhamento(UserInterface::Texto::TEXTO_CENTRALIZADO);
-    janelaGameOver->setVisual(uiVisualImagem->clone());
-    janelaGameOver->adicionarBotao(new UserInterface::Componente::UIBotao("controle","botao_enter",SDLK_RETURN));
-    janelaGameOver->inicializar();
+    janelaGameOver->setPoint(50, 60);
+    janelaGameOver->setDimension(200, 100);
+    janelaGameOver->text.setFont("texto");
+    janelaGameOver->text.setKeyText("tela_gameover_%02d");
+    // janelaGameOver->text.setAlinhamento(UserInterface::Texto::TEXTO_CENTRALIZADO);
+    janelaGameOver->setBackground(uiVisualImagem->clone());
+    janelaGameOver->addButton(new UserInterface::Component::UIButton("controle", "botao_enter", SDLK_RETURN));
+    janelaGameOver->initialize();
 
     janelaZerado = new UserInterface::Window::UIWindowDialog();
-    janelaZerado->setPosicao(120,140);
-    janelaZerado->setDimensao(400,200);
-    janelaZerado->texto.setFonte("texto");
-    janelaZerado->texto.setChaveTexto("tela_zerado_%02d");
-    janelaZerado->texto.setAlinhamento(UserInterface::Texto::TEXTO_CENTRALIZADO);
-    janelaZerado->setVisual(uiVisualImagem->clone());
-    janelaZerado->adicionarBotao(new UserInterface::Componente::UIBotao("controle","botao_enter",SDLK_RETURN));
-    janelaZerado->inicializar();
+    janelaZerado->setPoint(120, 140);
+    janelaZerado->setDimension(400, 200);
+    janelaZerado->text.setFont("texto");
+    janelaZerado->text.setKeyText("tela_zerado_%02d");
+    janelaZerado->text.setAlignment(UserInterface::Text::TEXT_CENTRAL);
+    janelaZerado->setBackground(uiVisualImagem->clone());
+    janelaZerado->addButton(new UserInterface::Component::UIButton("controle", "botao_enter", SDLK_RETURN));
+    janelaZerado->initialize();
 
     delete(uiVisualImagem);
 
     controle = new Controle();
-
-
-////
-    std::cout << "Carregando MPEG" <<std::endl;
-
-    if ((mpeg = SMPEG_new ("/home/desenvolvimento/pjmoo/projetos/demos/Gameta_SalaTreino/bin/dukitan.mpg", NULL, 1)) != NULL)
-    {
-        std::cout << "achou" << std::endl;
-
-        SDL_Surface * sTemp = SDL_CreateRGBSurface(SDL_HWSURFACE, 304, 224, 16, 0, 0, 0, 0);
-
-        sVideo = SDL_DisplayFormat(sTemp);
-        pScreen = frameworkGBF->graphicSystemCore->gsScreen->getScreen();
-
-
-        SMPEG_setdisplay(mpeg, sVideo, NULL,  NULL);
-        SMPEG_enablevideo(mpeg, 1);
-
-        SDL_AudioSpec audiofmt;
-        Uint16 format;
-        int freq, channels;
-        Mix_QuerySpec(&freq, &format, &channels);
-        audiofmt.format = format;
-        audiofmt.freq = freq;
-        audiofmt.channels = channels;
-        SMPEG_actualSpec(mpeg, &audiofmt);
-        Mix_HookMusic(SMPEG_playAudioSDL, mpeg);
-        SMPEG_enableaudio(mpeg, 1);
-        SMPEG_setvolume(mpeg,100);
-        //SMPEG_setdisplayregion(mpeg, 0, 0, 200,200 );
-
-        //SMPEG_play(mpeg);
-       // SMPEG_getinfo(mpeg,&videoInfo);
-       // SDL_Delay(2000000);
-        delete(sTemp);
-    } else{
-        std::cout << "nao achou" << std::endl;
-    }
-
-
 }
-void Jogo::menuPrincipal()
+
+void Jogo::screenMain()
 {
-    GBF::Imagem::Layer::LayerManager::getInstance()->getFrameLayer("background")->desenhar();
+    GBF::Image::Layer::LayerManager::getInstance()->getFrameLayer("background")->draw();
 
-    uiMenuPrincipal->executar();
+    uiMenuPrincipal->execute();
 
 
-    switch(uiMenuPrincipal->confirmarSelecao())
+    switch (uiMenuPrincipal->confirmSelection())
     {
         case 0:
-                setMenuSobre();
+            setMenuAbout();
             break;
         case 1:
-                setJogo();
+            setGame();
             break;
         case 2:
-                setMenuCredito();
+            setMenuCredit();
             break;
         case 3:
-                setMenuAjuda();
+            setMenuHelp();
             break;
         case 4:
-                setSair();
+            setQuit();
             break;
     }
 }
-void Jogo::menuAjuda()
+
+void Jogo::screenHelp()
 {
-    GBF::Imagem::Layer::LayerManager::getInstance()->getFrameLayer("background")->desenhar();
+    GBF::Image::Layer::LayerManager::getInstance()->getFrameLayer("background")->draw();
 
-    janelaAjuda->executar();
+    janelaAjuda->execute();
 
-    if (janelaAjuda->isAcao(UserInterface::Window::UIWindowDialog::BOTAO_OK)){
-        setMenuPrincipal();
+    if (janelaAjuda->isAction(UserInterface::Window::UIWindowDialog::BUTTON_OK)){
+        setMenuMain();
     }
 }
-void Jogo::menuCredito()
+
+void Jogo::screenCredit()
 {
-    GBF::Imagem::Layer::LayerManager::getInstance()->getFrameLayer("background")->desenhar();
+    GBF::Image::Layer::LayerManager::getInstance()->getFrameLayer("background")->draw();
 
-    janelaCredito->executar();
+    janelaCredito->execute();
 
-
-    if (janelaCredito->isAcao(UserInterface::Window::UIWindowDialog::BOTAO_OK)){
-        setMenuPrincipal();
+    if (janelaCredito->isAction(UserInterface::Window::UIWindowDialog::BUTTON_OK)){
+        setMenuMain();
     }
 }
-void Jogo::menuSobre()
+
+void Jogo::screenAbout()
 {
-    GBF::Imagem::Layer::LayerManager::getInstance()->getFrameLayer("background")->desenhar();
+    GBF::Image::Layer::LayerManager::getInstance()->getFrameLayer("background")->draw();
 
-    janelaSobre->executar();
+    janelaSobre->execute();
 
-
-    if (janelaSobre->isAcao(UserInterface::Window::UIWindowDialog::BOTAO_OK)){
-        setMenuPrincipal();
+    if (janelaSobre->isAction(UserInterface::Window::UIWindowDialog::BUTTON_OK)){
+        setMenuMain();
     }
 }
-void Jogo::jogoNovo()
+
+void Jogo::actionNewGame()
 {
     frameworkGBF->soundSystemCore->soundSystem->musicManager->playInfinity("musica");
     controle->iniciar();
-    setJogoFaseCarregar();
+    setLoadStage();
 }
-void Jogo::jogoExecutando()
+
+void Jogo::actionOnGame()
 {
     if ((controle->isGameOver())){
-      setJogoGameOver();
+        setGameOver();
     } else {
         controle->executar(frameworkGBF->inputSystemCore->inputSystem);
     }
 }
-void Jogo::jogoPause()
+
+void Jogo::screenGamePause()
 {
     setMenu();
 }
-void Jogo::jogoFaseCarregar()
+void Jogo::screenLoadStage()
 {
-  //  controle->display();
-    frameworkGBF->writeSystem->escreverLocalizado("menu" ,10,80,"fase_carregar");
+    //  controle->display();
+    frameworkGBF->writeSystem->writeKeyText("menu" , 10, 80, "fase_carregar");
 
-    if (isTempoEspera()){
-    //    controle->iniciarSet();
-        setJogoExecutando();
+    if (isFinish()){
+        //    controle->iniciarSet();
+        setOnGame();
     }
 }
-void Jogo::jogoFaseFinalizada()
+
+void Jogo::screenFinishStage()
 {
-    setJogoFaseCarregar();
+    setLoadStage();
 }
-void Jogo::jogoGameOver()
+
+void Jogo::screenGameOver()
 {
-    GBF::Imagem::Layer::LayerManager::getInstance()->getFrameLayer("background")->desenhar();
+    GBF::Image::Layer::LayerManager::getInstance()->getFrameLayer("background")->draw();
 
-    janelaGameOver->executar();
+    janelaGameOver->execute();
 
-    if (janelaGameOver->isAcao(UserInterface::Window::UIWindowDialog::BOTAO_OK)){
+    if (janelaGameOver->isAction(UserInterface::Window::UIWindowDialog::BUTTON_OK)){
         setMenu();
     }
 }
-void Jogo::jogoZerado()
+
+void Jogo::screenGameFinish()
 {
-    GBF::Imagem::Layer::LayerManager::getInstance()->getFrameLayer("background")->desenhar();
+    GBF::Image::Layer::LayerManager::getInstance()->getFrameLayer("background")->draw();
 
-    janelaZerado->executar();
+    janelaZerado->execute();
 
-    if (janelaZerado->isAcao(UserInterface::Window::UIWindowDialog::BOTAO_OK)){
+    if (janelaZerado->isAction(UserInterface::Window::UIWindowDialog::BUTTON_OK)){
         setMenu();
     }
 }
-bool Jogo::gatilhoJogoFaseCarregar()
+
+bool Jogo::triggerLoadStage()
 {
     bool continua = true;
 
-   /* if (controle->isFinalizado()){
-        frameworkGBF->soundSystemCore->soundSystem->fxManager->play("vitoria");
-        setJogoZerado();
-        continua = false;
-    } else if (controle->isGameOver()){
-        frameworkGBF->soundSystemCore->soundSystem->fxManager->play("gameover");
-        setJogoGameOver();
-        continua = false;
-    } else {
-        frameworkGBF->soundSystemCore->soundSystem->fxManager->play("iniciando");
-       // controle->prepararSet();
-    }*/
+    /* if (controle->isFinalizado()){
+         frameworkGBF->soundSystemCore->soundSystem->fxManager->play("vitoria");
+         setJogoZerado();
+         continua = false;
+     } else if (controle->isGameOver()){
+         frameworkGBF->soundSystemCore->soundSystem->fxManager->play("gameover");
+         setJogoGameOver();
+         continua = false;
+     } else {
+         frameworkGBF->soundSystemCore->soundSystem->fxManager->play("iniciando");
+        // controle->prepararSet();
+     }*/
     return continua;
 }
-void Jogo::gatilhoMenuPrincipal()
+
+void Jogo::triggerMain()
 {
     frameworkGBF->soundSystemCore->soundSystem->musicManager->playInfinity("menu");
 }
-bool Jogo::desenharBotaoEnter()
-{
-    bool desenhe = isTempoEspera();
-
-    if (desenhe){
-        frameworkGBF->writeSystem->escreverLocalizado("menu",20,420,"botao_enter");
-    }
-
-    return desenhe;
-}
-void Jogo::apresentacao()
-{
-    static int frame = 0;
-
-    SMPEG_renderFrame(mpeg,(frame++));
-    SMPEG_getinfo(mpeg,&videoInfo);
-
-    //std::cout << " mpeg: "<< mpeg. <<std::endl;
-    std::cout << " Frame: "<< videoInfo.current_frame <<std::endl;
-    std::cout << " Tempo: " << videoInfo.current_time << " Total: " << videoInfo.total_time <<std::endl;
-    std::cout << " audio: " << videoInfo.audio_current_frame << " - af:" << videoInfo.audio_current_frame <<std::endl;
-
-    SDL_BlitSurface(sVideo, NULL, pScreen, NULL);
-    //Uint8 u = videoInfo.audio_current_frame;
-    //SMPEG_playAudioSDL(mpeg,&u,1024);
-
-}
-/*
-void updateMPEGFrame(SDL_Surface * buffer, Sint32 x, Sint32 y, Uint32 w, Uint32 h)
-{
-
-
-
-   SDL_BlitSurface(buffer, NULL, pScreen, NULL);
-   SDL_Flip(pScreen);
-}
-*/
 

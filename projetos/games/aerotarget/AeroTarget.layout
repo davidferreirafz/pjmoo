@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_layout_file>
+	<ActiveTarget name="linux" />
+	<File name="src/Inimigo.cpp" open="0" top="0" tabpos="0">
+		<Cursor position="439" topLine="9" />
+	</File>
+	<File name="src/Inimigo.h" open="0" top="0" tabpos="0">
+		<Cursor position="209" topLine="0" />
+	</File>
+	<File name="src/Jogador.cpp" open="0" top="0" tabpos="0">
+		<Cursor position="389" topLine="7" />
+	</File>
+	<File name="src/Jogador.h" open="0" top="0" tabpos="0">
+		<Cursor position="257" topLine="0" />
+	</File>
+	<File name="src/cap_01.cpp" open="0" top="0" tabpos="0">
+		<Cursor position="666" topLine="7" />
+	</File>
+</CodeBlocks_layout_file>

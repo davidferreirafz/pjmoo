@@ -2,23 +2,24 @@
 #define INTERFACEOBJETO_H
 
 #include <GBF/GBFramework.h>
-
+/*
 struct Regiao
 {
-    GBF::Ponto posicao;
-    GBF::Dimensao dimensao;
+    GBF::Point posicao;
+    GBF::Dimension dimensao;
 };
-
-
+*/
 class InterfaceObjeto
 {
     public:
         InterfaceObjeto();
         virtual ~InterfaceObjeto();
-        virtual bool colidiu(Regiao regiao);
-        virtual Regiao getAreaColisao()=0;
+        virtual bool colidiu(GBF::Area regiao);
+        virtual GBF::Area getAreaColisao() = 0;
+
     protected:
         GBF::Kernel::Graphic::GFX * gsGFX;
+
     private:
 };
 

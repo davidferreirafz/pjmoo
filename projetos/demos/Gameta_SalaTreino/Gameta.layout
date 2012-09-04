@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_layout_file>
+	<ActiveTarget name="linux - debug" />
+	<File name="bin/data/etc/idioma.cfg" open="0" top="0" tabpos="0">
+		<Cursor position="88" topLine="0" />
+	</File>
+	<File name="bin/data/etc/idioma/BR.msg.txt" open="0" top="0" tabpos="0">
+		<Cursor position="618" topLine="29" />
+	</File>
+	<File name="bin/data/etc/idioma/US.msg.txt" open="0" top="0" tabpos="0">
+		<Cursor position="876" topLine="32" />
+	</File>
+	<File name="src/Canhao.cpp" open="1" top="1" tabpos="1">
+		<Cursor position="2994" topLine="128" />
+	</File>
+	<File name="src/Canhao.h" open="1" top="0" tabpos="3">
+		<Cursor position="860" topLine="15" />
+	</File>
+	<File name="src/Controle.cpp" open="1" top="0" tabpos="2">
+		<Cursor position="3155" topLine="45" />
+	</File>
+	<File name="src/Controle.h" open="1" top="0" tabpos="4">
+		<Cursor position="584" topLine="12" />
+	</File>
+	<File name="src/InterfaceObjeto.cpp" open="0" top="0" tabpos="0">
+		<Cursor position="421" topLine="0" />
+	</File>
+	<File name="src/InterfaceObjeto.h" open="0" top="0" tabpos="2">
+		<Cursor position="236" topLine="0" />
+	</File>
+	<File name="src/Jogador.cpp" open="0" top="0" tabpos="0">
+		<Cursor position="1135" topLine="17" />
+	</File>
+	<File name="src/Jogador.h" open="0" top="0" tabpos="4">
+		<Cursor position="591" topLine="8" />
+	</File>
+	<File name="src/Jogo.cpp" open="0" top="0" tabpos="1">
+		<Cursor position="4856" topLine="259" />
+	</File>
+	<File name="src/Jogo.h" open="0" top="0" tabpos="1">
+		<Cursor position="2293" topLine="79" />
+	</File>
+	<File name="src/Lutador.cpp" open="0" top="0" tabpos="3">
+		<Cursor position="3083" topLine="305" />
+	</File>
+	<File name="src/Lutador.h" open="0" top="0" tabpos="5">
+		<Cursor position="1625" topLine="66" />
+	</File>
+</CodeBlocks_layout_file>

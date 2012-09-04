@@ -34,12 +34,15 @@ titulo_zerado=Winner
 botao_enter=Press [ENTER]
 
 #Jogo::menuSobre()
-tela_credito_01=#Developer:
-tela_credito_02=  David de Almeida Ferreira (FZ)
-tela_credito_03=#E-Mail:
-tela_credito_04=  davidferreira.fz@gmail.com
-tela_credito_05=#Site:
-tela_credito_06=  http://dukitan.wordpress.com
+tela_credito_01=<PROGRAMMING>
+tela_credito_02=David de Almeida Ferreira
+tela_credito_03= davidferreira.fz@gmail.com
+tela_credito_04= www.davidferreira.com.br
+tela_credito_05=
+tela_credito_06=<PIXEL ART>
+tela_credito_07=Onofre Paiva
+tela_credito_08= onofre.rodrigues.junior@gmail.com
+tela_credito_09= gameta.gdjbr.com
 
 #Jogo::menuAjuda()
 tela_ajuda_01=#Controller
@@ -54,30 +57,29 @@ tela_ajuda_09= the ten points, just an advantage
 tela_ajuda_10= of two points.
 
 #Jogo::jogoGameOver()
-tela_gameover_01= 
+tela_gameover_01=
 tela_gameover_02=GameOver
-tela_gameover_03= 
+tela_gameover_03=
 tela_gameover_04=Good Luck.
 tela_gameover_05=Try again...
 
 #Jogo::jogoZerado()
-tela_zerado_01= 
+tela_zerado_01=
 tela_zerado_02=Winner!!!
-tela_zerado_03= 
+tela_zerado_03=
 tela_zerado_04=You won the CPU.
-tela_zerado_05= 
+tela_zerado_05=
 tela_zerado_06=You will again???
 
 #Jogo::menuSobre()
-tela_sobre_01=FZPong [Game - Pong Clone]
-tela_sobre_02=Copyright (C) 2007-2008 
-tela_sobre_03= by David Ferreira
-tela_sobre_04= 
-tela_sobre_05=This program is free software;
-tela_sobre_06=you can redistribute it and/or
-tela_sobre_07=modify it under the terms of the
-tela_sobre_08=GNU General Public License as
-tela_sobre_09=published by the Free Software
-tela_sobre_10=Foundation; either version 2
-tela_sobre_11=of the License or any later
-tela_sobre_12=version.
+tela_sobre_01=SalaTreino [Gameta Demo]
+tela_sobre_02=Copyright (C) 2009 by DukItan
+tela_sobre_03=
+tela_sobre_04=This program is free software;
+tela_sobre_05=you can redistribute it and/or
+tela_sobre_06=modify it under the terms of the
+tela_sobre_07=GNU General Public License as
+tela_sobre_08=published by the Free Software
+tela_sobre_09=Foundation; either version 2
+tela_sobre_10=of the License or any later
+tela_sobre_11=version.

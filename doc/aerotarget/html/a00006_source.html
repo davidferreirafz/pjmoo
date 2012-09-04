@@ -1,0 +1,58 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<title>AeroTarget: Código-Fonte de Jogador.cpp</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<link href="doxygen.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<!-- Gerado por Doxygen 1.6.3 -->
+<div class="navigation" id="top">
+  <div class="tabs">
+    <ul>
+      <li><a href="main.html"><span>Página&nbsp;Principal</span></a></li>
+      <li><a href="annotated.html"><span>Classes</span></a></li>
+      <li class="current"><a href="files.html"><span>Arquivos</span></a></li>
+    </ul>
+  </div>
+  <div class="tabs">
+    <ul>
+      <li><a href="files.html"><span>Lista&nbsp;de&nbsp;Arquivos</span></a></li>
+      <li><a href="globals.html"><span>Arquivos&nbsp;Membros</span></a></li>
+    </ul>
+  </div>
+<h1>Jogador.cpp</h1><a href="a00006.html">Vá para a documentação deste arquivo.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 <span class="preprocessor">#include &quot;<a class="code" href="a00007.html">Jogador.h</a>&quot;</span>
+<a name="l00002"></a>00002 
+<a name="l00003"></a><a class="code" href="a00002.html#a94a4939138ce04d2f3ceb68257517ac1">00003</a> <a class="code" href="a00002.html#a94a4939138ce04d2f3ceb68257517ac1">Jogador::Jogador</a>()
+<a name="l00004"></a>00004 {
+<a name="l00005"></a>00005     <a class="codeRef" doxygen="GBFramework.tagfile:" href="a00029.html">GBF::Image::SpriteFactory</a> *spriteFactory = <span class="keyword">new</span> <a class="codeRef" doxygen="GBFramework.tagfile:" href="a00029.html">GBF::Image::SpriteFactory</a>(<span class="stringliteral">&quot;sprites&quot;</span>);
+<a name="l00006"></a>00006 
+<a name="l00007"></a>00007     <a class="codeRef" doxygen="GBFramework.tagfile:" href="a00001.html#a33ff1281f29d68e84467d1d13d7c05d4">addMainSprite</a>(spriteFactory-&gt;<a class="codeRef" doxygen="GBFramework.tagfile:" href="a00029.html#a59a93b24903684fab2dc4c293f4b981e">createSpriteCharacter</a>(0,0,59,43,3,6));
+<a name="l00008"></a>00008     <a class="codeRef" doxygen="GBFramework.tagfile:" href="a00001.html#aeea07b58e56b01829f14036a2a81736d">getMainSprite</a>()-&gt;<a class="codeRef" doxygen="GBFramework.tagfile:" href="a00027.html#a82ecb077c5b7558351cbb984906fa894">setQtdDirecoes</a>(1);
+<a name="l00009"></a>00009     <a class="codeRef" doxygen="GBFramework.tagfile:" href="a00001.html#aeea07b58e56b01829f14036a2a81736d">getMainSprite</a>()-&gt;<a class="codeRef" doxygen="GBFramework.tagfile:" href="a00030.html#a1348a9f31ca355fb7f2157cdfafdf3ec">animation</a>.<a class="codeRef" doxygen="GBFramework.tagfile:" href="a00023.html#a59d814f7711ad57b489aa2784cf91706">setAutomatic</a>(<span class="keyword">true</span>);
+<a name="l00010"></a>00010 
+<a name="l00011"></a>00011     <span class="keyword">delete</span> (spriteFactory);
+<a name="l00012"></a>00012 
+<a name="l00013"></a>00013     <a class="codeRef" doxygen="GBFramework.tagfile:" href="a00001.html#ad3830f3f8ddf92a61ea767fb48ced77f">setPoint</a>(320,400);
+<a name="l00014"></a>00014 }
+<a name="l00015"></a>00015 
+<a name="l00016"></a><a class="code" href="a00002.html#a3e62c32199fc9cfbcf22cf83f9008be6">00016</a> <a class="code" href="a00002.html#a3e62c32199fc9cfbcf22cf83f9008be6">Jogador::~Jogador</a>()
+<a name="l00017"></a>00017 {
+<a name="l00018"></a>00018     <span class="comment">//dtor</span>
+<a name="l00019"></a>00019 }
+<a name="l00020"></a>00020 
+<a name="l00021"></a><a class="code" href="a00002.html#affbed7204c461483cfd969dafebfcb0b">00021</a> <span class="keywordtype">void</span> <a class="code" href="a00002.html#affbed7204c461483cfd969dafebfcb0b">Jogador::update</a>(<a class="codeRef" doxygen="GBFramework.tagfile:" href="a00047.html">GBF::Kernel::Input::InputSystem</a> * input)
+<a name="l00022"></a>00022 {
+<a name="l00023"></a>00023     <span class="keywordflow">if</span> (input-&gt;<a class="codeRef" doxygen="GBFramework.tagfile:" href="a00047.html#ac59cd89ff46c37de5ad7bfc9b7233a75">keyboard</a>-&gt;isKey(SDLK_RIGHT)){
+<a name="l00024"></a>00024         <a class="codeRef" doxygen="GBFramework.tagfile:" href="a00001.html#a44f3254d2d2be53322886e19fbc936c6">point</a>.<a class="codeRef" doxygen="GBFramework.tagfile:" href="a00072.html#a1b8e21f8ff254362a91d2141ffdbfaa9">x</a>+=4;
+<a name="l00025"></a>00025     } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (input-&gt;<a class="codeRef" doxygen="GBFramework.tagfile:" href="a00047.html#ac59cd89ff46c37de5ad7bfc9b7233a75">keyboard</a>-&gt;isKey(SDLK_LEFT)){
+<a name="l00026"></a>00026         <a class="codeRef" doxygen="GBFramework.tagfile:" href="a00001.html#a44f3254d2d2be53322886e19fbc936c6">point</a>.<a class="codeRef" doxygen="GBFramework.tagfile:" href="a00072.html#a1b8e21f8ff254362a91d2141ffdbfaa9">x</a>-=4;
+<a name="l00027"></a>00027     }
+<a name="l00028"></a>00028 }
+</pre></div></div>
+<hr class="footer"/><address style="text-align: right;"><small>Gerado em Sun Mar 28 10:59:51 2010 para AeroTarget por&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.3 </small></address>
+</body>
+</html>

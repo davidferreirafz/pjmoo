@@ -1,0 +1,12 @@
+<map id="G" name="G">
+<area shape="rect" id="node3" href="GBFramework.tagfile$a00036.html#aec3e244b7e002092fa5442ea6fe629e2" title="GBF::Kernel::Graphic::GraphicCore::clear" alt="" coords="143,5,420,35"/>
+<area shape="rect" id="node5" href="GBFramework.tagfile$a00001.html#ad2afa1482ab97e947da62a6aa879e25e" title="Character::Character::draw" alt="" coords="184,59,379,88"/>
+<area shape="rect" id="node7" href="GBFramework.tagfile$a00046.html#a79f8ad2fdb014d13515448fe7007770e" title="GBF::Kernel::Input::InputCore::setControleExclusivo" alt="" coords="109,112,453,141"/>
+<area shape="rect" id="node9" href="GBFramework.tagfile$a00018.html#aaf088e195b4363bf2047968713c14398" title="GBF::GBFramework::setPath" alt="" coords="183,165,380,195"/>
+<area shape="rect" id="node11" href="GBFramework.tagfile$a00018.html#a39a9281e6348de7b9a563953f1f5bd57" title="GBF::GBFramework::setTitle" alt="" coords="183,219,380,248"/>
+<area shape="rect" id="node13" href="GBFramework.tagfile$a00018.html#a46ee3655faecb8074ab04d15cbc01389" title="GBF::GBFramework::start" alt="" coords="191,272,372,301"/>
+<area shape="rect" id="node15" href="GBFramework.tagfile$a00018.html#a5aa13bb0eff272de5b9977645d0ef251" title="GBF::GBFramework::update" alt="" coords="184,325,379,355"/>
+<area shape="rect" id="node17" href="$a00002.html#affbed7204c461483cfd969dafebfcb0b" title="Jogador::update" alt="" coords="220,379,343,408"/>
+<area shape="rect" id="node19" href="$a00001.html#a0e142c651fcc401936ed219b2967ca49" title="Inimigo::update" alt="" coords="221,432,341,461"/>
+<area shape="rect" id="node21" href="GBFramework.tagfile$a00069.html#a1761a20ab2592afa67ad40aa4b701a39" title="GBF::Kernel::Write::WriteManager::write" alt="" coords="148,485,415,515"/>
+</map>
